@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInicioSesion));
             lblInicioSesion = new Label();
             lblNombreUsuario = new Label();
@@ -38,6 +39,8 @@
             btnEnviar = new Button();
             lklFaq = new LinkLabel();
             lklRegistro = new LinkLabel();
+            errorProvider1 = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // lblInicioSesion
@@ -73,7 +76,7 @@
             txtNombreUsuario.Location = new Point(400, 105);
             txtNombreUsuario.Name = "txtNombreUsuario";
             txtNombreUsuario.Size = new Size(289, 43);
-            txtNombreUsuario.TabIndex = 2;
+            txtNombreUsuario.TabIndex = 1;
             // 
             // txtContrasenya
             // 
@@ -81,7 +84,7 @@
             txtContrasenya.Location = new Point(400, 167);
             txtContrasenya.Name = "txtContrasenya";
             txtContrasenya.Size = new Size(289, 43);
-            txtContrasenya.TabIndex = 4;
+            txtContrasenya.TabIndex = 2;
             // 
             // lblContrasenya
             // 
@@ -103,9 +106,10 @@
             btnBorrar.Location = new Point(501, 278);
             btnBorrar.Name = "btnBorrar";
             btnBorrar.Size = new Size(127, 53);
-            btnBorrar.TabIndex = 5;
+            btnBorrar.TabIndex = 4;
             btnBorrar.Text = "Borrar";
             btnBorrar.UseVisualStyleBackColor = false;
+            btnBorrar.Click += btnBorrar_Click;
             // 
             // btnEnviar
             // 
@@ -114,9 +118,10 @@
             btnEnviar.Location = new Point(652, 278);
             btnEnviar.Name = "btnEnviar";
             btnEnviar.Size = new Size(127, 53);
-            btnEnviar.TabIndex = 6;
+            btnEnviar.TabIndex = 3;
             btnEnviar.Text = "Enviar";
             btnEnviar.UseVisualStyleBackColor = false;
+            btnEnviar.Click += btnEnviar_Click;
             // 
             // lklFaq
             // 
@@ -125,9 +130,10 @@
             lklFaq.Location = new Point(12, 237);
             lklFaq.Name = "lklFaq";
             lklFaq.Size = new Size(289, 37);
-            lklFaq.TabIndex = 7;
+            lklFaq.TabIndex = 5;
             lklFaq.TabStop = true;
             lklFaq.Text = "¿Algún Problema?";
+            lklFaq.LinkClicked += lklFaq_LinkClicked;
             // 
             // lklRegistro
             // 
@@ -136,9 +142,15 @@
             lklRegistro.Location = new Point(12, 292);
             lklRegistro.Name = "lklRegistro";
             lklRegistro.Size = new Size(323, 37);
-            lklRegistro.TabIndex = 8;
+            lklRegistro.TabIndex = 6;
             lklRegistro.TabStop = true;
             lklRegistro.Text = "¿No Tienes Cuenta?";
+            lklRegistro.LinkClicked += lklRegistro_LinkClicked;
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+            errorProvider1.ContainerControl = this;
             // 
             // frmInicioSesion
             // 
@@ -157,6 +169,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmInicioSesion";
             Text = "Ge$tioni$";
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -172,5 +185,6 @@
         private Button btnEnviar;
         private LinkLabel lklFaq;
         private LinkLabel lklRegistro;
+        private ErrorProvider errorProvider1;
     }
 }
