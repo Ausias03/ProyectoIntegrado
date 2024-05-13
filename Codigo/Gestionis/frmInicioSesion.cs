@@ -1,8 +1,8 @@
 namespace Gestionis
 {
-    public partial class Form1 : Form
+    public partial class frmInicioSesion : Form
     {
-        public Form1()
+        public frmInicioSesion()
         {
             InitializeComponent();
         }
