@@ -33,10 +33,15 @@ fecha DATE NOT NULL,
 FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta)
 );
 
-CREATE TABLE IF NOT EXISTS categoria (
+CREATE TABLE IF NOT EXISTS categoriaGasto (
 idCategoria INT PRIMARY KEY AUTO_INCREMENT,
 nombre VARCHAR(45) NOT NULL,
 color INT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS categoriaIngreso (
+idCategoria INT PRIMARY KEY AUTO_INCREMENT,
+nombre VARCHAR(45) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS gasto (
@@ -46,8 +51,9 @@ nombre VARCHAR(45) NOT NULL,
 cantidad FLOAT NOT NULL,
 categoria INT NOT NULL,
 tipo VARCHAR(45) NOT NULL,
+comentarios VARCHAR(300),
 FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta),
-FOREIGN KEY (categoria) REFERENCES categoria(idCategoria)
+FOREIGN KEY (categoria) REFERENCES categoriaGasto(idCategoria)
 );
 
 CREATE TABLE IF NOT EXISTS ingreso (
@@ -56,7 +62,10 @@ numCuenta INT NOT NULL,
 nombre VARCHAR(45) NOT NULL,
 cantidad FLOAT NOT NULL,
 tipo VARCHAR(45) NOT NULL,
-FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta)
+categoria INT NOT NULL,
+comentarios VARCHAR(300),
+FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta),
+FOREIGN KEY (categoria) REFERENCES categoriaIngreso(idCategoria)
 );
 
 CREATE TABLE IF NOT EXISTS activo (
