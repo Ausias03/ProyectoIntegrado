@@ -15,6 +15,7 @@ namespace Gestionis
 {
     public partial class FrmMenuPrincipal : Form
     {
+        #region Barra Principal
         private Panel titleBarPanel;
         private PictureBox logoPictureBox;
 
@@ -28,6 +29,7 @@ namespace Gestionis
         {
             InitializeComponent();
         }
+        #endregion
 
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
         {

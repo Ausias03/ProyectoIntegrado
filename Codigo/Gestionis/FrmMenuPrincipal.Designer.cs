@@ -440,7 +440,7 @@
             btnSalir.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnSalir.BackColor = Color.FromArgb(178, 242, 187);
             btnSalir.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSalir.Location = new Point(1265, 605);
+            btnSalir.Location = new Point(1265, 620);
             btnSalir.Margin = new Padding(3, 4, 3, 4);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(174, 60);
@@ -488,7 +488,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(233, 236, 239);
-            ClientSize = new Size(1478, 715);
+            ClientSize = new Size(1478, 730);
             Controls.Add(pnlNotas);
             Controls.Add(btnSalir);
             Controls.Add(rgbCalendario);
