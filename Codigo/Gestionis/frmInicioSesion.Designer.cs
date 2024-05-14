@@ -40,7 +40,6 @@
             lklFaq = new LinkLabel();
             lklRegistro = new LinkLabel();
             errorProvider1 = new ErrorProvider(components);
-            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
@@ -153,22 +152,11 @@
             errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
             errorProvider1.ContainerControl = this;
             // 
-            // button1
-            // 
-            button1.Location = new Point(487, 237);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 7;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // frmInicioSesion
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 353);
-            Controls.Add(button1);
             Controls.Add(lklRegistro);
             Controls.Add(lklFaq);
             Controls.Add(btnEnviar);
@@ -198,6 +186,5 @@
         private LinkLabel lklFaq;
         private LinkLabel lklRegistro;
         private ErrorProvider errorProvider1;
-        private Button button1;
     }
 }
