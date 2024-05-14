@@ -69,6 +69,12 @@ namespace Gestionis
             txtNombreUsuario.Text = String.Empty;
             txtContrasenya.Text = String.Empty;
         }
-        #endregion   
+        #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FrmMenuPrincipal frmMenuPrincipal = new FrmMenuPrincipal();
+            frmMenuPrincipal.ShowDialog();
+        }
     }
 }
