@@ -69,6 +69,6 @@ namespace Gestionis
             txtNombreUsuario.Text = String.Empty;
             txtContrasenya.Text = String.Empty;
         }
-        #endregion   
+        #endregion
     }
 }
