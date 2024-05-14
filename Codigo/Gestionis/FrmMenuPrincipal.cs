@@ -206,5 +206,11 @@ namespace Gestionis
             frmAnyadirGasto fAG = new frmAnyadirGasto();
             fAG.ShowDialog();
         }
+
+        private void btnIngreso_Click(object sender, EventArgs e)
+        {
+            frmAnyadirIngreso fAI = new frmAnyadirIngreso();
+            fAI.ShowDialog();
+        }
     }
 }

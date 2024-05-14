@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAnyadirGasto));
             txtNombreGasto = new TextBox();
             lblNombreGasto = new Label();
             lblCantidad = new Label();
@@ -247,6 +248,7 @@
             Controls.Add(lblCantidad);
             Controls.Add(txtNombreGasto);
             Controls.Add(lblNombreGasto);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmAnyadirGasto";
             Text = "Añadir Gasto";
             ((System.ComponentModel.ISupportInitialize)nudCantidad).EndInit();
