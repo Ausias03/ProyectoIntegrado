@@ -351,6 +351,7 @@
             btnIngreso.TabIndex = 0;
             btnIngreso.Text = "Nuevo Ingreso";
             btnIngreso.UseVisualStyleBackColor = false;
+            btnIngreso.Click += btnIngreso_Click;
             // 
             // lblLinea
             // 

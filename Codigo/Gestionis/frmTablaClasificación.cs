@@ -7,26 +7,16 @@ using System.Text;
 using System.Threading.Tasks;
 namespace Gestionis
 {
-    public partial class frmHistorial : Form
+    public partial class frmTablaClasificación : Form
     {
-        public frmHistorial()
+        public frmTablaClasificación()
         {
             InitializeComponent();
         }
 
-        private void picBuscar_Click(object sender, EventArgs e)
+        private void btnSalir_Click(object sender, EventArgs e)
         {
-            lblFecha.Hide();
-            dtpBuscaFecha.Value = DateTime.Now;
-            txtBuscar.Text = "";
-        }
-
-        private void picBuscaFecha_Click(object sender, EventArgs e)
-        {
-            lblFecha.Show();
-            lblFecha.Text = dtpBuscaFecha.Value.ToString("D");
-            dtpBuscaFecha.Value = DateTime.Now;
-            txtBuscar.Text = "";
+            this.Dispose();
         }
 
         private void pnlBarra_Paint(object sender, PaintEventArgs e)

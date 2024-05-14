@@ -190,10 +190,16 @@ namespace Gestionis
             fAG.ShowDialog();
         }
 
+
         private void button1_Click(object sender, EventArgs e)
         {
             FrmGestorDeudas frmGestorDeudas = new FrmGestorDeudas();
             frmGestorDeudas.ShowDialog();
+        }
+        private void btnIngreso_Click(object sender, EventArgs e)
+        {
+            frmAnyadirIngreso fAI = new frmAnyadirIngreso();
+            fAI.ShowDialog();
         }
     }
 }
