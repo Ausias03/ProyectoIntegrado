@@ -61,6 +61,11 @@ namespace Gestionis
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            this.Hide();
+            FrmMenuPrincipal fMP = new FrmMenuPrincipal();
+            fMP.Closed += (s, args) => this.Close();
+            fMP.Show();
         }
 
         #region Metodos de implementacion

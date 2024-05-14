@@ -337,6 +337,7 @@
             btnGasto.TabIndex = 1;
             btnGasto.Text = "Nuevo Gasto";
             btnGasto.UseVisualStyleBackColor = false;
+            btnGasto.Click += btnGasto_Click;
             // 
             // btnIngreso
             // 

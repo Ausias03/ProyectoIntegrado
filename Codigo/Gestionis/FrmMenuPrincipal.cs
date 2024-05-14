@@ -198,5 +198,11 @@ namespace Gestionis
             pbTema.Image = Properties.Resources.dark.ToBitmap();
             pbTema.SizeMode = PictureBoxSizeMode.StretchImage;
         }
+
+        private void btnGasto_Click(object sender, EventArgs e)
+        {
+            frmAnyadirGasto fAG = new frmAnyadirGasto();
+            fAG.ShowDialog();
+        }
     }
 }
