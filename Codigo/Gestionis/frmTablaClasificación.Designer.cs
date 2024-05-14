@@ -1,6 +1,6 @@
 ﻿namespace Gestionis
 {
-    partial class frmHistorial
+    partial class frmTablaClasificación
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,24 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHistorial));
-            vScrollBar1 = new VScrollBar();
-            lblHistorial = new Label();
-            dgvHistorial = new DataGridView();
-            lblFecha = new Label();
-            txtBuscar = new TextBox();
-            picBuscar = new PictureBox();
-            lblBuscar = new Label();
-            lblMetodo = new Label();
-            cmbMetodo = new ComboBox();
-            dtpBuscaFecha = new DateTimePicker();
-            lblBuscaFecha = new Label();
-            picBuscaFecha = new PictureBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTablaClasificación));
+            dtgTabla = new DataGridView();
+            lblTabla = new Label();
+            btnSalir = new Button();
             pnlBarra = new Panel();
-            s = new PictureBox();
+            v = new PictureBox();
             pbSpain = new PictureBox();
-            c = new PictureBox();
-            d = new PictureBox();
+            g = new PictureBox();
+            w = new PictureBox();
             pbAyuda = new PictureBox();
             u = new PictureBox();
             a = new PictureBox();
@@ -56,14 +47,12 @@
             pbUsuario = new PictureBox();
             pbNotificaciones = new PictureBox();
             pbNoticias = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)dgvHistorial).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)picBuscar).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)picBuscaFecha).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dtgTabla).BeginInit();
             pnlBarra.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)s).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)v).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbSpain).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)c).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)d).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)g).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)w).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbAyuda).BeginInit();
             ((System.ComponentModel.ISupportInitialize)u).BeginInit();
             ((System.ComponentModel.ISupportInitialize)a).BeginInit();
@@ -76,132 +65,47 @@
             ((System.ComponentModel.ISupportInitialize)pbNoticias).BeginInit();
             SuspendLayout();
             // 
-            // vScrollBar1
+            // dtgTabla
             // 
-            vScrollBar1.Location = new Point(1491, 9);
-            vScrollBar1.Name = "vScrollBar1";
-            vScrollBar1.Size = new Size(26, 698);
-            vScrollBar1.TabIndex = 0;
+            dtgTabla.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgTabla.Location = new Point(73, 117);
+            dtgTabla.Name = "dtgTabla";
+            dtgTabla.RowHeadersWidth = 51;
+            dtgTabla.Size = new Size(1280, 534);
+            dtgTabla.TabIndex = 0;
             // 
-            // lblHistorial
+            // lblTabla
             // 
-            lblHistorial.AutoSize = true;
-            lblHistorial.Font = new Font("Roboto Mono", 24F);
-            lblHistorial.Location = new Point(33, 51);
-            lblHistorial.Name = "lblHistorial";
-            lblHistorial.Size = new Size(239, 53);
-            lblHistorial.TabIndex = 1;
-            lblHistorial.Text = "Historial";
+            lblTabla.AutoSize = true;
+            lblTabla.Font = new Font("Roboto Mono", 22.2F, FontStyle.Bold);
+            lblTabla.Location = new Point(444, 54);
+            lblTabla.Name = "lblTabla";
+            lblTabla.Size = new Size(528, 49);
+            lblTabla.TabIndex = 1;
+            lblTabla.Text = "Top 10 usuarios del mes";
             // 
-            // dgvHistorial
+            // btnSalir
             // 
-            dgvHistorial.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvHistorial.Location = new Point(59, 183);
-            dgvHistorial.Name = "dgvHistorial";
-            dgvHistorial.RowHeadersWidth = 51;
-            dgvHistorial.Size = new Size(1018, 494);
-            dgvHistorial.TabIndex = 17;
-            // 
-            // lblFecha
-            // 
-            lblFecha.AutoSize = true;
-            lblFecha.Font = new Font("Roboto Mono", 12F);
-            lblFecha.Location = new Point(59, 154);
-            lblFecha.Name = "lblFecha";
-            lblFecha.Size = new Size(48, 26);
-            lblFecha.TabIndex = 18;
-            lblFecha.Text = "Hoy";
-            lblFecha.Visible = false;
-            // 
-            // txtBuscar
-            // 
-            txtBuscar.Font = new Font("Roboto Mono", 12F);
-            txtBuscar.Location = new Point(1083, 183);
-            txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new Size(181, 34);
-            txtBuscar.TabIndex = 19;
-            // 
-            // picBuscar
-            // 
-            picBuscar.Location = new Point(1270, 183);
-            picBuscar.Name = "picBuscar";
-            picBuscar.Size = new Size(34, 34);
-            picBuscar.TabIndex = 9;
-            picBuscar.TabStop = false;
-            picBuscar.Click += picBuscar_Click;
-            // 
-            // lblBuscar
-            // 
-            lblBuscar.AutoSize = true;
-            lblBuscar.Font = new Font("Roboto Mono", 12F);
-            lblBuscar.Location = new Point(1083, 154);
-            lblBuscar.Name = "lblBuscar";
-            lblBuscar.Size = new Size(120, 26);
-            lblBuscar.TabIndex = 20;
-            lblBuscar.Text = "Buscador:";
-            lblBuscar.Visible = false;
-            // 
-            // lblMetodo
-            // 
-            lblMetodo.AutoSize = true;
-            lblMetodo.Font = new Font("Roboto Mono", 12F);
-            lblMetodo.Location = new Point(1083, 220);
-            lblMetodo.Name = "lblMetodo";
-            lblMetodo.Size = new Size(96, 26);
-            lblMetodo.TabIndex = 21;
-            lblMetodo.Text = "Metodo:";
-            lblMetodo.Visible = false;
-            // 
-            // cmbMetodo
-            // 
-            cmbMetodo.Font = new Font("Roboto Mono", 12F);
-            cmbMetodo.FormattingEnabled = true;
-            cmbMetodo.Items.AddRange(new object[] { "Tipo", "Cantidad", "Nombre" });
-            cmbMetodo.Location = new Point(1083, 249);
-            cmbMetodo.Name = "cmbMetodo";
-            cmbMetodo.Size = new Size(181, 34);
-            cmbMetodo.TabIndex = 22;
-            cmbMetodo.Text = "Tipo";
-            // 
-            // dtpBuscaFecha
-            // 
-            dtpBuscaFecha.Font = new Font("Roboto Mono", 12F);
-            dtpBuscaFecha.Format = DateTimePickerFormat.Short;
-            dtpBuscaFecha.Location = new Point(1083, 340);
-            dtpBuscaFecha.Name = "dtpBuscaFecha";
-            dtpBuscaFecha.Size = new Size(180, 34);
-            dtpBuscaFecha.TabIndex = 23;
-            // 
-            // lblBuscaFecha
-            // 
-            lblBuscaFecha.AutoSize = true;
-            lblBuscaFecha.Font = new Font("Roboto Mono", 12F);
-            lblBuscaFecha.Location = new Point(1083, 311);
-            lblBuscaFecha.Name = "lblBuscaFecha";
-            lblBuscaFecha.Size = new Size(240, 26);
-            lblBuscaFecha.TabIndex = 24;
-            lblBuscaFecha.Text = "Buscador por Fecha:";
-            lblBuscaFecha.Visible = false;
-            // 
-            // picBuscaFecha
-            // 
-            picBuscaFecha.Location = new Point(1270, 340);
-            picBuscaFecha.Name = "picBuscaFecha";
-            picBuscaFecha.Size = new Size(34, 34);
-            picBuscaFecha.TabIndex = 25;
-            picBuscaFecha.TabStop = false;
-            picBuscaFecha.Click += picBuscaFecha_Click;
+            btnSalir.BackColor = Color.FromArgb(170, 166, 202);
+            btnSalir.Font = new Font("Roboto Mono", 12F);
+            btnSalir.Location = new Point(1259, 668);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(124, 40);
+            btnSalir.TabIndex = 2;
+            btnSalir.Text = "Salir";
+            btnSalir.UseVisualStyleBackColor = false;
+            btnSalir.Click += btnSalir_Click;
             // 
             // pnlBarra
             // 
             pnlBarra.BackColor = Color.FromArgb(211, 208, 242);
             pnlBarra.Controls.Add(pbUsuario);
-            pnlBarra.Controls.Add(s);
             pnlBarra.Controls.Add(pbNotificaciones);
             pnlBarra.Controls.Add(pbNoticias);
+            pnlBarra.Controls.Add(v);
             pnlBarra.Controls.Add(pbSpain);
-            pnlBarra.Controls.Add(c);
-            pnlBarra.Controls.Add(d);
+            pnlBarra.Controls.Add(g);
+            pnlBarra.Controls.Add(w);
             pnlBarra.Controls.Add(pbAyuda);
             pnlBarra.Controls.Add(u);
             pnlBarra.Controls.Add(a);
@@ -212,20 +116,20 @@
             pnlBarra.Dock = DockStyle.Top;
             pnlBarra.Location = new Point(0, 0);
             pnlBarra.Name = "pnlBarra";
-            pnlBarra.Size = new Size(1340, 45);
-            pnlBarra.TabIndex = 26;
+            pnlBarra.Size = new Size(1417, 51);
+            pnlBarra.TabIndex = 4;
             pnlBarra.Paint += pnlBarra_Paint;
             // 
-            // s
+            // v
             // 
-            s.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            s.Location = new Point(2361, 5);
-            s.Margin = new Padding(3, 4, 3, 4);
-            s.Name = "s";
-            s.Size = new Size(27, 31);
-            s.SizeMode = PictureBoxSizeMode.StretchImage;
-            s.TabIndex = 26;
-            s.TabStop = false;
+            v.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            v.Location = new Point(2438, 5);
+            v.Margin = new Padding(3, 4, 3, 4);
+            v.Name = "v";
+            v.Size = new Size(27, 31);
+            v.SizeMode = PictureBoxSizeMode.StretchImage;
+            v.TabIndex = 26;
+            v.TabStop = false;
             // 
             // pbSpain
             // 
@@ -238,27 +142,27 @@
             pbSpain.TabIndex = 24;
             pbSpain.TabStop = false;
             // 
-            // c
+            // g
             // 
-            c.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            c.Location = new Point(2327, 5);
-            c.Margin = new Padding(3, 4, 3, 4);
-            c.Name = "c";
-            c.Size = new Size(27, 31);
-            c.SizeMode = PictureBoxSizeMode.StretchImage;
-            c.TabIndex = 25;
-            c.TabStop = false;
+            g.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            g.Location = new Point(2404, 5);
+            g.Margin = new Padding(3, 4, 3, 4);
+            g.Name = "g";
+            g.Size = new Size(27, 31);
+            g.SizeMode = PictureBoxSizeMode.StretchImage;
+            g.TabIndex = 25;
+            g.TabStop = false;
             // 
-            // d
+            // w
             // 
-            d.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            d.Location = new Point(2289, 5);
-            d.Margin = new Padding(3, 4, 3, 4);
-            d.Name = "d";
-            d.Size = new Size(31, 31);
-            d.SizeMode = PictureBoxSizeMode.StretchImage;
-            d.TabIndex = 24;
-            d.TabStop = false;
+            w.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            w.Location = new Point(2366, 5);
+            w.Margin = new Padding(3, 4, 3, 4);
+            w.Name = "w";
+            w.Size = new Size(31, 31);
+            w.SizeMode = PictureBoxSizeMode.StretchImage;
+            w.TabIndex = 24;
+            w.TabStop = false;
             // 
             // pbAyuda
             // 
@@ -273,7 +177,7 @@
             // u
             // 
             u.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            u.Location = new Point(3633, 5);
+            u.Location = new Point(3710, 5);
             u.Margin = new Padding(3, 4, 3, 4);
             u.Name = "u";
             u.Size = new Size(27, 31);
@@ -284,7 +188,7 @@
             // a
             // 
             a.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            a.Location = new Point(3599, 5);
+            a.Location = new Point(3676, 5);
             a.Margin = new Padding(3, 4, 3, 4);
             a.Name = "a";
             a.Size = new Size(27, 31);
@@ -295,7 +199,7 @@
             // p
             // 
             p.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            p.Location = new Point(3561, 5);
+            p.Location = new Point(3638, 5);
             p.Margin = new Padding(3, 4, 3, 4);
             p.Name = "p";
             p.Size = new Size(31, 31);
@@ -336,7 +240,7 @@
             // pbUsuario
             // 
             pbUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbUsuario.Location = new Point(1304, 6);
+            pbUsuario.Location = new Point(1380, 6);
             pbUsuario.Margin = new Padding(3, 4, 3, 4);
             pbUsuario.Name = "pbUsuario";
             pbUsuario.Size = new Size(27, 31);
@@ -347,7 +251,7 @@
             // pbNotificaciones
             // 
             pbNotificaciones.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbNotificaciones.Location = new Point(1270, 6);
+            pbNotificaciones.Location = new Point(1346, 6);
             pbNotificaciones.Margin = new Padding(3, 4, 3, 4);
             pbNotificaciones.Name = "pbNotificaciones";
             pbNotificaciones.Size = new Size(27, 31);
@@ -358,7 +262,7 @@
             // pbNoticias
             // 
             pbNoticias.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbNoticias.Location = new Point(1232, 6);
+            pbNoticias.Location = new Point(1308, 6);
             pbNoticias.Margin = new Padding(3, 4, 3, 4);
             pbNoticias.Name = "pbNoticias";
             pbNoticias.Size = new Size(31, 31);
@@ -366,36 +270,25 @@
             pbNoticias.TabIndex = 27;
             pbNoticias.TabStop = false;
             // 
-            // frmHistorial
+            // frmTablaClasificación
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1340, 703);
+            ClientSize = new Size(1417, 729);
             Controls.Add(pnlBarra);
-            Controls.Add(picBuscaFecha);
-            Controls.Add(lblBuscaFecha);
-            Controls.Add(dtpBuscaFecha);
-            Controls.Add(cmbMetodo);
-            Controls.Add(lblMetodo);
-            Controls.Add(lblBuscar);
-            Controls.Add(picBuscar);
-            Controls.Add(txtBuscar);
-            Controls.Add(lblFecha);
-            Controls.Add(dgvHistorial);
-            Controls.Add(lblHistorial);
-            Controls.Add(vScrollBar1);
+            Controls.Add(btnSalir);
+            Controls.Add(lblTabla);
+            Controls.Add(dtgTabla);
             Font = new Font("Roboto Mono", 9F);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "frmHistorial";
+            Name = "frmTablaClasificación";
             Text = "Ge$tioni$";
-            ((System.ComponentModel.ISupportInitialize)dgvHistorial).EndInit();
-            ((System.ComponentModel.ISupportInitialize)picBuscar).EndInit();
-            ((System.ComponentModel.ISupportInitialize)picBuscaFecha).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dtgTabla).EndInit();
             pnlBarra.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)s).EndInit();
+            ((System.ComponentModel.ISupportInitialize)v).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbSpain).EndInit();
-            ((System.ComponentModel.ISupportInitialize)c).EndInit();
-            ((System.ComponentModel.ISupportInitialize)d).EndInit();
+            ((System.ComponentModel.ISupportInitialize)g).EndInit();
+            ((System.ComponentModel.ISupportInitialize)w).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbAyuda).EndInit();
             ((System.ComponentModel.ISupportInitialize)u).EndInit();
             ((System.ComponentModel.ISupportInitialize)a).EndInit();
@@ -412,23 +305,14 @@
 
         #endregion
 
-        private VScrollBar vScrollBar1;
-        private Label lblHistorial;
-        private DataGridView dgvHistorial;
-        private Label lblFecha;
-        private TextBox txtBuscar;
-        private PictureBox picBuscar;
-        private Label lblBuscar;
-        private Label lblMetodo;
-        private ComboBox cmbMetodo;
-        private DateTimePicker dtpBuscaFecha;
-        private Label lblBuscaFecha;
-        private PictureBox picBuscaFecha;
+        private DataGridView dtgTabla;
+        private Label lblTabla;
+        private Button btnSalir;
         private Panel pnlBarra;
-        private PictureBox s;
+        private PictureBox v;
         private PictureBox pbSpain;
-        private PictureBox c;
-        private PictureBox d;
+        private PictureBox g;
+        private PictureBox w;
         private PictureBox pbAyuda;
         private PictureBox u;
         private PictureBox a;
