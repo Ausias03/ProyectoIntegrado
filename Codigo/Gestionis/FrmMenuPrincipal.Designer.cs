@@ -64,6 +64,7 @@
             pnlNotas = new Panel();
             lblNotasValor = new Label();
             lblNotas = new Label();
+            button1 = new Button();
             pnlBarra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbSpain).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbAyuda).BeginInit();
@@ -114,6 +115,7 @@
             pbSpain.SizeMode = PictureBoxSizeMode.StretchImage;
             pbSpain.TabIndex = 24;
             pbSpain.TabStop = false;
+            pbSpain.Visible = false;
             pbSpain.Click += pbSpain_Click;
             // 
             // pbAyuda
@@ -485,12 +487,23 @@
             lblNotas.TabIndex = 4;
             lblNotas.Text = "Notas del día";
             // 
+            // button1
+            // 
+            button1.Location = new Point(1068, 145);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 17;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // FrmMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(233, 236, 239);
             ClientSize = new Size(1478, 730);
+            Controls.Add(button1);
             Controls.Add(pnlNotas);
             Controls.Add(btnSalir);
             Controls.Add(rgbCalendario);
@@ -557,5 +570,6 @@
         private Label lblNotas;
         private Label lblNotasValor;
         private PictureBox pbSpain;
+        private Button button1;
     }
 }

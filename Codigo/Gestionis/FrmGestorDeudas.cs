@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Resources;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Gestionis
 {
-    public partial class FrmMenuPrincipal : Form
+    public partial class FrmGestorDeudas : Form
     {
         #region Barra Principal
         private Panel titleBarPanel;
@@ -25,39 +23,12 @@ namespace Gestionis
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
         #endregion
-
-        public FrmMenuPrincipal()
+        public FrmGestorDeudas()
         {
             InitializeComponent();
         }
-
-
-        private void FrmMenuPrincipal_Load(object sender, EventArgs e)
+        private void FrmGestorDeudas_Load(object sender, EventArgs e)
         {
-            #region Botones
-            btnIngreso.FlatStyle = FlatStyle.Flat;
-            btnIngreso.FlatAppearance.BorderColor = Color.Black;
-            btnIngreso.FlatAppearance.BorderSize = 2;
-
-            btnGasto.FlatStyle = FlatStyle.Flat;
-            btnGasto.FlatAppearance.BorderColor = Color.Black;
-            btnGasto.FlatAppearance.BorderSize = 2;
-
-            btnSalir.FlatStyle = FlatStyle.Flat;
-            btnSalir.FlatAppearance.BorderColor = Color.Black;
-            btnSalir.FlatAppearance.BorderSize = 2;
-
-            #endregion
-
-            #region Labels
-            lblIngresosValor.Text = "0€";
-            lblGastosValor.Text = "0€";
-            lblTotalValor.Text = "0€";
-
-            lblMes.Text = DateTime.Now.ToString("MMMM");
-            lblNotasValor.Text = "";
-            #endregion
-
             #region Barra Principal
             this.Size = new Size(1600, 900);
 
@@ -88,7 +59,7 @@ namespace Gestionis
             closeButton.Size = new Size(40, 40);
             closeButton.Location = new Point(this.Width - 42, 0);
             closeButton.Click += CloseButton_Click;
-            titleBarPanel.Controls.Add(closeButton);            
+            titleBarPanel.Controls.Add(closeButton);
 
             Button minimizeButton = new Button();
             minimizeButton.Text = "-";
@@ -128,16 +99,6 @@ namespace Gestionis
             this.Dispose();
         }
         #endregion
-
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void pbHamburger_Click(object sender, EventArgs e)
-        {
-
-        }
 
         #region Barra Secundaria
         private void pbSpain_Click(object sender, EventArgs e)
@@ -182,24 +143,6 @@ namespace Gestionis
 
             pbTema.Image = Properties.Resources.dark.ToBitmap();
             pbTema.SizeMode = PictureBoxSizeMode.StretchImage;
-        }
-
-        private void btnGasto_Click(object sender, EventArgs e)
-        {
-            frmAnyadirGasto fAG = new frmAnyadirGasto();
-            fAG.ShowDialog();
-        }
-
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            FrmGestorDeudas frmGestorDeudas = new FrmGestorDeudas();
-            frmGestorDeudas.ShowDialog();
-        }
-        private void btnIngreso_Click(object sender, EventArgs e)
-        {
-            frmAnyadirIngreso fAI = new frmAnyadirIngreso();
-            fAI.ShowDialog();
         }
     }
 }
