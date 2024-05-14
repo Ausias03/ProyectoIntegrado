@@ -15,10 +15,10 @@ namespace Gestionis
             bool ok = true;
             errorProvider1.Clear();
 
-            if (txtNombreUsuario.Text == String.Empty)
+            if (txtApodo.Text == String.Empty)
             {
                 ok = false;
-                errorProvider1.SetError(txtNombreUsuario, "Introduce un nombre");
+                errorProvider1.SetError(txtApodo, "Introduce un nombre");
             }
 
             if (txtCorreo.Text == String.Empty)
@@ -69,16 +69,43 @@ namespace Gestionis
         {
             if (!ValidaDatos())
             {
-                MessageBox.Show("Revisa los datos introducidos", "Error", 
+                MessageBox.Show("Revisa los datos introducidos", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+
+            try
+            {
+                if (Usuario.Existe(txtNombre.Text))
+                {
+                    MessageBox.Show("Ya existe un usuario con ese apodo / nombre", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                Usuario usu1 = new Usuario(
+                    txtApodo.Text,
+                    txtNombre.Text,
+                    txtApellidos.Text == String.Empty ? null : txtApellidos.Text,
+                    txtCorreo.Text,
+                    txtContrasenya.Text,
+                    txtDireccion.Text == String.Empty ? null : txtDireccion.Text,
+                    txtTelefono.Text == String.Empty ? null : txtTelefono.Text
+                    );
+
+                usu1.Add();
+                lklInicioSesion_LinkClicked(null, null);
+            }
+            catch
+            {
+                MessageBox.Show("No se ha podido conectar con la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         #region Metodos de implementacion
         private void RestablecerControlesVisuales()
         {
-            txtNombreUsuario.Text = String.Empty;
+            txtApodo.Text = String.Empty;
             txtCorreo.Text = String.Empty;
             txtNombre.Text = String.Empty;
             txtApellidos.Text = String.Empty;

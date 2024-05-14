@@ -35,7 +35,7 @@
             btnBorrar = new Button();
             txtContrasenya = new TextBox();
             lblContrasenya = new Label();
-            txtNombreUsuario = new TextBox();
+            txtApodo = new TextBox();
             lblNombreUsuario = new Label();
             lblRegistro = new Label();
             txtCorreo = new TextBox();
@@ -121,13 +121,13 @@
             lblContrasenya.Text = "Contraseña:";
             lblContrasenya.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // txtNombreUsuario
+            // txtApodo
             // 
-            txtNombreUsuario.Font = new Font("Roboto Mono", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNombreUsuario.Location = new Point(405, 91);
-            txtNombreUsuario.Name = "txtNombreUsuario";
-            txtNombreUsuario.Size = new Size(289, 43);
-            txtNombreUsuario.TabIndex = 1;
+            txtApodo.Font = new Font("Roboto Mono", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtApodo.Location = new Point(405, 91);
+            txtApodo.Name = "txtApodo";
+            txtApodo.Size = new Size(289, 43);
+            txtApodo.TabIndex = 1;
             // 
             // lblNombreUsuario
             // 
@@ -287,7 +287,7 @@
             Controls.Add(btnBorrar);
             Controls.Add(txtContrasenya);
             Controls.Add(lblContrasenya);
-            Controls.Add(txtNombreUsuario);
+            Controls.Add(txtApodo);
             Controls.Add(lblNombreUsuario);
             Controls.Add(lblRegistro);
             Name = "frmRegistro";
@@ -305,7 +305,7 @@
         private Button btnBorrar;
         private TextBox txtContrasenya;
         private Label lblContrasenya;
-        private TextBox txtNombreUsuario;
+        private TextBox txtApodo;
         private Label lblNombreUsuario;
         private Label lblRegistro;
         private TextBox txtCorreo;
