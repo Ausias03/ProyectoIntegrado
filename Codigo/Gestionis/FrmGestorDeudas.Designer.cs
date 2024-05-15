@@ -56,6 +56,7 @@
             pictureBox3 = new PictureBox();
             pbHamburger = new PictureBox();
             label1 = new Label();
+            barraLateral1 = new BarraLateral();
             pnlInfoDeuda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvGastosIngresos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbUsuario).BeginInit();
@@ -113,7 +114,7 @@
             lblTipoValor.BackColor = Color.Transparent;
             lblTipoValor.Location = new Point(203, 98);
             lblTipoValor.Name = "lblTipoValor";
-            lblTipoValor.Size = new Size(33, 15);
+            lblTipoValor.Size = new Size(42, 20);
             lblTipoValor.TabIndex = 17;
             lblTipoValor.Text = "Tipo:";
             // 
@@ -123,7 +124,7 @@
             lblFechaLimiteValor.BackColor = Color.Transparent;
             lblFechaLimiteValor.Location = new Point(203, 51);
             lblFechaLimiteValor.Name = "lblFechaLimiteValor";
-            lblFechaLimiteValor.Size = new Size(33, 15);
+            lblFechaLimiteValor.Size = new Size(42, 20);
             lblFechaLimiteValor.TabIndex = 16;
             lblFechaLimiteValor.Text = "Tipo:";
             // 
@@ -133,7 +134,7 @@
             lblProximaDeudaValor.BackColor = Color.Transparent;
             lblProximaDeudaValor.Location = new Point(203, 7);
             lblProximaDeudaValor.Name = "lblProximaDeudaValor";
-            lblProximaDeudaValor.Size = new Size(33, 15);
+            lblProximaDeudaValor.Size = new Size(42, 20);
             lblProximaDeudaValor.TabIndex = 15;
             lblProximaDeudaValor.Text = "Tipo:";
             // 
@@ -143,7 +144,7 @@
             lblTipo.BackColor = Color.Transparent;
             lblTipo.Location = new Point(-1, 96);
             lblTipo.Name = "lblTipo";
-            lblTipo.Size = new Size(33, 15);
+            lblTipo.Size = new Size(42, 20);
             lblTipo.TabIndex = 14;
             lblTipo.Text = "Tipo:";
             // 
@@ -153,7 +154,7 @@
             lblFechaLimite.BackColor = Color.Transparent;
             lblFechaLimite.Location = new Point(-1, 51);
             lblFechaLimite.Name = "lblFechaLimite";
-            lblFechaLimite.Size = new Size(74, 15);
+            lblFechaLimite.Size = new Size(92, 20);
             lblFechaLimite.TabIndex = 13;
             lblFechaLimite.Text = "Fecha límite:";
             // 
@@ -163,7 +164,7 @@
             lblProximaDeuda.BackColor = Color.Transparent;
             lblProximaDeuda.Location = new Point(-1, 7);
             lblProximaDeuda.Name = "lblProximaDeuda";
-            lblProximaDeuda.Size = new Size(90, 15);
+            lblProximaDeuda.Size = new Size(112, 20);
             lblProximaDeuda.TabIndex = 12;
             lblProximaDeuda.Text = "Próxima deuda:";
             // 
@@ -173,7 +174,7 @@
             cmbCategoria.Location = new Point(224, 227);
             cmbCategoria.Margin = new Padding(3, 4, 3, 4);
             cmbCategoria.Name = "cmbCategoria";
-            cmbCategoria.Size = new Size(192, 23);
+            cmbCategoria.Size = new Size(192, 28);
             cmbCategoria.TabIndex = 8;
             // 
             // dgvGastosIngresos
@@ -235,9 +236,10 @@
             // pbUsuario
             // 
             pbUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbUsuario.Location = new Point(1312, 4);
+            pbUsuario.Location = new Point(1499, 5);
+            pbUsuario.Margin = new Padding(3, 4, 3, 4);
             pbUsuario.Name = "pbUsuario";
-            pbUsuario.Size = new Size(24, 23);
+            pbUsuario.Size = new Size(27, 31);
             pbUsuario.SizeMode = PictureBoxSizeMode.StretchImage;
             pbUsuario.TabIndex = 26;
             pbUsuario.TabStop = false;
@@ -245,9 +247,10 @@
             // pbNotificaciones
             // 
             pbNotificaciones.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbNotificaciones.Location = new Point(1283, 4);
+            pbNotificaciones.Location = new Point(1466, 5);
+            pbNotificaciones.Margin = new Padding(3, 4, 3, 4);
             pbNotificaciones.Name = "pbNotificaciones";
-            pbNotificaciones.Size = new Size(24, 23);
+            pbNotificaciones.Size = new Size(27, 31);
             pbNotificaciones.SizeMode = PictureBoxSizeMode.StretchImage;
             pbNotificaciones.TabIndex = 25;
             pbNotificaciones.TabStop = false;
@@ -255,9 +258,10 @@
             // pbNoticias
             // 
             pbNoticias.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbNoticias.Location = new Point(1250, 4);
+            pbNoticias.Location = new Point(1429, 5);
+            pbNoticias.Margin = new Padding(3, 4, 3, 4);
             pbNoticias.Name = "pbNoticias";
-            pbNoticias.Size = new Size(27, 23);
+            pbNoticias.Size = new Size(31, 31);
             pbNoticias.SizeMode = PictureBoxSizeMode.StretchImage;
             pbNoticias.TabIndex = 24;
             pbNoticias.TabStop = false;
@@ -278,18 +282,18 @@
             pnlBarra.Controls.Add(pbHamburger);
             pnlBarra.Dock = DockStyle.Top;
             pnlBarra.Location = new Point(0, 0);
-            pnlBarra.Margin = new Padding(3, 2, 3, 2);
             pnlBarra.Name = "pnlBarra";
-            pnlBarra.Size = new Size(1347, 31);
+            pnlBarra.Size = new Size(1539, 41);
             pnlBarra.TabIndex = 27;
             pnlBarra.Paint += pnlBarra_Paint;
             // 
             // pbSpain
             // 
             pbSpain.Enabled = false;
-            pbSpain.Location = new Point(80, 3);
+            pbSpain.Location = new Point(91, 4);
+            pbSpain.Margin = new Padding(3, 4, 3, 4);
             pbSpain.Name = "pbSpain";
-            pbSpain.Size = new Size(29, 23);
+            pbSpain.Size = new Size(33, 31);
             pbSpain.SizeMode = PictureBoxSizeMode.StretchImage;
             pbSpain.TabIndex = 29;
             pbSpain.TabStop = false;
@@ -298,9 +302,10 @@
             // 
             // pbEnglish
             // 
-            pbEnglish.Location = new Point(81, 3);
+            pbEnglish.Location = new Point(93, 4);
+            pbEnglish.Margin = new Padding(3, 4, 3, 4);
             pbEnglish.Name = "pbEnglish";
-            pbEnglish.Size = new Size(26, 23);
+            pbEnglish.Size = new Size(30, 31);
             pbEnglish.SizeMode = PictureBoxSizeMode.CenterImage;
             pbEnglish.TabIndex = 28;
             pbEnglish.TabStop = false;
@@ -308,18 +313,20 @@
             // 
             // pbTema
             // 
-            pbTema.Location = new Point(114, 4);
+            pbTema.Location = new Point(130, 5);
+            pbTema.Margin = new Padding(3, 4, 3, 4);
             pbTema.Name = "pbTema";
-            pbTema.Size = new Size(28, 23);
+            pbTema.Size = new Size(32, 31);
             pbTema.SizeMode = PictureBoxSizeMode.StretchImage;
             pbTema.TabIndex = 27;
             pbTema.TabStop = false;
             // 
             // pbAyuda
             // 
-            pbAyuda.Location = new Point(43, 4);
+            pbAyuda.Location = new Point(49, 5);
+            pbAyuda.Margin = new Padding(3, 4, 3, 4);
             pbAyuda.Name = "pbAyuda";
-            pbAyuda.Size = new Size(27, 22);
+            pbAyuda.Size = new Size(31, 29);
             pbAyuda.SizeMode = PictureBoxSizeMode.StretchImage;
             pbAyuda.TabIndex = 18;
             pbAyuda.TabStop = false;
@@ -327,9 +334,10 @@
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pictureBox1.Location = new Point(2427, 4);
+            pictureBox1.Location = new Point(2774, 5);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(24, 23);
+            pictureBox1.Size = new Size(27, 31);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 23;
             pictureBox1.TabStop = false;
@@ -337,9 +345,10 @@
             // pictureBox2
             // 
             pictureBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pictureBox2.Location = new Point(2398, 4);
+            pictureBox2.Location = new Point(2741, 5);
+            pictureBox2.Margin = new Padding(3, 4, 3, 4);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(24, 23);
+            pictureBox2.Size = new Size(27, 31);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 22;
             pictureBox2.TabStop = false;
@@ -347,21 +356,24 @@
             // pictureBox3
             // 
             pictureBox3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pictureBox3.Location = new Point(2364, 4);
+            pictureBox3.Location = new Point(2702, 5);
+            pictureBox3.Margin = new Padding(3, 4, 3, 4);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(27, 23);
+            pictureBox3.Size = new Size(31, 31);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 21;
             pictureBox3.TabStop = false;
             // 
             // pbHamburger
             // 
-            pbHamburger.Location = new Point(10, 4);
+            pbHamburger.Location = new Point(11, 5);
+            pbHamburger.Margin = new Padding(3, 4, 3, 4);
             pbHamburger.Name = "pbHamburger";
-            pbHamburger.Size = new Size(27, 23);
+            pbHamburger.Size = new Size(31, 31);
             pbHamburger.SizeMode = PictureBoxSizeMode.StretchImage;
             pbHamburger.TabIndex = 17;
             pbHamburger.TabStop = false;
+            pbHamburger.Click += pbHamburger_Click;
             // 
             // label1
             // 
@@ -373,14 +385,23 @@
             label1.TabIndex = 12;
             label1.Text = "Deudas totales:";
             // 
+            // barraLateral1
+            // 
+            barraLateral1.BackColor = Color.FromArgb(205, 213, 221);
+            barraLateral1.Dock = DockStyle.Left;
+            barraLateral1.Location = new Point(0, 41);
+            barraLateral1.Name = "barraLateral1";
+            barraLateral1.Size = new Size(331, 1014);
+            barraLateral1.TabIndex = 28;
+            // 
             // FrmGestorDeudas
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(233, 236, 239);
-            ClientSize = new Size(1347, 562);
+            ClientSize = new Size(1539, 1055);
+            Controls.Add(barraLateral1);
             Controls.Add(pnlBarra);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmGestorDeudas";
             Text = "FrmGestorDeudas";
             Load += FrmGestorDeudas_Load;
@@ -434,5 +455,6 @@
         private Label lblFechaLimite;
         private RoundGroupBox roundGroupBox2;
         private Label label1;
+        private BarraLateral barraLateral1;
     }
 }
