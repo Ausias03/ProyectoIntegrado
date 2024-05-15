@@ -1,4 +1,6 @@
-﻿namespace Gestionis
+﻿using Gestionis.Herramientas;
+
+namespace Gestionis
 {
     partial class FrmGestorDeudas
     {

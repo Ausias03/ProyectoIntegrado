@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Gestionis.Herramientas;
 
 namespace Gestionis
 {
-    public partial class FrmGestorDeudas : Form
+    public partial class FrmMenuPrincipal : Form
     {
         #region Barra Principal
         private Panel titleBarPanel;
@@ -23,12 +26,38 @@ namespace Gestionis
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
         #endregion
-        public FrmGestorDeudas()
+
+        public FrmMenuPrincipal()
         {
             InitializeComponent();
         }
-        private void FrmGestorDeudas_Load(object sender, EventArgs e)
+
+        private void FrmMenuPrincipal_Load(object sender, EventArgs e)
         {
+            #region Botones
+            btnIngreso.FlatStyle = FlatStyle.Flat;
+            btnIngreso.FlatAppearance.BorderColor = Color.Black;
+            btnIngreso.FlatAppearance.BorderSize = 2;
+
+            btnGasto.FlatStyle = FlatStyle.Flat;
+            btnGasto.FlatAppearance.BorderColor = Color.Black;
+            btnGasto.FlatAppearance.BorderSize = 2;
+
+            btnSalir.FlatStyle = FlatStyle.Flat;
+            btnSalir.FlatAppearance.BorderColor = Color.Black;
+            btnSalir.FlatAppearance.BorderSize = 2;
+
+            #endregion
+
+            #region Labels
+            lblIngresosValor.Text = "0€";
+            lblGastosValor.Text = "0€";
+            lblTotalValor.Text = "0€";
+
+            lblMes.Text = DateTime.Now.ToString("MMMM");
+            lblNotasValor.Text = "";
+            #endregion
+
             #region Barra Principal
             this.Size = new Size(1700, 1000);
 
@@ -75,6 +104,7 @@ namespace Gestionis
             // Add the custom title bar to the form
             this.Controls.Add(titleBarPanel);
             #endregion
+
         }
 
         #region Controles Barra Principal
@@ -100,6 +130,11 @@ namespace Gestionis
         }
         #endregion
 
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
         #region Barra Secundaria
         private void pbSpain_Click(object sender, EventArgs e)
         {
@@ -116,7 +151,6 @@ namespace Gestionis
             pbSpain.Visible = true;
             pbSpain.Enabled = true;
         }
-        #endregion
 
         private void pnlBarra_Paint(object sender, PaintEventArgs e)
         {
@@ -143,6 +177,19 @@ namespace Gestionis
 
             pbTema.Image = Properties.Resources.dark.ToBitmap();
             pbTema.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+        #endregion
+
+        private void btnGasto_Click(object sender, EventArgs e)
+        {
+            frmAnyadirGasto fAG = new frmAnyadirGasto();
+            fAG.ShowDialog();
+        }
+
+        private void btnIngreso_Click(object sender, EventArgs e)
+        {
+            frmAnyadirIngreso fAI = new frmAnyadirIngreso();
+            fAI.ShowDialog();
         }
 
         private void pbHamburger_Click(object sender, EventArgs e)

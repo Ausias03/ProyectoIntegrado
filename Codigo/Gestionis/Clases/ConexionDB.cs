@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
-namespace Gestionis
+namespace Gestionis.Clases
 {
     internal static class ConexionDB
     {

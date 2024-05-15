@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
-namespace Gestionis
+namespace Gestionis.Clases
 {
     class Usuario
     {
@@ -20,7 +20,7 @@ namespace Gestionis
         private int experiencia;
         private Image? foto;
 
-        public Usuario(string apodo, string nombre, string? apellidos, string correo, 
+        public Usuario(string apodo, string nombre, string? apellidos, string correo,
             string contrasenya, string? direccion, string? telefono)
         {
             this.apodo = apodo;
