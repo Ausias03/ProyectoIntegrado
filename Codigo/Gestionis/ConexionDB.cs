@@ -9,7 +9,7 @@ namespace Gestionis
 {
     internal static class ConexionDB
     {
-        private static MySqlConnection conexion = null;
+        private static MySqlConnection? conexion = null;
 
         private static readonly object padlock = new object();
 
@@ -22,7 +22,7 @@ namespace Gestionis
                     if (conexion == null)
                     {
                         conexion = new MySqlConnection();
-                        conexion.ConnectionString = "server=127.0.0.1;" +
+                        conexion.ConnectionString = "server=localhost;" +
                             "port=3306;" +
                             "database=gestionis;" +
                             "uid=root;" +
@@ -50,4 +50,4 @@ namespace Gestionis
             }
         }
     }
-}
+}   

@@ -1,9 +1,14 @@
 ﻿//using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using Gestionis.Properties;
+using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Common;
 
 namespace Gestionis
 {
@@ -17,7 +22,7 @@ namespace Gestionis
         private string? direccion;
         private string? telefono;
         private int experiencia;
-        private Image? foto;
+        private byte[] foto;
 
         public Usuario(string apodo, string nombre, string? apellidos, string correo, 
             string contrasenya, string? direccion, string? telefono)
@@ -30,7 +35,12 @@ namespace Gestionis
             this.direccion = direccion;
             this.telefono = telefono;
             experiencia = 0;
-            foto = null;
+            Bitmap imagen = Resources.usuario;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                imagen.Save(ms, ImageFormat.Jpeg);
+                foto = ms.ToArray();
+            }
         }
 
         public static bool Existe(string apodo)
@@ -52,6 +62,22 @@ namespace Gestionis
             ConexionDB.CerrarConexion();
 
             return existe;
+        }
+
+        public static bool CompruebaCredenciales(string apodo, string contrasenya)
+        {
+            string queryString = "SELECT contrasenya FROM usuario WHERE apodo = @apodo;";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+            query.Parameters.AddWithValue("@apodo", apodo);
+
+            ConexionDB.AbrirConexion();
+
+            bool contrasenyaCorrecta = contrasenya == query.ExecuteScalar().ToString();
+
+            ConexionDB.CerrarConexion();
+
+            return contrasenyaCorrecta;
         }
 
         public void Add()
@@ -78,6 +104,5 @@ namespace Gestionis
 
             ConexionDB.CerrarConexion();
         }
-
     }
 }

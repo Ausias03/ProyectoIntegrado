@@ -62,10 +62,31 @@ namespace Gestionis
                 return;
             }
 
-            this.Hide();
-            FrmMenuPrincipal fMP = new FrmMenuPrincipal();
-            fMP.Closed += (s, args) => this.Close();
-            fMP.Show();
+            try
+            {
+                if (!Usuario.Existe(txtNombreUsuario.Text))
+                {
+                    MessageBox.Show("No existe un usuario con ese apodo / nombre", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!Usuario.CompruebaCredenciales(txtNombreUsuario.Text, txtContrasenya.Text))
+                {
+                    MessageBox.Show("Contraseña Incorrecta", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                this.Hide();
+                FrmMenuPrincipal fMP = new FrmMenuPrincipal();
+                fMP.Closed += (s, args) => this.Close();
+                fMP.Show();
+            }
+            catch
+            {
+                MessageBox.Show("No se ha podido conectar con la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }            
         }
 
         #region Metodos de implementacion
