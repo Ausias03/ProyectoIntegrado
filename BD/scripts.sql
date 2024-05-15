@@ -52,6 +52,7 @@ cantidad FLOAT NOT NULL,
 categoria INT NOT NULL,
 tipo VARCHAR(45) NOT NULL,
 comentarios VARCHAR(300),
+fecha DATE NOT NULL,
 FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta),
 FOREIGN KEY (categoria) REFERENCES categoriaGasto(idCategoria)
 );
@@ -64,6 +65,7 @@ cantidad FLOAT NOT NULL,
 tipo VARCHAR(45) NOT NULL,
 categoria INT NOT NULL,
 comentarios VARCHAR(300),
+fecha DATE NOT NULL,
 FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta),
 FOREIGN KEY (categoria) REFERENCES categoriaIngreso(idCategoria)
 );
