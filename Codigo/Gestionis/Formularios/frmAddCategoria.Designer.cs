@@ -42,21 +42,21 @@
             // 
             // txtNombreCat
             // 
-            txtNombreCat.Font = new Font("Roboto Mono", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtNombreCat.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtNombreCat.Location = new Point(164, 16);
             txtNombreCat.Name = "txtNombreCat";
-            txtNombreCat.Size = new Size(254, 38);
+            txtNombreCat.Size = new Size(254, 34);
             txtNombreCat.TabIndex = 4;
             // 
             // lblNombreCat
             // 
             lblNombreCat.AutoSize = true;
             lblNombreCat.BackColor = SystemColors.Control;
-            lblNombreCat.Font = new Font("Roboto Mono", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblNombreCat.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblNombreCat.Location = new Point(12, 9);
             lblNombreCat.Name = "lblNombreCat";
             lblNombreCat.Padding = new Padding(5);
-            lblNombreCat.Size = new Size(146, 47);
+            lblNombreCat.Size = new Size(132, 42);
             lblNombreCat.TabIndex = 5;
             lblNombreCat.Text = "Nombre:";
             lblNombreCat.TextAlign = ContentAlignment.MiddleCenter;
@@ -65,11 +65,11 @@
             // 
             lblColorCat.AutoSize = true;
             lblColorCat.BackColor = SystemColors.Control;
-            lblColorCat.Font = new Font("Roboto Mono", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblColorCat.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblColorCat.Location = new Point(29, 56);
             lblColorCat.Name = "lblColorCat";
             lblColorCat.Padding = new Padding(5);
-            lblColorCat.Size = new Size(129, 47);
+            lblColorCat.Size = new Size(100, 42);
             lblColorCat.TabIndex = 6;
             lblColorCat.Text = "Color:";
             lblColorCat.TextAlign = ContentAlignment.MiddleCenter;
@@ -87,7 +87,7 @@
             // btnVolver
             // 
             btnVolver.BackColor = Color.FromArgb(211, 208, 242);
-            btnVolver.Font = new Font("Roboto Mono", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnVolver.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnVolver.Location = new Point(173, 113);
             btnVolver.Name = "btnVolver";
             btnVolver.Size = new Size(120, 48);
@@ -99,7 +99,7 @@
             // btnAddCategoria
             // 
             btnAddCategoria.BackColor = Color.FromArgb(178, 242, 187);
-            btnAddCategoria.Font = new Font("Roboto Mono", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAddCategoria.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnAddCategoria.Location = new Point(299, 113);
             btnAddCategoria.Name = "btnAddCategoria";
             btnAddCategoria.Size = new Size(119, 48);
@@ -125,7 +125,7 @@
             Controls.Add(txtNombreCat);
             Controls.Add(lblNombreCat);
             Name = "frmAddCategoria";
-            Text = "frmAddCategoria";
+            Text = "FrmAddCategoria";
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();

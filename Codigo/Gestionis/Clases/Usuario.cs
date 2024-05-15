@@ -1,5 +1,4 @@
-﻿//using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing.Imaging;
 using System.Linq;
@@ -10,7 +9,7 @@ using Gestionis.Properties;
 using MySql.Data.MySqlClient;
 using MySqlX.XDevAPI.Common;
 
-namespace Gestionis
+namespace Gestionis.Clases
 {
     class Usuario
     {
@@ -24,7 +23,7 @@ namespace Gestionis
         private int experiencia;
         private byte[] foto;
 
-        public Usuario(string apodo, string nombre, string? apellidos, string correo, 
+        public Usuario(string apodo, string nombre, string? apellidos, string correo,
             string contrasenya, string? direccion, string? telefono)
         {
             this.apodo = apodo;

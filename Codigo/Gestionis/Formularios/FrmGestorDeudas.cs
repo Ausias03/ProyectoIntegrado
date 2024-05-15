@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Gestionis.Herramientas;
 
 namespace Gestionis
 {
@@ -30,7 +31,7 @@ namespace Gestionis
         private void FrmGestorDeudas_Load(object sender, EventArgs e)
         {
             #region Barra Principal
-            this.Size = new Size(1600, 900);
+            this.Size = new Size(1700, 1000);
 
             this.FormBorderStyle = FormBorderStyle.None;
 
@@ -143,6 +144,11 @@ namespace Gestionis
 
             pbTema.Image = Properties.Resources.dark.ToBitmap();
             pbTema.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+
+        private void pbHamburger_Click(object sender, EventArgs e)
+        {
+            BarraLateral.ColapsarExpandir(sender, e);
         }
     }
 }

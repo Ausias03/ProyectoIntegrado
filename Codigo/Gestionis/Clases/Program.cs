@@ -1,4 +1,4 @@
-namespace Gestionis
+namespace Gestionis.Clases
 {
     internal static class Program
     {

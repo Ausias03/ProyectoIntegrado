@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Gestionis.Clases;
 
 namespace Gestionis
 {

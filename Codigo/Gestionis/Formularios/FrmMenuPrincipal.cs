@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Gestionis.Herramientas;
 
 namespace Gestionis
 {
@@ -30,7 +31,6 @@ namespace Gestionis
         {
             InitializeComponent();
         }
-
 
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
         {
@@ -59,7 +59,7 @@ namespace Gestionis
             #endregion
 
             #region Barra Principal
-            this.Size = new Size(1600, 800);
+            this.Size = new Size(1700, 1000);
 
             this.FormBorderStyle = FormBorderStyle.None;
 
@@ -105,51 +105,6 @@ namespace Gestionis
             this.Controls.Add(titleBarPanel);
             #endregion
 
-            #region Barra Lateral
-            btnInicio.Image = Properties.Resources.inicio;
-            btnInicio.ImageAlign = ContentAlignment.MiddleLeft;
-            btnInicio.FlatAppearance.BorderSize = 0;
-
-            btnInversiones.Image = Properties.Resources.inversiones;
-            btnInversiones.ImageAlign = ContentAlignment.MiddleLeft;
-            btnInversiones.FlatAppearance.BorderSize = 0;
-
-            btnMetodoAhorro.Image = Properties.Resources.ahorro;
-            btnMetodoAhorro.ImageAlign = ContentAlignment.MiddleLeft;
-            btnMetodoAhorro.FlatAppearance.BorderSize = 0;
-
-            btnDeudas.Image = Properties.Resources.deuda;
-            btnDeudas.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDeudas.FlatAppearance.BorderSize = 0;
-
-            btnPatrimonio.Image = Properties.Resources.patrimonio;
-            btnPatrimonio.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPatrimonio.FlatAppearance.BorderSize = 0;
-
-            btnNotas.Image = Properties.Resources.notas;
-            btnNotas.ImageAlign = ContentAlignment.MiddleLeft;
-            btnNotas.FlatAppearance.BorderSize = 0;
-
-            btnTabalClasif.Image = Properties.Resources.calsificacion;
-            btnTabalClasif.ImageAlign = ContentAlignment.MiddleLeft;
-            btnTabalClasif.FlatAppearance.BorderSize = 0;
-
-            btnHistorial.Image = Properties.Resources.historial;
-            btnHistorial.ImageAlign = ContentAlignment.MiddleLeft;
-            btnHistorial.FlatAppearance.BorderSize = 0;
-
-            btnNotificaciones.Image = Properties.Resources.notificacion;
-            btnNotificaciones.ImageAlign = ContentAlignment.MiddleLeft;
-            btnNotificaciones.FlatAppearance.BorderSize = 0;
-
-            btnPaginaWeb.Image = Properties.Resources.web;
-            btnPaginaWeb.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPaginaWeb.FlatAppearance.BorderSize = 0;
-
-            btnAyuda.Image = Properties.Resources.ayuda;
-            btnAyuda.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAyuda.FlatAppearance.BorderSize = 0;
-            #endregion
         }
 
         #region Controles Barra Principal
@@ -237,34 +192,9 @@ namespace Gestionis
             fAI.ShowDialog();
         }
 
-        #region Barra Lateral
         private void pbHamburger_Click(object sender, EventArgs e)
         {
-            transicionBarraLateral.Start();
+            BarraLateral.ColapsarExpandir(sender, e);
         }
-
-        bool barraLateralExpandida = true;
-        private void transicionBarraLateral_Tick(object sender, EventArgs e)
-        {
-            if (barraLateralExpandida)
-            {
-                flpBarraLateral.Width -= 10;
-                if (flpBarraLateral.Width <= 65)
-                {
-                    barraLateralExpandida = false;
-                    transicionBarraLateral.Stop();
-                }
-            }
-            else
-            {
-                flpBarraLateral.Width += 10;
-                if (flpBarraLateral.Width >= 231)
-                {
-                    barraLateralExpandida = true;
-                    transicionBarraLateral.Stop();
-                }
-            }
-        }
-        #endregion
     }
 }
