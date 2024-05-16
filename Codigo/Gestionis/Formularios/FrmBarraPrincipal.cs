@@ -25,7 +25,6 @@ namespace Gestionis.Clases
         private void InitializeComponent()
         {
             this.Icon = Properties.Resources.logo;
-            this.Text = "Ge$tioni$";
         }
         private void InitializeTitleBar()
         {
@@ -39,10 +38,18 @@ namespace Gestionis.Clases
 
             logoPictureBox = new PictureBox();
             logoPictureBox.Image = Properties.Resources.gestionis;
-            logoPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             logoPictureBox.Size = new Size(40, 40);
             logoPictureBox.Location = new Point(0, 0);
             titleBarPanel.Controls.Add(logoPictureBox);
+
+            Label lblTitulo = new Label();
+            lblTitulo.Text = "Ge$tioni$";
+            lblTitulo.ForeColor = Color.Black;
+            lblTitulo.Font = new Font(lblTitulo.Font.FontFamily, 14);
+            lblTitulo.AutoSize = true;
+            lblTitulo.Location = new Point(logoPictureBox.Right + 5);
+            titleBarPanel.Controls.Add(lblTitulo);
+
 
             Button minimizeButton = new Button();
             minimizeButton.Text = "_";

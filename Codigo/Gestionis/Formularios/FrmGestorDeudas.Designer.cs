@@ -261,6 +261,7 @@ namespace Gestionis
             barraSecundaria1.BackColor = Color.FromArgb(211, 208, 242);
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
+            barraSecundaria1.Margin = new Padding(3, 4, 3, 4);
             barraSecundaria1.Name = "barraSecundaria1";
             barraSecundaria1.Size = new Size(1818, 44);
             barraSecundaria1.TabIndex = 29;
