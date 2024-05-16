@@ -42,6 +42,21 @@ namespace Gestionis.Clases
             }
         }
 
+        public Usuario(string apodo, string nombre, string? apellidos, string correo,
+            string contrasenya, string? direccion, string? telefono, int experiencia,
+            byte[] foto)
+        {
+            this.apodo = apodo;
+            this.nombre = nombre;
+            this.apellidos = apellidos;
+            this.correo = correo;
+            this.contrasenya = contrasenya;
+            this.direccion = direccion;
+            this.telefono = telefono;
+            this.experiencia = experiencia;
+            this.foto = foto;
+        }
+
         public string Apodo { get { return apodo; } set { this.apodo = value; } }
         public string Nombre { get { return nombre; } set { this.nombre = value; } }
         public string? Apellidos { get { return apellidos; } set { this.apellidos = value; } }
@@ -86,6 +101,44 @@ namespace Gestionis.Clases
             ConexionDB.CerrarConexion();
 
             return contrasenyaCorrecta;
+        }
+
+        public static Usuario? BuscaUsuario(string apodo)
+        {
+            Usuario? usuario = null;
+
+            string queryString = "SELECT * FROM usuario WHERE apodo = @apodo";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+            query.Parameters.AddWithValue("@apodo", apodo);
+
+            ConexionDB.AbrirConexion();
+
+            using (MySqlDataReader reader = query.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    reader.Read();
+
+                    byte[] byteImagen = (byte[])reader["foto"];
+
+                    usuario = new Usuario(
+                        reader.GetString(0),
+                        reader.GetString(1),
+                        reader.GetSafeString(2),
+                        reader.GetString(3),
+                        reader.GetString(4),
+                        reader.GetSafeString(5),
+                        reader.GetSafeString(6),
+                        reader.GetInt32(7),
+                        byteImagen
+                    );
+                }
+            }
+
+            ConexionDB.CerrarConexion();
+
+            return usuario;
         }
 
         public void Add()
