@@ -72,7 +72,9 @@ namespace Gestionis
                     return;
                 }
 
-                if (!Usuario.CompruebaCredenciales(txtNombreUsuario.Text, txtContrasenya.Text))
+                Usuario usuario = Usuario.BuscaUsuario(txtNombreUsuario.Text);
+
+                if (!usuario.CompruebaCredenciales(txtContrasenya.Text))
                 {
                     MessageBox.Show("Contraseña Incorrecta", "Aviso",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -84,9 +86,10 @@ namespace Gestionis
                 fMP.Closed += (s, args) => this.Close();
                 fMP.Show();
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("No se ha podido conectar con la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("No se ha podido conectar con la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }            
         }
 

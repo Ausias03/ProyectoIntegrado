@@ -14,22 +14,24 @@ namespace Gestionis.Clases
 {
     class Usuario
     {
+        #region Datos Contrasenya
+        private const int keySize = 64;
+        private const int iterations = 350000;
+        private static HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA512;
+        #endregion
+
         private string apodo;
         private string nombre;
         private string? apellidos;
         private string correo;
         private string contrasenya;
         private string salt;
-        #region Datos Contrasenya
-        private const int keySize = 64;
-        private const int iterations = 350000;
-        private HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA512;
-        #endregion
         private string? direccion;
         private string? telefono;
         private int experiencia;
         private byte[] foto;
 
+        #region Constructores
         public Usuario(string apodo, string nombre, string? apellidos, string correo,
             string contrasenya, string? direccion, string? telefono)
         {
@@ -66,7 +68,9 @@ namespace Gestionis.Clases
             this.experiencia = experiencia;
             this.foto = foto;
         }
+        #endregion
 
+        #region Propiedades
         public string Apodo { get { return apodo; } set { this.apodo = value; } }
         public string Nombre { get { return nombre; } set { this.nombre = value; } }
         public string? Apellidos { get { return apellidos; } set { this.apellidos = value; } }
@@ -75,6 +79,7 @@ namespace Gestionis.Clases
         public string? Telefono { get { return telefono; } set { this.telefono = value; } }
         public int Experiencia { get { return experiencia; } set { this.experiencia = value; } }
         public byte[] Foto { get { return foto; } set { this.foto = value; } }
+        #endregion
 
         public static bool Existe(string apodo)
         {
@@ -95,22 +100,6 @@ namespace Gestionis.Clases
             ConexionDB.CerrarConexion();
 
             return existe;
-        }
-
-        public static bool CompruebaCredenciales(string apodo, string contrasenya)
-        {
-            string queryString = "SELECT contrasenya FROM usuario WHERE apodo = @apodo;";
-
-            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
-            query.Parameters.AddWithValue("@apodo", apodo);
-
-            ConexionDB.AbrirConexion();
-
-            bool contrasenyaCorrecta = contrasenya == query.ExecuteScalar().ToString();
-
-            ConexionDB.CerrarConexion();
-
-            return contrasenyaCorrecta;
         }
 
         public static Usuario? BuscaUsuario(string apodo)
@@ -155,8 +144,8 @@ namespace Gestionis.Clases
         public void Add()
         {
             string queryString = "INSERT INTO usuario (apodo, correo, nombre, apellidos," +
-                "contrasenya, direccion, telefono, experiencia, foto) " +
-                "VALUES (@apodo, @correo, @nombre, @apellidos, @contrasenya, @direccion," +
+                "contrasenya, salt, direccion, telefono, experiencia, foto) " +
+                "VALUES (@apodo, @correo, @nombre, @apellidos, @contrasenya, @salt, @direccion," +
                 "@telefono, @experiencia, @foto);";
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
@@ -165,6 +154,7 @@ namespace Gestionis.Clases
             query.Parameters.AddWithValue("@nombre", nombre);
             query.Parameters.AddWithValue("@apellidos", apellidos);
             query.Parameters.AddWithValue("@contrasenya", contrasenya);
+            query.Parameters.AddWithValue("@salt", salt);
             query.Parameters.AddWithValue("@direccion", direccion);
             query.Parameters.AddWithValue("@telefono", telefono);
             query.Parameters.AddWithValue("@experiencia", experiencia);
@@ -175,6 +165,18 @@ namespace Gestionis.Clases
             query.ExecuteNonQuery();
 
             ConexionDB.CerrarConexion();
+        }
+
+        public bool CompruebaCredenciales(string contrasenya)
+        {
+            var hashAComparar = Rfc2898DeriveBytes.Pbkdf2(
+                Encoding.UTF8.GetBytes(contrasenya),
+                Encoding.UTF8.GetBytes(salt),
+                iterations,
+                hashAlgorithm,
+                keySize);
+
+            return CryptographicOperations.FixedTimeEquals(hashAComparar, Encoding.UTF8.GetBytes(this.contrasenya));
         }
 
         private string HashContrasenya(string contrasenya, out byte[] salt)
