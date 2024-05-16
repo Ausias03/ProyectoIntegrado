@@ -33,6 +33,9 @@
             lblTabla = new Label();
             btnSalir = new Button();
             pnlBarra = new Panel();
+            pbUsuario = new PictureBox();
+            pbNotificaciones = new PictureBox();
+            pbNoticias = new PictureBox();
             v = new PictureBox();
             pbSpain = new PictureBox();
             g = new PictureBox();
@@ -44,11 +47,11 @@
             pbTema = new PictureBox();
             pbEnglish = new PictureBox();
             pbHamburger = new PictureBox();
-            pbUsuario = new PictureBox();
-            pbNotificaciones = new PictureBox();
-            pbNoticias = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dtgTabla).BeginInit();
             pnlBarra.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbUsuario).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbNotificaciones).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbNoticias).BeginInit();
             ((System.ComponentModel.ISupportInitialize)v).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbSpain).BeginInit();
             ((System.ComponentModel.ISupportInitialize)g).BeginInit();
@@ -60,15 +63,12 @@
             ((System.ComponentModel.ISupportInitialize)pbTema).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbEnglish).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbHamburger).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbUsuario).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbNotificaciones).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbNoticias).BeginInit();
             SuspendLayout();
             // 
             // dtgTabla
             // 
             dtgTabla.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgTabla.Location = new Point(73, 117);
+            dtgTabla.Location = new Point(124, 118);
             dtgTabla.Name = "dtgTabla";
             dtgTabla.RowHeadersWidth = 51;
             dtgTabla.Size = new Size(1280, 534);
@@ -78,7 +78,7 @@
             // 
             lblTabla.AutoSize = true;
             lblTabla.Font = new Font("Roboto Mono", 22.2F, FontStyle.Bold);
-            lblTabla.Location = new Point(444, 54);
+            lblTabla.Location = new Point(495, 55);
             lblTabla.Name = "lblTabla";
             lblTabla.Size = new Size(528, 49);
             lblTabla.TabIndex = 1;
@@ -88,7 +88,7 @@
             // 
             btnSalir.BackColor = Color.FromArgb(170, 166, 202);
             btnSalir.Font = new Font("Roboto Mono", 12F);
-            btnSalir.Location = new Point(1259, 668);
+            btnSalir.Location = new Point(1310, 669);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(124, 40);
             btnSalir.TabIndex = 2;
@@ -116,14 +116,46 @@
             pnlBarra.Dock = DockStyle.Top;
             pnlBarra.Location = new Point(0, 0);
             pnlBarra.Name = "pnlBarra";
-            pnlBarra.Size = new Size(1417, 51);
+            pnlBarra.Size = new Size(1462, 51);
             pnlBarra.TabIndex = 4;
-
+            // 
+            // pbUsuario
+            // 
+            pbUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pbUsuario.Location = new Point(1425, 6);
+            pbUsuario.Margin = new Padding(3, 4, 3, 4);
+            pbUsuario.Name = "pbUsuario";
+            pbUsuario.Size = new Size(27, 31);
+            pbUsuario.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbUsuario.TabIndex = 29;
+            pbUsuario.TabStop = false;
+            // 
+            // pbNotificaciones
+            // 
+            pbNotificaciones.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pbNotificaciones.Location = new Point(1391, 6);
+            pbNotificaciones.Margin = new Padding(3, 4, 3, 4);
+            pbNotificaciones.Name = "pbNotificaciones";
+            pbNotificaciones.Size = new Size(27, 31);
+            pbNotificaciones.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbNotificaciones.TabIndex = 28;
+            pbNotificaciones.TabStop = false;
+            // 
+            // pbNoticias
+            // 
+            pbNoticias.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pbNoticias.Location = new Point(1353, 6);
+            pbNoticias.Margin = new Padding(3, 4, 3, 4);
+            pbNoticias.Name = "pbNoticias";
+            pbNoticias.Size = new Size(31, 31);
+            pbNoticias.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbNoticias.TabIndex = 27;
+            pbNoticias.TabStop = false;
             // 
             // v
             // 
             v.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            v.Location = new Point(2438, 5);
+            v.Location = new Point(2483, 5);
             v.Margin = new Padding(3, 4, 3, 4);
             v.Name = "v";
             v.Size = new Size(27, 31);
@@ -145,7 +177,7 @@
             // g
             // 
             g.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            g.Location = new Point(2404, 5);
+            g.Location = new Point(2449, 5);
             g.Margin = new Padding(3, 4, 3, 4);
             g.Name = "g";
             g.Size = new Size(27, 31);
@@ -156,7 +188,7 @@
             // w
             // 
             w.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            w.Location = new Point(2366, 5);
+            w.Location = new Point(2411, 5);
             w.Margin = new Padding(3, 4, 3, 4);
             w.Name = "w";
             w.Size = new Size(31, 31);
@@ -177,7 +209,7 @@
             // u
             // 
             u.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            u.Location = new Point(3710, 5);
+            u.Location = new Point(3755, 5);
             u.Margin = new Padding(3, 4, 3, 4);
             u.Name = "u";
             u.Size = new Size(27, 31);
@@ -188,7 +220,7 @@
             // a
             // 
             a.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            a.Location = new Point(3676, 5);
+            a.Location = new Point(3721, 5);
             a.Margin = new Padding(3, 4, 3, 4);
             a.Name = "a";
             a.Size = new Size(27, 31);
@@ -199,7 +231,7 @@
             // p
             // 
             p.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            p.Location = new Point(3638, 5);
+            p.Location = new Point(3683, 5);
             p.Margin = new Padding(3, 4, 3, 4);
             p.Name = "p";
             p.Size = new Size(31, 31);
@@ -237,44 +269,11 @@
             pbHamburger.TabIndex = 17;
             pbHamburger.TabStop = false;
             // 
-            // pbUsuario
-            // 
-            pbUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbUsuario.Location = new Point(1380, 6);
-            pbUsuario.Margin = new Padding(3, 4, 3, 4);
-            pbUsuario.Name = "pbUsuario";
-            pbUsuario.Size = new Size(27, 31);
-            pbUsuario.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbUsuario.TabIndex = 29;
-            pbUsuario.TabStop = false;
-            // 
-            // pbNotificaciones
-            // 
-            pbNotificaciones.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbNotificaciones.Location = new Point(1346, 6);
-            pbNotificaciones.Margin = new Padding(3, 4, 3, 4);
-            pbNotificaciones.Name = "pbNotificaciones";
-            pbNotificaciones.Size = new Size(27, 31);
-            pbNotificaciones.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbNotificaciones.TabIndex = 28;
-            pbNotificaciones.TabStop = false;
-            // 
-            // pbNoticias
-            // 
-            pbNoticias.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbNoticias.Location = new Point(1308, 6);
-            pbNoticias.Margin = new Padding(3, 4, 3, 4);
-            pbNoticias.Name = "pbNoticias";
-            pbNoticias.Size = new Size(31, 31);
-            pbNoticias.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbNoticias.TabIndex = 27;
-            pbNoticias.TabStop = false;
-            // 
             // frmTablaClasificación
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1417, 729);
+            ClientSize = new Size(1462, 729);
             Controls.Add(pnlBarra);
             Controls.Add(btnSalir);
             Controls.Add(lblTabla);
@@ -285,6 +284,9 @@
             Text = "Ge$tioni$";
             ((System.ComponentModel.ISupportInitialize)dtgTabla).EndInit();
             pnlBarra.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pbUsuario).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbNotificaciones).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbNoticias).EndInit();
             ((System.ComponentModel.ISupportInitialize)v).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbSpain).EndInit();
             ((System.ComponentModel.ISupportInitialize)g).EndInit();
@@ -296,9 +298,6 @@
             ((System.ComponentModel.ISupportInitialize)pbTema).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbEnglish).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbHamburger).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbUsuario).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbNotificaciones).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbNoticias).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }

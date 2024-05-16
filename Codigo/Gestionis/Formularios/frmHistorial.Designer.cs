@@ -42,7 +42,10 @@
             lblBuscaFecha = new Label();
             picBuscaFecha = new PictureBox();
             pnlBarra = new Panel();
+            pbUsuario = new PictureBox();
             s = new PictureBox();
+            pbNotificaciones = new PictureBox();
+            pbNoticias = new PictureBox();
             pbSpain = new PictureBox();
             c = new PictureBox();
             d = new PictureBox();
@@ -53,14 +56,14 @@
             pbTema = new PictureBox();
             pbEnglish = new PictureBox();
             pbHamburger = new PictureBox();
-            pbUsuario = new PictureBox();
-            pbNotificaciones = new PictureBox();
-            pbNoticias = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dgvHistorial).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBuscar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBuscaFecha).BeginInit();
             pnlBarra.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbUsuario).BeginInit();
             ((System.ComponentModel.ISupportInitialize)s).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbNotificaciones).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbNoticias).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbSpain).BeginInit();
             ((System.ComponentModel.ISupportInitialize)c).BeginInit();
             ((System.ComponentModel.ISupportInitialize)d).BeginInit();
@@ -71,9 +74,6 @@
             ((System.ComponentModel.ISupportInitialize)pbTema).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbEnglish).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbHamburger).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbUsuario).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbNotificaciones).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbNoticias).BeginInit();
             SuspendLayout();
             // 
             // vScrollBar1
@@ -87,7 +87,7 @@
             // 
             lblHistorial.AutoSize = true;
             lblHistorial.Font = new Font("Roboto Mono", 24F);
-            lblHistorial.Location = new Point(33, 51);
+            lblHistorial.Location = new Point(152, 48);
             lblHistorial.Name = "lblHistorial";
             lblHistorial.Size = new Size(239, 53);
             lblHistorial.TabIndex = 1;
@@ -96,7 +96,7 @@
             // dgvHistorial
             // 
             dgvHistorial.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvHistorial.Location = new Point(59, 183);
+            dgvHistorial.Location = new Point(164, 181);
             dgvHistorial.Name = "dgvHistorial";
             dgvHistorial.RowHeadersWidth = 51;
             dgvHistorial.Size = new Size(1018, 494);
@@ -106,7 +106,7 @@
             // 
             lblFecha.AutoSize = true;
             lblFecha.Font = new Font("Roboto Mono", 12F);
-            lblFecha.Location = new Point(59, 154);
+            lblFecha.Location = new Point(164, 152);
             lblFecha.Name = "lblFecha";
             lblFecha.Size = new Size(48, 26);
             lblFecha.TabIndex = 18;
@@ -116,14 +116,14 @@
             // txtBuscar
             // 
             txtBuscar.Font = new Font("Roboto Mono", 12F);
-            txtBuscar.Location = new Point(1083, 183);
+            txtBuscar.Location = new Point(1188, 181);
             txtBuscar.Name = "txtBuscar";
             txtBuscar.Size = new Size(181, 34);
             txtBuscar.TabIndex = 19;
             // 
             // picBuscar
             // 
-            picBuscar.Location = new Point(1270, 183);
+            picBuscar.Location = new Point(1375, 181);
             picBuscar.Name = "picBuscar";
             picBuscar.Size = new Size(34, 34);
             picBuscar.TabIndex = 9;
@@ -134,7 +134,7 @@
             // 
             lblBuscar.AutoSize = true;
             lblBuscar.Font = new Font("Roboto Mono", 12F);
-            lblBuscar.Location = new Point(1083, 154);
+            lblBuscar.Location = new Point(1188, 152);
             lblBuscar.Name = "lblBuscar";
             lblBuscar.Size = new Size(120, 26);
             lblBuscar.TabIndex = 20;
@@ -145,7 +145,7 @@
             // 
             lblMetodo.AutoSize = true;
             lblMetodo.Font = new Font("Roboto Mono", 12F);
-            lblMetodo.Location = new Point(1083, 220);
+            lblMetodo.Location = new Point(1188, 218);
             lblMetodo.Name = "lblMetodo";
             lblMetodo.Size = new Size(96, 26);
             lblMetodo.TabIndex = 21;
@@ -157,7 +157,7 @@
             cmbMetodo.Font = new Font("Roboto Mono", 12F);
             cmbMetodo.FormattingEnabled = true;
             cmbMetodo.Items.AddRange(new object[] { "Tipo", "Cantidad", "Nombre" });
-            cmbMetodo.Location = new Point(1083, 249);
+            cmbMetodo.Location = new Point(1188, 247);
             cmbMetodo.Name = "cmbMetodo";
             cmbMetodo.Size = new Size(181, 34);
             cmbMetodo.TabIndex = 22;
@@ -167,7 +167,7 @@
             // 
             dtpBuscaFecha.Font = new Font("Roboto Mono", 12F);
             dtpBuscaFecha.Format = DateTimePickerFormat.Short;
-            dtpBuscaFecha.Location = new Point(1083, 340);
+            dtpBuscaFecha.Location = new Point(1188, 338);
             dtpBuscaFecha.Name = "dtpBuscaFecha";
             dtpBuscaFecha.Size = new Size(180, 34);
             dtpBuscaFecha.TabIndex = 23;
@@ -176,7 +176,7 @@
             // 
             lblBuscaFecha.AutoSize = true;
             lblBuscaFecha.Font = new Font("Roboto Mono", 12F);
-            lblBuscaFecha.Location = new Point(1083, 311);
+            lblBuscaFecha.Location = new Point(1188, 309);
             lblBuscaFecha.Name = "lblBuscaFecha";
             lblBuscaFecha.Size = new Size(240, 26);
             lblBuscaFecha.TabIndex = 24;
@@ -185,7 +185,7 @@
             // 
             // picBuscaFecha
             // 
-            picBuscaFecha.Location = new Point(1270, 340);
+            picBuscaFecha.Location = new Point(1375, 338);
             picBuscaFecha.Name = "picBuscaFecha";
             picBuscaFecha.Size = new Size(34, 34);
             picBuscaFecha.TabIndex = 25;
@@ -212,20 +212,52 @@
             pnlBarra.Dock = DockStyle.Top;
             pnlBarra.Location = new Point(0, 0);
             pnlBarra.Name = "pnlBarra";
-            pnlBarra.Size = new Size(1340, 45);
+            pnlBarra.Size = new Size(1454, 45);
             pnlBarra.TabIndex = 26;
-            
+            // 
+            // pbUsuario
+            // 
+            pbUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pbUsuario.Location = new Point(1418, 6);
+            pbUsuario.Margin = new Padding(3, 4, 3, 4);
+            pbUsuario.Name = "pbUsuario";
+            pbUsuario.Size = new Size(27, 31);
+            pbUsuario.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbUsuario.TabIndex = 29;
+            pbUsuario.TabStop = false;
             // 
             // s
             // 
             s.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            s.Location = new Point(2361, 5);
+            s.Location = new Point(2475, 5);
             s.Margin = new Padding(3, 4, 3, 4);
             s.Name = "s";
             s.Size = new Size(27, 31);
             s.SizeMode = PictureBoxSizeMode.StretchImage;
             s.TabIndex = 26;
             s.TabStop = false;
+            // 
+            // pbNotificaciones
+            // 
+            pbNotificaciones.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pbNotificaciones.Location = new Point(1384, 6);
+            pbNotificaciones.Margin = new Padding(3, 4, 3, 4);
+            pbNotificaciones.Name = "pbNotificaciones";
+            pbNotificaciones.Size = new Size(27, 31);
+            pbNotificaciones.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbNotificaciones.TabIndex = 28;
+            pbNotificaciones.TabStop = false;
+            // 
+            // pbNoticias
+            // 
+            pbNoticias.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pbNoticias.Location = new Point(1346, 6);
+            pbNoticias.Margin = new Padding(3, 4, 3, 4);
+            pbNoticias.Name = "pbNoticias";
+            pbNoticias.Size = new Size(31, 31);
+            pbNoticias.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbNoticias.TabIndex = 27;
+            pbNoticias.TabStop = false;
             // 
             // pbSpain
             // 
@@ -241,7 +273,7 @@
             // c
             // 
             c.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            c.Location = new Point(2327, 5);
+            c.Location = new Point(2441, 5);
             c.Margin = new Padding(3, 4, 3, 4);
             c.Name = "c";
             c.Size = new Size(27, 31);
@@ -252,7 +284,7 @@
             // d
             // 
             d.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            d.Location = new Point(2289, 5);
+            d.Location = new Point(2403, 5);
             d.Margin = new Padding(3, 4, 3, 4);
             d.Name = "d";
             d.Size = new Size(31, 31);
@@ -273,7 +305,7 @@
             // u
             // 
             u.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            u.Location = new Point(3633, 5);
+            u.Location = new Point(3747, 5);
             u.Margin = new Padding(3, 4, 3, 4);
             u.Name = "u";
             u.Size = new Size(27, 31);
@@ -284,7 +316,7 @@
             // a
             // 
             a.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            a.Location = new Point(3599, 5);
+            a.Location = new Point(3713, 5);
             a.Margin = new Padding(3, 4, 3, 4);
             a.Name = "a";
             a.Size = new Size(27, 31);
@@ -295,7 +327,7 @@
             // p
             // 
             p.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            p.Location = new Point(3561, 5);
+            p.Location = new Point(3675, 5);
             p.Margin = new Padding(3, 4, 3, 4);
             p.Name = "p";
             p.Size = new Size(31, 31);
@@ -333,44 +365,11 @@
             pbHamburger.TabIndex = 17;
             pbHamburger.TabStop = false;
             // 
-            // pbUsuario
-            // 
-            pbUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbUsuario.Location = new Point(1304, 6);
-            pbUsuario.Margin = new Padding(3, 4, 3, 4);
-            pbUsuario.Name = "pbUsuario";
-            pbUsuario.Size = new Size(27, 31);
-            pbUsuario.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbUsuario.TabIndex = 29;
-            pbUsuario.TabStop = false;
-            // 
-            // pbNotificaciones
-            // 
-            pbNotificaciones.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbNotificaciones.Location = new Point(1270, 6);
-            pbNotificaciones.Margin = new Padding(3, 4, 3, 4);
-            pbNotificaciones.Name = "pbNotificaciones";
-            pbNotificaciones.Size = new Size(27, 31);
-            pbNotificaciones.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbNotificaciones.TabIndex = 28;
-            pbNotificaciones.TabStop = false;
-            // 
-            // pbNoticias
-            // 
-            pbNoticias.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbNoticias.Location = new Point(1232, 6);
-            pbNoticias.Margin = new Padding(3, 4, 3, 4);
-            pbNoticias.Name = "pbNoticias";
-            pbNoticias.Size = new Size(31, 31);
-            pbNoticias.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbNoticias.TabIndex = 27;
-            pbNoticias.TabStop = false;
-            // 
             // frmHistorial
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1340, 703);
+            ClientSize = new Size(1454, 703);
             Controls.Add(pnlBarra);
             Controls.Add(picBuscaFecha);
             Controls.Add(lblBuscaFecha);
@@ -392,7 +391,10 @@
             ((System.ComponentModel.ISupportInitialize)picBuscar).EndInit();
             ((System.ComponentModel.ISupportInitialize)picBuscaFecha).EndInit();
             pnlBarra.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pbUsuario).EndInit();
             ((System.ComponentModel.ISupportInitialize)s).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbNotificaciones).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbNoticias).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbSpain).EndInit();
             ((System.ComponentModel.ISupportInitialize)c).EndInit();
             ((System.ComponentModel.ISupportInitialize)d).EndInit();
@@ -403,9 +405,6 @@
             ((System.ComponentModel.ISupportInitialize)pbTema).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbEnglish).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbHamburger).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbUsuario).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbNotificaciones).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbNoticias).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
