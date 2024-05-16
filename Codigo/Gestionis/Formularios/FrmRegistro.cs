@@ -22,6 +22,12 @@ namespace Gestionis
                 errorProvider1.SetError(txtApodo, "Introduce un nombre");
             }
 
+            if (Utilidades.TieneEspacios(txtApodo.Text))
+            {
+                ok = false;
+                errorProvider1.SetError(txtApodo, "El nombre no puede contener espacios");
+            }
+
             if (txtCorreo.Text == String.Empty)
             {
                 ok = false;
@@ -110,7 +116,7 @@ namespace Gestionis
         private void CreaUsuario()
         {
             Usuario usu1 = new Usuario(
-                    txtApodo.Text,
+                    txtApodo.Text.ToLower(),
                     txtNombre.Text,
                     txtApellidos.Text == String.Empty ? null : txtApellidos.Text,
                     txtCorreo.Text,
