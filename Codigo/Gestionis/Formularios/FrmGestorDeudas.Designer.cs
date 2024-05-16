@@ -93,7 +93,7 @@ namespace Gestionis
             lblTipoValor.BackColor = Color.Transparent;
             lblTipoValor.Location = new Point(203, 98);
             lblTipoValor.Name = "lblTipoValor";
-            lblTipoValor.Size = new Size(33, 15);
+            lblTipoValor.Size = new Size(42, 20);
             lblTipoValor.TabIndex = 17;
             lblTipoValor.Text = "Tipo:";
             // 
@@ -103,7 +103,7 @@ namespace Gestionis
             lblFechaLimiteValor.BackColor = Color.Transparent;
             lblFechaLimiteValor.Location = new Point(203, 51);
             lblFechaLimiteValor.Name = "lblFechaLimiteValor";
-            lblFechaLimiteValor.Size = new Size(33, 15);
+            lblFechaLimiteValor.Size = new Size(42, 20);
             lblFechaLimiteValor.TabIndex = 16;
             lblFechaLimiteValor.Text = "Tipo:";
             // 
@@ -113,7 +113,7 @@ namespace Gestionis
             lblProximaDeudaValor.BackColor = Color.Transparent;
             lblProximaDeudaValor.Location = new Point(203, 7);
             lblProximaDeudaValor.Name = "lblProximaDeudaValor";
-            lblProximaDeudaValor.Size = new Size(33, 15);
+            lblProximaDeudaValor.Size = new Size(42, 20);
             lblProximaDeudaValor.TabIndex = 15;
             lblProximaDeudaValor.Text = "Tipo:";
             // 
@@ -123,7 +123,7 @@ namespace Gestionis
             lblTipo.BackColor = Color.Transparent;
             lblTipo.Location = new Point(-1, 96);
             lblTipo.Name = "lblTipo";
-            lblTipo.Size = new Size(33, 15);
+            lblTipo.Size = new Size(42, 20);
             lblTipo.TabIndex = 14;
             lblTipo.Text = "Tipo:";
             // 
@@ -133,7 +133,7 @@ namespace Gestionis
             lblFechaLimite.BackColor = Color.Transparent;
             lblFechaLimite.Location = new Point(-1, 51);
             lblFechaLimite.Name = "lblFechaLimite";
-            lblFechaLimite.Size = new Size(74, 15);
+            lblFechaLimite.Size = new Size(92, 20);
             lblFechaLimite.TabIndex = 13;
             lblFechaLimite.Text = "Fecha límite:";
             // 
@@ -143,7 +143,7 @@ namespace Gestionis
             lblProximaDeuda.BackColor = Color.Transparent;
             lblProximaDeuda.Location = new Point(-1, 7);
             lblProximaDeuda.Name = "lblProximaDeuda";
-            lblProximaDeuda.Size = new Size(90, 15);
+            lblProximaDeuda.Size = new Size(112, 20);
             lblProximaDeuda.TabIndex = 12;
             lblProximaDeuda.Text = "Próxima deuda:";
             // 
@@ -153,7 +153,7 @@ namespace Gestionis
             cmbCategoria.Location = new Point(224, 227);
             cmbCategoria.Margin = new Padding(3, 4, 3, 4);
             cmbCategoria.Name = "cmbCategoria";
-            cmbCategoria.Size = new Size(192, 23);
+            cmbCategoria.Size = new Size(192, 28);
             cmbCategoria.TabIndex = 8;
             // 
             // dgvGastosIngresos
@@ -227,28 +227,29 @@ namespace Gestionis
             barraSecundaria1.BackColor = Color.FromArgb(211, 208, 242);
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
+            barraSecundaria1.Margin = new Padding(3, 4, 3, 4);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1839, 35);
+            barraSecundaria1.Size = new Size(1818, 47);
             barraSecundaria1.TabIndex = 1;
             // 
             // barraLateral1
             // 
             barraLateral1.BackColor = Color.FromArgb(205, 213, 221);
             barraLateral1.Dock = DockStyle.Left;
-            barraLateral1.Location = new Point(0, 75);
+            barraLateral1.Location = new Point(0, 87);
+            barraLateral1.Margin = new Padding(3, 4, 3, 4);
             barraLateral1.Name = "barraLateral1";
-            barraLateral1.Size = new Size(231, 925);
+            barraLateral1.Size = new Size(264, 1015);
             barraLateral1.TabIndex = 2;
             // 
             // FrmGestorDeudas
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(233, 236, 239);
-            ClientSize = new Size(1839, 1000);
+            ClientSize = new Size(1818, 1102);
             Controls.Add(barraLateral1);
             Controls.Add(barraSecundaria1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmGestorDeudas";
             Text = "FrmGestorDeudas";
             Load += FrmGestorDeudas_Load;
