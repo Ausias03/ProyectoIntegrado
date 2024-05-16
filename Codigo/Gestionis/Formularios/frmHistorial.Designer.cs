@@ -214,7 +214,7 @@
             pnlBarra.Name = "pnlBarra";
             pnlBarra.Size = new Size(1340, 45);
             pnlBarra.TabIndex = 26;
-            pnlBarra.Paint += pnlBarra_Paint;
+            
             // 
             // s
             // 

@@ -45,34 +45,11 @@ namespace Gestionis
             btnBuscar = new Button();
             btnEliminarDeuda = new Button();
             btnAnyadirDeuda = new Button();
-            pbUsuario = new PictureBox();
-            pbNotificaciones = new PictureBox();
-            pbNoticias = new PictureBox();
-            pnlBarra = new Panel();
-            pbSpain = new PictureBox();
-            pbEnglish = new PictureBox();
-            pbTema = new PictureBox();
-            pbAyuda = new PictureBox();
-            pictureBox1 = new PictureBox();
-            pictureBox2 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            pbHamburger = new PictureBox();
             label1 = new Label();
+            barraSecundaria1 = new BarraSecundaria();
             barraLateral1 = new BarraLateral();
             pnlInfoDeuda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvGastosIngresos).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbUsuario).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbNotificaciones).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbNoticias).BeginInit();
-            pnlBarra.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbSpain).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbEnglish).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbTema).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbAyuda).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbHamburger).BeginInit();
             SuspendLayout();
             // 
             // lblDeudasTotalesValor
@@ -116,7 +93,7 @@ namespace Gestionis
             lblTipoValor.BackColor = Color.Transparent;
             lblTipoValor.Location = new Point(203, 98);
             lblTipoValor.Name = "lblTipoValor";
-            lblTipoValor.Size = new Size(42, 20);
+            lblTipoValor.Size = new Size(33, 15);
             lblTipoValor.TabIndex = 17;
             lblTipoValor.Text = "Tipo:";
             // 
@@ -126,7 +103,7 @@ namespace Gestionis
             lblFechaLimiteValor.BackColor = Color.Transparent;
             lblFechaLimiteValor.Location = new Point(203, 51);
             lblFechaLimiteValor.Name = "lblFechaLimiteValor";
-            lblFechaLimiteValor.Size = new Size(42, 20);
+            lblFechaLimiteValor.Size = new Size(33, 15);
             lblFechaLimiteValor.TabIndex = 16;
             lblFechaLimiteValor.Text = "Tipo:";
             // 
@@ -136,7 +113,7 @@ namespace Gestionis
             lblProximaDeudaValor.BackColor = Color.Transparent;
             lblProximaDeudaValor.Location = new Point(203, 7);
             lblProximaDeudaValor.Name = "lblProximaDeudaValor";
-            lblProximaDeudaValor.Size = new Size(42, 20);
+            lblProximaDeudaValor.Size = new Size(33, 15);
             lblProximaDeudaValor.TabIndex = 15;
             lblProximaDeudaValor.Text = "Tipo:";
             // 
@@ -146,7 +123,7 @@ namespace Gestionis
             lblTipo.BackColor = Color.Transparent;
             lblTipo.Location = new Point(-1, 96);
             lblTipo.Name = "lblTipo";
-            lblTipo.Size = new Size(42, 20);
+            lblTipo.Size = new Size(33, 15);
             lblTipo.TabIndex = 14;
             lblTipo.Text = "Tipo:";
             // 
@@ -156,7 +133,7 @@ namespace Gestionis
             lblFechaLimite.BackColor = Color.Transparent;
             lblFechaLimite.Location = new Point(-1, 51);
             lblFechaLimite.Name = "lblFechaLimite";
-            lblFechaLimite.Size = new Size(92, 20);
+            lblFechaLimite.Size = new Size(74, 15);
             lblFechaLimite.TabIndex = 13;
             lblFechaLimite.Text = "Fecha límite:";
             // 
@@ -166,7 +143,7 @@ namespace Gestionis
             lblProximaDeuda.BackColor = Color.Transparent;
             lblProximaDeuda.Location = new Point(-1, 7);
             lblProximaDeuda.Name = "lblProximaDeuda";
-            lblProximaDeuda.Size = new Size(112, 20);
+            lblProximaDeuda.Size = new Size(90, 15);
             lblProximaDeuda.TabIndex = 12;
             lblProximaDeuda.Text = "Próxima deuda:";
             // 
@@ -176,7 +153,7 @@ namespace Gestionis
             cmbCategoria.Location = new Point(224, 227);
             cmbCategoria.Margin = new Padding(3, 4, 3, 4);
             cmbCategoria.Name = "cmbCategoria";
-            cmbCategoria.Size = new Size(192, 28);
+            cmbCategoria.Size = new Size(192, 23);
             cmbCategoria.TabIndex = 8;
             // 
             // dgvGastosIngresos
@@ -235,148 +212,6 @@ namespace Gestionis
             btnAnyadirDeuda.Text = "Añadir deuda";
             btnAnyadirDeuda.UseVisualStyleBackColor = false;
             // 
-            // pbUsuario
-            // 
-            pbUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbUsuario.Location = new Point(1499, 5);
-            pbUsuario.Margin = new Padding(3, 4, 3, 4);
-            pbUsuario.Name = "pbUsuario";
-            pbUsuario.Size = new Size(27, 31);
-            pbUsuario.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbUsuario.TabIndex = 26;
-            pbUsuario.TabStop = false;
-            // 
-            // pbNotificaciones
-            // 
-            pbNotificaciones.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbNotificaciones.Location = new Point(1466, 5);
-            pbNotificaciones.Margin = new Padding(3, 4, 3, 4);
-            pbNotificaciones.Name = "pbNotificaciones";
-            pbNotificaciones.Size = new Size(27, 31);
-            pbNotificaciones.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbNotificaciones.TabIndex = 25;
-            pbNotificaciones.TabStop = false;
-            // 
-            // pbNoticias
-            // 
-            pbNoticias.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbNoticias.Location = new Point(1429, 5);
-            pbNoticias.Margin = new Padding(3, 4, 3, 4);
-            pbNoticias.Name = "pbNoticias";
-            pbNoticias.Size = new Size(31, 31);
-            pbNoticias.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbNoticias.TabIndex = 24;
-            pbNoticias.TabStop = false;
-            // 
-            // pnlBarra
-            // 
-            pnlBarra.BackColor = Color.FromArgb(211, 208, 242);
-            pnlBarra.Controls.Add(pbSpain);
-            pnlBarra.Controls.Add(pbEnglish);
-            pnlBarra.Controls.Add(pbTema);
-            pnlBarra.Controls.Add(pbUsuario);
-            pnlBarra.Controls.Add(pbAyuda);
-            pnlBarra.Controls.Add(pbNotificaciones);
-            pnlBarra.Controls.Add(pbNoticias);
-            pnlBarra.Controls.Add(pictureBox1);
-            pnlBarra.Controls.Add(pictureBox2);
-            pnlBarra.Controls.Add(pictureBox3);
-            pnlBarra.Controls.Add(pbHamburger);
-            pnlBarra.Dock = DockStyle.Top;
-            pnlBarra.Location = new Point(0, 0);
-            pnlBarra.Name = "pnlBarra";
-            pnlBarra.Size = new Size(1539, 41);
-            pnlBarra.TabIndex = 27;
-            pnlBarra.Paint += pnlBarra_Paint;
-            // 
-            // pbSpain
-            // 
-            pbSpain.Enabled = false;
-            pbSpain.Location = new Point(91, 4);
-            pbSpain.Margin = new Padding(3, 4, 3, 4);
-            pbSpain.Name = "pbSpain";
-            pbSpain.Size = new Size(33, 31);
-            pbSpain.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbSpain.TabIndex = 29;
-            pbSpain.TabStop = false;
-            pbSpain.Visible = false;
-            pbSpain.Click += pbSpain_Click;
-            // 
-            // pbEnglish
-            // 
-            pbEnglish.Location = new Point(93, 4);
-            pbEnglish.Margin = new Padding(3, 4, 3, 4);
-            pbEnglish.Name = "pbEnglish";
-            pbEnglish.Size = new Size(30, 31);
-            pbEnglish.SizeMode = PictureBoxSizeMode.CenterImage;
-            pbEnglish.TabIndex = 28;
-            pbEnglish.TabStop = false;
-            pbEnglish.Click += pbEnglish_Click;
-            // 
-            // pbTema
-            // 
-            pbTema.Location = new Point(130, 5);
-            pbTema.Margin = new Padding(3, 4, 3, 4);
-            pbTema.Name = "pbTema";
-            pbTema.Size = new Size(32, 31);
-            pbTema.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbTema.TabIndex = 27;
-            pbTema.TabStop = false;
-            // 
-            // pbAyuda
-            // 
-            pbAyuda.Location = new Point(49, 5);
-            pbAyuda.Margin = new Padding(3, 4, 3, 4);
-            pbAyuda.Name = "pbAyuda";
-            pbAyuda.Size = new Size(31, 29);
-            pbAyuda.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbAyuda.TabIndex = 18;
-            pbAyuda.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pictureBox1.Location = new Point(2774, 5);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(27, 31);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 23;
-            pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pictureBox2.Location = new Point(2741, 5);
-            pictureBox2.Margin = new Padding(3, 4, 3, 4);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(27, 31);
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.TabIndex = 22;
-            pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pictureBox3.Location = new Point(2702, 5);
-            pictureBox3.Margin = new Padding(3, 4, 3, 4);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(31, 31);
-            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox3.TabIndex = 21;
-            pictureBox3.TabStop = false;
-            // 
-            // pbHamburger
-            // 
-            pbHamburger.Location = new Point(11, 5);
-            pbHamburger.Margin = new Padding(3, 4, 3, 4);
-            pbHamburger.Name = "pbHamburger";
-            pbHamburger.Size = new Size(31, 31);
-            pbHamburger.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbHamburger.TabIndex = 17;
-            pbHamburger.TabStop = false;
-            pbHamburger.Click += pbHamburger_Click;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -387,41 +222,41 @@ namespace Gestionis
             label1.TabIndex = 12;
             label1.Text = "Deudas totales:";
             // 
+            // barraSecundaria1
+            // 
+            barraSecundaria1.BackColor = Color.FromArgb(211, 208, 242);
+            barraSecundaria1.Dock = DockStyle.Top;
+            barraSecundaria1.Location = new Point(0, 40);
+            barraSecundaria1.Name = "barraSecundaria1";
+            barraSecundaria1.Size = new Size(1839, 35);
+            barraSecundaria1.TabIndex = 1;
+            // 
             // barraLateral1
             // 
             barraLateral1.BackColor = Color.FromArgb(205, 213, 221);
             barraLateral1.Dock = DockStyle.Left;
-            barraLateral1.Location = new Point(0, 41);
+            barraLateral1.Location = new Point(0, 75);
             barraLateral1.Name = "barraLateral1";
-            barraLateral1.Size = new Size(331, 1014);
-            barraLateral1.TabIndex = 28;
+            barraLateral1.Size = new Size(231, 925);
+            barraLateral1.TabIndex = 2;
             // 
             // FrmGestorDeudas
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(233, 236, 239);
-            ClientSize = new Size(1539, 1055);
+            ClientSize = new Size(1839, 1000);
             Controls.Add(barraLateral1);
-            Controls.Add(pnlBarra);
+            Controls.Add(barraSecundaria1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmGestorDeudas";
             Text = "FrmGestorDeudas";
             Load += FrmGestorDeudas_Load;
+            Controls.SetChildIndex(barraSecundaria1, 0);
+            Controls.SetChildIndex(barraLateral1, 0);
             pnlInfoDeuda.ResumeLayout(false);
             pnlInfoDeuda.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvGastosIngresos).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbUsuario).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbNotificaciones).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbNoticias).EndInit();
-            pnlBarra.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pbSpain).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbEnglish).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbTema).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbAyuda).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbHamburger).EndInit();
             ResumeLayout(false);
         }
 
@@ -429,19 +264,7 @@ namespace Gestionis
 
         private RoundGroupBox roundGroupBox1;
         private Button btnAnyadirDeuda;
-        private PictureBox pbUsuario;
-        private PictureBox pbNotificaciones;
-        private PictureBox pbNoticias;
-        private Panel pnlBarra;
-        private PictureBox pbAyuda;
-        private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
-        private PictureBox pictureBox3;
-        private PictureBox pbHamburger;
         private Button btnEliminarDeuda;
-        private PictureBox pbTema;
-        private PictureBox pbSpain;
-        private PictureBox pbEnglish;
         private Button btnRestaurar;
         private Button btnBuscar;
         private ComboBox cmbCategoria;
@@ -457,6 +280,7 @@ namespace Gestionis
         private Label lblFechaLimite;
         private RoundGroupBox roundGroupBox2;
         private Label label1;
+        private BarraSecundaria barraSecundaria1;
         private BarraLateral barraLateral1;
     }
 }

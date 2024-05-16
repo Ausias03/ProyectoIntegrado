@@ -62,42 +62,20 @@
             picFoto = new PictureBox();
             btnCerrarSesion = new Button();
             errorProvider1 = new ErrorProvider(components);
-            pnlBarra = new Panel();
-            pbUsuario = new PictureBox();
-            pbSpain = new PictureBox();
-            pbNotificaciones = new PictureBox();
-            pbNoticias = new PictureBox();
-            pbAyuda = new PictureBox();
-            u = new PictureBox();
-            a = new PictureBox();
-            p = new PictureBox();
-            pbTema = new PictureBox();
-            pbEnglish = new PictureBox();
-            pbHamburger = new PictureBox();
+            barraSecundaria1 = new Herramientas.BarraSecundaria();
+            barraLateral1 = new Herramientas.BarraLateral();
             grpCuenta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picFoto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
-            pnlBarra.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbUsuario).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbSpain).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbNotificaciones).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbNoticias).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbAyuda).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)u).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)a).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)p).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbTema).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbEnglish).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbHamburger).BeginInit();
             SuspendLayout();
             // 
             // lblTuCuenta
             // 
             lblTuCuenta.AutoSize = true;
-            lblTuCuenta.Font = new Font("Roboto Mono", 24F);
-            lblTuCuenta.Location = new Point(31, 39);
+            lblTuCuenta.Font = new Font("Microsoft Sans Serif", 24F);
+            lblTuCuenta.Location = new Point(127, 80);
             lblTuCuenta.Name = "lblTuCuenta";
-            lblTuCuenta.Size = new Size(239, 53);
+            lblTuCuenta.Size = new Size(160, 37);
             lblTuCuenta.TabIndex = 0;
             lblTuCuenta.Text = "Tu cuenta";
             // 
@@ -131,7 +109,7 @@
             grpCuenta.Controls.Add(lblApodo);
             grpCuenta.Controls.Add(lblNombre);
             grpCuenta.Controls.Add(picFoto);
-            grpCuenta.Location = new Point(105, 95);
+            grpCuenta.Location = new Point(155, 119);
             grpCuenta.Name = "grpCuenta";
             grpCuenta.Size = new Size(956, 589);
             grpCuenta.TabIndex = 1;
@@ -140,7 +118,7 @@
             // btnConfirmarFoto
             // 
             btnConfirmarFoto.BackColor = Color.FromArgb(178, 242, 187);
-            btnConfirmarFoto.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnConfirmarFoto.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnConfirmarFoto.Location = new Point(281, 92);
             btnConfirmarFoto.Name = "btnConfirmarFoto";
             btnConfirmarFoto.Size = new Size(135, 52);
@@ -153,7 +131,7 @@
             // btnConfirmarApellidos
             // 
             btnConfirmarApellidos.BackColor = Color.FromArgb(178, 242, 187);
-            btnConfirmarApellidos.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnConfirmarApellidos.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnConfirmarApellidos.Location = new Point(762, 279);
             btnConfirmarApellidos.Name = "btnConfirmarApellidos";
             btnConfirmarApellidos.Size = new Size(135, 52);
@@ -168,13 +146,13 @@
             txtApellidos.Location = new Point(191, 294);
             txtApellidos.Name = "txtApellidos";
             txtApellidos.ReadOnly = true;
-            txtApellidos.Size = new Size(533, 27);
+            txtApellidos.Size = new Size(533, 21);
             txtApellidos.TabIndex = 24;
             // 
             // btnCambiarApellidos
             // 
             btnCambiarApellidos.BackColor = Color.FromArgb(178, 242, 187);
-            btnCambiarApellidos.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnCambiarApellidos.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnCambiarApellidos.Location = new Point(770, 279);
             btnCambiarApellidos.Name = "btnCambiarApellidos";
             btnCambiarApellidos.Size = new Size(121, 52);
@@ -186,17 +164,17 @@
             // lblApellidos
             // 
             lblApellidos.AutoSize = true;
-            lblApellidos.Font = new Font("Roboto Mono", 12F);
+            lblApellidos.Font = new Font("Microsoft Sans Serif", 12F);
             lblApellidos.Location = new Point(53, 292);
             lblApellidos.Name = "lblApellidos";
-            lblApellidos.Size = new Size(132, 26);
+            lblApellidos.Size = new Size(77, 20);
             lblApellidos.TabIndex = 22;
             lblApellidos.Text = "Apellidos:";
             // 
             // btnConfirmarTel
             // 
             btnConfirmarTel.BackColor = Color.FromArgb(178, 242, 187);
-            btnConfirmarTel.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnConfirmarTel.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnConfirmarTel.Location = new Point(762, 508);
             btnConfirmarTel.Name = "btnConfirmarTel";
             btnConfirmarTel.Size = new Size(135, 52);
@@ -209,7 +187,7 @@
             // btnConfirmarDir
             // 
             btnConfirmarDir.BackColor = Color.FromArgb(178, 242, 187);
-            btnConfirmarDir.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnConfirmarDir.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnConfirmarDir.Location = new Point(762, 450);
             btnConfirmarDir.Name = "btnConfirmarDir";
             btnConfirmarDir.Size = new Size(135, 52);
@@ -222,7 +200,7 @@
             // btnConfirmarCorreo
             // 
             btnConfirmarCorreo.BackColor = Color.FromArgb(178, 242, 187);
-            btnConfirmarCorreo.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnConfirmarCorreo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnConfirmarCorreo.Location = new Point(762, 392);
             btnConfirmarCorreo.Name = "btnConfirmarCorreo";
             btnConfirmarCorreo.Size = new Size(135, 52);
@@ -235,7 +213,7 @@
             // btnConfirmarApodo
             // 
             btnConfirmarApodo.BackColor = Color.FromArgb(178, 242, 187);
-            btnConfirmarApodo.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnConfirmarApodo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnConfirmarApodo.Location = new Point(762, 337);
             btnConfirmarApodo.Name = "btnConfirmarApodo";
             btnConfirmarApodo.Size = new Size(135, 52);
@@ -248,7 +226,7 @@
             // btnConfirmarNom
             // 
             btnConfirmarNom.BackColor = Color.FromArgb(178, 242, 187);
-            btnConfirmarNom.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnConfirmarNom.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnConfirmarNom.Location = new Point(762, 221);
             btnConfirmarNom.Name = "btnConfirmarNom";
             btnConfirmarNom.Size = new Size(135, 52);
@@ -263,7 +241,7 @@
             txtTelefono.Location = new Point(179, 520);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.ReadOnly = true;
-            txtTelefono.Size = new Size(545, 27);
+            txtTelefono.Size = new Size(545, 21);
             txtTelefono.TabIndex = 16;
             // 
             // txtDireccion
@@ -271,7 +249,7 @@
             txtDireccion.Location = new Point(191, 465);
             txtDireccion.Name = "txtDireccion";
             txtDireccion.ReadOnly = true;
-            txtDireccion.Size = new Size(533, 27);
+            txtDireccion.Size = new Size(533, 21);
             txtDireccion.TabIndex = 15;
             // 
             // txtCorreo
@@ -279,7 +257,7 @@
             txtCorreo.Location = new Point(295, 407);
             txtCorreo.Name = "txtCorreo";
             txtCorreo.ReadOnly = true;
-            txtCorreo.Size = new Size(429, 27);
+            txtCorreo.Size = new Size(429, 21);
             txtCorreo.TabIndex = 14;
             // 
             // txtApodo
@@ -287,7 +265,7 @@
             txtApodo.Location = new Point(143, 352);
             txtApodo.Name = "txtApodo";
             txtApodo.ReadOnly = true;
-            txtApodo.Size = new Size(581, 27);
+            txtApodo.Size = new Size(581, 21);
             txtApodo.TabIndex = 13;
             // 
             // txtNombre
@@ -295,13 +273,13 @@
             txtNombre.Location = new Point(155, 236);
             txtNombre.Name = "txtNombre";
             txtNombre.ReadOnly = true;
-            txtNombre.Size = new Size(569, 27);
+            txtNombre.Size = new Size(569, 21);
             txtNombre.TabIndex = 12;
             // 
             // btnCambiarFoto
             // 
             btnCambiarFoto.BackColor = Color.FromArgb(178, 242, 187);
-            btnCambiarFoto.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnCambiarFoto.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnCambiarFoto.Location = new Point(295, 92);
             btnCambiarFoto.Name = "btnCambiarFoto";
             btnCambiarFoto.Size = new Size(121, 52);
@@ -313,7 +291,7 @@
             // btnCambiarTel
             // 
             btnCambiarTel.BackColor = Color.FromArgb(178, 242, 187);
-            btnCambiarTel.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnCambiarTel.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnCambiarTel.Location = new Point(770, 508);
             btnCambiarTel.Name = "btnCambiarTel";
             btnCambiarTel.Size = new Size(121, 52);
@@ -325,7 +303,7 @@
             // btnCambiarDir
             // 
             btnCambiarDir.BackColor = Color.FromArgb(178, 242, 187);
-            btnCambiarDir.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnCambiarDir.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnCambiarDir.Location = new Point(770, 450);
             btnCambiarDir.Name = "btnCambiarDir";
             btnCambiarDir.Size = new Size(121, 52);
@@ -337,7 +315,7 @@
             // btnCambiarCorreo
             // 
             btnCambiarCorreo.BackColor = Color.FromArgb(178, 242, 187);
-            btnCambiarCorreo.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnCambiarCorreo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnCambiarCorreo.Location = new Point(770, 392);
             btnCambiarCorreo.Name = "btnCambiarCorreo";
             btnCambiarCorreo.Size = new Size(121, 52);
@@ -349,7 +327,7 @@
             // btnCambiarApodo
             // 
             btnCambiarApodo.BackColor = Color.FromArgb(178, 242, 187);
-            btnCambiarApodo.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnCambiarApodo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnCambiarApodo.Location = new Point(770, 337);
             btnCambiarApodo.Name = "btnCambiarApodo";
             btnCambiarApodo.Size = new Size(121, 52);
@@ -361,7 +339,7 @@
             // btnCambiarNom
             // 
             btnCambiarNom.BackColor = Color.FromArgb(178, 242, 187);
-            btnCambiarNom.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnCambiarNom.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnCambiarNom.Location = new Point(770, 221);
             btnCambiarNom.Name = "btnCambiarNom";
             btnCambiarNom.Size = new Size(121, 52);
@@ -373,60 +351,60 @@
             // lblNivel
             // 
             lblNivel.AutoSize = true;
-            lblNivel.Font = new Font("Roboto Mono", 24F);
+            lblNivel.Font = new Font("Microsoft Sans Serif", 24F);
             lblNivel.Location = new Point(762, 72);
             lblNivel.Name = "lblNivel";
-            lblNivel.Size = new Size(143, 53);
+            lblNivel.Size = new Size(87, 37);
             lblNivel.TabIndex = 6;
             lblNivel.Text = "Nivel";
             // 
             // lblTelefono
             // 
             lblTelefono.AutoSize = true;
-            lblTelefono.Font = new Font("Roboto Mono", 12F);
+            lblTelefono.Font = new Font("Microsoft Sans Serif", 12F);
             lblTelefono.Location = new Point(53, 521);
             lblTelefono.Name = "lblTelefono";
-            lblTelefono.Size = new Size(120, 26);
+            lblTelefono.Size = new Size(75, 20);
             lblTelefono.TabIndex = 5;
             lblTelefono.Text = "Teléfono:";
             // 
             // lblDireccion
             // 
             lblDireccion.AutoSize = true;
-            lblDireccion.Font = new Font("Roboto Mono", 12F);
+            lblDireccion.Font = new Font("Microsoft Sans Serif", 12F);
             lblDireccion.Location = new Point(53, 463);
             lblDireccion.Name = "lblDireccion";
-            lblDireccion.Size = new Size(132, 26);
+            lblDireccion.Size = new Size(79, 20);
             lblDireccion.TabIndex = 4;
             lblDireccion.Text = "Dirección:";
             // 
             // lblCorreo
             // 
             lblCorreo.AutoSize = true;
-            lblCorreo.Font = new Font("Roboto Mono", 12F);
+            lblCorreo.Font = new Font("Microsoft Sans Serif", 12F);
             lblCorreo.Location = new Point(53, 405);
             lblCorreo.Name = "lblCorreo";
-            lblCorreo.Size = new Size(240, 26);
+            lblCorreo.Size = new Size(144, 20);
             lblCorreo.TabIndex = 3;
             lblCorreo.Text = "Correo Electrónico:";
             // 
             // lblApodo
             // 
             lblApodo.AutoSize = true;
-            lblApodo.Font = new Font("Roboto Mono", 12F);
+            lblApodo.Font = new Font("Microsoft Sans Serif", 12F);
             lblApodo.Location = new Point(53, 350);
             lblApodo.Name = "lblApodo";
-            lblApodo.Size = new Size(84, 26);
+            lblApodo.Size = new Size(60, 20);
             lblApodo.TabIndex = 2;
             lblApodo.Text = "Apodo:";
             // 
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Font = new Font("Roboto Mono", 12F);
+            lblNombre.Font = new Font("Microsoft Sans Serif", 12F);
             lblNombre.Location = new Point(53, 234);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(96, 26);
+            lblNombre.Size = new Size(69, 20);
             lblNombre.TabIndex = 1;
             lblNombre.Text = "Nombre:";
             // 
@@ -441,8 +419,8 @@
             // btnCerrarSesion
             // 
             btnCerrarSesion.BackColor = Color.FromArgb(170, 166, 202);
-            btnCerrarSesion.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
-            btnCerrarSesion.Location = new Point(993, 690);
+            btnCerrarSesion.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            btnCerrarSesion.Location = new Point(995, 729);
             btnCerrarSesion.Name = "btnCerrarSesion";
             btnCerrarSesion.Size = new Size(198, 52);
             btnCerrarSesion.TabIndex = 2;
@@ -454,173 +432,46 @@
             // 
             errorProvider1.ContainerControl = this;
             // 
-            // pnlBarra
+            // barraSecundaria1
             // 
-            pnlBarra.BackColor = Color.FromArgb(211, 208, 242);
-            pnlBarra.Controls.Add(pbUsuario);
-            pnlBarra.Controls.Add(pbSpain);
-            pnlBarra.Controls.Add(pbNotificaciones);
-            pnlBarra.Controls.Add(pbNoticias);
-            pnlBarra.Controls.Add(pbAyuda);
-            pnlBarra.Controls.Add(u);
-            pnlBarra.Controls.Add(a);
-            pnlBarra.Controls.Add(p);
-            pnlBarra.Controls.Add(pbTema);
-            pnlBarra.Controls.Add(pbEnglish);
-            pnlBarra.Controls.Add(pbHamburger);
-            pnlBarra.Dock = DockStyle.Top;
-            pnlBarra.Location = new Point(0, 0);
-            pnlBarra.Name = "pnlBarra";
-            pnlBarra.Size = new Size(1258, 45);
-            pnlBarra.TabIndex = 3;
-            pnlBarra.Paint += pnlBarra_Paint;
+            barraSecundaria1.BackColor = Color.FromArgb(211, 208, 242);
+            barraSecundaria1.Dock = DockStyle.Top;
+            barraSecundaria1.Location = new Point(0, 40);
+            barraSecundaria1.Name = "barraSecundaria1";
+            barraSecundaria1.Size = new Size(1839, 35);
+            barraSecundaria1.TabIndex = 3;
             // 
-            // pbUsuario
+            // barraLateral1
             // 
-            pbUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbUsuario.Location = new Point(1221, 5);
-            pbUsuario.Margin = new Padding(3, 4, 3, 4);
-            pbUsuario.Name = "pbUsuario";
-            pbUsuario.Size = new Size(27, 31);
-            pbUsuario.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbUsuario.TabIndex = 26;
-            pbUsuario.TabStop = false;
-            // 
-            // pbSpain
-            // 
-            pbSpain.Enabled = false;
-            pbSpain.Location = new Point(91, 6);
-            pbSpain.Margin = new Padding(3, 4, 3, 4);
-            pbSpain.Name = "pbSpain";
-            pbSpain.Size = new Size(33, 31);
-            pbSpain.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbSpain.TabIndex = 24;
-            pbSpain.TabStop = false;
-            // 
-            // pbNotificaciones
-            // 
-            pbNotificaciones.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbNotificaciones.Location = new Point(1187, 5);
-            pbNotificaciones.Margin = new Padding(3, 4, 3, 4);
-            pbNotificaciones.Name = "pbNotificaciones";
-            pbNotificaciones.Size = new Size(27, 31);
-            pbNotificaciones.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbNotificaciones.TabIndex = 25;
-            pbNotificaciones.TabStop = false;
-            // 
-            // pbNoticias
-            // 
-            pbNoticias.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbNoticias.Location = new Point(1149, 5);
-            pbNoticias.Margin = new Padding(3, 4, 3, 4);
-            pbNoticias.Name = "pbNoticias";
-            pbNoticias.Size = new Size(31, 31);
-            pbNoticias.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbNoticias.TabIndex = 24;
-            pbNoticias.TabStop = false;
-            // 
-            // pbAyuda
-            // 
-            pbAyuda.Location = new Point(49, 5);
-            pbAyuda.Margin = new Padding(3, 4, 3, 4);
-            pbAyuda.Name = "pbAyuda";
-            pbAyuda.Size = new Size(31, 30);
-            pbAyuda.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbAyuda.TabIndex = 18;
-            pbAyuda.TabStop = false;
-            // 
-            // u
-            // 
-            u.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            u.Location = new Point(2493, 5);
-            u.Margin = new Padding(3, 4, 3, 4);
-            u.Name = "u";
-            u.Size = new Size(27, 31);
-            u.SizeMode = PictureBoxSizeMode.StretchImage;
-            u.TabIndex = 23;
-            u.TabStop = false;
-            // 
-            // a
-            // 
-            a.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            a.Location = new Point(2459, 5);
-            a.Margin = new Padding(3, 4, 3, 4);
-            a.Name = "a";
-            a.Size = new Size(27, 31);
-            a.SizeMode = PictureBoxSizeMode.StretchImage;
-            a.TabIndex = 22;
-            a.TabStop = false;
-            // 
-            // p
-            // 
-            p.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            p.Location = new Point(2421, 5);
-            p.Margin = new Padding(3, 4, 3, 4);
-            p.Name = "p";
-            p.Size = new Size(31, 31);
-            p.SizeMode = PictureBoxSizeMode.StretchImage;
-            p.TabIndex = 21;
-            p.TabStop = false;
-            // 
-            // pbTema
-            // 
-            pbTema.Location = new Point(135, 5);
-            pbTema.Margin = new Padding(3, 4, 3, 4);
-            pbTema.Name = "pbTema";
-            pbTema.Size = new Size(32, 31);
-            pbTema.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbTema.TabIndex = 20;
-            pbTema.TabStop = false;
-            // 
-            // pbEnglish
-            // 
-            pbEnglish.Location = new Point(94, 5);
-            pbEnglish.Margin = new Padding(3, 4, 3, 4);
-            pbEnglish.Name = "pbEnglish";
-            pbEnglish.Size = new Size(30, 31);
-            pbEnglish.SizeMode = PictureBoxSizeMode.CenterImage;
-            pbEnglish.TabIndex = 19;
-            pbEnglish.TabStop = false;
-            // 
-            // pbHamburger
-            // 
-            pbHamburger.Location = new Point(12, 5);
-            pbHamburger.Margin = new Padding(3, 4, 3, 4);
-            pbHamburger.Name = "pbHamburger";
-            pbHamburger.Size = new Size(31, 31);
-            pbHamburger.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbHamburger.TabIndex = 17;
-            pbHamburger.TabStop = false;
+            barraLateral1.BackColor = Color.FromArgb(205, 213, 221);
+            barraLateral1.Dock = DockStyle.Left;
+            barraLateral1.Location = new Point(0, 75);
+            barraLateral1.Name = "barraLateral1";
+            barraLateral1.Size = new Size(231, 825);
+            barraLateral1.TabIndex = 4;
             // 
             // frmUsuario
             // 
-            AutoScaleDimensions = new SizeF(9F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1258, 754);
-            Controls.Add(pnlBarra);
+            ClientSize = new Size(1839, 900);
+            Controls.Add(barraLateral1);
+            Controls.Add(barraSecundaria1);
             Controls.Add(btnCerrarSesion);
             Controls.Add(grpCuenta);
             Controls.Add(lblTuCuenta);
-            Font = new Font("Roboto Mono", 9F);
+            Font = new Font("Microsoft Sans Serif", 9F);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmUsuario";
-            Text = "Ge$tioni$";
+            Controls.SetChildIndex(lblTuCuenta, 0);
+            Controls.SetChildIndex(grpCuenta, 0);
+            Controls.SetChildIndex(btnCerrarSesion, 0);
+            Controls.SetChildIndex(barraSecundaria1, 0);
+            Controls.SetChildIndex(barraLateral1, 0);
             grpCuenta.ResumeLayout(false);
             grpCuenta.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picFoto).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
-            pnlBarra.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pbUsuario).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbSpain).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbNotificaciones).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbNoticias).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbAyuda).EndInit();
-            ((System.ComponentModel.ISupportInitialize)u).EndInit();
-            ((System.ComponentModel.ISupportInitialize)a).EndInit();
-            ((System.ComponentModel.ISupportInitialize)p).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbTema).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbEnglish).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbHamburger).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -659,17 +510,7 @@
         private Button btnCambiarApellidos;
         private Label lblApellidos;
         private Button btnConfirmarFoto;
-        private Panel pnlBarra;
-        private PictureBox pbSpain;
-        private PictureBox pbAyuda;
-        private PictureBox u;
-        private PictureBox a;
-        private PictureBox p;
-        private PictureBox pbTema;
-        private PictureBox pbEnglish;
-        private PictureBox pbHamburger;
-        private PictureBox pbUsuario;
-        private PictureBox pbNotificaciones;
-        private PictureBox pbNoticias;
+        private Herramientas.BarraLateral barraLateral1;
+        private Herramientas.BarraSecundaria barraSecundaria1;
     }
 }

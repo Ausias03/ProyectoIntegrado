@@ -2,19 +2,19 @@
 {
     public class BarraLateral : FlowLayoutPanel
     {
-        private bool barraLateralExpandida = true;
+        private static bool barraLateralExpandida = true;
         private static System.Windows.Forms.Timer transicionBarraLateral;
 
         public BarraLateral()
         {
             InitializePanelProperties();
             CreateButtons();
-            InitializeSidebarTransition();
+            AjustesTimer();
         }
 
         private void InitializePanelProperties()
         {
-            Size = new Size(267, 967);
+            Size = new Size(231, 967);
             Dock = DockStyle.Left;
             BackColor = Color.FromArgb(205, 213, 221);
         }
@@ -49,7 +49,7 @@
             Controls.Add(button);
         }
 
-        private void InitializeSidebarTransition()
+        private void AjustesTimer()
         {
             transicionBarraLateral = new System.Windows.Forms.Timer();
             transicionBarraLateral.Interval = 10;
@@ -80,19 +80,20 @@
 
         private void CerrarAbrirFrm(Type formType)
         {
-            Form parentForm = FindForm();
-            if (parentForm != null)
+            Form frmActual = FindForm();
+            if (frmActual != null)
             {
-                parentForm.Hide();
+                frmActual.Hide();
                 Form form = (Form)Activator.CreateInstance(formType);
-                form.Closed += (s, args) => parentForm.Close();
+                form.Closed += (s, args) => frmActual.Close();
                 form.Show();
             }
         }
 
-        static public void ColapsarExpandir(object sender, EventArgs e)
+        static public bool ColapsarExpandir(object sender, EventArgs e)
         {
             transicionBarraLateral.Start();
+            return barraLateralExpandida;
         }
     }
 }
