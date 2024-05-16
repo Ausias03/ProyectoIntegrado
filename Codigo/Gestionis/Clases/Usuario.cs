@@ -176,7 +176,9 @@ namespace Gestionis.Clases
                 hashAlgorithm,
                 keySize);
 
-            return CryptographicOperations.FixedTimeEquals(hashAComparar, Encoding.UTF8.GetBytes(this.contrasenya));
+            string stringAComparar = Convert.ToHexString(hashAComparar);
+
+            return stringAComparar == this.contrasenya;
         }
 
         private string HashContrasenya(string contrasenya, out byte[] salt)
