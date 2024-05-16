@@ -1,3 +1,4 @@
+using Gestionis.Clases;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -5,15 +6,37 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Gestionis.Clases;
-
 namespace Gestionis
 {
     public partial class frmUsuario : FrmBarraPrincipal
     {
+        Usuario usuario;
         public frmUsuario()
         {
             InitializeComponent();
+        }
+
+        private void frmUsuario_Load(object sender, EventArgs e)
+        {
+            #region Controladores
+            // Convertir un array de bytes (byte[]) a foto
+            //picFoto.Image = usuario.Foto;
+            txtNombre.Text = usuario.Nombre;
+            if (usuario.Apellidos != "")
+            {
+                txtApellidos.Text = usuario.Apellidos;
+            }
+            txtApodo.Text = usuario.Apodo;
+            txtCorreo.Text = usuario.Correo;
+            if (usuario.Direccion != "")
+            {
+                txtDireccion.Text = usuario.Direccion;
+            }
+            if (usuario.Telefono != "")
+            {
+                txtTelefono.Text = usuario.Telefono;
+            }
+            #endregion
         }
 
         #region Validación de datos
@@ -117,6 +140,7 @@ namespace Gestionis
         {
             if (ValidarNombre())
             {
+                usuario.Nombre = txtNombre.Text;
                 txtNombre.ReadOnly = true;
                 btnConfirmarNom.Hide();
                 btnCambiarNom.Show();
@@ -125,6 +149,7 @@ namespace Gestionis
 
         private void btnConfirmarApellidos_Click(object sender, EventArgs e)
         {
+            usuario.Apellidos = txtApellidos.Text;
             txtApellidos.ReadOnly = true;
             btnConfirmarApellidos.Hide();
             btnCambiarApellidos.Show();
@@ -134,6 +159,7 @@ namespace Gestionis
         {
             if (ValidarApodo())
             {
+                usuario.Apodo = txtApodo.Text;
                 txtApodo.ReadOnly = true;
                 btnConfirmarApodo.Hide();
                 btnCambiarApodo.Show();
@@ -144,6 +170,7 @@ namespace Gestionis
         {
             if (ValidarCorreo())
             {
+                usuario.Correo = txtCorreo.Text;
                 txtCorreo.ReadOnly = true;
                 btnConfirmarCorreo.Hide();
                 btnCambiarCorreo.Show();
@@ -152,6 +179,7 @@ namespace Gestionis
 
         private void btnConfirmarDir_Click(object sender, EventArgs e)
         {
+            usuario.Direccion = txtDireccion.Text;
             txtDireccion.ReadOnly = true;
             btnConfirmarDir.Hide();
             btnCambiarDir.Show();
@@ -159,6 +187,7 @@ namespace Gestionis
 
         private void btnConfirmarTel_Click(object sender, EventArgs e)
         {
+            usuario.Telefono = txtTelefono.Text;
             txtTelefono.ReadOnly = true;
             btnConfirmarTel.Hide();
             btnCambiarTel.Show();
@@ -166,6 +195,8 @@ namespace Gestionis
 
         private void btnConfirmarFoto_Click(object sender, EventArgs e)
         {
+            // Convertir un array de bytes (byte[]) a foto
+            //usuario.Foto = picFoto.Image;
             btnConfirmarFoto.Hide();
             btnCambiarFoto.Show();
         }
@@ -174,32 +205,5 @@ namespace Gestionis
         {
             this.Dispose();
         }
-
-        //private void pnlBarra_Paint(object sender, PaintEventArgs e)
-        //{
-        //    pbHamburger.Image = Properties.Resources.hamburger.ToBitmap();
-        //    pbHamburger.SizeMode = PictureBoxSizeMode.StretchImage;
-
-        //    pbAyuda.Image = Properties.Resources.question.ToBitmap();
-        //    pbAyuda.SizeMode = PictureBoxSizeMode.StretchImage;
-
-        //    pbEnglish.Image = Properties.Resources.england.ToBitmap();
-        //    pbEnglish.SizeMode = PictureBoxSizeMode.StretchImage;
-
-        //    pbSpain.Image = Properties.Resources.eapanya.ToBitmap();
-        //    pbSpain.SizeMode = PictureBoxSizeMode.StretchImage;
-
-        //    p.Image = Properties.Resources.newspaper.ToBitmap();
-        //    p.SizeMode = PictureBoxSizeMode.StretchImage;
-
-        //    a.Image = Properties.Resources.bell.ToBitmap();
-        //    a.SizeMode = PictureBoxSizeMode.StretchImage;
-
-        //    u.Image = Properties.Resources.user.ToBitmap();
-        //    u.SizeMode = PictureBoxSizeMode.StretchImage;
-
-        //    pbTema.Image = Properties.Resources.dark.ToBitmap();
-        //    pbTema.SizeMode = PictureBoxSizeMode.StretchImage;
-        //}
     }
 }

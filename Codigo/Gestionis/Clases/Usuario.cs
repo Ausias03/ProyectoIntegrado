@@ -42,6 +42,15 @@ namespace Gestionis.Clases
             }
         }
 
+        public string Apodo { get { return apodo; } set { this.apodo = value; } }
+        public string Nombre { get { return nombre; } set { this.nombre = value; } }
+        public string? Apellidos { get { return apellidos; } set { this.apellidos = value; } }
+        public string Correo { get { return correo; } set { this.correo = value; } }
+        public string? Direccion { get { return direccion; } set { this.direccion = value; } }
+        public string? Telefono { get { return telefono; } set { this.telefono = value; } }
+        public int Experiencia { get { return experiencia; } set { this.experiencia = value; } }
+        public byte[] Foto { get { return foto; } set { this.foto = value; } }
+
         public static bool Existe(string apodo)
         {
             string queryString = "SELECT apodo FROM usuario WHERE apodo = @apodo;";
