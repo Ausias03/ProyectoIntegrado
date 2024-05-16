@@ -84,17 +84,9 @@ namespace Gestionis
                     return;
                 }
 
-                Usuario usu1 = new Usuario(
-                    txtApodo.Text,
-                    txtNombre.Text,
-                    txtApellidos.Text == String.Empty ? null : txtApellidos.Text,
-                    txtCorreo.Text,
-                    txtContrasenya.Text,
-                    txtDireccion.Text == String.Empty ? null : txtDireccion.Text,
-                    txtTelefono.Text == String.Empty ? null : txtTelefono.Text
-                    );
-
-                usu1.Add();
+                CreaUsuario();
+                CreaCuenta(txtApodo.Text);
+                
                 lklInicioSesion_LinkClicked(null, null);
             }
             catch
@@ -113,6 +105,29 @@ namespace Gestionis
             txtContrasenya.Text = String.Empty;
             txtDireccion.Text = String.Empty;
             txtTelefono.Text = String.Empty;
+        }
+
+        private void CreaUsuario()
+        {
+            Usuario usu1 = new Usuario(
+                    txtApodo.Text,
+                    txtNombre.Text,
+                    txtApellidos.Text == String.Empty ? null : txtApellidos.Text,
+                    txtCorreo.Text,
+                    txtContrasenya.Text,
+                    txtDireccion.Text == String.Empty ? null : txtDireccion.Text,
+                    txtTelefono.Text == String.Empty ? null : txtTelefono.Text
+                    );
+
+            usu1.Add();
+        }
+
+        private void CreaCuenta(string apodo)
+        {
+            Cuenta cue1 = new Cuenta(
+                apodo);
+
+            cue1.Add();
         }
         #endregion        
     }
