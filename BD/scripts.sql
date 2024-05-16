@@ -5,9 +5,9 @@ USE gestionis;
 
 CREATE TABLE IF NOT EXISTS usuario (
 apodo VARCHAR(15) PRIMARY KEY,
-correo VARCHAR(60) NOT NULL UNIQUE,
 nombre VARCHAR(20) NOT NULL,
 apellidos VARCHAR(45),
+correo VARCHAR(60) NOT NULL UNIQUE,
 contrasenya VARCHAR(255) NOT NULL,
 salt VARCHAR(255) NOT NULL,
 direccion VARCHAR(60),
