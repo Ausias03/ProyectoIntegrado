@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,12 @@ namespace Gestionis.Clases
         private string? apellidos;
         private string correo;
         private string contrasenya;
+        private string salt;
+        #region Datos Contrasenya
+        private const int keySize = 64;
+        private const int iterations = 350000;
+        private HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA512;
+        #endregion
         private string? direccion;
         private string? telefono;
         private int experiencia;
@@ -30,7 +37,9 @@ namespace Gestionis.Clases
             this.nombre = nombre;
             this.apellidos = apellidos;
             this.correo = correo;
-            this.contrasenya = contrasenya;
+            byte[] salt;
+            this.contrasenya = HashContrasenya(contrasenya, out salt);
+            this.salt = Convert.ToHexString(salt);
             this.direccion = direccion;
             this.telefono = telefono;
             experiencia = 0;
@@ -43,7 +52,7 @@ namespace Gestionis.Clases
         }
 
         public Usuario(string apodo, string nombre, string? apellidos, string correo,
-            string contrasenya, string? direccion, string? telefono, int experiencia,
+            string contrasenya, string salt, string? direccion, string? telefono, int experiencia,
             byte[] foto)
         {
             this.apodo = apodo;
@@ -51,6 +60,7 @@ namespace Gestionis.Clases
             this.apellidos = apellidos;
             this.correo = correo;
             this.contrasenya = contrasenya;
+            this.salt = salt;
             this.direccion = direccion;
             this.telefono = telefono;
             this.experiencia = experiencia;
@@ -128,9 +138,10 @@ namespace Gestionis.Clases
                         reader.GetSafeString(2),
                         reader.GetString(3),
                         reader.GetString(4),
-                        reader.GetSafeString(5),
+                        reader.GetString(5),
                         reader.GetSafeString(6),
-                        reader.GetInt32(7),
+                        reader.GetSafeString(7),
+                        reader.GetInt32(8),
                         byteImagen
                     );
                 }
@@ -164,6 +175,19 @@ namespace Gestionis.Clases
             query.ExecuteNonQuery();
 
             ConexionDB.CerrarConexion();
+        }
+
+        private string HashContrasenya(string contrasenya, out byte[] salt)
+        {
+            salt = RandomNumberGenerator.GetBytes(keySize);
+
+            var hash = Rfc2898DeriveBytes.Pbkdf2(
+                Encoding.UTF8.GetBytes(contrasenya),
+                salt,
+                iterations,
+                hashAlgorithm,
+                keySize);
+            return Convert.ToHexString(hash);
         }
     }
 }
