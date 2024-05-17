@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gestionis.Clases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,6 +20,11 @@ namespace Gestionis
         public frmAnyadirIngreso()
         {
             InitializeComponent();
+        }
+
+        private void frmAnyadirIngreso_Load(object sender, EventArgs e)
+        {
+            CargaCategoriasCBO();
         }
 
         #region Validaciones
@@ -70,7 +76,27 @@ namespace Gestionis
                 return;
             }
 
+            Ingreso i1 = new Ingreso(
+                numCuenta,
+                txtNombreIngreso.Text,
+                (float)nudCantidad.Value,
+                rdbSalario.Checked ? "Salario" : "Fijo",
+                rdbSalario.Checked ? null : CategoriaIngreso.DevuelveIDCategoria(cboCategoria.Text),
+                txtComentarios.Text == String.Empty ? null : txtComentarios.Text
+            );
+
+            i1.Add();
+
             this.Close();
         }
+
+        #region Métodos de Implementaión
+        private void CargaCategoriasCBO()
+        {
+            BindingSource bs = new BindingSource();
+            bs.DataSource = CategoriaIngreso.DevuelveNombresCategorias();
+            cboCategoria.DataSource = bs;
+        }
+        #endregion
     }
 }

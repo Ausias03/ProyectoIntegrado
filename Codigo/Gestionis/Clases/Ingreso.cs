@@ -15,30 +15,30 @@ namespace Gestionis.Clases
         private string nombre;
         private float cantidad;
         private string tipo;
-        private int categoria;        
+        private int? categoria;        
         private string? comentarios;
         private DateTime fecha;
         private TimeSpan hora;
 
         #region Constructores
-        public Ingreso(int numCuenta, string nombre, float cantidad, int categoria,
-            string tipo, string? comentarios)
+        public Ingreso(int numCuenta, string nombre, float cantidad, string tipo,
+             int? categoria, string? comentarios)
         {
             this.idIngreso = null;
             this.numCuenta = numCuenta;
             this.nombre = nombre;
             this.cantidad = cantidad;
-            this.categoria = categoria;
             this.tipo = tipo;
+            this.categoria = categoria;            
             this.comentarios = comentarios;
             this.fecha = DateTime.Today;
             this.hora = DateTime.Now.TimeOfDay;
         }
 
-        public Ingreso(int idGasto, int numCuenta, string nombre, float cantidad, int categoria,
-            string tipo, string? comentarios, DateTime fecha, TimeSpan hora)
+        public Ingreso(int idIngreso, int numCuenta, string nombre, float cantidad, string tipo,
+             int? categoria, string? comentarios, DateTime fecha, TimeSpan hora)
         {
-            this.idIngreso = idGasto;
+            this.idIngreso = idIngreso;
             this.numCuenta = numCuenta;
             this.nombre = nombre;
             this.cantidad = cantidad;
@@ -56,7 +56,7 @@ namespace Gestionis.Clases
         {
             List<Ingreso> ingresos = new List<Ingreso>();
 
-            string queryString = "SELECT * FROM gasto";
+            string queryString = "SELECT * FROM ingreso";
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
 
@@ -70,9 +70,9 @@ namespace Gestionis.Clases
                         reader.GetInt32(0),
                         reader.GetInt32(1),
                         reader.GetString(2),
-                        reader.GetFloat(3),
-                        reader.GetInt32(4),
-                        reader.GetString(5),
+                        reader.GetFloat(3),                        
+                        reader.GetString(4),
+                        reader.GetSafeInt32(5),
                         reader.GetSafeString(6),
                         reader.GetDateTime(7),
                         reader.GetTimeSpan(8)
@@ -87,18 +87,18 @@ namespace Gestionis.Clases
 
         public void Add()
         {
-            string queryString = "INSERT INTO gasto (idGasto, numCuenta, nombre, cantidad," +
-                "categoria, tipo, comentarios, fecha, hora) " +
-                "VALUES (@idGasto, @numCuenta, @nombre, @cantidad, @categoria, @tipo, @comentarios," +
+            string queryString = "INSERT INTO ingreso (idIngreso, numCuenta, nombre, cantidad," +
+                "tipo, categoria, comentarios, fecha, hora) " +
+                "VALUES (@idIngreso, @numCuenta, @nombre, @cantidad, @tipo, @categoria, @comentarios," +
                 "@fecha, @hora);";
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
-            query.Parameters.AddWithValue("@idGasto", idIngreso);
+            query.Parameters.AddWithValue("@idIngreso", idIngreso);
             query.Parameters.AddWithValue("@numCuenta", numCuenta);
             query.Parameters.AddWithValue("@nombre", nombre);
             query.Parameters.AddWithValue("@cantidad", cantidad);
-            query.Parameters.AddWithValue("@categoria", categoria);
             query.Parameters.AddWithValue("@tipo", tipo);
+            query.Parameters.AddWithValue("@categoria", categoria);            
             query.Parameters.AddWithValue("@comentarios", comentarios);
             query.Parameters.AddWithValue("@fecha", fecha);
             query.Parameters.AddWithValue("@hora", hora);

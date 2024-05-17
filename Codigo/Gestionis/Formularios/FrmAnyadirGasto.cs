@@ -25,9 +25,7 @@ namespace Gestionis
 
         private void frmAnyadirGasto_Load(object sender, EventArgs e)
         {
-            BindingSource bs = new BindingSource();
-            bs.DataSource = CategoriaGasto.DevuelveNombresCategorias();
-            cboCategoria.DataSource = bs;
+            CargaCategoriasCBO();            
         }
 
         #region Validaciones
@@ -80,15 +78,29 @@ namespace Gestionis
             Gasto g1 = new Gasto(
                 this.numCuenta,
                 txtNombreGasto.Text,
-                (float) nudCantidad.Value,
+                (float)nudCantidad.Value,
                 CategoriaGasto.DevuelveIDCategoria(cboCategoria.Text),
-                rdbFijo.Checked ? "fijo" : "variable",
-                txtComentarios.Text
+                rdbFijo.Checked ? "Fijo" : "Variable",
+                txtComentarios.Text == String.Empty ? null : txtComentarios.Text
             );
 
             g1.Add();
 
             this.Close();
-        }        
+        }
+
+        private void frmAnyadirGasto_Activated(object sender, EventArgs e)
+        {
+            CargaCategoriasCBO();
+        }
+
+        #region Métodos de Implementaión
+        private void CargaCategoriasCBO()
+        {
+            BindingSource bs = new BindingSource();
+            bs.DataSource = CategoriaGasto.DevuelveNombresCategorias();
+            cboCategoria.DataSource = bs;
+        }
+        #endregion
     }
 }

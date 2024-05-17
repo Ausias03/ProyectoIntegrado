@@ -251,6 +251,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmAnyadirGasto";
             Text = "Añadir Gasto";
+            Activated += frmAnyadirGasto_Activated;
             Load += frmAnyadirGasto_Load;
             ((System.ComponentModel.ISupportInitialize)nudCantidad).EndInit();
             grpTipoGasto.ResumeLayout(false);

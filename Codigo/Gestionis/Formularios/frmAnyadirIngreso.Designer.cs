@@ -239,6 +239,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmAnyadirIngreso";
             Text = "Añadir Ingreso";
+            Load += frmAnyadirIngreso_Load;
             grpTipoGasto.ResumeLayout(false);
             grpTipoGasto.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nudCantidad).EndInit();
