@@ -16,7 +16,11 @@ using Gestionis.Clases;
 namespace Gestionis
 {
     public partial class FrmMenuPrincipal : FrmBarraPrincipal
-    {       
+    {
+        private string apodoUsuario;
+
+        public string ApodoUsuario { set { apodoUsuario = value; } }
+
         public FrmMenuPrincipal()
         {
             InitializeComponent();
