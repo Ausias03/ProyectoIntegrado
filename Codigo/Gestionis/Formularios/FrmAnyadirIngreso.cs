@@ -22,6 +22,11 @@ namespace Gestionis
             InitializeComponent();
         }
 
+        private void frmAnyadirIngreso_Load(object sender, EventArgs e)
+        {
+            CargaCategoriasCBO();
+        }
+
         #region Validaciones
         private bool ValidaDatos()
         {
@@ -80,7 +85,18 @@ namespace Gestionis
                 txtComentarios.Text == String.Empty ? null : txtComentarios.Text
             );
 
+            i1.Add();
+
             this.Close();
         }
+
+        #region Métodos de Implementaión
+        private void CargaCategoriasCBO()
+        {
+            BindingSource bs = new BindingSource();
+            bs.DataSource = CategoriaIngreso.DevuelveNombresCategorias();
+            cboCategoria.DataSource = bs;
+        }
+        #endregion
     }
 }
