@@ -60,6 +60,11 @@ namespace Gestionis.Formularios
                     Deuda deuda = new Deuda(numCuenta, txtTitulo.Text, rtbDescrip.Text, rdbDebo.Checked, nudCantidadAdeudada.Value, dtpDeuda.Value, dtpVencimiento.Value, chkRecordatorio.Checked);
                     if (deuda.Add() > 0)
                     {
+                        if(chkRecordatorio.Checked)
+                        {
+                            frmAddNota frmAddNota = new frmAddNota();
+                            frmAddNota.ShowDialog();
+                        }
                         MessageBox.Show("Deuda agregada exitosamente", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
