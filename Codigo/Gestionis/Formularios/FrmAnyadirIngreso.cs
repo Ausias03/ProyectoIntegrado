@@ -12,6 +12,10 @@ namespace Gestionis
 {
     public partial class frmAnyadirIngreso : Form
     {
+        private int numCuenta;
+
+        public int NumCuenta { set { numCuenta = value; } }
+
         public frmAnyadirIngreso()
         {
             InitializeComponent();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gestionis.Clases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,14 +8,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Gestionis
 {
     public partial class frmAnyadirGasto : Form
     {
+        private int numCuenta;
+
+        public int NumCuenta { set { numCuenta = value; } }
+
         public frmAnyadirGasto()
         {
             InitializeComponent();
+        }
+
+        private void frmAnyadirGasto_Load(object sender, EventArgs e)
+        {
+            BindingSource bs = new BindingSource();
+            bs.DataSource = CategoriaGasto.DevuelveNombresCategorias();
+            cboCategoria.DataSource = bs;
         }
 
         #region Validaciones
@@ -64,7 +77,18 @@ namespace Gestionis
                 return;
             }
 
+            Gasto g1 = new Gasto(
+                this.numCuenta,
+                txtNombreGasto.Text,
+                (float) nudCantidad.Value,
+                CategoriaGasto.DevuelveIDCategoria(cboCategoria.Text),
+                rdbFijo.Checked ? "fijo" : "variable",
+                txtComentarios.Text
+            );
+
+            g1.Add();
+
             this.Close();
-        }
+        }        
     }
 }
