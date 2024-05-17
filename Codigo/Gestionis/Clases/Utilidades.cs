@@ -20,7 +20,7 @@ namespace Gestionis.Clases
         {
             DataTable tablaDatos = new DataTable();
             ConexionDB.AbrirConexion();
-            using (MySqlCommand comando = new MySqlCommand(consulta))
+            using (MySqlCommand comando = new MySqlCommand(consulta, ConexionDB.Conexion))
             {
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(comando))
                 {

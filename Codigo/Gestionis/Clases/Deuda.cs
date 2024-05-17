@@ -119,7 +119,7 @@ namespace Gestionis.Clases
                 ConexionDB.CerrarConexion();
             }
             return deuda;
-        }
+        }        
 
         public static int EliminarDeuda(string tit)
         {

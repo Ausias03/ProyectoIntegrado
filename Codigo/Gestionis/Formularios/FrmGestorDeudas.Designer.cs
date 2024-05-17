@@ -74,11 +74,11 @@ namespace Gestionis
             roundGroupBox1.Controls.Add(btnEliminarDeuda);
             roundGroupBox1.Controls.Add(btnAnyadirDeuda);
             roundGroupBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            roundGroupBox1.Location = new Point(391, 130);
+            roundGroupBox1.Location = new Point(308, 130);
             roundGroupBox1.Margin = new Padding(4, 2, 4, 2);
             roundGroupBox1.Name = "roundGroupBox1";
             roundGroupBox1.Padding = new Padding(4, 2, 4, 2);
-            roundGroupBox1.Size = new Size(818, 655);
+            roundGroupBox1.Size = new Size(977, 655);
             roundGroupBox1.TabIndex = 0;
             roundGroupBox1.TabStop = false;
             roundGroupBox1.Text = "rgpDeudas";
@@ -89,7 +89,7 @@ namespace Gestionis
             chkDebo.BackColor = Color.Transparent;
             chkDebo.Checked = true;
             chkDebo.CheckState = CheckState.Checked;
-            chkDebo.Location = new Point(457, 253);
+            chkDebo.Location = new Point(557, 250);
             chkDebo.Name = "chkDebo";
             chkDebo.Size = new Size(91, 35);
             chkDebo.TabIndex = 19;
@@ -120,7 +120,7 @@ namespace Gestionis
             // 
             lblDeudasTotalesValor.AutoSize = true;
             lblDeudasTotalesValor.BackColor = Color.Transparent;
-            lblDeudasTotalesValor.Location = new Point(225, 582);
+            lblDeudasTotalesValor.Location = new Point(224, 582);
             lblDeudasTotalesValor.Margin = new Padding(4, 0, 4, 0);
             lblDeudasTotalesValor.Name = "lblDeudasTotalesValor";
             lblDeudasTotalesValor.Size = new Size(171, 31);
@@ -148,7 +148,7 @@ namespace Gestionis
             pnlInfoDeuda.Controls.Add(lblTipo);
             pnlInfoDeuda.Controls.Add(lblFechaLimite);
             pnlInfoDeuda.Controls.Add(lblProximaDeuda);
-            pnlInfoDeuda.Location = new Point(404, 39);
+            pnlInfoDeuda.Location = new Point(557, 39);
             pnlInfoDeuda.Margin = new Padding(4, 2, 4, 2);
             pnlInfoDeuda.Name = "pnlInfoDeuda";
             pnlInfoDeuda.Size = new Size(364, 141);
@@ -223,35 +223,40 @@ namespace Gestionis
             // cmbCategoria
             // 
             cmbCategoria.FormattingEnabled = true;
-            cmbCategoria.Location = new Point(226, 250);
+            cmbCategoria.Location = new Point(247, 248);
             cmbCategoria.Margin = new Padding(4);
             cmbCategoria.Name = "cmbCategoria";
-            cmbCategoria.Size = new Size(214, 39);
+            cmbCategoria.Size = new Size(267, 39);
             cmbCategoria.TabIndex = 8;
             cmbCategoria.SelectedIndexChanged += cmbCategoria_SelectedIndexChanged;
             // 
             // dgvGastosIngresos
             // 
-            dgvGastosIngresos.BackgroundColor = SystemColors.ControlLightLight;
+            dgvGastosIngresos.AllowUserToAddRows = false;
+            dgvGastosIngresos.AllowUserToDeleteRows = false;
+            dgvGastosIngresos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvGastosIngresos.BackgroundColor = Color.FromArgb(0, 115, 148);
             dgvGastosIngresos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvGastosIngresos.GridColor = SystemColors.Window;
-            dgvGastosIngresos.Location = new Point(48, 307);
+            dgvGastosIngresos.Location = new Point(31, 307);
             dgvGastosIngresos.Margin = new Padding(4);
             dgvGastosIngresos.Name = "dgvGastosIngresos";
+            dgvGastosIngresos.ReadOnly = true;
             dgvGastosIngresos.RowHeadersWidth = 51;
-            dgvGastosIngresos.Size = new Size(720, 261);
+            dgvGastosIngresos.Size = new Size(919, 261);
             dgvGastosIngresos.TabIndex = 7;
             // 
             // btnRestaurar
             // 
             btnRestaurar.BackColor = Color.FromArgb(178, 242, 187);
-            btnRestaurar.Location = new Point(568, 249);
+            btnRestaurar.Location = new Point(721, 248);
             btnRestaurar.Margin = new Padding(4);
             btnRestaurar.Name = "btnRestaurar";
             btnRestaurar.Size = new Size(200, 41);
             btnRestaurar.TabIndex = 4;
             btnRestaurar.Text = "Restaurar";
             btnRestaurar.UseVisualStyleBackColor = false;
+            btnRestaurar.Click += btnRestaurar_Click;
             // 
             // btnBuscar
             // 
@@ -330,7 +335,7 @@ namespace Gestionis
             barraLateral1.Location = new Point(0, 81);
             barraLateral1.Margin = new Padding(4, 2, 4, 2);
             barraLateral1.Name = "barraLateral1";
-            barraLateral1.Size = new Size(274, 819);
+            barraLateral1.Size = new Size(266, 819);
             barraLateral1.TabIndex = 30;
             // 
             // FrmGestorDeudas

@@ -33,6 +33,16 @@ namespace Gestionis
 
             lblDeudasTotalesValor.Text = Deuda.DeudasTotales(2).ToString();
             ProximaDeuda();
+
+            ActualizarTabla();
+        }
+
+        private void ActualizarTabla()
+        {
+            int numCuenta = 2;
+            string consulta = $"SELECT titulo, descripcion, cantidad, fechaCreacion, fechaVencimiento  FROM deuda WHERE numCuenta = {numCuenta}";
+
+            dgvGastosIngresos.DataSource = Utilidades.RellenarDatos(consulta);
         }
 
         private void Titulo()
@@ -92,6 +102,11 @@ namespace Gestionis
         private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
             Titulo();
+        }
+
+        private void btnRestaurar_Click(object sender, EventArgs e)
+        {
+            ActualizarTabla();
         }
     }
 }
