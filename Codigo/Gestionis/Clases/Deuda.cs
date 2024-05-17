@@ -9,16 +9,22 @@ namespace Gestionis.Clases
         private string titulo;
         private string descripcion;
         private bool debo;
-        private float cantidad;
+        private decimal cantidad;
         private DateTime fechaCreacion;
         private DateTime fechaVencimiento;
         private bool anyadirRecordatorio;
+
+        public string Descripcion { get { return descripcion; } }
+        public bool Debo { get { return debo; } }
+        public decimal Cantidad { get { return cantidad; } }
+        public DateTime FechaCreacion { get { return fechaCreacion; } }
+        public DateTime FechaVencimiento { get { return fechaVencimiento; } }
 
         public Deuda()
         {
             
         }
-        public Deuda(int cuenta, string tit, string descrip, bool deb, float cant, DateTime fechaCrea, DateTime fechaVenc, bool record)
+        public Deuda(int cuenta, string tit, string descrip, bool deb, decimal cant, DateTime fechaCrea, DateTime fechaVenc, bool record)
         {
             idDeuda = null;
             numCuenta = cuenta;
@@ -31,18 +37,17 @@ namespace Gestionis.Clases
             anyadirRecordatorio = record;
         }
 
-        public void Add()
+        public int Add()
         {
-            int debo = this.debo ? 1 : 0;
-            int anyadirRecordatorio = this.anyadirRecordatorio ? 1 : 0;
-            string fechaVencimiento = this.fechaVencimiento.ToString("yyyy/MMM/dd");
-            string fechaCreacion = this.fechaCreacion.ToString("yyyy/MMM/dd");
+            int resultado = 0;
+            string fechaVencimiento = this.fechaVencimiento.ToString("yyyy/MM/dd");
+            string fechaCreacion = this.fechaCreacion.ToString("yyyy/MM/dd");
 
             string queryString = "INSERT INTO deuda (idDeuda, numCuenta, titulo, descripcion," +
                 "debo, cantidad, fechaCreacion, fechaVencimiento, anyadirRecordatorio) " +
                 "VALUES (@idDeuda, @numCuenta, @titulo, @descripcion, @debo, @cantidad," +
                 "@fechaCreacion, @fechaVencimiento, @anyadirRecordatorio);";
-            
+
             try
             {
                 using (MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion))
@@ -59,30 +64,78 @@ namespace Gestionis.Clases
 
                     ConexionDB.AbrirConexion();
 
-                    query.ExecuteNonQuery();
+                    resultado = query.ExecuteNonQuery();
 
                     ConexionDB.CerrarConexion();
-                }
+                }                
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
+            return resultado;
         }
-        public static Deuda GetDeuda(string tit, Deuda deuda)
+
+        public static bool ExisteDeuda(string tit)
         {
-            string queryString = "SELECT * FROM deuda WHERE tituulo = @titulo;";
+            string queryString = "SELECT titulo FROM deuda WHERE titulo = @titulo;";
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
             query.Parameters.AddWithValue("@titulo", tit);
 
             ConexionDB.AbrirConexion();
 
+            bool existe;
 
+            using (MySqlDataReader reader = query.ExecuteReader())
+            {
+                existe = reader.HasRows;
+            }
 
             ConexionDB.CerrarConexion();
 
+            return existe;
+        }
+
+        public static Deuda GetDeuda(string tit, Deuda deuda)
+        {
+            string queryString = "SELECT descripcion, debo, cantidad, fechaCreacion, fechaVencimiento FROM deuda WHERE titulo = @titulo;";
+
+            using (MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion))
+            {
+                query.Parameters.AddWithValue("@titulo", tit);
+
+                ConexionDB.AbrirConexion();
+                using (MySqlDataReader reader = query.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        deuda.descripcion = reader.GetString(0);
+                        deuda.debo = reader.GetBoolean(1);
+                        deuda.cantidad = reader.GetDecimal(2);
+                        deuda.fechaCreacion = Convert.ToDateTime(reader.GetDateTime(3).ToString("dd/MM/yyyy"));
+                        deuda.fechaVencimiento = Convert.ToDateTime(reader.GetDateTime(4).ToString("dd/MM/yyyy"));
+                    }
+                }                
+                ConexionDB.CerrarConexion();
+            }
             return deuda;
+        }
+
+        public static int EliminarDeuda(string tit)
+        {
+            int resultado = 0;
+
+            string consulta = String.Format("DELETE FROM deuda WHERE titulo LIKE ('{0}');", tit);
+
+            ConexionDB.AbrirConexion();
+            using (MySqlCommand comando = new MySqlCommand(consulta, ConexionDB.Conexion))
+            {
+                resultado = comando.ExecuteNonQuery();
+            }
+            ConexionDB.CerrarConexion();
+
+            return resultado;
         }
     }
 }

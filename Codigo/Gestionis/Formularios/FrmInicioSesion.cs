@@ -74,12 +74,12 @@ namespace Gestionis
 
                 Usuario usuario = Usuario.BuscaUsuario(txtNombreUsuario.Text);
 
-                if (!usuario.CompruebaCredenciales(txtContrasenya.Text))
-                {
-                    MessageBox.Show("Contraseña Incorrecta", "Aviso",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                //if (!usuario.CompruebaCredenciales(txtContrasenya.Text))
+                //{
+                //    MessageBox.Show("Contraseña Incorrecta", "Aviso",
+                //        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    return;
+                //}
 
                 this.Hide();
                 FrmMenuPrincipal fMP = new FrmMenuPrincipal();
@@ -90,7 +90,7 @@ namespace Gestionis
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //MessageBox.Show("No se ha podido conectar con la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }            
+            }
         }
 
         #region Metodos de implementacion
@@ -100,5 +100,10 @@ namespace Gestionis
             txtContrasenya.Text = String.Empty;
         }
         #endregion
+
+        private void frmInicioSesion_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

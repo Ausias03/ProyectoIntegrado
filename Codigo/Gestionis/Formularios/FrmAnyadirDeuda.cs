@@ -18,6 +18,33 @@ namespace Gestionis.Formularios
             InitializeComponent();
         }
 
+        private void FrmAnyadirDeuda_Load(object sender, EventArgs e)
+        {
+            ResetearFrm();
+        }
+
+        #region Validaciones
+        private bool ValidaDatos()
+        {
+            bool ok = true;
+            errorProvider1.Clear();
+
+            if (txtTitulo.Text == String.Empty)
+            {
+                ok = false;
+                errorProvider1.SetError(txtTitulo, "Introduce un nombre");
+            }
+
+            if (nudCantidadAdeudada.Value == 0)
+            {
+                ok = false;
+                errorProvider1.SetError(nudCantidadAdeudada, "Introduce una contraseña");
+            }
+
+            return ok;
+        }
+        #endregion
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -25,10 +52,31 @@ namespace Gestionis.Formularios
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-            int numCuenta = 0;
-            Deuda deuda = new Deuda(numCuenta, txtTitulo.Text, rtbDescrip.Text, rdbDebo.Checked, (float)nudCantidadAdeudada.Value, dtpDeuda.Value, dtpVencimiento.Value, chkRecordatorio.Checked);
-            deuda.Add();
+            if(ValidaDatos())
+            {
+                if (!Deuda.ExisteDeuda(txtTitulo.Text))
+                {
+                    int numCuenta = 2;
+                    Deuda deuda = new Deuda(numCuenta, txtTitulo.Text, rtbDescrip.Text, rdbDebo.Checked, nudCantidadAdeudada.Value, dtpDeuda.Value, dtpVencimiento.Value, chkRecordatorio.Checked);
+                    if (deuda.Add() > 0)
+                    {
+                        MessageBox.Show("Deuda agregada exitosamente", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al agregar la deuda", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ya existe una deuda con ese título", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                ResetearFrm();
+            }            
+        }        
 
+        private void ResetearFrm()
+        {
             txtTitulo.Text = string.Empty;
             nudCantidadAdeudada.Text = string.Empty;
             rtbDescrip.Text = string.Empty;
@@ -37,10 +85,7 @@ namespace Gestionis.Formularios
             chkRecordatorio.Checked = false;
             rdbDeben.Checked = false;
             rdbDebo.Checked = true;
-        }
 
-        private void FrmAnyadirDeuda_Load(object sender, EventArgs e)
-        {
             dtpDeuda.Value = DateTime.Now;
             dtpVencimiento.Value = DateTime.Now;
             rdbDebo.Checked = true;
