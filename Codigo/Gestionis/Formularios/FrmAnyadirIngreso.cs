@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gestionis.Clases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -69,6 +70,15 @@ namespace Gestionis
                 MessageBox.Show("Comprueba los datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            Ingreso i1 = new Ingreso(
+                numCuenta,
+                txtNombreIngreso.Text,
+                (float)nudCantidad.Value,
+                rdbSalario.Checked ? "Salario" : "Fijo",
+                rdbSalario.Checked ? null : CategoriaIngreso.DevuelveIDCategoria(cboCategoria.Text),
+                txtComentarios.Text == String.Empty ? null : txtComentarios.Text
+            );
 
             this.Close();
         }

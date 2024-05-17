@@ -11,46 +11,22 @@ namespace Gestionis.Clases
     {
         private int? idCategoria;
         private string nombre;
-        private int color;
 
-        public CategoriaIngreso(string nombre, int color)
+        public CategoriaIngreso(string nombre)
         {
             this.idCategoria = null;
             this.nombre = nombre;
-            this.color = color;
         }
 
-        public CategoriaIngreso(int idCategoria, string nombre, int color)
+        public CategoriaIngreso(int idCategoria, string nombre)
         {
             this.idCategoria = idCategoria;
             this.nombre = nombre;
-            this.color = color;
-        }
-
-        public static bool ExisteColor(int color)
-        {
-            string queryString = "SELECT idCategoria FROM categoriaGasto WHERE color = @color;";
-
-            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
-            query.Parameters.AddWithValue("@color", color);
-
-            ConexionDB.AbrirConexion();
-
-            bool existe;
-
-            using (MySqlDataReader result = query.ExecuteReader())
-            {
-                existe = result.HasRows;
-            }
-
-            ConexionDB.CerrarConexion();
-
-            return existe;
         }
 
         public static bool ExisteNombre(string nombre)
         {
-            string queryString = "SELECT idCategoria FROM categoriaGasto WHERE nombre = @nombre;";
+            string queryString = "SELECT idCategoria FROM categoriaIngreso WHERE nombre = @nombre;";
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
             query.Parameters.AddWithValue("@nombre", nombre);
@@ -73,7 +49,7 @@ namespace Gestionis.Clases
         {
             List<String> nombresCategorias = new List<string>();
 
-            string queryString = "SELECT nombre FROM categoriaGasto";
+            string queryString = "SELECT nombre FROM categoriaIngreso";
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
 
@@ -96,7 +72,7 @@ namespace Gestionis.Clases
         
         public static int DevuelveIDCategoria(string nombre)
         {
-            string queryString = "SELECT idCategoria FROM categoriaGasto WHERE nombre = @nombre";
+            string queryString = "SELECT idCategoria FROM categoriaIngreso WHERE nombre = @nombre";
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
             query.Parameters.AddWithValue("@nombre", nombre);
@@ -112,13 +88,12 @@ namespace Gestionis.Clases
 
         public void Add()
         {
-            string queryString = "INSERT INTO categoriaGasto (idCategoria, nombre, color) " +
-                "VALUES (@idCategoria, @nombre, @color);";
+            string queryString = "INSERT INTO categoriaIngreso (idCategoria, nombre) " +
+                "VALUES (@idCategoria, @nombre);";
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
             query.Parameters.AddWithValue("@idCategoria", idCategoria);
             query.Parameters.AddWithValue("@nombre", nombre);
-            query.Parameters.AddWithValue("@color", color);
 
             ConexionDB.AbrirConexion();
 

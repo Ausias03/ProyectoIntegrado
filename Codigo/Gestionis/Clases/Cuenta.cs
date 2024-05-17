@@ -37,7 +37,7 @@ namespace Gestionis.Clases
             ConexionDB.CerrarConexion();
 
             return numCuenta;
-        }        
+        }
 
         public void Add()
         {
@@ -59,7 +59,8 @@ namespace Gestionis.Clases
         public double DineroTotal()
         {
             List<Gasto> gastos = Gasto.DevuelveGastos(numCuenta ?? default(int));
-            return /*TotalIngresos()*/ - TotalGastos(gastos);
+            List<Ingreso> ingresos = Ingreso.DevuelveIngresos(numCuenta ?? default(int));
+            return TotalIngresos(ingresos) - TotalGastos(gastos);
         }
 
         private double TotalGastos(List<Gasto> gastos)
@@ -70,6 +71,16 @@ namespace Gestionis.Clases
                 totalGastos += gastos[i].Cantidad;
             }
             return totalGastos;
+        }
+
+        private double TotalIngresos(List<Ingreso> ingresos)
+        {
+            double totalIngresos = 0;
+            for (int i = 0; i < ingresos.Count; i++)
+            {
+                totalIngresos += ingresos[i].Cantidad;
+            }
+            return totalIngresos;
         }
     }
 }
