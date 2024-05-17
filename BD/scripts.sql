@@ -21,7 +21,7 @@ numCuenta INT PRIMARY KEY AUTO_INCREMENT,
 apodoUsuario VARCHAR(45) NOT NULL,
 totalDinero FLOAT NOT NULL,
 pasivos FLOAT NOT NULL,
-FOREIGN KEY (apodoUsuario) REFERENCES usuario(apodo)
+FOREIGN KEY (apodoUsuario) REFERENCES usuario(apodo) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS notificacion (
@@ -31,13 +31,13 @@ titulo VARCHAR(45) NOT NULL,
 categoria VARCHAR(45) NOT NULL,
 descripcion VARCHAR(45),
 fecha DATE NOT NULL,
-FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta)
+FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS categoriaGasto (
 idCategoria INT PRIMARY KEY AUTO_INCREMENT,
 nombre VARCHAR(45) NOT NULL,
-color INT NOT NULL
+color VARCHAR(7) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS categoriaIngreso (
@@ -54,8 +54,9 @@ categoria INT NOT NULL,
 tipo VARCHAR(45) NOT NULL,
 comentarios VARCHAR(300),
 fecha DATE NOT NULL,
-FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta),
-FOREIGN KEY (categoria) REFERENCES categoriaGasto(idCategoria)
+hora TIME NOT NULL,
+FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta) ON DELETE CASCADE,
+FOREIGN KEY (categoria) REFERENCES categoriaGasto(idCategoria) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS ingreso (
@@ -67,8 +68,9 @@ tipo VARCHAR(45) NOT NULL,
 categoria INT NOT NULL,
 comentarios VARCHAR(300),
 fecha DATE NOT NULL,
-FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta),
-FOREIGN KEY (categoria) REFERENCES categoriaIngreso(idCategoria)
+hora TIME NOT NULL,
+FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta) ON DELETE CASCADE,
+FOREIGN KEY (categoria) REFERENCES categoriaIngreso(idCategoria) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS activo (
@@ -76,7 +78,7 @@ idActivo INT PRIMARY KEY AUTO_INCREMENT,
 numCuenta INT NULL,
 nombre VARCHAR(45) NOT NULL,
 valorAdquisicion FLOAT NOT NULL,
-FOREIGN KEY (numCuenta) REFERENCES Cuenta(numCuenta)
+FOREIGN KEY (numCuenta) REFERENCES Cuenta(numCuenta) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS coche (
@@ -84,7 +86,7 @@ idActivo INT PRIMARY KEY AUTO_INCREMENT,
 marca VARCHAR(45) NOT NULL,
 modelo VARCHAR(45) NOT NULL,
 anyo DATE NOT NULL,
-FOREIGN KEY (idActivo) REFERENCES Activo(idActivo)
+FOREIGN KEY (idActivo) REFERENCES Activo(idActivo) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS bienRaiz (
@@ -92,7 +94,7 @@ idActivo INT PRIMARY KEY AUTO_INCREMENT,
 tipo VARCHAR(45) NOT NULL,
 ubicacion VARCHAR(45) NOT NULL,
 construcNueva TINYINT NOT NULL,
-FOREIGN KEY (idActivo) REFERENCES Activo(idActivo)
+FOREIGN KEY (idActivo) REFERENCES Activo(idActivo) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS deuda (
@@ -105,18 +107,18 @@ cantidad FLOAT NOT NULL,
 fechaCreacion DATE NOT NULL,
 fechaVencimiento DATE NOT NULL,
 anyadirRecordatorio BOOL NOT NULL,
-FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta)
+FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS nota (
 idNota INT PRIMARY KEY AUTO_INCREMENT,
-idDeuda INT NOT NULL NOT NULL,
+idDeuda INT NULL,
 apodoUsuario VARCHAR(15) NOT NULL,
 titulo VARCHAR(45) NOT NULL,
 alarma BOOL NOT NULL,
-color INT NOT NULL,
+color VARCHAR(7) NOT NULL,
 descripcion VARCHAR(45),
-fechaRecoradtorio DATE,
-FOREIGN KEY (idDeuda) REFERENCES deuda(idDeuda),
-FOREIGN KEY (apodoUsuario) REFERENCES usuario(apodo)
+fechaRecordatorio DATE,
+FOREIGN KEY (idDeuda) REFERENCES deuda(idDeuda) ON DELETE CASCADE,
+FOREIGN KEY (apodoUsuario) REFERENCES usuario(apodo) ON DELETE CASCADE
 );
