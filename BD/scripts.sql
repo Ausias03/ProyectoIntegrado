@@ -19,7 +19,6 @@ foto BLOB NOT NULL
 CREATE TABLE IF NOT EXISTS cuenta (
 numCuenta INT PRIMARY KEY AUTO_INCREMENT,
 apodoUsuario VARCHAR(45) NOT NULL,
-totalDinero FLOAT NOT NULL,
 pasivos FLOAT NOT NULL,
 FOREIGN KEY (apodoUsuario) REFERENCES usuario(apodo) ON DELETE CASCADE
 );
@@ -37,7 +36,7 @@ FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta) ON DELETE CASCADE
 CREATE TABLE IF NOT EXISTS categoriaGasto (
 idCategoria INT PRIMARY KEY AUTO_INCREMENT,
 nombre VARCHAR(45) NOT NULL,
-color VARCHAR(7) NOT NULL
+color INT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS categoriaIngreso (
@@ -65,7 +64,7 @@ numCuenta INT NOT NULL,
 nombre VARCHAR(45) NOT NULL,
 cantidad FLOAT NOT NULL,
 tipo VARCHAR(45) NOT NULL,
-categoria INT NOT NULL,
+categoria INT NULL,
 comentarios VARCHAR(300),
 fecha DATE NOT NULL,
 hora TIME NOT NULL,
@@ -116,9 +115,15 @@ idDeuda INT NULL,
 apodoUsuario VARCHAR(15) NOT NULL,
 titulo VARCHAR(45) NOT NULL,
 alarma BOOL NOT NULL,
-color VARCHAR(7) NOT NULL,
+color INT NOT NULL,
 descripcion VARCHAR(45),
 fechaRecordatorio DATE,
 FOREIGN KEY (idDeuda) REFERENCES deuda(idDeuda) ON DELETE CASCADE,
 FOREIGN KEY (apodoUsuario) REFERENCES usuario(apodo) ON DELETE CASCADE
 );
+
+INSERT INTO categoriaIngreso (idCategoria, nombre)
+VALUES (NULL, "Inversión");
+
+INSERT INTO categoriaIngreso (idCategoria, nombre)
+VALUES (NULL, "Venta");
