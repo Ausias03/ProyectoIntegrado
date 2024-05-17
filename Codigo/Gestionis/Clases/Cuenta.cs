@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,26 +14,39 @@ namespace Gestionis.Clases
     {
         private int? numCuenta;
         private string apodoUsuario;
-        private float totalDinero;
         private float pasivos;
 
         public Cuenta(string apodoUsuario)
         {
             this.numCuenta = null;
             this.apodoUsuario = apodoUsuario;
-            this.totalDinero = 0;
             this.pasivos = 0;
         }
 
+        public static int IDCuentaUsuario(string apodoUsuario)
+        {
+            string queryString = "SELECT numCuenta FROM cuenta WHERE apodoUsuario = @apodoUsuario;";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+            query.Parameters.AddWithValue("@apodoUsuario", apodoUsuario);
+
+            ConexionDB.AbrirConexion();
+
+            int numCuenta = (int)query.ExecuteScalar();
+
+            ConexionDB.CerrarConexion();
+
+            return numCuenta;
+        }        
+
         public void Add()
         {
-            string queryString = "INSERT INTO cuenta (numCuenta, apodoUsuario, totalDinero, pasivos) " +
-                "VALUES (@numCuenta, @apodoUsuario, @totalDinero, @pasivos);";
+            string queryString = "INSERT INTO cuenta (numCuenta, apodoUsuario, pasivos) " +
+                "VALUES (@numCuenta, @apodoUsuario, @pasivos);";
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
             query.Parameters.AddWithValue("@numCuenta", numCuenta);
             query.Parameters.AddWithValue("@apodoUsuario", apodoUsuario);
-            query.Parameters.AddWithValue("@totalDinero", totalDinero);
             query.Parameters.AddWithValue("@pasivos", pasivos);
 
             ConexionDB.AbrirConexion();
@@ -40,6 +54,22 @@ namespace Gestionis.Clases
             query.ExecuteNonQuery();
 
             ConexionDB.CerrarConexion();
+        }
+
+        public double DineroTotal()
+        {
+            List<Gasto> gastos = Gasto.DevuelveGastos(numCuenta ?? default(int));
+            return /*TotalIngresos()*/ - TotalGastos(gastos);
+        }
+
+        private double TotalGastos(List<Gasto> gastos)
+        {
+            double totalGastos = 0;
+            for (int i = 0; i < gastos.Count; i++)
+            {
+                totalGastos += gastos[i].Cantidad;
+            }
+            return totalGastos;
         }
     }
 }

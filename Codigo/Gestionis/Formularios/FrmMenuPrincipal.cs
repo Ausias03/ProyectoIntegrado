@@ -16,7 +16,11 @@ using Gestionis.Clases;
 namespace Gestionis
 {
     public partial class FrmMenuPrincipal : FrmBarraPrincipal
-    {       
+    {
+        private string apodoUsuario;
+
+        public string ApodoUsuario { set { apodoUsuario = value; } }
+
         public FrmMenuPrincipal()
         {
             InitializeComponent();
@@ -57,12 +61,14 @@ namespace Gestionis
         private void btnGasto_Click(object sender, EventArgs e)
         {
             frmAnyadirGasto fAG = new frmAnyadirGasto();
+            fAG.NumCuenta = Cuenta.IDCuentaUsuario(apodoUsuario);
             fAG.ShowDialog();
         }
 
         private void btnIngreso_Click(object sender, EventArgs e)
         {
             frmAnyadirIngreso fAI = new frmAnyadirIngreso();
+            fAI.NumCuenta = Cuenta.IDCuentaUsuario(apodoUsuario);
             fAI.ShowDialog();
         }
 

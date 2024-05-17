@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gestionis.Clases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -54,11 +55,26 @@ namespace Gestionis
                 return;
             }
 
-            //if (Categoria.ExisteColor(btnAddCategoria.BackColor.ToArgb()))
-            //{
-            //    MessageBox.Show("Ya existe una categoría con ese color.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return;
-            //}
+            if (CategoriaGasto.ExisteNombre(txtNombreCat.Text))
+            {
+                MessageBox.Show("Ya existe una categoría con ese nombre.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (CategoriaGasto.ExisteColor(btnColorCat.BackColor.ToArgb()))
+            {
+                MessageBox.Show("Ya existe una categoría con ese color.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            CategoriaGasto cg1 = new CategoriaGasto(
+                txtNombreCat.Text,
+                btnColorCat.BackColor.ToArgb()
+                );
+
+            cg1.Add();
+
+            this.Close();
         }
     }
 }
