@@ -24,21 +24,36 @@ namespace Gestionis
         private void FrmGestorDeudas_Load(object sender, EventArgs e)
         {
             string[] filtros = Deuda.Filtros();
-            for(int i = 0; i < filtros.Length; i++)
+            for (int i = 0; i < filtros.Length; i++)
             {
                 cmbCategoria.Items.Add(filtros[i]);
             }
-            //cmbCategoria.DataSource = cmbCategoria.Items[0];
+            cmbCategoria.SelectedIndex = 0;
+            Titulo();
+
             lblDeudasTotalesValor.Text = Deuda.DeudasTotales(2).ToString();
             ProximaDeuda();
         }
 
+        private void Titulo()
+        {
+            if (cmbCategoria.SelectedIndex == 0)
+            {
+                lblTitulo.Enabled = true;
+                txtTitulo.Enabled = true;
+            }
+            else
+            {
+                lblTitulo.Enabled = false;
+                txtTitulo.Enabled = false;
+            }
+        }
         private void ProximaDeuda()
         {
             Deuda deuda = new Deuda();
             deuda.GetProximaDeuda(2, deuda);
 
-            if(deuda.Titulo != null)
+            if (deuda.Titulo != null)
             {
                 lblProximaDeudaValor.Text = deuda.Titulo.ToString();
                 lblFechaLimiteValor.Text = deuda.FechaVencimiento.ToShortDateString();
@@ -47,7 +62,7 @@ namespace Gestionis
             else
             {
                 lblProximaDeudaValor.Text = string.Empty;
-                lblFechaLimiteValor .Text = string.Empty;
+                lblFechaLimiteValor.Text = string.Empty;
                 lblTipoValor.Text = string.Empty;
             }
         }
@@ -66,6 +81,17 @@ namespace Gestionis
             frmEliminarDeuda.ShowDialog();
             lblDeudasTotalesValor.Text = Deuda.DeudasTotales(2).ToString();
             ProximaDeuda();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+
+            Titulo();
+        }
+
+        private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Titulo();
         }
     }
 }

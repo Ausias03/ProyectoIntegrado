@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +14,21 @@ namespace Gestionis.Clases
         {
             const char espacio = ' ';
             return apodo.Contains(espacio);
+        }
+
+        public static DataTable RellenarDatos(string consulta)
+        {
+            DataTable tablaDatos = new DataTable();
+            ConexionDB.AbrirConexion();
+            using (MySqlCommand comando = new MySqlCommand(consulta))
+            {
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(comando))
+                {
+                    adapter.Fill(tablaDatos);
+                }
+            }
+            ConexionDB.CerrarConexion();
+            return tablaDatos;
         }
     }
 }

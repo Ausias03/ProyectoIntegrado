@@ -100,6 +100,7 @@ namespace Gestionis
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.BackColor = Color.Transparent;
+            lblTitulo.Enabled = false;
             lblTitulo.Location = new Point(54, 195);
             lblTitulo.Margin = new Padding(4, 0, 4, 0);
             lblTitulo.Name = "lblTitulo";
@@ -109,6 +110,7 @@ namespace Gestionis
             // 
             // txtTitulo
             // 
+            txtTitulo.Enabled = false;
             txtTitulo.Location = new Point(262, 193);
             txtTitulo.Name = "txtTitulo";
             txtTitulo.Size = new Size(214, 38);
@@ -226,6 +228,7 @@ namespace Gestionis
             cmbCategoria.Name = "cmbCategoria";
             cmbCategoria.Size = new Size(214, 39);
             cmbCategoria.TabIndex = 8;
+            cmbCategoria.SelectedIndexChanged += cmbCategoria_SelectedIndexChanged;
             // 
             // dgvGastosIngresos
             // 
@@ -260,6 +263,7 @@ namespace Gestionis
             btnBuscar.TabIndex = 3;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = false;
+            btnBuscar.Click += btnBuscar_Click;
             // 
             // btnEliminarDeuda
             // 
@@ -326,7 +330,7 @@ namespace Gestionis
             barraLateral1.Location = new Point(0, 81);
             barraLateral1.Margin = new Padding(4, 2, 4, 2);
             barraLateral1.Name = "barraLateral1";
-            barraLateral1.Size = new Size(316, 819);
+            barraLateral1.Size = new Size(274, 819);
             barraLateral1.TabIndex = 30;
             // 
             // FrmGestorDeudas

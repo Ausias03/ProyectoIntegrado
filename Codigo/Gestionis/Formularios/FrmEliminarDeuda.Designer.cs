@@ -53,16 +53,16 @@
             // txtTitulo
             // 
             txtTitulo.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtTitulo.Location = new Point(151, 30);
+            txtTitulo.Location = new Point(149, 30);
             txtTitulo.Name = "txtTitulo";
-            txtTitulo.Size = new Size(292, 32);
+            txtTitulo.Size = new Size(292, 38);
             txtTitulo.TabIndex = 38;
             // 
             // btnEliminar
             // 
             btnEliminar.BackColor = Color.FromArgb(178, 242, 187);
             btnEliminar.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEliminar.Location = new Point(373, 707);
+            btnEliminar.Location = new Point(357, 708);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(146, 46);
             btnEliminar.TabIndex = 37;
@@ -74,7 +74,7 @@
             // 
             btnCancelar.BackColor = Color.FromArgb(178, 242, 187);
             btnCancelar.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnCancelar.Location = new Point(28, 707);
+            btnCancelar.Location = new Point(26, 707);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(146, 46);
             btnCancelar.TabIndex = 36;
@@ -99,7 +99,7 @@
             lblFechVencimiento.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblFechVencimiento.Location = new Point(18, 446);
             lblFechVencimiento.Name = "lblFechVencimiento";
-            lblFechVencimiento.Size = new Size(199, 25);
+            lblFechVencimiento.Size = new Size(241, 31);
             lblFechVencimiento.TabIndex = 29;
             lblFechVencimiento.Text = "Fecha de vencimiento:";
             // 
@@ -110,7 +110,7 @@
             lblFechDeuda.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblFechDeuda.Location = new Point(16, 393);
             lblFechDeuda.Name = "lblFechDeuda";
-            lblFechDeuda.Size = new Size(169, 25);
+            lblFechDeuda.Size = new Size(205, 31);
             lblFechDeuda.TabIndex = 28;
             lblFechDeuda.Text = "Fecha de la deuda:";
             // 
@@ -121,7 +121,7 @@
             lblEstado.Font = new Font("Segoe UI", 13.8F, FontStyle.Underline, GraphicsUnit.Point, 0);
             lblEstado.Location = new Point(24, 276);
             lblEstado.Name = "lblEstado";
-            lblEstado.Size = new Size(201, 25);
+            lblEstado.Size = new Size(243, 31);
             lblEstado.TabIndex = 27;
             lblEstado.Text = "ESTADO DE LA DEUDA";
             // 
@@ -132,7 +132,7 @@
             lblDescrip.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblDescrip.Location = new Point(24, 85);
             lblDescrip.Name = "lblDescrip";
-            lblDescrip.Size = new Size(115, 25);
+            lblDescrip.Size = new Size(139, 31);
             lblDescrip.TabIndex = 26;
             lblDescrip.Text = "Descripción:";
             // 
@@ -143,7 +143,7 @@
             lblCantAdeudada.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblCantAdeudada.Location = new Point(24, 38);
             lblCantAdeudada.Name = "lblCantAdeudada";
-            lblCantAdeudada.Size = new Size(181, 25);
+            lblCantAdeudada.Size = new Size(221, 31);
             lblCantAdeudada.TabIndex = 25;
             lblCantAdeudada.Text = "Cantidad adeudada:";
             // 
@@ -151,9 +151,9 @@
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTitulo.Location = new Point(55, 26);
+            lblTitulo.Location = new Point(53, 26);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(64, 25);
+            lblTitulo.Size = new Size(77, 31);
             lblTitulo.TabIndex = 24;
             lblTitulo.Text = "Título:";
             // 
@@ -161,7 +161,7 @@
             // 
             btnBuscar.BackColor = Color.FromArgb(178, 242, 187);
             btnBuscar.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnBuscar.Location = new Point(297, 92);
+            btnBuscar.Location = new Point(295, 92);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(146, 46);
             btnBuscar.TabIndex = 43;
@@ -174,9 +174,9 @@
             lblCantidadAdeudadaValor.AutoSize = true;
             lblCantidadAdeudadaValor.BackColor = Color.Transparent;
             lblCantidadAdeudadaValor.Font = new Font("Segoe UI", 13.8F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblCantidadAdeudadaValor.Location = new Point(242, 38);
+            lblCantidadAdeudadaValor.Location = new Point(238, 38);
             lblCantidadAdeudadaValor.Name = "lblCantidadAdeudadaValor";
-            lblCantidadAdeudadaValor.Size = new Size(181, 25);
+            lblCantidadAdeudadaValor.Size = new Size(221, 31);
             lblCantidadAdeudadaValor.TabIndex = 44;
             lblCantidadAdeudadaValor.Text = "Cantidad adeudada:";
             // 
@@ -187,7 +187,7 @@
             lblTipo.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblTipo.Location = new Point(34, 332);
             lblTipo.Name = "lblTipo";
-            lblTipo.Size = new Size(53, 25);
+            lblTipo.Size = new Size(64, 31);
             lblTipo.TabIndex = 45;
             lblTipo.Text = "Tipo:";
             // 
@@ -196,9 +196,9 @@
             lblTipoValor.AutoSize = true;
             lblTipoValor.BackColor = Color.Transparent;
             lblTipoValor.Font = new Font("Segoe UI", 13.8F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblTipoValor.Location = new Point(104, 332);
+            lblTipoValor.Location = new Point(103, 332);
             lblTipoValor.Name = "lblTipoValor";
-            lblTipoValor.Size = new Size(53, 25);
+            lblTipoValor.Size = new Size(64, 31);
             lblTipoValor.TabIndex = 46;
             lblTipoValor.Text = "Tipo:";
             // 
@@ -209,7 +209,7 @@
             lblFechaDeudaValor.Font = new Font("Segoe UI", 13.8F, FontStyle.Underline, GraphicsUnit.Point, 0);
             lblFechaDeudaValor.Location = new Point(216, 393);
             lblFechaDeudaValor.Name = "lblFechaDeudaValor";
-            lblFechaDeudaValor.Size = new Size(169, 25);
+            lblFechaDeudaValor.Size = new Size(205, 31);
             lblFechaDeudaValor.TabIndex = 47;
             lblFechaDeudaValor.Text = "Fecha de la deuda:";
             // 
@@ -220,7 +220,7 @@
             lblFechaVencimientoValor.Font = new Font("Segoe UI", 13.8F, FontStyle.Underline, GraphicsUnit.Point, 0);
             lblFechaVencimientoValor.Location = new Point(258, 446);
             lblFechaVencimientoValor.Name = "lblFechaVencimientoValor";
-            lblFechaVencimientoValor.Size = new Size(169, 25);
+            lblFechaVencimientoValor.Size = new Size(205, 31);
             lblFechaVencimientoValor.TabIndex = 48;
             lblFechaVencimientoValor.Text = "Fecha de la deuda:";
             // 
@@ -237,9 +237,9 @@
             roundGroupBox1.Controls.Add(lblFechVencimiento);
             roundGroupBox1.Controls.Add(lblCantidadAdeudadaValor);
             roundGroupBox1.Controls.Add(rtbDescrip);
-            roundGroupBox1.Location = new Point(33, 163);
+            roundGroupBox1.Location = new Point(31, 163);
             roundGroupBox1.Name = "roundGroupBox1";
-            roundGroupBox1.Size = new Size(485, 516);
+            roundGroupBox1.Size = new Size(472, 516);
             roundGroupBox1.TabIndex = 49;
             roundGroupBox1.TabStop = false;
             roundGroupBox1.Text = "roundGroupBox1";
@@ -248,7 +248,7 @@
             // 
             btnRestablecer.BackColor = Color.FromArgb(178, 242, 187);
             btnRestablecer.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnRestablecer.Location = new Point(92, 92);
+            btnRestablecer.Location = new Point(90, 92);
             btnRestablecer.Name = "btnRestablecer";
             btnRestablecer.Size = new Size(146, 46);
             btnRestablecer.TabIndex = 50;
@@ -258,9 +258,9 @@
             // 
             // FrmEliminarDeuda
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(13F, 31F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(551, 766);
+            ClientSize = new Size(533, 766);
             Controls.Add(btnRestablecer);
             Controls.Add(roundGroupBox1);
             Controls.Add(btnBuscar);
