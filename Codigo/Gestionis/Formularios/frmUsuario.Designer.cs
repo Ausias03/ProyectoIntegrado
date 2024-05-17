@@ -64,10 +64,13 @@ namespace Gestionis
             lblNombre = new Label();
             picFoto = new PictureBox();
             barraSecundaria1 = new BarraSecundaria();
+            btnAyuda = new Button();
             barraLateral1 = new BarraLateral();
+            helpProvider1 = new HelpProvider();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             grpCuenta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picFoto).BeginInit();
+            barraSecundaria1.SuspendLayout();
             SuspendLayout();
             // 
             // lblTuCuenta
@@ -146,6 +149,7 @@ namespace Gestionis
             btnConfirmarFoto.Text = "Confirmar";
             btnConfirmarFoto.UseVisualStyleBackColor = false;
             btnConfirmarFoto.Visible = false;
+            btnConfirmarFoto.Click += btnConfirmarFoto_Click;
             // 
             // btnConfirmarApellidos
             // 
@@ -158,6 +162,7 @@ namespace Gestionis
             btnConfirmarApellidos.Text = "Confirmar";
             btnConfirmarApellidos.UseVisualStyleBackColor = false;
             btnConfirmarApellidos.Visible = false;
+            btnConfirmarApellidos.Click += BtnConfirmarApellidos_Click;
             // 
             // txtApellidos
             // 
@@ -177,6 +182,7 @@ namespace Gestionis
             btnCambiarApellidos.TabIndex = 51;
             btnCambiarApellidos.Text = "Cambiar";
             btnCambiarApellidos.UseVisualStyleBackColor = false;
+            btnCambiarApellidos.Click += BtnCambiarApellidos_Click;
             // 
             // lblApellidos
             // 
@@ -199,6 +205,7 @@ namespace Gestionis
             btnConfirmarTel.Text = "Confirmar";
             btnConfirmarTel.UseVisualStyleBackColor = false;
             btnConfirmarTel.Visible = false;
+            btnConfirmarTel.Click += BtnConfirmarTel_Click;
             // 
             // btnConfirmarDir
             // 
@@ -211,6 +218,7 @@ namespace Gestionis
             btnConfirmarDir.Text = "Confirmar";
             btnConfirmarDir.UseVisualStyleBackColor = false;
             btnConfirmarDir.Visible = false;
+            btnConfirmarDir.Click += BtnConfirmarDir_Click;
             // 
             // btnConfirmarCorreo
             // 
@@ -223,6 +231,7 @@ namespace Gestionis
             btnConfirmarCorreo.Text = "Confirmar";
             btnConfirmarCorreo.UseVisualStyleBackColor = false;
             btnConfirmarCorreo.Visible = false;
+            btnConfirmarCorreo.Click += BtnConfirmarCorreo_Click;
             // 
             // btnConfirmarApodo
             // 
@@ -235,6 +244,7 @@ namespace Gestionis
             btnConfirmarApodo.Text = "Confirmar";
             btnConfirmarApodo.UseVisualStyleBackColor = false;
             btnConfirmarApodo.Visible = false;
+            btnConfirmarApodo.Click += BtnConfirmarApodo_Click;
             // 
             // btnConfirmarNom
             // 
@@ -247,6 +257,7 @@ namespace Gestionis
             btnConfirmarNom.Text = "Confirmar";
             btnConfirmarNom.UseVisualStyleBackColor = false;
             btnConfirmarNom.Visible = false;
+            btnConfirmarNom.Click += btnConfirmarNom_Click;
             // 
             // txtTelefono
             // 
@@ -298,6 +309,7 @@ namespace Gestionis
             btnCambiarFoto.TabIndex = 39;
             btnCambiarFoto.Text = "Cambiar";
             btnCambiarFoto.UseVisualStyleBackColor = false;
+            btnCambiarFoto.Click += btnCambiarFoto_Click;
             // 
             // btnCambiarTel
             // 
@@ -309,6 +321,7 @@ namespace Gestionis
             btnCambiarTel.TabIndex = 38;
             btnCambiarTel.Text = "Cambiar";
             btnCambiarTel.UseVisualStyleBackColor = false;
+            btnCambiarTel.Click += btnCambiarTel_Click;
             // 
             // btnCambiarDir
             // 
@@ -320,6 +333,7 @@ namespace Gestionis
             btnCambiarDir.TabIndex = 37;
             btnCambiarDir.Text = "Cambiar";
             btnCambiarDir.UseVisualStyleBackColor = false;
+            btnCambiarDir.Click += btnCambiarDir_Click;
             // 
             // btnCambiarCorreo
             // 
@@ -331,6 +345,7 @@ namespace Gestionis
             btnCambiarCorreo.TabIndex = 36;
             btnCambiarCorreo.Text = "Cambiar";
             btnCambiarCorreo.UseVisualStyleBackColor = false;
+            btnCambiarCorreo.Click += btnCambiarCorreo_Click;
             // 
             // btnCambiarApodo
             // 
@@ -342,6 +357,7 @@ namespace Gestionis
             btnCambiarApodo.TabIndex = 35;
             btnCambiarApodo.Text = "Cambiar";
             btnCambiarApodo.UseVisualStyleBackColor = false;
+            btnCambiarApodo.Click += btnCambiarApodo_Click;
             // 
             // btnCambiarNom
             // 
@@ -353,6 +369,7 @@ namespace Gestionis
             btnCambiarNom.TabIndex = 32;
             btnCambiarNom.Text = "Cambiar";
             btnCambiarNom.UseVisualStyleBackColor = false;
+            btnCambiarNom.Click += btnCambiarNom_Click;
             // 
             // lblNivel
             // 
@@ -425,11 +442,22 @@ namespace Gestionis
             // barraSecundaria1
             // 
             barraSecundaria1.BackColor = Color.FromArgb(211, 208, 242);
+            barraSecundaria1.Controls.Add(btnAyuda);
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1818, 44);
+            barraSecundaria1.Size = new Size(1309, 44);
             barraSecundaria1.TabIndex = 5;
+            // 
+            // btnAyuda
+            // 
+            btnAyuda.Location = new Point(195, 9);
+            btnAyuda.Name = "btnAyuda";
+            btnAyuda.Size = new Size(94, 29);
+            btnAyuda.TabIndex = 7;
+            btnAyuda.Text = "Ayuda";
+            btnAyuda.UseVisualStyleBackColor = true;
+            btnAyuda.Click += btnAyuda_Click;
             // 
             // barraLateral1
             // 
@@ -444,7 +472,7 @@ namespace Gestionis
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1818, 836);
+            ClientSize = new Size(1309, 836);
             Controls.Add(barraLateral1);
             Controls.Add(barraSecundaria1);
             Controls.Add(grpCuenta);
@@ -461,8 +489,39 @@ namespace Gestionis
             grpCuenta.ResumeLayout(false);
             grpCuenta.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picFoto).EndInit();
+            barraSecundaria1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
+        }
+
+        private void BtnConfirmarApodo_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtnConfirmarCorreo_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtnConfirmarDir_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtnConfirmarTel_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtnCambiarApellidos_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtnConfirmarApellidos_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
@@ -501,5 +560,7 @@ namespace Gestionis
         private PictureBox picFoto;
         private BarraLateral barraLateral1;
         private BarraSecundaria barraSecundaria1;
+        private Button btnAyuda;
+        private HelpProvider helpProvider1;
     }
 }
