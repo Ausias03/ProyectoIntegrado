@@ -109,5 +109,117 @@ namespace Gestionis.Clases
 
             ConexionDB.CerrarConexion();
         }
+
+        //#region Arreglar
+        //public static List<Ingreso> BusquedaFecha(MySqlConnection conexion, DateTime fecha, int numCuenta)
+        //{
+        //    List<Ingreso> lista = new List<Ingreso>();
+        //    string consulta = String.Format("SELECT ingreso.hora,ingreso.tipo,categoriaingreso.nombre AS categoria,ingreso.nombre," +
+        //    "ingreso.cantidad,ingreso.comentarios FROM ingreso INNER JOIN categoriaingreso WHERE fecha = '{0}' " +
+        //    "AND numCuenta = '{1}';", fecha.ToString("yyyy/MM/dd"), numCuenta);
+        //    MySqlCommand comando = new MySqlCommand(consulta, conexion);
+        //    MySqlDataReader reader = comando.ExecuteReader();
+
+        //    if (reader.HasRows)
+        //    {
+        //        while (reader.Read())
+        //        {
+        //            Ingreso nuevo;
+        //            nuevo = new Ingreso(reader.GetTimeSpan(0), reader.GetString(1), reader.GetString(2),
+        //                reader.GetString(3), reader.GetString(4), reader.GetDouble(5));
+        //            lista.Add(nuevo);
+        //        }
+        //    }
+        //    reader.Close();
+        //    return lista;
+
+        //}‌
+
+        //public static List<Ingreso> Historial(MySqlConnection conexion, int numCuenta)
+        //{
+        //    DateTime fecha = DateTime.Today;
+        //    List<Ingreso> lista = new List<Ingreso>();
+        //    string consulta = String.Format("SELECT ingreso.hora,ingreso.tipo,categoriaingreso.nombre AS categoria,ingreso.nombre," +
+        //    "ingreso.cantidad,ingreso.comentarios FROM ingreso INNER JOIN categoriaingreso WHERE fecha = '{0}' " +
+        //    "AND numCuenta = '{1}';", fecha.ToString("yyyy/MM/dd"), numCuenta);
+        //    MySqlCommand comando = new MySqlCommand(consulta, conexion);
+        //    MySqlDataReader reader = comando.ExecuteReader();
+
+        //    if (reader.HasRows)
+        //    {
+        //        while (reader.Read())
+        //        {
+        //            Ingreso nuevo;
+        //            nuevo = new Ingreso(reader.GetTimeSpan(0), reader.GetString(1), reader.GetString(2),
+        //                reader.GetString(3), reader.GetString(4), reader.GetDouble(5));
+        //            lista.Add(nuevo);
+        //        }
+        //    }
+        //    reader.Close();
+        //    return lista;
+
+        //}‌
+
+        //public static List<Ingreso> BusquedaMetodica(MySqlConnection conexion, int filtrar, string param, DateTime fecha, int numCuenta)
+        //{
+        //    string filtro = "";
+        //    switch (filtrar)
+        //    {
+        //        case 1:
+        //            filtro = "categoriaingreso.nombre";
+        //            break;
+        //        case 2:
+        //            filtro = "ingreso.nombre";
+        //            break;
+        //        case 3:
+        //            filtro = "ingreso.cantidad";
+        //            break;
+        //    }
+        //    List<Ingreso> lista = new List<Ingreso>();
+        //    string consulta = String.Format("SELECT ingreso.hora,ingreso.tipo,categoriaingreso.nombre AS categoria,ingreso.nombre," +
+        //    "ingreso.cantidad,ingreso.comentarios FROM ingreso INNER JOIN categoriaingreso WHERE fecha = '{0}' AND numCuenta = '{1}' AND {2} = '{3}';",
+        //    fecha.ToString("yyyy/MM/dd"), numCuenta, filtro, param);
+        //    MySqlCommand comando = new MySqlCommand(consulta, conexion);
+        //    MySqlDataReader reader = comando.ExecuteReader();
+
+        //    if (reader.HasRows)
+        //    {
+        //        while (reader.Read())
+        //        {
+        //            Ingreso nuevo;
+        //            nuevo = new Ingreso(reader.GetTimeSpan(0), reader.GetString(1), reader.GetString(2),
+        //                reader.GetString(3), reader.GetString(4), reader.GetDouble(5));
+        //            lista.Add(nuevo);
+        //        }
+        //    }
+        //    reader.Close();
+        //    return lista;
+
+        //}‌
+
+        //public static List<Ingreso> BusquedaTipo(MySqlConnection conexion, string tipo, DateTime fecha, int numCuenta)
+        //{
+        //    List<Ingreso> lista = new List<Ingreso>();
+        //    string consulta = String.Format("SELECT ingreso.hora,ingreso.tipo,categoriaingreso.nombre AS categoria,ingreso.nombre," +
+        //    "ingreso.cantidad,ingreso.comentarios FROM ingreso INNER JOIN categoriaingreso WHERE fecha = '{0}' AND numCuenta = '{1}' AND tipo = '{2}';",
+        //    fecha.ToString("yyyy/MM/dd"), numCuenta, tipo);
+        //    MySqlCommand comando = new MySqlCommand(consulta, conexion);
+        //    MySqlDataReader reader = comando.ExecuteReader();
+
+        //    if (reader.HasRows)
+        //    {
+        //        while (reader.Read())
+        //        {
+        //            Ingreso nuevo;
+        //            nuevo = new Ingreso(reader.GetTimeSpan(0), reader.GetString(1), reader.GetString(2),
+        //                reader.GetString(3), reader.GetString(4), reader.GetDouble(5));
+        //            lista.Add(nuevo);
+        //        }
+        //    }
+        //    reader.Close();
+        //    return lista;
+
+        //}
+        //#endregion
     }
 }
