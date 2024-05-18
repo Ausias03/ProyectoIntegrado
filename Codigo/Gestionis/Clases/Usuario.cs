@@ -136,6 +136,7 @@ namespace Gestionis.Clases
 
         }
         #endregion
+        
         public static bool Existe(string apodo)
         {
             string queryString = "SELECT apodo FROM usuario WHERE apodo = @apodo;";
@@ -254,9 +255,10 @@ namespace Gestionis.Clases
 
         public bool CompruebaCredenciales(string contrasenya)
         {
+            var saltBytes = Convert.FromHexString(salt);
             var hashAComparar = Rfc2898DeriveBytes.Pbkdf2(
                 Encoding.UTF8.GetBytes(contrasenya),
-                Encoding.UTF8.GetBytes(salt),
+                saltBytes,
                 iterations,
                 hashAlgorithm,
                 keySize);

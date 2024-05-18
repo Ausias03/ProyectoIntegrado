@@ -9,15 +9,6 @@ namespace Gestionis.Clases
 {
     internal class CategoriaIngreso
     {
-        private int? idCategoria;
-        private string nombre;
-
-        public CategoriaIngreso(int idCategoria, string nombre)
-        {
-            this.idCategoria = idCategoria;
-            this.nombre = nombre;
-        }
-
         public static List<String> DevuelveNombresCategorias()
         {
             List<String> nombresCategorias = new List<string>();

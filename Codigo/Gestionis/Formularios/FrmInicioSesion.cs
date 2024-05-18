@@ -74,12 +74,12 @@ namespace Gestionis
 
                 Usuario usuario = Usuario.BuscaUsuario(txtNombreUsuario.Text);
 
-                //if (!usuario.CompruebaCredenciales(txtContrasenya.Text))
-                //{
-                //    MessageBox.Show("Contraseña Incorrecta", "Aviso",
-                //        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //    return;
-                //}
+                if (!usuario.CompruebaCredenciales(txtContrasenya.Text))
+                {
+                    MessageBox.Show("Contraseña Incorrecta", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
                 this.Hide();
                 FrmMenuPrincipal fMP = new FrmMenuPrincipal(usuario.GetCuenta() ,txtNombreUsuario.Text);
