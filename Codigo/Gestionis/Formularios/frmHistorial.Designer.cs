@@ -51,10 +51,10 @@
             // lblHistorial
             // 
             lblHistorial.AutoSize = true;
-            lblHistorial.Font = new Font("Roboto Mono", 24F);
+            lblHistorial.Font = new Font("Microsoft Sans Serif", 24F);
             lblHistorial.Location = new Point(310, 84);
             lblHistorial.Name = "lblHistorial";
-            lblHistorial.Size = new Size(239, 53);
+            lblHistorial.Size = new Size(133, 37);
             lblHistorial.TabIndex = 1;
             lblHistorial.Text = "Historial";
             // 
@@ -70,20 +70,20 @@
             // lblFecha
             // 
             lblFecha.AutoSize = true;
-            lblFecha.Font = new Font("Roboto Mono", 12F);
+            lblFecha.Font = new Font("Microsoft Sans Serif", 12F);
             lblFecha.Location = new Point(322, 152);
             lblFecha.Name = "lblFecha";
-            lblFecha.Size = new Size(48, 26);
+            lblFecha.Size = new Size(37, 20);
             lblFecha.TabIndex = 18;
             lblFecha.Text = "Hoy";
             lblFecha.Visible = false;
             // 
             // txtBuscar
             // 
-            txtBuscar.Font = new Font("Roboto Mono", 12F);
+            txtBuscar.Font = new Font("Microsoft Sans Serif", 12F);
             txtBuscar.Location = new Point(1346, 276);
             txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new Size(181, 34);
+            txtBuscar.Size = new Size(181, 26);
             txtBuscar.TabIndex = 19;
             // 
             // picBuscar
@@ -98,10 +98,10 @@
             // lblBuscar
             // 
             lblBuscar.AutoSize = true;
-            lblBuscar.Font = new Font("Roboto Mono", 12F);
+            lblBuscar.Font = new Font("Microsoft Sans Serif", 12F);
             lblBuscar.Location = new Point(1346, 247);
             lblBuscar.Name = "lblBuscar";
-            lblBuscar.Size = new Size(120, 26);
+            lblBuscar.Size = new Size(81, 20);
             lblBuscar.TabIndex = 20;
             lblBuscar.Text = "Buscador:";
             lblBuscar.Visible = false;
@@ -109,42 +109,42 @@
             // lblMetodo
             // 
             lblMetodo.AutoSize = true;
-            lblMetodo.Font = new Font("Roboto Mono", 12F);
+            lblMetodo.Font = new Font("Microsoft Sans Serif", 12F);
             lblMetodo.Location = new Point(1346, 313);
             lblMetodo.Name = "lblMetodo";
-            lblMetodo.Size = new Size(96, 26);
+            lblMetodo.Size = new Size(67, 20);
             lblMetodo.TabIndex = 21;
             lblMetodo.Text = "Metodo:";
             lblMetodo.Visible = false;
             // 
             // cmbMetodo
             // 
-            cmbMetodo.Font = new Font("Roboto Mono", 12F);
+            cmbMetodo.Font = new Font("Microsoft Sans Serif", 12F);
             cmbMetodo.FormattingEnabled = true;
             cmbMetodo.Items.AddRange(new object[] { "Tipo", "Categoria", "Nombre", "Cantidad" });
             cmbMetodo.Location = new Point(1346, 342);
             cmbMetodo.Name = "cmbMetodo";
-            cmbMetodo.Size = new Size(181, 34);
+            cmbMetodo.Size = new Size(181, 28);
             cmbMetodo.TabIndex = 22;
             cmbMetodo.Text = "Tipo";
             cmbMetodo.SelectedIndexChanged += cmbMetodo_SelectedIndexChanged;
             // 
             // dtpBuscaFecha
             // 
-            dtpBuscaFecha.Font = new Font("Roboto Mono", 12F);
+            dtpBuscaFecha.Font = new Font("Microsoft Sans Serif", 12F);
             dtpBuscaFecha.Format = DateTimePickerFormat.Short;
             dtpBuscaFecha.Location = new Point(1346, 210);
             dtpBuscaFecha.Name = "dtpBuscaFecha";
-            dtpBuscaFecha.Size = new Size(180, 34);
+            dtpBuscaFecha.Size = new Size(180, 26);
             dtpBuscaFecha.TabIndex = 23;
             // 
             // lblBuscaFecha
             // 
             lblBuscaFecha.AutoSize = true;
-            lblBuscaFecha.Font = new Font("Roboto Mono", 12F);
+            lblBuscaFecha.Font = new Font("Microsoft Sans Serif", 12F);
             lblBuscaFecha.Location = new Point(1346, 181);
             lblBuscaFecha.Name = "lblBuscaFecha";
-            lblBuscaFecha.Size = new Size(240, 26);
+            lblBuscaFecha.Size = new Size(157, 20);
             lblBuscaFecha.TabIndex = 24;
             lblBuscaFecha.Text = "Buscador por Fecha:";
             lblBuscaFecha.Visible = false;
@@ -164,7 +164,7 @@
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1727, 44);
+            barraSecundaria1.Size = new Size(1856, 44);
             barraSecundaria1.TabIndex = 26;
             // 
             // barraLateral1
@@ -178,20 +178,20 @@
             // 
             // cmbBuscador
             // 
-            cmbBuscador.Font = new Font("Roboto Mono", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cmbBuscador.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbBuscador.FormattingEnabled = true;
             cmbBuscador.Items.AddRange(new object[] { "Fijo", "Variable", "Salario", "Extra" });
             cmbBuscador.Location = new Point(1346, 276);
             cmbBuscador.Name = "cmbBuscador";
-            cmbBuscador.Size = new Size(181, 34);
+            cmbBuscador.Size = new Size(181, 28);
             cmbBuscador.TabIndex = 28;
             cmbBuscador.Text = "Fijo";
             // 
             // frmHistorial
             // 
-            AutoScaleDimensions = new SizeF(9F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1727, 842);
+            ClientSize = new Size(1856, 842);
             Controls.Add(cmbBuscador);
             Controls.Add(barraLateral1);
             Controls.Add(barraSecundaria1);
@@ -206,7 +206,7 @@
             Controls.Add(lblFecha);
             Controls.Add(dgvHistorial);
             Controls.Add(lblHistorial);
-            Font = new Font("Roboto Mono", 9F);
+            Font = new Font("Microsoft Sans Serif", 9F);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmHistorial";
             Load += frmHistorial_Load;

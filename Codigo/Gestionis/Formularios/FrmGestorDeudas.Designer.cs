@@ -412,6 +412,7 @@ namespace Gestionis
             Name = "FrmGestorDeudas";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmGestorDeudas";
+            WindowState = FormWindowState.Maximized;
             Load += FrmGestorDeudas_Load;
             Controls.SetChildIndex(roundGroupBox1, 0);
             Controls.SetChildIndex(rgbResumen, 0);
