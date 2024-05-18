@@ -23,6 +23,24 @@ namespace Gestionis
 
         private void FrmGestorDeudas_Load(object sender, EventArgs e)
         {
+            #region Botones
+            btnAnyadirDeuda.FlatStyle = FlatStyle.Flat;
+            btnAnyadirDeuda.FlatAppearance.BorderColor = Color.Black;
+            btnAnyadirDeuda.FlatAppearance.BorderSize = 2;
+
+            btnEliminarDeuda.FlatStyle = FlatStyle.Flat;
+            btnEliminarDeuda.FlatAppearance.BorderColor = Color.Black;
+            btnEliminarDeuda.FlatAppearance.BorderSize = 2;
+
+            btnBuscar.FlatStyle = FlatStyle.Flat;
+            btnBuscar.FlatAppearance.BorderColor = Color.Black;
+            btnBuscar.FlatAppearance.BorderSize = 2;
+
+            btnRestaurar.FlatStyle = FlatStyle.Flat;
+            btnRestaurar.FlatAppearance.BorderColor = Color.Black;
+            btnRestaurar.FlatAppearance.BorderSize = 2;
+            #endregion
+
             string[] filtros = Deuda.Filtros();
             for (int i = 0; i < filtros.Length; i++)
             {
@@ -34,15 +52,9 @@ namespace Gestionis
             lblDeudasTotalesValor.Text = Deuda.DeudasTotales(2).ToString();
             ProximaDeuda();
 
-            ActualizarTabla();
-        }
+            dgvGastosIngresos.DataSource = Deuda.RecargarTabla(2);
 
-        private void ActualizarTabla()
-        {
-            int numCuenta = 2;
-            string consulta = $"SELECT titulo, descripcion, cantidad, fechaCreacion, fechaVencimiento  FROM deuda WHERE numCuenta = {numCuenta}";
-
-            dgvGastosIngresos.DataSource = Utilidades.RellenarDatos(consulta);
+            prbDebo.Value = (int)Deuda.CalcularTotal(2, true);
         }
 
         private void Titulo()
@@ -54,6 +66,7 @@ namespace Gestionis
             }
             else
             {
+                txtTitulo.Clear();
                 lblTitulo.Enabled = false;
                 txtTitulo.Enabled = false;
             }
@@ -83,6 +96,7 @@ namespace Gestionis
             frmAnyadirDeuda.ShowDialog();
             lblDeudasTotalesValor.Text = Deuda.DeudasTotales(2).ToString();
             ProximaDeuda();
+            dgvGastosIngresos.DataSource = Deuda.RecargarTabla(2, chkDebo.Checked);
         }
 
         private void btnEliminarDeuda_Click(object sender, EventArgs e)
@@ -91,11 +105,12 @@ namespace Gestionis
             frmEliminarDeuda.ShowDialog();
             lblDeudasTotalesValor.Text = Deuda.DeudasTotales(2).ToString();
             ProximaDeuda();
+            dgvGastosIngresos.DataSource = Deuda.RecargarTabla(2, chkDebo.Checked);
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-
+            dgvGastosIngresos.DataSource = Deuda.CargarFiltro(2, cmbCategoria.Text, chkDebo.Checked, txtTitulo.Text);
             Titulo();
         }
 
@@ -106,7 +121,12 @@ namespace Gestionis
 
         private void btnRestaurar_Click(object sender, EventArgs e)
         {
-            ActualizarTabla();
+            dgvGastosIngresos.DataSource = Deuda.RecargarTabla(2);
+        }
+
+        private void chkDebo_CheckedChanged(object sender, EventArgs e)
+        {
+            dgvGastosIngresos.DataSource = Deuda.RecargarTabla(2, chkDebo.Checked);
         }
     }
 }

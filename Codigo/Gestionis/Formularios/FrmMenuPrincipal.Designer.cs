@@ -58,6 +58,8 @@ namespace Gestionis
             lblNotas = new Label();
             barraSecundaria1 = new BarraSecundaria();
             barraLateral1 = new BarraLateral();
+            monthCalendar1 = new MonthCalendar();
+            mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
             rgbMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvGastosIngresos).BeginInit();
             rgbCalendario.SuspendLayout();
@@ -87,9 +89,11 @@ namespace Gestionis
             rgbMenu.Controls.Add(lblLinea3);
             rgbMenu.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             rgbMenu.ForeColor = SystemColors.ControlText;
-            rgbMenu.Location = new Point(283, 128);
+            rgbMenu.Location = new Point(248, 96);
+            rgbMenu.Margin = new Padding(3, 2, 3, 2);
             rgbMenu.Name = "rgbMenu";
-            rgbMenu.Size = new Size(982, 618);
+            rgbMenu.Padding = new Padding(3, 2, 3, 2);
+            rgbMenu.Size = new Size(859, 465);
             rgbMenu.TabIndex = 3;
             rgbMenu.TabStop = false;
             // 
@@ -97,9 +101,9 @@ namespace Gestionis
             // 
             lblTotalValor.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblTotalValor.AutoSize = true;
-            lblTotalValor.Location = new Point(837, 148);
+            lblTotalValor.Location = new Point(732, 111);
             lblTotalValor.Name = "lblTotalValor";
-            lblTotalValor.Size = new Size(108, 32);
+            lblTotalValor.Size = new Size(87, 25);
             lblTotalValor.TabIndex = 12;
             lblTotalValor.Text = "Ingresos:";
             // 
@@ -107,9 +111,9 @@ namespace Gestionis
             // 
             lblGastosValor.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblGastosValor.AutoSize = true;
-            lblGastosValor.Location = new Point(837, 99);
+            lblGastosValor.Location = new Point(732, 74);
             lblGastosValor.Name = "lblGastosValor";
-            lblGastosValor.Size = new Size(108, 32);
+            lblGastosValor.Size = new Size(87, 25);
             lblGastosValor.TabIndex = 11;
             lblGastosValor.Text = "Ingresos:";
             // 
@@ -117,9 +121,9 @@ namespace Gestionis
             // 
             lblIngresosValor.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblIngresosValor.AutoSize = true;
-            lblIngresosValor.Location = new Point(837, 51);
+            lblIngresosValor.Location = new Point(732, 38);
             lblIngresosValor.Name = "lblIngresosValor";
-            lblIngresosValor.Size = new Size(108, 32);
+            lblIngresosValor.Size = new Size(87, 25);
             lblIngresosValor.TabIndex = 10;
             lblIngresosValor.Text = "Ingresos:";
             // 
@@ -127,9 +131,9 @@ namespace Gestionis
             // 
             lblTotal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblTotal.AutoSize = true;
-            lblTotal.Location = new Point(731, 148);
+            lblTotal.Location = new Point(640, 111);
             lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(70, 32);
+            lblTotal.Size = new Size(56, 25);
             lblTotal.TabIndex = 9;
             lblTotal.Text = "Total:";
             // 
@@ -137,9 +141,9 @@ namespace Gestionis
             // 
             lblGastos.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblGastos.AutoSize = true;
-            lblGastos.Location = new Point(731, 99);
+            lblGastos.Location = new Point(640, 74);
             lblGastos.Name = "lblGastos";
-            lblGastos.Size = new Size(89, 32);
+            lblGastos.Size = new Size(72, 25);
             lblGastos.TabIndex = 8;
             lblGastos.Text = "Gastos:";
             // 
@@ -147,45 +151,41 @@ namespace Gestionis
             // 
             lblIngresos.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblIngresos.AutoSize = true;
-            lblIngresos.Location = new Point(731, 51);
+            lblIngresos.Location = new Point(640, 38);
             lblIngresos.Name = "lblIngresos";
-            lblIngresos.Size = new Size(108, 32);
+            lblIngresos.Size = new Size(87, 25);
             lblIngresos.TabIndex = 7;
             lblIngresos.Text = "Ingresos:";
             // 
             // cmbCategoria
             // 
             cmbCategoria.FormattingEnabled = true;
-            cmbCategoria.Location = new Point(499, 229);
-            cmbCategoria.Margin = new Padding(3, 4, 3, 4);
+            cmbCategoria.Location = new Point(437, 172);
             cmbCategoria.Name = "cmbCategoria";
-            cmbCategoria.Size = new Size(146, 40);
+            cmbCategoria.Size = new Size(128, 33);
             cmbCategoria.TabIndex = 6;
             // 
             // cmbDinero
             // 
             cmbDinero.FormattingEnabled = true;
-            cmbDinero.Location = new Point(376, 229);
-            cmbDinero.Margin = new Padding(3, 4, 3, 4);
+            cmbDinero.Location = new Point(329, 172);
             cmbDinero.Name = "cmbDinero";
-            cmbDinero.Size = new Size(105, 40);
+            cmbDinero.Size = new Size(92, 33);
             cmbDinero.TabIndex = 5;
             // 
             // cmbTipo
             // 
             cmbTipo.FormattingEnabled = true;
-            cmbTipo.Location = new Point(287, 229);
-            cmbTipo.Margin = new Padding(3, 4, 3, 4);
+            cmbTipo.Location = new Point(251, 172);
             cmbTipo.Name = "cmbTipo";
-            cmbTipo.Size = new Size(71, 40);
+            cmbTipo.Size = new Size(63, 33);
             cmbTipo.TabIndex = 4;
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(47, 229);
-            txtNombre.Margin = new Padding(3, 4, 3, 4);
+            txtNombre.Location = new Point(41, 172);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(226, 39);
+            txtNombre.Size = new Size(198, 33);
             txtNombre.TabIndex = 3;
             // 
             // dgvGastosIngresos
@@ -193,20 +193,18 @@ namespace Gestionis
             dgvGastosIngresos.BackgroundColor = SystemColors.ControlLightLight;
             dgvGastosIngresos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvGastosIngresos.GridColor = SystemColors.Window;
-            dgvGastosIngresos.Location = new Point(47, 300);
-            dgvGastosIngresos.Margin = new Padding(3, 4, 3, 4);
+            dgvGastosIngresos.Location = new Point(41, 225);
             dgvGastosIngresos.Name = "dgvGastosIngresos";
             dgvGastosIngresos.RowHeadersWidth = 51;
-            dgvGastosIngresos.Size = new Size(599, 279);
+            dgvGastosIngresos.Size = new Size(524, 209);
             dgvGastosIngresos.TabIndex = 2;
             // 
             // btnGasto
             // 
             btnGasto.BackColor = Color.FromArgb(178, 242, 187);
-            btnGasto.Location = new Point(61, 121);
-            btnGasto.Margin = new Padding(3, 4, 3, 4);
+            btnGasto.Location = new Point(53, 91);
             btnGasto.Name = "btnGasto";
-            btnGasto.Size = new Size(183, 60);
+            btnGasto.Size = new Size(160, 45);
             btnGasto.TabIndex = 1;
             btnGasto.Text = "Nuevo Gasto";
             btnGasto.UseVisualStyleBackColor = false;
@@ -215,10 +213,9 @@ namespace Gestionis
             // btnIngreso
             // 
             btnIngreso.BackColor = Color.FromArgb(178, 242, 187);
-            btnIngreso.Location = new Point(61, 51);
-            btnIngreso.Margin = new Padding(3, 4, 3, 4);
+            btnIngreso.Location = new Point(53, 38);
             btnIngreso.Name = "btnIngreso";
-            btnIngreso.Size = new Size(183, 60);
+            btnIngreso.Size = new Size(160, 45);
             btnIngreso.TabIndex = 0;
             btnIngreso.Text = "Nuevo Ingreso";
             btnIngreso.UseVisualStyleBackColor = false;
@@ -228,9 +225,9 @@ namespace Gestionis
             // 
             lblLinea.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblLinea.AutoSize = true;
-            lblLinea.Location = new Point(729, 56);
+            lblLinea.Location = new Point(638, 42);
             lblLinea.Name = "lblLinea";
-            lblLinea.Size = new Size(214, 32);
+            lblLinea.Size = new Size(172, 25);
             lblLinea.TabIndex = 0;
             lblLinea.Text = "____________________";
             // 
@@ -238,9 +235,9 @@ namespace Gestionis
             // 
             lblLinea2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblLinea2.AutoSize = true;
-            lblLinea2.Location = new Point(731, 104);
+            lblLinea2.Location = new Point(640, 78);
             lblLinea2.Name = "lblLinea2";
-            lblLinea2.Size = new Size(214, 32);
+            lblLinea2.Size = new Size(172, 25);
             lblLinea2.TabIndex = 14;
             lblLinea2.Text = "____________________";
             // 
@@ -248,9 +245,9 @@ namespace Gestionis
             // 
             lblLinea3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblLinea3.AutoSize = true;
-            lblLinea3.Location = new Point(730, 152);
+            lblLinea3.Location = new Point(639, 114);
             lblLinea3.Name = "lblLinea3";
-            lblLinea3.Size = new Size(214, 32);
+            lblLinea3.Size = new Size(172, 25);
             lblLinea3.TabIndex = 13;
             lblLinea3.Text = "____________________";
             // 
@@ -262,11 +259,9 @@ namespace Gestionis
             rgbCalendario.Controls.Add(lblMes);
             rgbCalendario.Controls.Add(label3);
             rgbCalendario.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            rgbCalendario.Location = new Point(13768, 196);
-            rgbCalendario.Margin = new Padding(3, 4, 3, 4);
+            rgbCalendario.Location = new Point(24988, 147);
             rgbCalendario.Name = "rgbCalendario";
-            rgbCalendario.Padding = new Padding(3, 4, 3, 4);
-            rgbCalendario.Size = new Size(227, 137);
+            rgbCalendario.Size = new Size(199, 103);
             rgbCalendario.TabIndex = 4;
             rgbCalendario.TabStop = false;
             // 
@@ -274,9 +269,9 @@ namespace Gestionis
             // 
             lblAdelante.AutoSize = true;
             lblAdelante.BackColor = Color.Transparent;
-            lblAdelante.Location = new Point(153, 3);
+            lblAdelante.Location = new Point(134, 2);
             lblAdelante.Name = "lblAdelante";
-            lblAdelante.Size = new Size(30, 32);
+            lblAdelante.Size = new Size(25, 25);
             lblAdelante.TabIndex = 3;
             lblAdelante.Text = ">";
             // 
@@ -284,9 +279,9 @@ namespace Gestionis
             // 
             lblAtras.AutoSize = true;
             lblAtras.BackColor = Color.Transparent;
-            lblAtras.Location = new Point(47, 3);
+            lblAtras.Location = new Point(41, 2);
             lblAtras.Name = "lblAtras";
-            lblAtras.Size = new Size(30, 32);
+            lblAtras.Size = new Size(25, 25);
             lblAtras.TabIndex = 2;
             lblAtras.Text = "<";
             // 
@@ -294,9 +289,9 @@ namespace Gestionis
             // 
             lblMes.AutoSize = true;
             lblMes.BackColor = Color.Transparent;
-            lblMes.Location = new Point(86, 3);
+            lblMes.Location = new Point(75, 2);
             lblMes.Name = "lblMes";
-            lblMes.Size = new Size(59, 32);
+            lblMes.Size = new Size(47, 25);
             lblMes.TabIndex = 1;
             lblMes.Text = "Mes";
             // 
@@ -304,9 +299,9 @@ namespace Gestionis
             // 
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
-            label3.Location = new Point(-5, 8);
+            label3.Location = new Point(-4, 6);
             label3.Name = "label3";
-            label3.Size = new Size(264, 32);
+            label3.Size = new Size(212, 25);
             label3.TabIndex = 0;
             label3.Text = "_________________________";
             // 
@@ -315,10 +310,9 @@ namespace Gestionis
             btnSalir.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnSalir.BackColor = Color.FromArgb(178, 242, 187);
             btnSalir.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSalir.Location = new Point(13866, 789);
-            btnSalir.Margin = new Padding(3, 4, 3, 4);
+            btnSalir.Location = new Point(25074, 820);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(174, 60);
+            btnSalir.Size = new Size(152, 45);
             btnSalir.TabIndex = 15;
             btnSalir.Text = "Salir";
             btnSalir.UseVisualStyleBackColor = false;
@@ -330,10 +324,9 @@ namespace Gestionis
             pnlNotas.BackColor = Color.FromArgb(205, 213, 221);
             pnlNotas.Controls.Add(lblNotasValor);
             pnlNotas.Controls.Add(lblNotas);
-            pnlNotas.Location = new Point(13728, 396);
-            pnlNotas.Margin = new Padding(3, 4, 3, 4);
+            pnlNotas.Location = new Point(24953, 297);
             pnlNotas.Name = "pnlNotas";
-            pnlNotas.Size = new Size(314, 241);
+            pnlNotas.Size = new Size(275, 181);
             pnlNotas.TabIndex = 16;
             // 
             // lblNotasValor
@@ -341,9 +334,9 @@ namespace Gestionis
             lblNotasValor.AutoSize = true;
             lblNotasValor.BackColor = Color.Transparent;
             lblNotasValor.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblNotasValor.Location = new Point(3, 52);
+            lblNotasValor.Location = new Point(3, 39);
             lblNotasValor.Name = "lblNotasValor";
-            lblNotasValor.Size = new Size(155, 32);
+            lblNotasValor.Size = new Size(123, 25);
             lblNotasValor.TabIndex = 5;
             lblNotasValor.Text = "Notas del día";
             // 
@@ -354,7 +347,7 @@ namespace Gestionis
             lblNotas.Font = new Font("Segoe UI", 14.25F, FontStyle.Underline, GraphicsUnit.Point, 0);
             lblNotas.Location = new Point(3, 1);
             lblNotas.Name = "lblNotas";
-            lblNotas.Size = new Size(155, 32);
+            lblNotas.Size = new Size(123, 25);
             lblNotas.TabIndex = 4;
             lblNotas.Text = "Notas del día";
             // 
@@ -363,34 +356,47 @@ namespace Gestionis
             barraSecundaria1.BackColor = Color.FromArgb(211, 208, 242);
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
-            barraSecundaria1.Margin = new Padding(3, 4, 3, 4);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1818, 47);
+            barraSecundaria1.Size = new Size(1839, 35);
             barraSecundaria1.TabIndex = 17;
             // 
             // barraLateral1
             // 
             barraLateral1.BackColor = Color.FromArgb(205, 213, 221);
             barraLateral1.Dock = DockStyle.Left;
-            barraLateral1.Location = new Point(0, 87);
-            barraLateral1.Margin = new Padding(3, 4, 3, 4);
+            barraLateral1.Location = new Point(0, 75);
             barraLateral1.Name = "barraLateral1";
-            barraLateral1.Size = new Size(264, 813);
+            barraLateral1.Size = new Size(231, 828);
             barraLateral1.TabIndex = 18;
+            // 
+            // monthCalendar1
+            // 
+            monthCalendar1.Location = new Point(1224, 199);
+            monthCalendar1.Name = "monthCalendar1";
+            monthCalendar1.TabIndex = 19;
+            // 
+            // mySqlCommand1
+            // 
+            mySqlCommand1.CacheAge = 0;
+            mySqlCommand1.Connection = null;
+            mySqlCommand1.EnableCaching = false;
+            mySqlCommand1.Transaction = null;
             // 
             // FrmMenuPrincipal
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(233, 236, 239);
-            ClientSize = new Size(1818, 900);
+            ClientSize = new Size(1839, 903);
             ControlBox = false;
+            Controls.Add(monthCalendar1);
             Controls.Add(barraLateral1);
             Controls.Add(barraSecundaria1);
             Controls.Add(pnlNotas);
             Controls.Add(btnSalir);
             Controls.Add(rgbCalendario);
             Controls.Add(rgbMenu);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmMenuPrincipal";
             Text = "Gestionis";
             Load += FrmMenuPrincipal_Load;
@@ -400,6 +406,7 @@ namespace Gestionis
             Controls.SetChildIndex(pnlNotas, 0);
             Controls.SetChildIndex(barraSecundaria1, 0);
             Controls.SetChildIndex(barraLateral1, 0);
+            Controls.SetChildIndex(monthCalendar1, 0);
             rgbMenu.ResumeLayout(false);
             rgbMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvGastosIngresos).EndInit();
@@ -440,5 +447,7 @@ namespace Gestionis
         private Label lblNotasValor;
         private BarraSecundaria barraSecundaria1;
         private BarraLateral barraLateral1;
+        private MonthCalendar monthCalendar1;
+        private MySql.Data.MySqlClient.MySqlCommand mySqlCommand1;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace Gestionis.Clases
 {
@@ -188,6 +189,65 @@ namespace Gestionis.Clases
         {
             string[] filtro = { "Título", "Precio max.", "Precio min.", "Fecha deuda", "Fecha vencim" };
             return filtro;
+        }
+
+        public static DataTable RecargarTabla(int numCuenta)
+        {
+            return Utilidades.RellenarDatos($"SELECT titulo, descripcion, cantidad, fechaCreacion, fechaVencimiento FROM deuda WHERE numCuenta = {numCuenta}");
+        }
+
+        public static DataTable RecargarTabla(int numCuenta, bool debo)
+        {
+            return Utilidades.RellenarDatos($"SELECT titulo, descripcion, cantidad, fechaCreacion, fechaVencimiento FROM deuda WHERE numCuenta = {numCuenta} AND debo = {debo}");
+        }
+
+        public static DataTable CargarFiltro(int numCuenta, string filtro, bool debo, string titulo)
+        {
+            string consulta = $"SELECT titulo, descripcion, cantidad, fechaCreacion, fechaVencimiento FROM deuda WHERE numCuenta = {numCuenta} AND debo = {debo}";
+            switch (filtro)
+            {
+                case "Título":
+                    consulta += $" AND titulo = '{titulo}'";
+                    break;
+                case "Precio max.":
+                    consulta += $" AND cantidad = (SELECT MAX(cantidad) FROM deuda WHERE numCuenta = {numCuenta} AND debo = {debo})";
+                    break;
+                case "Precio min.":
+                    consulta += $" AND cantidad = (SELECT MIN(cantidad) FROM deuda WHERE numCuenta = {numCuenta} AND debo = {debo})";
+                    break;
+                case "Fecha deuda":
+                    consulta += $" AND fechaCreacion = (SELECT MIN(fechaCreacion) FROM deuda WHERE numCuenta = {numCuenta} AND debo = {debo})";
+                    break;
+                case "Fecha vencim":
+                    consulta += $" AND fechaVencimiento = (SELECT MIN(fechaVencimiento) FROM deuda WHERE numCuenta = {numCuenta} AND debo = {debo})";
+                    break;
+
+                default:
+                    break;
+            }
+
+            return Utilidades.RellenarDatos(consulta);
+        }
+
+        public static float CalcularTotal(int numCuenta, bool debo)
+        {
+            float resultado = 0;
+            string consulta = $"SELECT SUM(cantidad) FROM deuda WHERE numCuenta = {numCuenta} AND debo = {debo}";
+
+            try
+            {
+                using (MySqlCommand query = new MySqlCommand(consulta, ConexionDB.Conexion))
+                {
+                    ConexionDB.AbrirConexion();
+                    resultado = Convert.ToInt32(query.ExecuteScalar());
+                    ConexionDB.CerrarConexion();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return resultado;
         }
     }
 }
