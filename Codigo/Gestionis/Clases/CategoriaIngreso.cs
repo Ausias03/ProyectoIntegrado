@@ -12,37 +12,10 @@ namespace Gestionis.Clases
         private int? idCategoria;
         private string nombre;
 
-        public CategoriaIngreso(string nombre)
-        {
-            this.idCategoria = null;
-            this.nombre = nombre;
-        }
-
         public CategoriaIngreso(int idCategoria, string nombre)
         {
             this.idCategoria = idCategoria;
             this.nombre = nombre;
-        }
-
-        public static bool ExisteNombre(string nombre)
-        {
-            string queryString = "SELECT idCategoria FROM categoriaIngreso WHERE nombre = @nombre;";
-
-            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
-            query.Parameters.AddWithValue("@nombre", nombre);
-
-            ConexionDB.AbrirConexion();
-
-            bool existe;
-
-            using (MySqlDataReader result = query.ExecuteReader())
-            {
-                existe = result.HasRows;
-            }
-
-            ConexionDB.CerrarConexion();
-
-            return existe;
         }
 
         public static List<String> DevuelveNombresCategorias()
@@ -65,7 +38,7 @@ namespace Gestionis.Clases
                 }
             }
 
-            ConexionDB.CerrarConexion();
+            ConexionDB.CerrarConexion();            
 
             return nombresCategorias;
         }
@@ -86,20 +59,25 @@ namespace Gestionis.Clases
             return idCategoria;
         }
 
-        public void Add()
+        public static string DevuelveNombreCategoria(int? idCat)
         {
-            string queryString = "INSERT INTO categoriaIngreso (idCategoria, nombre) " +
-                "VALUES (@idCategoria, @nombre);";
+            if (idCat == null)
+            {
+                return string.Empty;
+            }
+
+            string queryString = "SELECT nombre FROM categoriaIngreso WHERE idCategoria = @idCategoria";
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
-            query.Parameters.AddWithValue("@idCategoria", idCategoria);
-            query.Parameters.AddWithValue("@nombre", nombre);
+            query.Parameters.AddWithValue("@idCategoria", idCat);
 
             ConexionDB.AbrirConexion();
 
-            query.ExecuteNonQuery();
+            string nombreCategoria = query.ExecuteScalar().ToString();
 
             ConexionDB.CerrarConexion();
+
+            return nombreCategoria;
         }
     }
 }

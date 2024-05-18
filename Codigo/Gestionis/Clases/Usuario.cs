@@ -12,7 +12,7 @@ using MySqlX.XDevAPI.Common;
 
 namespace Gestionis.Clases
 {
-    class Usuario
+    public class Usuario
     {
         #region Datos Contrasenya
         private const int keySize = 64;
@@ -157,7 +157,7 @@ namespace Gestionis.Clases
             return existe;
         }
 
-        public static Usuario? BuscaUsuario(string apodo)
+        public static Usuario BuscaUsuario(string apodo)
         {
             Usuario? usuario = null;
 
@@ -220,6 +220,36 @@ namespace Gestionis.Clases
             query.ExecuteNonQuery();
 
             ConexionDB.CerrarConexion();
+        }
+
+        public Cuenta GetCuenta()
+        {
+            Cuenta cuenta = null;
+
+            string queryString = "SELECT * FROM cuenta WHERE apodoUsuario = @apodo;";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+            query.Parameters.AddWithValue("@apodo", apodo);
+
+            ConexionDB.AbrirConexion();
+
+            using (MySqlDataReader reader = query.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    reader.Read();
+
+                    cuenta = new Cuenta(
+                        reader.GetInt32(0),
+                        reader.GetString(1),
+                        reader.GetFloat(2)
+                    );
+                }
+            }
+            
+            ConexionDB.CerrarConexion();
+
+            return cuenta;
         }
 
         public bool CompruebaCredenciales(string contrasenya)

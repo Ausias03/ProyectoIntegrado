@@ -8,8 +8,10 @@ using static Mysqlx.Crud.Order.Types;
 
 namespace Gestionis.Clases
 {
-    internal class Gasto
+    public class Gasto
     {
+        private static List<String> tiposGasto = new List<String>() { "Fijo", "Variable" };
+
         private int? idGasto;
         private int numCuenta;
         private string nombre;
@@ -48,40 +50,19 @@ namespace Gestionis.Clases
             this.hora = hora;
         }
 
+        // Necesarias para el dataSource de FrmMenuPrincipal
+        #region Propiedades
+        public static List<String> TiposGasto { get { return tiposGasto; } }
+        public int? IdGasto { get { return idGasto; } }
+        public int NumCuenta { get { return numCuenta; } }
+        public string Nombre { get { return nombre; } }
         public float Cantidad { get { return cantidad; } }
-
-        public static List<Gasto> DevuelveGastos(int numCuenta)
-        {
-            List<Gasto> gastos = new List<Gasto>();
-
-            string queryString = "SELECT * FROM gasto";
-
-            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
-
-            ConexionDB.AbrirConexion();
-
-            using (MySqlDataReader reader = query.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    gastos.Add(new Gasto(
-                        reader.GetInt32(0),
-                        reader.GetInt32(1),
-                        reader.GetString(2),
-                        reader.GetFloat(3),
-                        reader.GetInt32(4),
-                        reader.GetString(5),
-                        reader.GetSafeString(6),
-                        reader.GetDateTime(7),
-                        reader.GetTimeSpan(8)
-                    ));
-                }
-            }
-
-            ConexionDB.CerrarConexion();
-
-            return gastos;
-        }
+        public string Categoria { get { return CategoriaGasto.DevuelveNombreCategoria(categoria); } }
+        public string Tipo { get { return tipo; } }
+        public string? Comentarios { get { return comentarios; } }
+        public DateTime Fecha { get { return fecha; } }
+        public TimeSpan Hora { get {  return hora; } }
+        #endregion        
 
         public void Add()
         {

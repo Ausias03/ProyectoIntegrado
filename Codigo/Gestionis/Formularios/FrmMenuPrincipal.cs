@@ -17,11 +17,14 @@ namespace Gestionis
 {
     public partial class FrmMenuPrincipal : FrmBarraPrincipal
     {
-        private string apodoUsuario = Sesion.Instance.ApodoUsuario;
+        private Cuenta cuentaUsuario;
+        private string apodoUsuario;
 
-        public FrmMenuPrincipal()
+        public FrmMenuPrincipal(Cuenta cuentaUsuario, string apodoUsuario)
         {
             InitializeComponent();
+            this.cuentaUsuario = cuentaUsuario;
+            this.apodoUsuario = apodoUsuario;
         }
 
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
@@ -48,7 +51,25 @@ namespace Gestionis
 
             lblMes.Text = DateTime.Now.ToString("MMMM");
             lblNotasValor.Text = "";
-            #endregion
+            #endregion            
+        }
+
+        private void FrmMenuPrincipal_Activated(object sender, EventArgs e)
+        {
+            RecargaDGVGastos(cuentaUsuario.DevuelveGastos());
+            RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos());
+            lblIngresosValor.Text = cuentaUsuario.TotalIngresos().ToString() + " €";
+            lblGastosValor.Text = cuentaUsuario.TotalGastos().ToString() + " €";
+            lblTotalValor.Text = cuentaUsuario.DineroTotal().ToString() + " €";
+
+            ConfigurarComboBox(cmbTipoGasto, Gasto.TiposGasto);
+            ConfigurarComboBox(cmbCategoriaGasto, CategoriaGasto.DevuelveNombresCategorias());
+            ConfigurarComboBox(cmbTipoIngreso, Ingreso.TiposIngreso);
+
+            List<String> nombresCategorias = CategoriaIngreso.DevuelveNombresCategorias();
+            // Añado un elemento a la lista, ya que puede haber gastos sin categoría asignada
+            nombresCategorias.Add(String.Empty);
+            ConfigurarComboBox(cmbCategoriaIngreso, nombresCategorias);
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -73,6 +94,58 @@ namespace Gestionis
         private void pbHamburger_Click(object sender, EventArgs e)
         {
             BarraLateral.ColapsarExpandir(sender, e);
+        }
+
+        private void btnFiltrarGastos_Click(object sender, EventArgs e)
+        {
+            RecargaDGVGastos(cuentaUsuario.DevuelveGastos(txtNombreGasto.Text, cmbTipoGasto.Text, nudDineroGasto.Value, cmbCategoriaGasto.Text));
+        }
+
+        private void btnRestablecerGastos_Click(object sender, EventArgs e)
+        {
+            RecargaDGVGastos(cuentaUsuario.DevuelveGastos());
+            RestableceControlesGasto();
+        }
+
+        private void btnFiltrarIngresos_Click(object sender, EventArgs e)
+        {
+            RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos(txtNombreIngreso.Text, cmbTipoIngreso.Text, nudDineroIngreso.Value, cmbCategoriaIngreso.Text));
+        }
+
+        private void btnRestablecerIngresos_Click(object sender, EventArgs e)
+        {
+            RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos());
+            RestableceControlesIngreso();
+        }
+
+        private void ConfigurarComboBox(ComboBox comboBox, List<String> dataSource)
+        {
+            BindingSource bs = new BindingSource();
+            bs.DataSource = dataSource;
+            comboBox.DataSource = bs;
+        }
+
+        private void RecargaDGVGastos(List<Gasto> gastos)
+        {
+            dgvGastos.DataSource = gastos;
+        }
+        private void RecargaDGVIngresos(List<Ingreso> ingresos)
+        {
+            dgvIngresos.DataSource = ingresos;
+        }
+        private void RestableceControlesGasto()
+        {
+            txtNombreGasto.Text = String.Empty;
+            cmbTipoGasto.SelectedIndex = 0;
+            nudDineroGasto.Value = 0;
+            cmbCategoriaGasto.SelectedIndex = 0;
+        }
+        private void RestableceControlesIngreso()
+        {
+            txtNombreIngreso.Text = String.Empty;
+            cmbTipoIngreso.SelectedIndex = 0;
+            nudDineroIngreso.Value = 0;
+            cmbCategoriaIngreso.SelectedIndex = 0;
         }
     }
 }

@@ -80,7 +80,7 @@ namespace Gestionis
                 numCuenta,
                 txtNombreIngreso.Text,
                 (float)nudCantidad.Value,
-                rdbSalario.Checked ? "Salario" : "Fijo",
+                rdbSalario.Checked ? "Salario" : "Extra",
                 rdbSalario.Checked ? null : CategoriaIngreso.DevuelveIDCategoria(cboCategoria.Text),
                 txtComentarios.Text == String.Empty ? null : txtComentarios.Text
             );

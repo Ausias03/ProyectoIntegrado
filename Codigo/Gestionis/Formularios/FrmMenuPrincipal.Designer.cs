@@ -30,18 +30,31 @@ namespace Gestionis
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             rgbMenu = new RoundGroupBox();
+            btnRestablecerIngresos = new Button();
+            btnRestablecerGastos = new Button();
+            nudDineroIngreso = new NumericUpDown();
+            nudDineroGasto = new NumericUpDown();
+            btnFiltrarIngresos = new Button();
+            btnFiltrarGastos = new Button();
+            dgvIngresos = new DataGridView();
+            dgvGastos = new DataGridView();
+            cmbCategoriaIngreso = new ComboBox();
+            cmbTipoIngreso = new ComboBox();
+            txtNombreIngreso = new TextBox();
             lblTotalValor = new Label();
             lblGastosValor = new Label();
             lblIngresosValor = new Label();
             lblTotal = new Label();
             lblGastos = new Label();
             lblIngresos = new Label();
-            cmbCategoria = new ComboBox();
-            cmbDinero = new ComboBox();
-            cmbTipo = new ComboBox();
-            txtNombre = new TextBox();
-            dgvGastosIngresos = new DataGridView();
+            cmbCategoriaGasto = new ComboBox();
+            cmbTipoGasto = new ComboBox();
+            txtNombreGasto = new TextBox();
             btnGasto = new Button();
             btnIngreso = new Button();
             lblLinea = new Label();
@@ -58,10 +71,11 @@ namespace Gestionis
             lblNotas = new Label();
             barraSecundaria1 = new BarraSecundaria();
             barraLateral1 = new BarraLateral();
-            monthCalendar1 = new MonthCalendar();
-            mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
             rgbMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvGastosIngresos).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudDineroIngreso).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudDineroGasto).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvIngresos).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvGastos).BeginInit();
             rgbCalendario.SuspendLayout();
             pnlNotas.SuspendLayout();
             SuspendLayout();
@@ -71,17 +85,26 @@ namespace Gestionis
             rgbMenu.AutoSize = true;
             rgbMenu.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             rgbMenu.BackColor = Color.Transparent;
+            rgbMenu.Controls.Add(btnRestablecerIngresos);
+            rgbMenu.Controls.Add(btnRestablecerGastos);
+            rgbMenu.Controls.Add(nudDineroIngreso);
+            rgbMenu.Controls.Add(nudDineroGasto);
+            rgbMenu.Controls.Add(btnFiltrarIngresos);
+            rgbMenu.Controls.Add(btnFiltrarGastos);
+            rgbMenu.Controls.Add(dgvIngresos);
+            rgbMenu.Controls.Add(dgvGastos);
+            rgbMenu.Controls.Add(cmbCategoriaIngreso);
+            rgbMenu.Controls.Add(cmbTipoIngreso);
+            rgbMenu.Controls.Add(txtNombreIngreso);
             rgbMenu.Controls.Add(lblTotalValor);
             rgbMenu.Controls.Add(lblGastosValor);
             rgbMenu.Controls.Add(lblIngresosValor);
             rgbMenu.Controls.Add(lblTotal);
             rgbMenu.Controls.Add(lblGastos);
             rgbMenu.Controls.Add(lblIngresos);
-            rgbMenu.Controls.Add(cmbCategoria);
-            rgbMenu.Controls.Add(cmbDinero);
-            rgbMenu.Controls.Add(cmbTipo);
-            rgbMenu.Controls.Add(txtNombre);
-            rgbMenu.Controls.Add(dgvGastosIngresos);
+            rgbMenu.Controls.Add(cmbCategoriaGasto);
+            rgbMenu.Controls.Add(cmbTipoGasto);
+            rgbMenu.Controls.Add(txtNombreGasto);
             rgbMenu.Controls.Add(btnGasto);
             rgbMenu.Controls.Add(btnIngreso);
             rgbMenu.Controls.Add(lblLinea);
@@ -93,15 +116,148 @@ namespace Gestionis
             rgbMenu.Margin = new Padding(3, 2, 3, 2);
             rgbMenu.Name = "rgbMenu";
             rgbMenu.Padding = new Padding(3, 2, 3, 2);
-            rgbMenu.Size = new Size(859, 465);
+            rgbMenu.Size = new Size(1190, 531);
             rgbMenu.TabIndex = 3;
             rgbMenu.TabStop = false;
+            // 
+            // btnRestablecerIngresos
+            // 
+            btnRestablecerIngresos.Location = new Point(899, 459);
+            btnRestablecerIngresos.Name = "btnRestablecerIngresos";
+            btnRestablecerIngresos.Size = new Size(138, 41);
+            btnRestablecerIngresos.TabIndex = 26;
+            btnRestablecerIngresos.Text = "Restablecer";
+            btnRestablecerIngresos.UseVisualStyleBackColor = true;
+            btnRestablecerIngresos.Click += btnRestablecerIngresos_Click;
+            // 
+            // btnRestablecerGastos
+            // 
+            btnRestablecerGastos.Location = new Point(325, 459);
+            btnRestablecerGastos.Name = "btnRestablecerGastos";
+            btnRestablecerGastos.Size = new Size(138, 41);
+            btnRestablecerGastos.TabIndex = 25;
+            btnRestablecerGastos.Text = "Restablecer";
+            btnRestablecerGastos.UseVisualStyleBackColor = true;
+            btnRestablecerGastos.Click += btnRestablecerGastos_Click;
+            // 
+            // nudDineroIngreso
+            // 
+            nudDineroIngreso.DecimalPlaces = 2;
+            nudDineroIngreso.Location = new Point(914, 171);
+            nudDineroIngreso.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            nudDineroIngreso.Name = "nudDineroIngreso";
+            nudDineroIngreso.Size = new Size(112, 33);
+            nudDineroIngreso.TabIndex = 24;
+            // 
+            // nudDineroGasto
+            // 
+            nudDineroGasto.DecimalPlaces = 2;
+            nudDineroGasto.Location = new Point(342, 171);
+            nudDineroGasto.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            nudDineroGasto.Name = "nudDineroGasto";
+            nudDineroGasto.Size = new Size(112, 33);
+            nudDineroGasto.TabIndex = 23;
+            // 
+            // btnFiltrarIngresos
+            // 
+            btnFiltrarIngresos.Location = new Point(1043, 459);
+            btnFiltrarIngresos.Name = "btnFiltrarIngresos";
+            btnFiltrarIngresos.Size = new Size(124, 41);
+            btnFiltrarIngresos.TabIndex = 22;
+            btnFiltrarIngresos.Text = "Filtrar";
+            btnFiltrarIngresos.UseVisualStyleBackColor = true;
+            btnFiltrarIngresos.Click += btnFiltrarIngresos_Click;
+            // 
+            // btnFiltrarGastos
+            // 
+            btnFiltrarGastos.Location = new Point(469, 459);
+            btnFiltrarGastos.Name = "btnFiltrarGastos";
+            btnFiltrarGastos.Size = new Size(124, 41);
+            btnFiltrarGastos.TabIndex = 21;
+            btnFiltrarGastos.Text = "Filtrar";
+            btnFiltrarGastos.UseVisualStyleBackColor = true;
+            btnFiltrarGastos.Click += btnFiltrarGastos_Click;
+            // 
+            // dgvIngresos
+            // 
+            dgvIngresos.BackgroundColor = SystemColors.Menu;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvIngresos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvIngresos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvIngresos.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvIngresos.Location = new Point(615, 226);
+            dgvIngresos.Name = "dgvIngresos";
+            dgvIngresos.Size = new Size(552, 217);
+            dgvIngresos.TabIndex = 20;
+            // 
+            // dgvGastos
+            // 
+            dgvGastos.BackgroundColor = SystemColors.Menu;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvGastos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dgvGastos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dgvGastos.DefaultCellStyle = dataGridViewCellStyle4;
+            dgvGastos.Location = new Point(41, 226);
+            dgvGastos.Name = "dgvGastos";
+            dgvGastos.Size = new Size(552, 217);
+            dgvGastos.TabIndex = 19;
+            // 
+            // cmbCategoriaIngreso
+            // 
+            cmbCategoriaIngreso.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbCategoriaIngreso.FormattingEnabled = true;
+            cmbCategoriaIngreso.Location = new Point(1032, 172);
+            cmbCategoriaIngreso.Name = "cmbCategoriaIngreso";
+            cmbCategoriaIngreso.Size = new Size(135, 33);
+            cmbCategoriaIngreso.TabIndex = 19;
+            // 
+            // cmbTipoIngreso
+            // 
+            cmbTipoIngreso.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbTipoIngreso.FormattingEnabled = true;
+            cmbTipoIngreso.Location = new Point(793, 172);
+            cmbTipoIngreso.Name = "cmbTipoIngreso";
+            cmbTipoIngreso.Size = new Size(115, 33);
+            cmbTipoIngreso.TabIndex = 17;
+            // 
+            // txtNombreIngreso
+            // 
+            txtNombreIngreso.Location = new Point(615, 172);
+            txtNombreIngreso.Name = "txtNombreIngreso";
+            txtNombreIngreso.Size = new Size(172, 33);
+            txtNombreIngreso.TabIndex = 16;
             // 
             // lblTotalValor
             // 
             lblTotalValor.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblTotalValor.AutoSize = true;
-            lblTotalValor.Location = new Point(732, 111);
+            lblTotalValor.Location = new Point(1063, 111);
             lblTotalValor.Name = "lblTotalValor";
             lblTotalValor.Size = new Size(87, 25);
             lblTotalValor.TabIndex = 12;
@@ -111,7 +267,7 @@ namespace Gestionis
             // 
             lblGastosValor.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblGastosValor.AutoSize = true;
-            lblGastosValor.Location = new Point(732, 74);
+            lblGastosValor.Location = new Point(1063, 74);
             lblGastosValor.Name = "lblGastosValor";
             lblGastosValor.Size = new Size(87, 25);
             lblGastosValor.TabIndex = 11;
@@ -121,7 +277,7 @@ namespace Gestionis
             // 
             lblIngresosValor.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblIngresosValor.AutoSize = true;
-            lblIngresosValor.Location = new Point(732, 38);
+            lblIngresosValor.Location = new Point(1063, 38);
             lblIngresosValor.Name = "lblIngresosValor";
             lblIngresosValor.Size = new Size(87, 25);
             lblIngresosValor.TabIndex = 10;
@@ -131,7 +287,7 @@ namespace Gestionis
             // 
             lblTotal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblTotal.AutoSize = true;
-            lblTotal.Location = new Point(640, 111);
+            lblTotal.Location = new Point(971, 111);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(56, 25);
             lblTotal.TabIndex = 9;
@@ -141,7 +297,7 @@ namespace Gestionis
             // 
             lblGastos.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblGastos.AutoSize = true;
-            lblGastos.Location = new Point(640, 74);
+            lblGastos.Location = new Point(971, 74);
             lblGastos.Name = "lblGastos";
             lblGastos.Size = new Size(72, 25);
             lblGastos.TabIndex = 8;
@@ -151,60 +307,43 @@ namespace Gestionis
             // 
             lblIngresos.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblIngresos.AutoSize = true;
-            lblIngresos.Location = new Point(640, 38);
+            lblIngresos.Location = new Point(971, 38);
             lblIngresos.Name = "lblIngresos";
             lblIngresos.Size = new Size(87, 25);
             lblIngresos.TabIndex = 7;
             lblIngresos.Text = "Ingresos:";
             // 
-            // cmbCategoria
+            // cmbCategoriaGasto
             // 
-            cmbCategoria.FormattingEnabled = true;
-            cmbCategoria.Location = new Point(437, 172);
-            cmbCategoria.Name = "cmbCategoria";
-            cmbCategoria.Size = new Size(128, 33);
-            cmbCategoria.TabIndex = 6;
+            cmbCategoriaGasto.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbCategoriaGasto.FormattingEnabled = true;
+            cmbCategoriaGasto.Location = new Point(460, 171);
+            cmbCategoriaGasto.Name = "cmbCategoriaGasto";
+            cmbCategoriaGasto.Size = new Size(133, 33);
+            cmbCategoriaGasto.TabIndex = 6;
             // 
-            // cmbDinero
+            // cmbTipoGasto
             // 
-            cmbDinero.FormattingEnabled = true;
-            cmbDinero.Location = new Point(329, 172);
-            cmbDinero.Name = "cmbDinero";
-            cmbDinero.Size = new Size(92, 33);
-            cmbDinero.TabIndex = 5;
+            cmbTipoGasto.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbTipoGasto.FormattingEnabled = true;
+            cmbTipoGasto.Location = new Point(221, 172);
+            cmbTipoGasto.Name = "cmbTipoGasto";
+            cmbTipoGasto.Size = new Size(115, 33);
+            cmbTipoGasto.TabIndex = 4;
             // 
-            // cmbTipo
+            // txtNombreGasto
             // 
-            cmbTipo.FormattingEnabled = true;
-            cmbTipo.Location = new Point(251, 172);
-            cmbTipo.Name = "cmbTipo";
-            cmbTipo.Size = new Size(63, 33);
-            cmbTipo.TabIndex = 4;
-            // 
-            // txtNombre
-            // 
-            txtNombre.Location = new Point(41, 172);
-            txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(198, 33);
-            txtNombre.TabIndex = 3;
-            // 
-            // dgvGastosIngresos
-            // 
-            dgvGastosIngresos.BackgroundColor = SystemColors.ControlLightLight;
-            dgvGastosIngresos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvGastosIngresos.GridColor = SystemColors.Window;
-            dgvGastosIngresos.Location = new Point(41, 225);
-            dgvGastosIngresos.Name = "dgvGastosIngresos";
-            dgvGastosIngresos.RowHeadersWidth = 51;
-            dgvGastosIngresos.Size = new Size(524, 209);
-            dgvGastosIngresos.TabIndex = 2;
+            txtNombreGasto.Location = new Point(41, 172);
+            txtNombreGasto.Name = "txtNombreGasto";
+            txtNombreGasto.Size = new Size(172, 33);
+            txtNombreGasto.TabIndex = 3;
             // 
             // btnGasto
             // 
             btnGasto.BackColor = Color.FromArgb(178, 242, 187);
-            btnGasto.Location = new Point(53, 91);
+            btnGasto.Location = new Point(58, 38);
             btnGasto.Name = "btnGasto";
-            btnGasto.Size = new Size(160, 45);
+            btnGasto.Size = new Size(200, 80);
             btnGasto.TabIndex = 1;
             btnGasto.Text = "Nuevo Gasto";
             btnGasto.UseVisualStyleBackColor = false;
@@ -213,9 +352,9 @@ namespace Gestionis
             // btnIngreso
             // 
             btnIngreso.BackColor = Color.FromArgb(178, 242, 187);
-            btnIngreso.Location = new Point(53, 38);
+            btnIngreso.Location = new Point(264, 38);
             btnIngreso.Name = "btnIngreso";
-            btnIngreso.Size = new Size(160, 45);
+            btnIngreso.Size = new Size(200, 80);
             btnIngreso.TabIndex = 0;
             btnIngreso.Text = "Nuevo Ingreso";
             btnIngreso.UseVisualStyleBackColor = false;
@@ -225,7 +364,7 @@ namespace Gestionis
             // 
             lblLinea.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblLinea.AutoSize = true;
-            lblLinea.Location = new Point(638, 42);
+            lblLinea.Location = new Point(969, 42);
             lblLinea.Name = "lblLinea";
             lblLinea.Size = new Size(172, 25);
             lblLinea.TabIndex = 0;
@@ -235,7 +374,7 @@ namespace Gestionis
             // 
             lblLinea2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblLinea2.AutoSize = true;
-            lblLinea2.Location = new Point(640, 78);
+            lblLinea2.Location = new Point(971, 78);
             lblLinea2.Name = "lblLinea2";
             lblLinea2.Size = new Size(172, 25);
             lblLinea2.TabIndex = 14;
@@ -245,7 +384,7 @@ namespace Gestionis
             // 
             lblLinea3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblLinea3.AutoSize = true;
-            lblLinea3.Location = new Point(639, 114);
+            lblLinea3.Location = new Point(970, 114);
             lblLinea3.Name = "lblLinea3";
             lblLinea3.Size = new Size(172, 25);
             lblLinea3.TabIndex = 13;
@@ -310,7 +449,7 @@ namespace Gestionis
             btnSalir.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnSalir.BackColor = Color.FromArgb(178, 242, 187);
             btnSalir.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSalir.Location = new Point(32767, 820);
+            btnSalir.Location = new Point(32767, 592);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(152, 45);
             btnSalir.TabIndex = 15;
@@ -357,7 +496,7 @@ namespace Gestionis
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1839, 35);
+            barraSecundaria1.Size = new Size(1463, 35);
             barraSecundaria1.TabIndex = 17;
             // 
             // barraLateral1
@@ -366,30 +505,16 @@ namespace Gestionis
             barraLateral1.Dock = DockStyle.Left;
             barraLateral1.Location = new Point(0, 75);
             barraLateral1.Name = "barraLateral1";
-            barraLateral1.Size = new Size(231, 828);
+            barraLateral1.Size = new Size(231, 600);
             barraLateral1.TabIndex = 18;
-            // 
-            // monthCalendar1
-            // 
-            monthCalendar1.Location = new Point(1224, 199);
-            monthCalendar1.Name = "monthCalendar1";
-            monthCalendar1.TabIndex = 19;
-            // 
-            // mySqlCommand1
-            // 
-            mySqlCommand1.CacheAge = 0;
-            mySqlCommand1.Connection = null;
-            mySqlCommand1.EnableCaching = false;
-            mySqlCommand1.Transaction = null;
             // 
             // FrmMenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(233, 236, 239);
-            ClientSize = new Size(1839, 903);
+            ClientSize = new Size(1463, 675);
             ControlBox = false;
-            Controls.Add(monthCalendar1);
             Controls.Add(barraLateral1);
             Controls.Add(barraSecundaria1);
             Controls.Add(pnlNotas);
@@ -398,9 +523,8 @@ namespace Gestionis
             Controls.Add(rgbMenu);
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmMenuPrincipal";
-            StartPosition = FormStartPosition.CenterScreen;
             Text = "Gestionis";
-            WindowState = FormWindowState.Maximized;
+            Activated += FrmMenuPrincipal_Activated;
             Load += FrmMenuPrincipal_Load;
             Controls.SetChildIndex(rgbMenu, 0);
             Controls.SetChildIndex(rgbCalendario, 0);
@@ -408,10 +532,12 @@ namespace Gestionis
             Controls.SetChildIndex(pnlNotas, 0);
             Controls.SetChildIndex(barraSecundaria1, 0);
             Controls.SetChildIndex(barraLateral1, 0);
-            Controls.SetChildIndex(monthCalendar1, 0);
             rgbMenu.ResumeLayout(false);
             rgbMenu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvGastosIngresos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudDineroIngreso).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudDineroGasto).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvIngresos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvGastos).EndInit();
             rgbCalendario.ResumeLayout(false);
             rgbCalendario.PerformLayout();
             pnlNotas.ResumeLayout(false);
@@ -424,17 +550,15 @@ namespace Gestionis
         private RoundGroupBox rgbMenu;
         private Button btnGasto;
         private Button btnIngreso;
-        private DataGridView dgvGastosIngresos;
         private Label lblTotalValor;
         private Label lblGastosValor;
         private Label lblIngresosValor;
         private Label lblTotal;
         private Label lblGastos;
         private Label lblIngresos;
-        private ComboBox cmbCategoria;
-        private ComboBox cmbDinero;
-        private ComboBox cmbTipo;
-        private TextBox txtNombre;
+        private ComboBox cmbCategoriaGasto;
+        private ComboBox cmbTipoGasto;
+        private TextBox txtNombreGasto;
         private RoundGroupBox rgbCalendario;
         private Label lblLinea;
         private Label lblLinea2;
@@ -449,7 +573,16 @@ namespace Gestionis
         private Label lblNotasValor;
         private BarraSecundaria barraSecundaria1;
         private BarraLateral barraLateral1;
-        private MonthCalendar monthCalendar1;
-        private MySql.Data.MySqlClient.MySqlCommand mySqlCommand1;
+        private ComboBox cmbCategoriaIngreso;
+        private ComboBox cmbTipoIngreso;
+        private TextBox txtNombreIngreso;
+        private DataGridView dgvIngresos;
+        private DataGridView dgvGastos;
+        private Button btnFiltrarIngresos;
+        private Button btnFiltrarGastos;
+        private NumericUpDown nudDineroIngreso;
+        private NumericUpDown nudDineroGasto;
+        private Button btnRestablecerIngresos;
+        private Button btnRestablecerGastos;
     }
 }

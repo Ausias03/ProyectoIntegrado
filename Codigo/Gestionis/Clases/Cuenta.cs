@@ -7,10 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using static Mysqlx.Crud.Order.Types;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using Gestionis.Formularios;
 
 namespace Gestionis.Clases
 {
-    internal class Cuenta
+    public class Cuenta
     {
         private int? numCuenta;
         private string apodoUsuario;
@@ -21,6 +22,13 @@ namespace Gestionis.Clases
             this.numCuenta = null;
             this.apodoUsuario = apodoUsuario;
             this.pasivos = 0;
+        }
+
+        public Cuenta(int numCuenta, string apodoUsuario, float pasivos)
+        {
+            this.numCuenta = numCuenta;
+            this.apodoUsuario = apodoUsuario;
+            this.pasivos = pasivos;
         }
 
         public static int IDCuentaUsuario(string apodoUsuario)
@@ -56,15 +64,71 @@ namespace Gestionis.Clases
             ConexionDB.CerrarConexion();
         }
 
-        public double DineroTotal()
+        #region Métodos para ver / recuperar gastos e ingresos
+        public List<Gasto> DevuelveGastos()
         {
-            List<Gasto> gastos = Gasto.DevuelveGastos(numCuenta ?? default(int));
-            List<Ingreso> ingresos = Ingreso.DevuelveIngresos(numCuenta ?? default(int));
-            return TotalIngresos(ingresos) - TotalGastos(gastos);
+            string queryString = "SELECT * FROM gasto WHERE numCuenta = @numCuenta";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+            query.Parameters.AddWithValue("@numCuenta", numCuenta);
+
+            return EjecutarConsultaGastos(query);
         }
 
-        private double TotalGastos(List<Gasto> gastos)
+        public List<Gasto> DevuelveGastos(string nombre, string tipo, decimal cantidad, string categoria)
         {
+            string queryString = "SELECT * FROM gasto WHERE nombre = @nombre AND tipo = @tipo AND cantidad >= @cantidad " +
+                "AND categoria IN (SELECT idcategoria FROM categoriagasto WHERE nombre = @nombreCategoria);";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+            query.Parameters.AddWithValue("@nombre", nombre);
+            query.Parameters.AddWithValue("@tipo", tipo);
+            query.Parameters.AddWithValue("@cantidad", cantidad);
+            query.Parameters.AddWithValue("@nombreCategoria", categoria);
+
+            return EjecutarConsultaGastos(query);
+        }
+
+        public List<Ingreso> DevuelveIngresos()
+        {
+            string queryString = "SELECT * FROM ingreso WHERE numCuenta = @numCuenta";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+            query.Parameters.AddWithValue("@numCuenta", numCuenta);
+
+            return EjecutarConsultaIngresos(query);
+        }
+
+        public List<Ingreso> DevuelveIngresos(string nombre, string tipo, decimal cantidad, string categoria)
+        {
+            string queryString = "SELECT * FROM ingreso WHERE nombre = @nombre AND tipo = @tipo AND cantidad >= @cantidad AND categoria ";
+
+            if (categoria == string.Empty)
+            {
+                queryString += "IS NULL;";
+            }
+            else
+            {
+                queryString += "IN (SELECT idcategoria FROM categoriaIngreso WHERE nombre = @nombreCategoria);";
+            }
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+            query.Parameters.AddWithValue("@nombre", nombre);
+            query.Parameters.AddWithValue("@tipo", tipo);
+            query.Parameters.AddWithValue("@cantidad", cantidad);
+            query.Parameters.AddWithValue("@nombreCategoria", categoria);
+
+            return EjecutarConsultaIngresos(query);
+        }
+
+        public double DineroTotal()
+        {
+            return TotalIngresos() - TotalGastos();
+        }
+
+        public double TotalGastos()
+        {
+            List<Gasto> gastos = DevuelveGastos();
             double totalGastos = 0;
             for (int i = 0; i < gastos.Count; i++)
             {
@@ -73,8 +137,9 @@ namespace Gestionis.Clases
             return totalGastos;
         }
 
-        private double TotalIngresos(List<Ingreso> ingresos)
+        public double TotalIngresos()
         {
+            List<Ingreso> ingresos = DevuelveIngresos();
             double totalIngresos = 0;
             for (int i = 0; i < ingresos.Count; i++)
             {
@@ -82,5 +147,64 @@ namespace Gestionis.Clases
             }
             return totalIngresos;
         }
+
+        private List<Gasto> EjecutarConsultaGastos(MySqlCommand query)
+        {
+            List<Gasto> gastos = new List<Gasto>();
+
+            ConexionDB.AbrirConexion();
+
+            using (MySqlDataReader reader = query.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    gastos.Add(new Gasto(
+                        reader.GetInt32(0),
+                        reader.GetInt32(1),
+                        reader.GetString(2),
+                        reader.GetFloat(3),
+                        reader.GetInt32(4),
+                        reader.GetString(5),
+                        reader.GetSafeString(6),
+                        reader.GetDateTime(7),
+                        reader.GetTimeSpan(8)
+                    ));
+                }
+            }
+
+            ConexionDB.CerrarConexion();
+
+            return gastos;
+        }
+
+        private List<Ingreso> EjecutarConsultaIngresos(MySqlCommand query)
+        {
+            List<Ingreso> ingresos = new List<Ingreso>();
+
+            ConexionDB.AbrirConexion();
+
+            using (MySqlDataReader reader = query.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    ingresos.Add(new Ingreso(
+                        reader.GetInt32(0),
+                        reader.GetInt32(1),
+                        reader.GetString(2),
+                        reader.GetFloat(3),
+                        reader.GetString(4),
+                        reader.GetSafeInt32(5),
+                        reader.GetSafeString(6),
+                        reader.GetDateTime(7),
+                        reader.GetTimeSpan(8)
+                    ));
+                }
+            }
+
+            ConexionDB.CerrarConexion();
+
+            return ingresos;
+        }
+        #endregion
     }
 }

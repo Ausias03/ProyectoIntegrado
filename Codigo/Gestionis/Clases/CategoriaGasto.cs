@@ -110,6 +110,22 @@ namespace Gestionis.Clases
             return idCategoria;
         }
 
+        public static string DevuelveNombreCategoria(int idCat)
+        {
+            string queryString = "SELECT nombre FROM categoriaGasto WHERE idCategoria = @idCategoria";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+            query.Parameters.AddWithValue("@idCategoria", idCat);
+
+            ConexionDB.AbrirConexion();
+
+            string nombreCategoria = query.ExecuteScalar().ToString();
+
+            ConexionDB.CerrarConexion();
+
+            return nombreCategoria;
+        }
+
         public void Add()
         {
             string queryString = "INSERT INTO categoriaGasto (idCategoria, nombre, color) " +
