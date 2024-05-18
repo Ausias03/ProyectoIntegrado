@@ -49,7 +49,7 @@ namespace Gestionis
             btnRestaurar = new Button();
             btnEliminarDeuda = new Button();
             btnAnyadirDeuda = new Button();
-            roundGroupBox2 = new RoundGroupBox();
+            rgbResumen = new RoundGroupBox();
             lblResumen = new Label();
             lblSaldoValor = new Label();
             lblSaldo = new Label();
@@ -57,14 +57,12 @@ namespace Gestionis
             label1 = new Label();
             lblMeDeben = new Label();
             lblDeboBarra = new Label();
-            progressBar1 = new ProgressBar();
-            prbDebo = new ProgressBar();
             barraSecundaria1 = new BarraSecundaria();
             barraLateral1 = new BarraLateral();
             roundGroupBox1.SuspendLayout();
             pnlInfoDeuda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvGastosIngresos).BeginInit();
-            roundGroupBox2.SuspendLayout();
+            rgbResumen.SuspendLayout();
             SuspendLayout();
             // 
             // roundGroupBox1
@@ -290,26 +288,24 @@ namespace Gestionis
             btnAnyadirDeuda.UseVisualStyleBackColor = false;
             btnAnyadirDeuda.Click += btnAnyadirDeuda_Click;
             // 
-            // roundGroupBox2
+            // rgbResumen
             // 
-            roundGroupBox2.Controls.Add(lblResumen);
-            roundGroupBox2.Controls.Add(lblSaldoValor);
-            roundGroupBox2.Controls.Add(lblSaldo);
-            roundGroupBox2.Controls.Add(label2);
-            roundGroupBox2.Controls.Add(label1);
-            roundGroupBox2.Controls.Add(lblMeDeben);
-            roundGroupBox2.Controls.Add(lblDeboBarra);
-            roundGroupBox2.Controls.Add(progressBar1);
-            roundGroupBox2.Controls.Add(prbDebo);
-            roundGroupBox2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            roundGroupBox2.Location = new Point(1068, 135);
-            roundGroupBox2.Margin = new Padding(3, 2, 3, 2);
-            roundGroupBox2.Name = "roundGroupBox2";
-            roundGroupBox2.Padding = new Padding(3, 2, 3, 2);
-            roundGroupBox2.Size = new Size(290, 322);
-            roundGroupBox2.TabIndex = 28;
-            roundGroupBox2.TabStop = false;
-            roundGroupBox2.Text = "roundGroupBox2";
+            rgbResumen.Controls.Add(lblResumen);
+            rgbResumen.Controls.Add(lblSaldoValor);
+            rgbResumen.Controls.Add(lblSaldo);
+            rgbResumen.Controls.Add(label2);
+            rgbResumen.Controls.Add(label1);
+            rgbResumen.Controls.Add(lblMeDeben);
+            rgbResumen.Controls.Add(lblDeboBarra);
+            rgbResumen.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rgbResumen.Location = new Point(1068, 135);
+            rgbResumen.Margin = new Padding(3, 2, 3, 2);
+            rgbResumen.Name = "rgbResumen";
+            rgbResumen.Padding = new Padding(3, 2, 3, 2);
+            rgbResumen.Size = new Size(290, 322);
+            rgbResumen.TabIndex = 28;
+            rgbResumen.TabStop = false;
+            rgbResumen.Text = "roundGroupBox2";
             // 
             // lblResumen
             // 
@@ -377,27 +373,11 @@ namespace Gestionis
             // 
             lblDeboBarra.AutoSize = true;
             lblDeboBarra.BackColor = Color.Transparent;
-            lblDeboBarra.Location = new Point(48, 99);
+            lblDeboBarra.Location = new Point(8, 104);
             lblDeboBarra.Name = "lblDeboBarra";
             lblDeboBarra.Size = new Size(61, 25);
             lblDeboBarra.TabIndex = 15;
             lblDeboBarra.Text = "Debo:";
-            // 
-            // progressBar1
-            // 
-            progressBar1.Location = new Point(119, 169);
-            progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(151, 69);
-            progressBar1.TabIndex = 14;
-            progressBar1.Value = 67;
-            // 
-            // prbDebo
-            // 
-            prbDebo.Location = new Point(119, 75);
-            prbDebo.Name = "prbDebo";
-            prbDebo.Size = new Size(151, 69);
-            prbDebo.TabIndex = 13;
-            prbDebo.Value = 67;
             // 
             // barraSecundaria1
             // 
@@ -426,7 +406,7 @@ namespace Gestionis
             ClientSize = new Size(1839, 905);
             Controls.Add(barraLateral1);
             Controls.Add(barraSecundaria1);
-            Controls.Add(roundGroupBox2);
+            Controls.Add(rgbResumen);
             Controls.Add(roundGroupBox1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmGestorDeudas";
@@ -434,7 +414,7 @@ namespace Gestionis
             Text = "FrmGestorDeudas";
             Load += FrmGestorDeudas_Load;
             Controls.SetChildIndex(roundGroupBox1, 0);
-            Controls.SetChildIndex(roundGroupBox2, 0);
+            Controls.SetChildIndex(rgbResumen, 0);
             Controls.SetChildIndex(barraSecundaria1, 0);
             Controls.SetChildIndex(barraLateral1, 0);
             roundGroupBox1.ResumeLayout(false);
@@ -442,8 +422,8 @@ namespace Gestionis
             pnlInfoDeuda.ResumeLayout(false);
             pnlInfoDeuda.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvGastosIngresos).EndInit();
-            roundGroupBox2.ResumeLayout(false);
-            roundGroupBox2.PerformLayout();
+            rgbResumen.ResumeLayout(false);
+            rgbResumen.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -465,16 +445,14 @@ namespace Gestionis
         private Label lblProximaDeudaValor;
         private Label lblTipo;
         private Label lblFechaLimite;
-        private RoundGroupBox roundGroupBox2;
+        private RoundGroupBox rgbResumen;
         private Label lblResumen;
         private CheckBox chkDebo;
         private Label lblTitulo;
         private TextBox txtTitulo;
         private BarraSecundaria barraSecundaria1;
         private BarraLateral barraLateral1;
-        private ProgressBar prbDebo;
         private Label lblDeboBarra;
-        private ProgressBar progressBar1;
         private Label lblSaldoValor;
         private Label lblSaldo;
         private Label label2;

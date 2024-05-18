@@ -1,21 +1,10 @@
-﻿using System;
-using Gestionis.Clases;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Gestionis.Clases;
 using Gestionis.Formularios;
 
 namespace Gestionis
 {
     public partial class FrmGestorDeudas : FrmBarraPrincipal
     {
-
         public FrmGestorDeudas()
         {
             InitializeComponent();
@@ -41,20 +30,21 @@ namespace Gestionis
             btnRestaurar.FlatAppearance.BorderSize = 2;
             #endregion
 
+            #region Llenar cmbFiltros
             string[] filtros = Deuda.Filtros();
             for (int i = 0; i < filtros.Length; i++)
             {
                 cmbCategoria.Items.Add(filtros[i]);
             }
             cmbCategoria.SelectedIndex = 0;
+            #endregion
+
             Titulo();
 
-            lblDeudasTotalesValor.Text = Deuda.DeudasTotales(2).ToString();
+            lblDeudasTotalesValor.Text = Deuda.DeudasTotales().ToString();
             ProximaDeuda();
 
-            dgvGastosIngresos.DataSource = Deuda.RecargarTabla(2);
-
-            prbDebo.Value = (int)Deuda.CalcularTotal(2, true);
+            dgvGastosIngresos.DataSource = Deuda.RecargarTabla();
         }
 
         private void Titulo()
@@ -74,10 +64,10 @@ namespace Gestionis
         private void ProximaDeuda()
         {
             Deuda deuda = new Deuda();
-            deuda.GetProximaDeuda(2, deuda);
+            deuda.GetProximaDeuda(deuda);
 
             if (deuda.Titulo != null)
-            {
+            {                
                 lblProximaDeudaValor.Text = deuda.Titulo.ToString();
                 lblFechaLimiteValor.Text = deuda.FechaVencimiento.ToShortDateString();
                 if (deuda.Debo) lblTipoValor.Text = "Debo"; else lblTipoValor.Text = "Me deben";
@@ -94,23 +84,23 @@ namespace Gestionis
         {
             FrmAnyadirDeuda frmAnyadirDeuda = new FrmAnyadirDeuda();
             frmAnyadirDeuda.ShowDialog();
-            lblDeudasTotalesValor.Text = Deuda.DeudasTotales(2).ToString();
+            lblDeudasTotalesValor.Text = Deuda.DeudasTotales().ToString();
             ProximaDeuda();
-            dgvGastosIngresos.DataSource = Deuda.RecargarTabla(2, chkDebo.Checked);
+            dgvGastosIngresos.DataSource = Deuda.RecargarTabla(chkDebo.Checked);
         }
 
         private void btnEliminarDeuda_Click(object sender, EventArgs e)
         {
             FrmEliminarDeuda frmEliminarDeuda = new FrmEliminarDeuda();
             frmEliminarDeuda.ShowDialog();
-            lblDeudasTotalesValor.Text = Deuda.DeudasTotales(2).ToString();
+            lblDeudasTotalesValor.Text = Deuda.DeudasTotales().ToString();
             ProximaDeuda();
-            dgvGastosIngresos.DataSource = Deuda.RecargarTabla(2, chkDebo.Checked);
+            dgvGastosIngresos.DataSource = Deuda.RecargarTabla(chkDebo.Checked);
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            dgvGastosIngresos.DataSource = Deuda.CargarFiltro(2, cmbCategoria.Text, chkDebo.Checked, txtTitulo.Text);
+            dgvGastosIngresos.DataSource = Deuda.CargarFiltro(cmbCategoria.Text, chkDebo.Checked, txtTitulo.Text);
             Titulo();
         }
 
@@ -121,12 +111,13 @@ namespace Gestionis
 
         private void btnRestaurar_Click(object sender, EventArgs e)
         {
-            dgvGastosIngresos.DataSource = Deuda.RecargarTabla(2);
+            dgvGastosIngresos.DataSource = Deuda.RecargarTabla();
         }
 
         private void chkDebo_CheckedChanged(object sender, EventArgs e)
         {
-            dgvGastosIngresos.DataSource = Deuda.RecargarTabla(2, chkDebo.Checked);
+            dgvGastosIngresos.DataSource = Deuda.RecargarTabla(chkDebo.Checked);
         }
+
     }
 }

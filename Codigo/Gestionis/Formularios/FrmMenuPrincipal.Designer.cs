@@ -259,7 +259,7 @@ namespace Gestionis
             rgbCalendario.Controls.Add(lblMes);
             rgbCalendario.Controls.Add(label3);
             rgbCalendario.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            rgbCalendario.Location = new Point(24988, 147);
+            rgbCalendario.Location = new Point(32767, 147);
             rgbCalendario.Name = "rgbCalendario";
             rgbCalendario.Size = new Size(199, 103);
             rgbCalendario.TabIndex = 4;
@@ -269,7 +269,7 @@ namespace Gestionis
             // 
             lblAdelante.AutoSize = true;
             lblAdelante.BackColor = Color.Transparent;
-            lblAdelante.Location = new Point(134, 2);
+            lblAdelante.Location = new Point(0, 2);
             lblAdelante.Name = "lblAdelante";
             lblAdelante.Size = new Size(25, 25);
             lblAdelante.TabIndex = 3;
@@ -279,7 +279,7 @@ namespace Gestionis
             // 
             lblAtras.AutoSize = true;
             lblAtras.BackColor = Color.Transparent;
-            lblAtras.Location = new Point(41, 2);
+            lblAtras.Location = new Point(0, 2);
             lblAtras.Name = "lblAtras";
             lblAtras.Size = new Size(25, 25);
             lblAtras.TabIndex = 2;
@@ -289,7 +289,7 @@ namespace Gestionis
             // 
             lblMes.AutoSize = true;
             lblMes.BackColor = Color.Transparent;
-            lblMes.Location = new Point(75, 2);
+            lblMes.Location = new Point(0, 2);
             lblMes.Name = "lblMes";
             lblMes.Size = new Size(47, 25);
             lblMes.TabIndex = 1;
@@ -310,7 +310,7 @@ namespace Gestionis
             btnSalir.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnSalir.BackColor = Color.FromArgb(178, 242, 187);
             btnSalir.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSalir.Location = new Point(25074, 820);
+            btnSalir.Location = new Point(32767, 820);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(152, 45);
             btnSalir.TabIndex = 15;
@@ -324,7 +324,7 @@ namespace Gestionis
             pnlNotas.BackColor = Color.FromArgb(205, 213, 221);
             pnlNotas.Controls.Add(lblNotasValor);
             pnlNotas.Controls.Add(lblNotas);
-            pnlNotas.Location = new Point(24953, 297);
+            pnlNotas.Location = new Point(32767, 297);
             pnlNotas.Name = "pnlNotas";
             pnlNotas.Size = new Size(275, 181);
             pnlNotas.TabIndex = 16;
@@ -334,7 +334,7 @@ namespace Gestionis
             lblNotasValor.AutoSize = true;
             lblNotasValor.BackColor = Color.Transparent;
             lblNotasValor.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblNotasValor.Location = new Point(3, 39);
+            lblNotasValor.Location = new Point(0, 39);
             lblNotasValor.Name = "lblNotasValor";
             lblNotasValor.Size = new Size(123, 25);
             lblNotasValor.TabIndex = 5;
@@ -345,7 +345,7 @@ namespace Gestionis
             lblNotas.AutoSize = true;
             lblNotas.BackColor = Color.Transparent;
             lblNotas.Font = new Font("Segoe UI", 14.25F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblNotas.Location = new Point(3, 1);
+            lblNotas.Location = new Point(0, 1);
             lblNotas.Name = "lblNotas";
             lblNotas.Size = new Size(123, 25);
             lblNotas.TabIndex = 4;

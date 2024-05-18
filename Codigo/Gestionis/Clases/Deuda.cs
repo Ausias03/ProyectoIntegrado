@@ -15,19 +15,22 @@ namespace Gestionis.Clases
         private DateTime fechaVencimiento;
         private bool anyadirRecordatorio;
 
+        #region Propiedades
         public string Titulo { get { return titulo; } }
         public string Descripcion { get { return descripcion; } }
         public bool Debo { get { return debo; } }
         public decimal Cantidad { get { return cantidad; } }
         public DateTime FechaCreacion { get { return fechaCreacion; } }
         public DateTime FechaVencimiento { get { return fechaVencimiento; } }
+        #endregion
 
+        #region Constructores
         public Deuda() { }
 
-        public Deuda(int cuenta, string tit, string descrip, bool deb, decimal cant, DateTime fechaCrea, DateTime fechaVenc, bool record)
+        public Deuda(string tit, string descrip, bool deb, decimal cant, DateTime fechaCrea, DateTime fechaVenc, bool record)
         {
             idDeuda = null;
-            numCuenta = cuenta;
+            numCuenta = Sesion.Instance.NumCuenta;
             titulo = tit;
             descripcion = descrip;
             debo = deb;
@@ -36,6 +39,7 @@ namespace Gestionis.Clases
             fechaVencimiento = fechaVenc;
             anyadirRecordatorio = record;
         }
+        #endregion
 
         public int Add()
         {
@@ -78,7 +82,7 @@ namespace Gestionis.Clases
 
         public static bool ExisteDeuda(string tit)
         {
-            string queryString = "SELECT titulo FROM deuda WHERE titulo = @titulo;";
+            string queryString = $"SELECT titulo FROM deuda WHERE titulo = @titulo AND numCuenta = {Sesion.Instance.NumCuenta};";
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
             query.Parameters.AddWithValue("@titulo", tit);
@@ -99,7 +103,7 @@ namespace Gestionis.Clases
 
         public static Deuda GetDeuda(string tit, Deuda deuda)
         {
-            string queryString = "SELECT descripcion, debo, cantidad, fechaCreacion, fechaVencimiento FROM deuda WHERE titulo = @titulo;";
+            string queryString = $"SELECT descripcion, debo, cantidad, fechaCreacion, fechaVencimiento FROM deuda WHERE titulo = @titulo AND numCuenta = {Sesion.Instance.NumCuenta};";
 
             using (MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion))
             {
@@ -126,7 +130,7 @@ namespace Gestionis.Clases
         {
             int resultado = 0;
 
-            string consulta = String.Format("DELETE FROM deuda WHERE titulo LIKE ('{0}');", tit);
+            string consulta = $"DELETE FROM deuda WHERE titulo = '{tit}' AND numCuenta = {Sesion.Instance.NumCuenta};";
 
             ConexionDB.AbrirConexion();
             using (MySqlCommand comando = new MySqlCommand(consulta, ConexionDB.Conexion))
@@ -138,7 +142,7 @@ namespace Gestionis.Clases
             return resultado;
         }
 
-        public static int DeudasTotales(int numCuenta)
+        public static int DeudasTotales()
         {
             int resultado = 0;
 
@@ -148,7 +152,7 @@ namespace Gestionis.Clases
             {
                 using (MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion))
                 {
-                    query.Parameters.AddWithValue("@numCuenta", numCuenta);
+                    query.Parameters.AddWithValue("@numCuenta", Sesion.Instance.NumCuenta);
 
                     ConexionDB.AbrirConexion();
                     resultado = Convert.ToInt32(query.ExecuteScalar());
@@ -163,13 +167,13 @@ namespace Gestionis.Clases
             return resultado;
         }
 
-        public void GetProximaDeuda(int numCuenta, Deuda deuda)
+        public void GetProximaDeuda(Deuda deuda)
         {
             string queryString = "SELECT titulo, debo, MIN(fechaVencimiento) FROM deuda WHERE numCuenta = @numCuenta;";
 
             using (MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion))
             {
-                query.Parameters.AddWithValue("@numCuenta", numCuenta);
+                query.Parameters.AddWithValue("@numCuenta", Sesion.Instance.NumCuenta);
 
                 ConexionDB.AbrirConexion();
                 using (MySqlDataReader reader = query.ExecuteReader())
@@ -191,18 +195,19 @@ namespace Gestionis.Clases
             return filtro;
         }
 
-        public static DataTable RecargarTabla(int numCuenta)
+        public static DataTable RecargarTabla()
         {
-            return Utilidades.RellenarDatos($"SELECT titulo, descripcion, cantidad, fechaCreacion, fechaVencimiento FROM deuda WHERE numCuenta = {numCuenta}");
+            return Utilidades.RellenarDatos($"SELECT titulo, descripcion, cantidad, fechaCreacion, fechaVencimiento FROM deuda WHERE numCuenta = {Sesion.Instance.NumCuenta}");
         }
 
-        public static DataTable RecargarTabla(int numCuenta, bool debo)
+        public static DataTable RecargarTabla(bool debo)
         {
-            return Utilidades.RellenarDatos($"SELECT titulo, descripcion, cantidad, fechaCreacion, fechaVencimiento FROM deuda WHERE numCuenta = {numCuenta} AND debo = {debo}");
+            return Utilidades.RellenarDatos($"SELECT titulo, descripcion, cantidad, fechaCreacion, fechaVencimiento FROM deuda WHERE numCuenta = {Sesion.Instance.NumCuenta} AND debo = {debo}");
         }
 
-        public static DataTable CargarFiltro(int numCuenta, string filtro, bool debo, string titulo)
+        public static DataTable CargarFiltro(string filtro, bool debo, string titulo)
         {
+            int numCuenta = Sesion.Instance.NumCuenta;
             string consulta = $"SELECT titulo, descripcion, cantidad, fechaCreacion, fechaVencimiento FROM deuda WHERE numCuenta = {numCuenta} AND debo = {debo}";
             switch (filtro)
             {
@@ -229,10 +234,10 @@ namespace Gestionis.Clases
             return Utilidades.RellenarDatos(consulta);
         }
 
-        public static float CalcularTotal(int numCuenta, bool debo)
+        public static float CalcularTotal(bool debo)
         {
             float resultado = 0;
-            string consulta = $"SELECT SUM(cantidad) FROM deuda WHERE numCuenta = {numCuenta} AND debo = {debo}";
+            string consulta = $"SELECT SUM(cantidad) FROM deuda WHERE numCuenta = {Sesion.Instance.NumCuenta} AND debo = {debo}";
 
             try
             {

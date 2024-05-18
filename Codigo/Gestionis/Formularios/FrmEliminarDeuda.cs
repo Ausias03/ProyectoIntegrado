@@ -1,13 +1,4 @@
 ﻿using Gestionis.Clases;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Gestionis.Formularios
 {
@@ -36,7 +27,7 @@ namespace Gestionis.Formularios
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            if(txtTitulo.Text != string.Empty)
+            if (txtTitulo.Text != string.Empty)
             {
                 if (Deuda.ExisteDeuda(txtTitulo.Text))
                 {
@@ -46,7 +37,7 @@ namespace Gestionis.Formularios
 
                     lblCantidadAdeudadaValor.Text = deuda.Cantidad.ToString() + "€";
                     rtbDescrip.Text = deuda.Descripcion;
-                    if (deuda.Debo) lblTipoValor.Text = "Debo"; 
+                    if (deuda.Debo) lblTipoValor.Text = "Debo";
                     else lblTipoValor.Text = "Me deben";
                     lblFechaDeudaValor.Text = deuda.FechaCreacion.ToShortDateString();
                     lblFechaVencimientoValor.Text = deuda.FechaVencimiento.ToShortDateString();
@@ -59,15 +50,15 @@ namespace Gestionis.Formularios
             }
             else
             {
-                MessageBox.Show("Introduce el título de la deuda primero!","",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }            
+                MessageBox.Show("Introduce el título de la deuda primero!", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             int res = Deuda.EliminarDeuda(txtTitulo.Text);
 
-            if(res > 0)
+            if (res > 0)
             {
                 MessageBox.Show("Deuda eliminada", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ResetearFrm();

@@ -56,8 +56,7 @@ namespace Gestionis.Formularios
             {
                 if (!Deuda.ExisteDeuda(txtTitulo.Text))
                 {
-                    int numCuenta = 2;
-                    Deuda deuda = new Deuda(numCuenta, txtTitulo.Text, rtbDescrip.Text, rdbDebo.Checked, nudCantidadAdeudada.Value, dtpDeuda.Value, dtpVencimiento.Value, chkRecordatorio.Checked);
+                    Deuda deuda = new Deuda(txtTitulo.Text, rtbDescrip.Text, rdbDebo.Checked, nudCantidadAdeudada.Value, dtpDeuda.Value, dtpVencimiento.Value, chkRecordatorio.Checked);
                     if (deuda.Add() > 0)
                     {
                         if(chkRecordatorio.Checked)
