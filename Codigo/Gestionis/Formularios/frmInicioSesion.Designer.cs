@@ -174,7 +174,6 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "frmInicioSesion";
             Text = "Ge$tioni$";
-            Load += frmInicioSesion_Load;
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();

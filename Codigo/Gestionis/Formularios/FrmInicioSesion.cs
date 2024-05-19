@@ -100,10 +100,5 @@ namespace Gestionis
             txtContrasenya.Text = String.Empty;
         }
         #endregion
-
-        private void frmInicioSesion_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
