@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gestionis.Clases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,70 @@ namespace Gestionis
             InitializeComponent();
         }
 
+        #region Validaciones
+        private bool ValidarDatos()
+        {
+            bool ok = true;
+            errorProvider1.Clear();
+
+            if (txtAddTitulo.Text == String.Empty)
+            {
+                ok = false;
+                errorProvider1.SetError(txtAddTitulo, "Introduce un título");
+            }
+
+            if (txtAddAsunto.Text == String.Empty)
+            {
+                ok = false;
+                errorProvider1.SetError(txtAddAsunto, "Introduce un asunto");
+            }
+            //if (btnColor.BackColor == Color.Empty)
+            //{
+            //    ok = false;
+            //    errorProvider1.SetError(btnColor, "Seleccione un color");
+            //}
+            return ok;
+        }
+        #endregion
+
+
+        private void frmAddNota_Load(object sender, EventArgs e)
+        {
+            dtpAddDia.Value = DateTime.Today;
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            RestablecerControlesVisuales();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void btnAnotar_Click(object sender, EventArgs e)
+        {
+            if (!ValidarDatos())
+            {
+                MessageBox.Show("Revisa los datos introducidos", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                Notas nota1 = new Notas(txtAddTitulo.Text, txtAddAsunto.Text, dtpAddDia.Value, ckbAlarma.Checked, btnColor.BackColor.ToArgb());
+                nota1.Add();
+                this.Close();
+            }
+            catch
+            {
+                MessageBox.Show("No se ha podido conectar con la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
         private void btnColor_Click(object sender, EventArgs e)
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
@@ -25,9 +90,17 @@ namespace Gestionis
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        #region Metodos de Implementacion
+        private void RestablecerControlesVisuales()
         {
-            this.Close();
+            txtAddTitulo.Text = String.Empty;
+            txtAddAsunto.Text = String.Empty;
+            btnColor.BackColor = Color.Empty;
+            ckbAlarma.Checked = false;
+            dtpAddDia.Value = DateTime.Today;
         }
+
+        #endregion
     }
 }

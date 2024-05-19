@@ -29,22 +29,26 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTablaClasificación));
-            dtgTabla = new DataGridView();
+            dgvTabla = new DataGridView();
             lblTabla = new Label();
             btnSalir = new Button();
             barraSecundaria1 = new Herramientas.BarraSecundaria();
             barraLateral1 = new Herramientas.BarraLateral();
-            ((System.ComponentModel.ISupportInitialize)dtgTabla).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvTabla).BeginInit();
             SuspendLayout();
             // 
-            // dtgTabla
+            // dgvTabla
             // 
-            dtgTabla.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgTabla.Location = new Point(349, 178);
-            dtgTabla.Name = "dtgTabla";
-            dtgTabla.RowHeadersWidth = 51;
-            dtgTabla.Size = new Size(1280, 534);
-            dtgTabla.TabIndex = 0;
+            dgvTabla.AllowUserToAddRows = false;
+            dgvTabla.AllowUserToDeleteRows = false;
+            dgvTabla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvTabla.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvTabla.Location = new Point(349, 178);
+            dgvTabla.Name = "dgvTabla";
+            dgvTabla.ReadOnly = true;
+            dgvTabla.RowHeadersWidth = 51;
+            dgvTabla.Size = new Size(1149, 534);
+            dgvTabla.TabIndex = 0;
             // 
             // lblTabla
             // 
@@ -60,7 +64,7 @@
             // 
             btnSalir.BackColor = Color.FromArgb(170, 166, 202);
             btnSalir.Font = new Font("Microsoft Sans Serif", 12F);
-            btnSalir.Location = new Point(1535, 729);
+            btnSalir.Location = new Point(1483, 753);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(124, 40);
             btnSalir.TabIndex = 2;
@@ -74,7 +78,7 @@
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1856, 44);
+            barraSecundaria1.Size = new Size(1667, 44);
             barraSecundaria1.TabIndex = 3;
             // 
             // barraLateral1
@@ -83,37 +87,36 @@
             barraLateral1.Dock = DockStyle.Left;
             barraLateral1.Location = new Point(0, 84);
             barraLateral1.Name = "barraLateral1";
-            barraLateral1.Size = new Size(289, 757);
+            barraLateral1.Size = new Size(289, 818);
             barraLateral1.TabIndex = 4;
             // 
             // frmTablaClasificación
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1856, 841);
+            ClientSize = new Size(1667, 902);
             Controls.Add(barraLateral1);
             Controls.Add(barraSecundaria1);
             Controls.Add(btnSalir);
             Controls.Add(lblTabla);
-            Controls.Add(dtgTabla);
+            Controls.Add(dgvTabla);
             Font = new Font("Microsoft Sans Serif", 9F);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmTablaClasificación";
-            StartPosition = FormStartPosition.CenterScreen;
-            WindowState = FormWindowState.Maximized;
-            Controls.SetChildIndex(dtgTabla, 0);
+            Load += frmTablaClasificación_Load;
+            Controls.SetChildIndex(dgvTabla, 0);
             Controls.SetChildIndex(lblTabla, 0);
             Controls.SetChildIndex(btnSalir, 0);
             Controls.SetChildIndex(barraSecundaria1, 0);
             Controls.SetChildIndex(barraLateral1, 0);
-            ((System.ComponentModel.ISupportInitialize)dtgTabla).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvTabla).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dtgTabla;
+        private DataGridView dgvTabla;
         private Label lblTabla;
         private Button btnSalir;
         private Herramientas.BarraSecundaria barraSecundaria1;

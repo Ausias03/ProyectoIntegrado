@@ -30,214 +30,52 @@ namespace Gestionis
         /// </summary>
         private void InitializeComponent()
         {
-            pnlBarra = new Panel();
-            pbSpain = new PictureBox();
-            pbAyuda = new PictureBox();
-            pbUsuario = new PictureBox();
-            pbNotificaciones = new PictureBox();
-            pbNoticias = new PictureBox();
-            pbTema = new PictureBox();
-            pbEnglish = new PictureBox();
-            pbHamburger = new PictureBox();
             grbNotasDia = new GroupBox();
-            roundGroupBox1 = new RoundGroupBox();
-            lblAdelante = new Label();
-            lblAtras = new Label();
-            lblMes = new Label();
-            label3 = new Label();
             roundGroupBox2 = new RoundGroupBox();
-            dtgNotas = new DataGridView();
+            btnRestaurarFiltro = new Button();
+            ckbAlarmaFiltro = new CheckBox();
+            dtpFiltrarFecha = new DateTimePicker();
+            btnFiltroColor = new Button();
+            btnFiltrar = new Button();
+            txtFiltro = new TextBox();
+            dgvNotas = new DataGridView();
             cmbFiltrarPor = new ComboBox();
             lblFiltrarPor = new Label();
             btnNuevaNota = new Button();
             btnSalir = new Button();
-            pnlBarra.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbSpain).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbAyuda).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbUsuario).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbNotificaciones).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbNoticias).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbTema).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbEnglish).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbHamburger).BeginInit();
-            roundGroupBox1.SuspendLayout();
+            barraSecundaria1 = new BarraSecundaria();
+            barraLateral1 = new BarraLateral();
+            colorDialog1 = new ColorDialog();
+            monthCalendar1 = new MonthCalendar();
             roundGroupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dtgNotas).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvNotas).BeginInit();
             SuspendLayout();
-            // 
-            // pnlBarra
-            // 
-            pnlBarra.BackColor = Color.FromArgb(211, 208, 242);
-            pnlBarra.Controls.Add(pbSpain);
-            pnlBarra.Controls.Add(pbAyuda);
-            pnlBarra.Controls.Add(pbUsuario);
-            pnlBarra.Controls.Add(pbNotificaciones);
-            pnlBarra.Controls.Add(pbNoticias);
-            pnlBarra.Controls.Add(pbTema);
-            pnlBarra.Controls.Add(pbEnglish);
-            pnlBarra.Controls.Add(pbHamburger);
-            pnlBarra.Dock = DockStyle.Top;
-            pnlBarra.Location = new Point(0, 0);
-            pnlBarra.Margin = new Padding(3, 2, 3, 2);
-            pnlBarra.Name = "pnlBarra";
-            pnlBarra.Size = new Size(1110, 31);
-            pnlBarra.TabIndex = 3;
-            // 
-            // pbSpain
-            // 
-            pbSpain.Enabled = false;
-            pbSpain.Location = new Point(80, 4);
-            pbSpain.Name = "pbSpain";
-            pbSpain.Size = new Size(29, 23);
-            pbSpain.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbSpain.TabIndex = 24;
-            pbSpain.TabStop = false;
-            // 
-            // pbAyuda
-            // 
-            pbAyuda.Location = new Point(43, 4);
-            pbAyuda.Name = "pbAyuda";
-            pbAyuda.Size = new Size(27, 22);
-            pbAyuda.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbAyuda.TabIndex = 18;
-            pbAyuda.TabStop = false;
-            // 
-            // pbUsuario
-            // 
-            pbUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbUsuario.Location = new Point(2190, 4);
-            pbUsuario.Name = "pbUsuario";
-            pbUsuario.Size = new Size(24, 23);
-            pbUsuario.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbUsuario.TabIndex = 23;
-            pbUsuario.TabStop = false;
-            // 
-            // pbNotificaciones
-            // 
-            pbNotificaciones.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbNotificaciones.Location = new Point(2160, 4);
-            pbNotificaciones.Name = "pbNotificaciones";
-            pbNotificaciones.Size = new Size(24, 23);
-            pbNotificaciones.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbNotificaciones.TabIndex = 22;
-            pbNotificaciones.TabStop = false;
-            // 
-            // pbNoticias
-            // 
-            pbNoticias.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbNoticias.Location = new Point(2127, 4);
-            pbNoticias.Name = "pbNoticias";
-            pbNoticias.Size = new Size(27, 23);
-            pbNoticias.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbNoticias.TabIndex = 21;
-            pbNoticias.TabStop = false;
-            // 
-            // pbTema
-            // 
-            pbTema.Location = new Point(118, 4);
-            pbTema.Name = "pbTema";
-            pbTema.Size = new Size(28, 23);
-            pbTema.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbTema.TabIndex = 20;
-            pbTema.TabStop = false;
-            // 
-            // pbEnglish
-            // 
-            pbEnglish.Location = new Point(82, 4);
-            pbEnglish.Name = "pbEnglish";
-            pbEnglish.Size = new Size(26, 23);
-            pbEnglish.SizeMode = PictureBoxSizeMode.CenterImage;
-            pbEnglish.TabIndex = 19;
-            pbEnglish.TabStop = false;
-            // 
-            // pbHamburger
-            // 
-            pbHamburger.Location = new Point(10, 4);
-            pbHamburger.Name = "pbHamburger";
-            pbHamburger.Size = new Size(27, 23);
-            pbHamburger.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbHamburger.TabIndex = 17;
-            pbHamburger.TabStop = false;
             // 
             // grbNotasDia
             // 
             grbNotasDia.Font = new Font("Segoe UI", 14.25F, FontStyle.Underline);
-            grbNotasDia.Location = new Point(821, 304);
+            grbNotasDia.Location = new Point(1056, 366);
             grbNotasDia.Margin = new Padding(3, 2, 3, 2);
             grbNotasDia.Name = "grbNotasDia";
             grbNotasDia.Padding = new Padding(3, 2, 3, 2);
-            grbNotasDia.Size = new Size(218, 132);
+            grbNotasDia.Size = new Size(322, 197);
             grbNotasDia.TabIndex = 5;
             grbNotasDia.TabStop = false;
             grbNotasDia.Text = "Notas del día";
             // 
-            // roundGroupBox1
-            // 
-            roundGroupBox1.Controls.Add(lblAdelante);
-            roundGroupBox1.Controls.Add(lblAtras);
-            roundGroupBox1.Controls.Add(lblMes);
-            roundGroupBox1.Controls.Add(label3);
-            roundGroupBox1.Font = new Font("Segoe UI", 14.25F);
-            roundGroupBox1.Location = new Point(821, 71);
-            roundGroupBox1.Margin = new Padding(3, 2, 3, 2);
-            roundGroupBox1.Name = "roundGroupBox1";
-            roundGroupBox1.Padding = new Padding(3, 2, 3, 2);
-            roundGroupBox1.Size = new Size(218, 121);
-            roundGroupBox1.TabIndex = 6;
-            roundGroupBox1.TabStop = false;
-            roundGroupBox1.Text = "roundGroupBox1";
-            // 
-            // lblAdelante
-            // 
-            lblAdelante.AutoSize = true;
-            lblAdelante.BackColor = Color.Transparent;
-            lblAdelante.Font = new Font("Segoe UI", 14.25F);
-            lblAdelante.Location = new Point(139, 8);
-            lblAdelante.Name = "lblAdelante";
-            lblAdelante.Size = new Size(25, 25);
-            lblAdelante.TabIndex = 5;
-            lblAdelante.Text = ">";
-            // 
-            // lblAtras
-            // 
-            lblAtras.AutoSize = true;
-            lblAtras.BackColor = Color.Transparent;
-            lblAtras.Font = new Font("Segoe UI", 14.25F);
-            lblAtras.Location = new Point(48, 8);
-            lblAtras.Name = "lblAtras";
-            lblAtras.Size = new Size(25, 25);
-            lblAtras.TabIndex = 4;
-            lblAtras.Text = "<";
-            // 
-            // lblMes
-            // 
-            lblMes.AutoSize = true;
-            lblMes.BackColor = Color.Transparent;
-            lblMes.Font = new Font("Segoe UI", 14.25F);
-            lblMes.Location = new Point(83, 8);
-            lblMes.Name = "lblMes";
-            lblMes.Size = new Size(47, 25);
-            lblMes.TabIndex = 3;
-            lblMes.Text = "Mes";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Segoe UI", 14.25F);
-            label3.Location = new Point(-7, 13);
-            label3.Name = "label3";
-            label3.Size = new Size(212, 25);
-            label3.TabIndex = 2;
-            label3.Text = "_________________________";
-            // 
             // roundGroupBox2
             // 
-            roundGroupBox2.Controls.Add(dtgNotas);
+            roundGroupBox2.Controls.Add(btnRestaurarFiltro);
+            roundGroupBox2.Controls.Add(ckbAlarmaFiltro);
+            roundGroupBox2.Controls.Add(dtpFiltrarFecha);
+            roundGroupBox2.Controls.Add(btnFiltroColor);
+            roundGroupBox2.Controls.Add(btnFiltrar);
+            roundGroupBox2.Controls.Add(txtFiltro);
+            roundGroupBox2.Controls.Add(dgvNotas);
             roundGroupBox2.Controls.Add(cmbFiltrarPor);
             roundGroupBox2.Controls.Add(lblFiltrarPor);
             roundGroupBox2.Controls.Add(btnNuevaNota);
-            roundGroupBox2.Location = new Point(82, 71);
+            roundGroupBox2.Location = new Point(291, 134);
             roundGroupBox2.Margin = new Padding(3, 2, 3, 2);
             roundGroupBox2.Name = "roundGroupBox2";
             roundGroupBox2.Padding = new Padding(3, 2, 3, 2);
@@ -246,24 +84,91 @@ namespace Gestionis
             roundGroupBox2.TabStop = false;
             roundGroupBox2.Text = "roundGroupBox2";
             // 
-            // dtgNotas
+            // btnRestaurarFiltro
             // 
-            dtgNotas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgNotas.Location = new Point(47, 186);
-            dtgNotas.Margin = new Padding(3, 2, 3, 2);
-            dtgNotas.Name = "dtgNotas";
-            dtgNotas.RowHeadersWidth = 51;
-            dtgNotas.Size = new Size(456, 141);
-            dtgNotas.TabIndex = 4;
+            btnRestaurarFiltro.BackColor = Color.FromArgb(178, 242, 187);
+            btnRestaurarFiltro.Font = new Font("Segoe UI", 9F);
+            btnRestaurarFiltro.Location = new Point(416, 158);
+            btnRestaurarFiltro.Name = "btnRestaurarFiltro";
+            btnRestaurarFiltro.Size = new Size(88, 23);
+            btnRestaurarFiltro.TabIndex = 10;
+            btnRestaurarFiltro.Text = "Restaurar";
+            btnRestaurarFiltro.UseVisualStyleBackColor = false;
+            btnRestaurarFiltro.Click += btnRestaurarFiltro_Click;
+            // 
+            // ckbAlarmaFiltro
+            // 
+            ckbAlarmaFiltro.AutoSize = true;
+            ckbAlarmaFiltro.Location = new Point(340, 137);
+            ckbAlarmaFiltro.Name = "ckbAlarmaFiltro";
+            ckbAlarmaFiltro.Size = new Size(15, 14);
+            ckbAlarmaFiltro.TabIndex = 9;
+            ckbAlarmaFiltro.UseVisualStyleBackColor = true;
+            ckbAlarmaFiltro.Visible = false;
+            // 
+            // dtpFiltrarFecha
+            // 
+            dtpFiltrarFecha.Format = DateTimePickerFormat.Short;
+            dtpFiltrarFecha.Location = new Point(303, 132);
+            dtpFiltrarFecha.Margin = new Padding(3, 2, 3, 2);
+            dtpFiltrarFecha.Name = "dtpFiltrarFecha";
+            dtpFiltrarFecha.Size = new Size(110, 23);
+            dtpFiltrarFecha.TabIndex = 8;
+            dtpFiltrarFecha.Visible = false;
+            // 
+            // btnFiltroColor
+            // 
+            btnFiltroColor.Location = new Point(340, 132);
+            btnFiltroColor.Margin = new Padding(3, 2, 3, 2);
+            btnFiltroColor.Name = "btnFiltroColor";
+            btnFiltroColor.Size = new Size(31, 22);
+            btnFiltroColor.TabIndex = 7;
+            btnFiltroColor.UseVisualStyleBackColor = true;
+            btnFiltroColor.Visible = false;
+            btnFiltroColor.Click += btnFiltroColor_Click;
+            // 
+            // btnFiltrar
+            // 
+            btnFiltrar.BackColor = Color.FromArgb(178, 242, 187);
+            btnFiltrar.Font = new Font("Segoe UI", 9F);
+            btnFiltrar.Location = new Point(416, 132);
+            btnFiltrar.Name = "btnFiltrar";
+            btnFiltrar.Size = new Size(88, 23);
+            btnFiltrar.TabIndex = 6;
+            btnFiltrar.Text = "Filtrar";
+            btnFiltrar.UseVisualStyleBackColor = false;
+            btnFiltrar.Click += btnFiltrar_Click;
+            // 
+            // txtFiltro
+            // 
+            txtFiltro.Location = new Point(303, 131);
+            txtFiltro.Margin = new Padding(3, 2, 3, 2);
+            txtFiltro.Name = "txtFiltro";
+            txtFiltro.Size = new Size(110, 23);
+            txtFiltro.TabIndex = 5;
+            txtFiltro.Visible = false;
+            // 
+            // dgvNotas
+            // 
+            dgvNotas.AllowUserToDeleteRows = false;
+            dgvNotas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvNotas.Location = new Point(47, 186);
+            dgvNotas.Margin = new Padding(3, 2, 3, 2);
+            dgvNotas.Name = "dgvNotas";
+            dgvNotas.ReadOnly = true;
+            dgvNotas.RowHeadersWidth = 51;
+            dgvNotas.Size = new Size(456, 141);
+            dgvNotas.TabIndex = 4;
             // 
             // cmbFiltrarPor
             // 
             cmbFiltrarPor.FormattingEnabled = true;
-            cmbFiltrarPor.Location = new Point(211, 130);
+            cmbFiltrarPor.Location = new Point(158, 132);
             cmbFiltrarPor.Margin = new Padding(3, 2, 3, 2);
             cmbFiltrarPor.Name = "cmbFiltrarPor";
             cmbFiltrarPor.Size = new Size(139, 23);
             cmbFiltrarPor.TabIndex = 3;
+            cmbFiltrarPor.SelectedIndexChanged += cmbFiltrarPor_SelectedIndexChanged;
             // 
             // lblFiltrarPor
             // 
@@ -294,7 +199,7 @@ namespace Gestionis
             btnSalir.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnSalir.BackColor = Color.FromArgb(178, 242, 187);
             btnSalir.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSalir.Location = new Point(892, 456);
+            btnSalir.Location = new Point(32767, 612);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(152, 45);
             btnSalir.TabIndex = 16;
@@ -302,60 +207,79 @@ namespace Gestionis
             btnSalir.UseVisualStyleBackColor = false;
             btnSalir.Click += btnSalir_Click;
             // 
+            // barraSecundaria1
+            // 
+            barraSecundaria1.BackColor = Color.FromArgb(211, 208, 242);
+            barraSecundaria1.Dock = DockStyle.Top;
+            barraSecundaria1.Location = new Point(0, 40);
+            barraSecundaria1.Margin = new Padding(3, 2, 3, 2);
+            barraSecundaria1.Name = "barraSecundaria1";
+            barraSecundaria1.Size = new Size(1485, 33);
+            barraSecundaria1.TabIndex = 17;
+            // 
+            // barraLateral1
+            // 
+            barraLateral1.BackColor = Color.FromArgb(205, 213, 221);
+            barraLateral1.Dock = DockStyle.Left;
+            barraLateral1.Location = new Point(0, 73);
+            barraLateral1.Margin = new Padding(3, 2, 3, 2);
+            barraLateral1.Name = "barraLateral1";
+            barraLateral1.Size = new Size(253, 603);
+            barraLateral1.TabIndex = 18;
+            // 
+            // monthCalendar1
+            // 
+            monthCalendar1.Location = new Point(1056, 134);
+            monthCalendar1.Name = "monthCalendar1";
+            monthCalendar1.TabIndex = 6;
+            // 
             // frmNotas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1110, 511);
+            ClientSize = new Size(1485, 676);
+            Controls.Add(monthCalendar1);
+            Controls.Add(barraLateral1);
+            Controls.Add(barraSecundaria1);
             Controls.Add(btnSalir);
             Controls.Add(roundGroupBox2);
-            Controls.Add(roundGroupBox1);
             Controls.Add(grbNotasDia);
-            Controls.Add(pnlBarra);
             Margin = new Padding(3, 2, 3, 2);
             Name = "frmNotas";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Notas";
             WindowState = FormWindowState.Maximized;
-            pnlBarra.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pbSpain).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbAyuda).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbUsuario).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbNotificaciones).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbNoticias).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbTema).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbEnglish).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbHamburger).EndInit();
-            roundGroupBox1.ResumeLayout(false);
-            roundGroupBox1.PerformLayout();
+            Activated += frmNotas_Activated;
+            Load += frmNotas_Load;
+            Controls.SetChildIndex(grbNotasDia, 0);
+            Controls.SetChildIndex(roundGroupBox2, 0);
+            Controls.SetChildIndex(btnSalir, 0);
+            Controls.SetChildIndex(barraSecundaria1, 0);
+            Controls.SetChildIndex(barraLateral1, 0);
+            Controls.SetChildIndex(monthCalendar1, 0);
             roundGroupBox2.ResumeLayout(false);
             roundGroupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dtgNotas).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvNotas).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel pnlBarra;
-        private PictureBox pbSpain;
-        private PictureBox pbAyuda;
-        private PictureBox pbUsuario;
-        private PictureBox pbNotificaciones;
-        private PictureBox pbNoticias;
-        private PictureBox pbTema;
-        private PictureBox pbEnglish;
-        private PictureBox pbHamburger;
         private GroupBox grbNotasDia;
-        private RoundGroupBox roundGroupBox1;
         private RoundGroupBox roundGroupBox2;
-        private Label lblMes;
-        private Label label3;
-        private Label lblAdelante;
-        private Label lblAtras;
         private Button btnNuevaNota;
-        private DataGridView dtgNotas;
+        private DataGridView dgvNotas;
         private ComboBox cmbFiltrarPor;
         private Label lblFiltrarPor;
         private Button btnSalir;
+        private BarraSecundaria barraSecundaria1;
+        private BarraLateral barraLateral1;
+        private Button btnFiltrar;
+        private TextBox txtFiltro;
+        private Button btnFiltroColor;
+        private DateTimePicker dtpFiltrarFecha;
+        private CheckBox ckbAlarmaFiltro;
+        private Button btnRestaurarFiltro;
+        private ColorDialog colorDialog1;
+        private MonthCalendar monthCalendar1;
     }
 }

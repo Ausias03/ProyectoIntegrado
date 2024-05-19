@@ -20,26 +20,13 @@ namespace Gestionis
         {
             dtpBuscaFecha.MaxDate = DateTime.Now;
             lblFecha.Show();
-            lblFecha.Text = ("Hoy, " + DateTime.Today.ToString("D"));
-        }
-
-        private void cmbMetodo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbMetodo.SelectedIndex == 0)
-            {
-                txtBuscar.Hide();
-                cmbBuscador.Show();
-            }
-            else
-            {
-                txtBuscar.Show();
-                cmbBuscador.Hide();
-                txtBuscar.Text = "";
-            }
+            lblFecha.Text = DateTime.Today.ToString("D");
+            CargarFecha(DateTime.Today, 1);
         }
 
         private void picBuscar_Click(object sender, EventArgs e)
         {
+            CargarFiltro(dtpBuscaFecha.Value, 1, cmbMetodo.Text, txtBuscar.Text);
             lblFecha.Text = dtpBuscaFecha.Value.ToString("D");
             dtpBuscaFecha.Value = DateTime.Today;
             txtBuscar.Text = "";
@@ -47,66 +34,57 @@ namespace Gestionis
 
         private void picBuscaFecha_Click(object sender, EventArgs e)
         {
+            CargarFecha(dtpBuscaFecha.Value, 1);
             lblFecha.Text = dtpBuscaFecha.Value.ToString("D");
             dtpBuscaFecha.Value = DateTime.Today;
             txtBuscar.Text = "";
         }
 
-        /*
-        private void CargarBusquedaFecha(DateTime fecha, int numCuenta)
+
+        private void CargarFecha(DateTime fecha, int numCuenta)
         {
-            List<object> listaTotal = new List<object>();
-            listaTotal.Add();
-            listaTotal.Add();
-            listaTotal.Sort((x, y) => ObtenerHora(x).CompareTo(ObtenerHora(y)));
-            dgvHistorial.DataSource = listaTotal;
+            string consulta = $"SELECT g.hora,g.tipo,c.nombre AS categoria,g.nombre,g.cantidad,g.comentarios FROM gasto AS g INNER JOIN " +
+                $"categoriagasto AS c ON g.categoria = c.idCategoria WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta};";
+            dgvGastos.DataSource = Utilidades.RellenarDatos(consulta);
+            string consulta2 = $"SELECT i.hora,i.tipo,c.nombre AS categoria,i.nombre,i.cantidad,i.comentarios FROM ingreso AS i INNER JOIN " +
+                $"categoriaingreso AS c ON i.categoria = c.idCategoria WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta};";
+            dgvIngresos.DataSource = Utilidades.RellenarDatos(consulta2);
         }
 
-        private void CargarBusquedaMetodica(DateTime fecha, int numCuenta, int filtrar, string param)
+        private void CargarFiltro(DateTime fecha, int numCuenta, string filtro, string param)
         {
-            List<object> listaTotal = new List<object>();
-            listaTotal.Add();
-            listaTotal.Add();
-            listaTotal.Sort((x, y) => ObtenerHora(x).CompareTo(ObtenerHora(y)));
-            dgvHistorial.DataSource = listaTotal;
+            string consulta = $"SELECT g.hora,g.tipo,c.nombre AS categoria,g.nombre,g.cantidad,g.comentarios FROM gasto AS g INNER JOIN " +
+                $"categoriagasto AS c ON g.categoria = c.idCategoria WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta}";
+            string consulta2 = $"SELECT i.hora,i.tipo,c.nombre AS categoria,i.nombre,i.cantidad,i.comentarios FROM ingreso AS i INNER JOIN " +
+                $"categoriaingreso AS c ON i.categoria = c.idCategoria WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta}";
+            switch (filtro)
+            {
+                case "Tipo":
+                    consulta += $" AND tipo = '{param}';";
+                    consulta2 += $" AND tipo = '{param}';";
+                    break;
+                case "Categoria":
+                    consulta += $" AND c.nombre = '{param}';";
+                    consulta2 += $" AND c.nombre = '{param}';";
+                    break;
+                case "Nombre":
+                    consulta += $" AND g.nombre = '{param}';";
+                    consulta2 += $" AND i.nombre = '{param}';";
+                    break;
+                case "Cantidad":
+                    consulta += $" AND cantidad = {param};";
+                    consulta2 += $" AND cantidad = {param};";
+                    break;
+                default:
+                    break;
+            }
+            dgvGastos.DataSource = Utilidades.RellenarDatos(consulta);
+            dgvIngresos.DataSource = Utilidades.RellenarDatos(consulta2);
         }
 
-        private void CargarBusquedaTipo(DateTime fecha, int numCuenta, int tipo, string param)
+        private void btnSalir_Click(object sender, EventArgs e)
         {
-            List<object> lista = new List<object>();
-            switch (tipo)
-            {
-                case 0:
-                    lista = Gasto.BusquedaTipo();
-                    break;
-                case 1:
-                    lista = Gasto.BusquedaTipo();
-                    break;
-                case 2:
-                    lista = Ingreso.BusquedaTipo();
-                    break;
-                case 3:
-                    lista = Ingreso.BusquedaTipo();
-                    break;
-            }
-            dgvHistorial.DataSource = lista;
+            Application.Exit();
         }
-
-        TimeSpan ObtenerHora(object obj)
-        {
-            if (obj is Gasto)
-            {
-                return ((Gasto)obj).Hora;
-            }
-            else if (obj is Ingreso)
-            {
-                return ((Ingreso)obj).Hora;
-            }
-            else
-            {
-                throw new ArgumentException("Objeto no reconocido");
-            }
-        }
-        */
     }
 }

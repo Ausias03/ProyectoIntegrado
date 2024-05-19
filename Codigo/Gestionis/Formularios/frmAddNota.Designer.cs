@@ -28,19 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             lblDia = new Label();
             lblTitulo = new Label();
             lblAsunto = new Label();
             lblAlarma = new Label();
-            lblLinea = new Label();
-            label5 = new Label();
-            textBox1 = new TextBox();
-            rdbAlarma = new RadioButton();
-            btnSalir = new Button();
-            button1 = new Button();
-            button2 = new Button();
+            txtAddAsunto = new TextBox();
+            btnAnotar = new Button();
+            btnCancelar = new Button();
+            btnBorrar = new Button();
             colorDialog1 = new ColorDialog();
             btnColor = new Button();
+            txtAddTitulo = new TextBox();
+            dtpAddDia = new DateTimePicker();
+            errorProvider1 = new ErrorProvider(components);
+            ckbAlarma = new CheckBox();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // lblDia
@@ -83,115 +86,118 @@
             lblAlarma.TabIndex = 3;
             lblAlarma.Text = "Alarma:";
             // 
-            // lblLinea
+            // txtAddAsunto
             // 
-            lblLinea.AutoSize = true;
-            lblLinea.Font = new Font("Segoe UI", 14.25F);
-            lblLinea.Location = new Point(90, 40);
-            lblLinea.Name = "lblLinea";
-            lblLinea.Size = new Size(164, 32);
-            lblLinea.TabIndex = 4;
-            lblLinea.Text = "_______________";
+            txtAddAsunto.Location = new Point(30, 191);
+            txtAddAsunto.Multiline = true;
+            txtAddAsunto.Name = "txtAddAsunto";
+            txtAddAsunto.Size = new Size(348, 90);
+            txtAddAsunto.TabIndex = 4;
             // 
-            // label5
+            // btnAnotar
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 14.25F);
-            label5.Location = new Point(116, 93);
-            label5.Name = "label5";
-            label5.Size = new Size(164, 32);
-            label5.TabIndex = 5;
-            label5.Text = "_______________";
+            btnAnotar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnAnotar.BackColor = Color.FromArgb(178, 242, 187);
+            btnAnotar.FlatStyle = FlatStyle.Flat;
+            btnAnotar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAnotar.Location = new Point(261, 412);
+            btnAnotar.Margin = new Padding(3, 4, 3, 4);
+            btnAnotar.Name = "btnAnotar";
+            btnAnotar.Size = new Size(137, 42);
+            btnAnotar.TabIndex = 8;
+            btnAnotar.Text = "Anotar";
+            btnAnotar.UseVisualStyleBackColor = false;
+            btnAnotar.Click += btnAnotar_Click;
             // 
-            // textBox1
+            // btnCancelar
             // 
-            textBox1.Location = new Point(30, 191);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(348, 90);
-            textBox1.TabIndex = 6;
+            btnCancelar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnCancelar.BackColor = Color.FromArgb(178, 242, 187);
+            btnCancelar.FlatStyle = FlatStyle.Flat;
+            btnCancelar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnCancelar.Location = new Point(261, 362);
+            btnCancelar.Margin = new Padding(3, 4, 3, 4);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(137, 42);
+            btnCancelar.TabIndex = 7;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
             // 
-            // rdbAlarma
+            // btnBorrar
             // 
-            rdbAlarma.AutoSize = true;
-            rdbAlarma.Location = new Point(129, 328);
-            rdbAlarma.Name = "rdbAlarma";
-            rdbAlarma.Size = new Size(17, 16);
-            rdbAlarma.TabIndex = 7;
-            rdbAlarma.TabStop = true;
-            rdbAlarma.UseVisualStyleBackColor = true;
-            // 
-            // btnSalir
-            // 
-            btnSalir.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnSalir.BackColor = Color.FromArgb(178, 242, 187);
-            btnSalir.FlatStyle = FlatStyle.Flat;
-            btnSalir.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSalir.Location = new Point(261, 412);
-            btnSalir.Margin = new Padding(3, 4, 3, 4);
-            btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(137, 42);
-            btnSalir.TabIndex = 17;
-            btnSalir.Text = "Anotar";
-            btnSalir.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            button1.BackColor = Color.FromArgb(178, 242, 187);
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(261, 362);
-            button1.Margin = new Padding(3, 4, 3, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(137, 42);
-            button1.TabIndex = 18;
-            button1.Text = "Cancelar";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
-            // 
-            // button2
-            // 
-            button2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            button2.BackColor = Color.FromArgb(178, 242, 187);
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.Location = new Point(32, 411);
-            button2.Margin = new Padding(3, 4, 3, 4);
-            button2.Name = "button2";
-            button2.Size = new Size(137, 42);
-            button2.TabIndex = 19;
-            button2.Text = "Eliminar";
-            button2.UseVisualStyleBackColor = false;
+            btnBorrar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnBorrar.BackColor = Color.FromArgb(178, 242, 187);
+            btnBorrar.FlatStyle = FlatStyle.Flat;
+            btnBorrar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnBorrar.Location = new Point(32, 411);
+            btnBorrar.Margin = new Padding(3, 4, 3, 4);
+            btnBorrar.Name = "btnBorrar";
+            btnBorrar.Size = new Size(137, 42);
+            btnBorrar.TabIndex = 6;
+            btnBorrar.Text = "Eliminar";
+            btnBorrar.UseVisualStyleBackColor = false;
+            btnBorrar.Click += btnBorrar_Click;
             // 
             // btnColor
             // 
             btnColor.Location = new Point(342, 46);
             btnColor.Name = "btnColor";
             btnColor.Size = new Size(36, 29);
-            btnColor.TabIndex = 20;
+            btnColor.TabIndex = 2;
             btnColor.UseVisualStyleBackColor = true;
             btnColor.Click += btnColor_Click;
+            // 
+            // txtAddTitulo
+            // 
+            txtAddTitulo.BackColor = SystemColors.Window;
+            txtAddTitulo.Location = new Point(116, 98);
+            txtAddTitulo.Name = "txtAddTitulo";
+            txtAddTitulo.Size = new Size(262, 27);
+            txtAddTitulo.TabIndex = 3;
+            // 
+            // dtpAddDia
+            // 
+            dtpAddDia.Format = DateTimePickerFormat.Short;
+            dtpAddDia.Location = new Point(90, 45);
+            dtpAddDia.Name = "dtpAddDia";
+            dtpAddDia.Size = new Size(155, 27);
+            dtpAddDia.TabIndex = 1;
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
+            // ckbAlarma
+            // 
+            ckbAlarma.AutoSize = true;
+            ckbAlarma.Location = new Point(129, 325);
+            ckbAlarma.Name = "ckbAlarma";
+            ckbAlarma.Size = new Size(18, 17);
+            ckbAlarma.TabIndex = 5;
+            ckbAlarma.UseVisualStyleBackColor = true;
             // 
             // frmAddNota
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(420, 467);
+            Controls.Add(ckbAlarma);
+            Controls.Add(dtpAddDia);
+            Controls.Add(txtAddTitulo);
             Controls.Add(btnColor);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(btnSalir);
-            Controls.Add(rdbAlarma);
-            Controls.Add(textBox1);
-            Controls.Add(label5);
-            Controls.Add(lblLinea);
+            Controls.Add(btnBorrar);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnAnotar);
+            Controls.Add(txtAddAsunto);
             Controls.Add(lblAlarma);
             Controls.Add(lblAsunto);
             Controls.Add(lblTitulo);
             Controls.Add(lblDia);
             Name = "frmAddNota";
             Text = "AddNota";
+            Load += frmAddNota_Load;
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -202,14 +208,15 @@
         private Label lblTitulo;
         private Label lblAsunto;
         private Label lblAlarma;
-        private Label lblLinea;
-        private Label label5;
-        private TextBox textBox1;
-        private RadioButton rdbAlarma;
-        private Button btnSalir;
-        private Button button1;
-        private Button button2;
+        private TextBox txtAddAsunto;
+        private Button btnAnotar;
+        private Button btnCancelar;
+        private Button btnBorrar;
         private ColorDialog colorDialog1;
         private Button btnColor;
+        private TextBox txtAddTitulo;
+        private DateTimePicker dtpAddDia;
+        private ErrorProvider errorProvider1;
+        private CheckBox ckbAlarma;
     }
 }

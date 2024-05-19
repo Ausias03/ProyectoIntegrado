@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHistorial));
             lblHistorial = new Label();
-            dgvHistorial = new DataGridView();
+            dgvIngresos = new DataGridView();
             lblFecha = new Label();
             txtBuscar = new TextBox();
             picBuscar = new PictureBox();
@@ -42,10 +42,14 @@
             picBuscaFecha = new PictureBox();
             barraSecundaria1 = new Herramientas.BarraSecundaria();
             barraLateral1 = new Herramientas.BarraLateral();
-            cmbBuscador = new ComboBox();
-            ((System.ComponentModel.ISupportInitialize)dgvHistorial).BeginInit();
+            lblIngresos = new Label();
+            dgvGastos = new DataGridView();
+            lblGastos = new Label();
+            btnSalir = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvIngresos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBuscar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBuscaFecha).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvGastos).BeginInit();
             SuspendLayout();
             // 
             // lblHistorial
@@ -58,14 +62,18 @@
             lblHistorial.TabIndex = 1;
             lblHistorial.Text = "Historial";
             // 
-            // dgvHistorial
+            // dgvIngresos
             // 
-            dgvHistorial.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvHistorial.Location = new Point(322, 181);
-            dgvHistorial.Name = "dgvHistorial";
-            dgvHistorial.RowHeadersWidth = 51;
-            dgvHistorial.Size = new Size(1018, 494);
-            dgvHistorial.TabIndex = 17;
+            dgvIngresos.AllowUserToAddRows = false;
+            dgvIngresos.AllowUserToDeleteRows = false;
+            dgvIngresos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvIngresos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvIngresos.Location = new Point(322, 210);
+            dgvIngresos.Name = "dgvIngresos";
+            dgvIngresos.ReadOnly = true;
+            dgvIngresos.RowHeadersWidth = 51;
+            dgvIngresos.Size = new Size(1018, 315);
+            dgvIngresos.TabIndex = 17;
             // 
             // lblFecha
             // 
@@ -88,9 +96,11 @@
             // 
             // picBuscar
             // 
+            picBuscar.Image = Properties.Resources.lupa;
             picBuscar.Location = new Point(1533, 276);
             picBuscar.Name = "picBuscar";
             picBuscar.Size = new Size(34, 34);
+            picBuscar.SizeMode = PictureBoxSizeMode.StretchImage;
             picBuscar.TabIndex = 9;
             picBuscar.TabStop = false;
             picBuscar.Click += picBuscar_Click;
@@ -104,7 +114,6 @@
             lblBuscar.Size = new Size(81, 20);
             lblBuscar.TabIndex = 20;
             lblBuscar.Text = "Buscador:";
-            lblBuscar.Visible = false;
             // 
             // lblMetodo
             // 
@@ -115,7 +124,6 @@
             lblMetodo.Size = new Size(67, 20);
             lblMetodo.TabIndex = 21;
             lblMetodo.Text = "Metodo:";
-            lblMetodo.Visible = false;
             // 
             // cmbMetodo
             // 
@@ -127,7 +135,6 @@
             cmbMetodo.Size = new Size(181, 28);
             cmbMetodo.TabIndex = 22;
             cmbMetodo.Text = "Tipo";
-            cmbMetodo.SelectedIndexChanged += cmbMetodo_SelectedIndexChanged;
             // 
             // dtpBuscaFecha
             // 
@@ -147,13 +154,14 @@
             lblBuscaFecha.Size = new Size(157, 20);
             lblBuscaFecha.TabIndex = 24;
             lblBuscaFecha.Text = "Buscador por Fecha:";
-            lblBuscaFecha.Visible = false;
             // 
             // picBuscaFecha
             // 
+            picBuscaFecha.Image = Properties.Resources.lupa;
             picBuscaFecha.Location = new Point(1533, 210);
             picBuscaFecha.Name = "picBuscaFecha";
             picBuscaFecha.Size = new Size(34, 34);
+            picBuscaFecha.SizeMode = PictureBoxSizeMode.StretchImage;
             picBuscaFecha.TabIndex = 25;
             picBuscaFecha.TabStop = false;
             picBuscaFecha.Click += picBuscaFecha_Click;
@@ -164,7 +172,7 @@
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1856, 44);
+            barraSecundaria1.Size = new Size(1631, 44);
             barraSecundaria1.TabIndex = 26;
             // 
             // barraLateral1
@@ -173,26 +181,63 @@
             barraLateral1.Dock = DockStyle.Left;
             barraLateral1.Location = new Point(0, 84);
             barraLateral1.Name = "barraLateral1";
-            barraLateral1.Size = new Size(289, 758);
+            barraLateral1.Size = new Size(289, 832);
             barraLateral1.TabIndex = 27;
             // 
-            // cmbBuscador
+            // lblIngresos
             // 
-            cmbBuscador.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            cmbBuscador.FormattingEnabled = true;
-            cmbBuscador.Items.AddRange(new object[] { "Fijo", "Variable", "Salario", "Extra" });
-            cmbBuscador.Location = new Point(1346, 276);
-            cmbBuscador.Name = "cmbBuscador";
-            cmbBuscador.Size = new Size(181, 28);
-            cmbBuscador.TabIndex = 28;
-            cmbBuscador.Text = "Fijo";
+            lblIngresos.AutoSize = true;
+            lblIngresos.Font = new Font("Microsoft Sans Serif", 12F);
+            lblIngresos.Location = new Point(322, 187);
+            lblIngresos.Name = "lblIngresos";
+            lblIngresos.Size = new Size(75, 20);
+            lblIngresos.TabIndex = 29;
+            lblIngresos.Text = "Ingresos:";
+            // 
+            // dgvGastos
+            // 
+            dgvGastos.AllowUserToAddRows = false;
+            dgvGastos.AllowUserToDeleteRows = false;
+            dgvGastos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvGastos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvGastos.Location = new Point(322, 574);
+            dgvGastos.Name = "dgvGastos";
+            dgvGastos.ReadOnly = true;
+            dgvGastos.RowHeadersWidth = 51;
+            dgvGastos.Size = new Size(1018, 318);
+            dgvGastos.TabIndex = 30;
+            // 
+            // lblGastos
+            // 
+            lblGastos.AutoSize = true;
+            lblGastos.Font = new Font("Microsoft Sans Serif", 12F);
+            lblGastos.Location = new Point(322, 551);
+            lblGastos.Name = "lblGastos";
+            lblGastos.Size = new Size(65, 20);
+            lblGastos.TabIndex = 31;
+            lblGastos.Text = "Gastos:";
+            // 
+            // btnSalir
+            // 
+            btnSalir.BackColor = Color.FromArgb(170, 166, 202);
+            btnSalir.Font = new Font("Microsoft Sans Serif", 12F);
+            btnSalir.Location = new Point(1452, 852);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(124, 40);
+            btnSalir.TabIndex = 32;
+            btnSalir.Text = "Salir";
+            btnSalir.UseVisualStyleBackColor = false;
+            btnSalir.Click += btnSalir_Click;
             // 
             // frmHistorial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1856, 842);
-            Controls.Add(cmbBuscador);
+            ClientSize = new Size(1631, 916);
+            Controls.Add(btnSalir);
+            Controls.Add(lblGastos);
+            Controls.Add(dgvGastos);
+            Controls.Add(lblIngresos);
             Controls.Add(barraLateral1);
             Controls.Add(barraSecundaria1);
             Controls.Add(picBuscaFecha);
@@ -204,16 +249,14 @@
             Controls.Add(picBuscar);
             Controls.Add(txtBuscar);
             Controls.Add(lblFecha);
-            Controls.Add(dgvHistorial);
+            Controls.Add(dgvIngresos);
             Controls.Add(lblHistorial);
             Font = new Font("Microsoft Sans Serif", 9F);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmHistorial";
-            StartPosition = FormStartPosition.CenterScreen;
-            WindowState = FormWindowState.Maximized;
             Load += frmHistorial_Load;
             Controls.SetChildIndex(lblHistorial, 0);
-            Controls.SetChildIndex(dgvHistorial, 0);
+            Controls.SetChildIndex(dgvIngresos, 0);
             Controls.SetChildIndex(lblFecha, 0);
             Controls.SetChildIndex(txtBuscar, 0);
             Controls.SetChildIndex(picBuscar, 0);
@@ -225,17 +268,21 @@
             Controls.SetChildIndex(picBuscaFecha, 0);
             Controls.SetChildIndex(barraSecundaria1, 0);
             Controls.SetChildIndex(barraLateral1, 0);
-            Controls.SetChildIndex(cmbBuscador, 0);
-            ((System.ComponentModel.ISupportInitialize)dgvHistorial).EndInit();
+            Controls.SetChildIndex(lblIngresos, 0);
+            Controls.SetChildIndex(dgvGastos, 0);
+            Controls.SetChildIndex(lblGastos, 0);
+            Controls.SetChildIndex(btnSalir, 0);
+            ((System.ComponentModel.ISupportInitialize)dgvIngresos).EndInit();
             ((System.ComponentModel.ISupportInitialize)picBuscar).EndInit();
             ((System.ComponentModel.ISupportInitialize)picBuscaFecha).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvGastos).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
         private Label lblHistorial;
-        private DataGridView dgvHistorial;
+        private DataGridView dgvIngresos;
         private Label lblFecha;
         private TextBox txtBuscar;
         private PictureBox picBuscar;
@@ -247,6 +294,9 @@
         private PictureBox picBuscaFecha;
         private Herramientas.BarraSecundaria barraSecundaria1;
         private Herramientas.BarraLateral barraLateral1;
-        private ComboBox cmbBuscador;
+        private Label lblIngresos;
+        private DataGridView dgvGastos;
+        private Label lblGastos;
+        private Button btnSalir;
     }
 }
