@@ -118,7 +118,7 @@
             lblContrasenya.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblContrasenya.Location = new Point(134, 245);
             lblContrasenya.Name = "lblContrasenya";
-            lblContrasenya.Padding = new Padding(4, 4, 4, 4);
+            lblContrasenya.Padding = new Padding(4);
             lblContrasenya.Size = new Size(138, 34);
             lblContrasenya.TabIndex = 12;
             lblContrasenya.Text = "Contraseña:";
@@ -140,7 +140,7 @@
             lblApodo.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblApodo.Location = new Point(183, 65);
             lblApodo.Name = "lblApodo";
-            lblApodo.Padding = new Padding(4, 4, 4, 4);
+            lblApodo.Padding = new Padding(4);
             lblApodo.Size = new Size(89, 34);
             lblApodo.TabIndex = 10;
             lblApodo.Text = "Apodo:";
@@ -154,7 +154,7 @@
             lblRegistro.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblRegistro.Location = new Point(275, 14);
             lblRegistro.Name = "lblRegistro";
-            lblRegistro.Padding = new Padding(4, 4, 4, 4);
+            lblRegistro.Padding = new Padding(4);
             lblRegistro.Size = new Size(114, 39);
             lblRegistro.TabIndex = 9;
             lblRegistro.Text = "Registro";
@@ -176,7 +176,7 @@
             lblCorreo.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblCorreo.Location = new Point(180, 110);
             lblCorreo.Name = "lblCorreo";
-            lblCorreo.Padding = new Padding(4, 4, 4, 4);
+            lblCorreo.Padding = new Padding(4);
             lblCorreo.Size = new Size(92, 34);
             lblCorreo.TabIndex = 18;
             lblCorreo.Text = "Correo:";
@@ -198,7 +198,7 @@
             lblNombre.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblNombre.Location = new Point(168, 155);
             lblNombre.Name = "lblNombre";
-            lblNombre.Padding = new Padding(4, 4, 4, 4);
+            lblNombre.Padding = new Padding(4);
             lblNombre.Size = new Size(104, 34);
             lblNombre.TabIndex = 20;
             lblNombre.Text = "Nombre:";
@@ -220,7 +220,7 @@
             lblApellidos.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblApellidos.Location = new Point(157, 200);
             lblApellidos.Name = "lblApellidos";
-            lblApellidos.Padding = new Padding(4, 4, 4, 4);
+            lblApellidos.Padding = new Padding(4);
             lblApellidos.Size = new Size(115, 34);
             lblApellidos.TabIndex = 22;
             lblApellidos.Text = "Apellidos:";
@@ -242,7 +242,7 @@
             lblDireccion.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblDireccion.Location = new Point(155, 290);
             lblDireccion.Name = "lblDireccion";
-            lblDireccion.Padding = new Padding(4, 4, 4, 4);
+            lblDireccion.Padding = new Padding(4);
             lblDireccion.Size = new Size(117, 34);
             lblDireccion.TabIndex = 24;
             lblDireccion.Text = "Dirección:";
@@ -264,7 +264,7 @@
             lblTelefono.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblTelefono.Location = new Point(163, 335);
             lblTelefono.Name = "lblTelefono";
-            lblTelefono.Padding = new Padding(4, 4, 4, 4);
+            lblTelefono.Padding = new Padding(4);
             lblTelefono.Size = new Size(109, 34);
             lblTelefono.TabIndex = 26;
             lblTelefono.Text = "Teléfono:";

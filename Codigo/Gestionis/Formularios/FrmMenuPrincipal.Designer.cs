@@ -523,7 +523,9 @@ namespace Gestionis
             Controls.Add(rgbMenu);
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmMenuPrincipal";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Gestionis";
+            WindowState = FormWindowState.Maximized;
             Activated += FrmMenuPrincipal_Activated;
             Load += FrmMenuPrincipal_Load;
             Controls.SetChildIndex(rgbMenu, 0);

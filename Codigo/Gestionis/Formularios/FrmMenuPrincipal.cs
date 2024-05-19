@@ -81,14 +81,12 @@ namespace Gestionis
         private void btnGasto_Click(object sender, EventArgs e)
         {
             frmAnyadirGasto fAG = new frmAnyadirGasto();
-            fAG.NumCuenta = Cuenta.IDCuentaUsuario(usuario.Apodo);
             fAG.ShowDialog();
         }
 
         private void btnIngreso_Click(object sender, EventArgs e)
         {
             frmAnyadirIngreso fAI = new frmAnyadirIngreso();
-            fAI.NumCuenta = Cuenta.IDCuentaUsuario(usuario.Apodo);
             fAI.ShowDialog();
         }
 
