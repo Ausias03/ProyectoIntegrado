@@ -17,9 +17,7 @@ namespace Gestionis
 {
     public partial class FrmMenuPrincipal : FrmBarraPrincipal
     {
-
         private int numCuenta = Sesion.Instance.NumCuenta;
-        private string apodoUsuario = Sesion.Instance.ApodoUsuario;
 
         public FrmMenuPrincipal()
         {

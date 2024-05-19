@@ -2,13 +2,15 @@
 {
     public class BarraSecundaria : Panel
     {
-        private Button btnHamburger;
-        private Button btnAyuda;
-        private Button btnLanguage;
-        private Button btnNoticias;
-        private Button btnNotificaciones;
-        private Button btnUsuario;
-        private Button btnTema;
+        public Button BtnHamburger { get; private set; }
+        public Button BtnAyuda { get; private set; }
+        public Button BtnLanguage { get; private set; }
+        public Button BtnNoticias { get; private set; }
+        public Button BtnNotificaciones { get; private set; }
+        public Button BtnUsuario { get; private set; }
+        public Button BtnTema { get; private set; }
+
+        private bool isDarkTheme = false;
 
         public BarraSecundaria()
         {
@@ -25,25 +27,24 @@
 
         private void CreateButtons()
         {
-            btnHamburger = CreateButton(Properties.Resources.hamburgerUp, "Hamburger");
-            btnAyuda = CreateButton(Properties.Resources.ayuda, "Ayuda");
-            btnLanguage = CreateButton(Properties.Resources.england, "Language");
-            btnNoticias = CreateButton(Properties.Resources.news, "Noticias");
-            btnNotificaciones = CreateButton(Properties.Resources.notif, "Notificaciones");
-            btnUsuario = CreateButton(Properties.Resources.user, "Usuario");
-            btnTema = CreateButton(Properties.Resources.darkTheme, "Tema");
+            BtnHamburger = CreateButton(Properties.Resources.hamburgerUp, "Hamburger");
+            BtnAyuda = CreateButton(Properties.Resources.ayuda, "Ayuda");
+            BtnLanguage = CreateButton(Properties.Resources.england, "Language");
+            BtnNoticias = CreateButton(Properties.Resources.news, "Noticias");
+            BtnNotificaciones = CreateButton(Properties.Resources.notif, "Notificaciones");
+            BtnUsuario = CreateButton(Properties.Resources.user, "Usuario");
+            BtnTema = CreateButton(Properties.Resources.darkTheme, "Tema");
 
-            btnNoticias.Dock = DockStyle.Right;
-            btnNotificaciones.Dock = DockStyle.Right;
-            btnUsuario.Dock = DockStyle.Right;
+            BtnNoticias.Dock = DockStyle.Right;
+            BtnNotificaciones.Dock = DockStyle.Right;
+            BtnUsuario.Dock = DockStyle.Right;
 
-            btnAyuda.Dock = DockStyle.Left;
-            btnTema.Dock = DockStyle.Left;
-            btnLanguage.Dock = DockStyle.Left;
-            btnHamburger.Dock = DockStyle.Left;
+            BtnAyuda.Dock = DockStyle.Left;
+            BtnTema.Dock = DockStyle.Left;
+            BtnLanguage.Dock = DockStyle.Left;
+            BtnHamburger.Dock = DockStyle.Left;
 
-
-            Controls.AddRange(new Control[] { btnTema, btnNoticias, btnNotificaciones, btnUsuario, btnLanguage, btnAyuda, btnHamburger });
+            Controls.AddRange(new Control[] { BtnTema, BtnNoticias, BtnNotificaciones, BtnUsuario, BtnLanguage, BtnAyuda, BtnHamburger });
         }
 
         private Button CreateButton(Image image, string name)
@@ -67,13 +68,16 @@
                 switch (buttonName)
                 {
                     case "btnHamburger":
-                        btnHamburger.Image = BarraLateral.ColapsarExpandir(sender, e) ? Properties.Resources.hamburgerLeft : Properties.Resources.hamburgerUp;
+                        BtnHamburger.Image = BarraLateral.ColapsarExpandir(sender, e) ? Properties.Resources.hamburgerLeft : Properties.Resources.hamburgerUp;
                         break;
                     case "btnAyuda":
 
                         break;
                     case "btnLanguage":
-
+                        if (ImageEquals(BtnLanguage.Image, Properties.Resources.england))
+                            BtnLanguage.Image = Properties.Resources.spain;
+                        else 
+                            BtnLanguage.Image = Properties.Resources.england;
                         break;
                     case "btnNoticias":
 
@@ -90,11 +94,79 @@
                         BarraLateral.ColapsarExpandir(sender, e);
                         break;
                     case "btnTema":
-
+                        Tema();
                         break;
                 }
             }
         }
+
+        #region Cambiar Tema
+        private void Tema()
+        {
+            isDarkTheme = !isDarkTheme;
+
+            Color fondo = isDarkTheme ? Color.Black : Color.FromArgb(233, 236, 239);
+
+            Color texto = isDarkTheme ? Color.White : Color.Black;
+
+            Form parentForm = this.FindForm();
+            if (parentForm != null)
+            {
+                parentForm.BackColor = fondo;
+
+                CambiarTextoBotones(parentForm.Controls, texto);
+            }
+        }
+
+        private void CambiarTextoBotones(Control.ControlCollection controls, Color color)
+        {
+            foreach (Control control in controls)
+            {
+                if (control is Label || control is Button || control is CheckBox || control is RadioButton || control is LinkLabel)
+                {
+                    control.ForeColor = color;
+                }
+
+                if (control.HasChildren)
+                {
+                    CambiarTextoBotones(control.Controls, color);
+                }
+            }
+        }
+        #endregion
+
+        #region Cambiar Idioma (imagen)
+        private bool ImageEquals(Image image1, Image image2)
+        {
+            byte[] bytes1 = ImageToByteArray(image1);
+            byte[] bytes2 = ImageToByteArray(image2);
+
+            return ByteArrayEquals(bytes1, bytes2);
+        }
+
+        private byte[] ImageToByteArray(Image image)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                image.Save(ms, image.RawFormat);
+                return ms.ToArray();
+            }
+        }
+
+        private bool ByteArrayEquals(byte[] array1, byte[] array2)
+        {
+            if (array1.Length != array2.Length)
+                return false;
+
+            for (int i = 0; i < array1.Length; i++)
+            {
+                if (array1[i] != array2[i])
+                    return false;
+            }
+
+            return true;
+        }
+        #endregion
     }
 }
 

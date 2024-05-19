@@ -449,7 +449,7 @@ namespace Gestionis
             btnSalir.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnSalir.BackColor = Color.FromArgb(178, 242, 187);
             btnSalir.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSalir.Location = new Point(32767, 592);
+            btnSalir.Location = new Point(32767, 745);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(152, 45);
             btnSalir.TabIndex = 15;
@@ -505,7 +505,7 @@ namespace Gestionis
             barraLateral1.Dock = DockStyle.Left;
             barraLateral1.Location = new Point(0, 75);
             barraLateral1.Name = "barraLateral1";
-            barraLateral1.Size = new Size(231, 600);
+            barraLateral1.Size = new Size(231, 753);
             barraLateral1.TabIndex = 18;
             // 
             // FrmMenuPrincipal
@@ -513,7 +513,7 @@ namespace Gestionis
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(233, 236, 239);
-            ClientSize = new Size(1856, 675);
+            ClientSize = new Size(1856, 828);
             ControlBox = false;
             Controls.Add(barraLateral1);
             Controls.Add(barraSecundaria1);

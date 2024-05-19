@@ -1,15 +1,18 @@
 ﻿using Gestionis.Clases;
 using Gestionis.Formularios;
+using Gestionis.Herramientas;
 
 namespace Gestionis
 {
     public partial class FrmGestorDeudas : FrmBarraPrincipal
     {
+         
         public FrmGestorDeudas()
         {
             InitializeComponent();
+            ModificarBotones();
         }
-
+ 
         private void FrmGestorDeudas_Load(object sender, EventArgs e)
         {
             #region Botones
@@ -46,6 +49,16 @@ namespace Gestionis
 
             dgvGastosIngresos.DataSource = Deuda.RecargarTabla();
         }
+
+        private void ModificarBotones()
+        {
+            barraSecundaria.BtnLanguage.Click += BtnTema_Click;
+        }
+
+        private void BtnTema_Click(object sender, EventArgs e)
+        {
+
+        }    
 
         private void Titulo()
         {
@@ -118,6 +131,6 @@ namespace Gestionis
         {
             dgvGastosIngresos.DataSource = Deuda.RecargarTabla(chkDebo.Checked);
         }
-
+        
     }
 }

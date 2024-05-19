@@ -57,7 +57,7 @@ namespace Gestionis
             label1 = new Label();
             lblMeDeben = new Label();
             lblDeboBarra = new Label();
-            barraSecundaria1 = new BarraSecundaria();
+            barraSecundaria = new BarraSecundaria();
             barraLateral1 = new BarraLateral();
             roundGroupBox1.SuspendLayout();
             pnlInfoDeuda.SuspendLayout();
@@ -379,14 +379,14 @@ namespace Gestionis
             lblDeboBarra.TabIndex = 15;
             lblDeboBarra.Text = "Debo:";
             // 
-            // barraSecundaria1
+            // barraSecundaria
             // 
-            barraSecundaria1.BackColor = Color.FromArgb(211, 208, 242);
-            barraSecundaria1.Dock = DockStyle.Top;
-            barraSecundaria1.Location = new Point(0, 40);
-            barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1839, 35);
-            barraSecundaria1.TabIndex = 29;
+            barraSecundaria.BackColor = Color.FromArgb(211, 208, 242);
+            barraSecundaria.Dock = DockStyle.Top;
+            barraSecundaria.Location = new Point(0, 40);
+            barraSecundaria.Name = "barraSecundaria";
+            barraSecundaria.Size = new Size(1839, 35);
+            barraSecundaria.TabIndex = 29;
             // 
             // barraLateral1
             // 
@@ -394,7 +394,7 @@ namespace Gestionis
             barraLateral1.Dock = DockStyle.Left;
             barraLateral1.Location = new Point(0, 75);
             barraLateral1.Name = "barraLateral1";
-            barraLateral1.Size = new Size(214, 830);
+            barraLateral1.Size = new Size(210, 830);
             barraLateral1.TabIndex = 30;
             // 
             // FrmGestorDeudas
@@ -405,7 +405,7 @@ namespace Gestionis
             BackColor = Color.FromArgb(233, 236, 239);
             ClientSize = new Size(1839, 905);
             Controls.Add(barraLateral1);
-            Controls.Add(barraSecundaria1);
+            Controls.Add(barraSecundaria);
             Controls.Add(rgbResumen);
             Controls.Add(roundGroupBox1);
             Margin = new Padding(3, 2, 3, 2);
@@ -416,7 +416,7 @@ namespace Gestionis
             Load += FrmGestorDeudas_Load;
             Controls.SetChildIndex(roundGroupBox1, 0);
             Controls.SetChildIndex(rgbResumen, 0);
-            Controls.SetChildIndex(barraSecundaria1, 0);
+            Controls.SetChildIndex(barraSecundaria, 0);
             Controls.SetChildIndex(barraLateral1, 0);
             roundGroupBox1.ResumeLayout(false);
             roundGroupBox1.PerformLayout();
@@ -451,13 +451,13 @@ namespace Gestionis
         private CheckBox chkDebo;
         private Label lblTitulo;
         private TextBox txtTitulo;
-        private BarraSecundaria barraSecundaria1;
-        private BarraLateral barraLateral1;
         private Label lblDeboBarra;
         private Label lblSaldoValor;
         private Label lblSaldo;
         private Label label2;
         private Label label1;
         private Label lblMeDeben;
+        private BarraSecundaria barraSecundaria;
+        private BarraLateral barraLateral1;
     }
 }
