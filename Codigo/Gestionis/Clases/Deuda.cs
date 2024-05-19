@@ -73,10 +73,7 @@ namespace Gestionis.Clases
                     ConexionDB.CerrarConexion();
                 }                
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
+            catch (Exception) { }
             return resultado;
         }
 
@@ -159,10 +156,7 @@ namespace Gestionis.Clases
                     ConexionDB.CerrarConexion();
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            catch (Exception) { }
 
             return resultado;
         }
@@ -180,10 +174,10 @@ namespace Gestionis.Clases
                 {
                     if (reader.Read())
                     {
-                        deuda.titulo = reader.GetString(0);
-                        deuda.debo = reader.GetBoolean(1);
-                        deuda.fechaVencimiento = Convert.ToDateTime(reader.GetDateTime(2).ToString("dd/MM/yyyy"));
-                    }
+                        deuda.titulo = reader.IsDBNull(0) ? null : reader.GetString(0);
+                        deuda.debo = !reader.IsDBNull(1) && reader.GetBoolean(1);
+                        deuda.fechaVencimiento = reader.IsDBNull(2) ? DateTime.MinValue : Convert.ToDateTime(reader.GetDateTime(2).ToString("dd/MM/yyyy"));
+                    }                    
                 }
                 ConexionDB.CerrarConexion();
             }            
@@ -248,10 +242,7 @@ namespace Gestionis.Clases
                     ConexionDB.CerrarConexion();
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            catch (Exception){ }
             return resultado;
         }
     }

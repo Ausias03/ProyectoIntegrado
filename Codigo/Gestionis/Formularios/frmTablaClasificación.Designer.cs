@@ -49,17 +49,17 @@
             // lblTabla
             // 
             lblTabla.AutoSize = true;
-            lblTabla.Font = new Font("Roboto Mono", 22.2F, FontStyle.Bold);
+            lblTabla.Font = new Font("Microsoft Sans Serif", 22.2F, FontStyle.Bold);
             lblTabla.Location = new Point(720, 115);
             lblTabla.Name = "lblTabla";
-            lblTabla.Size = new Size(528, 49);
+            lblTabla.Size = new Size(364, 36);
             lblTabla.TabIndex = 1;
             lblTabla.Text = "Top 10 usuarios del mes";
             // 
             // btnSalir
             // 
             btnSalir.BackColor = Color.FromArgb(170, 166, 202);
-            btnSalir.Font = new Font("Roboto Mono", 12F);
+            btnSalir.Font = new Font("Microsoft Sans Serif", 12F);
             btnSalir.Location = new Point(1535, 729);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(124, 40);
@@ -74,7 +74,7 @@
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1269, 44);
+            barraSecundaria1.Size = new Size(1856, 44);
             barraSecundaria1.TabIndex = 3;
             // 
             // barraLateral1
@@ -88,17 +88,19 @@
             // 
             // frmTablaClasificación
             // 
-            AutoScaleDimensions = new SizeF(9F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1269, 841);
+            ClientSize = new Size(1856, 841);
             Controls.Add(barraLateral1);
             Controls.Add(barraSecundaria1);
             Controls.Add(btnSalir);
             Controls.Add(lblTabla);
             Controls.Add(dtgTabla);
-            Font = new Font("Roboto Mono", 9F);
+            Font = new Font("Microsoft Sans Serif", 9F);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmTablaClasificación";
+            StartPosition = FormStartPosition.CenterScreen;
+            WindowState = FormWindowState.Maximized;
             Controls.SetChildIndex(dtgTabla, 0);
             Controls.SetChildIndex(lblTabla, 0);
             Controls.SetChildIndex(btnSalir, 0);

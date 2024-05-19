@@ -64,29 +64,27 @@ namespace Gestionis
             lblNombre = new Label();
             picFoto = new PictureBox();
             barraSecundaria1 = new BarraSecundaria();
-            btnAyuda = new Button();
             barraLateral1 = new BarraLateral();
             helpProvider1 = new HelpProvider();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             grpCuenta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picFoto).BeginInit();
-            barraSecundaria1.SuspendLayout();
             SuspendLayout();
             // 
             // lblTuCuenta
             // 
             lblTuCuenta.AutoSize = true;
-            lblTuCuenta.Font = new Font("Roboto Mono", 24F);
+            lblTuCuenta.Font = new Font("Microsoft Sans Serif", 24F);
             lblTuCuenta.Location = new Point(309, 102);
             lblTuCuenta.Name = "lblTuCuenta";
-            lblTuCuenta.Size = new Size(239, 53);
+            lblTuCuenta.Size = new Size(160, 37);
             lblTuCuenta.TabIndex = 0;
             lblTuCuenta.Text = "Tu cuenta";
             // 
             // btnCerrarSesion
             // 
             btnCerrarSesion.BackColor = Color.FromArgb(170, 166, 202);
-            btnCerrarSesion.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnCerrarSesion.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnCerrarSesion.Location = new Point(1271, 753);
             btnCerrarSesion.Name = "btnCerrarSesion";
             btnCerrarSesion.Size = new Size(198, 52);
@@ -141,7 +139,7 @@ namespace Gestionis
             // btnConfirmarFoto
             // 
             btnConfirmarFoto.BackColor = Color.FromArgb(178, 242, 187);
-            btnConfirmarFoto.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnConfirmarFoto.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnConfirmarFoto.Location = new Point(283, 81);
             btnConfirmarFoto.Name = "btnConfirmarFoto";
             btnConfirmarFoto.Size = new Size(135, 52);
@@ -154,7 +152,7 @@ namespace Gestionis
             // btnConfirmarApellidos
             // 
             btnConfirmarApellidos.BackColor = Color.FromArgb(178, 242, 187);
-            btnConfirmarApellidos.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnConfirmarApellidos.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnConfirmarApellidos.Location = new Point(764, 268);
             btnConfirmarApellidos.Name = "btnConfirmarApellidos";
             btnConfirmarApellidos.Size = new Size(135, 52);
@@ -169,13 +167,13 @@ namespace Gestionis
             txtApellidos.Location = new Point(193, 283);
             txtApellidos.Name = "txtApellidos";
             txtApellidos.ReadOnly = true;
-            txtApellidos.Size = new Size(533, 27);
+            txtApellidos.Size = new Size(533, 21);
             txtApellidos.TabIndex = 52;
             // 
             // btnCambiarApellidos
             // 
             btnCambiarApellidos.BackColor = Color.FromArgb(178, 242, 187);
-            btnCambiarApellidos.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnCambiarApellidos.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnCambiarApellidos.Location = new Point(772, 268);
             btnCambiarApellidos.Name = "btnCambiarApellidos";
             btnCambiarApellidos.Size = new Size(121, 52);
@@ -187,17 +185,17 @@ namespace Gestionis
             // lblApellidos
             // 
             lblApellidos.AutoSize = true;
-            lblApellidos.Font = new Font("Roboto Mono", 12F);
+            lblApellidos.Font = new Font("Microsoft Sans Serif", 12F);
             lblApellidos.Location = new Point(55, 281);
             lblApellidos.Name = "lblApellidos";
-            lblApellidos.Size = new Size(132, 26);
+            lblApellidos.Size = new Size(77, 20);
             lblApellidos.TabIndex = 50;
             lblApellidos.Text = "Apellidos:";
             // 
             // btnConfirmarTel
             // 
             btnConfirmarTel.BackColor = Color.FromArgb(178, 242, 187);
-            btnConfirmarTel.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnConfirmarTel.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnConfirmarTel.Location = new Point(764, 497);
             btnConfirmarTel.Name = "btnConfirmarTel";
             btnConfirmarTel.Size = new Size(135, 52);
@@ -210,7 +208,7 @@ namespace Gestionis
             // btnConfirmarDir
             // 
             btnConfirmarDir.BackColor = Color.FromArgb(178, 242, 187);
-            btnConfirmarDir.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnConfirmarDir.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnConfirmarDir.Location = new Point(764, 439);
             btnConfirmarDir.Name = "btnConfirmarDir";
             btnConfirmarDir.Size = new Size(135, 52);
@@ -223,7 +221,7 @@ namespace Gestionis
             // btnConfirmarCorreo
             // 
             btnConfirmarCorreo.BackColor = Color.FromArgb(178, 242, 187);
-            btnConfirmarCorreo.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnConfirmarCorreo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnConfirmarCorreo.Location = new Point(764, 381);
             btnConfirmarCorreo.Name = "btnConfirmarCorreo";
             btnConfirmarCorreo.Size = new Size(135, 52);
@@ -236,7 +234,7 @@ namespace Gestionis
             // btnConfirmarApodo
             // 
             btnConfirmarApodo.BackColor = Color.FromArgb(178, 242, 187);
-            btnConfirmarApodo.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnConfirmarApodo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnConfirmarApodo.Location = new Point(764, 326);
             btnConfirmarApodo.Name = "btnConfirmarApodo";
             btnConfirmarApodo.Size = new Size(135, 52);
@@ -249,7 +247,7 @@ namespace Gestionis
             // btnConfirmarNom
             // 
             btnConfirmarNom.BackColor = Color.FromArgb(178, 242, 187);
-            btnConfirmarNom.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnConfirmarNom.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnConfirmarNom.Location = new Point(764, 210);
             btnConfirmarNom.Name = "btnConfirmarNom";
             btnConfirmarNom.Size = new Size(135, 52);
@@ -264,7 +262,7 @@ namespace Gestionis
             txtTelefono.Location = new Point(181, 509);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.ReadOnly = true;
-            txtTelefono.Size = new Size(545, 27);
+            txtTelefono.Size = new Size(545, 21);
             txtTelefono.TabIndex = 44;
             // 
             // txtDireccion
@@ -272,7 +270,7 @@ namespace Gestionis
             txtDireccion.Location = new Point(193, 454);
             txtDireccion.Name = "txtDireccion";
             txtDireccion.ReadOnly = true;
-            txtDireccion.Size = new Size(533, 27);
+            txtDireccion.Size = new Size(533, 21);
             txtDireccion.TabIndex = 43;
             // 
             // txtCorreo
@@ -280,7 +278,7 @@ namespace Gestionis
             txtCorreo.Location = new Point(297, 396);
             txtCorreo.Name = "txtCorreo";
             txtCorreo.ReadOnly = true;
-            txtCorreo.Size = new Size(429, 27);
+            txtCorreo.Size = new Size(429, 21);
             txtCorreo.TabIndex = 42;
             // 
             // txtApodo
@@ -288,7 +286,7 @@ namespace Gestionis
             txtApodo.Location = new Point(145, 341);
             txtApodo.Name = "txtApodo";
             txtApodo.ReadOnly = true;
-            txtApodo.Size = new Size(581, 27);
+            txtApodo.Size = new Size(581, 21);
             txtApodo.TabIndex = 41;
             // 
             // txtNombre
@@ -296,13 +294,13 @@ namespace Gestionis
             txtNombre.Location = new Point(157, 225);
             txtNombre.Name = "txtNombre";
             txtNombre.ReadOnly = true;
-            txtNombre.Size = new Size(569, 27);
+            txtNombre.Size = new Size(569, 21);
             txtNombre.TabIndex = 40;
             // 
             // btnCambiarFoto
             // 
             btnCambiarFoto.BackColor = Color.FromArgb(178, 242, 187);
-            btnCambiarFoto.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnCambiarFoto.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnCambiarFoto.Location = new Point(297, 81);
             btnCambiarFoto.Name = "btnCambiarFoto";
             btnCambiarFoto.Size = new Size(121, 52);
@@ -314,7 +312,7 @@ namespace Gestionis
             // btnCambiarTel
             // 
             btnCambiarTel.BackColor = Color.FromArgb(178, 242, 187);
-            btnCambiarTel.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnCambiarTel.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnCambiarTel.Location = new Point(772, 497);
             btnCambiarTel.Name = "btnCambiarTel";
             btnCambiarTel.Size = new Size(121, 52);
@@ -326,7 +324,7 @@ namespace Gestionis
             // btnCambiarDir
             // 
             btnCambiarDir.BackColor = Color.FromArgb(178, 242, 187);
-            btnCambiarDir.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnCambiarDir.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnCambiarDir.Location = new Point(772, 439);
             btnCambiarDir.Name = "btnCambiarDir";
             btnCambiarDir.Size = new Size(121, 52);
@@ -338,7 +336,7 @@ namespace Gestionis
             // btnCambiarCorreo
             // 
             btnCambiarCorreo.BackColor = Color.FromArgb(178, 242, 187);
-            btnCambiarCorreo.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnCambiarCorreo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnCambiarCorreo.Location = new Point(772, 381);
             btnCambiarCorreo.Name = "btnCambiarCorreo";
             btnCambiarCorreo.Size = new Size(121, 52);
@@ -350,7 +348,7 @@ namespace Gestionis
             // btnCambiarApodo
             // 
             btnCambiarApodo.BackColor = Color.FromArgb(178, 242, 187);
-            btnCambiarApodo.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnCambiarApodo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnCambiarApodo.Location = new Point(772, 326);
             btnCambiarApodo.Name = "btnCambiarApodo";
             btnCambiarApodo.Size = new Size(121, 52);
@@ -362,7 +360,7 @@ namespace Gestionis
             // btnCambiarNom
             // 
             btnCambiarNom.BackColor = Color.FromArgb(178, 242, 187);
-            btnCambiarNom.Font = new Font("Roboto Mono", 12F, FontStyle.Bold);
+            btnCambiarNom.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnCambiarNom.Location = new Point(772, 210);
             btnCambiarNom.Name = "btnCambiarNom";
             btnCambiarNom.Size = new Size(121, 52);
@@ -374,60 +372,60 @@ namespace Gestionis
             // lblNivel
             // 
             lblNivel.AutoSize = true;
-            lblNivel.Font = new Font("Roboto Mono", 24F);
+            lblNivel.Font = new Font("Microsoft Sans Serif", 24F);
             lblNivel.Location = new Point(764, 61);
             lblNivel.Name = "lblNivel";
-            lblNivel.Size = new Size(143, 53);
+            lblNivel.Size = new Size(87, 37);
             lblNivel.TabIndex = 34;
             lblNivel.Text = "Nivel";
             // 
             // lblTelefono
             // 
             lblTelefono.AutoSize = true;
-            lblTelefono.Font = new Font("Roboto Mono", 12F);
+            lblTelefono.Font = new Font("Microsoft Sans Serif", 12F);
             lblTelefono.Location = new Point(55, 510);
             lblTelefono.Name = "lblTelefono";
-            lblTelefono.Size = new Size(120, 26);
+            lblTelefono.Size = new Size(75, 20);
             lblTelefono.TabIndex = 33;
             lblTelefono.Text = "Teléfono:";
             // 
             // lblDireccion
             // 
             lblDireccion.AutoSize = true;
-            lblDireccion.Font = new Font("Roboto Mono", 12F);
+            lblDireccion.Font = new Font("Microsoft Sans Serif", 12F);
             lblDireccion.Location = new Point(55, 452);
             lblDireccion.Name = "lblDireccion";
-            lblDireccion.Size = new Size(132, 26);
+            lblDireccion.Size = new Size(79, 20);
             lblDireccion.TabIndex = 31;
             lblDireccion.Text = "Dirección:";
             // 
             // lblCorreo
             // 
             lblCorreo.AutoSize = true;
-            lblCorreo.Font = new Font("Roboto Mono", 12F);
+            lblCorreo.Font = new Font("Microsoft Sans Serif", 12F);
             lblCorreo.Location = new Point(55, 394);
             lblCorreo.Name = "lblCorreo";
-            lblCorreo.Size = new Size(240, 26);
+            lblCorreo.Size = new Size(144, 20);
             lblCorreo.TabIndex = 30;
             lblCorreo.Text = "Correo Electrónico:";
             // 
             // lblApodo
             // 
             lblApodo.AutoSize = true;
-            lblApodo.Font = new Font("Roboto Mono", 12F);
+            lblApodo.Font = new Font("Microsoft Sans Serif", 12F);
             lblApodo.Location = new Point(55, 339);
             lblApodo.Name = "lblApodo";
-            lblApodo.Size = new Size(84, 26);
+            lblApodo.Size = new Size(60, 20);
             lblApodo.TabIndex = 29;
             lblApodo.Text = "Apodo:";
             // 
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Font = new Font("Roboto Mono", 12F);
+            lblNombre.Font = new Font("Microsoft Sans Serif", 12F);
             lblNombre.Location = new Point(55, 223);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(96, 26);
+            lblNombre.Size = new Size(69, 20);
             lblNombre.TabIndex = 28;
             lblNombre.Text = "Nombre:";
             // 
@@ -442,22 +440,11 @@ namespace Gestionis
             // barraSecundaria1
             // 
             barraSecundaria1.BackColor = Color.FromArgb(211, 208, 242);
-            barraSecundaria1.Controls.Add(btnAyuda);
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1309, 44);
+            barraSecundaria1.Size = new Size(1856, 44);
             barraSecundaria1.TabIndex = 5;
-            // 
-            // btnAyuda
-            // 
-            btnAyuda.Location = new Point(195, 9);
-            btnAyuda.Name = "btnAyuda";
-            btnAyuda.Size = new Size(94, 29);
-            btnAyuda.TabIndex = 7;
-            btnAyuda.Text = "Ayuda";
-            btnAyuda.UseVisualStyleBackColor = true;
-            btnAyuda.Click += btnAyuda_Click;
             // 
             // barraLateral1
             // 
@@ -470,16 +457,18 @@ namespace Gestionis
             // 
             // frmUsuario
             // 
-            AutoScaleDimensions = new SizeF(9F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1309, 836);
+            ClientSize = new Size(1856, 836);
             Controls.Add(barraLateral1);
             Controls.Add(barraSecundaria1);
             Controls.Add(grpCuenta);
             Controls.Add(btnCerrarSesion);
             Controls.Add(lblTuCuenta);
-            Font = new Font("Roboto Mono", 9F);
+            Font = new Font("Microsoft Sans Serif", 9F);
             Name = "frmUsuario";
+            StartPosition = FormStartPosition.CenterScreen;
+            WindowState = FormWindowState.Maximized;
             Controls.SetChildIndex(lblTuCuenta, 0);
             Controls.SetChildIndex(btnCerrarSesion, 0);
             Controls.SetChildIndex(grpCuenta, 0);
@@ -489,7 +478,6 @@ namespace Gestionis
             grpCuenta.ResumeLayout(false);
             grpCuenta.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)picFoto).EndInit();
-            barraSecundaria1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -560,7 +548,6 @@ namespace Gestionis
         private PictureBox picFoto;
         private BarraLateral barraLateral1;
         private BarraSecundaria barraSecundaria1;
-        private Button btnAyuda;
         private HelpProvider helpProvider1;
     }
 }

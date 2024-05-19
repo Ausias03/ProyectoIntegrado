@@ -78,27 +78,26 @@ namespace Gestionis
             pnlBarra.Controls.Add(pbHamburger);
             pnlBarra.Dock = DockStyle.Top;
             pnlBarra.Location = new Point(0, 0);
+            pnlBarra.Margin = new Padding(3, 2, 3, 2);
             pnlBarra.Name = "pnlBarra";
-            pnlBarra.Size = new Size(1268, 41);
+            pnlBarra.Size = new Size(1110, 31);
             pnlBarra.TabIndex = 3;
             // 
             // pbSpain
             // 
             pbSpain.Enabled = false;
-            pbSpain.Location = new Point(91, 6);
-            pbSpain.Margin = new Padding(3, 4, 3, 4);
+            pbSpain.Location = new Point(80, 4);
             pbSpain.Name = "pbSpain";
-            pbSpain.Size = new Size(33, 31);
+            pbSpain.Size = new Size(29, 23);
             pbSpain.SizeMode = PictureBoxSizeMode.StretchImage;
             pbSpain.TabIndex = 24;
             pbSpain.TabStop = false;
             // 
             // pbAyuda
             // 
-            pbAyuda.Location = new Point(49, 5);
-            pbAyuda.Margin = new Padding(3, 4, 3, 4);
+            pbAyuda.Location = new Point(43, 4);
             pbAyuda.Name = "pbAyuda";
-            pbAyuda.Size = new Size(31, 30);
+            pbAyuda.Size = new Size(27, 22);
             pbAyuda.SizeMode = PictureBoxSizeMode.StretchImage;
             pbAyuda.TabIndex = 18;
             pbAyuda.TabStop = false;
@@ -106,10 +105,9 @@ namespace Gestionis
             // pbUsuario
             // 
             pbUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbUsuario.Location = new Point(2503, 5);
-            pbUsuario.Margin = new Padding(3, 4, 3, 4);
+            pbUsuario.Location = new Point(2190, 4);
             pbUsuario.Name = "pbUsuario";
-            pbUsuario.Size = new Size(27, 31);
+            pbUsuario.Size = new Size(24, 23);
             pbUsuario.SizeMode = PictureBoxSizeMode.StretchImage;
             pbUsuario.TabIndex = 23;
             pbUsuario.TabStop = false;
@@ -117,10 +115,9 @@ namespace Gestionis
             // pbNotificaciones
             // 
             pbNotificaciones.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbNotificaciones.Location = new Point(2469, 5);
-            pbNotificaciones.Margin = new Padding(3, 4, 3, 4);
+            pbNotificaciones.Location = new Point(2160, 4);
             pbNotificaciones.Name = "pbNotificaciones";
-            pbNotificaciones.Size = new Size(27, 31);
+            pbNotificaciones.Size = new Size(24, 23);
             pbNotificaciones.SizeMode = PictureBoxSizeMode.StretchImage;
             pbNotificaciones.TabIndex = 22;
             pbNotificaciones.TabStop = false;
@@ -128,40 +125,36 @@ namespace Gestionis
             // pbNoticias
             // 
             pbNoticias.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pbNoticias.Location = new Point(2431, 5);
-            pbNoticias.Margin = new Padding(3, 4, 3, 4);
+            pbNoticias.Location = new Point(2127, 4);
             pbNoticias.Name = "pbNoticias";
-            pbNoticias.Size = new Size(31, 31);
+            pbNoticias.Size = new Size(27, 23);
             pbNoticias.SizeMode = PictureBoxSizeMode.StretchImage;
             pbNoticias.TabIndex = 21;
             pbNoticias.TabStop = false;
             // 
             // pbTema
             // 
-            pbTema.Location = new Point(135, 5);
-            pbTema.Margin = new Padding(3, 4, 3, 4);
+            pbTema.Location = new Point(118, 4);
             pbTema.Name = "pbTema";
-            pbTema.Size = new Size(32, 31);
+            pbTema.Size = new Size(28, 23);
             pbTema.SizeMode = PictureBoxSizeMode.StretchImage;
             pbTema.TabIndex = 20;
             pbTema.TabStop = false;
             // 
             // pbEnglish
             // 
-            pbEnglish.Location = new Point(94, 5);
-            pbEnglish.Margin = new Padding(3, 4, 3, 4);
+            pbEnglish.Location = new Point(82, 4);
             pbEnglish.Name = "pbEnglish";
-            pbEnglish.Size = new Size(30, 31);
+            pbEnglish.Size = new Size(26, 23);
             pbEnglish.SizeMode = PictureBoxSizeMode.CenterImage;
             pbEnglish.TabIndex = 19;
             pbEnglish.TabStop = false;
             // 
             // pbHamburger
             // 
-            pbHamburger.Location = new Point(12, 5);
-            pbHamburger.Margin = new Padding(3, 4, 3, 4);
+            pbHamburger.Location = new Point(10, 4);
             pbHamburger.Name = "pbHamburger";
-            pbHamburger.Size = new Size(31, 31);
+            pbHamburger.Size = new Size(27, 23);
             pbHamburger.SizeMode = PictureBoxSizeMode.StretchImage;
             pbHamburger.TabIndex = 17;
             pbHamburger.TabStop = false;
@@ -169,9 +162,11 @@ namespace Gestionis
             // grbNotasDia
             // 
             grbNotasDia.Font = new Font("Segoe UI", 14.25F, FontStyle.Underline);
-            grbNotasDia.Location = new Point(938, 405);
+            grbNotasDia.Location = new Point(821, 304);
+            grbNotasDia.Margin = new Padding(3, 2, 3, 2);
             grbNotasDia.Name = "grbNotasDia";
-            grbNotasDia.Size = new Size(249, 176);
+            grbNotasDia.Padding = new Padding(3, 2, 3, 2);
+            grbNotasDia.Size = new Size(218, 132);
             grbNotasDia.TabIndex = 5;
             grbNotasDia.TabStop = false;
             grbNotasDia.Text = "Notas del día";
@@ -183,9 +178,11 @@ namespace Gestionis
             roundGroupBox1.Controls.Add(lblMes);
             roundGroupBox1.Controls.Add(label3);
             roundGroupBox1.Font = new Font("Segoe UI", 14.25F);
-            roundGroupBox1.Location = new Point(938, 95);
+            roundGroupBox1.Location = new Point(821, 71);
+            roundGroupBox1.Margin = new Padding(3, 2, 3, 2);
             roundGroupBox1.Name = "roundGroupBox1";
-            roundGroupBox1.Size = new Size(249, 161);
+            roundGroupBox1.Padding = new Padding(3, 2, 3, 2);
+            roundGroupBox1.Size = new Size(218, 121);
             roundGroupBox1.TabIndex = 6;
             roundGroupBox1.TabStop = false;
             roundGroupBox1.Text = "roundGroupBox1";
@@ -195,9 +192,9 @@ namespace Gestionis
             lblAdelante.AutoSize = true;
             lblAdelante.BackColor = Color.Transparent;
             lblAdelante.Font = new Font("Segoe UI", 14.25F);
-            lblAdelante.Location = new Point(159, 10);
+            lblAdelante.Location = new Point(139, 8);
             lblAdelante.Name = "lblAdelante";
-            lblAdelante.Size = new Size(30, 32);
+            lblAdelante.Size = new Size(25, 25);
             lblAdelante.TabIndex = 5;
             lblAdelante.Text = ">";
             // 
@@ -206,9 +203,9 @@ namespace Gestionis
             lblAtras.AutoSize = true;
             lblAtras.BackColor = Color.Transparent;
             lblAtras.Font = new Font("Segoe UI", 14.25F);
-            lblAtras.Location = new Point(55, 10);
+            lblAtras.Location = new Point(48, 8);
             lblAtras.Name = "lblAtras";
-            lblAtras.Size = new Size(30, 32);
+            lblAtras.Size = new Size(25, 25);
             lblAtras.TabIndex = 4;
             lblAtras.Text = "<";
             // 
@@ -217,9 +214,9 @@ namespace Gestionis
             lblMes.AutoSize = true;
             lblMes.BackColor = Color.Transparent;
             lblMes.Font = new Font("Segoe UI", 14.25F);
-            lblMes.Location = new Point(95, 11);
+            lblMes.Location = new Point(83, 8);
             lblMes.Name = "lblMes";
-            lblMes.Size = new Size(59, 32);
+            lblMes.Size = new Size(47, 25);
             lblMes.TabIndex = 3;
             lblMes.Text = "Mes";
             // 
@@ -228,9 +225,9 @@ namespace Gestionis
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Segoe UI", 14.25F);
-            label3.Location = new Point(-8, 17);
+            label3.Location = new Point(-7, 13);
             label3.Name = "label3";
-            label3.Size = new Size(264, 32);
+            label3.Size = new Size(212, 25);
             label3.TabIndex = 2;
             label3.Text = "_________________________";
             // 
@@ -240,9 +237,11 @@ namespace Gestionis
             roundGroupBox2.Controls.Add(cmbFiltrarPor);
             roundGroupBox2.Controls.Add(lblFiltrarPor);
             roundGroupBox2.Controls.Add(btnNuevaNota);
-            roundGroupBox2.Location = new Point(94, 95);
+            roundGroupBox2.Location = new Point(82, 71);
+            roundGroupBox2.Margin = new Padding(3, 2, 3, 2);
             roundGroupBox2.Name = "roundGroupBox2";
-            roundGroupBox2.Size = new Size(669, 486);
+            roundGroupBox2.Padding = new Padding(3, 2, 3, 2);
+            roundGroupBox2.Size = new Size(585, 364);
             roundGroupBox2.TabIndex = 7;
             roundGroupBox2.TabStop = false;
             roundGroupBox2.Text = "roundGroupBox2";
@@ -250,18 +249,20 @@ namespace Gestionis
             // dtgNotas
             // 
             dtgNotas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgNotas.Location = new Point(54, 248);
+            dtgNotas.Location = new Point(47, 186);
+            dtgNotas.Margin = new Padding(3, 2, 3, 2);
             dtgNotas.Name = "dtgNotas";
             dtgNotas.RowHeadersWidth = 51;
-            dtgNotas.Size = new Size(521, 188);
+            dtgNotas.Size = new Size(456, 141);
             dtgNotas.TabIndex = 4;
             // 
             // cmbFiltrarPor
             // 
             cmbFiltrarPor.FormattingEnabled = true;
-            cmbFiltrarPor.Location = new Point(241, 173);
+            cmbFiltrarPor.Location = new Point(211, 130);
+            cmbFiltrarPor.Margin = new Padding(3, 2, 3, 2);
             cmbFiltrarPor.Name = "cmbFiltrarPor";
-            cmbFiltrarPor.Size = new Size(158, 28);
+            cmbFiltrarPor.Size = new Size(139, 23);
             cmbFiltrarPor.TabIndex = 3;
             // 
             // lblFiltrarPor
@@ -269,9 +270,9 @@ namespace Gestionis
             lblFiltrarPor.AutoSize = true;
             lblFiltrarPor.BackColor = Color.Transparent;
             lblFiltrarPor.Font = new Font("Segoe UI", 14.25F);
-            lblFiltrarPor.Location = new Point(54, 169);
+            lblFiltrarPor.Location = new Point(47, 127);
             lblFiltrarPor.Name = "lblFiltrarPor";
-            lblFiltrarPor.Size = new Size(120, 32);
+            lblFiltrarPor.Size = new Size(98, 25);
             lblFiltrarPor.TabIndex = 2;
             lblFiltrarPor.Text = "Filtrar Por:";
             // 
@@ -280,10 +281,9 @@ namespace Gestionis
             btnNuevaNota.BackColor = Color.FromArgb(178, 242, 187);
             btnNuevaNota.FlatStyle = FlatStyle.Flat;
             btnNuevaNota.Font = new Font("Segoe UI", 14.25F);
-            btnNuevaNota.Location = new Point(54, 62);
-            btnNuevaNota.Margin = new Padding(3, 4, 3, 4);
+            btnNuevaNota.Location = new Point(47, 46);
             btnNuevaNota.Name = "btnNuevaNota";
-            btnNuevaNota.Size = new Size(183, 60);
+            btnNuevaNota.Size = new Size(160, 45);
             btnNuevaNota.TabIndex = 1;
             btnNuevaNota.Text = "Nueva Nota";
             btnNuevaNota.UseVisualStyleBackColor = false;
@@ -294,10 +294,9 @@ namespace Gestionis
             btnSalir.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnSalir.BackColor = Color.FromArgb(178, 242, 187);
             btnSalir.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSalir.Location = new Point(1020, 608);
-            btnSalir.Margin = new Padding(3, 4, 3, 4);
+            btnSalir.Location = new Point(892, 456);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(174, 60);
+            btnSalir.Size = new Size(152, 45);
             btnSalir.TabIndex = 16;
             btnSalir.Text = "Salir";
             btnSalir.UseVisualStyleBackColor = false;
@@ -305,16 +304,19 @@ namespace Gestionis
             // 
             // frmNotas
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1268, 681);
+            ClientSize = new Size(1110, 511);
             Controls.Add(btnSalir);
             Controls.Add(roundGroupBox2);
             Controls.Add(roundGroupBox1);
             Controls.Add(grbNotasDia);
             Controls.Add(pnlBarra);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmNotas";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Notas";
+            WindowState = FormWindowState.Maximized;
             pnlBarra.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pbSpain).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbAyuda).EndInit();

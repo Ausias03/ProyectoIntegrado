@@ -209,6 +209,8 @@
             Font = new Font("Microsoft Sans Serif", 9F);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmHistorial";
+            StartPosition = FormStartPosition.CenterScreen;
+            WindowState = FormWindowState.Maximized;
             Load += frmHistorial_Load;
             Controls.SetChildIndex(lblHistorial, 0);
             Controls.SetChildIndex(dgvHistorial, 0);

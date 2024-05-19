@@ -73,7 +73,7 @@ namespace Gestionis.Clases
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
             query.Parameters.AddWithValue("@idGasto", idGasto);
-            query.Parameters.AddWithValue("@numCuenta", numCuenta);
+            query.Parameters.AddWithValue("@numCuenta", Sesion.Instance.NumCuenta);
             query.Parameters.AddWithValue("@nombre", nombre);
             query.Parameters.AddWithValue("@cantidad", cantidad);
             query.Parameters.AddWithValue("@categoria", categoria);

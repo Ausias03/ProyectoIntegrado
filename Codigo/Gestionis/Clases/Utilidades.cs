@@ -19,15 +19,18 @@ namespace Gestionis.Clases
         public static DataTable RellenarDatos(string consulta)
         {
             DataTable tablaDatos = new DataTable();
-            ConexionDB.AbrirConexion();
-            using (MySqlCommand comando = new MySqlCommand(consulta, ConexionDB.Conexion))
+            try
             {
-                using (MySqlDataAdapter adapter = new MySqlDataAdapter(comando))
+                ConexionDB.AbrirConexion();
+                using (MySqlCommand comando = new MySqlCommand(consulta, ConexionDB.Conexion))
                 {
-                    adapter.Fill(tablaDatos);
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(comando))
+                    {
+                        adapter.Fill(tablaDatos);
+                    }
                 }
-            }
-            ConexionDB.CerrarConexion();
+                ConexionDB.CerrarConexion();
+            }catch (Exception) { }
             return tablaDatos;
         }
     }

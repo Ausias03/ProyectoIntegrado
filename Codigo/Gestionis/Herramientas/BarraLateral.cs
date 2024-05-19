@@ -23,15 +23,14 @@
         {
             CreateButton("Inicio", Properties.Resources.inicio, typeof(FrmMenuPrincipal));
             CreateButton("Inversiones", Properties.Resources.inversiones, typeof(frmTablaClasificación));
-            CreateButton("Ahorros", Properties.Resources.ahorro, typeof(frmTablaClasificación));
+            CreateButton("Ahorros", Properties.Resources.ahorro, typeof(frmMetodosAhorro));
             CreateButton("Deudas", Properties.Resources.deuda, typeof(FrmGestorDeudas));
             CreateButton("Patrimonio", Properties.Resources.patrimonio, typeof(frmTablaClasificación));
-            CreateButton("Notas", Properties.Resources.notas, typeof(frmTablaClasificación));
+            CreateButton("Notas", Properties.Resources.notas, typeof(frmNotas));
             CreateButton("Clasificación", Properties.Resources.calsificacion, typeof(frmTablaClasificación));
             CreateButton("Historial", Properties.Resources.historial, typeof(frmHistorial));
             CreateButton("Notif.", Properties.Resources.notificacion, typeof(frmTablaClasificación));
             CreateButton("Página Web", Properties.Resources.web, typeof(frmTablaClasificación));
-            CreateButton("Ayuda", Properties.Resources.ayuda, typeof(frmTablaClasificación));
         }
 
         private void CreateButton(string text, Image image, Type formType)

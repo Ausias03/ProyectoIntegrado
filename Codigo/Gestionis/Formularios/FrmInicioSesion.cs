@@ -82,7 +82,8 @@ namespace Gestionis
                 }
 
                 this.Hide();
-                FrmMenuPrincipal fMP = new FrmMenuPrincipal(usuario.GetCuenta() ,txtNombreUsuario.Text);
+                FrmMenuPrincipal fMP = new FrmMenuPrincipal();
+                Sesion.Instance.ApodoUsuario = txtNombreUsuario.Text;
                 fMP.Closed += (s, args) => this.Close();
                 fMP.Show();
             }
