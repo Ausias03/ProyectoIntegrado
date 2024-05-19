@@ -17,11 +17,14 @@ namespace Gestionis
 {
     public partial class FrmMenuPrincipal : FrmBarraPrincipal
     {
-        private int numCuenta = Sesion.Instance.NumCuenta;
+        private readonly Usuario usuario;
+        private readonly Cuenta cuentaUsuario;
 
         public FrmMenuPrincipal()
         {
             InitializeComponent();
+            usuario = Usuario.BuscaUsuario(Sesion.Instance.ApodoUsuario);
+            cuentaUsuario = usuario.GetCuenta();
         }
 
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
@@ -53,11 +56,11 @@ namespace Gestionis
 
         private void FrmMenuPrincipal_Activated(object sender, EventArgs e)
         {
-            RecargaDGVGastos(Cuenta.DevuelveGastos(numCuenta));
-            RecargaDGVIngresos(Cuenta.DevuelveIngresos(numCuenta));
-            lblIngresosValor.Text = Cuenta.TotalIngresos().ToString() + " €";
-            lblGastosValor.Text = Cuenta.TotalGastos().ToString() + " €";
-            lblTotalValor.Text = Cuenta.DineroTotal().ToString() + " €";
+            RecargaDGVGastos(cuentaUsuario.DevuelveGastos());
+            RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos());
+            lblIngresosValor.Text = cuentaUsuario.TotalIngresos().ToString() + " €";
+            lblGastosValor.Text = cuentaUsuario.TotalGastos().ToString() + " €";
+            lblTotalValor.Text = cuentaUsuario.DineroTotal().ToString() + " €";
 
             #region Configurar ComboBoxes
             ConfigurarComboBox(cmbTipoGasto, Gasto.TiposGasto);
@@ -95,23 +98,23 @@ namespace Gestionis
 
         private void btnFiltrarGastos_Click(object sender, EventArgs e)
         {
-            RecargaDGVGastos(Cuenta.DevuelveGastos(txtNombreGasto.Text, cmbTipoGasto.Text, nudDineroGasto.Value, cmbCategoriaGasto.Text));
+            RecargaDGVGastos(cuentaUsuario.DevuelveGastos(txtNombreGasto.Text, cmbTipoGasto.Text, nudDineroGasto.Value, cmbCategoriaGasto.Text));
         }
 
         private void btnRestablecerGastos_Click(object sender, EventArgs e)
         {
-            RecargaDGVGastos(Cuenta.DevuelveGastos(numCuenta));
+            RecargaDGVGastos(cuentaUsuario.DevuelveGastos());
             RestableceControlesGasto();
         }
 
         private void btnFiltrarIngresos_Click(object sender, EventArgs e)
         {
-            RecargaDGVIngresos(Cuenta.DevuelveIngresos(txtNombreIngreso.Text, cmbTipoIngreso.Text, nudDineroIngreso.Value, cmbCategoriaIngreso.Text));
+            RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos(txtNombreIngreso.Text, cmbTipoIngreso.Text, nudDineroIngreso.Value, cmbCategoriaIngreso.Text));
         }
 
         private void btnRestablecerIngresos_Click(object sender, EventArgs e)
         {
-            RecargaDGVIngresos(Cuenta.DevuelveIngresos(numCuenta));
+            RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos());
             RestableceControlesIngreso();
         }
 

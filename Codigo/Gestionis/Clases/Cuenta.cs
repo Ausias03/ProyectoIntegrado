@@ -66,7 +66,7 @@ namespace Gestionis.Clases
         }
 
         #region Métodos para ver / recuperar gastos e ingresos
-        public static List<Gasto> DevuelveGastos(int numCuenta)
+        public List<Gasto> DevuelveGastos()
         {
             string queryString = "SELECT * FROM gasto WHERE numCuenta = @numCuenta";
 
@@ -76,7 +76,7 @@ namespace Gestionis.Clases
             return EjecutarConsultaGastos(query);
         }
 
-        public static List<Gasto> DevuelveGastos(string nombre, string tipo, decimal cantidad, string categoria)
+        public List<Gasto> DevuelveGastos(string nombre, string tipo, decimal cantidad, string categoria)
         {
             string queryString = "SELECT * FROM gasto WHERE nombre = @nombre AND tipo = @tipo AND cantidad >= @cantidad " +
                 "AND categoria IN (SELECT idcategoria FROM categoriagasto WHERE nombre = @nombreCategoria);";
@@ -90,7 +90,7 @@ namespace Gestionis.Clases
             return EjecutarConsultaGastos(query);
         }
 
-        public static List<Ingreso> DevuelveIngresos(int numCuenta)
+        public List<Ingreso> DevuelveIngresos()
         {
             string queryString = "SELECT * FROM ingreso WHERE numCuenta = @numCuenta";
 
@@ -100,7 +100,7 @@ namespace Gestionis.Clases
             return EjecutarConsultaIngresos(query);
         }
 
-        public static List<Ingreso> DevuelveIngresos(string nombre, string tipo, decimal cantidad, string categoria)
+        public List<Ingreso> DevuelveIngresos(string nombre, string tipo, decimal cantidad, string categoria)
         {
             string queryString = "SELECT * FROM ingreso WHERE nombre = @nombre AND tipo = @tipo AND cantidad >= @cantidad AND categoria ";
 
@@ -122,14 +122,14 @@ namespace Gestionis.Clases
             return EjecutarConsultaIngresos(query);
         }
 
-        public static double DineroTotal()
+        public double DineroTotal()
         {
             return TotalIngresos() - TotalGastos();
         }
 
-        public static double TotalGastos()
+        public double TotalGastos()
         {
-            List<Gasto> gastos = DevuelveGastos(Sesion.Instance.NumCuenta);
+            List<Gasto> gastos = DevuelveGastos();
             double totalGastos = 0;
             for (int i = 0; i < gastos.Count; i++)
             {
@@ -138,9 +138,9 @@ namespace Gestionis.Clases
             return totalGastos;
         }
 
-        public static double TotalIngresos()
+        public double TotalIngresos()
         {
-            List<Ingreso> ingresos = DevuelveIngresos(Sesion.Instance.NumCuenta);
+            List<Ingreso> ingresos = DevuelveIngresos();
             double totalIngresos = 0;
             for (int i = 0; i < ingresos.Count; i++)
             {
@@ -149,7 +149,7 @@ namespace Gestionis.Clases
             return totalIngresos;
         }
 
-        private static List<Gasto> EjecutarConsultaGastos(MySqlCommand query)
+        private List<Gasto> EjecutarConsultaGastos(MySqlCommand query)
         {
             List<Gasto> gastos = new List<Gasto>();
 
@@ -178,7 +178,7 @@ namespace Gestionis.Clases
             return gastos;
         }
 
-        private static List<Ingreso> EjecutarConsultaIngresos(MySqlCommand query)
+        private List<Ingreso> EjecutarConsultaIngresos(MySqlCommand query)
         {
             List<Ingreso> ingresos = new List<Ingreso>();
 

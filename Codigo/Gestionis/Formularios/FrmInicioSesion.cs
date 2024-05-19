@@ -81,11 +81,11 @@ namespace Gestionis
                     return;
                 }
 
+                Sesion.Instance.ApodoUsuario = txtNombreUsuario.Text;
+
                 this.Hide();
 
                 FrmMenuPrincipal fMP = new FrmMenuPrincipal();
-                Sesion.Instance.ApodoUsuario = txtNombreUsuario.Text;
-
                 fMP.Closed += (s, args) => this.Close();
                 fMP.Show();
             }
