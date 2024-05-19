@@ -33,14 +33,8 @@ namespace Gestionis
             btnRestaurar.FlatAppearance.BorderSize = 2;
             #endregion
 
-            #region Llenar cmbFiltros
-            string[] filtros = Deuda.Filtros();
-            for (int i = 0; i < filtros.Length; i++)
-            {
-                cmbCategoria.Items.Add(filtros[i]);
-            }
+            cmbCategoria.Items.AddRange(Deuda.Filtros());
             cmbCategoria.SelectedIndex = 0;
-            #endregion
 
             Titulo();
 
@@ -48,6 +42,9 @@ namespace Gestionis
             ProximaDeuda();
 
             dgvGastosIngresos.DataSource = Deuda.RecargarTabla();
+
+            barraSecundaria.BarraSecundaria_Load();
+            barraLateral1.BarraLateral_Load();
         }
 
         private void ModificarBotones()

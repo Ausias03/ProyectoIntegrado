@@ -1,8 +1,10 @@
-﻿namespace Gestionis.Herramientas
+﻿using Gestionis.Clases;
+
+namespace Gestionis.Herramientas
 {
     public class BarraLateral : FlowLayoutPanel
     {
-        private static bool barraLateralExpandida = true;
+
         private static System.Windows.Forms.Timer transicionBarraLateral;
 
         public BarraLateral()
@@ -10,13 +12,22 @@
             InitializePanelProperties();
             CreateButtons();
             AjustesTimer();
+            BarraLateral_Load();
+        }
+
+        public void BarraLateral_Load()
+        {
+            if (!Sesion.Instance.BarraExpandida) ColapsarExpandir();
+            if (Sesion.Instance.TemaOscuro)
+                BackColor = Color.FromArgb(0, 115, 148);
+            else
+                BackColor = Color.FromArgb(205, 213, 221);
         }
 
         private void InitializePanelProperties()
         {
             Size = new Size(231, 967);
             Dock = DockStyle.Left;
-            BackColor = Color.FromArgb(205, 213, 221);
         }
 
         private void CreateButtons()
@@ -57,12 +68,12 @@
 
         private void TransicionBarraLateral_Tick(object sender, EventArgs e)
         {
-            if (barraLateralExpandida)
+            if (Sesion.Instance.BarraExpandida)
             {
                 Width -= 10;
                 if (Width <= 65)
                 {
-                    barraLateralExpandida = false;
+                    Sesion.Instance.BarraExpandida = false;
                     transicionBarraLateral.Stop();
                 }
             }
@@ -71,7 +82,7 @@
                 Width += 10;
                 if (Width >= 231)
                 {
-                    barraLateralExpandida = true;
+                    Sesion.Instance.BarraExpandida = true;
                     transicionBarraLateral.Stop();
                 }
             }
@@ -89,10 +100,10 @@
             }
         }
 
-        static public bool ColapsarExpandir(object sender, EventArgs e)
+        public static bool ColapsarExpandir()
         {
             transicionBarraLateral.Start();
-            return barraLateralExpandida;
+            return Sesion.Instance.BarraExpandida;
         }
     }
 }

@@ -214,7 +214,7 @@ namespace Gestionis
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Margin = new Padding(3, 2, 3, 2);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1485, 33);
+            barraSecundaria1.Size = new Size(1856, 33);
             barraSecundaria1.TabIndex = 17;
             // 
             // barraLateral1
@@ -237,7 +237,7 @@ namespace Gestionis
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1485, 676);
+            ClientSize = new Size(1856, 676);
             Controls.Add(monthCalendar1);
             Controls.Add(barraLateral1);
             Controls.Add(barraSecundaria1);

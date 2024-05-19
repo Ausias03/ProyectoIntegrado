@@ -1,4 +1,6 @@
-﻿namespace Gestionis.Herramientas
+﻿using Gestionis.Clases;
+
+namespace Gestionis.Herramientas
 {
     public class BarraSecundaria : Panel
     {
@@ -10,12 +12,18 @@
         public Button BtnUsuario { get; private set; }
         public Button BtnTema { get; private set; }
 
-        private bool isDarkTheme = false;
+        private bool temaOscuro = Sesion.Instance.TemaOscuro;
 
         public BarraSecundaria()
         {
             InitializePanelProperties();
             CreateButtons();
+            BarraSecundaria_Load();
+        }
+        public void BarraSecundaria_Load()
+        {
+            Tema();
+            BtnHamburger.Image = Sesion.Instance.BarraExpandida ? Properties.Resources.hamburgerUp : Properties.Resources.hamburgerLeft;
         }
 
         private void InitializePanelProperties()
@@ -68,7 +76,7 @@
                 switch (buttonName)
                 {
                     case "btnHamburger":
-                        BtnHamburger.Image = BarraLateral.ColapsarExpandir(sender, e) ? Properties.Resources.hamburgerLeft : Properties.Resources.hamburgerUp;
+                        BtnHamburger.Image = BarraLateral.ColapsarExpandir() ? Properties.Resources.hamburgerLeft : Properties.Resources.hamburgerUp;
                         break;
                     case "btnAyuda":
 
@@ -90,24 +98,36 @@
                         frmActual.Hide();
                         frmUsuario frmUsuario = new frmUsuario();
                         frmUsuario.Closed += (s, args) => frmActual.Close();
-                        frmUsuario.Show();
-                        BarraLateral.ColapsarExpandir(sender, e);
+                        frmUsuario.ShowDialog();                        
                         break;
                     case "btnTema":
+                        temaOscuro = !temaOscuro;
+                        Sesion.Instance.TemaOscuro = temaOscuro;
+                        //RecargarFrm();
                         Tema();
                         break;
                 }
             }
         }
 
+
         #region Cambiar Tema
+        private void RecargarFrm()
+        {
+            Form currentForm = FindForm();
+
+            currentForm.Hide();
+            Form newForm = (Form)Activator.CreateInstance(currentForm.GetType());
+            newForm.ShowDialog();
+            currentForm.Close();
+
+        }
+
         private void Tema()
         {
-            isDarkTheme = !isDarkTheme;
+            Color fondo = temaOscuro ? Color.FromArgb(22, 22, 22) : Color.FromArgb(233, 236, 239);
 
-            Color fondo = isDarkTheme ? Color.Black : Color.FromArgb(233, 236, 239);
-
-            Color texto = isDarkTheme ? Color.White : Color.Black;
+            Color texto = temaOscuro ? Color.White : Color.Black;
 
             Form parentForm = this.FindForm();
             if (parentForm != null)

@@ -43,6 +43,9 @@ namespace Gestionis
             btnSalir.FlatAppearance.BorderSize = 2;
 
             #endregion
+            
+            barraSecundaria1.BarraSecundaria_Load();
+            barraLateral1.BarraLateral_Load();
 
             #region Labels
             lblIngresosValor.Text = "0€";
@@ -93,7 +96,7 @@ namespace Gestionis
 
         private void pbHamburger_Click(object sender, EventArgs e)
         {
-            BarraLateral.ColapsarExpandir(sender, e);
+            BarraLateral.ColapsarExpandir();
         }
 
         private void btnFiltrarGastos_Click(object sender, EventArgs e)

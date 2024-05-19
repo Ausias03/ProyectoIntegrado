@@ -7,8 +7,8 @@
 
         private string apodoUsuario;
         private int numCuenta;
-
-        private Sesion() { }
+        private bool temaOscuro = false;
+        private static bool barraExpandida = true;
 
         public string ApodoUsuario
         {
@@ -20,10 +20,13 @@
             }
         }
 
-        public int NumCuenta
-        {
-            get { return numCuenta; }
-        }
+        public int NumCuenta { get { return numCuenta; } }
+
+        public bool TemaOscuro { get { return temaOscuro; } set { temaOscuro = value; } }
+
+        public bool BarraExpandida { get { return barraExpandida; } set { barraExpandida = value; } }
+
+        private Sesion() { }
 
         public static Sesion Instance
         {
