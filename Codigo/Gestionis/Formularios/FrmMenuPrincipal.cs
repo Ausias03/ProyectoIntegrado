@@ -17,14 +17,13 @@ namespace Gestionis
 {
     public partial class FrmMenuPrincipal : FrmBarraPrincipal
     {
-        private Cuenta cuentaUsuario;
-        private string apodoUsuario;
-
-        public FrmMenuPrincipal(Cuenta cuentaUsuario, string apodoUsuario)
+        private readonly Usuario usuario;
+        private readonly Cuenta cuentaUsuario;
+        public FrmMenuPrincipal()
         {
             InitializeComponent();
-            this.cuentaUsuario = cuentaUsuario;
-            this.apodoUsuario = apodoUsuario;
+            usuario = Usuario.BuscaUsuario(Sesion.Instance.ApodoUsuario);
+            cuentaUsuario = usuario.GetCuenta();
         }
 
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
@@ -62,6 +61,7 @@ namespace Gestionis
             lblGastosValor.Text = cuentaUsuario.TotalGastos().ToString() + " €";
             lblTotalValor.Text = cuentaUsuario.DineroTotal().ToString() + " €";
 
+            #region Configurar ComboBoxes
             ConfigurarComboBox(cmbTipoGasto, Gasto.TiposGasto);
             ConfigurarComboBox(cmbCategoriaGasto, CategoriaGasto.DevuelveNombresCategorias());
             ConfigurarComboBox(cmbTipoIngreso, Ingreso.TiposIngreso);
@@ -70,6 +70,7 @@ namespace Gestionis
             // Añado un elemento a la lista, ya que puede haber gastos sin categoría asignada
             nombresCategorias.Add(String.Empty);
             ConfigurarComboBox(cmbCategoriaIngreso, nombresCategorias);
+            #endregion
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -80,14 +81,14 @@ namespace Gestionis
         private void btnGasto_Click(object sender, EventArgs e)
         {
             frmAnyadirGasto fAG = new frmAnyadirGasto();
-            fAG.NumCuenta = Cuenta.IDCuentaUsuario(apodoUsuario);
+            fAG.NumCuenta = Cuenta.IDCuentaUsuario(usuario.Apodo);
             fAG.ShowDialog();
         }
 
         private void btnIngreso_Click(object sender, EventArgs e)
         {
             frmAnyadirIngreso fAI = new frmAnyadirIngreso();
-            fAI.NumCuenta = Cuenta.IDCuentaUsuario(apodoUsuario);
+            fAI.NumCuenta = Cuenta.IDCuentaUsuario(usuario.Apodo);
             fAI.ShowDialog();
         }
 
