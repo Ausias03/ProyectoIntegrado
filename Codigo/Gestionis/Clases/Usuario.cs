@@ -158,6 +158,27 @@ namespace Gestionis.Clases
             return existe;
         }
 
+        public static bool CorreoExiste(string correo)
+        {
+            string queryString = "SELECT correo FROM usuario WHERE correo = @correo;";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+            query.Parameters.AddWithValue("@correo", correo);
+
+            ConexionDB.AbrirConexion();
+
+            bool existe;
+
+            using (MySqlDataReader reader = query.ExecuteReader())
+            {
+                existe = reader.HasRows;
+            }
+
+            ConexionDB.CerrarConexion();
+
+            return existe;
+        }
+
         public static Usuario BuscaUsuario(string apodo)
         {
             Usuario? usuario = null;

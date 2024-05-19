@@ -36,7 +36,7 @@
             txtContrasenya = new TextBox();
             lblContrasenya = new Label();
             txtApodo = new TextBox();
-            lblNombreUsuario = new Label();
+            lblApodo = new Label();
             lblRegistro = new Label();
             txtCorreo = new TextBox();
             lblCorreo = new Label();
@@ -55,10 +55,10 @@
             // lklInicioSesion
             // 
             lklInicioSesion.AutoSize = true;
-            lklInicioSesion.Font = new Font("Roboto Mono", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lklInicioSesion.Location = new Point(18, 583);
+            lklInicioSesion.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lklInicioSesion.Location = new Point(16, 437);
             lklInicioSesion.Name = "lklInicioSesion";
-            lklInicioSesion.Size = new Size(323, 37);
+            lklInicioSesion.Size = new Size(210, 26);
             lklInicioSesion.TabIndex = 11;
             lklInicioSesion.TabStop = true;
             lklInicioSesion.Text = "¿Ya Tienes Cuenta?";
@@ -67,10 +67,10 @@
             // lklFaq
             // 
             lklFaq.AutoSize = true;
-            lklFaq.Font = new Font("Roboto Mono", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lklFaq.Location = new Point(18, 528);
+            lklFaq.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lklFaq.Location = new Point(16, 396);
             lklFaq.Name = "lklFaq";
-            lklFaq.Size = new Size(289, 37);
+            lklFaq.Size = new Size(192, 26);
             lklFaq.TabIndex = 10;
             lklFaq.TabStop = true;
             lklFaq.Text = "¿Algún Problema?";
@@ -79,10 +79,11 @@
             // btnEnviar
             // 
             btnEnviar.BackColor = Color.FromArgb(178, 242, 187);
-            btnEnviar.Font = new Font("Roboto Mono", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEnviar.Location = new Point(658, 569);
+            btnEnviar.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEnviar.Location = new Point(576, 427);
+            btnEnviar.Margin = new Padding(3, 2, 3, 2);
             btnEnviar.Name = "btnEnviar";
-            btnEnviar.Size = new Size(127, 53);
+            btnEnviar.Size = new Size(111, 40);
             btnEnviar.TabIndex = 8;
             btnEnviar.Text = "Enviar";
             btnEnviar.UseVisualStyleBackColor = false;
@@ -91,10 +92,11 @@
             // btnBorrar
             // 
             btnBorrar.BackColor = Color.FromArgb(211, 208, 242);
-            btnBorrar.Font = new Font("Roboto Mono", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnBorrar.Location = new Point(507, 569);
+            btnBorrar.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnBorrar.Location = new Point(444, 427);
+            btnBorrar.Margin = new Padding(3, 2, 3, 2);
             btnBorrar.Name = "btnBorrar";
-            btnBorrar.Size = new Size(127, 53);
+            btnBorrar.Size = new Size(111, 40);
             btnBorrar.TabIndex = 9;
             btnBorrar.Text = "Borrar";
             btnBorrar.UseVisualStyleBackColor = false;
@@ -102,161 +104,168 @@
             // 
             // txtContrasenya
             // 
-            txtContrasenya.Font = new Font("Roboto Mono", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtContrasenya.Location = new Point(405, 331);
+            txtContrasenya.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtContrasenya.Location = new Point(276, 248);
+            txtContrasenya.Margin = new Padding(3, 2, 3, 2);
             txtContrasenya.Name = "txtContrasenya";
-            txtContrasenya.Size = new Size(289, 43);
+            txtContrasenya.Size = new Size(253, 32);
             txtContrasenya.TabIndex = 5;
             // 
             // lblContrasenya
             // 
             lblContrasenya.AutoSize = true;
             lblContrasenya.BackColor = SystemColors.Control;
-            lblContrasenya.Font = new Font("Roboto Mono", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblContrasenya.Location = new Point(185, 327);
+            lblContrasenya.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblContrasenya.Location = new Point(134, 245);
             lblContrasenya.Name = "lblContrasenya";
-            lblContrasenya.Padding = new Padding(5);
-            lblContrasenya.Size = new Size(214, 47);
+            lblContrasenya.Padding = new Padding(4);
+            lblContrasenya.Size = new Size(138, 34);
             lblContrasenya.TabIndex = 12;
             lblContrasenya.Text = "Contraseña:";
             lblContrasenya.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // txtApodo
             // 
-            txtApodo.Font = new Font("Roboto Mono", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtApodo.Location = new Point(405, 91);
+            txtApodo.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtApodo.Location = new Point(276, 68);
+            txtApodo.Margin = new Padding(3, 2, 3, 2);
             txtApodo.Name = "txtApodo";
-            txtApodo.Size = new Size(289, 43);
+            txtApodo.Size = new Size(253, 32);
             txtApodo.TabIndex = 1;
             // 
-            // lblNombreUsuario
+            // lblApodo
             // 
-            lblNombreUsuario.AutoSize = true;
-            lblNombreUsuario.BackColor = SystemColors.Control;
-            lblNombreUsuario.Font = new Font("Roboto Mono", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblNombreUsuario.Location = new Point(66, 87);
-            lblNombreUsuario.Name = "lblNombreUsuario";
-            lblNombreUsuario.Padding = new Padding(5);
-            lblNombreUsuario.Size = new Size(333, 47);
-            lblNombreUsuario.TabIndex = 10;
-            lblNombreUsuario.Text = "Nombre de Usuario:";
-            lblNombreUsuario.TextAlign = ContentAlignment.MiddleCenter;
+            lblApodo.AutoSize = true;
+            lblApodo.BackColor = SystemColors.Control;
+            lblApodo.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblApodo.Location = new Point(183, 65);
+            lblApodo.Name = "lblApodo";
+            lblApodo.Padding = new Padding(4);
+            lblApodo.Size = new Size(89, 34);
+            lblApodo.TabIndex = 10;
+            lblApodo.Text = "Apodo:";
+            lblApodo.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblRegistro
             // 
             lblRegistro.AutoSize = true;
             lblRegistro.BackColor = Color.FromArgb(211, 208, 242);
             lblRegistro.BorderStyle = BorderStyle.FixedSingle;
-            lblRegistro.Font = new Font("Roboto Mono", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblRegistro.Location = new Point(314, 19);
+            lblRegistro.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblRegistro.Location = new Point(275, 14);
             lblRegistro.Name = "lblRegistro";
-            lblRegistro.Padding = new Padding(5);
-            lblRegistro.Size = new Size(173, 51);
+            lblRegistro.Padding = new Padding(4);
+            lblRegistro.Size = new Size(114, 39);
             lblRegistro.TabIndex = 9;
             lblRegistro.Text = "Registro";
             lblRegistro.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // txtCorreo
             // 
-            txtCorreo.Font = new Font("Roboto Mono", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtCorreo.Location = new Point(405, 151);
+            txtCorreo.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtCorreo.Location = new Point(276, 113);
+            txtCorreo.Margin = new Padding(3, 2, 3, 2);
             txtCorreo.Name = "txtCorreo";
-            txtCorreo.Size = new Size(289, 43);
+            txtCorreo.Size = new Size(253, 32);
             txtCorreo.TabIndex = 2;
             // 
             // lblCorreo
             // 
             lblCorreo.AutoSize = true;
             lblCorreo.BackColor = SystemColors.Control;
-            lblCorreo.Font = new Font("Roboto Mono", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblCorreo.Location = new Point(253, 147);
+            lblCorreo.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblCorreo.Location = new Point(180, 110);
             lblCorreo.Name = "lblCorreo";
-            lblCorreo.Padding = new Padding(5);
-            lblCorreo.Size = new Size(146, 47);
+            lblCorreo.Padding = new Padding(4);
+            lblCorreo.Size = new Size(92, 34);
             lblCorreo.TabIndex = 18;
             lblCorreo.Text = "Correo:";
             lblCorreo.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // txtNombre
             // 
-            txtNombre.Font = new Font("Roboto Mono", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNombre.Location = new Point(405, 211);
+            txtNombre.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtNombre.Location = new Point(276, 158);
+            txtNombre.Margin = new Padding(3, 2, 3, 2);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(289, 43);
+            txtNombre.Size = new Size(253, 32);
             txtNombre.TabIndex = 3;
             // 
             // lblNombre
             // 
             lblNombre.AutoSize = true;
             lblNombre.BackColor = SystemColors.Control;
-            lblNombre.Font = new Font("Roboto Mono", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblNombre.Location = new Point(253, 207);
+            lblNombre.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblNombre.Location = new Point(168, 155);
             lblNombre.Name = "lblNombre";
-            lblNombre.Padding = new Padding(5);
-            lblNombre.Size = new Size(146, 47);
+            lblNombre.Padding = new Padding(4);
+            lblNombre.Size = new Size(104, 34);
             lblNombre.TabIndex = 20;
             lblNombre.Text = "Nombre:";
             lblNombre.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // txtApellidos
             // 
-            txtApellidos.Font = new Font("Roboto Mono", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtApellidos.Location = new Point(405, 271);
+            txtApellidos.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtApellidos.Location = new Point(276, 203);
+            txtApellidos.Margin = new Padding(3, 2, 3, 2);
             txtApellidos.Name = "txtApellidos";
-            txtApellidos.Size = new Size(289, 43);
+            txtApellidos.Size = new Size(253, 32);
             txtApellidos.TabIndex = 4;
             // 
             // lblApellidos
             // 
             lblApellidos.AutoSize = true;
             lblApellidos.BackColor = SystemColors.Control;
-            lblApellidos.Font = new Font("Roboto Mono", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblApellidos.Location = new Point(202, 267);
+            lblApellidos.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblApellidos.Location = new Point(157, 200);
             lblApellidos.Name = "lblApellidos";
-            lblApellidos.Padding = new Padding(5);
-            lblApellidos.Size = new Size(197, 47);
+            lblApellidos.Padding = new Padding(4);
+            lblApellidos.Size = new Size(115, 34);
             lblApellidos.TabIndex = 22;
             lblApellidos.Text = "Apellidos:";
             lblApellidos.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // txtDireccion
             // 
-            txtDireccion.Font = new Font("Roboto Mono", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtDireccion.Location = new Point(405, 391);
+            txtDireccion.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtDireccion.Location = new Point(276, 293);
+            txtDireccion.Margin = new Padding(3, 2, 3, 2);
             txtDireccion.Name = "txtDireccion";
-            txtDireccion.Size = new Size(289, 43);
+            txtDireccion.Size = new Size(253, 32);
             txtDireccion.TabIndex = 6;
             // 
             // lblDireccion
             // 
             lblDireccion.AutoSize = true;
             lblDireccion.BackColor = SystemColors.Control;
-            lblDireccion.Font = new Font("Roboto Mono", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDireccion.Location = new Point(202, 387);
+            lblDireccion.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDireccion.Location = new Point(155, 290);
             lblDireccion.Name = "lblDireccion";
-            lblDireccion.Padding = new Padding(5);
-            lblDireccion.Size = new Size(197, 47);
+            lblDireccion.Padding = new Padding(4);
+            lblDireccion.Size = new Size(117, 34);
             lblDireccion.TabIndex = 24;
             lblDireccion.Text = "Dirección:";
             lblDireccion.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // txtTelefono
             // 
-            txtTelefono.Font = new Font("Roboto Mono", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtTelefono.Location = new Point(405, 451);
+            txtTelefono.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtTelefono.Location = new Point(276, 338);
+            txtTelefono.Margin = new Padding(3, 2, 3, 2);
             txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new Size(289, 43);
+            txtTelefono.Size = new Size(253, 32);
             txtTelefono.TabIndex = 7;
             // 
             // lblTelefono
             // 
             lblTelefono.AutoSize = true;
             lblTelefono.BackColor = SystemColors.Control;
-            lblTelefono.Font = new Font("Roboto Mono", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTelefono.Location = new Point(219, 447);
+            lblTelefono.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTelefono.Location = new Point(163, 335);
             lblTelefono.Name = "lblTelefono";
-            lblTelefono.Padding = new Padding(5);
-            lblTelefono.Size = new Size(180, 47);
+            lblTelefono.Padding = new Padding(4);
+            lblTelefono.Size = new Size(109, 34);
             lblTelefono.TabIndex = 26;
             lblTelefono.Text = "Teléfono:";
             lblTelefono.TextAlign = ContentAlignment.MiddleCenter;
@@ -268,9 +277,9 @@
             // 
             // frmRegistro
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 639);
+            ClientSize = new Size(700, 479);
             Controls.Add(txtTelefono);
             Controls.Add(lblTelefono);
             Controls.Add(txtDireccion);
@@ -288,8 +297,9 @@
             Controls.Add(txtContrasenya);
             Controls.Add(lblContrasenya);
             Controls.Add(txtApodo);
-            Controls.Add(lblNombreUsuario);
+            Controls.Add(lblApodo);
             Controls.Add(lblRegistro);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmRegistro";
             Text = "frmRegistro";
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
@@ -306,7 +316,7 @@
         private TextBox txtContrasenya;
         private Label lblContrasenya;
         private TextBox txtApodo;
-        private Label lblNombreUsuario;
+        private Label lblApodo;
         private Label lblRegistro;
         private TextBox txtCorreo;
         private Label lblCorreo;

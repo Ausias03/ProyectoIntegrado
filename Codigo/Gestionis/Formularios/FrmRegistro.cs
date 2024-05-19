@@ -19,7 +19,7 @@ namespace Gestionis
             if (txtApodo.Text == String.Empty)
             {
                 ok = false;
-                errorProvider1.SetError(txtApodo, "Introduce un nombre");
+                errorProvider1.SetError(txtApodo, "Introduce un apodo");
             }
 
             if (Utilidades.TieneEspacios(txtApodo.Text))
@@ -83,9 +83,16 @@ namespace Gestionis
 
             try
             {
-                if (Usuario.Existe(txtNombre.Text))
+                if (Usuario.Existe(txtApodo.Text))
                 {
-                    MessageBox.Show("Ya existe un usuario con ese apodo / nombre", "Aviso",
+                    MessageBox.Show("Ya existe un usuario con ese apodo", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (Usuario.CorreoExiste(txtCorreo.Text))
+                {
+                    MessageBox.Show("Ya existe un usuario con ese correo", "Aviso",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }

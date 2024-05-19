@@ -82,8 +82,10 @@ namespace Gestionis
                 }
 
                 this.Hide();
+
                 FrmMenuPrincipal fMP = new FrmMenuPrincipal();
                 Sesion.Instance.ApodoUsuario = txtNombreUsuario.Text;
+
                 fMP.Closed += (s, args) => this.Close();
                 fMP.Show();
             }
@@ -101,10 +103,5 @@ namespace Gestionis
             txtContrasenya.Text = String.Empty;
         }
         #endregion
-
-        private void frmInicioSesion_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

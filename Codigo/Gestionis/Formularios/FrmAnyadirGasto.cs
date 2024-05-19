@@ -14,13 +14,12 @@ namespace Gestionis
 {
     public partial class frmAnyadirGasto : Form
     {
-        private int numCuenta;
-
-        public int NumCuenta { set { numCuenta = value; } }
+        private readonly int numCuenta;
 
         public frmAnyadirGasto()
         {
             InitializeComponent();
+            numCuenta = Sesion.Instance.NumCuenta;
         }
 
         private void frmAnyadirGasto_Load(object sender, EventArgs e)

@@ -51,7 +51,7 @@
             lblInicioSesion.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblInicioSesion.Location = new Point(214, 17);
             lblInicioSesion.Name = "lblInicioSesion";
-            lblInicioSesion.Padding = new Padding(4, 4, 4, 4);
+            lblInicioSesion.Padding = new Padding(4);
             lblInicioSesion.Size = new Size(195, 39);
             lblInicioSesion.TabIndex = 0;
             lblInicioSesion.Text = "Inicio de Sesión";
@@ -62,9 +62,9 @@
             lblNombreUsuario.AutoSize = true;
             lblNombreUsuario.BackColor = SystemColors.Control;
             lblNombreUsuario.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblNombreUsuario.Location = new Point(53, 76);
+            lblNombreUsuario.Location = new Point(87, 76);
             lblNombreUsuario.Name = "lblNombreUsuario";
-            lblNombreUsuario.Padding = new Padding(4, 4, 4, 4);
+            lblNombreUsuario.Padding = new Padding(4);
             lblNombreUsuario.Size = new Size(215, 34);
             lblNombreUsuario.TabIndex = 1;
             lblNombreUsuario.Text = "Nombre de Usuario:";
@@ -73,7 +73,7 @@
             // txtNombreUsuario
             // 
             txtNombreUsuario.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNombreUsuario.Location = new Point(350, 79);
+            txtNombreUsuario.Location = new Point(310, 79);
             txtNombreUsuario.Margin = new Padding(3, 2, 3, 2);
             txtNombreUsuario.Name = "txtNombreUsuario";
             txtNombreUsuario.Size = new Size(253, 32);
@@ -82,7 +82,7 @@
             // txtContrasenya
             // 
             txtContrasenya.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtContrasenya.Location = new Point(350, 125);
+            txtContrasenya.Location = new Point(310, 125);
             txtContrasenya.Margin = new Padding(3, 2, 3, 2);
             txtContrasenya.Name = "txtContrasenya";
             txtContrasenya.Size = new Size(253, 32);
@@ -93,9 +93,9 @@
             lblContrasenya.AutoSize = true;
             lblContrasenya.BackColor = SystemColors.Control;
             lblContrasenya.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblContrasenya.Location = new Point(158, 123);
+            lblContrasenya.Location = new Point(164, 123);
             lblContrasenya.Name = "lblContrasenya";
-            lblContrasenya.Padding = new Padding(4, 4, 4, 4);
+            lblContrasenya.Padding = new Padding(4);
             lblContrasenya.Size = new Size(138, 34);
             lblContrasenya.TabIndex = 3;
             lblContrasenya.Text = "Contraseña:";
@@ -174,7 +174,6 @@
             Margin = new Padding(3, 2, 3, 2);
             Name = "frmInicioSesion";
             Text = "Ge$tioni$";
-            Load += frmInicioSesion_Load;
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
