@@ -13,7 +13,8 @@ salt VARCHAR(255) NOT NULL,
 direccion VARCHAR(60),
 telefono VARCHAR(9),
 experiencia INT NOT NULL,
-foto BLOB NOT NULL
+foto BLOB NOT NULL,
+nivel INT NOT NULL DEFAULT 1
 );
 
 CREATE TABLE IF NOT EXISTS cuenta (
@@ -21,16 +22,6 @@ numCuenta INT PRIMARY KEY AUTO_INCREMENT,
 apodoUsuario VARCHAR(45) NOT NULL,
 pasivos FLOAT NOT NULL,
 FOREIGN KEY (apodoUsuario) REFERENCES usuario(apodo) ON DELETE CASCADE
-);
-
-CREATE TABLE IF NOT EXISTS notificacion (
-idNotificacion INT PRIMARY KEY AUTO_INCREMENT,
-numCuenta INT NOT NULL,
-titulo VARCHAR(45) NOT NULL,
-categoria VARCHAR(45) NOT NULL,
-descripcion VARCHAR(45),
-fecha DATE NOT NULL,
-FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS categoriaGasto (
@@ -122,8 +113,56 @@ FOREIGN KEY (idDeuda) REFERENCES deuda(idDeuda) ON DELETE CASCADE,
 FOREIGN KEY (apodoUsuario) REFERENCES usuario(apodo) ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS notificacion (
+idNotificacion INT PRIMARY KEY AUTO_INCREMENT,
+numCuenta INT NOT NULL,
+titulo VARCHAR(45) NOT NULL,
+categoria INT NOT NULL,
+descripcion VARCHAR(45) NOT NULL,
+recomendacion VARCHAR(45) NOT NULL,
+fecha DATE NOT NULL,
+FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta) ON DELETE CASCADE,
+FOREIGN KEY (categoria) REFERENCES categoriagasto(idCategoria) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS nivel (
+idNivel INT PRIMARY KEY AUTO_INCREMENT,
+nivel INT NOT NULL,
+xpRequerido INT NOT NULL
+);
+
+INSERT INTO nivel (nivel, xpRequerido) VALUES (1, 100), (2, 200), (3, 400), (4, 800), (5, 1600);
+
+DELIMITER //
+
+CREATE TRIGGER before_update_usuario
+BEFORE UPDATE ON usuario
+FOR EACH ROW
+BEGIN
+DECLARE new_level INT;
+SET new_level = (SELECT idNivel FROM nivel WHERE NEW.experiencia >= xpRequerido ORDER BY xpRequerido DESC LIMIT 1);
+SET NEW.nivel = new_level;
+END; //
+
+DELIMITER ;
+
 INSERT INTO categoriaIngreso (idCategoria, nombre)
 VALUES (NULL, "Inversión");
 
 INSERT INTO categoriaIngreso (idCategoria, nombre)
 VALUES (NULL, "Venta");
+
+INSERT INTO categoriagasto (idCategoria, nombre, color)
+VALUES (1, "Restaurante", -53714);
+
+INSERT INTO categoriagasto (idCategoria, nombre, color)
+VALUES (2, "Supermercado", -13729281);
+
+INSERT INTO categoriagasto (idCategoria, nombre, color)
+VALUES (3, "Gasolina", -2494);
+
+INSERT INTO categoriagasto (idCategoria, nombre, color)
+VALUES (4, "Entretenimiento", -12386472);
+
+INSERT INTO categoriagasto (idCategoria, nombre, color)
+VALUES (5, "Luz", -5670662);
