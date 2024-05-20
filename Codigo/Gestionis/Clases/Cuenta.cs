@@ -80,7 +80,7 @@ namespace Gestionis.Clases
             }
 
 
-            if (Gasto.NotifRestaurante() && !Notificacion.ExisteNotif("Restaurante"))
+            if (Gasto.NotifRestaurante() && !Notificacion.ExisteNotif(1))
             {
                 Notificacion nRes = new Notificacion(
                     null,
@@ -95,7 +95,7 @@ namespace Gestionis.Clases
                 nRes.Add();
             }
 
-            if (Gasto.NotifEntretenimiento() && !Notificacion.ExisteNotif("Entretenimiento"))
+            if (Gasto.NotifEntretenimiento() && !Notificacion.ExisteNotif(2))
             {
                 Notificacion nEnt = new Notificacion(
                     null,
@@ -110,7 +110,7 @@ namespace Gestionis.Clases
                 nEnt.Add();
             }
 
-            if (Gasto.NotifLuz() && !Notificacion.ExisteNotif("Luz"))
+            if (Gasto.NotifLuz() && !Notificacion.ExisteNotif(3))
             {
                 Notificacion nLuz = new Notificacion(
                     null,
@@ -125,7 +125,7 @@ namespace Gestionis.Clases
                 nLuz.Add();
             }
 
-            if (Gasto.NotifSuper() && !Notificacion.ExisteNotif("Supermercado"))
+            if (Gasto.NotifSuper() && !Notificacion.ExisteNotif(4))
             {
                 Notificacion nSup = new Notificacion(
                     null,
@@ -140,7 +140,7 @@ namespace Gestionis.Clases
                 nSup.Add();
             }
 
-            if (Gasto.NotifGasolina() && !Notificacion.ExisteNotif("Gasolina"))
+            if (Gasto.NotifGasolina() && !Notificacion.ExisteNotif(5))
             {
                 Notificacion nGas = new Notificacion(
                     null,

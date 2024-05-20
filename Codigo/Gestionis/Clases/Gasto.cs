@@ -103,7 +103,7 @@ namespace Gestionis.Clases
             {
                 if (reader.HasRows)
                 {
-                    aviso = reader.GetDouble(0) >= limiteRestaurantes;
+                    aviso = reader.GetDouble(0) >= limiteNotifs[0];
                 }
             }
 
@@ -127,7 +127,7 @@ namespace Gestionis.Clases
             {
                 if (reader.HasRows)
                 {
-                    aviso = reader.GetDouble(0) >= limiteEntretenimiento;
+                    aviso = reader.GetDouble(0) >= limiteNotifs[1];
                 }
             }
 
@@ -148,7 +148,7 @@ namespace Gestionis.Clases
 
             ConexionDB.AbrirConexion();
 
-            bool aviso = Convert.ToDouble(queryCantidadLuz.ExecuteScalar()) / Convert.ToDouble(queryCantidadTotal.ExecuteScalar()) * 100 >= limiteLuz;
+            bool aviso = Convert.ToDouble(queryCantidadLuz.ExecuteScalar()) / Convert.ToDouble(queryCantidadTotal.ExecuteScalar()) * 100 >= limiteNotifs[2];
 
             ConexionDB.CerrarConexion();
 
@@ -170,7 +170,7 @@ namespace Gestionis.Clases
             {
                 if (reader.HasRows)
                 {
-                    aviso = reader.GetDouble(0) >= limiteSupermercados;
+                    aviso = reader.GetDouble(0) >= limiteNotifs[3];
                 }
             }
 
@@ -194,7 +194,7 @@ namespace Gestionis.Clases
             {
                 if (reader.HasRows)
                 {
-                    aviso = reader.GetDouble(0) >= limiteGasolina;
+                    aviso = reader.GetDouble(0) >= limiteNotifs[4];
                 }
             }
 
