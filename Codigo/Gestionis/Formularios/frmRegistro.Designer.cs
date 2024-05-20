@@ -56,9 +56,9 @@
             // 
             lklInicioSesion.AutoSize = true;
             lklInicioSesion.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lklInicioSesion.Location = new Point(16, 437);
+            lklInicioSesion.Location = new Point(18, 583);
             lklInicioSesion.Name = "lklInicioSesion";
-            lklInicioSesion.Size = new Size(210, 26);
+            lklInicioSesion.Size = new Size(273, 32);
             lklInicioSesion.TabIndex = 11;
             lklInicioSesion.TabStop = true;
             lklInicioSesion.Text = "¿Ya Tienes Cuenta?";
@@ -68,9 +68,9 @@
             // 
             lklFaq.AutoSize = true;
             lklFaq.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lklFaq.Location = new Point(16, 396);
+            lklFaq.Location = new Point(18, 528);
             lklFaq.Name = "lklFaq";
-            lklFaq.Size = new Size(192, 26);
+            lklFaq.Size = new Size(249, 32);
             lklFaq.TabIndex = 10;
             lklFaq.TabStop = true;
             lklFaq.Text = "¿Algún Problema?";
@@ -80,10 +80,9 @@
             // 
             btnEnviar.BackColor = Color.FromArgb(178, 242, 187);
             btnEnviar.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEnviar.Location = new Point(576, 427);
-            btnEnviar.Margin = new Padding(3, 2, 3, 2);
+            btnEnviar.Location = new Point(658, 569);
             btnEnviar.Name = "btnEnviar";
-            btnEnviar.Size = new Size(111, 40);
+            btnEnviar.Size = new Size(127, 53);
             btnEnviar.TabIndex = 8;
             btnEnviar.Text = "Enviar";
             btnEnviar.UseVisualStyleBackColor = false;
@@ -93,10 +92,9 @@
             // 
             btnBorrar.BackColor = Color.FromArgb(211, 208, 242);
             btnBorrar.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnBorrar.Location = new Point(444, 427);
-            btnBorrar.Margin = new Padding(3, 2, 3, 2);
+            btnBorrar.Location = new Point(507, 569);
             btnBorrar.Name = "btnBorrar";
-            btnBorrar.Size = new Size(111, 40);
+            btnBorrar.Size = new Size(127, 53);
             btnBorrar.TabIndex = 9;
             btnBorrar.Text = "Borrar";
             btnBorrar.UseVisualStyleBackColor = false;
@@ -105,10 +103,9 @@
             // txtContrasenya
             // 
             txtContrasenya.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtContrasenya.Location = new Point(276, 248);
-            txtContrasenya.Margin = new Padding(3, 2, 3, 2);
+            txtContrasenya.Location = new Point(315, 331);
             txtContrasenya.Name = "txtContrasenya";
-            txtContrasenya.Size = new Size(253, 32);
+            txtContrasenya.Size = new Size(289, 38);
             txtContrasenya.TabIndex = 5;
             // 
             // lblContrasenya
@@ -116,10 +113,10 @@
             lblContrasenya.AutoSize = true;
             lblContrasenya.BackColor = SystemColors.Control;
             lblContrasenya.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblContrasenya.Location = new Point(134, 245);
+            lblContrasenya.Location = new Point(153, 327);
             lblContrasenya.Name = "lblContrasenya";
-            lblContrasenya.Padding = new Padding(4);
-            lblContrasenya.Size = new Size(138, 34);
+            lblContrasenya.Padding = new Padding(5, 5, 5, 5);
+            lblContrasenya.Size = new Size(179, 42);
             lblContrasenya.TabIndex = 12;
             lblContrasenya.Text = "Contraseña:";
             lblContrasenya.TextAlign = ContentAlignment.MiddleCenter;
@@ -127,10 +124,9 @@
             // txtApodo
             // 
             txtApodo.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtApodo.Location = new Point(276, 68);
-            txtApodo.Margin = new Padding(3, 2, 3, 2);
+            txtApodo.Location = new Point(315, 91);
             txtApodo.Name = "txtApodo";
-            txtApodo.Size = new Size(253, 32);
+            txtApodo.Size = new Size(289, 38);
             txtApodo.TabIndex = 1;
             // 
             // lblApodo
@@ -138,10 +134,10 @@
             lblApodo.AutoSize = true;
             lblApodo.BackColor = SystemColors.Control;
             lblApodo.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblApodo.Location = new Point(183, 65);
+            lblApodo.Location = new Point(209, 87);
             lblApodo.Name = "lblApodo";
-            lblApodo.Padding = new Padding(4);
-            lblApodo.Size = new Size(89, 34);
+            lblApodo.Padding = new Padding(5, 5, 5, 5);
+            lblApodo.Size = new Size(115, 42);
             lblApodo.TabIndex = 10;
             lblApodo.Text = "Apodo:";
             lblApodo.TextAlign = ContentAlignment.MiddleCenter;
@@ -152,10 +148,10 @@
             lblRegistro.BackColor = Color.FromArgb(211, 208, 242);
             lblRegistro.BorderStyle = BorderStyle.FixedSingle;
             lblRegistro.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblRegistro.Location = new Point(275, 14);
+            lblRegistro.Location = new Point(314, 19);
             lblRegistro.Name = "lblRegistro";
-            lblRegistro.Padding = new Padding(4);
-            lblRegistro.Size = new Size(114, 39);
+            lblRegistro.Padding = new Padding(5, 5, 5, 5);
+            lblRegistro.Size = new Size(139, 48);
             lblRegistro.TabIndex = 9;
             lblRegistro.Text = "Registro";
             lblRegistro.TextAlign = ContentAlignment.MiddleCenter;
@@ -163,10 +159,9 @@
             // txtCorreo
             // 
             txtCorreo.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtCorreo.Location = new Point(276, 113);
-            txtCorreo.Margin = new Padding(3, 2, 3, 2);
+            txtCorreo.Location = new Point(315, 151);
             txtCorreo.Name = "txtCorreo";
-            txtCorreo.Size = new Size(253, 32);
+            txtCorreo.Size = new Size(289, 38);
             txtCorreo.TabIndex = 2;
             // 
             // lblCorreo
@@ -174,10 +169,10 @@
             lblCorreo.AutoSize = true;
             lblCorreo.BackColor = SystemColors.Control;
             lblCorreo.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblCorreo.Location = new Point(180, 110);
+            lblCorreo.Location = new Point(206, 147);
             lblCorreo.Name = "lblCorreo";
-            lblCorreo.Padding = new Padding(4);
-            lblCorreo.Size = new Size(92, 34);
+            lblCorreo.Padding = new Padding(5, 5, 5, 5);
+            lblCorreo.Size = new Size(118, 42);
             lblCorreo.TabIndex = 18;
             lblCorreo.Text = "Correo:";
             lblCorreo.TextAlign = ContentAlignment.MiddleCenter;
@@ -185,10 +180,9 @@
             // txtNombre
             // 
             txtNombre.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNombre.Location = new Point(276, 158);
-            txtNombre.Margin = new Padding(3, 2, 3, 2);
+            txtNombre.Location = new Point(315, 211);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(253, 32);
+            txtNombre.Size = new Size(289, 38);
             txtNombre.TabIndex = 3;
             // 
             // lblNombre
@@ -196,10 +190,10 @@
             lblNombre.AutoSize = true;
             lblNombre.BackColor = SystemColors.Control;
             lblNombre.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblNombre.Location = new Point(168, 155);
+            lblNombre.Location = new Point(192, 207);
             lblNombre.Name = "lblNombre";
-            lblNombre.Padding = new Padding(4);
-            lblNombre.Size = new Size(104, 34);
+            lblNombre.Padding = new Padding(5, 5, 5, 5);
+            lblNombre.Size = new Size(132, 42);
             lblNombre.TabIndex = 20;
             lblNombre.Text = "Nombre:";
             lblNombre.TextAlign = ContentAlignment.MiddleCenter;
@@ -207,10 +201,9 @@
             // txtApellidos
             // 
             txtApellidos.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtApellidos.Location = new Point(276, 203);
-            txtApellidos.Margin = new Padding(3, 2, 3, 2);
+            txtApellidos.Location = new Point(315, 271);
             txtApellidos.Name = "txtApellidos";
-            txtApellidos.Size = new Size(253, 32);
+            txtApellidos.Size = new Size(289, 38);
             txtApellidos.TabIndex = 4;
             // 
             // lblApellidos
@@ -218,10 +211,10 @@
             lblApellidos.AutoSize = true;
             lblApellidos.BackColor = SystemColors.Control;
             lblApellidos.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblApellidos.Location = new Point(157, 200);
+            lblApellidos.Location = new Point(179, 267);
             lblApellidos.Name = "lblApellidos";
-            lblApellidos.Padding = new Padding(4);
-            lblApellidos.Size = new Size(115, 34);
+            lblApellidos.Padding = new Padding(5, 5, 5, 5);
+            lblApellidos.Size = new Size(150, 42);
             lblApellidos.TabIndex = 22;
             lblApellidos.Text = "Apellidos:";
             lblApellidos.TextAlign = ContentAlignment.MiddleCenter;
@@ -229,10 +222,9 @@
             // txtDireccion
             // 
             txtDireccion.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtDireccion.Location = new Point(276, 293);
-            txtDireccion.Margin = new Padding(3, 2, 3, 2);
+            txtDireccion.Location = new Point(315, 391);
             txtDireccion.Name = "txtDireccion";
-            txtDireccion.Size = new Size(253, 32);
+            txtDireccion.Size = new Size(289, 38);
             txtDireccion.TabIndex = 6;
             // 
             // lblDireccion
@@ -240,10 +232,10 @@
             lblDireccion.AutoSize = true;
             lblDireccion.BackColor = SystemColors.Control;
             lblDireccion.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDireccion.Location = new Point(155, 290);
+            lblDireccion.Location = new Point(177, 387);
             lblDireccion.Name = "lblDireccion";
-            lblDireccion.Padding = new Padding(4);
-            lblDireccion.Size = new Size(117, 34);
+            lblDireccion.Padding = new Padding(5, 5, 5, 5);
+            lblDireccion.Size = new Size(151, 42);
             lblDireccion.TabIndex = 24;
             lblDireccion.Text = "Dirección:";
             lblDireccion.TextAlign = ContentAlignment.MiddleCenter;
@@ -251,10 +243,9 @@
             // txtTelefono
             // 
             txtTelefono.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtTelefono.Location = new Point(276, 338);
-            txtTelefono.Margin = new Padding(3, 2, 3, 2);
+            txtTelefono.Location = new Point(315, 451);
             txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new Size(253, 32);
+            txtTelefono.Size = new Size(289, 38);
             txtTelefono.TabIndex = 7;
             // 
             // lblTelefono
@@ -262,10 +253,10 @@
             lblTelefono.AutoSize = true;
             lblTelefono.BackColor = SystemColors.Control;
             lblTelefono.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTelefono.Location = new Point(163, 335);
+            lblTelefono.Location = new Point(186, 447);
             lblTelefono.Name = "lblTelefono";
-            lblTelefono.Padding = new Padding(4);
-            lblTelefono.Size = new Size(109, 34);
+            lblTelefono.Padding = new Padding(5, 5, 5, 5);
+            lblTelefono.Size = new Size(144, 42);
             lblTelefono.TabIndex = 26;
             lblTelefono.Text = "Teléfono:";
             lblTelefono.TextAlign = ContentAlignment.MiddleCenter;
@@ -277,9 +268,9 @@
             // 
             // frmRegistro
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 479);
+            ClientSize = new Size(800, 639);
             Controls.Add(txtTelefono);
             Controls.Add(lblTelefono);
             Controls.Add(txtDireccion);
@@ -299,8 +290,8 @@
             Controls.Add(txtApodo);
             Controls.Add(lblApodo);
             Controls.Add(lblRegistro);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "frmRegistro";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmRegistro";
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);

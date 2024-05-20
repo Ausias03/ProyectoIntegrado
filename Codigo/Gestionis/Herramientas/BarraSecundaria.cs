@@ -1,4 +1,5 @@
 ﻿using Gestionis.Clases;
+using System.Globalization;
 
 namespace Gestionis.Herramientas
 {
@@ -83,9 +84,15 @@ namespace Gestionis.Herramientas
                         break;
                     case "btnLanguage":
                         if (ImageEquals(BtnLanguage.Image, Properties.Resources.england))
+                        {
                             BtnLanguage.Image = Properties.Resources.spain;
-                        else 
+                            Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
+                        }
+                        else
+                        {
                             BtnLanguage.Image = Properties.Resources.england;
+                            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+                        }
                         break;
                     case "btnNoticias":
 
