@@ -14,9 +14,61 @@ namespace Gestionis
 {
     public partial class FrmNotificaciones : Form
     {
+        private FlowLayoutPanel flpNotificaciones;
+        private Panel panelContainer;
+        private Label lblTitulo;
+        private Button btnVolver;
+
         public FrmNotificaciones()
         {
             InitializeComponent();
+            InitializeForm();
+        }
+
+        private void InitializeForm()
+        {
+            this.ControlBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            // Initialize the title label
+            lblTitulo = new Label();
+            lblTitulo.Text = "Notificaciones";
+            lblTitulo.Font = new Font("Arial", 24, FontStyle.Bold);
+            lblTitulo.ForeColor = Color.FromArgb(211, 208, 242);
+            lblTitulo.Dock = DockStyle.Top;
+            lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
+            lblTitulo.Height = 50;
+
+            // Initialize the Volver button
+            btnVolver = new Button();
+            btnVolver.Text = "Volver";
+            btnVolver.Font = new Font("Arial", 12, FontStyle.Bold);
+            btnVolver.BackColor = Color.FromArgb(211, 208, 242);
+            btnVolver.Dock = DockStyle.Bottom;
+            btnVolver.Height = 40;
+            btnVolver.Click += btnVolver_Click;
+
+            // Initialize the container panel
+            panelContainer = new Panel();
+            panelContainer.Dock = DockStyle.Fill;
+            panelContainer.AutoScroll = true;
+
+            // Initialize the FlowLayoutPanel
+            flpNotificaciones = new FlowLayoutPanel();
+            flpNotificaciones.Dock = DockStyle.Top;
+            flpNotificaciones.AutoSize = true;
+            flpNotificaciones.FlowDirection = FlowDirection.TopDown;
+            flpNotificaciones.WrapContents = false;
+
+            // Add the FlowLayoutPanel to the container panel
+            panelContainer.Controls.Add(flpNotificaciones);
+
+            // Add the controls to the form
+            this.Controls.Add(panelContainer);
+            this.Controls.Add(btnVolver);
+            this.Controls.Add(lblTitulo);
+
+            // Ensure the form itself can accommodate the controls and the scrollbar
+            this.Size = new Size(450, 600); // Adjust the size as needed
         }
 
         private void FrmNotificaciones_Load(object sender, EventArgs e)
@@ -78,14 +130,15 @@ namespace Gestionis
             Panel panelDescripcion = new Panel();
             panelDescripcion.BackColor = ColorTranslator.FromHtml("#D9FFD8");
             panelDescripcion.BorderStyle = BorderStyle.FixedSingle;
-            panelDescripcion.Size = new Size(120, 50);
+            panelDescripcion.Size = new Size(120, 70);
             panelDescripcion.Location = new Point(250, 10);
 
             // Crear el label para la descripción dentro del panel de descripción
             Label lblDescripcion = new Label();
             lblDescripcion.Text = noti.Descripcion;
-            lblDescripcion.AutoSize = true;
-            lblDescripcion.Location = new Point(10, 15);
+            lblDescripcion.AutoSize = false; // Set AutoSize to false
+            lblDescripcion.Size = new Size(100, 40); // Adjust the size to fit within the panel
+            lblDescripcion.Location = new Point(10, 15); // Adjust the location to fit within the panel
             lblDescripcion.TextAlign = ContentAlignment.MiddleCenter;
             lblDescripcion.Font = new Font(lblDescripcion.Font, FontStyle.Bold);
 

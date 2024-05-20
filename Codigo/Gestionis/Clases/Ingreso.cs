@@ -89,7 +89,7 @@ namespace Gestionis.Clases
             query.ExecuteNonQuery();
 
             ConexionDB.CerrarConexion();
-            SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario,50);
+            SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario, 50);
         }
     }
 }
