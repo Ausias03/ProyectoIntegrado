@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Ahorros" xml:space="preserve">
+    <value>Savings</value>
+  </data>
+  <data name="Alarma" xml:space="preserve">
+    <value>Alarm:</value>
+  </data>
+  <data name="AnyadirCat" xml:space="preserve">
+    <value>Add category</value>
+  </data>
+  <data name="AnyadirRecord" xml:space="preserve">
+    <value>Add reminder</value>
+  </data>
+  <data name="Apellidos" xml:space="preserve">
+    <value>Surname:</value>
+  </data>
+  <data name="Apodo" xml:space="preserve">
+    <value>User name:</value>
+  </data>
+  <data name="Asunto" xml:space="preserve">
+    <value>Affair:</value>
+  </data>
+  <data name="btnAnotar" xml:space="preserve">
+    <value>Annotate</value>
+  </data>
+  <data name="btnAnyadidDeuda" xml:space="preserve">
+    <value>Add Debt</value>
+  </data>
+  <data name="btnAnyadir" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="btnAnyadirGasto" xml:space="preserve">
+    <value>Add Expense</value>
+  </data>
+  <data name="btnAnyadirIngreso" xml:space="preserve">
+    <value>Add Income</value>
+  </data>
+  <data name="btnBuscar" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="btnCambiar" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="btnCancelar" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="btnCerrarSesion" xml:space="preserve">
+    <value>Sign Off</value>
+  </data>
+  <data name="btnConfirmar" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="btnCrear" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="btnEliminar" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="btnEliminarDeuda" xml:space="preserve">
+    <value>Delete Debt</value>
+  </data>
+  <data name="btnEnviar" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="btnFiltrar" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="btnNuevaNota" xml:space="preserve">
+    <value>New Note</value>
+  </data>
+  <data name="btnRestablecer" xml:space="preserve">
+    <value>Re-establish</value>
+  </data>
+  <data name="btnRestaurar" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="btnSalir" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="btnVolver" xml:space="preserve">
+    <value>Go Back</value>
+  </data>
+  <data name="Buscador" xml:space="preserve">
+    <value>Browser:</value>
+  </data>
+  <data name="BuscFecha" xml:space="preserve">
+    <value>Browse by date:</value>
+  </data>
+  <data name="CantDinero" xml:space="preserve">
+    <value>Money amount:</value>
+  </data>
+  <data name="Cantidad" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="CantidadDeuda" xml:space="preserve">
+    <value>Owed amount:</value>
+  </data>
+  <data name="Categoria" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="Categoria2" xml:space="preserve">
+    <value>Category:</value>
+  </data>
+  <data name="Clasificacion" xml:space="preserve">
+    <value>Clasification</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Color:</value>
+  </data>
+  <data name="Comentarios" xml:space="preserve">
+    <value>Comments:</value>
+  </data>
+  <data name="Contraseña" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="Correo" xml:space="preserve">
+    <value>Email:</value>
+  </data>
+  <data name="Debo" xml:space="preserve">
+    <value>I owe</value>
+  </data>
+  <data name="Debo2" xml:space="preserve">
+    <value>I owe:</value>
+  </data>
+  <data name="Descripcion" xml:space="preserve">
+    <value>Description:</value>
+  </data>
+  <data name="Deudas" xml:space="preserve">
+    <value>Debts</value>
+  </data>
+  <data name="DeudasTotales" xml:space="preserve">
+    <value>Total debts:</value>
+  </data>
+  <data name="Dia" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="Dinero" xml:space="preserve">
+    <value>Money</value>
+  </data>
+  <data name="DineroDispAhorrar" xml:space="preserve">
+    <value>Money avaliable to save this month:</value>
+  </data>
+  <data name="DineroRestante" xml:space="preserve">
+    <value>Money left:</value>
+  </data>
+  <data name="Direccion" xml:space="preserve">
+    <value>Address:</value>
+  </data>
+  <data name="EstadoDeuda" xml:space="preserve">
+    <value>DEBT STATUS</value>
+  </data>
+  <data name="Extra" xml:space="preserve">
+    <value>Extra</value>
+  </data>
+  <data name="FechaDeuda" xml:space="preserve">
+    <value>Debt date:</value>
+  </data>
+  <data name="FechaLimite" xml:space="preserve">
+    <value>Deadline:</value>
+  </data>
+  <data name="FechaVencimiento" xml:space="preserve">
+    <value>Due date:</value>
+  </data>
+  <data name="Fijo" xml:space="preserve">
+    <value>Fixed</value>
+  </data>
+  <data name="FiltrarPor" xml:space="preserve">
+    <value>Filter by:</value>
+  </data>
+  <data name="GastEsteMes" xml:space="preserve">
+    <value>Spent this month:</value>
+  </data>
+  <data name="Gastos" xml:space="preserve">
+    <value>Expenses:</value>
+  </data>
+  <data name="GastosFijos" xml:space="preserve">
+    <value>Fixed expenses:</value>
+  </data>
+  <data name="GastosVariables" xml:space="preserve">
+    <value>Variable expenses:</value>
+  </data>
+  <data name="Historial" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="Ingresos" xml:space="preserve">
+    <value>Incomes:</value>
+  </data>
+  <data name="IngresosMensuales" xml:space="preserve">
+    <value>Monthly incomes:</value>
+  </data>
+  <data name="Inicio" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="InicioSesion" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="IntroduceTitulo" xml:space="preserve">
+    <value>Enter title:</value>
+  </data>
+  <data name="Inversiones" xml:space="preserve">
+    <value>Investments</value>
+  </data>
+  <data name="MeDeben" xml:space="preserve">
+    <value>They owe me</value>
+  </data>
+  <data name="MeDeben2" xml:space="preserve">
+    <value>They owe me:</value>
+  </data>
+  <data name="Mes" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="Metodo" xml:space="preserve">
+    <value>Method:</value>
+  </data>
+  <data name="NoCuenta" xml:space="preserve">
+    <value>You don't have an account?</value>
+  </data>
+  <data name="Nombre" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Nombre2" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="NomGasto" xml:space="preserve">
+    <value>Spent's name:</value>
+  </data>
+  <data name="NomIngreso" xml:space="preserve">
+    <value>Income's name:</value>
+  </data>
+  <data name="Notas" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="NotasDelDia" xml:space="preserve">
+    <value>Daily notes</value>
+  </data>
+  <data name="Notif" xml:space="preserve">
+    <value>Notif.</value>
+  </data>
+  <data name="NuevoGasto" xml:space="preserve">
+    <value>New Expense</value>
+  </data>
+  <data name="NuevoIngreso" xml:space="preserve">
+    <value>New Income</value>
+  </data>
+  <data name="PaginaWeb" xml:space="preserve">
+    <value>Web Page</value>
+  </data>
+  <data name="Patrimonio" xml:space="preserve">
+    <value>Patrimony</value>
+  </data>
+  <data name="Personalizado" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="Porcentaje" xml:space="preserve">
+    <value>Percentage</value>
+  </data>
+  <data name="Problema" xml:space="preserve">
+    <value>Any problem?</value>
+  </data>
+  <data name="ProximaDeuda" xml:space="preserve">
+    <value>Next debt:</value>
+  </data>
+  <data name="Registro" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="ResumenTotal" xml:space="preserve">
+    <value>TOTAL SUMMARY</value>
+  </data>
+  <data name="Salario" xml:space="preserve">
+    <value>Salary</value>
+  </data>
+  <data name="Saldo" xml:space="preserve">
+    <value>Balance:</value>
+  </data>
+  <data name="Telefono" xml:space="preserve">
+    <value>Telephone:</value>
+  </data>
+  <data name="TienesCuenta" xml:space="preserve">
+    <value>Do you already have an account?</value>
+  </data>
+  <data name="Tipo" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Tipo2" xml:space="preserve">
+    <value>Type:</value>
+  </data>
+  <data name="TipoGasto" xml:space="preserve">
+    <value>Expense type:</value>
+  </data>
+  <data name="TipoIngreso" xml:space="preserve">
+    <value>Income type:</value>
+  </data>
+  <data name="Titulo" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="TopUsuarios" xml:space="preserve">
+    <value>Top 10 users</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="Total2" xml:space="preserve">
+    <value>Total:</value>
+  </data>
+  <data name="TotalValor" xml:space="preserve">
+    <value>Total value</value>
+  </data>
+  <data name="TuCuenta" xml:space="preserve">
+    <value>Your account</value>
+  </data>
+  <data name="Variable" xml:space="preserve">
+    <value>Variable</value>
+  </data>
+</root>

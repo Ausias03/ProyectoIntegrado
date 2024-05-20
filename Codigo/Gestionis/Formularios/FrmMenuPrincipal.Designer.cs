@@ -496,7 +496,7 @@ namespace Gestionis
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1463, 35);
+            barraSecundaria1.Size = new Size(1856, 35);
             barraSecundaria1.TabIndex = 17;
             // 
             // barraLateral1
@@ -513,7 +513,7 @@ namespace Gestionis
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(233, 236, 239);
-            ClientSize = new Size(1463, 828);
+            ClientSize = new Size(1856, 828);
             ControlBox = false;
             Controls.Add(barraLateral1);
             Controls.Add(barraSecundaria1);

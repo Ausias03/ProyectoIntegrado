@@ -36,7 +36,7 @@ namespace Gestionis
             {
                 txtTelefono.Text = usuario.Telefono;
             }
-            #endregion
+            #endregion            
         }
 
         #region Validación de datos
@@ -214,12 +214,10 @@ namespace Gestionis
             this.Dispose();
         }
 
-        private void btnAyuda_Click(object sender, EventArgs e)
+        private void frmUsuario_Load_1(object sender, EventArgs e)
         {
-            helpProvider1.SetHelpString(btnCambiarNom, "Pulsando en los botones de 'Cambiar' se desbloquedara la caja de texto adyacente para poder modificar el atributo correnpondiente. Tras modificar el texto, pulsa en el botón 'Confirmar que aparecera en el lugar del botón 'Cambiar' para confirmar el cambio");
-            helpProvider1.SetShowHelp(btnCambiarNom, true);
-            helpProvider1.SetHelpString(btnCambiarFoto, "Pulsando en este botón de 'Cambiar' se permitira la subida de un archivo para que haga la función de foto de usuario.");
-            helpProvider1.SetShowHelp(btnCambiarFoto, true);
+            barraSecundaria1.Load();
+            barraLateral1.Load();
         }
     }
 }

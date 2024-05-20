@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using Gestionis.Herramientas;
 namespace Gestionis
 {
     public partial class frmHistorial : FrmBarraPrincipal
@@ -22,6 +23,8 @@ namespace Gestionis
             lblFecha.Show();
             lblFecha.Text = DateTime.Today.ToString("D");
             CargarFecha(DateTime.Today, 1);
+            barraSecundaria1.Load();
+            barraLateral1.Load();
         }
 
         private void picBuscar_Click(object sender, EventArgs e)

@@ -1,8 +1,10 @@
-﻿namespace Gestionis.Herramientas
+﻿using Gestionis.Clases;
+
+namespace Gestionis.Herramientas
 {
     public class BarraLateral : FlowLayoutPanel
     {
-        private static bool barraLateralExpandida = true;
+
         private static System.Windows.Forms.Timer transicionBarraLateral;
 
         public BarraLateral()
@@ -10,6 +12,19 @@
             InitializePanelProperties();
             CreateButtons();
             AjustesTimer();
+            Load();
+        }
+
+        public void Load()
+        {
+            if (!Sesion.Instance.BarraExpandida)
+            {
+                Width = 65;
+            }
+            else
+            {
+                Width = 231;
+            }            
         }
 
         private void InitializePanelProperties()
@@ -57,12 +72,12 @@
 
         private void TransicionBarraLateral_Tick(object sender, EventArgs e)
         {
-            if (barraLateralExpandida)
+            if (Sesion.Instance.BarraExpandida)
             {
                 Width -= 10;
                 if (Width <= 65)
                 {
-                    barraLateralExpandida = false;
+                    Sesion.Instance.BarraExpandida = false;
                     transicionBarraLateral.Stop();
                 }
             }
@@ -71,7 +86,7 @@
                 Width += 10;
                 if (Width >= 231)
                 {
-                    barraLateralExpandida = true;
+                    Sesion.Instance.BarraExpandida = true;
                     transicionBarraLateral.Stop();
                 }
             }
@@ -89,10 +104,10 @@
             }
         }
 
-        static public bool ColapsarExpandir(object sender, EventArgs e)
+        public static bool ColapsarExpandir()
         {
             transicionBarraLateral.Start();
-            return barraLateralExpandida;
+            return Sesion.Instance.BarraExpandida;
         }
     }
 }
