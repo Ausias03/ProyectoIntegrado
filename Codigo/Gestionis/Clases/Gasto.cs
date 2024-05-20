@@ -77,7 +77,7 @@ namespace Gestionis.Clases
 
             ConexionDB.AbrirConexion();
 
-            bool aviso = Convert.ToInt32(query.ExecuteScalar()) > limiteRestaurantes;
+            bool aviso = Convert.ToInt32(query.ExecuteScalar()) >= limiteRestaurantes;
 
             ConexionDB.CerrarConexion();
 

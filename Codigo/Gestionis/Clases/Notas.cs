@@ -39,57 +39,66 @@ namespace Gestionis.Clases
             string queryString = "INSERT INTO nota (idNota, apodoUsuario, titulo, alarma, color, descripcion, fechaRecordatorio) " +
                 "VALUES (@idNota, @apodoUsuario, @titulo, @alarma, @color, @descripcion, @fechaRecordatorio)";
 
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+            query.Parameters.AddWithValue("@idNota", idNota);
+            query.Parameters.AddWithValue("@apodoUsuario", apodoUsuario);
+            query.Parameters.AddWithValue("@titulo", titulo);
+            query.Parameters.AddWithValue("@descripcion", descripcion);
+            query.Parameters.AddWithValue("@fechaRecordatorio", fechaRecordatorio);
+            query.Parameters.AddWithValue("@alarma", alarma);
+            query.Parameters.AddWithValue("@color", color);
 
-            try
-            {
-                using (MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion))
-                {
-                    query.Parameters.AddWithValue("@idNota", idNota);
-                    query.Parameters.AddWithValue("@apodoUsuario", apodoUsuario);
-                    query.Parameters.AddWithValue("@titulo", titulo);
-                    query.Parameters.AddWithValue("@descripcion", descripcion);
-                    query.Parameters.AddWithValue("@fechaRecordatorio", fechaRecordatorio);
-                    query.Parameters.AddWithValue("@alarma", alarma);
-                    query.Parameters.AddWithValue("@color", color);
-
-                    ConexionDB.AbrirConexion();
-                    query.ExecuteNonQuery();
-                    ConexionDB.CerrarConexion();
-                }
-            } 
-            catch (Exception) { }
- 
-        } 
-        public void BorrarNota()
-        {
-            string querryString;
+            ConexionDB.AbrirConexion();
+            query.ExecuteNonQuery();
+            ConexionDB.CerrarConexion();
         }
 
+        public static void BorrarNota(string tituloNota)
+        {
+            string queryString = $"DELETE FROM nota WHERE titulo = '{tituloNota}';";
+
+            using (MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion))
+            {
+                query.Parameters.AddWithValue("@titulo", tituloNota);
+
+                ConexionDB.AbrirConexion();
+                query.ExecuteNonQuery();
+                ConexionDB.CerrarConexion();
+            }
+        }
         public static DataTable RecargarTabla()
         {
-            return Utilidades.RellenarDatos($"SELECT titulo, alarma, color, descripcion, fechaRecordatorio FROM nota WHERE apodoUsuario = '{Sesion.Instance.ApodoUsuario}';") ;
+            return Utilidades.RellenarDatos($"SELECT titulo, alarma, color, descripcion, fechaRecordatorio " +
+                $"FROM nota WHERE apodoUsuario = '{Sesion.Instance.ApodoUsuario}';") ;
+        }
+       
+        public static string[] CargaFiltros()
+        {
+            string[] lista = new string[] { "Fecha", "Titulo", "Alarma", "Descripcion", "Color" };
+            return lista;
         }
 
-        public static DataTable BuscarFiltro(string filtro, string titulo, string descripcion, bool alarma, int color, DateTime fecha)
+        public static DataTable BuscarPorFiltro(string filtro, string titulo, string descripcion, bool alarma, int color, string fecha)
         {
             string nombreUsuario = Sesion.Instance.ApodoUsuario;
-            string consulta = $"SELECT titulo, descripcion, cantidad, alarma, color, fechaRecordatorio FROM nota WHERE apodoUsuario = {nombreUsuario}";
+            int valor = alarma ? 1 : 0;
+            string consulta = $"SELECT titulo, alarma, color, descripcion, fechaRecordatorio FROM nota WHERE apodoUsuario = '{nombreUsuario}'";
             switch (filtro)
             {
                 case "Titulo":
-                    consulta += $" AND titulo = '{titulo}'";
+                    consulta += $" AND titulo = '{titulo}';";
                     break;
                 case "Descripcion":
-                    consulta += $" AND descripcion = '{descripcion}'";
+                    consulta += $" AND descripcion LIKE '%{descripcion}%';";
                     break;
                 case "Fecha":
-                    consulta += $" AND fechaRecordatorio = ' {fecha} '";
+                    consulta += $" AND fechaRecordatorio = '{fecha}';";
                     break;
                 case "Alarma":
-                    consulta += $" AND alarma = ' {alarma} '";
+                    consulta += $" AND alarma = '{valor}';";
                     break;
                 case "Color":
-                    consulta += $" AND color = ' {color} '";
+                    consulta += $" AND color = '{color}';";
                     break;
                 default:
                     break;
@@ -97,11 +106,47 @@ namespace Gestionis.Clases
 
             return Utilidades.RellenarDatos(consulta);
         }
-
-        public static string[] CargaFiltros()
+               
+        public static DataTable NotasDia()
         {
-            string[] lista = new string[] {"Fecha", "Titulo", "Alarma", "Descripcion", "Color"};
-            return lista;
+            string fechaActual = DateTime.Today.ToString("yyyy-MM-dd");
+
+            return Utilidades.RellenarDatos($"SELECT titulo, descripcion FROM nota WHERE apodoUsuario = " +
+                $"'{Sesion.Instance.ApodoUsuario}' AND fechaRecordatorio = '{fechaActual}';");
         }
+
+        #region Calculo Días Totales
+        public static int NotasTotales()
+        {
+            string queryString = $"SELECT COUNT(*) FROM nota WHERE apodoUsuario = '{Sesion.Instance.ApodoUsuario}';";
+            int total = 0;
+
+            using (MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion))
+            {
+                ConexionDB.AbrirConexion();
+                total = Convert.ToInt32(query.ExecuteScalar());
+                ConexionDB.CerrarConexion();
+            }
+
+            return total;
+        }
+        public static int NotasTotalesDia()
+        {
+            string fechaActual = DateTime.Today.ToString("yyyy-MM-dd");
+            string queryString = $"SELECT COUNT(*) FROM nota WHERE fechaRecordatorio = '{fechaActual}';";
+            int total = 0;
+
+            using (MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion))
+            {
+                ConexionDB.AbrirConexion();
+                total = Convert.ToInt32(query.ExecuteScalar());
+                ConexionDB.CerrarConexion();
+            }
+
+            return total;
+        }
+
+        #endregion
+
     }
 }

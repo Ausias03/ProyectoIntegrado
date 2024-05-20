@@ -33,8 +33,9 @@ namespace Gestionis.Clases
         }
 
         public string Titulo { get { return titulo; } }
-        public int Categoria { get { return categoria; } }
-        public string? Descripcion { get { return descripcion; } }
+        public int Categoria { get { return categoria; } }        
+        public string Descripcion { get { return descripcion; } }
+        public string Recomendacion { get { return recomendacion; } }
 
         public static List<Notificacion> GetAllNotificaciones(int numCuenta)
         {
@@ -70,7 +71,7 @@ namespace Gestionis.Clases
         public void Add()
         {
             string queryString = "INSERT INTO notificacion (idNotificacion, numCuenta, titulo, categoria, descripcion, recomendacion, fecha) " +
-                "VALUES (@idCategoria, @numCuenta, @titulo, @categoria, @descripcion, @recomendacion, @fecha);";
+                "VALUES (@idNotificacion, @numCuenta, @titulo, @categoria, @descripcion, @recomendacion, @fecha);";
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
             query.Parameters.AddWithValue("@idNotificacion", id);
