@@ -35,7 +35,6 @@ namespace Gestionis
             btnCerrarSesion = new Button();
             errorProvider1 = new ErrorProvider(components);
             grpCuenta = new RoundGroupBox();
-            prbExperiencia = new ProgressBar();
             btnConfirmarFoto = new Button();
             btnConfirmarApellidos = new Button();
             txtApellidos = new TextBox();
@@ -100,7 +99,6 @@ namespace Gestionis
             // grpCuenta
             // 
             grpCuenta.BackColor = Color.Transparent;
-            grpCuenta.Controls.Add(prbExperiencia);
             grpCuenta.Controls.Add(btnConfirmarFoto);
             grpCuenta.Controls.Add(btnConfirmarApellidos);
             grpCuenta.Controls.Add(txtApellidos);
@@ -136,13 +134,6 @@ namespace Gestionis
             grpCuenta.TabIndex = 4;
             grpCuenta.TabStop = false;
             grpCuenta.Text = "roundGroupBox1";
-            // 
-            // prbExperiencia
-            // 
-            prbExperiencia.Location = new Point(751, 117);
-            prbExperiencia.Name = "prbExperiencia";
-            prbExperiencia.Size = new Size(115, 16);
-            prbExperiencia.TabIndex = 55;
             // 
             // btnConfirmarFoto
             // 
@@ -451,7 +442,7 @@ namespace Gestionis
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1839, 44);
+            barraSecundaria1.Size = new Size(1530, 44);
             barraSecundaria1.TabIndex = 5;
             // 
             // barraLateral1
@@ -468,7 +459,7 @@ namespace Gestionis
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(233, 236, 239);
-            ClientSize = new Size(1839, 837);
+            ClientSize = new Size(1530, 837);
             Controls.Add(barraLateral1);
             Controls.Add(barraSecundaria1);
             Controls.Add(grpCuenta);
@@ -478,7 +469,7 @@ namespace Gestionis
             Name = "frmUsuario";
             StartPosition = FormStartPosition.CenterScreen;
             WindowState = FormWindowState.Maximized;
-            Load += frmUsuario_Load_1;
+            Load += frmUsuario_Load;
             Controls.SetChildIndex(lblTuCuenta, 0);
             Controls.SetChildIndex(btnCerrarSesion, 0);
             Controls.SetChildIndex(grpCuenta, 0);
@@ -558,6 +549,5 @@ namespace Gestionis
         private PictureBox picFoto;
         private BarraLateral barraLateral1;
         private BarraSecundaria barraSecundaria1;
-        private ProgressBar prbExperiencia;
     }
 }

@@ -12,9 +12,14 @@ namespace Gestionis
 {
     public partial class frmHistorial : FrmBarraPrincipal
     {
+        private readonly Usuario usuario;
+        private int cuenta;
+
         public frmHistorial()
         {
             InitializeComponent();
+            usuario = Usuario.BuscaUsuario(Sesion.Instance.ApodoUsuario);
+            cuenta = Cuenta.IDCuentaUsuario(usuario.Apodo);
         }
 
         private void frmHistorial_Load(object sender, EventArgs e)
@@ -22,14 +27,13 @@ namespace Gestionis
             dtpBuscaFecha.MaxDate = DateTime.Now;
             lblFecha.Show();
             lblFecha.Text = DateTime.Today.ToString("D");
-            CargarFecha(DateTime.Today, 1);
-            barraSecundaria1.Load();
-            barraLateral1.Load();
+            CargarFecha(DateTime.Today, cuenta);
+            barraSecundaria1.BarraSecundaria_Load();
         }
 
         private void picBuscar_Click(object sender, EventArgs e)
         {
-            CargarFiltro(dtpBuscaFecha.Value, 1, cmbMetodo.Text, txtBuscar.Text);
+            CargarFiltro(dtpBuscaFecha.Value, cuenta, cmbMetodo.Text, txtBuscar.Text);
             lblFecha.Text = dtpBuscaFecha.Value.ToString("D");
             dtpBuscaFecha.Value = DateTime.Today;
             txtBuscar.Text = "";
@@ -37,7 +41,7 @@ namespace Gestionis
 
         private void picBuscaFecha_Click(object sender, EventArgs e)
         {
-            CargarFecha(dtpBuscaFecha.Value, 1);
+            CargarFecha(dtpBuscaFecha.Value, cuenta);
             lblFecha.Text = dtpBuscaFecha.Value.ToString("D");
             dtpBuscaFecha.Value = DateTime.Today;
             txtBuscar.Text = "";

@@ -1,4 +1,8 @@
 using Gestionis.Clases;
+//using Gestionis.Idiomas;
+using System.Globalization;
+using System.Threading;
+using System.Windows.Forms;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,17 +10,15 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Gestionis
 {
     public partial class frmUsuario : FrmBarraPrincipal
     {
-        Usuario usuario;
-        string apodo = Sesion.Instance.ApodoUsuario;
-
+        private Usuario usuario;
         public frmUsuario()
         {
             InitializeComponent();
+            usuario = Usuario.BuscaUsuario(Sesion.Instance.ApodoUsuario);
         }
 
         private void frmUsuario_Load(object sender, EventArgs e)
@@ -25,21 +27,13 @@ namespace Gestionis
             // Convertir un array de bytes (byte[]) a foto
             //picFoto.Image = usuario.Foto;
             txtNombre.Text = usuario.Nombre;
-            if (usuario.Apellidos != "")
-            {
-                txtApellidos.Text = usuario.Apellidos;
-            }
+            txtApellidos.Text = usuario.Apellidos;
             txtApodo.Text = usuario.Apodo;
             txtCorreo.Text = usuario.Correo;
-            if (usuario.Direccion != "")
-            {
-                txtDireccion.Text = usuario.Direccion;
-            }
-            if (usuario.Telefono != "")
-            {
-                txtTelefono.Text = usuario.Telefono;
-            }
-            #endregion            
+            txtDireccion.Text = usuario.Direccion;
+            txtTelefono.Text = usuario.Telefono;
+            #endregion
+            barraSecundaria1.BarraSecundaria_Load();
         }
 
         #region Validación de datos
@@ -62,7 +56,7 @@ namespace Gestionis
         private bool ValidarApodo()
         {
             bool valido = true;
-            if (txtApodo.Text == "")
+            if (txtApodo.Text == "" || Usuario.Existe(txtApodo.Text))
             {
                 valido = false;
                 errorProvider1.SetError(txtApodo, "Es necesario proporcionar un apodo.");
@@ -91,6 +85,7 @@ namespace Gestionis
 
         #endregion
 
+        #region Botones Cambiar
         private void btnCambiarNom_Click(object sender, EventArgs e)
         {
             txtNombre.ReadOnly = false;
@@ -138,7 +133,9 @@ namespace Gestionis
             btnCambiarFoto.Hide();
             btnConfirmarFoto.Show();
         }
+        #endregion
 
+        #region Botones Confirmar
         private void btnConfirmarNom_Click(object sender, EventArgs e)
         {
             if (ValidarNombre())
@@ -211,46 +208,17 @@ namespace Gestionis
             btnConfirmarFoto.Hide();
             btnCambiarFoto.Show();
         }
+        #endregion
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmInicioSesion frmInicioSesion = new frmInicioSesion();
-            frmInicioSesion.Closed += (s, args) => this.Close();
-            frmInicioSesion.Show();
+            Application.Exit();
         }
-
-        private void frmUsuario_Load_1(object sender, EventArgs e)
+        /*
+        private void AplicarIdioma()
         {
-            barraSecundaria1.Load();
-            barraLateral1.Load();
-
-            SetExpNivel();
+            lblApodo.Text = StringRecursos.Nombre2;
         }
-
-        private void SetExpNivel()
-        {
-            int experienciaActual = Usuario.GetExperiencia(apodo);
-            int nivelActual = Usuario.GetNivel(apodo);
-            int xpParaSiguienteNivel = Usuario.GetXpRequeridoParaNivel(nivelActual + 1);
-            int xpParaNivelActual = Usuario.GetXpRequeridoParaNivel(nivelActual);
-
-            int progress = experienciaActual - xpParaNivelActual;
-
-            if (progress < 0)
-            {
-                progress = 0;
-            }
-            else if (progress > prbExperiencia.Maximum)
-            {
-                progress = prbExperiencia.Maximum;
-            }
-
-            prbExperiencia.Maximum = xpParaSiguienteNivel - xpParaNivelActual;
-            
-            prbExperiencia.Value = progress;
-            
-            lblNivel.Text = experienciaActual == 0 ? "0" : nivelActual.ToString();
-        }
+        */
     }
 }

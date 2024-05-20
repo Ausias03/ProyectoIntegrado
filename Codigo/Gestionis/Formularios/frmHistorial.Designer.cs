@@ -172,7 +172,7 @@
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1839, 44);
+            barraSecundaria1.Size = new Size(1530, 44);
             barraSecundaria1.TabIndex = 26;
             // 
             // barraLateral1
@@ -233,7 +233,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1839, 916);
+            ClientSize = new Size(1530, 916);
             Controls.Add(btnSalir);
             Controls.Add(lblGastos);
             Controls.Add(dgvGastos);
@@ -254,6 +254,8 @@
             Font = new Font("Microsoft Sans Serif", 9F);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmHistorial";
+            StartPosition = FormStartPosition.CenterScreen;
+            WindowState = FormWindowState.Maximized;
             Load += frmHistorial_Load;
             Controls.SetChildIndex(lblHistorial, 0);
             Controls.SetChildIndex(dgvIngresos, 0);
