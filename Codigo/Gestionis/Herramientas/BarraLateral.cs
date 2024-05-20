@@ -24,7 +24,7 @@ namespace Gestionis.Herramientas
             else
             {
                 Width = 231;
-            }            
+            }
         }
 
         private void InitializePanelProperties()
@@ -94,13 +94,20 @@ namespace Gestionis.Herramientas
 
         private void CerrarAbrirFrm(Type formType)
         {
-            Form frmActual = FindForm();
-            if (frmActual != null)
+            Form form = (Form)Activator.CreateInstance(formType);
+            if (form.GetType() == typeof(FrmNotificaciones))
             {
-                frmActual.Hide();
-                Form form = (Form)Activator.CreateInstance(formType);
-                form.Closed += (s, args) => frmActual.Close();
-                form.Show();
+                form.ShowDialog();
+            }
+            else
+            {
+                Form frmActual = FindForm();
+                if (frmActual != null)
+                {
+                    frmActual.Hide();                    
+                    form.Closed += (s, args) => frmActual.Close();
+                    form.Show();
+                }
             }
         }
 

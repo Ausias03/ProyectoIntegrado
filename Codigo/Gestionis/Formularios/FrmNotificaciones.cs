@@ -70,7 +70,7 @@ namespace Gestionis
 
             // Crear el label para la recomendación
             Label lblRecomendacion = new Label();
-            lblRecomendacion.Text = noti.Descripcion;
+            lblRecomendacion.Text = noti.Recomendacion;
             lblRecomendacion.AutoSize = true;
             lblRecomendacion.Location = new Point(10, 40);
 
@@ -118,6 +118,11 @@ namespace Gestionis
             panel.Controls.Add(lblMensaje);
 
             flpNotificaciones.Controls.Add(panel);
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

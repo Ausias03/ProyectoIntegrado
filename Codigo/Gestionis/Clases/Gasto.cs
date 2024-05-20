@@ -11,6 +11,10 @@ namespace Gestionis.Clases
     public class Gasto
     {
         private static List<String> tiposGasto = new List<String>() { "Fijo", "Variable" };
+        private const int limiteRestaurantes = 5;
+        private const double limiteEntretenimiento = 50;
+        private const double limiteLuz = 0.15;
+        private const double limiteSupermercados = 300;
 
         private int? idGasto;
         private int numCuenta;
@@ -64,6 +68,22 @@ namespace Gestionis.Clases
         public TimeSpan Hora { get {  return hora; } }
         #endregion        
 
+        public static bool NotifRestaurante()
+        {
+            string queryString = "SELECT COUNT(idGasto) FROM gasto " +
+                "WHERE categoria IN (SELECT idCategoria FROM categoriagasto WHERE nombre = 'Restaurante');";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+
+            ConexionDB.AbrirConexion();
+
+            bool aviso = Convert.ToInt32(query.ExecuteScalar()) >= limiteRestaurantes;
+
+            ConexionDB.CerrarConexion();
+
+            return aviso;
+        }
+
         public void Add()
         {
             string queryString = "INSERT INTO gasto (idGasto, numCuenta, nombre, cantidad," +
@@ -88,116 +108,5 @@ namespace Gestionis.Clases
 
             ConexionDB.CerrarConexion();
         }
-
-        //#region Arreglar
-        //public static List<Gasto> BusquedaFecha(MySqlConnection conexion, DateTime fecha, int numCuenta)
-        //{
-        //    List<Gasto> lista = new List<Gasto>();
-        //    string consulta = String.Format("SELECT gasto.hora,gasto.tipo,categoriagasto.nombre AS categoria,gasto.nombre," +
-        //    "gasto.cantidad,gasto.comentarios FROM gasto INNER JOIN categoriagasto WHERE fecha = '{0}' AND numCuenta = '{1}';",
-        //    fecha.ToString("yyyy/MM/dd"), numCuenta);
-        //    MySqlCommand comando = new MySqlCommand(consulta, conexion);
-        //    MySqlDataReader reader = comando.ExecuteReader();
-
-        //    if (reader.HasRows)
-        //    {
-        //        while (reader.Read())
-        //        {
-        //            Gasto nuevo;
-        //            nuevo = new Gasto(reader.GetTimeSpan(0), reader.GetString(1), reader.GetString(2),
-        //                reader.GetString(3), reader.GetString(4), reader.GetDouble(5));
-        //            lista.Add(nuevo);
-        //        }
-        //    }
-        //    reader.Close();
-        //    return lista;
-        //}‌
-
-        //public static List<Gasto> Historial(MySqlConnection conexion, int numCuenta)
-        //{
-        //    DateTime fecha = DateTime.Today;
-        //    List<Gasto> lista = new List<Gasto>();
-        //    string consulta = String.Format("SELECT gasto.hora,gasto.tipo,categoriagasto.nombre AS categoria,gasto.nombre," +
-        //    "gasto.cantidad,gasto.comentarios FROM gasto INNER JOIN categoriagasto WHERE fecha = '{0}' AND numCuenta = '{1}';",
-        //    fecha.ToString("yyyy/MM/dd"), numCuenta);
-        //    MySqlCommand comando = new MySqlCommand(consulta, conexion);
-        //    MySqlDataReader reader = comando.ExecuteReader();
-
-        //    if (reader.HasRows)
-        //    {
-        //        while (reader.Read())
-        //        {
-        //            Gasto nuevo;
-        //            nuevo = new Gasto(reader.GetTimeSpan(0), reader.GetString(1), reader.GetString(2),
-        //                reader.GetString(3), reader.GetString(4), reader.GetDouble(5));
-        //            lista.Add(nuevo);
-        //        }
-        //    }
-        //    reader.Close();
-        //    return lista;
-
-        //}‌
-
-        //public static List<Gasto> BusquedaMetodica(MySqlConnection conexion, int filtrar, string param, DateTime fecha, int numCuenta)
-        //{
-        //    string filtro = "";
-        //    switch (filtrar)
-        //    {
-        //        case 1:
-        //            filtro = "categoriagasto.nombre";
-        //            break;
-        //        case 2:
-        //            filtro = "gasto.nombre";
-        //            break;
-        //        case 3:
-        //            filtro = "gasto.cantidad";
-        //            break;
-        //    }
-        //    List<Gasto> lista = new List<Gasto>();
-        //    string consulta = String.Format("SELECT gasto.hora,gasto.tipo,categoriagasto.nombre AS categoria,gasto.nombre," +
-        //    "gasto.cantidad,gasto.comentarios FROM gasto INNER JOIN categoriagasto WHERE fecha = '{0}' AND numCuenta = '{1}' AND {2} = '{3}';",
-        //    fecha.ToString("yyyy/MM/dd"), numCuenta, filtro, param);
-        //    MySqlCommand comando = new MySqlCommand(consulta, conexion);
-        //    MySqlDataReader reader = comando.ExecuteReader();
-
-        //    if (reader.HasRows)
-        //    {
-        //        while (reader.Read())
-        //        {
-        //            Gasto nuevo;
-        //            nuevo = new Gasto(reader.GetTimeSpan(0), reader.GetString(1), reader.GetString(2),
-        //                reader.GetString(3), reader.GetString(4), reader.GetDouble(5));
-        //            lista.Add(nuevo);
-        //        }
-        //    }
-        //    reader.Close();
-        //    return lista;
-
-        //}‌
-
-        //public static List<Gasto> BusquedaTipo(MySqlConnection conexion, string tipo, DateTime fecha, int numCuenta)
-        //{
-        //    List<Gasto> lista = new List<Gasto>();
-        //    string consulta = String.Format("SELECT gasto.hora,gasto.tipo,categoriagasto.nombre AS categoria,gasto.nombre," +
-        //    "gasto.cantidad,gasto.comentarios FROM gasto INNER JOIN categoriagasto WHERE fecha = '{0}' AND numCuenta = '{1}' AND tipo = '{2}';",
-        //    fecha.ToString("yyyy/MM/dd"), numCuenta, tipo);
-        //    MySqlCommand comando = new MySqlCommand(consulta, conexion);
-        //    MySqlDataReader reader = comando.ExecuteReader();
-
-        //    if (reader.HasRows)
-        //    {
-        //        while (reader.Read())
-        //        {
-        //            Gasto nuevo;
-        //            nuevo = new Gasto(reader.GetTimeSpan(0), reader.GetString(1), reader.GetString(2),
-        //                reader.GetString(3), reader.GetString(4), reader.GetDouble(5));
-        //            lista.Add(nuevo);
-        //        }
-        //    }
-        //    reader.Close();
-        //    return lista;
-
-        //}
-        //#endregion
     }
 }

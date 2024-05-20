@@ -2,34 +2,40 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Gestionis.Clases
 {
     internal class Notificacion
     {
-        private int id;
+        private int? id;
         private int numCuenta;
         private string titulo;
-        private string categoria;
-        private string? descripcion;
+        private int categoria;
+        private string descripcion;
+        private string recomendacion;
         private DateTime fecha;
 
-        public Notificacion(int id, int numCuenta, string titulo, string categoria, string? descripcion, DateTime fecha)
+        public Notificacion(int? id, int numCuenta, string titulo, int categoria, 
+            string descripcion, string recomendacion, DateTime fecha)
         {
             this.id = id;
             this.numCuenta = numCuenta;
             this.titulo = titulo;
             this.categoria = categoria;
             this.descripcion = descripcion;
+            this.recomendacion = recomendacion;
             this.fecha = fecha;
         }
 
         public string Titulo { get { return titulo; } }
-        public string Categoria { get { return categoria; } }
-        public string? Descripcion { get { return descripcion; } }
+        public int Categoria { get { return categoria; } }        
+        public string Descripcion { get { return descripcion; } }
+        public string Recomendacion { get { return recomendacion; } }
 
         public static List<Notificacion> GetAllNotificaciones(int numCuenta)
         {
@@ -49,9 +55,10 @@ namespace Gestionis.Clases
                         reader.GetInt32(0),
                         reader.GetInt32(1),
                         reader.GetString(2),
-                        reader.GetString(3),
-                        reader.GetSafeString(4),
-                        reader.GetDateTime(5)
+                        reader.GetInt32(3),
+                        reader.GetString(4),
+                        reader.GetString(5),
+                        reader.GetDateTime(6)
                     ));
                 }
             }
@@ -59,6 +66,27 @@ namespace Gestionis.Clases
             ConexionDB.CerrarConexion();
 
             return notificaciones;
+        }
+
+        public void Add()
+        {
+            string queryString = "INSERT INTO notificacion (idNotificacion, numCuenta, titulo, categoria, descripcion, recomendacion, fecha) " +
+                "VALUES (@idNotificacion, @numCuenta, @titulo, @categoria, @descripcion, @recomendacion, @fecha);";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+            query.Parameters.AddWithValue("@idNotificacion", id);
+            query.Parameters.AddWithValue("@numCuenta", numCuenta);
+            query.Parameters.AddWithValue("@titulo", titulo);
+            query.Parameters.AddWithValue("@categoria", categoria);
+            query.Parameters.AddWithValue("@descripcion", descripcion);
+            query.Parameters.AddWithValue("@recomendacion", recomendacion);
+            query.Parameters.AddWithValue("@fecha", fecha);
+
+            ConexionDB.AbrirConexion();
+
+            query.ExecuteNonQuery();
+
+            ConexionDB.CerrarConexion();
         }
     }
 }
