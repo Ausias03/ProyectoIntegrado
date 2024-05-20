@@ -10,7 +10,6 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Gestionis.Formularios;
 namespace Gestionis
 {
     public partial class frmUsuario : FrmBarraPrincipal
