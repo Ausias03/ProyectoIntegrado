@@ -16,6 +16,7 @@ namespace Gestionis.Clases
         private int? numCuenta;
         private string apodoUsuario;
         private float pasivos;
+        private List<Notificacion> notificaciones = new List<Notificacion>();
 
         public Cuenta(string apodoUsuario)
         {
@@ -30,6 +31,8 @@ namespace Gestionis.Clases
             this.apodoUsuario = apodoUsuario;
             this.pasivos = pasivos;
         }
+
+        public List<Notificacion> Notificaciones { get { return notificaciones; } }
 
         public static int IDCuentaUsuario(string apodoUsuario)
         {
@@ -67,6 +70,16 @@ namespace Gestionis.Clases
 
         public void AddNotificacion()
         {
+            for (int i = 0; i < notificaciones.Count; i++)
+            {
+
+                if (Gasto.CrearNotificacion(notificaciones[i].Categoria, i) && !Notificacion.ExisteNotif(notificaciones[i].Categoria))
+                {
+                    notificaciones[i].Add();
+                }
+            }
+
+
             if (Gasto.NotifRestaurante() && !Notificacion.ExisteNotif("Restaurante"))
             {
                 Notificacion nRes = new Notificacion(
@@ -95,6 +108,51 @@ namespace Gestionis.Clases
                     );
 
                 nEnt.Add();
+            }
+
+            if (Gasto.NotifLuz() && !Notificacion.ExisteNotif("Luz"))
+            {
+                Notificacion nLuz = new Notificacion(
+                    null,
+                    Sesion.Instance.NumCuenta,
+                    "Gasto elevado en Luz",
+                    CategoriaGasto.DevuelveIDCategoria("Luz"),
+                    "+ 15% de gastos destinados a luz",
+                    "Considera reducir el consumo eléctrico con bombillas LED",
+                    DateTime.Now
+                );
+
+                nLuz.Add();
+            }
+
+            if (Gasto.NotifSuper() && !Notificacion.ExisteNotif("Supermercado"))
+            {
+                Notificacion nSup = new Notificacion(
+                    null,
+                    Sesion.Instance.NumCuenta,
+                    "Gasto elevado en Alimentación",
+                    CategoriaGasto.DevuelveIDCategoria("Supermercado"),
+                    "+ 300€ gastados en Supermercados",
+                    "Considera comprar en supermercados con ofertas",
+                    DateTime.Now
+                );
+
+                nSup.Add();
+            }
+
+            if (Gasto.NotifGasolina() && !Notificacion.ExisteNotif("Gasolina"))
+            {
+                Notificacion nGas = new Notificacion(
+                    null,
+                    Sesion.Instance.NumCuenta,
+                    "Gasto elevado en Gasolina",
+                    CategoriaGasto.DevuelveIDCategoria("Gasolina"),
+                    "+ 200€ gastados en Gasolina",
+                    "Considera viajar en transporte público",
+                    DateTime.Now
+                );
+
+                nGas.Add();
             }
         }
 

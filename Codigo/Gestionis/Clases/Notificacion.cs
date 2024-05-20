@@ -10,7 +10,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Gestionis.Clases
 {
-    internal class Notificacion
+    public class Notificacion
     {
         private int? id;
         private int numCuenta;
@@ -68,13 +68,13 @@ namespace Gestionis.Clases
             return notificaciones;
         }
 
-        public static bool ExisteNotif(string categoria)
+        public static bool ExisteNotif(int categoria)
         {
             string queryString = "SELECT idNotificacion FROM notificacion WHERE categoria IN" +
-                "(SELECT idCategoria FROM categoriaGasto WHERE nombre = @nombreCategoria);";
+                "(SELECT idCategoria FROM categoriaGasto WHERE idCategoria = @idCategoria);";
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
-            query.Parameters.AddWithValue("@nombreCategoria", categoria);
+            query.Parameters.AddWithValue("@idCategoria", categoria);
 
             ConexionDB.AbrirConexion();
 

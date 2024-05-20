@@ -11,10 +11,7 @@ namespace Gestionis.Clases
     public class Gasto
     {
         private static List<String> tiposGasto = new List<String>() { "Fijo", "Variable" };
-        private const int limiteRestaurantes = 5;
-        private const double limiteEntretenimiento = 50;
-        private const double limiteLuz = 0.15;
-        private const double limiteSupermercados = 300;
+        private static List<double> limiteNotifs = new List<double> { 150, 50, 80, 300, 200 };
 
         private int? idGasto;
         private int numCuenta;
@@ -63,20 +60,52 @@ namespace Gestionis.Clases
         public string Tipo { get { return tipo; } }
         public string? Comentarios { get { return comentarios; } }
         public DateTime Fecha { get { return fecha; } }
-        public TimeSpan Hora { get {  return hora; } }
+        public TimeSpan Hora { get { return hora; } }
         #endregion
 
-        #region Métodos para comprobar si crear notificaciones
+        #region Método para comprobar si crear notificaciones
+        public static bool CrearNotificacion(int categoria, int indiceLimite)
+        {
+            string queryString = "SELECT SUM(cantidad) FROM gasto " +
+                "WHERE categoria IN (SELECT idCategoria FROM categoriagasto WHERE idCategoria = @idCategoria);";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+            query.Parameters.AddWithValue("@idCategoria", categoria);
+
+            ConexionDB.AbrirConexion();
+
+            bool aviso = false;
+
+            using (MySqlDataReader reader = query.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    aviso = reader.GetDouble(0) >= limiteNotifs[indiceLimite];
+                }
+            }
+
+            ConexionDB.CerrarConexion();
+
+            return aviso;
+        }
         public static bool NotifRestaurante()
         {
-            string queryString = "SELECT COUNT(idGasto) FROM gasto " +
+            string queryString = "SELECT SUM(cantidad) FROM gasto " +
                 "WHERE categoria IN (SELECT idCategoria FROM categoriagasto WHERE nombre = 'Restaurante');";
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
 
             ConexionDB.AbrirConexion();
 
-            bool aviso = Convert.ToInt32(query.ExecuteScalar()) >= limiteRestaurantes;
+            bool aviso = false;
+
+            using (MySqlDataReader reader = query.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    aviso = reader.GetDouble(0) >= limiteRestaurantes;
+                }
+            }
 
             ConexionDB.CerrarConexion();
 
@@ -92,7 +121,15 @@ namespace Gestionis.Clases
 
             ConexionDB.AbrirConexion();
 
-            bool aviso = Convert.ToDouble(query.ExecuteScalar()) >= limiteEntretenimiento;
+            bool aviso = false;
+
+            using (MySqlDataReader reader = query.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    aviso = reader.GetDouble(0) >= limiteEntretenimiento;
+                }
+            }
 
             ConexionDB.CerrarConexion();
 
@@ -101,14 +138,65 @@ namespace Gestionis.Clases
 
         public static bool NotifLuz()
         {
+            string queryStringCantidadLuz = "SELECT SUM(cantidad) FROM gasto " +
+                "WHERE categoria IN (SELECT idcategoria FROM categoriagasto WHERE nombre = 'Luz');";
+
+            string queryStringCantidadTotal = "SELECT SUM(cantidad) FROM gasto;";
+
+            MySqlCommand queryCantidadLuz = new MySqlCommand(queryStringCantidadLuz, ConexionDB.Conexion);
+            MySqlCommand queryCantidadTotal = new MySqlCommand(queryStringCantidadTotal, ConexionDB.Conexion);
+
+            ConexionDB.AbrirConexion();
+
+            bool aviso = Convert.ToDouble(queryCantidadLuz.ExecuteScalar()) / Convert.ToDouble(queryCantidadTotal.ExecuteScalar()) * 100 >= limiteLuz;
+
+            ConexionDB.CerrarConexion();
+
+            return aviso;
+        }
+
+        public static bool NotifSuper()
+        {
             string queryString = "SELECT SUM(cantidad) FROM gasto " +
-                "WHERE categoria IN (SELECT idcategoria FROM categoriagasto WHERE nombre = 'Entretenimiento');";
+                "WHERE categoria IN (SELECT idcategoria FROM categoriagasto WHERE nombre = 'Supermercado');";
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
 
             ConexionDB.AbrirConexion();
 
-            bool aviso = Convert.ToDouble(query.ExecuteScalar()) >= limiteEntretenimiento;
+            bool aviso = false;
+
+            using (MySqlDataReader reader = query.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    aviso = reader.GetDouble(0) >= limiteSupermercados;
+                }
+            }
+
+            ConexionDB.CerrarConexion();
+
+            return aviso;
+        }
+
+        public static bool NotifGasolina()
+        {
+            string queryString = "SELECT SUM(cantidad) FROM gasto " +
+                "WHERE categoria IN (SELECT idcategoria FROM categoriagasto WHERE nombre = 'Gasolina');";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+
+            ConexionDB.AbrirConexion();
+
+            bool aviso = false;
+
+            using (MySqlDataReader reader = query.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    aviso = reader.GetDouble(0) >= limiteGasolina;
+                }
+            }
 
             ConexionDB.CerrarConexion();
 
