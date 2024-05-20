@@ -408,7 +408,7 @@ namespace Gestionis
             barraSecundaria.Location = new Point(0, 40);
             barraSecundaria.Margin = new Padding(4);
             barraSecundaria.Name = "barraSecundaria";
-            barraSecundaria.Size = new Size(1850, 44);
+            barraSecundaria.Size = new Size(1818, 44);
             barraSecundaria.TabIndex = 29;
             // 
             // barraLateral1
@@ -418,7 +418,7 @@ namespace Gestionis
             barraLateral1.Location = new Point(0, 84);
             barraLateral1.Margin = new Padding(4);
             barraLateral1.Name = "barraLateral1";
-            barraLateral1.Size = new Size(188, 1018);
+            barraLateral1.Size = new Size(264, 1018);
             barraLateral1.TabIndex = 30;
             // 
             // FrmGestorDeudas
@@ -427,7 +427,7 @@ namespace Gestionis
             AutoScaleMode = AutoScaleMode.Dpi;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.FromArgb(233, 236, 239);
-            ClientSize = new Size(1850, 1102);
+            ClientSize = new Size(1818, 1102);
             Controls.Add(barraLateral1);
             Controls.Add(barraSecundaria);
             Controls.Add(rgbResumen);

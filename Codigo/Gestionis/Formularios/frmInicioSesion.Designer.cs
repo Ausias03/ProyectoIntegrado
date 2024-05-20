@@ -51,7 +51,7 @@
             lblInicioSesion.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblInicioSesion.Location = new Point(245, 23);
             lblInicioSesion.Name = "lblInicioSesion";
-            lblInicioSesion.Padding = new Padding(5, 5, 5, 5);
+            lblInicioSesion.Padding = new Padding(5);
             lblInicioSesion.Size = new Size(239, 48);
             lblInicioSesion.TabIndex = 0;
             lblInicioSesion.Text = "Inicio de Sesión";
@@ -64,7 +64,7 @@
             lblNombreUsuario.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblNombreUsuario.Location = new Point(99, 101);
             lblNombreUsuario.Name = "lblNombreUsuario";
-            lblNombreUsuario.Padding = new Padding(5, 5, 5, 5);
+            lblNombreUsuario.Padding = new Padding(5);
             lblNombreUsuario.Size = new Size(276, 42);
             lblNombreUsuario.TabIndex = 1;
             lblNombreUsuario.Text = "Nombre de Usuario:";
@@ -73,7 +73,7 @@
             // txtNombreUsuario
             // 
             txtNombreUsuario.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNombreUsuario.Location = new Point(354, 105);
+            txtNombreUsuario.Location = new Point(366, 105);
             txtNombreUsuario.Name = "txtNombreUsuario";
             txtNombreUsuario.Size = new Size(289, 38);
             txtNombreUsuario.TabIndex = 1;
@@ -93,7 +93,7 @@
             lblContrasenya.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblContrasenya.Location = new Point(187, 164);
             lblContrasenya.Name = "lblContrasenya";
-            lblContrasenya.Padding = new Padding(5, 5, 5, 5);
+            lblContrasenya.Padding = new Padding(5);
             lblContrasenya.Size = new Size(179, 42);
             lblContrasenya.TabIndex = 3;
             lblContrasenya.Text = "Contraseña:";

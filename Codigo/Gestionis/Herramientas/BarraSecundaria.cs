@@ -98,8 +98,7 @@ namespace Gestionis.Herramientas
 
                         break;
                     case "btnNotificaciones":
-                        FrmNotificaciones fN = new FrmNotificaciones();
-                        fN.ShowDialog();
+                        ShowFrmNotificaciones();
                         break;
                     case "btnUsuario":
                         Form frmActual = FindForm();
@@ -115,6 +114,20 @@ namespace Gestionis.Herramientas
                         break;
                 }
             }
+        }
+        private void ShowFrmNotificaciones()
+        {
+            FrmNotificaciones fN = new FrmNotificaciones();
+
+            Point btnLocation = BtnNotificaciones.PointToScreen(Point.Empty);
+
+            int formX = btnLocation.X + BtnNotificaciones.Width - fN.Width;
+            int formY = btnLocation.Y + BtnNotificaciones.Height;
+
+            fN.StartPosition = FormStartPosition.Manual;
+            fN.Location = new Point(formX, formY);
+
+            fN.ShowDialog();
         }
 
 

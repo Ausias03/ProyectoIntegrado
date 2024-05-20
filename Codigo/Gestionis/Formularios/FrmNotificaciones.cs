@@ -1,22 +1,58 @@
 ﻿using Gestionis.Clases;
-using Mysqlx.Cursor;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Gestionis
 {
     public partial class FrmNotificaciones : Form
     {
+        private FlowLayoutPanel flpNotificaciones;
+        private Panel panelContainer;
+        private Label lblTitulo;
+        private Button btnVolver;
+
         public FrmNotificaciones()
         {
             InitializeComponent();
+            InitializeForm();
+        }
+
+        private void InitializeForm()
+        {
+            this.ControlBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+
+            lblTitulo = new Label();
+            lblTitulo.Text = "Notificaciones";
+            lblTitulo.Font = new Font("Arial", 24, FontStyle.Bold);
+            lblTitulo.ForeColor = Color.FromArgb(0, 115, 148);
+            lblTitulo.Dock = DockStyle.Top;
+            lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
+            lblTitulo.Height = 50;
+
+            btnVolver = new Button();
+            btnVolver.Text = "Volver";
+            btnVolver.Font = new Font("Arial", 12, FontStyle.Bold);
+            btnVolver.BackColor = Color.FromArgb(211, 208, 242);
+            btnVolver.Dock = DockStyle.Bottom;
+            btnVolver.Height = 40;
+            btnVolver.Click += btnVolver_Click;
+
+            panelContainer = new Panel();
+            panelContainer.Dock = DockStyle.Fill;
+            panelContainer.AutoScroll = true;
+
+            flpNotificaciones = new FlowLayoutPanel();
+            flpNotificaciones.Dock = DockStyle.Top;
+            flpNotificaciones.AutoSize = true;
+            flpNotificaciones.FlowDirection = FlowDirection.TopDown;
+            flpNotificaciones.WrapContents = false;
+
+            panelContainer.Controls.Add(flpNotificaciones);
+
+            this.Controls.Add(panelContainer);
+            this.Controls.Add(btnVolver);
+            this.Controls.Add(lblTitulo);
+
+            this.Size = new Size(450, 600);
         }
 
         private void FrmNotificaciones_Load(object sender, EventArgs e)
@@ -50,10 +86,8 @@ namespace Gestionis
 
         private void AddPanel(Notificacion noti)
         {
-            // Convertir el color de fondo de string a Color
             Color bgColor = Color.FromArgb(-36238);
 
-            // Crear el panel principal de la notificación
             Panel panel = new Panel();
             panel.BorderStyle = BorderStyle.FixedSingle;
             panel.BackColor = bgColor;
@@ -61,43 +95,38 @@ namespace Gestionis
             panel.Margin = new Padding(10);
             panel.Size = new Size(400, 100);
 
-            // Crear el label para el título
             Label lblTitulo = new Label();
             lblTitulo.Text = noti.Titulo;
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font(lblTitulo.Font, FontStyle.Bold);
             lblTitulo.Location = new Point(10, 10);
 
-            // Crear el label para la recomendación
             Label lblRecomendacion = new Label();
             lblRecomendacion.Text = noti.Recomendacion;
-            lblRecomendacion.AutoSize = true;
+            lblRecomendacion.AutoSize = false;
             lblRecomendacion.Location = new Point(10, 40);
+            lblRecomendacion.Size = new Size(250, 40);
 
-            // Crear el panel para la descripción
             Panel panelDescripcion = new Panel();
             panelDescripcion.BackColor = ColorTranslator.FromHtml("#D9FFD8");
             panelDescripcion.BorderStyle = BorderStyle.FixedSingle;
-            panelDescripcion.Size = new Size(120, 50);
-            panelDescripcion.Location = new Point(250, 10);
+            panelDescripcion.Size = new Size(120, 70);
+            panelDescripcion.Location = new Point(265, 10);
 
-            // Crear el label para la descripción dentro del panel de descripción
             Label lblDescripcion = new Label();
             lblDescripcion.Text = noti.Descripcion;
-            lblDescripcion.AutoSize = true;
+            lblDescripcion.AutoSize = false;
+            lblDescripcion.Size = new Size(100, 40);
             lblDescripcion.Location = new Point(10, 15);
             lblDescripcion.TextAlign = ContentAlignment.MiddleCenter;
             lblDescripcion.Font = new Font(lblDescripcion.Font, FontStyle.Bold);
 
-            // Agregar el label de descripción al panel de descripción
             panelDescripcion.Controls.Add(lblDescripcion);
 
-            // Agregar los labels y el panel de descripción al panel principal
             panel.Controls.Add(lblTitulo);
             panel.Controls.Add(lblRecomendacion);
             panel.Controls.Add(panelDescripcion);
 
-            // Agregar el panel principal al FlowLayoutPanel
             flpNotificaciones.Controls.Add(panel);
         }
 
