@@ -1,10 +1,12 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static Mysqlx.Crud.Order.Types;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace Gestionis.Clases
 {
@@ -108,5 +110,45 @@ namespace Gestionis.Clases
 
             ConexionDB.CerrarConexion();
         }
+
+        #region Métodos Ahorro dgv Datos
+
+        public static DataTable VisualizarDatosVariable()
+        {
+            return Utilidades.RellenarDatos("SELECT nombre, cantidad, categoria, comentarios FROM gasto WHERE tipo = 'variable'");
+        }
+        public static DataTable VisualizarDatosFijo()
+        {
+            return Utilidades.RellenarDatos("SELECT nombre, cantidad, categoria, comentarios FROM gasto WHERE tipo = 'fijo'");
+        }
+
+        #endregion
+
+        public static int TotalFijos()
+        {
+            string queryString = "SELECT SUM(cantidad) FROM gasto WHERE tipo = 'fijo'";
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+
+            query.Parameters.AddWithValue("@tipo", "fijo");
+            ConexionDB.AbrirConexion();
+            int sumaTotal = Convert.ToInt32(query.ExecuteScalar());
+
+            ConexionDB.CerrarConexion();
+            return sumaTotal;
+        }
+        public static int TotalVariable()
+        {
+            string queryString = "SELECT SUM(cantidad) FROM gasto WHERE tipo = 'Variable'";
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+
+            query.Parameters.AddWithValue("@tipo", "Variable");
+            ConexionDB.AbrirConexion();
+            int sumaTotal = Convert.ToInt32(query.ExecuteScalar());
+
+            ConexionDB.CerrarConexion();
+            return sumaTotal;
+        }
+
+
     }
 }

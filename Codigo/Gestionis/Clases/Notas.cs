@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using Mysqlx.Resultset;
 using Org.BouncyCastle.Bcpg.OpenPgp;
 
 namespace Gestionis.Clases
@@ -51,6 +52,7 @@ namespace Gestionis.Clases
             ConexionDB.AbrirConexion();
             query.ExecuteNonQuery();
             ConexionDB.CerrarConexion();
+            SistemaNiveles.IncrementarExperiencia(apodoUsuario, 20);
         }
 
         public static void BorrarNota(string tituloNota)

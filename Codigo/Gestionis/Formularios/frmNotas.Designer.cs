@@ -172,6 +172,7 @@ namespace Gestionis
             // 
             dgvNotas.AllowUserToAddRows = false;
             dgvNotas.AllowUserToDeleteRows = false;
+            dgvNotas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvNotas.BackgroundColor = SystemColors.Control;
             dgvNotas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvNotas.Location = new Point(62, 283);
@@ -222,7 +223,7 @@ namespace Gestionis
             btnSalir.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnSalir.BackColor = Color.FromArgb(178, 242, 187);
             btnSalir.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSalir.Location = new Point(32767, 1137);
+            btnSalir.Location = new Point(32417, 1137);
             btnSalir.Margin = new Padding(3, 4, 3, 4);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(174, 60);
@@ -237,7 +238,7 @@ namespace Gestionis
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1850, 44);
+            barraSecundaria1.Size = new Size(1509, 44);
             barraSecundaria1.TabIndex = 17;
             // 
             // barraLateral1
@@ -260,6 +261,7 @@ namespace Gestionis
             // 
             dgvNotasDia.AllowUserToAddRows = false;
             dgvNotasDia.AllowUserToDeleteRows = false;
+            dgvNotasDia.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvNotasDia.BackgroundColor = SystemColors.InactiveCaption;
             dgvNotasDia.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvNotasDia.Location = new Point(7, 109);
@@ -322,7 +324,7 @@ namespace Gestionis
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1850, 901);
+            ClientSize = new Size(1509, 901);
             Controls.Add(rgbNotasDia);
             Controls.Add(monthCalendar1);
             Controls.Add(barraLateral1);

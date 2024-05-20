@@ -7,18 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Gestionis.Clases;
+using MySqlX.XDevAPI;
 
 namespace Gestionis
 {
-    public partial class frmMetodosAhorro : Form
+    public partial class frmMetodosAhorro : FrmBarraPrincipal
     {
+        private readonly Usuario usuario;
+        private readonly Cuenta cuentaUsuario;
+
         public frmMetodosAhorro()
         {
             InitializeComponent();
+            usuario = Usuario.BuscaUsuario(Sesion.Instance.ApodoUsuario);
+            cuentaUsuario = usuario.GetCuenta();
         }
 
         private void MetodosAhorro_Load(object sender, EventArgs e)
         {
+            #region Iconos flechas
+
             pbArrow.Image = Properties.Resources.Arrow.ToBitmap();
             pbArrow.SizeMode = PictureBoxSizeMode.StretchImage;
 
@@ -52,6 +61,20 @@ namespace Gestionis
             pbArrow11.Image = Properties.Resources.Arrow.ToBitmap();
             pbArrow11.SizeMode = PictureBoxSizeMode.StretchImage;
 
+            #endregion
+
+            lblIngresoMesCont.Text = cuentaUsuario.TotalIngresos().ToString();
+            try
+            {
+                dgvGastosFijos.DataSource = Gasto.VisualizarDatosFijo();
+                dgvGastosVariables.DataSource = Gasto.VisualizarDatosVariable();
+                lblTotalValorFijo.Text = Gasto.TotalFijos().ToString();
+                lblTotalGastosVariables.Text = Gasto.TotalVariable().ToString();
+            } catch (Exception ex) { }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
 
         }
 
@@ -74,7 +97,13 @@ namespace Gestionis
             //    }
             //}
             pnlPersonalizado.Visible = true;
-            btnPAgregar.Visible=true;
+            btnPAgregar.Visible = true;
         }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
     }
 }

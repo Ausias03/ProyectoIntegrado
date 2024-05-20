@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -91,5 +92,6 @@ namespace Gestionis.Clases
             ConexionDB.CerrarConexion();
             SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario,50);
         }
+
     }
 }
