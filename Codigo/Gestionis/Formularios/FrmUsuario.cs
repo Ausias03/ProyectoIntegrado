@@ -15,6 +15,7 @@ namespace Gestionis
     public partial class frmUsuario : FrmBarraPrincipal
     {
         private Usuario usuario;
+        string apodo = Sesion.Instance.ApodoUsuario;
         public frmUsuario()
         {
             InitializeComponent();
@@ -33,7 +34,34 @@ namespace Gestionis
             txtDireccion.Text = usuario.Direccion;
             txtTelefono.Text = usuario.Telefono;
             #endregion
-            barraSecundaria1.BarraSecundaria_Load();
+            barraSecundaria1.Load();
+            barraLateral1.Load();
+            SetExpNivel();
+        }
+
+        private void SetExpNivel()
+        {
+            int experienciaActual = Usuario.GetExperiencia(apodo);
+            int nivelActual = Usuario.GetNivel(apodo);
+            int xpParaSiguienteNivel = Usuario.GetXpRequeridoParaNivel(nivelActual + 1);
+            int xpParaNivelActual = Usuario.GetXpRequeridoParaNivel(nivelActual);
+
+            int progress = experienciaActual - xpParaNivelActual;
+
+            if (progress < 0)
+            {
+                progress = 0;
+            }
+            else if (progress > prbExperiencia.Maximum)
+            {
+                progress = prbExperiencia.Maximum;
+            }
+
+            prbExperiencia.Maximum = xpParaSiguienteNivel - xpParaNivelActual;
+
+            prbExperiencia.Value = progress;
+
+            lblNivel.Text = experienciaActual == 0 ? "0" : nivelActual.ToString();
         }
 
         #region Validación de datos
@@ -212,7 +240,11 @@ namespace Gestionis
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Hide();
+
+            frmInicioSesion frmInicio = new frmInicioSesion();
+            frmInicio.Closed += (s, args) => this.Close();
+            frmInicio.Show();
         }
         /*
         private void AplicarIdioma()
