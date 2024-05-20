@@ -83,7 +83,8 @@
 
                         break;
                     case "btnNotificaciones":
-
+                        FrmNotificaciones fN = new FrmNotificaciones();
+                        fN.ShowDialog();
                         break;
                     case "btnUsuario":
                         Form frmActual = FindForm();

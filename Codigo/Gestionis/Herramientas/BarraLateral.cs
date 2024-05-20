@@ -29,7 +29,7 @@
             CreateButton("Notas", Properties.Resources.notas, typeof(frmNotas));
             CreateButton("Clasificación", Properties.Resources.calsificacion, typeof(frmTablaClasificación));
             CreateButton("Historial", Properties.Resources.historial, typeof(frmHistorial));
-            CreateButton("Notif.", Properties.Resources.notificacion, typeof(frmTablaClasificación));
+            CreateButton("Notif.", Properties.Resources.notificacion, typeof(FrmNotificaciones));
             CreateButton("Página Web", Properties.Resources.web, typeof(frmTablaClasificación));
         }
 
