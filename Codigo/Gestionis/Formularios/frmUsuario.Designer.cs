@@ -35,6 +35,8 @@ namespace Gestionis
             btnCerrarSesion = new Button();
             errorProvider1 = new ErrorProvider(components);
             grpCuenta = new RoundGroupBox();
+            lblNivel = new Label();
+            lblExp = new Label();
             prbExperiencia = new ProgressBar();
             btnConfirmarFoto = new Button();
             btnConfirmarApellidos = new Button();
@@ -57,7 +59,6 @@ namespace Gestionis
             btnCambiarCorreo = new Button();
             btnCambiarApodo = new Button();
             btnCambiarNom = new Button();
-            lblNivel = new Label();
             lblTelefono = new Label();
             lblDireccion = new Label();
             lblCorreo = new Label();
@@ -100,6 +101,8 @@ namespace Gestionis
             // grpCuenta
             // 
             grpCuenta.BackColor = Color.Transparent;
+            grpCuenta.Controls.Add(lblNivel);
+            grpCuenta.Controls.Add(lblExp);
             grpCuenta.Controls.Add(prbExperiencia);
             grpCuenta.Controls.Add(btnConfirmarFoto);
             grpCuenta.Controls.Add(btnConfirmarApellidos);
@@ -122,7 +125,6 @@ namespace Gestionis
             grpCuenta.Controls.Add(btnCambiarCorreo);
             grpCuenta.Controls.Add(btnCambiarApodo);
             grpCuenta.Controls.Add(btnCambiarNom);
-            grpCuenta.Controls.Add(lblNivel);
             grpCuenta.Controls.Add(lblTelefono);
             grpCuenta.Controls.Add(lblDireccion);
             grpCuenta.Controls.Add(lblCorreo);
@@ -137,9 +139,29 @@ namespace Gestionis
             grpCuenta.TabStop = false;
             grpCuenta.Text = "roundGroupBox1";
             // 
+            // lblNivel
+            // 
+            lblNivel.AutoSize = true;
+            lblNivel.Font = new Font("Microsoft Sans Serif", 24F);
+            lblNivel.Location = new Point(747, 60);
+            lblNivel.Name = "lblNivel";
+            lblNivel.Size = new Size(42, 46);
+            lblNivel.TabIndex = 34;
+            lblNivel.Text = "5";
+            // 
+            // lblExp
+            // 
+            lblExp.AutoSize = true;
+            lblExp.Font = new Font("Microsoft Sans Serif", 12F);
+            lblExp.Location = new Point(622, 121);
+            lblExp.Name = "lblExp";
+            lblExp.Size = new Size(52, 25);
+            lblExp.TabIndex = 56;
+            lblExp.Text = "Exp:";
+            // 
             // prbExperiencia
             // 
-            prbExperiencia.Location = new Point(698, 121);
+            prbExperiencia.Location = new Point(685, 124);
             prbExperiencia.Name = "prbExperiencia";
             prbExperiencia.Size = new Size(174, 19);
             prbExperiencia.TabIndex = 55;
@@ -377,16 +399,6 @@ namespace Gestionis
             btnCambiarNom.UseVisualStyleBackColor = false;
             btnCambiarNom.Click += btnCambiarNom_Click;
             // 
-            // lblNivel
-            // 
-            lblNivel.AutoSize = true;
-            lblNivel.Font = new Font("Microsoft Sans Serif", 24F);
-            lblNivel.Location = new Point(737, 64);
-            lblNivel.Name = "lblNivel";
-            lblNivel.Size = new Size(108, 46);
-            lblNivel.TabIndex = 34;
-            lblNivel.Text = "Nivel";
-            // 
             // lblTelefono
             // 
             lblTelefono.AutoSize = true;
@@ -549,7 +561,6 @@ namespace Gestionis
         private Button btnCambiarCorreo;
         private Button btnCambiarApodo;
         private Button btnCambiarNom;
-        private Label lblNivel;
         private Label lblTelefono;
         private Label lblDireccion;
         private Label lblCorreo;
@@ -559,5 +570,7 @@ namespace Gestionis
         private BarraLateral barraLateral1;
         private BarraSecundaria barraSecundaria1;
         private ProgressBar prbExperiencia;
+        private Label lblExp;
+        private Label lblNivel;
     }
 }
