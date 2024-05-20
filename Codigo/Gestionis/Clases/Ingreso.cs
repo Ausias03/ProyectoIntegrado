@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Gestionis.Formularios;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -89,7 +90,7 @@ namespace Gestionis.Clases
             query.ExecuteNonQuery();
 
             ConexionDB.CerrarConexion();
-            Usuario.IncrementarExperiencia(Sesion.Instance.ApodoUsuario,50);
+            SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario,50);
         }
 
         //#region Arreglar

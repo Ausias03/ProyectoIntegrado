@@ -35,6 +35,7 @@ namespace Gestionis
             btnCerrarSesion = new Button();
             errorProvider1 = new ErrorProvider(components);
             grpCuenta = new RoundGroupBox();
+            prbExperiencia = new ProgressBar();
             btnConfirmarFoto = new Button();
             btnConfirmarApellidos = new Button();
             txtApellidos = new TextBox();
@@ -65,7 +66,6 @@ namespace Gestionis
             picFoto = new PictureBox();
             barraSecundaria1 = new BarraSecundaria();
             barraLateral1 = new BarraLateral();
-            prbExperiencia = new ProgressBar();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             grpCuenta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)picFoto).BeginInit();
@@ -136,6 +136,13 @@ namespace Gestionis
             grpCuenta.TabIndex = 4;
             grpCuenta.TabStop = false;
             grpCuenta.Text = "roundGroupBox1";
+            // 
+            // prbExperiencia
+            // 
+            prbExperiencia.Location = new Point(698, 121);
+            prbExperiencia.Name = "prbExperiencia";
+            prbExperiencia.Size = new Size(174, 19);
+            prbExperiencia.TabIndex = 55;
             // 
             // btnConfirmarFoto
             // 
@@ -455,13 +462,6 @@ namespace Gestionis
             barraLateral1.Name = "barraLateral1";
             barraLateral1.Size = new Size(289, 753);
             barraLateral1.TabIndex = 6;
-            // 
-            // prbExperiencia
-            // 
-            prbExperiencia.Location = new Point(698, 121);
-            prbExperiencia.Name = "prbExperiencia";
-            prbExperiencia.Size = new Size(174, 19);
-            prbExperiencia.TabIndex = 55;
             // 
             // frmUsuario
             // 

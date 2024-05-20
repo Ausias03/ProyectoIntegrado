@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Gestionis.Formularios;
 namespace Gestionis
 {
     public partial class frmUsuario : FrmBarraPrincipal
@@ -41,21 +42,10 @@ namespace Gestionis
 
         private void SetExpNivel()
         {
-            int experienciaActual = Usuario.GetExperiencia(apodo);
-            int nivelActual = Usuario.GetNivel(apodo);
-            int xpParaSiguienteNivel = Usuario.GetXpRequeridoParaNivel(nivelActual + 1);
-            int xpParaNivelActual = Usuario.GetXpRequeridoParaNivel(nivelActual);
+            string apodo = Sesion.Instance.ApodoUsuario;
+            var (experienciaActual, nivelActual, xpParaSiguienteNivel, xpParaNivelActual) = SistemaNiveles.GetNivelInfo(apodo);
 
-            int progress = experienciaActual - xpParaNivelActual;
-
-            if (progress < 0)
-            {
-                progress = 0;
-            }
-            else if (progress > prbExperiencia.Maximum)
-            {
-                progress = prbExperiencia.Maximum;
-            }
+            int progress = SistemaNiveles.GetExpProgress(apodo);
 
             prbExperiencia.Maximum = xpParaSiguienteNivel - xpParaNivelActual;
 
@@ -63,6 +53,7 @@ namespace Gestionis
 
             lblNivel.Text = experienciaActual == 0 ? "0" : nivelActual.ToString();
         }
+
 
         #region Validación de datos
 
