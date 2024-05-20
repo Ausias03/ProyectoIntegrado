@@ -81,6 +81,21 @@ namespace Gestionis.Clases
 
                 nRes.Add();
             }
+
+            if (Gasto.NotifEntretenimiento())
+            {
+                Notificacion nEnt = new Notificacion(
+                    null,
+                    Sesion.Instance.NumCuenta,
+                    "Gasto elevado en Entretenimiento",
+                    CategoriaGasto.DevuelveIDCategoria("Entretenimiento"),
+                    "+50€ gastados",
+                    "Considera cancelar suscripciones a servicios de series/películas",
+                    DateTime.Now
+                    );
+
+                nEnt.Add();
+            }
         }
 
         #region Métodos para ver / recuperar gastos e ingresos

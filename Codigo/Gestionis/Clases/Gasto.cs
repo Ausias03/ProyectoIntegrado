@@ -66,8 +66,9 @@ namespace Gestionis.Clases
         public string? Comentarios { get { return comentarios; } }
         public DateTime Fecha { get { return fecha; } }
         public TimeSpan Hora { get {  return hora; } }
-        #endregion        
+        #endregion
 
+        #region Métodos para comprobar si crear notificaciones
         public static bool NotifRestaurante()
         {
             string queryString = "SELECT COUNT(idGasto) FROM gasto " +
@@ -83,6 +84,39 @@ namespace Gestionis.Clases
 
             return aviso;
         }
+
+        public static bool NotifEntretenimiento()
+        {
+            string queryString = "SELECT SUM(cantidad) FROM gasto " +
+                "WHERE categoria IN (SELECT idcategoria FROM categoriagasto WHERE nombre = 'Entretenimiento');";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+
+            ConexionDB.AbrirConexion();
+
+            bool aviso = Convert.ToDouble(query.ExecuteScalar()) >= limiteEntretenimiento;
+
+            ConexionDB.CerrarConexion();
+
+            return aviso;
+        }
+
+        public static bool NotifLuz()
+        {
+            string queryString = "SELECT SUM(cantidad) FROM gasto " +
+                "WHERE categoria IN (SELECT idcategoria FROM categoriagasto WHERE nombre = 'Entretenimiento');";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+
+            ConexionDB.AbrirConexion();
+
+            bool aviso = Convert.ToDouble(query.ExecuteScalar()) >= limiteEntretenimiento;
+
+            ConexionDB.CerrarConexion();
+
+            return aviso;
+        }
+        #endregion
 
         public void Add()
         {

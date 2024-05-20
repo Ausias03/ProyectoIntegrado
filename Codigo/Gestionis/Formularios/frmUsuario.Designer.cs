@@ -86,7 +86,7 @@ namespace Gestionis
             // 
             btnCerrarSesion.BackColor = Color.FromArgb(170, 166, 202);
             btnCerrarSesion.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            btnCerrarSesion.Location = new Point(1271, 753);
+            btnCerrarSesion.Location = new Point(1315, 773);
             btnCerrarSesion.Name = "btnCerrarSesion";
             btnCerrarSesion.Size = new Size(198, 52);
             btnCerrarSesion.TabIndex = 2;
@@ -313,10 +313,10 @@ namespace Gestionis
             // 
             // txtApodo
             // 
-            txtApodo.Location = new Point(145, 341);
+            txtApodo.Location = new Point(181, 341);
             txtApodo.Name = "txtApodo";
             txtApodo.ReadOnly = true;
-            txtApodo.Size = new Size(581, 24);
+            txtApodo.Size = new Size(545, 24);
             txtApodo.TabIndex = 41;
             // 
             // txtNombre
@@ -463,7 +463,7 @@ namespace Gestionis
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1818, 44);
+            barraSecundaria1.Size = new Size(1553, 44);
             barraSecundaria1.TabIndex = 5;
             // 
             // barraLateral1
@@ -480,7 +480,7 @@ namespace Gestionis
             AutoScaleDimensions = new SizeF(9F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(233, 236, 239);
-            ClientSize = new Size(1818, 837);
+            ClientSize = new Size(1553, 837);
             Controls.Add(barraLateral1);
             Controls.Add(barraSecundaria1);
             Controls.Add(grpCuenta);

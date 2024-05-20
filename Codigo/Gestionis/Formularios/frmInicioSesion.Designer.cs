@@ -73,7 +73,7 @@
             // txtNombreUsuario
             // 
             txtNombreUsuario.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNombreUsuario.Location = new Point(363, 105);
+            txtNombreUsuario.Location = new Point(354, 105);
             txtNombreUsuario.Name = "txtNombreUsuario";
             txtNombreUsuario.Size = new Size(289, 38);
             txtNombreUsuario.TabIndex = 1;
@@ -168,6 +168,7 @@
             Controls.Add(lblInicioSesion);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmInicioSesion";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Ge$tioni$";
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);

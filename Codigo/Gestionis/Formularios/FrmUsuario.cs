@@ -1,5 +1,6 @@
 using Gestionis.Clases;
-//using Gestionis.Idiomas;
+using Gestionis;
+
 using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
@@ -10,6 +11,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Gestionis.Formularios;
+using Gestionis.Properties;
+using Gestionis.Herramientas;
 namespace Gestionis
 {
     public partial class frmUsuario : FrmBarraPrincipal
@@ -19,6 +23,7 @@ namespace Gestionis
         public frmUsuario()
         {
             InitializeComponent();
+            ModificarBotones();
             usuario = Usuario.BuscaUsuario(Sesion.Instance.ApodoUsuario);
         }
 
@@ -37,6 +42,18 @@ namespace Gestionis
             barraSecundaria1.Load();
             barraLateral1.Load();
             SetExpNivel();
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+            AplicarIdioma();
+        }
+
+        private void ModificarBotones()
+        {
+            barraSecundaria1.BtnLanguage.Click += BtnLanguage_Click;
+        }
+
+        private void BtnLanguage_Click(object sender, EventArgs e)
+        {
+            AplicarIdioma();
         }
 
         private void SetExpNivel()
@@ -236,11 +253,33 @@ namespace Gestionis
             frmInicio.Closed += (s, args) => this.Close();
             frmInicio.Show();
         }
-        /*
+        
         private void AplicarIdioma()
         {
-            lblApodo.Text = StringRecursos.Nombre2;
+            lblTuCuenta.Text = Resources.Idiomas.StringRecursosUsuario.lblTuCuenta;
+            btnCerrarSesion.Text = Resources.Idiomas.StringRecursosUsuario.btnCerrarSesion;
+            btnConfirmarFoto.Text = Resources.Idiomas.StringRecursosUsuario.btnConfirmarFoto;
+            btnConfirmarApellidos.Text = Resources.Idiomas.StringRecursosUsuario.btnConfirmarApellidos;
+            btnCambiarApellidos.Text = Resources.Idiomas.StringRecursosUsuario.btnCambiarApellidos;
+            lblApellidos.Text = Resources.Idiomas.StringRecursosUsuario.lblApellidos;
+            btnConfirmarTel.Text = Resources.Idiomas.StringRecursosUsuario.btnConfirmarTel;
+            btnConfirmarDir.Text = Resources.Idiomas.StringRecursosUsuario.btnConfirmarDir;
+            btnConfirmarCorreo.Text = Resources.Idiomas.StringRecursosUsuario.btnConfirmarCorreo;
+            btnConfirmarApodo.Text = Resources.Idiomas.StringRecursosUsuario.btnConfirmarApodo;
+            btnConfirmarNom.Text = Resources.Idiomas.StringRecursosUsuario.btnConfirmarNom;
+            btnCambiarFoto.Text = Resources.Idiomas.StringRecursosUsuario.btnCambiarFoto;
+            btnCambiarTel.Text = Resources.Idiomas.StringRecursosUsuario.btnCambiarTel;
+            btnCambiarDir.Text = Resources.Idiomas.StringRecursosUsuario.btnCambiarDir;
+            btnCambiarCorreo.Text = Resources.Idiomas.StringRecursosUsuario.btnCambiarCorreo;
+            btnCambiarApodo.Text = Resources.Idiomas.StringRecursosUsuario.btnCambiarApodo;
+            btnCambiarNom.Text = Resources.Idiomas.StringRecursosUsuario.btnCambiarNom;
+            lblTelefono.Text = Resources.Idiomas.StringRecursosUsuario.lblTelefono;
+            lblDireccion.Text = Resources.Idiomas.StringRecursosUsuario.lblDireccion;
+            lblCorreo.Text = Resources.Idiomas.StringRecursosUsuario.lblCorreo;
+            lblApodo.Text = Resources.Idiomas.StringRecursosUsuario.lblApodo;
+            lblNombre.Text = Resources.Idiomas.StringRecursosUsuario.lblNombre;
         }
-        */
+        
+
     }
 }
