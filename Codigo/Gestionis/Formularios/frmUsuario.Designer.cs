@@ -35,6 +35,7 @@ namespace Gestionis
             btnCerrarSesion = new Button();
             errorProvider1 = new ErrorProvider(components);
             grpCuenta = new RoundGroupBox();
+            prbExperiencia = new ProgressBar();
             btnConfirmarFoto = new Button();
             btnConfirmarApellidos = new Button();
             txtApellidos = new TextBox();
@@ -99,6 +100,7 @@ namespace Gestionis
             // grpCuenta
             // 
             grpCuenta.BackColor = Color.Transparent;
+            grpCuenta.Controls.Add(prbExperiencia);
             grpCuenta.Controls.Add(btnConfirmarFoto);
             grpCuenta.Controls.Add(btnConfirmarApellidos);
             grpCuenta.Controls.Add(txtApellidos);
@@ -134,6 +136,13 @@ namespace Gestionis
             grpCuenta.TabIndex = 4;
             grpCuenta.TabStop = false;
             grpCuenta.Text = "roundGroupBox1";
+            // 
+            // prbExperiencia
+            // 
+            prbExperiencia.Location = new Point(751, 117);
+            prbExperiencia.Name = "prbExperiencia";
+            prbExperiencia.Size = new Size(115, 16);
+            prbExperiencia.TabIndex = 55;
             // 
             // btnConfirmarFoto
             // 
@@ -549,5 +558,6 @@ namespace Gestionis
         private PictureBox picFoto;
         private BarraLateral barraLateral1;
         private BarraSecundaria barraSecundaria1;
+        private ProgressBar prbExperiencia;
     }
 }

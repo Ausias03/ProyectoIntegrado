@@ -6,11 +6,14 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace Gestionis
 {
     public partial class frmUsuario : FrmBarraPrincipal
     {
         Usuario usuario;
+        string apodo = Sesion.Instance.ApodoUsuario;
+
         public frmUsuario()
         {
             InitializeComponent();
@@ -211,13 +214,43 @@ namespace Gestionis
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Hide();
+            frmInicioSesion frmInicioSesion = new frmInicioSesion();
+            frmInicioSesion.Closed += (s, args) => this.Close();
+            frmInicioSesion.Show();
         }
 
         private void frmUsuario_Load_1(object sender, EventArgs e)
         {
             barraSecundaria1.Load();
             barraLateral1.Load();
+
+            SetExpNivel();
+        }
+
+        private void SetExpNivel()
+        {
+            int experienciaActual = Usuario.GetExperiencia(apodo);
+            int nivelActual = Usuario.GetNivel(apodo);
+            int xpParaSiguienteNivel = Usuario.GetXpRequeridoParaNivel(nivelActual + 1);
+            int xpParaNivelActual = Usuario.GetXpRequeridoParaNivel(nivelActual);
+
+            int progress = experienciaActual - xpParaNivelActual;
+
+            if (progress < 0)
+            {
+                progress = 0;
+            }
+            else if (progress > prbExperiencia.Maximum)
+            {
+                progress = prbExperiencia.Maximum;
+            }
+
+            prbExperiencia.Maximum = xpParaSiguienteNivel - xpParaNivelActual;
+            
+            prbExperiencia.Value = progress;
+            
+            lblNivel.Text = experienciaActual == 0 ? "0" : nivelActual.ToString();
         }
     }
 }

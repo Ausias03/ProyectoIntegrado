@@ -89,6 +89,7 @@ namespace Gestionis.Clases
             query.ExecuteNonQuery();
 
             ConexionDB.CerrarConexion();
+            Usuario.IncrementarExperiencia(Sesion.Instance.ApodoUsuario,50);
         }
 
         //#region Arreglar
