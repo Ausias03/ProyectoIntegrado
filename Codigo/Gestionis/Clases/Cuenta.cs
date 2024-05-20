@@ -67,7 +67,7 @@ namespace Gestionis.Clases
 
         public void AddNotificacion()
         {
-            if (Gasto.NotifRestaurante())
+            if (Gasto.NotifRestaurante() && !Notificacion.ExisteNotif("Restaurante"))
             {
                 Notificacion nRes = new Notificacion(
                     null,
@@ -82,7 +82,7 @@ namespace Gestionis.Clases
                 nRes.Add();
             }
 
-            if (Gasto.NotifEntretenimiento())
+            if (Gasto.NotifEntretenimiento() && !Notificacion.ExisteNotif("Entretenimiento"))
             {
                 Notificacion nEnt = new Notificacion(
                     null,

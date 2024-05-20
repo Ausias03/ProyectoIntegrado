@@ -68,6 +68,28 @@ namespace Gestionis.Clases
             return notificaciones;
         }
 
+        public static bool ExisteNotif(string categoria)
+        {
+            string queryString = "SELECT idNotificacion FROM notificacion WHERE categoria IN" +
+                "(SELECT idCategoria FROM categoriaGasto WHERE nombre = @nombreCategoria);";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+            query.Parameters.AddWithValue("@nombreCategoria", categoria);
+
+            ConexionDB.AbrirConexion();
+
+            bool existe;
+
+            using (MySqlDataReader reader = query.ExecuteReader())
+            {
+                existe = reader.HasRows;
+            }
+
+            ConexionDB.CerrarConexion();
+
+            return existe;
+        }
+
         public void Add()
         {
             string queryString = "INSERT INTO notificacion (idNotificacion, numCuenta, titulo, categoria, descripcion, recomendacion, fecha) " +

@@ -55,8 +55,6 @@ namespace Gestionis.Clases
         // Necesarias para el dataSource de FrmMenuPrincipal
         #region Propiedades
         public static List<String> TiposIngreso { get { return tiposIngreso; } }
-        public int? IdIngreso { get { return idIngreso; } }
-        public int NumCuenta { get { return numCuenta; } }
         public string Nombre { get { return nombre; } }
         public float Cantidad { get { return cantidad; } }
         public string Tipo { get { return tipo; } }
