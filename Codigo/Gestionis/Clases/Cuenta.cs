@@ -65,6 +65,24 @@ namespace Gestionis.Clases
             ConexionDB.CerrarConexion();
         }
 
+        public void AddNotificacion()
+        {
+            if (Gasto.NotifRestaurante())
+            {
+                Notificacion nRes = new Notificacion(
+                    null,
+                    Sesion.Instance.NumCuenta,
+                    "Gasto elevado en Restaurantes",
+                    CategoriaGasto.DevuelveIDCategoria("Restaurante"),
+                    "+5 gastos en restaurantes",
+                    "Considera cocinar en casa",
+                    DateTime.Now
+                    );
+
+                nRes.Add();
+            }
+        }
+
         #region Métodos para ver / recuperar gastos e ingresos
         public List<Gasto> DevuelveGastos()
         {

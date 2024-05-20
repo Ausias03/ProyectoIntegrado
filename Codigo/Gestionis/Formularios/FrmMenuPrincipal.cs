@@ -48,10 +48,7 @@ namespace Gestionis
             barraLateral1.Load();
 
             #region Labels
-            lblIngresosValor.Text = "0€";
-            lblGastosValor.Text = "0€";
-            lblTotalValor.Text = "0€";
-
+            RecargaLabelTotales();
             lblMes.Text = DateTime.Now.ToString("MMMM");
             lblNotasValor.Text = "";
             #endregion            
@@ -61,9 +58,7 @@ namespace Gestionis
         {
             RecargaDGVGastos(cuentaUsuario.DevuelveGastos());
             RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos());
-            lblIngresosValor.Text = cuentaUsuario.TotalIngresos().ToString() + " €";
-            lblGastosValor.Text = cuentaUsuario.TotalGastos().ToString() + " €";
-            lblTotalValor.Text = cuentaUsuario.DineroTotal().ToString() + " €";
+            RecargaLabelTotales();
 
             #region Configurar ComboBoxes
             ConfigurarComboBox(cmbTipoGasto, Gasto.TiposGasto);
@@ -149,6 +144,13 @@ namespace Gestionis
             cmbTipoIngreso.SelectedIndex = 0;
             nudDineroIngreso.Value = 0;
             cmbCategoriaIngreso.SelectedIndex = 0;
+        }
+
+        private void RecargaLabelTotales()
+        {
+            lblIngresosValor.Text = cuentaUsuario.TotalIngresos().ToString() + " €";
+            lblGastosValor.Text = cuentaUsuario.TotalGastos().ToString() + " €";
+            lblTotalValor.Text = cuentaUsuario.DineroTotal().ToString() + " €";
         }
     }
 }
