@@ -23,7 +23,8 @@ namespace Gestionis
             lblFecha.Show();
             lblFecha.Text = DateTime.Today.ToString("D");
             CargarFecha(DateTime.Today, 1);
-            barraSecundaria1.BarraSecundaria_Load();
+            barraSecundaria1.Load();
+            barraLateral1.Load();
         }
 
         private void picBuscar_Click(object sender, EventArgs e)

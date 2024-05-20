@@ -43,8 +43,8 @@ namespace Gestionis
 
             dgvGastosIngresos.DataSource = Deuda.RecargarTabla();
 
-            barraSecundaria.BarraSecundaria_Load();
-            barraLateral1.BarraLateral_Load();
+            barraSecundaria.Load();
+            barraLateral1.Load();
         }
 
         private void ModificarBotones()

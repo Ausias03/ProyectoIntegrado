@@ -18,9 +18,9 @@ namespace Gestionis.Herramientas
         {
             InitializePanelProperties();
             CreateButtons();
-            BarraSecundaria_Load();
+            Load();
         }
-        public void BarraSecundaria_Load()
+        public void Load()
         {
             Tema();
             BtnHamburger.Image = Sesion.Instance.BarraExpandida ? Properties.Resources.hamburgerUp : Properties.Resources.hamburgerLeft;
@@ -103,7 +103,6 @@ namespace Gestionis.Herramientas
                     case "btnTema":
                         temaOscuro = !temaOscuro;
                         Sesion.Instance.TemaOscuro = temaOscuro;
-                        //RecargarFrm();
                         Tema();
                         break;
                 }
@@ -112,21 +111,10 @@ namespace Gestionis.Herramientas
 
 
         #region Cambiar Tema
-        private void RecargarFrm()
-        {
-            Form currentForm = FindForm();
-
-            currentForm.Hide();
-            Form newForm = (Form)Activator.CreateInstance(currentForm.GetType());
-            newForm.ShowDialog();
-            currentForm.Close();
-
-        }
-
         private void Tema()
         {
             Color fondo = temaOscuro ? Color.FromArgb(22, 22, 22) : Color.FromArgb(233, 236, 239);
-
+            Color cajas = temaOscuro ? Color.FromArgb(0, 115, 148) : Color.FromArgb(205, 213, 221);
             Color texto = temaOscuro ? Color.White : Color.Black;
 
             Form parentForm = this.FindForm();
@@ -135,6 +123,7 @@ namespace Gestionis.Herramientas
                 parentForm.BackColor = fondo;
 
                 CambiarTextoBotones(parentForm.Controls, texto);
+                CambiarColorBarraLateral(parentForm.Controls, cajas);
             }
         }
 
@@ -142,7 +131,7 @@ namespace Gestionis.Herramientas
         {
             foreach (Control control in controls)
             {
-                if (control is Label || control is Button || control is CheckBox || control is RadioButton || control is LinkLabel)
+                if (control is Label || control is CheckBox || control is RadioButton)
                 {
                     control.ForeColor = color;
                 }
@@ -150,6 +139,22 @@ namespace Gestionis.Herramientas
                 if (control.HasChildren)
                 {
                     CambiarTextoBotones(control.Controls, color);
+                }
+            }
+        }
+
+        private void CambiarColorBarraLateral(Control.ControlCollection controls, Color color)
+        {
+            foreach (Control control in controls)
+            {
+                if (control is BarraLateral)
+                {
+                    control.BackColor = color;
+                }
+
+                if (control.HasChildren)
+                {
+                    CambiarColorBarraLateral(control.Controls, color);
                 }
             }
         }

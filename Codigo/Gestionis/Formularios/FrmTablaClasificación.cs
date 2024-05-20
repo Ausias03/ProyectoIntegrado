@@ -18,7 +18,8 @@ namespace Gestionis
         private void frmTablaClasificación_Load(object sender, EventArgs e)
         {
             CargarClasificacion();
-            barraSecundaria1.BarraSecundaria_Load();
+            barraSecundaria1.Load();
+            barraLateral1.Load();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

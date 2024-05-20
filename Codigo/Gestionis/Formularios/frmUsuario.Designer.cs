@@ -469,6 +469,7 @@ namespace Gestionis
             Name = "frmUsuario";
             StartPosition = FormStartPosition.CenterScreen;
             WindowState = FormWindowState.Maximized;
+            Load += frmUsuario_Load_1;
             Controls.SetChildIndex(lblTuCuenta, 0);
             Controls.SetChildIndex(btnCerrarSesion, 0);
             Controls.SetChildIndex(grpCuenta, 0);

@@ -394,7 +394,7 @@ namespace Gestionis
             barraLateral1.Dock = DockStyle.Left;
             barraLateral1.Location = new Point(0, 75);
             barraLateral1.Name = "barraLateral1";
-            barraLateral1.Size = new Size(210, 830);
+            barraLateral1.Size = new Size(150, 830);
             barraLateral1.TabIndex = 30;
             // 
             // FrmGestorDeudas

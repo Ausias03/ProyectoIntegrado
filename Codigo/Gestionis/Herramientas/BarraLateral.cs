@@ -12,22 +12,26 @@ namespace Gestionis.Herramientas
             InitializePanelProperties();
             CreateButtons();
             AjustesTimer();
-            BarraLateral_Load();
+            Load();
         }
 
-        public void BarraLateral_Load()
+        public void Load()
         {
-            if (!Sesion.Instance.BarraExpandida) ColapsarExpandir();
-            if (Sesion.Instance.TemaOscuro)
-                BackColor = Color.FromArgb(0, 115, 148);
+            if (!Sesion.Instance.BarraExpandida)
+            {
+                Width = 65;
+            }
             else
-                BackColor = Color.FromArgb(205, 213, 221);
+            {
+                Width = 231;
+            }            
         }
 
         private void InitializePanelProperties()
         {
             Size = new Size(231, 967);
             Dock = DockStyle.Left;
+            BackColor = Color.FromArgb(205, 213, 221);
         }
 
         private void CreateButtons()

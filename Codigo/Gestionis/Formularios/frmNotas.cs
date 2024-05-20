@@ -24,7 +24,9 @@ namespace Gestionis
             cmbFiltrarPor.Items.AddRange(Notas.CargaFiltros());
             cmbFiltrarPor.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            barraSecundaria1.BarraSecundaria_Load();
+            barraSecundaria1.Load();
+            barraLateral1.Load();
+
             dgvNotas.DataSource = Notas.RecargarTabla();
         }
 

@@ -44,8 +44,8 @@ namespace Gestionis
 
             #endregion
             
-            barraSecundaria1.BarraSecundaria_Load();
-            barraLateral1.BarraLateral_Load();
+            barraSecundaria1.Load();
+            barraLateral1.Load();
 
             #region Labels
             lblIngresosValor.Text = "0€";

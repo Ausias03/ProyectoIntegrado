@@ -17,7 +17,7 @@ namespace Gestionis
         }
 
         private void frmUsuario_Load(object sender, EventArgs e)
-        {            
+        {
             #region Controladores
             // Convertir un array de bytes (byte[]) a foto
             //picFoto.Image = usuario.Foto;
@@ -36,8 +36,7 @@ namespace Gestionis
             {
                 txtTelefono.Text = usuario.Telefono;
             }
-            #endregion
-            barraSecundaria1.BarraSecundaria_Load();
+            #endregion            
         }
 
         #region Validación de datos
@@ -213,6 +212,12 @@ namespace Gestionis
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void frmUsuario_Load_1(object sender, EventArgs e)
+        {
+            barraSecundaria1.Load();
+            barraLateral1.Load();
         }
     }
 }
