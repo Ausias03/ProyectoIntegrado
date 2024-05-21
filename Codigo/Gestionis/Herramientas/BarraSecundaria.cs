@@ -87,11 +87,13 @@ namespace Gestionis.Herramientas
                         {
                             BtnLanguage.Image = Properties.Resources.spain;
                             Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
+                            Sesion.Instance.Espanyol = true;
                         }
                         else
                         {
                             BtnLanguage.Image = Properties.Resources.england;
                             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+                            Sesion.Instance.Espanyol = false;
                         }
                         break;
                     case "btnNoticias":

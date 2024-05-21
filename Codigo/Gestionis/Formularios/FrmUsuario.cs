@@ -1,6 +1,5 @@
 using Gestionis.Clases;
 using Gestionis;
-
 using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
@@ -14,6 +13,7 @@ using System.Threading.Tasks;
 using Gestionis.Formularios;
 using Gestionis.Properties;
 using Gestionis.Herramientas;
+
 namespace Gestionis
 {
     public partial class frmUsuario : FrmBarraPrincipal
@@ -54,6 +54,7 @@ namespace Gestionis
         private void BtnLanguage_Click(object sender, EventArgs e)
         {
             AplicarIdioma();
+            barraLateral1.AplicarIdiomas();
         }
 
         private void SetExpNivel()

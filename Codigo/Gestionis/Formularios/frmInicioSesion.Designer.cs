@@ -49,10 +49,10 @@
             lblInicioSesion.BackColor = Color.FromArgb(211, 208, 242);
             lblInicioSesion.BorderStyle = BorderStyle.FixedSingle;
             lblInicioSesion.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblInicioSesion.Location = new Point(245, 23);
+            lblInicioSesion.Location = new Point(214, 17);
             lblInicioSesion.Name = "lblInicioSesion";
-            lblInicioSesion.Padding = new Padding(5);
-            lblInicioSesion.Size = new Size(239, 48);
+            lblInicioSesion.Padding = new Padding(4, 4, 4, 4);
+            lblInicioSesion.Size = new Size(195, 39);
             lblInicioSesion.TabIndex = 0;
             lblInicioSesion.Text = "Inicio de Sesión";
             lblInicioSesion.TextAlign = ContentAlignment.MiddleCenter;
@@ -62,10 +62,10 @@
             lblNombreUsuario.AutoSize = true;
             lblNombreUsuario.BackColor = SystemColors.Control;
             lblNombreUsuario.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblNombreUsuario.Location = new Point(99, 101);
+            lblNombreUsuario.Location = new Point(87, 76);
             lblNombreUsuario.Name = "lblNombreUsuario";
-            lblNombreUsuario.Padding = new Padding(5);
-            lblNombreUsuario.Size = new Size(276, 42);
+            lblNombreUsuario.Padding = new Padding(4, 4, 4, 4);
+            lblNombreUsuario.Size = new Size(215, 34);
             lblNombreUsuario.TabIndex = 1;
             lblNombreUsuario.Text = "Nombre de Usuario:";
             lblNombreUsuario.TextAlign = ContentAlignment.MiddleCenter;
@@ -73,17 +73,19 @@
             // txtNombreUsuario
             // 
             txtNombreUsuario.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNombreUsuario.Location = new Point(366, 105);
+            txtNombreUsuario.Location = new Point(298, 79);
+            txtNombreUsuario.Margin = new Padding(3, 2, 3, 2);
             txtNombreUsuario.Name = "txtNombreUsuario";
-            txtNombreUsuario.Size = new Size(289, 38);
+            txtNombreUsuario.Size = new Size(253, 32);
             txtNombreUsuario.TabIndex = 1;
             // 
             // txtContrasenya
             // 
             txtContrasenya.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtContrasenya.Location = new Point(354, 167);
+            txtContrasenya.Location = new Point(298, 125);
+            txtContrasenya.Margin = new Padding(3, 2, 3, 2);
             txtContrasenya.Name = "txtContrasenya";
-            txtContrasenya.Size = new Size(289, 38);
+            txtContrasenya.Size = new Size(253, 32);
             txtContrasenya.TabIndex = 2;
             // 
             // lblContrasenya
@@ -91,10 +93,10 @@
             lblContrasenya.AutoSize = true;
             lblContrasenya.BackColor = SystemColors.Control;
             lblContrasenya.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblContrasenya.Location = new Point(187, 164);
+            lblContrasenya.Location = new Point(164, 123);
             lblContrasenya.Name = "lblContrasenya";
-            lblContrasenya.Padding = new Padding(5);
-            lblContrasenya.Size = new Size(179, 42);
+            lblContrasenya.Padding = new Padding(4, 4, 4, 4);
+            lblContrasenya.Size = new Size(138, 34);
             lblContrasenya.TabIndex = 3;
             lblContrasenya.Text = "Contraseña:";
             lblContrasenya.TextAlign = ContentAlignment.MiddleCenter;
@@ -103,9 +105,10 @@
             // 
             btnBorrar.BackColor = Color.FromArgb(211, 208, 242);
             btnBorrar.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnBorrar.Location = new Point(501, 277);
+            btnBorrar.Location = new Point(438, 208);
+            btnBorrar.Margin = new Padding(3, 2, 3, 2);
             btnBorrar.Name = "btnBorrar";
-            btnBorrar.Size = new Size(127, 53);
+            btnBorrar.Size = new Size(111, 40);
             btnBorrar.TabIndex = 4;
             btnBorrar.Text = "Borrar";
             btnBorrar.UseVisualStyleBackColor = false;
@@ -115,9 +118,10 @@
             // 
             btnEnviar.BackColor = Color.FromArgb(178, 242, 187);
             btnEnviar.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEnviar.Location = new Point(651, 277);
+            btnEnviar.Location = new Point(570, 208);
+            btnEnviar.Margin = new Padding(3, 2, 3, 2);
             btnEnviar.Name = "btnEnviar";
-            btnEnviar.Size = new Size(127, 53);
+            btnEnviar.Size = new Size(111, 40);
             btnEnviar.TabIndex = 3;
             btnEnviar.Text = "Enviar";
             btnEnviar.UseVisualStyleBackColor = false;
@@ -127,9 +131,9 @@
             // 
             lklFaq.AutoSize = true;
             lklFaq.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lklFaq.Location = new Point(11, 237);
+            lklFaq.Location = new Point(10, 178);
             lklFaq.Name = "lklFaq";
-            lklFaq.Size = new Size(249, 32);
+            lklFaq.Size = new Size(192, 26);
             lklFaq.TabIndex = 5;
             lklFaq.TabStop = true;
             lklFaq.Text = "¿Algún Problema?";
@@ -139,9 +143,9 @@
             // 
             lklRegistro.AutoSize = true;
             lklRegistro.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lklRegistro.Location = new Point(11, 292);
+            lklRegistro.Location = new Point(10, 219);
             lklRegistro.Name = "lklRegistro";
-            lklRegistro.Size = new Size(274, 32);
+            lklRegistro.Size = new Size(210, 26);
             lklRegistro.TabIndex = 6;
             lklRegistro.TabStop = true;
             lklRegistro.Text = "¿No Tienes Cuenta?";
@@ -154,9 +158,9 @@
             // 
             // frmInicioSesion
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 353);
+            ClientSize = new Size(700, 265);
             Controls.Add(lklRegistro);
             Controls.Add(lklFaq);
             Controls.Add(btnEnviar);
@@ -167,6 +171,7 @@
             Controls.Add(lblNombreUsuario);
             Controls.Add(lblInicioSesion);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmInicioSesion";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Ge$tioni$";
