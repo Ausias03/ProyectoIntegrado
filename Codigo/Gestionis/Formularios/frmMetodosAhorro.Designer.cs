@@ -128,9 +128,9 @@ namespace Gestionis
             // 
             lblIngresosMes.AutoSize = true;
             lblIngresosMes.Font = new Font("Segoe UI", 14.25F);
-            lblIngresosMes.Location = new Point(828, 196);
+            lblIngresosMes.Location = new Point(859, 239);
             lblIngresosMes.Name = "lblIngresosMes";
-            lblIngresosMes.Size = new Size(191, 25);
+            lblIngresosMes.Size = new Size(242, 32);
             lblIngresosMes.TabIndex = 20;
             lblIngresosMes.Text = "Ingresos  mensuales: ";
             // 
@@ -140,9 +140,9 @@ namespace Gestionis
             lblLinea.BackColor = Color.Transparent;
             lblLinea.Font = new Font("Segoe UI", 14.25F);
             lblLinea.ForeColor = Color.FromArgb(0, 192, 0);
-            lblLinea.Location = new Point(1044, 196);
+            lblLinea.Location = new Point(1106, 239);
             lblLinea.Name = "lblLinea";
-            lblLinea.Size = new Size(92, 25);
+            lblLinea.Size = new Size(114, 32);
             lblLinea.TabIndex = 21;
             lblLinea.Text = "__________";
             // 
@@ -150,9 +150,9 @@ namespace Gestionis
             // 
             lblIngresoMesCont.AutoSize = true;
             lblIngresoMesCont.Font = new Font("Segoe UI", 14.25F);
-            lblIngresoMesCont.Location = new Point(1057, 191);
+            lblIngresoMesCont.Location = new Point(1114, 233);
             lblIngresoMesCont.Name = "lblIngresoMesCont";
-            lblIngresoMesCont.Size = new Size(67, 25);
+            lblIngresoMesCont.Size = new Size(83, 32);
             lblIngresoMesCont.TabIndex = 22;
             lblIngresoMesCont.Text = "dinero";
             // 
@@ -163,12 +163,11 @@ namespace Gestionis
             dgvGastosFijos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvGastosFijos.BackgroundColor = SystemColors.Control;
             dgvGastosFijos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvGastosFijos.Location = new Point(412, 304);
-            dgvGastosFijos.Margin = new Padding(3, 2, 3, 2);
+            dgvGastosFijos.Location = new Point(365, 354);
             dgvGastosFijos.Name = "dgvGastosFijos";
             dgvGastosFijos.ReadOnly = true;
             dgvGastosFijos.RowHeadersWidth = 51;
-            dgvGastosFijos.Size = new Size(471, 141);
+            dgvGastosFijos.Size = new Size(538, 188);
             dgvGastosFijos.TabIndex = 24;
             // 
             // label1
@@ -177,9 +176,9 @@ namespace Gestionis
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI", 14.25F);
             label1.ForeColor = SystemColors.ActiveCaptionText;
-            label1.Location = new Point(412, 270);
+            label1.Location = new Point(365, 309);
             label1.Name = "label1";
-            label1.Size = new Size(116, 25);
+            label1.Size = new Size(144, 32);
             label1.TabIndex = 25;
             label1.Text = "_____________";
             // 
@@ -187,9 +186,9 @@ namespace Gestionis
             // 
             lblGastosFijos.AutoSize = true;
             lblGastosFijos.Font = new Font("Segoe UI", 14.25F);
-            lblGastosFijos.Location = new Point(413, 265);
+            lblGastosFijos.Location = new Point(366, 302);
             lblGastosFijos.Name = "lblGastosFijos";
-            lblGastosFijos.Size = new Size(112, 25);
+            lblGastosFijos.Size = new Size(140, 32);
             lblGastosFijos.TabIndex = 26;
             lblGastosFijos.Text = "Gastos fijos:";
             // 
@@ -197,9 +196,9 @@ namespace Gestionis
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14.25F);
-            label2.Location = new Point(412, 534);
+            label2.Location = new Point(365, 661);
             label2.Name = "label2";
-            label2.Size = new Size(152, 25);
+            label2.Size = new Size(189, 32);
             label2.TabIndex = 28;
             label2.Text = "Gastos variables:";
             // 
@@ -209,9 +208,9 @@ namespace Gestionis
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Segoe UI", 14.25F);
             label3.ForeColor = SystemColors.ActiveCaptionText;
-            label3.Location = new Point(411, 538);
+            label3.Location = new Point(364, 666);
             label3.Name = "label3";
-            label3.Size = new Size(156, 25);
+            label3.Size = new Size(194, 32);
             label3.TabIndex = 27;
             label3.Text = "__________________";
             // 
@@ -222,21 +221,20 @@ namespace Gestionis
             dgvGastosVariables.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvGastosVariables.BackgroundColor = SystemColors.Control;
             dgvGastosVariables.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvGastosVariables.Location = new Point(413, 573);
-            dgvGastosVariables.Margin = new Padding(3, 2, 3, 2);
+            dgvGastosVariables.Location = new Point(366, 713);
             dgvGastosVariables.Name = "dgvGastosVariables";
             dgvGastosVariables.ReadOnly = true;
             dgvGastosVariables.RowHeadersWidth = 51;
-            dgvGastosVariables.Size = new Size(471, 141);
+            dgvGastosVariables.Size = new Size(538, 188);
             dgvGastosVariables.TabIndex = 29;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 14.25F);
-            label4.Location = new Point(465, 450);
+            label4.Location = new Point(425, 549);
             label4.Name = "label4";
-            label4.Size = new Size(52, 25);
+            label4.Size = new Size(65, 32);
             label4.TabIndex = 30;
             label4.Text = "Total";
             // 
@@ -244,9 +242,9 @@ namespace Gestionis
             // 
             lblTotalValorFijo.AutoSize = true;
             lblTotalValorFijo.Font = new Font("Segoe UI", 14.25F);
-            lblTotalValorFijo.Location = new Point(659, 450);
+            lblTotalValorFijo.Location = new Point(647, 549);
             lblTotalValorFijo.Name = "lblTotalValorFijo";
-            lblTotalValorFijo.Size = new Size(96, 25);
+            lblTotalValorFijo.Size = new Size(118, 32);
             lblTotalValorFijo.TabIndex = 31;
             lblTotalValorFijo.Text = "TotalValor";
             // 
@@ -254,45 +252,41 @@ namespace Gestionis
             // 
             lblPorcentajeFijo.AutoSize = true;
             lblPorcentajeFijo.Font = new Font("Segoe UI", 14.25F);
-            lblPorcentajeFijo.Location = new Point(779, 450);
+            lblPorcentajeFijo.Location = new Point(784, 549);
             lblPorcentajeFijo.Name = "lblPorcentajeFijo";
-            lblPorcentajeFijo.Size = new Size(101, 25);
+            lblPorcentajeFijo.Size = new Size(125, 32);
             lblPorcentajeFijo.TabIndex = 32;
             lblPorcentajeFijo.Text = "Porcentaje";
             // 
             // pbArrow
             // 
-            pbArrow.Location = new Point(413, 450);
-            pbArrow.Margin = new Padding(3, 2, 3, 2);
+            pbArrow.Location = new Point(366, 549);
             pbArrow.Name = "pbArrow";
-            pbArrow.Size = new Size(47, 25);
+            pbArrow.Size = new Size(54, 33);
             pbArrow.TabIndex = 33;
             pbArrow.TabStop = false;
             // 
             // pbArrow2
             // 
-            pbArrow2.Location = new Point(527, 450);
-            pbArrow2.Margin = new Padding(3, 2, 3, 2);
+            pbArrow2.Location = new Point(496, 549);
             pbArrow2.Name = "pbArrow2";
-            pbArrow2.Size = new Size(127, 25);
+            pbArrow2.Size = new Size(145, 33);
             pbArrow2.TabIndex = 34;
             pbArrow2.TabStop = false;
             // 
             // pbArrow4
             // 
-            pbArrow4.Location = new Point(527, 720);
-            pbArrow4.Margin = new Padding(3, 2, 3, 2);
+            pbArrow4.Location = new Point(496, 909);
             pbArrow4.Name = "pbArrow4";
-            pbArrow4.Size = new Size(127, 25);
+            pbArrow4.Size = new Size(145, 33);
             pbArrow4.TabIndex = 39;
             pbArrow4.TabStop = false;
             // 
             // pbArrow3
             // 
-            pbArrow3.Location = new Point(413, 720);
-            pbArrow3.Margin = new Padding(3, 2, 3, 2);
+            pbArrow3.Location = new Point(366, 909);
             pbArrow3.Name = "pbArrow3";
-            pbArrow3.Size = new Size(47, 25);
+            pbArrow3.Size = new Size(54, 33);
             pbArrow3.TabIndex = 38;
             pbArrow3.TabStop = false;
             // 
@@ -300,9 +294,9 @@ namespace Gestionis
             // 
             lblPorcentajeVariable.AutoSize = true;
             lblPorcentajeVariable.Font = new Font("Segoe UI", 14.25F);
-            lblPorcentajeVariable.Location = new Point(779, 720);
+            lblPorcentajeVariable.Location = new Point(784, 909);
             lblPorcentajeVariable.Name = "lblPorcentajeVariable";
-            lblPorcentajeVariable.Size = new Size(101, 25);
+            lblPorcentajeVariable.Size = new Size(125, 32);
             lblPorcentajeVariable.TabIndex = 37;
             lblPorcentajeVariable.Text = "Porcentaje";
             // 
@@ -310,9 +304,9 @@ namespace Gestionis
             // 
             lblTotalGastosVariables.AutoSize = true;
             lblTotalGastosVariables.Font = new Font("Segoe UI", 14.25F);
-            lblTotalGastosVariables.Location = new Point(659, 720);
+            lblTotalGastosVariables.Location = new Point(647, 909);
             lblTotalGastosVariables.Name = "lblTotalGastosVariables";
-            lblTotalGastosVariables.Size = new Size(96, 25);
+            lblTotalGastosVariables.Size = new Size(118, 32);
             lblTotalGastosVariables.TabIndex = 36;
             lblTotalGastosVariables.Text = "TotalValor";
             // 
@@ -320,9 +314,9 @@ namespace Gestionis
             // 
             lblTotalGastosVariable.AutoSize = true;
             lblTotalGastosVariable.Font = new Font("Segoe UI", 14.25F);
-            lblTotalGastosVariable.Location = new Point(465, 720);
+            lblTotalGastosVariable.Location = new Point(425, 909);
             lblTotalGastosVariable.Name = "lblTotalGastosVariable";
-            lblTotalGastosVariable.Size = new Size(52, 25);
+            lblTotalGastosVariable.Size = new Size(65, 32);
             lblTotalGastosVariable.TabIndex = 35;
             lblTotalGastosVariable.Text = "Total";
             // 
@@ -330,9 +324,9 @@ namespace Gestionis
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 14.25F);
-            label5.Location = new Point(415, 756);
+            label5.Location = new Point(368, 957);
             label5.Name = "label5";
-            label5.Size = new Size(146, 25);
+            label5.Size = new Size(184, 32);
             label5.TabIndex = 43;
             label5.Text = "Dinero restante:";
             // 
@@ -342,9 +336,9 @@ namespace Gestionis
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Segoe UI", 14.25F);
             label6.ForeColor = SystemColors.ActiveCaptionText;
-            label6.Location = new Point(415, 759);
+            label6.Location = new Point(368, 961);
             label6.Name = "label6";
-            label6.Size = new Size(156, 25);
+            label6.Size = new Size(194, 32);
             label6.TabIndex = 42;
             label6.Text = "__________________";
             // 
@@ -352,18 +346,17 @@ namespace Gestionis
             // 
             lblDineroRest.AutoSize = true;
             lblDineroRest.Font = new Font("Segoe UI", 14.25F);
-            lblDineroRest.Location = new Point(603, 756);
+            lblDineroRest.Location = new Point(583, 957);
             lblDineroRest.Name = "lblDineroRest";
-            lblDineroRest.Size = new Size(46, 25);
+            lblDineroRest.Size = new Size(58, 32);
             lblDineroRest.TabIndex = 44;
             lblDineroRest.Text = "Rest";
             // 
             // pbArrow5
             // 
-            pbArrow5.Location = new Point(666, 756);
-            pbArrow5.Margin = new Padding(3, 2, 3, 2);
+            pbArrow5.Location = new Point(655, 957);
             pbArrow5.Name = "pbArrow5";
-            pbArrow5.Size = new Size(47, 25);
+            pbArrow5.Size = new Size(54, 33);
             pbArrow5.TabIndex = 45;
             pbArrow5.TabStop = false;
             // 
@@ -371,9 +364,9 @@ namespace Gestionis
             // 
             lblPorcentajeRest.AutoSize = true;
             lblPorcentajeRest.Font = new Font("Segoe UI", 14.25F);
-            lblPorcentajeRest.Location = new Point(737, 756);
+            lblPorcentajeRest.Location = new Point(736, 957);
             lblPorcentajeRest.Name = "lblPorcentajeRest";
-            lblPorcentajeRest.Size = new Size(40, 25);
+            lblPorcentajeRest.Size = new Size(48, 32);
             lblPorcentajeRest.TabIndex = 46;
             lblPorcentajeRest.Text = "Por";
             // 
@@ -383,19 +376,18 @@ namespace Gestionis
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Segoe UI", 14.25F);
             label7.ForeColor = Color.FromArgb(0, 192, 0);
-            label7.Location = new Point(594, 760);
+            label7.Location = new Point(573, 962);
             label7.Name = "label7";
-            label7.Size = new Size(180, 25);
+            label7.Size = new Size(224, 32);
             label7.TabIndex = 47;
             label7.Text = "_____________________";
             // 
             // pnlBarra1
             // 
             pnlBarra1.BackColor = SystemColors.ActiveCaptionText;
-            pnlBarra1.Location = new Point(1009, 257);
-            pnlBarra1.Margin = new Padding(3, 2, 3, 2);
+            pnlBarra1.Location = new Point(1041, 314);
             pnlBarra1.Name = "pnlBarra1";
-            pnlBarra1.Size = new Size(10, 561);
+            pnlBarra1.Size = new Size(10, 700);
             pnlBarra1.TabIndex = 48;
             // 
             // pnlContenedorOpc
@@ -403,10 +395,9 @@ namespace Gestionis
             pnlContenedorOpc.Controls.Add(btnPersonalizado);
             pnlContenedorOpc.Controls.Add(btn503020);
             pnlContenedorOpc.Controls.Add(btnHarvEker);
-            pnlContenedorOpc.Location = new Point(1141, 260);
-            pnlContenedorOpc.Margin = new Padding(3, 2, 3, 2);
+            pnlContenedorOpc.Location = new Point(1287, 294);
             pnlContenedorOpc.Name = "pnlContenedorOpc";
-            pnlContenedorOpc.Size = new Size(381, 35);
+            pnlContenedorOpc.Size = new Size(435, 47);
             pnlContenedorOpc.TabIndex = 49;
             // 
             // btnPersonalizado
@@ -414,10 +405,9 @@ namespace Gestionis
             btnPersonalizado.BackColor = Color.FromArgb(178, 242, 187);
             btnPersonalizado.FlatStyle = FlatStyle.Flat;
             btnPersonalizado.Font = new Font("Segoe UI", 14.25F);
-            btnPersonalizado.Location = new Point(232, 0);
-            btnPersonalizado.Margin = new Padding(3, 2, 3, 2);
+            btnPersonalizado.Location = new Point(265, 0);
             btnPersonalizado.Name = "btnPersonalizado";
-            btnPersonalizado.Size = new Size(149, 35);
+            btnPersonalizado.Size = new Size(170, 47);
             btnPersonalizado.TabIndex = 50;
             btnPersonalizado.Text = "Personalizado";
             btnPersonalizado.UseVisualStyleBackColor = false;
@@ -429,9 +419,8 @@ namespace Gestionis
             btn503020.FlatStyle = FlatStyle.Flat;
             btn503020.Font = new Font("Segoe UI", 14.25F);
             btn503020.Location = new Point(0, 0);
-            btn503020.Margin = new Padding(3, 2, 3, 2);
             btn503020.Name = "btn503020";
-            btn503020.Size = new Size(117, 35);
+            btn503020.Size = new Size(134, 47);
             btn503020.TabIndex = 50;
             btn503020.Text = "50/30/20";
             btn503020.UseVisualStyleBackColor = false;
@@ -442,10 +431,9 @@ namespace Gestionis
             btnHarvEker.BackColor = Color.FromArgb(178, 242, 187);
             btnHarvEker.FlatStyle = FlatStyle.Flat;
             btnHarvEker.Font = new Font("Segoe UI", 14.25F);
-            btnHarvEker.Location = new Point(116, 0);
-            btnHarvEker.Margin = new Padding(3, 2, 3, 2);
+            btnHarvEker.Location = new Point(133, 0);
             btnHarvEker.Name = "btnHarvEker";
-            btnHarvEker.Size = new Size(117, 35);
+            btnHarvEker.Size = new Size(134, 47);
             btnHarvEker.TabIndex = 51;
             btnHarvEker.Text = "Harv Eker";
             btnHarvEker.UseVisualStyleBackColor = false;
@@ -455,9 +443,9 @@ namespace Gestionis
             lblNecesidadesBasicas.AutoSize = true;
             lblNecesidadesBasicas.Font = new Font("Segoe UI", 14.25F);
             lblNecesidadesBasicas.ForeColor = Color.Purple;
-            lblNecesidadesBasicas.Location = new Point(18, 16);
+            lblNecesidadesBasicas.Location = new Point(21, 21);
             lblNecesidadesBasicas.Name = "lblNecesidadesBasicas";
-            lblNecesidadesBasicas.Size = new Size(274, 25);
+            lblNecesidadesBasicas.Size = new Size(344, 32);
             lblNecesidadesBasicas.TabIndex = 21;
             lblNecesidadesBasicas.Text = "50% para necesidades básicas: ";
             // 
@@ -466,9 +454,9 @@ namespace Gestionis
             lblGastosPrescin.AutoSize = true;
             lblGastosPrescin.Font = new Font("Segoe UI", 14.25F);
             lblGastosPrescin.ForeColor = Color.Purple;
-            lblGastosPrescin.Location = new Point(22, 135);
+            lblGastosPrescin.Location = new Point(25, 180);
             lblGastosPrescin.Name = "lblGastosPrescin";
-            lblGastosPrescin.Size = new Size(270, 25);
+            lblGastosPrescin.Size = new Size(339, 32);
             lblGastosPrescin.TabIndex = 50;
             lblGastosPrescin.Text = "30% para gastos prescindibles:";
             // 
@@ -477,36 +465,33 @@ namespace Gestionis
             lblAhorro.AutoSize = true;
             lblAhorro.Font = new Font("Segoe UI", 14.25F);
             lblAhorro.ForeColor = Color.Purple;
-            lblAhorro.Location = new Point(18, 249);
+            lblAhorro.Location = new Point(21, 332);
             lblAhorro.Name = "lblAhorro";
-            lblAhorro.Size = new Size(177, 25);
+            lblAhorro.Size = new Size(221, 32);
             lblAhorro.TabIndex = 51;
             lblAhorro.Text = "20% para el ahorro:";
             // 
             // pbArrow6
             // 
-            pbArrow6.Location = new Point(18, 44);
-            pbArrow6.Margin = new Padding(3, 2, 3, 2);
+            pbArrow6.Location = new Point(21, 59);
             pbArrow6.Name = "pbArrow6";
-            pbArrow6.Size = new Size(52, 25);
+            pbArrow6.Size = new Size(59, 33);
             pbArrow6.TabIndex = 52;
             pbArrow6.TabStop = false;
             // 
             // pbArrow7
             // 
-            pbArrow7.Location = new Point(22, 164);
-            pbArrow7.Margin = new Padding(3, 2, 3, 2);
+            pbArrow7.Location = new Point(25, 219);
             pbArrow7.Name = "pbArrow7";
-            pbArrow7.Size = new Size(52, 25);
+            pbArrow7.Size = new Size(59, 33);
             pbArrow7.TabIndex = 53;
             pbArrow7.TabStop = false;
             // 
             // pbArrow8
             // 
-            pbArrow8.Location = new Point(18, 279);
-            pbArrow8.Margin = new Padding(3, 2, 3, 2);
+            pbArrow8.Location = new Point(21, 372);
             pbArrow8.Name = "pbArrow8";
-            pbArrow8.Size = new Size(52, 25);
+            pbArrow8.Size = new Size(59, 33);
             pbArrow8.TabIndex = 54;
             pbArrow8.TabStop = false;
             // 
@@ -514,9 +499,9 @@ namespace Gestionis
             // 
             lblGastadoEsteMes.AutoSize = true;
             lblGastadoEsteMes.Font = new Font("Segoe UI", 14.25F);
-            lblGastadoEsteMes.Location = new Point(74, 44);
+            lblGastadoEsteMes.Location = new Point(85, 59);
             lblGastadoEsteMes.Name = "lblGastadoEsteMes";
-            lblGastadoEsteMes.Size = new Size(163, 25);
+            lblGastadoEsteMes.Size = new Size(207, 32);
             lblGastadoEsteMes.TabIndex = 55;
             lblGastadoEsteMes.Text = "Gastado este mes:";
             // 
@@ -524,9 +509,9 @@ namespace Gestionis
             // 
             lblGastoEsteMes.AutoSize = true;
             lblGastoEsteMes.Font = new Font("Segoe UI", 14.25F);
-            lblGastoEsteMes.Location = new Point(78, 164);
+            lblGastoEsteMes.Location = new Point(89, 219);
             lblGastoEsteMes.Name = "lblGastoEsteMes";
-            lblGastoEsteMes.Size = new Size(163, 25);
+            lblGastoEsteMes.Size = new Size(207, 32);
             lblGastoEsteMes.TabIndex = 56;
             lblGastoEsteMes.Text = "Gastado este mes:";
             // 
@@ -534,9 +519,9 @@ namespace Gestionis
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 14.25F);
-            label9.Location = new Point(74, 279);
+            label9.Location = new Point(85, 372);
             label9.Name = "label9";
-            label9.Size = new Size(355, 25);
+            label9.Size = new Size(447, 32);
             label9.TabIndex = 57;
             label9.Text = "Dinero disponible para ahorrar este mes:";
             // 
@@ -544,9 +529,9 @@ namespace Gestionis
             // 
             lblNecBasicasValor.AutoSize = true;
             lblNecBasicasValor.Font = new Font("Segoe UI", 14.25F);
-            lblNecBasicasValor.Location = new Point(290, 16);
+            lblNecBasicasValor.Location = new Point(362, 21);
             lblNecBasicasValor.Name = "lblNecBasicasValor";
-            lblNecBasicasValor.Size = new Size(69, 25);
+            lblNecBasicasValor.Size = new Size(86, 32);
             lblNecBasicasValor.TabIndex = 58;
             lblNecBasicasValor.Text = "Dinero";
             // 
@@ -554,9 +539,9 @@ namespace Gestionis
             // 
             lblNecPresValor.AutoSize = true;
             lblNecPresValor.Font = new Font("Segoe UI", 14.25F);
-            lblNecPresValor.Location = new Point(290, 135);
+            lblNecPresValor.Location = new Point(363, 180);
             lblNecPresValor.Name = "lblNecPresValor";
-            lblNecPresValor.Size = new Size(69, 25);
+            lblNecPresValor.Size = new Size(86, 32);
             lblNecPresValor.TabIndex = 59;
             lblNecPresValor.Text = "Dinero";
             // 
@@ -564,9 +549,9 @@ namespace Gestionis
             // 
             lblAhoValor.AutoSize = true;
             lblAhoValor.Font = new Font("Segoe UI", 14.25F);
-            lblAhoValor.Location = new Point(195, 249);
+            lblAhoValor.Location = new Point(241, 332);
             lblAhoValor.Name = "lblAhoValor";
-            lblAhoValor.Size = new Size(69, 25);
+            lblAhoValor.Size = new Size(86, 32);
             lblAhoValor.TabIndex = 60;
             lblAhoValor.Text = "Dinero";
             // 
@@ -576,9 +561,9 @@ namespace Gestionis
             label12.BackColor = Color.Transparent;
             label12.Font = new Font("Segoe UI", 14.25F);
             label12.ForeColor = SystemColors.ActiveCaptionText;
-            label12.Location = new Point(290, 19);
+            label12.Location = new Point(356, 26);
             label12.Name = "label12";
-            label12.Size = new Size(84, 25);
+            label12.Size = new Size(104, 32);
             label12.TabIndex = 61;
             label12.Text = "_________";
             // 
@@ -588,9 +573,9 @@ namespace Gestionis
             label13.BackColor = Color.Transparent;
             label13.Font = new Font("Segoe UI", 14.25F);
             label13.ForeColor = SystemColors.ActiveCaptionText;
-            label13.Location = new Point(289, 138);
+            label13.Location = new Point(357, 185);
             label13.Name = "label13";
-            label13.Size = new Size(84, 25);
+            label13.Size = new Size(104, 32);
             label13.TabIndex = 62;
             label13.Text = "_________";
             // 
@@ -600,9 +585,9 @@ namespace Gestionis
             label14.BackColor = Color.Transparent;
             label14.Font = new Font("Segoe UI", 14.25F);
             label14.ForeColor = SystemColors.ActiveCaptionText;
-            label14.Location = new Point(195, 252);
+            label14.Location = new Point(233, 337);
             label14.Name = "label14";
-            label14.Size = new Size(84, 25);
+            label14.Size = new Size(104, 32);
             label14.TabIndex = 63;
             label14.Text = "_________";
             // 
@@ -610,18 +595,17 @@ namespace Gestionis
             // 
             lblGMNecValor.AutoSize = true;
             lblGMNecValor.Font = new Font("Segoe UI", 14.25F);
-            lblGMNecValor.Location = new Point(261, 44);
+            lblGMNecValor.Location = new Point(298, 59);
             lblGMNecValor.Name = "lblGMNecValor";
-            lblGMNecValor.Size = new Size(69, 25);
+            lblGMNecValor.Size = new Size(86, 32);
             lblGMNecValor.TabIndex = 64;
             lblGMNecValor.Text = "Dinero";
             // 
             // pbArrow9
             // 
-            pbArrow9.Location = new Point(341, 44);
-            pbArrow9.Margin = new Padding(3, 2, 3, 2);
+            pbArrow9.Location = new Point(390, 59);
             pbArrow9.Name = "pbArrow9";
-            pbArrow9.Size = new Size(52, 25);
+            pbArrow9.Size = new Size(59, 33);
             pbArrow9.TabIndex = 65;
             pbArrow9.TabStop = false;
             // 
@@ -629,9 +613,9 @@ namespace Gestionis
             // 
             lblGMNecPorDin.AutoSize = true;
             lblGMNecPorDin.Font = new Font("Segoe UI", 14.25F);
-            lblGMNecPorDin.Location = new Point(398, 45);
+            lblGMNecPorDin.Location = new Point(455, 60);
             lblGMNecPorDin.Name = "lblGMNecPorDin";
-            lblGMNecPorDin.Size = new Size(92, 25);
+            lblGMNecPorDin.Size = new Size(114, 32);
             lblGMNecPorDin.TabIndex = 66;
             lblGMNecPorDin.Text = "por/diner";
             // 
@@ -639,18 +623,17 @@ namespace Gestionis
             // 
             lblGPPorDin.AutoSize = true;
             lblGPPorDin.Font = new Font("Segoe UI", 14.25F);
-            lblGPPorDin.Location = new Point(402, 164);
+            lblGPPorDin.Location = new Point(459, 219);
             lblGPPorDin.Name = "lblGPPorDin";
-            lblGPPorDin.Size = new Size(92, 25);
+            lblGPPorDin.Size = new Size(114, 32);
             lblGPPorDin.TabIndex = 69;
             lblGPPorDin.Text = "por/diner";
             // 
             // pbArrow10
             // 
-            pbArrow10.Location = new Point(345, 163);
-            pbArrow10.Margin = new Padding(3, 2, 3, 2);
+            pbArrow10.Location = new Point(394, 217);
             pbArrow10.Name = "pbArrow10";
-            pbArrow10.Size = new Size(52, 25);
+            pbArrow10.Size = new Size(59, 33);
             pbArrow10.TabIndex = 68;
             pbArrow10.TabStop = false;
             // 
@@ -658,9 +641,9 @@ namespace Gestionis
             // 
             lblGPresValor.AutoSize = true;
             lblGPresValor.Font = new Font("Segoe UI", 14.25F);
-            lblGPresValor.Location = new Point(265, 163);
+            lblGPresValor.Location = new Point(303, 217);
             lblGPresValor.Name = "lblGPresValor";
-            lblGPresValor.Size = new Size(69, 25);
+            lblGPresValor.Size = new Size(86, 32);
             lblGPresValor.TabIndex = 67;
             lblGPresValor.Text = "Dinero";
             // 
@@ -668,18 +651,17 @@ namespace Gestionis
             // 
             lblAhorroPorDin.AutoSize = true;
             lblAhorroPorDin.Font = new Font("Segoe UI", 14.25F);
-            lblAhorroPorDin.Location = new Point(281, 312);
+            lblAhorroPorDin.Location = new Point(321, 416);
             lblAhorroPorDin.Name = "lblAhorroPorDin";
-            lblAhorroPorDin.Size = new Size(92, 25);
+            lblAhorroPorDin.Size = new Size(114, 32);
             lblAhorroPorDin.TabIndex = 72;
             lblAhorroPorDin.Text = "por/diner";
             // 
             // pbArrow11
             // 
-            pbArrow11.Location = new Point(224, 311);
-            pbArrow11.Margin = new Padding(3, 2, 3, 2);
+            pbArrow11.Location = new Point(256, 415);
             pbArrow11.Name = "pbArrow11";
-            pbArrow11.Size = new Size(52, 25);
+            pbArrow11.Size = new Size(59, 33);
             pbArrow11.TabIndex = 71;
             pbArrow11.TabStop = false;
             // 
@@ -687,9 +669,9 @@ namespace Gestionis
             // 
             lblAhorroDinValor.AutoSize = true;
             lblAhorroDinValor.Font = new Font("Segoe UI", 14.25F);
-            lblAhorroDinValor.Location = new Point(144, 311);
+            lblAhorroDinValor.Location = new Point(165, 415);
             lblAhorroDinValor.Name = "lblAhorroDinValor";
-            lblAhorroDinValor.Size = new Size(69, 25);
+            lblAhorroDinValor.Size = new Size(86, 32);
             lblAhorroDinValor.TabIndex = 70;
             lblAhorroDinValor.Text = "Dinero";
             // 
@@ -720,10 +702,9 @@ namespace Gestionis
             pnl503020.Controls.Add(label12);
             pnl503020.Controls.Add(label13);
             pnl503020.Controls.Add(label14);
-            pnl503020.Location = new Point(1141, 324);
-            pnl503020.Margin = new Padding(3, 2, 3, 2);
+            pnl503020.Location = new Point(1206, 379);
             pnl503020.Name = "pnl503020";
-            pnl503020.Size = new Size(511, 390);
+            pnl503020.Size = new Size(584, 520);
             pnl503020.TabIndex = 73;
             // 
             // rgbPersonalizado
@@ -735,11 +716,9 @@ namespace Gestionis
             rgbPersonalizado.Controls.Add(cmbCategorias);
             rgbPersonalizado.Controls.Add(txtPNombre);
             rgbPersonalizado.Controls.Add(txtPPorcentaje);
-            rgbPersonalizado.Location = new Point(20, 59);
-            rgbPersonalizado.Margin = new Padding(3, 2, 3, 2);
+            rgbPersonalizado.Location = new Point(23, 79);
             rgbPersonalizado.Name = "rgbPersonalizado";
-            rgbPersonalizado.Padding = new Padding(3, 2, 3, 2);
-            rgbPersonalizado.Size = new Size(536, 91);
+            rgbPersonalizado.Size = new Size(613, 121);
             rgbPersonalizado.TabIndex = 74;
             rgbPersonalizado.TabStop = false;
             rgbPersonalizado.Text = "roundGroupBox1";
@@ -748,9 +727,9 @@ namespace Gestionis
             // 
             lblPDinero.AutoSize = true;
             lblPDinero.BackColor = Color.Transparent;
-            lblPDinero.Location = new Point(125, 23);
+            lblPDinero.Location = new Point(143, 31);
             lblPDinero.Name = "lblPDinero";
-            lblPDinero.Size = new Size(42, 15);
+            lblPDinero.Size = new Size(54, 20);
             lblPDinero.TabIndex = 46;
             lblPDinero.Text = "Dinero";
             // 
@@ -760,9 +739,9 @@ namespace Gestionis
             lblLineaSeparaciones3.BackColor = Color.Transparent;
             lblLineaSeparaciones3.Font = new Font("Segoe UI", 14.25F);
             lblLineaSeparaciones3.ForeColor = SystemColors.ActiveCaptionText;
-            lblLineaSeparaciones3.Location = new Point(176, 11);
+            lblLineaSeparaciones3.Location = new Point(201, 15);
             lblLineaSeparaciones3.Name = "lblLineaSeparaciones3";
-            lblLineaSeparaciones3.Size = new Size(44, 25);
+            lblLineaSeparaciones3.Size = new Size(54, 32);
             lblLineaSeparaciones3.TabIndex = 45;
             lblLineaSeparaciones3.Text = "____";
             // 
@@ -772,9 +751,9 @@ namespace Gestionis
             lblLineasSeparacines2.BackColor = Color.Transparent;
             lblLineasSeparacines2.Font = new Font("Segoe UI", 14.25F);
             lblLineasSeparacines2.ForeColor = SystemColors.ActiveCaptionText;
-            lblLineasSeparacines2.Location = new Point(329, 10);
+            lblLineasSeparacines2.Location = new Point(376, 13);
             lblLineasSeparacines2.Name = "lblLineasSeparacines2";
-            lblLineasSeparacines2.Size = new Size(52, 25);
+            lblLineasSeparacines2.Size = new Size(64, 32);
             lblLineasSeparacines2.TabIndex = 44;
             lblLineasSeparacines2.Text = "_____";
             // 
@@ -784,9 +763,9 @@ namespace Gestionis
             lblLineaSeparaciones1.BackColor = Color.Transparent;
             lblLineaSeparaciones1.Font = new Font("Segoe UI", 14.25F);
             lblLineaSeparaciones1.ForeColor = SystemColors.ActiveCaptionText;
-            lblLineaSeparaciones1.Location = new Point(74, 11);
+            lblLineaSeparaciones1.Location = new Point(85, 15);
             lblLineaSeparaciones1.Name = "lblLineaSeparaciones1";
-            lblLineaSeparaciones1.Size = new Size(44, 25);
+            lblLineaSeparaciones1.Size = new Size(54, 32);
             lblLineaSeparaciones1.TabIndex = 43;
             lblLineaSeparaciones1.Text = "____";
             // 
@@ -794,26 +773,23 @@ namespace Gestionis
             // 
             cmbCategorias.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbCategorias.FormattingEnabled = true;
-            cmbCategorias.Location = new Point(389, 20);
-            cmbCategorias.Margin = new Padding(3, 2, 3, 2);
+            cmbCategorias.Location = new Point(445, 27);
             cmbCategorias.Name = "cmbCategorias";
-            cmbCategorias.Size = new Size(133, 23);
+            cmbCategorias.Size = new Size(151, 28);
             cmbCategorias.TabIndex = 2;
             // 
             // txtPNombre
             // 
-            txtPNombre.Location = new Point(237, 21);
-            txtPNombre.Margin = new Padding(3, 2, 3, 2);
+            txtPNombre.Location = new Point(271, 28);
             txtPNombre.Name = "txtPNombre";
-            txtPNombre.Size = new Size(88, 23);
+            txtPNombre.Size = new Size(100, 27);
             txtPNombre.TabIndex = 1;
             // 
             // txtPPorcentaje
             // 
-            txtPPorcentaje.Location = new Point(16, 20);
-            txtPPorcentaje.Margin = new Padding(3, 2, 3, 2);
+            txtPPorcentaje.Location = new Point(18, 27);
             txtPPorcentaje.Name = "txtPPorcentaje";
-            txtPPorcentaje.Size = new Size(52, 23);
+            txtPPorcentaje.Size = new Size(59, 27);
             txtPPorcentaje.TabIndex = 0;
             // 
             // lblPPorAsignar
@@ -822,9 +798,9 @@ namespace Gestionis
             lblPPorAsignar.BackColor = Color.Transparent;
             lblPPorAsignar.Font = new Font("Segoe UI", 14.25F);
             lblPPorAsignar.ForeColor = Color.Purple;
-            lblPPorAsignar.Location = new Point(162, 16);
+            lblPPorAsignar.Location = new Point(185, 21);
             lblPPorAsignar.Name = "lblPPorAsignar";
-            lblPPorAsignar.Size = new Size(137, 25);
+            lblPPorAsignar.Size = new Size(170, 32);
             lblPPorAsignar.TabIndex = 75;
             lblPPorAsignar.Text = "% Por asignar: ";
             // 
@@ -834,9 +810,9 @@ namespace Gestionis
             lblPPor.BackColor = Color.Transparent;
             lblPPor.Font = new Font("Segoe UI", 14.25F);
             lblPPor.ForeColor = Color.Purple;
-            lblPPor.Location = new Point(308, 16);
+            lblPPor.Location = new Point(352, 21);
             lblPPor.Name = "lblPPor";
-            lblPPor.Size = new Size(40, 25);
+            lblPPor.Size = new Size(48, 32);
             lblPPor.TabIndex = 76;
             lblPPor.Text = "Por";
             // 
@@ -846,9 +822,9 @@ namespace Gestionis
             lblLineaPpor.BackColor = Color.Transparent;
             lblLineaPpor.Font = new Font("Segoe UI", 14.25F);
             lblLineaPpor.ForeColor = Color.Purple;
-            lblLineaPpor.Location = new Point(299, 20);
+            lblLineaPpor.Location = new Point(342, 27);
             lblLineaPpor.Name = "lblLineaPpor";
-            lblLineaPpor.Size = new Size(60, 25);
+            lblLineaPpor.Size = new Size(74, 32);
             lblLineaPpor.TabIndex = 77;
             lblLineaPpor.Text = "______";
             // 
@@ -859,10 +835,9 @@ namespace Gestionis
             pnlPersonalizado.Controls.Add(lblPPor);
             pnlPersonalizado.Controls.Add(lblPPorAsignar);
             pnlPersonalizado.Controls.Add(lblLineaPpor);
-            pnlPersonalizado.Location = new Point(1112, 720);
-            pnlPersonalizado.Margin = new Padding(3, 2, 3, 2);
+            pnlPersonalizado.Location = new Point(1179, 412);
             pnlPersonalizado.Name = "pnlPersonalizado";
-            pnlPersonalizado.Size = new Size(573, 164);
+            pnlPersonalizado.Size = new Size(655, 219);
             pnlPersonalizado.TabIndex = 78;
             pnlPersonalizado.Visible = false;
             // 
@@ -871,10 +846,9 @@ namespace Gestionis
             btnPAgregar.BackColor = Color.FromArgb(178, 242, 187);
             btnPAgregar.FlatStyle = FlatStyle.Flat;
             btnPAgregar.Font = new Font("Segoe UI", 14.25F);
-            btnPAgregar.Location = new Point(1502, 913);
-            btnPAgregar.Margin = new Padding(3, 2, 3, 2);
+            btnPAgregar.Location = new Point(1462, 961);
             btnPAgregar.Name = "btnPAgregar";
-            btnPAgregar.Size = new Size(150, 40);
+            btnPAgregar.Size = new Size(171, 53);
             btnPAgregar.TabIndex = 79;
             btnPAgregar.Text = "Añadir %";
             btnPAgregar.UseVisualStyleBackColor = false;
@@ -886,10 +860,9 @@ namespace Gestionis
             btnSalir.BackColor = Color.FromArgb(211, 208, 242);
             btnSalir.FlatStyle = FlatStyle.Flat;
             btnSalir.Font = new Font("Segoe UI", 14.25F);
-            btnSalir.Location = new Point(1677, 913);
-            btnSalir.Margin = new Padding(3, 2, 3, 2);
+            btnSalir.Location = new Point(1662, 961);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(150, 40);
+            btnSalir.Size = new Size(171, 53);
             btnSalir.TabIndex = 80;
             btnSalir.Text = "Salir";
             btnSalir.UseVisualStyleBackColor = false;
@@ -899,9 +872,9 @@ namespace Gestionis
             // 
             lblKakebo.AutoSize = true;
             lblKakebo.Font = new Font("Segoe UI", 16F);
-            lblKakebo.Location = new Point(575, 112);
+            lblKakebo.Location = new Point(535, 149);
             lblKakebo.Name = "lblKakebo";
-            lblKakebo.Size = new Size(86, 30);
+            lblKakebo.Size = new Size(106, 37);
             lblKakebo.TabIndex = 81;
             lblKakebo.Text = "Kakebo";
             // 
@@ -911,9 +884,9 @@ namespace Gestionis
             label15.BackColor = Color.Transparent;
             label15.Font = new Font("Segoe UI", 14.25F);
             label15.ForeColor = SystemColors.ActiveCaptionText;
-            label15.Location = new Point(560, 122);
+            label15.Location = new Point(518, 163);
             label15.Name = "label15";
-            label15.Size = new Size(116, 25);
+            label15.Size = new Size(144, 32);
             label15.TabIndex = 83;
             label15.Text = "_____________";
             // 
@@ -921,9 +894,9 @@ namespace Gestionis
             // 
             lblPorcentajes.AutoSize = true;
             lblPorcentajes.Font = new Font("Segoe UI", 16F);
-            lblPorcentajes.Location = new Point(1310, 112);
+            lblPorcentajes.Location = new Point(1447, 149);
             lblPorcentajes.Name = "lblPorcentajes";
-            lblPorcentajes.Size = new Size(123, 30);
+            lblPorcentajes.Size = new Size(152, 37);
             lblPorcentajes.TabIndex = 84;
             lblPorcentajes.Text = "Porcentajes";
             // 
@@ -933,9 +906,9 @@ namespace Gestionis
             label16.BackColor = Color.Transparent;
             label16.Font = new Font("Segoe UI", 14.25F);
             label16.ForeColor = SystemColors.ActiveCaptionText;
-            label16.Location = new Point(1294, 121);
+            label16.Location = new Point(1429, 161);
             label16.Name = "label16";
-            label16.Size = new Size(148, 25);
+            label16.Size = new Size(184, 32);
             label16.TabIndex = 85;
             label16.Text = "_________________";
             // 
@@ -944,27 +917,25 @@ namespace Gestionis
             barraSecundaria1.BackColor = Color.FromArgb(211, 208, 242);
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
-            barraSecundaria1.Margin = new Padding(3, 2, 3, 2);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1864, 33);
+            barraSecundaria1.Size = new Size(1818, 44);
             barraSecundaria1.TabIndex = 86;
             // 
             // barraLateral1
             // 
             barraLateral1.BackColor = Color.FromArgb(205, 213, 221);
             barraLateral1.Dock = DockStyle.Left;
-            barraLateral1.Location = new Point(0, 73);
-            barraLateral1.Margin = new Padding(3, 2, 3, 2);
+            barraLateral1.Location = new Point(0, 84);
             barraLateral1.Name = "barraLateral1";
-            barraLateral1.Size = new Size(207, 907);
+            barraLateral1.Size = new Size(237, 1018);
             barraLateral1.TabIndex = 87;
             // 
             // frmMetodosAhorro
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(233, 236, 239);
-            ClientSize = new Size(1864, 980);
+            ClientSize = new Size(1818, 1102);
             Controls.Add(barraLateral1);
             Controls.Add(barraSecundaria1);
             Controls.Add(lblPorcentajes);
@@ -1002,7 +973,6 @@ namespace Gestionis
             Controls.Add(lblIngresosMes);
             Controls.Add(label7);
             Controls.Add(label15);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "frmMetodosAhorro";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MetodosAhorro";

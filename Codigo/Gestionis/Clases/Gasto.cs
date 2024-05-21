@@ -70,22 +70,43 @@ namespace Gestionis.Clases
         }
         #endregion
 
+        public void Add()
+        {
+            string queryString = "INSERT INTO gasto (idGasto, numCuenta, nombre, cantidad," +
+                "idCategoria, tipo, comentarios, fecha, hora) " +
+                "VALUES (@idGasto, @numCuenta, @nombre, @cantidad, @idCategoria, @tipo, @comentarios," +
+                "@fecha, @hora);";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+            query.Parameters.AddWithValue("@idGasto", idGasto);
+            query.Parameters.AddWithValue("@numCuenta", Sesion.Instance.NumCuenta);
+            query.Parameters.AddWithValue("@nombre", nombre);
+            query.Parameters.AddWithValue("@cantidad", cantidad);
+            query.Parameters.AddWithValue("@idCategoria", categoria);
+            query.Parameters.AddWithValue("@tipo", tipo);
+            query.Parameters.AddWithValue("@comentarios", comentarios);
+            query.Parameters.AddWithValue("@fecha", fecha);
+            query.Parameters.AddWithValue("@hora", hora);
+
+            ConexionDB.AbrirConexion();
+
+            query.ExecuteNonQuery();
+
+            ConexionDB.CerrarConexion();
+        }
+
         #region Métodos Ahorro dgv Datos
 
         public static DataTable VisualizarDatosVariable()
         {
-            //string queryString = "SELECT c.nombre AS categoria, SUM(g.cantidad) AS total_gasto " +
-            //   "FROM gasto g JOIN categoriagasto c ON g.categoria = c.idCategoria " +
-            //   "WHERE g.tipo = 'Variable' GROUP BY c.nombre";
-            return Utilidades.RellenarDatos("SELECT c.nombre AS categoria, SUM(g.cantidad) AS total_gasto " +
-               "FROM gasto g JOIN categoriagasto c ON g.categoria = c.idCategoria " +
-               "WHERE g.tipo = 'Variable' GROUP BY c.nombre");
+
+            return Utilidades.RellenarDatos("SELECT c.nombre AS categoria, SUM(g.cantidad) AS total_gasto,(SUM(g.cantidad) * 100 / (SELECT cantidad FROM ingreso)) AS porcentaje " +
+                "FROM gasto g JOIN categoriagasto c ON g.categoria = c.idCategoria WHERE g.tipo = 'Variable' GROUP BY c.nombre;");
         }
         public static DataTable VisualizarDatosFijo()
         {
-            return Utilidades.RellenarDatos("SELECT c.nombre AS categoria, SUM(g.cantidad) AS total_gasto " +
-                           "FROM gasto g JOIN categoriagasto c ON g.categoria = c.idCategoria " +
-                           "WHERE g.tipo = 'fijo' GROUP BY c.nombre");
+            return Utilidades.RellenarDatos("SELECT c.nombre AS categoria, SUM(g.cantidad) AS total_gasto,(SUM(g.cantidad) * 100 / (SELECT cantidad FROM ingreso)) AS porcentaje " +
+                "FROM gasto g JOIN categoriagasto c ON g.categoria = c.idCategoria WHERE g.tipo = 'Fijo' GROUP BY c.nombre;");
         }
 
         #endregion
@@ -158,30 +179,5 @@ namespace Gestionis.Clases
         }
 
         #endregion
-
-        public void Add()
-        {
-            string queryString = "INSERT INTO gasto (idGasto, numCuenta, nombre, cantidad," +
-                "idCategoria, tipo, comentarios, fecha, hora) " +
-                "VALUES (@idGasto, @numCuenta, @nombre, @cantidad, @idCategoria, @tipo, @comentarios," +
-                "@fecha, @hora);";
-
-            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
-            query.Parameters.AddWithValue("@idGasto", idGasto);
-            query.Parameters.AddWithValue("@numCuenta", Sesion.Instance.NumCuenta);
-            query.Parameters.AddWithValue("@nombre", nombre);
-            query.Parameters.AddWithValue("@cantidad", cantidad);
-            query.Parameters.AddWithValue("@idCategoria", categoria);
-            query.Parameters.AddWithValue("@tipo", tipo);
-            query.Parameters.AddWithValue("@comentarios", comentarios);
-            query.Parameters.AddWithValue("@fecha", fecha);
-            query.Parameters.AddWithValue("@hora", hora);
-
-            ConexionDB.AbrirConexion();
-
-            query.ExecuteNonQuery();
-
-            ConexionDB.CerrarConexion();
-        }
     }
 }

@@ -65,23 +65,51 @@ namespace Gestionis
             M503020Porcentajes();
 
 
-            lblIngresoMesCont.Text = cuentaUsuario.TotalIngresos().ToString() + " €";
+            lblIngresoMesCont.Text = cuentaUsuario.TotalIngresos() + " €";
             ConfigurarComboBox(cmbCategorias, CategoriaGasto.DevuelveNombresCategorias());
+
             try
             {
                 dgvGastosFijos.DataSource = Gasto.VisualizarDatosFijo();
                 dgvGastosVariables.DataSource = Gasto.VisualizarDatosVariable();
-                lblTotalValorFijo.Text = Gasto.TotalFijos().ToString();
-                lblTotalGastosVariables.Text = Gasto.TotalVariable().ToString();
-                lblPorcentajeRest.Text = Gasto.DineroRestante((int)cuentaUsuario.TotalIngresos()).ToString();
+                lblTotalValorFijo.Text = Gasto.TotalFijos() + " €";
+                lblTotalGastosVariables.Text = Gasto.TotalVariable() + " €";
+                lblDineroRest.Text = Gasto.DineroRestante((int)cuentaUsuario.TotalIngresos()) + " €";
+                lblPorcentajeVariable.Text = PorcentajeTotalVariable().ToString("0.00") + " %";
+                lblPorcentajeFijo.Text = PorcentajeTotalFijo().ToString("0.00") + " %";
+
+                lblPorcentajeRest.Text =  PorcentajeTotalVariable() - PorcentajeTotalFijo() + " %";
             }
             catch (Exception ex) { }
             finally
             {
                 ConexionDB.CerrarConexion();
             }
-
         }
+        #region Calculo de los porcentajes totales
+        private int PorcentajeTotalVariable()
+        {
+            double porcentajeTotal = 0;
+
+            for (int i = 0; i < dgvGastosVariables.Rows.Count; i++)
+            {
+                porcentajeTotal += (double)dgvGastosVariables.Rows[i].Cells[2].Value;
+            }
+            return (int)porcentajeTotal;
+        }
+        private int PorcentajeTotalFijo()
+        {
+            double porcentajeTotal = 0;
+
+            for (int i = 0; i < dgvGastosFijos.Rows.Count; i++)
+            {
+                porcentajeTotal += (double)dgvGastosFijos.Rows[i].Cells[2].Value;
+            }
+            return (int)porcentajeTotal;
+        }
+
+        #endregion
+
         private void btnVolver_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -120,20 +148,6 @@ namespace Gestionis
             lblNecPresValor.Text = Gasto.M503020Presindibles(ingresoMensual).ToString() + " €";
             lblAhoValor.Text = Gasto.M503020Ahorro(ingresoMensual).ToString() + " €";
         }
-        private void M503020SobranteYPorcentaje()
-        {
-            double ingresoMensual = Gasto.DineroRestante((int)cuentaUsuario.TotalIngresos());
-
-            double ingresosTotales = ingresoMensual; // Supongamos que tienes un método para obtener los ingresos totales
-            double gastosNecesidades = Gasto.M503020Necesidades(ingresoMensual); // Supongamos que tienes un método para obtener los gastos de necesidades
-            double gastosPrescindibles = Gasto.M503020Presindibles(ingresoMensual); // Supongamos que tienes un método para obtener los gastos prescindibles
-            double gastosAhorro = Gasto.M503020Ahorro(ingresoMensual); // Supongamos que tienes un método para obtener los gastos de ahorro
-
-            (double porcentajeSobranteNecesidades, double porcentajeSobrantePrescindibles, double porcentajeSobranteAhorro) = Gasto.CalcularSobranteYPorcentaje(ingresosTotales, gastosNecesidades, gastosPrescindibles, gastosAhorro);
-
-            lblGMNecValor.Text = $"{porcentajeSobranteNecesidades:F2}%";
-            lblGPresValor.Text = $"{porcentajeSobrantePrescindibles:F2}%";
-            lblGPPorDin.Text = $"{porcentajeSobranteAhorro:F2}%";
-        }
+        
     }
 }

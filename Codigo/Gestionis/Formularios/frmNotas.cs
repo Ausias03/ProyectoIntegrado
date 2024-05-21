@@ -106,7 +106,6 @@ namespace Gestionis
                     Notas.BorrarNota(tituloeNota);
                     dgvNotas.Rows.RemoveAt(e.RowIndex);
                     Notas.EliminarNotaCalendario(tituloeNota);
-
                 }
             }
         }
