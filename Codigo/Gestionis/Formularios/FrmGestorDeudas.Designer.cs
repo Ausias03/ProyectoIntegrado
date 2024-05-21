@@ -153,7 +153,7 @@ namespace Gestionis
             // 
             btnBuscar.BackColor = Color.FromArgb(178, 242, 187);
             btnBuscar.Location = new Point(54, 244);
-            btnBuscar.Margin = new Padding(4, 4, 4, 4);
+            btnBuscar.Margin = new Padding(4);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(170, 52);
             btnBuscar.TabIndex = 3;
@@ -247,7 +247,7 @@ namespace Gestionis
             // 
             cmbCategoria.FormattingEnabled = true;
             cmbCategoria.Location = new Point(248, 248);
-            cmbCategoria.Margin = new Padding(4, 4, 4, 4);
+            cmbCategoria.Margin = new Padding(4);
             cmbCategoria.Name = "cmbCategoria";
             cmbCategoria.Size = new Size(266, 39);
             cmbCategoria.TabIndex = 8;
@@ -262,7 +262,7 @@ namespace Gestionis
             dgvGastosIngresos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvGastosIngresos.GridColor = SystemColors.InfoText;
             dgvGastosIngresos.Location = new Point(31, 308);
-            dgvGastosIngresos.Margin = new Padding(4, 4, 4, 4);
+            dgvGastosIngresos.Margin = new Padding(4);
             dgvGastosIngresos.Name = "dgvGastosIngresos";
             dgvGastosIngresos.ReadOnly = true;
             dgvGastosIngresos.RowHeadersWidth = 51;
@@ -273,7 +273,7 @@ namespace Gestionis
             // 
             btnRestaurar.BackColor = Color.FromArgb(178, 242, 187);
             btnRestaurar.Location = new Point(722, 244);
-            btnRestaurar.Margin = new Padding(4, 4, 4, 4);
+            btnRestaurar.Margin = new Padding(4);
             btnRestaurar.Name = "btnRestaurar";
             btnRestaurar.Size = new Size(200, 52);
             btnRestaurar.TabIndex = 4;
@@ -285,7 +285,7 @@ namespace Gestionis
             // 
             btnEliminarDeuda.BackColor = Color.FromArgb(178, 242, 187);
             btnEliminarDeuda.Location = new Point(76, 100);
-            btnEliminarDeuda.Margin = new Padding(4, 4, 4, 4);
+            btnEliminarDeuda.Margin = new Padding(4);
             btnEliminarDeuda.Name = "btnEliminarDeuda";
             btnEliminarDeuda.Size = new Size(200, 44);
             btnEliminarDeuda.TabIndex = 2;
@@ -297,7 +297,7 @@ namespace Gestionis
             // 
             btnAnyadirDeuda.BackColor = Color.FromArgb(178, 242, 187);
             btnAnyadirDeuda.Location = new Point(76, 39);
-            btnAnyadirDeuda.Margin = new Padding(4, 4, 4, 4);
+            btnAnyadirDeuda.Margin = new Padding(4);
             btnAnyadirDeuda.Name = "btnAnyadirDeuda";
             btnAnyadirDeuda.Size = new Size(200, 44);
             btnAnyadirDeuda.TabIndex = 1;
@@ -329,7 +329,7 @@ namespace Gestionis
             // vpbMeDeben
             // 
             vpbMeDeben.Location = new Point(208, 94);
-            vpbMeDeben.Margin = new Padding(4, 4, 4, 4);
+            vpbMeDeben.Margin = new Padding(4);
             vpbMeDeben.Name = "vpbMeDeben";
             vpbMeDeben.Size = new Size(101, 184);
             vpbMeDeben.TabIndex = 32;
@@ -359,7 +359,7 @@ namespace Gestionis
             // vpbDebo
             // 
             vpbDebo.Location = new Point(55, 94);
-            vpbDebo.Margin = new Padding(4, 4, 4, 4);
+            vpbDebo.Margin = new Padding(4);
             vpbDebo.Name = "vpbDebo";
             vpbDebo.Size = new Size(101, 184);
             vpbDebo.TabIndex = 31;
@@ -425,8 +425,8 @@ namespace Gestionis
             // 
             barraSecundaria.BackColor = Color.FromArgb(211, 208, 242);
             barraSecundaria.Dock = DockStyle.Top;
-            barraSecundaria.Location = new Point(0, 50);
-            barraSecundaria.Margin = new Padding(4, 4, 4, 4);
+            barraSecundaria.Location = new Point(0, 40);
+            barraSecundaria.Margin = new Padding(4);
             barraSecundaria.Name = "barraSecundaria";
             barraSecundaria.Size = new Size(1818, 44);
             barraSecundaria.TabIndex = 29;
@@ -435,10 +435,10 @@ namespace Gestionis
             // 
             barraLateral1.BackColor = Color.FromArgb(205, 213, 221);
             barraLateral1.Dock = DockStyle.Left;
-            barraLateral1.Location = new Point(0, 94);
-            barraLateral1.Margin = new Padding(4, 4, 4, 4);
+            barraLateral1.Location = new Point(0, 84);
+            barraLateral1.Margin = new Padding(4);
             barraLateral1.Name = "barraLateral1";
-            barraLateral1.Size = new Size(264, 1006);
+            barraLateral1.Size = new Size(264, 1016);
             barraLateral1.TabIndex = 30;
             // 
             // FrmGestorDeudas

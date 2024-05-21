@@ -5,13 +5,14 @@ namespace Gestionis
 {
     public partial class FrmGestorDeudas : FrmBarraPrincipal
     {
+        private ToolTip toolTip; // Add a ToolTip instance
 
         public FrmGestorDeudas()
         {
             InitializeComponent();
             ModificarBotones();
+            toolTip = new ToolTip(); // Initialize the ToolTip
         }
-
         private void FrmGestorDeudas_Load(object sender, EventArgs e)
         {
             #region Botones
@@ -52,11 +53,36 @@ namespace Gestionis
         private void ModificarBotones()
         {
             barraSecundaria.BtnLanguage.Click += BtnTema_Click;
+            barraSecundaria.BtnAyuda.Click += BtnTema_Click;
         }
 
         private void BtnTema_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void BtnAyuda_Click(object sender, EventArgs e) 
+        {
+            ShowTooltip(btnAnyadirDeuda, "Añadir una nueva deuda.");
+            ShowTooltip(btnEliminarDeuda, "Eliminar una deuda existente.");
+            ShowTooltip(btnBuscar, "Buscar deudas según los filtros seleccionados.");
+            ShowTooltip(btnRestaurar, "Restaurar la tabla de deudas.");
+            ShowTooltip(cmbCategoria, "Seleccionar una categoría de deuda.");
+            ShowTooltip(txtTitulo, "Escribir el título de la deuda a buscar.");
+            ShowTooltip(chkDebo, "Marcar si se deben mostrar solo las deudas que debes.");
+            ShowTooltip(dgvGastosIngresos, "Tabla que muestra las deudas.");
+            ShowTooltip(lblDeudasTotalesValor, "Muestra el total de deudas.");
+            ShowTooltip(lblProximaDeudaValor, "Muestra la próxima deuda.");
+            ShowTooltip(lblFechaLimiteValor, "Muestra la fecha límite de la próxima deuda.");
+            ShowTooltip(lblTipoValor, "Indica si debes o te deben.");
+            ShowTooltip(vpbDebo, "Progreso de las deudas que debes.");
+            ShowTooltip(vpbMeDeben, "Progreso de las deudas que te deben.");
+        }
+
+        private void ShowTooltip(Control control, string message)
+        {
+            toolTip.SetToolTip(control, message);
+            toolTip.Show(message, control, control.Width / 2, control.Height / 2);
         }
 
         private void Titulo()
