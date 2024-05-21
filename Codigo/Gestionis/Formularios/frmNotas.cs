@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using Gestionis.Clases;
 using Gestionis.Formularios;
 using Org.BouncyCastle.Crypto.Parameters;
+using Outlook = Microsoft.Office.Interop.Outlook;
+
 
 namespace Gestionis
 {
@@ -66,7 +68,7 @@ namespace Gestionis
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
             dgvNotas.DataSource = Notas.BuscarPorFiltro(cmbFiltrarPor.Text, txtFiltro.Text, txtFiltro.Text, ckbAlarmaFiltro.Checked,
-                btnFiltroColor.BackColor.ToArgb(), dtpFiltrarFecha.Value.ToString("yyyy-MM-dd"));
+                btnFiltroColor.BackColor.ToArgb(), dtpFiltrarFecha.Value.ToString("yyyy-MM-dd")); ;
         }
 
         #region Colores aplicados en el dgv en la columna "Calendario"
@@ -95,16 +97,20 @@ namespace Gestionis
 
         private void dgvNotas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex > 0)
+            if (e.RowIndex > 0)
             {
                 string tituloeNota = dgvNotas.Rows[e.RowIndex].Cells["Titulo"].Value.ToString();
                 DialogResult resultado = MessageBox.Show("¿Desea eliminar esta fila?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if(resultado == DialogResult.Yes)
+                if (resultado == DialogResult.Yes)
                 {
                     Notas.BorrarNota(tituloeNota);
                     dgvNotas.Rows.RemoveAt(e.RowIndex);
+                    Notas.EliminarNotaCalendario(tituloeNota);
+
                 }
             }
         }
+
+
     }
 }

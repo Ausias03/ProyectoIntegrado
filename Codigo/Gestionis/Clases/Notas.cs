@@ -5,15 +5,18 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Gestionis.Formularios;
 using MySql.Data.MySqlClient;
+using Mysqlx.Resultset;
 using Org.BouncyCastle.Bcpg.OpenPgp;
+using Outlook = Microsoft.Office.Interop.Outlook;
+
 
 namespace Gestionis.Clases
 {
     class Notas
     {
         private int? idNota;
+        private int? idDeuda;
         private string apodoUsuario;
         private string titulo;
         private string descripcion;
@@ -32,7 +35,17 @@ namespace Gestionis.Clases
             alarma = alar;
             color = col;
         }
-        public Notas() { }
+        public Notas(int idDeu,  string tit, string desc, DateTime fRecord, bool alar, int col) 
+        {
+            idNota = null;
+            idDeuda = idDeu;
+            apodoUsuario = Sesion.Instance.ApodoUsuario;
+            titulo = tit;
+            descripcion = desc;
+            fechaRecordatorio = fRecord;
+            alarma = alar;
+            color = col;
+        }
         #endregion
 
         public void Add()
@@ -52,8 +65,8 @@ namespace Gestionis.Clases
             ConexionDB.AbrirConexion();
             query.ExecuteNonQuery();
             ConexionDB.CerrarConexion();
-
             SistemaNiveles.IncrementarExperiencia(apodoUsuario, 20);
+
         }
 
         public static void BorrarNota(string tituloNota)
@@ -72,12 +85,12 @@ namespace Gestionis.Clases
         public static DataTable RecargarTabla()
         {
             return Utilidades.RellenarDatos($"SELECT titulo, alarma, color, descripcion, fechaRecordatorio " +
-                $"FROM nota WHERE apodoUsuario = '{Sesion.Instance.ApodoUsuario}';") ;
+                $"FROM nota WHERE apodoUsuario = '{Sesion.Instance.ApodoUsuario}';");
         }
-       
+
         public static string[] CargaFiltros()
         {
-            string[] lista = new string[] { "Fecha", "Titulo", "Alarma", "Descripcion", "Color" };
+            string[] lista = new string[] { "Fecha", "Titulo", "Alarma", "Descripcion", "Color", "Deuda"};
             return lista;
         }
 
@@ -103,13 +116,14 @@ namespace Gestionis.Clases
                 case "Color":
                     consulta += $" AND color = '{color}';";
                     break;
+
                 default:
                     break;
             }
 
             return Utilidades.RellenarDatos(consulta);
         }
-               
+
         public static DataTable NotasDia()
         {
             string fechaActual = DateTime.Today.ToString("yyyy-MM-dd");
@@ -151,5 +165,73 @@ namespace Gestionis.Clases
 
         #endregion
 
+        #region Agregación/Eliminación de nota en calendario
+
+        public void AgregarNotaAlCalendario(DateTime fechaInicio) 
+        { 
+            try
+            {
+                Outlook.Application outlookApp = new Outlook.Application();
+                Outlook.AppointmentItem newAppointment = (Outlook.AppointmentItem)outlookApp.CreateItem(Outlook.OlItemType.olAppointmentItem);
+
+                newAppointment.Body = descripcion;
+                newAppointment.Subject = titulo;
+                newAppointment.Start = fechaInicio;
+                newAppointment.Duration = 60;
+
+                newAppointment.Save();
+
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(outlookApp);
+
+                MessageBox.Show("Nota guardada y sincronizada con el calendario de Outlook correctamente.", "Sincronización con Calendario", MessageBoxButtons.OK);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+        public static void EliminarNotaCalendario(string titulo)
+        {
+            Outlook.Application outlookApp = null;
+            Outlook.Items outlookItems = null;
+
+            try
+            {
+                outlookApp = new Outlook.Application();
+                Outlook.MAPIFolder calendarFolder = outlookApp.Session.GetDefaultFolder(Outlook.OlDefaultFolders.olFolderCalendar);
+                outlookItems = calendarFolder.Items;
+
+                foreach (object item in outlookItems)
+                {
+                    if (item is Outlook.AppointmentItem appointment)
+                    {
+                        if (appointment.Subject == titulo)
+                        {
+                            appointment.Delete();
+                            MessageBox.Show("Evento eliminado del calendario de Outlook correctamente.");
+                            return;
+                        }
+                    }
+                }
+
+                MessageBox.Show("No se encontró ningún evento con el título especificado en el calendario de Outlook.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar el evento del calendario de Outlook: " + ex.Message);
+            }
+            finally
+            {
+                if (outlookItems != null)
+                {
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(outlookItems);
+                }
+                if (outlookApp != null)
+                {
+                    System.Runtime.InteropServices.Marshal.ReleaseComObject(outlookApp);
+                }
+            }
+        }
+        #endregion
     }
 }

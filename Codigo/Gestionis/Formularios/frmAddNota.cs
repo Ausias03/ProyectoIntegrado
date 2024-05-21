@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace Gestionis
 {
@@ -73,6 +74,14 @@ namespace Gestionis
             {
                 Notas nota1 = new Notas(txtAddTitulo.Text, txtAddAsunto.Text, dtpAddDia.Value, ckbAlarma.Checked, btnColor.BackColor.ToArgb());
                 nota1.Add();
+                if (ckbAlarma.Checked)
+                {
+                    DateTime fecha = dtpAddDia.Value.Date;
+                    DateTime hora = dtpHoraAlarma.Value;
+                    DateTime fechaHora = new DateTime(fecha.Year, fecha.Month, fecha.Day, hora.Hour, hora.Minute, hora.Second);
+
+                    nota1.AgregarNotaAlCalendario(fechaHora);
+                }
                 this.Close();
             }
             catch
@@ -90,7 +99,6 @@ namespace Gestionis
             }
         }
 
-
         #region Metodos de Implementacion
         private void RestablecerControlesVisuales()
         {
@@ -102,5 +110,10 @@ namespace Gestionis
         }
 
         #endregion
+
+        private void ckbAlarma_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckbAlarma.Checked) { dtpHoraAlarma.Visible = true; } else { dtpHoraAlarma.Visible = false; }
+        }
     }
 }
