@@ -25,6 +25,8 @@ namespace Gestionis.Herramientas
             {
                 Width = 231;
             }
+
+            AplicarIdiomas();
         }
 
         private void InitializePanelProperties()
@@ -115,6 +117,18 @@ namespace Gestionis.Herramientas
         {
             transicionBarraLateral.Start();
             return Sesion.Instance.BarraExpandida;
+        }
+
+        public void AplicarIdiomas()
+        {
+            if (Sesion.Instance.Espanyol)
+            {
+                //MessageBox.Show("Hola");
+            }
+            else
+            {
+                //MessageBox.Show("Hello");
+            }
         }
     }
 }

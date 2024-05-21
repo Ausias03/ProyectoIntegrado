@@ -9,6 +9,7 @@
         private int numCuenta;
         private bool temaOscuro = false;
         private static bool barraExpandida = true;
+        private bool espanyol = true;
 
         public string ApodoUsuario
         {
@@ -25,6 +26,8 @@
         public bool TemaOscuro { get { return temaOscuro; } set { temaOscuro = value; } }
 
         public bool BarraExpandida { get { return barraExpandida; } set { barraExpandida = value; } }
+
+        public bool Espanyol { get { return espanyol; } set { espanyol = value; } }
 
         private Sesion() { }
 
