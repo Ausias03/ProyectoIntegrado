@@ -1,14 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gestionis.Clases
 {
-    internal class Utilidades
+    class Utilidades
     {
         public static bool TieneEspacios(string apodo)
         {
@@ -30,8 +25,25 @@ namespace Gestionis.Clases
                     }
                 }
                 ConexionDB.CerrarConexion();
-            }catch (Exception) { }
+            }
+            catch (Exception) { }
             return tablaDatos;
+        }
+
+        /// <summary>
+        /// Calcula el valor máximo para una representación gráfica proporcional de dos tablas,
+        /// tomando en cuenta la diferencia entre ellas
+        /// </summary>
+        /// <param name="debo">Cantidad total que se debe</param>
+        /// <param name="meDeben">Cantidad total que se debe recibir</param>
+        /// <returns>El valor máximo ajustado para la representación gráfica proporcional de ambas tablas</returns>
+        public static int ProgramarGrafico(double valor1, double valor2)
+        {
+            double diferencia = Math.Abs(valor1 - valor2);
+
+            double valorMax = Math.Max(valor1, valor2) + (diferencia / 2);
+
+            return (int)Math.Ceiling(valorMax);
         }
     }
 }

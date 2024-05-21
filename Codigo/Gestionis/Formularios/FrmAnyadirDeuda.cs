@@ -21,6 +21,8 @@ namespace Gestionis.Formularios
         private void FrmAnyadirDeuda_Load(object sender, EventArgs e)
         {
             ResetearFrm();
+            dtpDeuda.MinDate = DateTime.Now;
+            dtpVencimiento.MinDate = DateTime.Now;
         }
 
         #region Validaciones

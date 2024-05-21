@@ -1,18 +1,17 @@
 ﻿using Gestionis.Clases;
 using Gestionis.Formularios;
-using Gestionis.Herramientas;
 
 namespace Gestionis
 {
     public partial class FrmGestorDeudas : FrmBarraPrincipal
     {
-         
+
         public FrmGestorDeudas()
         {
             InitializeComponent();
             ModificarBotones();
         }
- 
+
         private void FrmGestorDeudas_Load(object sender, EventArgs e)
         {
             #region Botones
@@ -36,8 +35,11 @@ namespace Gestionis
             cmbCategoria.Items.AddRange(Deuda.Filtros());
             cmbCategoria.SelectedIndex = 0;
 
+            SetGrafico();
+            vpbDebo.ForeColor = Color.IndianRed;
             Titulo();
 
+            //lblSaldoValor.Text = 
             lblDeudasTotalesValor.Text = Deuda.DeudasTotales().ToString();
             ProximaDeuda();
 
@@ -55,7 +57,7 @@ namespace Gestionis
         private void BtnTema_Click(object sender, EventArgs e)
         {
 
-        }    
+        }
 
         private void Titulo()
         {
@@ -77,7 +79,7 @@ namespace Gestionis
             deuda.GetProximaDeuda(deuda);
 
             if (deuda.Titulo != null)
-            {                
+            {
                 lblProximaDeudaValor.Text = deuda.Titulo.ToString();
                 lblFechaLimiteValor.Text = deuda.FechaVencimiento.ToShortDateString();
                 if (deuda.Debo) lblTipoValor.Text = "Debo"; else lblTipoValor.Text = "Me deben";
@@ -88,6 +90,7 @@ namespace Gestionis
                 lblFechaLimiteValor.Text = string.Empty;
                 lblTipoValor.Text = string.Empty;
             }
+            SetGrafico();
         }
 
         private void btnAnyadirDeuda_Click(object sender, EventArgs e)
@@ -128,6 +131,17 @@ namespace Gestionis
         {
             dgvGastosIngresos.DataSource = Deuda.RecargarTabla(chkDebo.Checked);
         }
-        
+
+        private void SetGrafico()
+        {
+            double debo = Deuda.CalcularTotalDeuda(true), meDeben = Deuda.CalcularTotalDeuda(false);
+
+            int valorMax = Utilidades.ProgramarGrafico(debo, meDeben);
+            vpbDebo.Maximum = valorMax;
+            vpbMeDeben.Maximum = valorMax;
+
+            vpbDebo.Value = (int)debo;
+            vpbMeDeben.Value = (int)meDeben;
+        }
     }
 }

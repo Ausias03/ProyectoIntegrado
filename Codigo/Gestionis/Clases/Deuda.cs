@@ -74,6 +74,8 @@ namespace Gestionis.Clases
                 }                
             }
             catch (Exception) { }
+            finally { ConexionDB.CerrarConexion(); }
+
             return resultado;
         }
 
@@ -157,6 +159,7 @@ namespace Gestionis.Clases
                 }
             }
             catch (Exception) { }
+            finally { ConexionDB.CerrarConexion(); }
 
             return resultado;
         }
@@ -228,9 +231,9 @@ namespace Gestionis.Clases
             return Utilidades.RellenarDatos(consulta);
         }
 
-        public static float CalcularTotal(bool debo)
+        public static double CalcularTotalDeuda(bool debo)
         {
-            float resultado = 0;
+            double resultado = 0;
             string consulta = $"SELECT SUM(cantidad) FROM deuda WHERE numCuenta = {Sesion.Instance.NumCuenta} AND debo = {debo}";
 
             try
@@ -238,11 +241,12 @@ namespace Gestionis.Clases
                 using (MySqlCommand query = new MySqlCommand(consulta, ConexionDB.Conexion))
                 {
                     ConexionDB.AbrirConexion();
-                    resultado = Convert.ToInt32(query.ExecuteScalar());
+                    resultado = Convert.ToDouble(query.ExecuteScalar());
                     ConexionDB.CerrarConexion();
                 }
             }
             catch (Exception){ }
+            finally { ConexionDB.CerrarConexion(); }
             return resultado;
         }
     }
