@@ -57,7 +57,7 @@ namespace Gestionis.Herramientas
             BtnNotas = CreateButton("Notas", Properties.Resources.notas, typeof(frmNotas));
             BtnClasificacion = CreateButton("Clasificación", Properties.Resources.calsificacion, typeof(frmTablaClasificación));
             BtnHistorial = CreateButton("Historial", Properties.Resources.historial, typeof(frmHistorial));
-            BtnNotificaciones = CreateButton("Notif.", Properties.Resources.notificacion, typeof(FrmModifNotif));
+            BtnNotificaciones = CreateButton("Modif. Notif.", Properties.Resources.notificacion, typeof(FrmModifNotif));
             BtnPaginaWeb = CreateButton("Página Web", Properties.Resources.web, typeof(frmTablaClasificación));
         }
 
@@ -113,7 +113,7 @@ namespace Gestionis.Herramientas
         private void CerrarAbrirFrm(Type formType)
         {
             Form form = (Form)Activator.CreateInstance(formType);
-            if (form.GetType() == typeof(FrmNotificaciones))
+            if (form.GetType() == typeof(FrmModifNotif))
             {
                 form.ShowDialog();
             }
