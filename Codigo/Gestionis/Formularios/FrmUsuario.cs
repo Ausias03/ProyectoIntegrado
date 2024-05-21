@@ -42,7 +42,7 @@ namespace Gestionis
             barraSecundaria1.Load();
             barraLateral1.Load();
             SetExpNivel();
-            if(Sesion.Instance.Espanyol) Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
+            if (Sesion.Instance.Espanyol) Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
             else Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
             AplicarIdioma();
         }
@@ -181,6 +181,7 @@ namespace Gestionis
                 txtNombre.ReadOnly = true;
                 btnConfirmarNom.Hide();
                 btnCambiarNom.Show();
+                Usuario.CambiarCampo("nombre", txtNombre.Text);
             }
         }
 
@@ -190,6 +191,7 @@ namespace Gestionis
             txtApellidos.ReadOnly = true;
             btnConfirmarApellidos.Hide();
             btnCambiarApellidos.Show();
+            Usuario.CambiarCampo("apellidos", txtApellidos.Text);
         }
 
         private void btnConfirmarApodo_Click(object sender, EventArgs e)
@@ -207,6 +209,7 @@ namespace Gestionis
                     txtApodo.ReadOnly = true;
                     btnConfirmarApodo.Hide();
                     btnCambiarApodo.Show();
+                    Usuario.CambiarCampo("apodo", txtApodo.Text);
                 }
             }
         }
@@ -215,10 +218,18 @@ namespace Gestionis
         {
             if (ValidarCorreo())
             {
-                usuario.Correo = txtCorreo.Text;
-                txtCorreo.ReadOnly = true;
-                btnConfirmarCorreo.Hide();
-                btnCambiarCorreo.Show();
+                if (Usuario.CorreoExiste(txtCorreo.Text))
+                {
+                    errorProvider1.SetError(txtCorreo, "El correo introducido ya esta en uso.");
+                }
+                else
+                {
+                    usuario.Correo = txtCorreo.Text;
+                    txtCorreo.ReadOnly = true;
+                    btnConfirmarCorreo.Hide();
+                    btnCambiarCorreo.Show();
+                    Usuario.CambiarCampo("correo", txtCorreo.Text);
+                }
             }
         }
 
@@ -228,6 +239,7 @@ namespace Gestionis
             txtDireccion.ReadOnly = true;
             btnConfirmarDir.Hide();
             btnCambiarDir.Show();
+            Usuario.CambiarCampo("direccion", txtDireccion.Text);
         }
 
         private void btnConfirmarTel_Click(object sender, EventArgs e)
@@ -236,6 +248,7 @@ namespace Gestionis
             txtTelefono.ReadOnly = true;
             btnConfirmarTel.Hide();
             btnCambiarTel.Show();
+            Usuario.CambiarCampo("telefono", txtTelefono.Text);
         }
 
         private void btnConfirmarFoto_Click(object sender, EventArgs e)
@@ -255,7 +268,7 @@ namespace Gestionis
             frmInicio.Closed += (s, args) => this.Close();
             frmInicio.Show();
         }
-        
+
         private void AplicarIdioma()
         {
             lblTuCuenta.Text = Resources.Idiomas.StringRecursosUsuario.lblTuCuenta;
@@ -281,7 +294,7 @@ namespace Gestionis
             lblApodo.Text = Resources.Idiomas.StringRecursosUsuario.lblApodo;
             lblNombre.Text = Resources.Idiomas.StringRecursosUsuario.lblNombre;
         }
-        
+
 
     }
 }

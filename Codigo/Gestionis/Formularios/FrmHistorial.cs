@@ -47,6 +47,7 @@ namespace Gestionis
             if (txtBuscar.Text != "") CargarFiltro(dtpBuscaFecha.Value, cuenta, cmbMetodo.SelectedIndex, txtBuscar.Text);
             else CargarFecha(dtpBuscaFecha.Value, cuenta);
             cmbMetodo.DataSource = ListaMetodo();
+            barraLateral1.AplicarIdiomas();
         }
 
         private void picBuscar_Click(object sender, EventArgs e)
@@ -71,7 +72,7 @@ namespace Gestionis
                 consulta = $"SELECT g.hora AS Hora,g.tipo AS Tipo,c.nombre AS Categoria,g.nombre AS Nombre,g.cantidad AS Cantidad," +
                     $"g.comentarios AS Comentarios FROM gasto AS g LEFT JOIN categoriagasto AS c ON g.categoria = c.idCategoria " +
                     $"WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta};";
-                consulta2 = $"SELECT i.hora AS Hora,i.tipo AS Tipo,c.nombre AS categoria,i.nombre AS Nombre,i.cantidad AS Cantidad" +
+                consulta2 = $"SELECT i.hora AS Hora,i.tipo AS Tipo,c.nombre AS Categoria,i.nombre AS Nombre,i.cantidad AS Cantidad" +
                     $",i.comentarios AS Comentarios FROM ingreso AS i LEFT JOIN categoriaingreso AS c ON i.categoria = c.idCategoria " +
                     $"WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta};";
             }
@@ -81,7 +82,7 @@ namespace Gestionis
                     $"g.comentarios AS Commentaries FROM gasto AS g LEFT JOIN categoriagasto AS c ON g.categoria = c.idCategoria " +
                     $"WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta};";
                 consulta2 = $"SELECT i.hora AS Date,i.tipo AS Type,c.nombre AS Category,i.nombre AS Name,i.cantidad AS Amount" +
-                    $",i.comentarios AS Commentaties FROM ingreso AS i LEFT JOIN categoriaingreso AS c ON i.categoria = c.idCategoria " +
+                    $",i.comentarios AS Commentaries FROM ingreso AS i LEFT JOIN categoriaingreso AS c ON i.categoria = c.idCategoria " +
                     $"WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta};";
             }
             dgvGastos.DataSource = Utilidades.RellenarDatos(consulta);
@@ -97,7 +98,7 @@ namespace Gestionis
                 consulta = $"SELECT g.hora AS Hora,g.tipo AS Tipo,c.nombre AS Categoria,g.nombre AS Nombre,g.cantidad AS Cantidad," +
                     $"g.comentarios AS Comentarios FROM gasto AS g LEFT JOIN categoriagasto AS c ON g.categoria = c.idCategoria " +
                     $"WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta}";
-                consulta2 = $"SELECT i.hora AS Hora,i.tipo AS Tipo,c.nombre AS categoria,i.nombre AS Nombre,i.cantidad AS Cantidad" +
+                consulta2 = $"SELECT i.hora AS Hora,i.tipo AS Tipo,c.nombre AS Categoria,i.nombre AS Nombre,i.cantidad AS Cantidad" +
                     $",i.comentarios AS Comentarios FROM ingreso AS i LEFT JOIN categoriaingreso AS c ON i.categoria = c.idCategoria " +
                     $"WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta}";
             }
@@ -107,7 +108,7 @@ namespace Gestionis
                     $"g.comentarios AS Commentaries FROM gasto AS g LEFT JOIN categoriagasto AS c ON g.categoria = c.idCategoria " +
                     $"WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta}";
                 consulta2 = $"SELECT i.hora AS Date,i.tipo AS Type,c.nombre AS Category,i.nombre AS Name,i.cantidad AS Amount" +
-                    $",i.comentarios AS Commentaties FROM ingreso AS i LEFT JOIN categoriaingreso AS c ON i.categoria = c.idCategoria " +
+                    $",i.comentarios AS Commentaries FROM ingreso AS i LEFT JOIN categoriaingreso AS c ON i.categoria = c.idCategoria " +
                     $"WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta}";
             }
             switch (filtro)
@@ -125,8 +126,8 @@ namespace Gestionis
                     consulta2 += $" AND i.nombre = '{param}';";
                     break;
                 case 3:
-                    consulta += $" AND cantidad = {param};";
-                    consulta2 += $" AND cantidad = {param};";
+                    consulta += $" AND cantidad = '{param}';";
+                    consulta2 += $" AND cantidad = '{param}';";
                     break;
                 default:
                     break;

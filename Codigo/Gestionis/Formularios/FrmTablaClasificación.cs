@@ -21,7 +21,8 @@ namespace Gestionis
         {
             barraSecundaria1.Load();
             barraLateral1.Load();
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+            if (Sesion.Instance.Espanyol) Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
+            else Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
             AplicarIdioma();
             CargarClasificacion();
         }
@@ -35,6 +36,7 @@ namespace Gestionis
         {
             AplicarIdioma();
             CargarClasificacion();
+            barraLateral1.AplicarIdiomas();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

@@ -77,58 +77,19 @@ namespace Gestionis.Clases
         #endregion
 
         #region Cambiar Atributos
-        public void CambiarTel(MySqlConnection conexion, string apodo, string tel)
+        public static void CambiarCampo(string campo, string valor)
         {
-            string consulta = String.Format("UPDATE usuario SET telefono= '{0}' WHERE apodo = '{1}'", tel, apodo);
+            string queryString = $"UPDATE usuario SET {campo} = @valor WHERE apodo = @apodo;";
 
-            MySqlCommand comando = new MySqlCommand(consulta, conexion);
+            MySqlCommand comando = new MySqlCommand(queryString, ConexionDB.Conexion);
+            comando.Parameters.AddWithValue("@valor", valor);
+            comando.Parameters.AddWithValue("@apodo", Sesion.Instance.ApodoUsuario);
+
+            ConexionDB.AbrirConexion();
+
             comando.ExecuteNonQuery();
 
-        }
-
-        public void CambiarDir(MySqlConnection conexion, string apodo, string dir)
-        {
-            string consulta = String.Format("UPDATE usuario SET direccion= '{0}' WHERE apodo = '{1}'", dir, apodo);
-
-            MySqlCommand comando = new MySqlCommand(consulta, conexion);
-            comando.ExecuteNonQuery();
-
-        }
-
-        public void CambiarCorreo(MySqlConnection conexion, string apodo, string correo)
-        {
-            string consulta = String.Format("UPDATE usuario SET correo= '{0}' WHERE apodo = '{1}'", correo, apodo);
-
-            MySqlCommand comando = new MySqlCommand(consulta, conexion);
-            comando.ExecuteNonQuery();
-
-        }
-
-        public void CambiarApodo(MySqlConnection conexion, string apodo, string apodo2)
-        {
-            string consulta = String.Format("UPDATE usuario SET apodo= '{0}' WHERE apodo = '{1}'", apodo2, apodo);
-
-            MySqlCommand comando = new MySqlCommand(consulta, conexion);
-            comando.ExecuteNonQuery();
-
-        }
-
-        public void CambiarApellidos(MySqlConnection conexion, string apodo, string apellidos)
-        {
-            string consulta = String.Format("UPDATE usuario SET apellidos = '{0}' WHERE apodo = '{1}'", apellidos, apodo);
-
-            MySqlCommand comando = new MySqlCommand(consulta, conexion);
-            comando.ExecuteNonQuery();
-
-        }
-
-        public void CambiarNombre(MySqlConnection conexion, string apodo, string nombre)
-        {
-            string consulta = String.Format("UPDATE usuario SET nombre = '{0}' WHERE apodo = '{1}'", nombre, apodo);
-
-            MySqlCommand comando = new MySqlCommand(consulta, conexion);
-            comando.ExecuteNonQuery();
-
+            ConexionDB.CerrarConexion();
         }
         #endregion
         
