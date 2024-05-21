@@ -27,7 +27,8 @@ FOREIGN KEY (apodoUsuario) REFERENCES usuario(apodo) ON DELETE CASCADE
 CREATE TABLE IF NOT EXISTS categoriaGasto (
 idCategoria INT PRIMARY KEY AUTO_INCREMENT,
 nombre VARCHAR(45) NOT NULL,
-color INT NOT NULL
+color INT NOT NULL,
+limite DECIMAL(10,2)
 );
 
 CREATE TABLE IF NOT EXISTS categoriaIngreso (
@@ -125,15 +126,6 @@ FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta) ON DELETE CASCADE,
 FOREIGN KEY (idCategoria) REFERENCES categoriagasto(idCategoria) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS limitesNotificaciones (
-idLimite INT PRIMARY KEY AUTO_INCREMENT,
-numCuenta INT NOT NULL,
-idCategoria INT NOT NULL,
-limite DECIMAL(10,2) NOT NULL,
-FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta) ON DELETE CASCADE,
-FOREIGN KEY (idCategoria) REFERENCES categoriagasto(idCategoria) ON DELETE CASCADE
-);
-
 CREATE TABLE IF NOT EXISTS nivel (
 idNivel INT PRIMARY KEY AUTO_INCREMENT,
 nivel INT NOT NULL,
@@ -161,17 +153,17 @@ VALUES (NULL, "Inversión");
 INSERT INTO categoriaIngreso (idCategoria, nombre)
 VALUES (NULL, "Venta");
 
-INSERT INTO categoriagasto (idCategoria, nombre, color)
-VALUES (1, "Restaurante", -53714);
+INSERT INTO categoriagasto (idCategoria, nombre, color, limite)
+VALUES (1, "Restaurante", -53714, 150);
 
-INSERT INTO categoriagasto (idCategoria, nombre, color)
-VALUES (2, "Supermercado", -13729281);
+INSERT INTO categoriagasto (idCategoria, nombre, color, limite)
+VALUES (2, "Supermercado", -13729281, 150);
 
-INSERT INTO categoriagasto (idCategoria, nombre, color)
-VALUES (3, "Gasolina", -2494);
+INSERT INTO categoriagasto (idCategoria, nombre, color, limite)
+VALUES (3, "Gasolina", -2494, 150);
 
-INSERT INTO categoriagasto (idCategoria, nombre, color)
-VALUES (4, "Entretenimiento", -12386472);
+INSERT INTO categoriagasto (idCategoria, nombre, color, limite)
+VALUES (4, "Entretenimiento", -12386472, 150);
 
-INSERT INTO categoriagasto (idCategoria, nombre, color)
-VALUES (5, "Luz", -5670662);
+INSERT INTO categoriagasto (idCategoria, nombre, color, limite)
+VALUES (5, "Luz", -5670662, 150);
