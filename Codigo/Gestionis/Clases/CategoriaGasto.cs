@@ -126,6 +126,22 @@ namespace Gestionis.Clases
             return nombreCategoria;
         }
 
+        public static int GetColor(int idCategoria)
+        {
+            string queryString = "SELECT color FROM categoriaGasto WHERE idCategoria = @idCategoria;";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+            query.Parameters.AddWithValue("@idCategoria", idCategoria);
+
+            ConexionDB.AbrirConexion();
+
+            int color = (int)query.ExecuteScalar();
+
+            ConexionDB.CerrarConexion();
+
+            return color;
+        }
+
         public void Add()
         {
             string queryString = "INSERT INTO categoriaGasto (idCategoria, nombre, color) " +

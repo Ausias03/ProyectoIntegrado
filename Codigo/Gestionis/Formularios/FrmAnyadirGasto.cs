@@ -85,7 +85,7 @@ namespace Gestionis
 
             g1.Add();
 
-            Usuario.BuscaUsuario(Sesion.Instance.ApodoUsuario).GetCuenta().AddNotificacion();
+            Usuario.BuscaUsuario(Sesion.Instance.ApodoUsuario).GetCuenta().AddNotificacion(g1.GetNumericCategoria());
 
             this.Close();
         }
