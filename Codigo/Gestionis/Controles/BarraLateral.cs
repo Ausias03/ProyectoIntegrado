@@ -1,4 +1,5 @@
 ﻿using Gestionis.Clases;
+using Gestionis.Formularios;
 using System.Globalization;
 
 namespace Gestionis.Herramientas
