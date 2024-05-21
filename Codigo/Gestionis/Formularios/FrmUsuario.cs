@@ -42,7 +42,8 @@ namespace Gestionis
             barraSecundaria1.Load();
             barraLateral1.Load();
             SetExpNivel();
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+            if(Sesion.Instance.Espanyol) Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
+            else Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
             AplicarIdioma();
         }
 

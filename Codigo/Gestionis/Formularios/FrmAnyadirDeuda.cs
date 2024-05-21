@@ -63,8 +63,8 @@ namespace Gestionis.Formularios
                     {
                         if(chkRecordatorio.Checked)
                         {
-                            frmAddNota frmAddNota = new frmAddNota();
-                            frmAddNota.ShowDialog();
+                            //frmAddNota frmAddNota = new frmAddNota(deuda.GetIdDeuda(deuda));
+                            //frmAddNota.ShowDialog();
                         }
                         MessageBox.Show("Deuda agregada exitosamente", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }

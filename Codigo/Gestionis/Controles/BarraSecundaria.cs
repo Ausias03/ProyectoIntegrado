@@ -25,6 +25,7 @@ namespace Gestionis.Herramientas
         {
             Tema();
             BtnHamburger.Image = Sesion.Instance.BarraExpandida ? Properties.Resources.hamburgerUp : Properties.Resources.hamburgerLeft;
+            Espanyol();
         }
 
         private void InitializePanelProperties()
@@ -82,19 +83,10 @@ namespace Gestionis.Herramientas
                     case "btnAyuda":
 
                         break;
-                    case "btnLanguage":
-                        if (ImageEquals(BtnLanguage.Image, Properties.Resources.england))
-                        {
-                            BtnLanguage.Image = Properties.Resources.spain;
-                            Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
-                            Sesion.Instance.Espanyol = true;
-                        }
-                        else
-                        {
-                            BtnLanguage.Image = Properties.Resources.england;
-                            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
-                            Sesion.Instance.Espanyol = false;
-                        }
+                    case "btnLanguage":                        
+                        if(Sesion.Instance.Espanyol) Sesion.Instance.Espanyol = false;
+                        else Sesion.Instance.Espanyol = true;
+                        Espanyol();
                         break;
                     case "btnNoticias":
 
@@ -117,6 +109,21 @@ namespace Gestionis.Herramientas
                 }
             }
         }
+
+        private void Espanyol()
+        {
+            if(Sesion.Instance.Espanyol)
+            {
+                BtnLanguage.Image = Properties.Resources.spain;
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
+            }
+            else
+            {
+                BtnLanguage.Image = Properties.Resources.england;
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+            }
+        }
+
         private void ShowFrmNotificaciones()
         {
             FrmNotificaciones fN = new FrmNotificaciones();
@@ -180,39 +187,6 @@ namespace Gestionis.Herramientas
                     CambiarColorBarraLateral(control.Controls, color);
                 }
             }
-        }
-        #endregion
-
-        #region Cambiar Idioma (imagen)
-        private bool ImageEquals(Image image1, Image image2)
-        {
-            byte[] bytes1 = ImageToByteArray(image1);
-            byte[] bytes2 = ImageToByteArray(image2);
-
-            return ByteArrayEquals(bytes1, bytes2);
-        }
-
-        private byte[] ImageToByteArray(Image image)
-        {
-            using (MemoryStream ms = new MemoryStream())
-            {
-                image.Save(ms, image.RawFormat);
-                return ms.ToArray();
-            }
-        }
-
-        private bool ByteArrayEquals(byte[] array1, byte[] array2)
-        {
-            if (array1.Length != array2.Length)
-                return false;
-
-            for (int i = 0; i < array1.Length; i++)
-            {
-                if (array1[i] != array2[i])
-                    return false;
-            }
-
-            return true;
         }
         #endregion
     }

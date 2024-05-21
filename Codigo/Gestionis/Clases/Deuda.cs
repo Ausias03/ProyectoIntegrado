@@ -79,6 +79,28 @@ namespace Gestionis.Clases
             return resultado;
         }
 
+        public int GetIdDeuda(Deuda deuda)
+        {
+            int resultado = 0;
+            string queryString = $"SELECT idDeuda FROM deuda WHERE titulo = @titulo;";
+
+            using (MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion))
+            {
+                query.Parameters.AddWithValue("@titulo", deuda.titulo);
+
+                ConexionDB.AbrirConexion();
+                using (MySqlDataReader reader = query.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        resultado = reader.GetInt32(0);                        
+                    }
+                }
+                ConexionDB.CerrarConexion();
+            }
+            return resultado;
+        }
+
         public static bool ExisteDeuda(string tit)
         {
             string queryString = $"SELECT titulo FROM deuda WHERE titulo = @titulo AND numCuenta = {Sesion.Instance.NumCuenta};";

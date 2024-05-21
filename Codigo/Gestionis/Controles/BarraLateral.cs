@@ -1,11 +1,22 @@
 ﻿using Gestionis.Clases;
+using System.Globalization;
 
 namespace Gestionis.Herramientas
 {
     public class BarraLateral : FlowLayoutPanel
     {
-
         private static System.Windows.Forms.Timer transicionBarraLateral;
+
+        public Button BtnInicio { get; private set; }
+        public Button BtnInversiones { get; private set; }
+        public Button BtnAhorros { get; private set; }
+        public Button BtnDeudas { get; private set; }
+        public Button BtnPatrimonio { get; private set; }
+        public Button BtnNotas { get; private set; }
+        public Button BtnClasificacion { get; private set; }
+        public Button BtnHistorial { get; private set; }
+        public Button BtnNotificaciones { get; private set; }
+        public Button BtnPaginaWeb { get; private set; }
 
         public BarraLateral()
         {
@@ -38,37 +49,42 @@ namespace Gestionis.Herramientas
 
         private void CreateButtons()
         {
-            CreateButton("Inicio", Properties.Resources.inicio, typeof(FrmMenuPrincipal));
-            CreateButton("Inversiones", Properties.Resources.inversiones, typeof(frmTablaClasificación));
-            CreateButton("Ahorros", Properties.Resources.ahorro, typeof(frmMetodosAhorro));
-            CreateButton("Deudas", Properties.Resources.deuda, typeof(FrmGestorDeudas));
-            CreateButton("Patrimonio", Properties.Resources.patrimonio, typeof(frmTablaClasificación));
-            CreateButton("Notas", Properties.Resources.notas, typeof(frmNotas));
-            CreateButton("Clasificación", Properties.Resources.calsificacion, typeof(frmTablaClasificación));
-            CreateButton("Historial", Properties.Resources.historial, typeof(frmHistorial));
-            CreateButton("Notif.", Properties.Resources.notificacion, typeof(FrmNotificaciones));
-            CreateButton("Página Web", Properties.Resources.web, typeof(frmTablaClasificación));
+            BtnInicio = CreateButton("Inicio", Properties.Resources.inicio, typeof(FrmMenuPrincipal));
+            BtnInversiones = CreateButton("Inversiones", Properties.Resources.inversiones, typeof(frmTablaClasificación));
+            BtnAhorros = CreateButton("Ahorros", Properties.Resources.ahorro, typeof(frmMetodosAhorro));
+            BtnDeudas = CreateButton("Deudas", Properties.Resources.deuda, typeof(FrmGestorDeudas));
+            BtnPatrimonio = CreateButton("Patrimonio", Properties.Resources.patrimonio, typeof(frmTablaClasificación));
+            BtnNotas = CreateButton("Notas", Properties.Resources.notas, typeof(frmNotas));
+            BtnClasificacion = CreateButton("Clasificación", Properties.Resources.calsificacion, typeof(frmTablaClasificación));
+            BtnHistorial = CreateButton("Historial", Properties.Resources.historial, typeof(frmHistorial));
+            BtnNotificaciones = CreateButton("Notif.", Properties.Resources.notificacion, typeof(FrmNotificaciones));
+            BtnPaginaWeb = CreateButton("Página Web", Properties.Resources.web, typeof(frmTablaClasificación));
         }
 
-        private void CreateButton(string text, Image image, Type formType)
+        private Button CreateButton(string text, Image image, Type formType)
         {
-            Button button = new Button();
-            button.Text = text;
-            button.Image = image;
-            button.ImageAlign = ContentAlignment.MiddleLeft;
-            button.Font = new Font(button.Font.FontFamily, 14);
-            button.Size = new Size(255, 69);
-            button.Padding = new Padding(5);
-            button.FlatStyle = FlatStyle.Flat;
-            button.FlatAppearance.BorderSize = 0;
+            Button button = new Button
+            {
+                Text = text,
+                Image = image,
+                ImageAlign = ContentAlignment.MiddleLeft,
+                Font = new Font(FontFamily.GenericSansSerif, 14),
+                Size = new Size(255, 69),
+                Padding = new Padding(5),
+                FlatStyle = FlatStyle.Flat,
+                FlatAppearance = { BorderSize = 0 }
+            };
             button.Click += (sender, e) => CerrarAbrirFrm(formType);
             Controls.Add(button);
+            return button;
         }
 
         private void AjustesTimer()
         {
-            transicionBarraLateral = new System.Windows.Forms.Timer();
-            transicionBarraLateral.Interval = 10;
+            transicionBarraLateral = new System.Windows.Forms.Timer
+            {
+                Interval = 10
+            };
             transicionBarraLateral.Tick += TransicionBarraLateral_Tick;
         }
 
@@ -106,7 +122,7 @@ namespace Gestionis.Herramientas
                 Form frmActual = FindForm();
                 if (frmActual != null)
                 {
-                    frmActual.Hide();                    
+                    frmActual.Hide();
                     form.Closed += (s, args) => frmActual.Close();
                     form.Show();
                 }
@@ -123,11 +139,29 @@ namespace Gestionis.Herramientas
         {
             if (Sesion.Instance.Espanyol)
             {
-                //MessageBox.Show("Hola");
+                BtnInicio.Text = "Inicio";
+                BtnInversiones.Text = "Inversiones";
+                BtnAhorros.Text = "Ahorros";
+                BtnDeudas.Text = "Deudas";
+                BtnPatrimonio.Text = "Patrimonio";
+                BtnNotas.Text = "Notas";
+                BtnClasificacion.Text = "Clasificación";
+                BtnHistorial.Text = "Historial";
+                BtnNotificaciones.Text = "Notif.";
+                BtnPaginaWeb.Text = "Página Web";
             }
             else
             {
-                //MessageBox.Show("Hello");
+                BtnInicio.Text = "Home";
+                BtnInversiones.Text = "Investments";
+                BtnAhorros.Text = "Savings";
+                BtnDeudas.Text = "Debts";
+                BtnPatrimonio.Text = "Assets";
+                BtnNotas.Text = "Notes";
+                BtnClasificacion.Text = "Classification";
+                BtnHistorial.Text = "History";
+                BtnNotificaciones.Text = "Notif.";
+                BtnPaginaWeb.Text = "Website";
             }
         }
     }
