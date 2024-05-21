@@ -91,6 +91,21 @@ namespace Gestionis.Clases
 
             ConexionDB.CerrarConexion();
         }
+
+        public static void CambiarCampo(string campo, byte[] valor)
+        {
+            string queryString = $"UPDATE usuario SET {campo} = @valor WHERE apodo = @apodo;";
+
+            MySqlCommand comando = new MySqlCommand(queryString, ConexionDB.Conexion);
+            comando.Parameters.AddWithValue("@valor", valor);
+            comando.Parameters.AddWithValue("@apodo", Sesion.Instance.ApodoUsuario);
+
+            ConexionDB.AbrirConexion();
+
+            comando.ExecuteNonQuery();
+
+            ConexionDB.CerrarConexion();
+        }
         #endregion
         
         public static bool Existe(string apodo)

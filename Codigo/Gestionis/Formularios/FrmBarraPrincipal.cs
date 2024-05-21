@@ -117,8 +117,7 @@ namespace Gestionis.Clases
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
-            this.Close();
-            this.Dispose();
+            Application.Exit();
         }
         private void CloseButton_MouseEnter(object sender, EventArgs e)
         {

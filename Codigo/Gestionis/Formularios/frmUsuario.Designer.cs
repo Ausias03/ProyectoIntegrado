@@ -38,7 +38,6 @@ namespace Gestionis
             lblNivel = new Label();
             lblExp = new Label();
             prbExperiencia = new ProgressBar();
-            btnConfirmarFoto = new Button();
             btnConfirmarApellidos = new Button();
             txtApellidos = new TextBox();
             btnCambiarApellidos = new Button();
@@ -64,12 +63,12 @@ namespace Gestionis
             lblCorreo = new Label();
             lblApodo = new Label();
             lblNombre = new Label();
-            picFoto = new PictureBox();
+            pctFoto = new PictureBox();
             barraSecundaria1 = new BarraSecundaria();
             barraLateral1 = new BarraLateral();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             grpCuenta.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)picFoto).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pctFoto).BeginInit();
             SuspendLayout();
             // 
             // lblTuCuenta
@@ -78,7 +77,7 @@ namespace Gestionis
             lblTuCuenta.Font = new Font("Microsoft Sans Serif", 24F);
             lblTuCuenta.Location = new Point(309, 102);
             lblTuCuenta.Name = "lblTuCuenta";
-            lblTuCuenta.Size = new Size(197, 46);
+            lblTuCuenta.Size = new Size(160, 37);
             lblTuCuenta.TabIndex = 0;
             lblTuCuenta.Text = "Tu cuenta";
             // 
@@ -104,7 +103,6 @@ namespace Gestionis
             grpCuenta.Controls.Add(lblNivel);
             grpCuenta.Controls.Add(lblExp);
             grpCuenta.Controls.Add(prbExperiencia);
-            grpCuenta.Controls.Add(btnConfirmarFoto);
             grpCuenta.Controls.Add(btnConfirmarApellidos);
             grpCuenta.Controls.Add(txtApellidos);
             grpCuenta.Controls.Add(btnCambiarApellidos);
@@ -130,7 +128,7 @@ namespace Gestionis
             grpCuenta.Controls.Add(lblCorreo);
             grpCuenta.Controls.Add(lblApodo);
             grpCuenta.Controls.Add(lblNombre);
-            grpCuenta.Controls.Add(picFoto);
+            grpCuenta.Controls.Add(pctFoto);
             grpCuenta.ForeColor = SystemColors.ControlText;
             grpCuenta.Location = new Point(383, 168);
             grpCuenta.Name = "grpCuenta";
@@ -145,7 +143,7 @@ namespace Gestionis
             lblNivel.Font = new Font("Microsoft Sans Serif", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblNivel.Location = new Point(753, 61);
             lblNivel.Name = "lblNivel";
-            lblNivel.Size = new Size(49, 54);
+            lblNivel.Size = new Size(39, 42);
             lblNivel.TabIndex = 34;
             lblNivel.Text = "5";
             // 
@@ -155,7 +153,7 @@ namespace Gestionis
             lblExp.Font = new Font("Microsoft Sans Serif", 12F);
             lblExp.Location = new Point(622, 123);
             lblExp.Name = "lblExp";
-            lblExp.Size = new Size(52, 25);
+            lblExp.Size = new Size(40, 20);
             lblExp.TabIndex = 56;
             lblExp.Text = "Exp:";
             // 
@@ -165,19 +163,6 @@ namespace Gestionis
             prbExperiencia.Name = "prbExperiencia";
             prbExperiencia.Size = new Size(174, 19);
             prbExperiencia.TabIndex = 55;
-            // 
-            // btnConfirmarFoto
-            // 
-            btnConfirmarFoto.BackColor = Color.FromArgb(178, 242, 187);
-            btnConfirmarFoto.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            btnConfirmarFoto.Location = new Point(283, 81);
-            btnConfirmarFoto.Name = "btnConfirmarFoto";
-            btnConfirmarFoto.Size = new Size(135, 52);
-            btnConfirmarFoto.TabIndex = 54;
-            btnConfirmarFoto.Text = "Confirmar";
-            btnConfirmarFoto.UseVisualStyleBackColor = false;
-            btnConfirmarFoto.Visible = false;
-            btnConfirmarFoto.Click += btnConfirmarFoto_Click;
             // 
             // btnConfirmarApellidos
             // 
@@ -190,19 +175,19 @@ namespace Gestionis
             btnConfirmarApellidos.Text = "Confirmar";
             btnConfirmarApellidos.UseVisualStyleBackColor = false;
             btnConfirmarApellidos.Visible = false;
-            btnConfirmarApellidos.Click += BtnConfirmarApellidos_Click;
+            btnConfirmarApellidos.Click += btnConfirmarApellidos_Click;
             // 
             // txtApellidos
             // 
             txtApellidos.Location = new Point(193, 283);
             txtApellidos.Name = "txtApellidos";
             txtApellidos.ReadOnly = true;
-            txtApellidos.Size = new Size(533, 24);
+            txtApellidos.Size = new Size(533, 21);
             txtApellidos.TabIndex = 52;
             // 
             // btnCambiarApellidos
             // 
-            btnCambiarApellidos.BackColor = Color.FromArgb(178, 242, 187);
+            btnCambiarApellidos.BackColor = Color.FromArgb(211, 208, 242);
             btnCambiarApellidos.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnCambiarApellidos.Location = new Point(772, 268);
             btnCambiarApellidos.Name = "btnCambiarApellidos";
@@ -210,7 +195,7 @@ namespace Gestionis
             btnCambiarApellidos.TabIndex = 51;
             btnCambiarApellidos.Text = "Cambiar";
             btnCambiarApellidos.UseVisualStyleBackColor = false;
-            btnCambiarApellidos.Click += BtnCambiarApellidos_Click;
+            btnCambiarApellidos.Click += btnCambiarApellidos_Click;
             // 
             // lblApellidos
             // 
@@ -218,7 +203,7 @@ namespace Gestionis
             lblApellidos.Font = new Font("Microsoft Sans Serif", 12F);
             lblApellidos.Location = new Point(55, 281);
             lblApellidos.Name = "lblApellidos";
-            lblApellidos.Size = new Size(98, 25);
+            lblApellidos.Size = new Size(77, 20);
             lblApellidos.TabIndex = 50;
             lblApellidos.Text = "Apellidos:";
             // 
@@ -233,7 +218,7 @@ namespace Gestionis
             btnConfirmarTel.Text = "Confirmar";
             btnConfirmarTel.UseVisualStyleBackColor = false;
             btnConfirmarTel.Visible = false;
-            btnConfirmarTel.Click += BtnConfirmarTel_Click;
+            btnConfirmarTel.Click += btnConfirmarTel_Click;
             // 
             // btnConfirmarDir
             // 
@@ -246,7 +231,7 @@ namespace Gestionis
             btnConfirmarDir.Text = "Confirmar";
             btnConfirmarDir.UseVisualStyleBackColor = false;
             btnConfirmarDir.Visible = false;
-            btnConfirmarDir.Click += BtnConfirmarDir_Click;
+            btnConfirmarDir.Click += btnConfirmarDir_Click;
             // 
             // btnConfirmarCorreo
             // 
@@ -259,7 +244,7 @@ namespace Gestionis
             btnConfirmarCorreo.Text = "Confirmar";
             btnConfirmarCorreo.UseVisualStyleBackColor = false;
             btnConfirmarCorreo.Visible = false;
-            btnConfirmarCorreo.Click += BtnConfirmarCorreo_Click;
+            btnConfirmarCorreo.Click += btnConfirmarCorreo_Click;
             // 
             // btnConfirmarApodo
             // 
@@ -272,7 +257,7 @@ namespace Gestionis
             btnConfirmarApodo.Text = "Confirmar";
             btnConfirmarApodo.UseVisualStyleBackColor = false;
             btnConfirmarApodo.Visible = false;
-            btnConfirmarApodo.Click += BtnConfirmarApodo_Click;
+            btnConfirmarApodo.Click += btnConfirmarApodo_Click;
             // 
             // btnConfirmarNom
             // 
@@ -292,7 +277,7 @@ namespace Gestionis
             txtTelefono.Location = new Point(181, 509);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.ReadOnly = true;
-            txtTelefono.Size = new Size(545, 24);
+            txtTelefono.Size = new Size(545, 21);
             txtTelefono.TabIndex = 44;
             // 
             // txtDireccion
@@ -300,7 +285,7 @@ namespace Gestionis
             txtDireccion.Location = new Point(193, 454);
             txtDireccion.Name = "txtDireccion";
             txtDireccion.ReadOnly = true;
-            txtDireccion.Size = new Size(533, 24);
+            txtDireccion.Size = new Size(533, 21);
             txtDireccion.TabIndex = 43;
             // 
             // txtCorreo
@@ -308,7 +293,7 @@ namespace Gestionis
             txtCorreo.Location = new Point(297, 396);
             txtCorreo.Name = "txtCorreo";
             txtCorreo.ReadOnly = true;
-            txtCorreo.Size = new Size(429, 24);
+            txtCorreo.Size = new Size(429, 21);
             txtCorreo.TabIndex = 42;
             // 
             // txtApodo
@@ -316,7 +301,7 @@ namespace Gestionis
             txtApodo.Location = new Point(181, 341);
             txtApodo.Name = "txtApodo";
             txtApodo.ReadOnly = true;
-            txtApodo.Size = new Size(545, 24);
+            txtApodo.Size = new Size(545, 21);
             txtApodo.TabIndex = 41;
             // 
             // txtNombre
@@ -324,14 +309,14 @@ namespace Gestionis
             txtNombre.Location = new Point(157, 225);
             txtNombre.Name = "txtNombre";
             txtNombre.ReadOnly = true;
-            txtNombre.Size = new Size(569, 24);
+            txtNombre.Size = new Size(569, 21);
             txtNombre.TabIndex = 40;
             // 
             // btnCambiarFoto
             // 
-            btnCambiarFoto.BackColor = Color.FromArgb(178, 242, 187);
+            btnCambiarFoto.BackColor = Color.FromArgb(211, 208, 242);
             btnCambiarFoto.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            btnCambiarFoto.Location = new Point(297, 81);
+            btnCambiarFoto.Location = new Point(275, 82);
             btnCambiarFoto.Name = "btnCambiarFoto";
             btnCambiarFoto.Size = new Size(121, 52);
             btnCambiarFoto.TabIndex = 39;
@@ -341,7 +326,7 @@ namespace Gestionis
             // 
             // btnCambiarTel
             // 
-            btnCambiarTel.BackColor = Color.FromArgb(178, 242, 187);
+            btnCambiarTel.BackColor = Color.FromArgb(211, 208, 242);
             btnCambiarTel.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnCambiarTel.Location = new Point(772, 497);
             btnCambiarTel.Name = "btnCambiarTel";
@@ -353,7 +338,7 @@ namespace Gestionis
             // 
             // btnCambiarDir
             // 
-            btnCambiarDir.BackColor = Color.FromArgb(178, 242, 187);
+            btnCambiarDir.BackColor = Color.FromArgb(211, 208, 242);
             btnCambiarDir.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnCambiarDir.Location = new Point(772, 439);
             btnCambiarDir.Name = "btnCambiarDir";
@@ -365,7 +350,7 @@ namespace Gestionis
             // 
             // btnCambiarCorreo
             // 
-            btnCambiarCorreo.BackColor = Color.FromArgb(178, 242, 187);
+            btnCambiarCorreo.BackColor = Color.FromArgb(211, 208, 242);
             btnCambiarCorreo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnCambiarCorreo.Location = new Point(772, 381);
             btnCambiarCorreo.Name = "btnCambiarCorreo";
@@ -377,7 +362,7 @@ namespace Gestionis
             // 
             // btnCambiarApodo
             // 
-            btnCambiarApodo.BackColor = Color.FromArgb(178, 242, 187);
+            btnCambiarApodo.BackColor = Color.FromArgb(211, 208, 242);
             btnCambiarApodo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnCambiarApodo.Location = new Point(772, 326);
             btnCambiarApodo.Name = "btnCambiarApodo";
@@ -389,7 +374,7 @@ namespace Gestionis
             // 
             // btnCambiarNom
             // 
-            btnCambiarNom.BackColor = Color.FromArgb(178, 242, 187);
+            btnCambiarNom.BackColor = Color.FromArgb(211, 208, 242);
             btnCambiarNom.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             btnCambiarNom.Location = new Point(772, 210);
             btnCambiarNom.Name = "btnCambiarNom";
@@ -405,7 +390,7 @@ namespace Gestionis
             lblTelefono.Font = new Font("Microsoft Sans Serif", 12F);
             lblTelefono.Location = new Point(55, 510);
             lblTelefono.Name = "lblTelefono";
-            lblTelefono.Size = new Size(95, 25);
+            lblTelefono.Size = new Size(75, 20);
             lblTelefono.TabIndex = 33;
             lblTelefono.Text = "Teléfono:";
             // 
@@ -415,7 +400,7 @@ namespace Gestionis
             lblDireccion.Font = new Font("Microsoft Sans Serif", 12F);
             lblDireccion.Location = new Point(55, 452);
             lblDireccion.Name = "lblDireccion";
-            lblDireccion.Size = new Size(99, 25);
+            lblDireccion.Size = new Size(79, 20);
             lblDireccion.TabIndex = 31;
             lblDireccion.Text = "Dirección:";
             // 
@@ -425,7 +410,7 @@ namespace Gestionis
             lblCorreo.Font = new Font("Microsoft Sans Serif", 12F);
             lblCorreo.Location = new Point(55, 394);
             lblCorreo.Name = "lblCorreo";
-            lblCorreo.Size = new Size(179, 25);
+            lblCorreo.Size = new Size(144, 20);
             lblCorreo.TabIndex = 30;
             lblCorreo.Text = "Correo Electrónico:";
             // 
@@ -435,7 +420,7 @@ namespace Gestionis
             lblApodo.Font = new Font("Microsoft Sans Serif", 12F);
             lblApodo.Location = new Point(55, 339);
             lblApodo.Name = "lblApodo";
-            lblApodo.Size = new Size(76, 25);
+            lblApodo.Size = new Size(60, 20);
             lblApodo.TabIndex = 29;
             lblApodo.Text = "Apodo:";
             // 
@@ -445,17 +430,19 @@ namespace Gestionis
             lblNombre.Font = new Font("Microsoft Sans Serif", 12F);
             lblNombre.Location = new Point(55, 223);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(87, 25);
+            lblNombre.Size = new Size(69, 20);
             lblNombre.TabIndex = 28;
             lblNombre.Text = "Nombre:";
             // 
-            // picFoto
+            // pctFoto
             // 
-            picFoto.Location = new Point(79, 29);
-            picFoto.Name = "picFoto";
-            picFoto.Size = new Size(160, 160);
-            picFoto.TabIndex = 27;
-            picFoto.TabStop = false;
+            pctFoto.BorderStyle = BorderStyle.FixedSingle;
+            pctFoto.Location = new Point(93, 20);
+            pctFoto.Name = "pctFoto";
+            pctFoto.Size = new Size(135, 160);
+            pctFoto.SizeMode = PictureBoxSizeMode.StretchImage;
+            pctFoto.TabIndex = 27;
+            pctFoto.TabStop = false;
             // 
             // barraSecundaria1
             // 
@@ -463,7 +450,7 @@ namespace Gestionis
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1472, 44);
+            barraSecundaria1.Size = new Size(1446, 44);
             barraSecundaria1.TabIndex = 5;
             // 
             // barraLateral1
@@ -477,10 +464,10 @@ namespace Gestionis
             // 
             // frmUsuario
             // 
-            AutoScaleDimensions = new SizeF(9F, 18F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(233, 236, 239);
-            ClientSize = new Size(1472, 837);
+            ClientSize = new Size(1446, 837);
             Controls.Add(barraLateral1);
             Controls.Add(barraSecundaria1);
             Controls.Add(grpCuenta);
@@ -499,39 +486,9 @@ namespace Gestionis
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             grpCuenta.ResumeLayout(false);
             grpCuenta.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)picFoto).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pctFoto).EndInit();
             ResumeLayout(false);
             PerformLayout();
-        }
-
-        private void BtnConfirmarApodo_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void BtnConfirmarCorreo_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void BtnConfirmarDir_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void BtnConfirmarTel_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void BtnCambiarApellidos_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void BtnConfirmarApellidos_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         #endregion
@@ -540,7 +497,6 @@ namespace Gestionis
         private Button btnCerrarSesion;
         private ErrorProvider errorProvider1;
         private RoundGroupBox grpCuenta;
-        private Button btnConfirmarFoto;
         private Button btnConfirmarApellidos;
         private TextBox txtApellidos;
         private Button btnCambiarApellidos;
@@ -566,7 +522,7 @@ namespace Gestionis
         private Label lblCorreo;
         private Label lblApodo;
         private Label lblNombre;
-        private PictureBox picFoto;
+        private PictureBox pctFoto;
         private BarraLateral barraLateral1;
         private BarraSecundaria barraSecundaria1;
         private ProgressBar prbExperiencia;

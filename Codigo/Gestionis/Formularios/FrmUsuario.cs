@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Gestionis.Formularios;
 using Gestionis.Properties;
 using Gestionis.Herramientas;
+using System.Drawing.Imaging;
 
 namespace Gestionis
 {
@@ -30,8 +31,9 @@ namespace Gestionis
         private void frmUsuario_Load(object sender, EventArgs e)
         {
             #region Controladores
-            // Convertir un array de bytes (byte[]) a foto
-            //picFoto.Image = usuario.Foto;
+            MemoryStream ms = new MemoryStream(usuario.Foto);
+            Bitmap bm = new Bitmap(ms);
+            pctFoto.Image = bm;
             txtNombre.Text = usuario.Nombre;
             txtApellidos.Text = usuario.Apellidos;
             txtApodo.Text = usuario.Apodo;
@@ -93,7 +95,7 @@ namespace Gestionis
         private bool ValidarApodo()
         {
             bool valido = true;
-            if (txtApodo.Text == "" || Usuario.Existe(txtApodo.Text))
+            if (txtApodo.Text == "")
             {
                 valido = false;
                 errorProvider1.SetError(txtApodo, "Es necesario proporcionar un apodo.");
@@ -167,8 +169,22 @@ namespace Gestionis
 
         private void btnCambiarFoto_Click(object sender, EventArgs e)
         {
-            btnCambiarFoto.Hide();
-            btnConfirmarFoto.Show();
+            OpenFileDialog ofdSeleccionar = new OpenFileDialog();
+            ofdSeleccionar.Filter = "Imagenes|*.jpg; *.png";
+            ofdSeleccionar.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            ofdSeleccionar.Title = "Seleccionar imagen";
+
+            if (ofdSeleccionar.ShowDialog() == DialogResult.OK)
+            {
+                Image foto = Image.FromFile(ofdSeleccionar.FileName);
+                pctFoto.Image = foto;
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    foto.Save(ms, ImageFormat.Jpeg);
+                    byte[] fotoArrayBytes = ms.ToArray();
+                    Usuario.CambiarCampo("foto", fotoArrayBytes);
+                }                
+            }
         }
         #endregion
 
@@ -210,6 +226,7 @@ namespace Gestionis
                     btnConfirmarApodo.Hide();
                     btnCambiarApodo.Show();
                     Usuario.CambiarCampo("apodo", txtApodo.Text);
+                    Sesion.Instance.ApodoUsuario = txtApodo.Text;
                 }
             }
         }
@@ -250,14 +267,6 @@ namespace Gestionis
             btnCambiarTel.Show();
             Usuario.CambiarCampo("telefono", txtTelefono.Text);
         }
-
-        private void btnConfirmarFoto_Click(object sender, EventArgs e)
-        {
-            // Convertir un array de bytes (byte[]) a foto
-            //usuario.Foto = picFoto.Image;
-            btnConfirmarFoto.Hide();
-            btnCambiarFoto.Show();
-        }
         #endregion
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -273,7 +282,6 @@ namespace Gestionis
         {
             lblTuCuenta.Text = Resources.Idiomas.StringRecursosUsuario.lblTuCuenta;
             btnCerrarSesion.Text = Resources.Idiomas.StringRecursosUsuario.btnCerrarSesion;
-            btnConfirmarFoto.Text = Resources.Idiomas.StringRecursosUsuario.btnConfirmarFoto;
             btnConfirmarApellidos.Text = Resources.Idiomas.StringRecursosUsuario.btnConfirmarApellidos;
             btnCambiarApellidos.Text = Resources.Idiomas.StringRecursosUsuario.btnCambiarApellidos;
             lblApellidos.Text = Resources.Idiomas.StringRecursosUsuario.lblApellidos;
