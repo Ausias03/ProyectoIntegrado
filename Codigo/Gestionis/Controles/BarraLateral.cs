@@ -24,7 +24,7 @@ namespace Gestionis.Herramientas
             InitializePanelProperties();
             CreateButtons();
             AjustesTimer();
-            Load();
+            Load();            
         }
 
         public void Load()
@@ -39,6 +39,7 @@ namespace Gestionis.Herramientas
             }
 
             AplicarIdiomas();
+            CheckUserLevel();
         }
 
         private void InitializePanelProperties()
@@ -163,6 +164,20 @@ namespace Gestionis.Herramientas
                 BtnHistorial.Text = "History";
                 BtnNotificaciones.Text = "Notif.";
                 BtnPaginaWeb.Text = "Website";
+            }
+        }
+
+        private void CheckUserLevel()
+        {         
+            if (SistemaNiveles.GetNivel(Sesion.Instance.ApodoUsuario) < 3)
+            {
+                BtnInversiones.Enabled = false;
+                BtnPatrimonio.Enabled = false;
+            }
+            else
+            {
+                BtnInversiones.Enabled = true;
+                BtnPatrimonio.Enabled = true;
             }
         }
     }
