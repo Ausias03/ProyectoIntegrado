@@ -47,6 +47,22 @@ namespace Gestionis.Clases
             return limite;
         }
 
+        public static void EditarLimite(int numCuenta, int idCategoria, decimal? limite)
+        {
+            string queryString = "UPDATE limite SET limite = @limite WHERE numCuenta = @numCuenta AND idCategoria = @idCategoria;";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+            query.Parameters.AddWithValue("@limite", limite);
+            query.Parameters.AddWithValue("@numCuenta", numCuenta);
+            query.Parameters.AddWithValue("@idCategoria", idCategoria);
+
+            ConexionDB.AbrirConexion();
+
+            query.ExecuteNonQuery();
+
+            ConexionDB.CerrarConexion();
+        }
+
         public void Add()
         {
             string queryString = "INSERT INTO limite (numCuenta, idCategoria, limite) " +

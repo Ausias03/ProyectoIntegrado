@@ -46,8 +46,10 @@ namespace Gestionis.Formularios
             }
             else
             {
-
+                LimitesNotif.EditarLimite(Sesion.Instance.NumCuenta, CategoriaGasto.DevuelveIDCategoria(cboCategorias.Text), limite);
             }
+
+            this.Close();
         }
 
         private void btnVolver_Click(object sender, EventArgs e)

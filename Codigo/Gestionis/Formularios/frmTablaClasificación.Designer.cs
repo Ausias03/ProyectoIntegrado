@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTablaClasificación));
             dgvTabla = new DataGridView();
             lblTabla = new Label();
@@ -42,7 +44,23 @@
             dgvTabla.AllowUserToAddRows = false;
             dgvTabla.AllowUserToDeleteRows = false;
             dgvTabla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Roboto Mono", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvTabla.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvTabla.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Roboto Mono", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvTabla.DefaultCellStyle = dataGridViewCellStyle2;
             dgvTabla.Location = new Point(349, 178);
             dgvTabla.Name = "dgvTabla";
             dgvTabla.ReadOnly = true;
@@ -53,17 +71,17 @@
             // lblTabla
             // 
             lblTabla.AutoSize = true;
-            lblTabla.Font = new Font("Microsoft Sans Serif", 22.2F, FontStyle.Bold);
+            lblTabla.Font = new Font("Roboto Mono", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTabla.Location = new Point(720, 115);
             lblTabla.Name = "lblTabla";
-            lblTabla.Size = new Size(450, 42);
+            lblTabla.Size = new Size(528, 49);
             lblTabla.TabIndex = 1;
             lblTabla.Text = "Top 10 usuarios del mes";
             // 
             // btnSalir
             // 
             btnSalir.BackColor = Color.FromArgb(170, 166, 202);
-            btnSalir.Font = new Font("Microsoft Sans Serif", 12F);
+            btnSalir.Font = new Font("Roboto Mono", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSalir.Location = new Point(1483, 753);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(124, 40);
@@ -78,7 +96,7 @@
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1651, 44);
+            barraSecundaria1.Size = new Size(1671, 44);
             barraSecundaria1.TabIndex = 3;
             // 
             // barraLateral1
@@ -94,7 +112,7 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1651, 852);
+            ClientSize = new Size(1671, 852);
             Controls.Add(barraLateral1);
             Controls.Add(barraSecundaria1);
             Controls.Add(btnSalir);

@@ -19,11 +19,11 @@ namespace Gestionis
 
         private void frmTablaClasificación_Load(object sender, EventArgs e)
         {
-            CargarClasificacion();
             barraSecundaria1.Load();
             barraLateral1.Load();
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
             AplicarIdioma();
+            CargarClasificacion();
         }
 
         private void ModificarBotones()
@@ -45,7 +45,7 @@ namespace Gestionis
         private void CargarClasificacion()
         {
             string consulta = "";
-            if (!true)
+            if (Sesion.Instance.Espanyol)
             {
                 consulta = "SELECT u.apodo AS Apodo, COALESCE(SUM(i.total_ingresos), 0) AS Total_Ingresos, COALESCE(SUM(d.total_deudas), 0) AS Total_Deudas, " +
                 "COALESCE(SUM(i.total_ingresos), 0) + COALESCE(SUM(d.total_deudas), 0) AS Total_Puntos FROM usuario u LEFT JOIN (SELECT c.apodoUsuario, " +
