@@ -1,13 +1,4 @@
 ﻿using Gestionis.Clases;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Gestionis.Formularios
 {
@@ -54,14 +45,14 @@ namespace Gestionis.Formularios
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-            if(ValidaDatos())
+            if (ValidaDatos())
             {
                 if (!Deuda.ExisteDeuda(txtTitulo.Text))
                 {
                     Deuda deuda = new Deuda(txtTitulo.Text, rtbDescrip.Text, rdbDebo.Checked, nudCantidadAdeudada.Value, dtpDeuda.Value, dtpVencimiento.Value, chkRecordatorio.Checked);
                     if (deuda.Add() > 0)
                     {
-                        if(chkRecordatorio.Checked)
+                        if (chkRecordatorio.Checked)
                         {
                             //frmAddNota frmAddNota = new frmAddNota(deuda.GetIdDeuda(deuda));
                             //frmAddNota.ShowDialog();
@@ -78,8 +69,8 @@ namespace Gestionis.Formularios
                     MessageBox.Show("Ya existe una deuda con ese título", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 ResetearFrm();
-            }            
-        }        
+            }
+        }
 
         private void ResetearFrm()
         {
