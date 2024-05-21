@@ -24,7 +24,8 @@ namespace Gestionis.Herramientas
             InitializePanelProperties();
             CreateButtons();
             AjustesTimer();
-            Load();            
+            Load();
+            CheckUserLevel();
         }
 
         public void Load()
@@ -39,7 +40,6 @@ namespace Gestionis.Herramientas
             }
 
             AplicarIdiomas();
-            CheckUserLevel();
         }
 
         private void InitializePanelProperties()
@@ -168,8 +168,19 @@ namespace Gestionis.Herramientas
         }
 
         private void CheckUserLevel()
-        {         
-            if (SistemaNiveles.GetNivel(Sesion.Instance.ApodoUsuario) < 3)
+        {
+            int nivel = SistemaNiveles.GetNivel(Sesion.Instance.ApodoUsuario);
+
+            if(nivel < 3)
+            {
+                BtnClasificacion.Enabled = false;
+            }
+            else
+            {
+                BtnClasificacion.Enabled = true;
+            }
+
+            if (nivel < 5)
             {
                 BtnInversiones.Enabled = false;
                 BtnPatrimonio.Enabled = false;

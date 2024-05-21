@@ -27,6 +27,26 @@ namespace Gestionis.Clases
                 ConexionDB.CerrarConexion();
             }
             catch (Exception) { }
+
+            return tablaDatos;
+        }
+
+        public static DataTable RellenarDatosParametrizados(MySqlCommand querry)
+        {
+            DataTable tablaDatos = new DataTable();
+            try
+            {
+                ConexionDB.AbrirConexion();
+
+                using (MySqlDataAdapter adapter = new MySqlDataAdapter(querry))
+                {
+                    adapter.Fill(tablaDatos);
+                }
+
+                ConexionDB.CerrarConexion();
+            }
+            catch (Exception) { }
+
             return tablaDatos;
         }
 
