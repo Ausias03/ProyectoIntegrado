@@ -1,4 +1,5 @@
 ﻿using Gestionis.Clases;
+using Gestionis.Formularios;
 
 namespace Gestionis.Herramientas
 {
@@ -46,7 +47,7 @@ namespace Gestionis.Herramientas
             CreateButton("Notas", Properties.Resources.notas, typeof(frmNotas));
             CreateButton("Clasificación", Properties.Resources.calsificacion, typeof(frmTablaClasificación));
             CreateButton("Historial", Properties.Resources.historial, typeof(frmHistorial));
-            CreateButton("Notif.", Properties.Resources.notificacion, typeof(FrmNotificaciones));
+            CreateButton("Modif. Notif.", Properties.Resources.notificacion, typeof(FrmModifNotif));
             CreateButton("Página Web", Properties.Resources.web, typeof(frmTablaClasificación));
         }
 
@@ -97,7 +98,7 @@ namespace Gestionis.Herramientas
         private void CerrarAbrirFrm(Type formType)
         {
             Form form = (Form)Activator.CreateInstance(formType);
-            if (form.GetType() == typeof(FrmNotificaciones))
+            if (form.GetType() == typeof(FrmModifNotif))
             {
                 form.ShowDialog();
             }
