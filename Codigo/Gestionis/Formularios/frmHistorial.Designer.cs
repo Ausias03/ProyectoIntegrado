@@ -55,10 +55,10 @@
             // lblHistorial
             // 
             lblHistorial.AutoSize = true;
-            lblHistorial.Font = new Font("Microsoft Sans Serif", 24F);
-            lblHistorial.Location = new Point(310, 84);
+            lblHistorial.Font = new Font("Roboto Mono", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblHistorial.Location = new Point(310, 93);
             lblHistorial.Name = "lblHistorial";
-            lblHistorial.Size = new Size(165, 46);
+            lblHistorial.Size = new Size(239, 53);
             lblHistorial.TabIndex = 1;
             lblHistorial.Text = "Historial";
             // 
@@ -68,38 +68,38 @@
             dgvIngresos.AllowUserToDeleteRows = false;
             dgvIngresos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvIngresos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvIngresos.Location = new Point(322, 210);
+            dgvIngresos.Location = new Point(322, 233);
             dgvIngresos.Name = "dgvIngresos";
             dgvIngresos.ReadOnly = true;
             dgvIngresos.RowHeadersWidth = 51;
-            dgvIngresos.Size = new Size(1018, 315);
+            dgvIngresos.Size = new Size(1018, 350);
             dgvIngresos.TabIndex = 17;
             // 
             // lblFecha
             // 
             lblFecha.AutoSize = true;
-            lblFecha.Font = new Font("Microsoft Sans Serif", 12F);
-            lblFecha.Location = new Point(322, 152);
+            lblFecha.Font = new Font("Roboto Mono", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblFecha.Location = new Point(322, 160);
             lblFecha.Name = "lblFecha";
-            lblFecha.Size = new Size(47, 25);
+            lblFecha.Size = new Size(55, 30);
             lblFecha.TabIndex = 18;
             lblFecha.Text = "Hoy";
             lblFecha.Visible = false;
             // 
             // txtBuscar
             // 
-            txtBuscar.Font = new Font("Microsoft Sans Serif", 12F);
-            txtBuscar.Location = new Point(1346, 276);
+            txtBuscar.Font = new Font("Roboto Mono", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtBuscar.Location = new Point(1346, 307);
             txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new Size(181, 30);
+            txtBuscar.Size = new Size(181, 34);
             txtBuscar.TabIndex = 19;
             // 
             // picBuscar
             // 
             picBuscar.Image = Properties.Resources.lupa;
-            picBuscar.Location = new Point(1533, 276);
+            picBuscar.Location = new Point(1533, 307);
             picBuscar.Name = "picBuscar";
-            picBuscar.Size = new Size(34, 34);
+            picBuscar.Size = new Size(34, 38);
             picBuscar.SizeMode = PictureBoxSizeMode.StretchImage;
             picBuscar.TabIndex = 9;
             picBuscar.TabStop = false;
@@ -108,59 +108,58 @@
             // lblBuscar
             // 
             lblBuscar.AutoSize = true;
-            lblBuscar.Font = new Font("Microsoft Sans Serif", 12F);
-            lblBuscar.Location = new Point(1346, 247);
+            lblBuscar.Font = new Font("Roboto Mono", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblBuscar.Location = new Point(1346, 274);
             lblBuscar.Name = "lblBuscar";
-            lblBuscar.Size = new Size(101, 25);
+            lblBuscar.Size = new Size(120, 26);
             lblBuscar.TabIndex = 20;
             lblBuscar.Text = "Buscador:";
             // 
             // lblMetodo
             // 
             lblMetodo.AutoSize = true;
-            lblMetodo.Font = new Font("Microsoft Sans Serif", 12F);
-            lblMetodo.Location = new Point(1346, 313);
+            lblMetodo.Font = new Font("Roboto Mono", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblMetodo.Location = new Point(1346, 348);
             lblMetodo.Name = "lblMetodo";
-            lblMetodo.Size = new Size(84, 25);
+            lblMetodo.Size = new Size(96, 26);
             lblMetodo.TabIndex = 21;
             lblMetodo.Text = "Metodo:";
             // 
             // cmbMetodo
             // 
-            cmbMetodo.Font = new Font("Microsoft Sans Serif", 12F);
+            cmbMetodo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbMetodo.Font = new Font("Roboto Mono", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cmbMetodo.FormattingEnabled = true;
-            cmbMetodo.Items.AddRange(new object[] { "Tipo", "Categoria", "Nombre", "Cantidad" });
-            cmbMetodo.Location = new Point(1346, 342);
+            cmbMetodo.Location = new Point(1346, 380);
             cmbMetodo.Name = "cmbMetodo";
-            cmbMetodo.Size = new Size(181, 33);
+            cmbMetodo.Size = new Size(181, 34);
             cmbMetodo.TabIndex = 22;
-            cmbMetodo.Text = "Tipo";
             // 
             // dtpBuscaFecha
             // 
-            dtpBuscaFecha.Font = new Font("Microsoft Sans Serif", 12F);
+            dtpBuscaFecha.Font = new Font("Roboto Mono", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpBuscaFecha.Format = DateTimePickerFormat.Short;
-            dtpBuscaFecha.Location = new Point(1346, 210);
+            dtpBuscaFecha.Location = new Point(1346, 233);
             dtpBuscaFecha.Name = "dtpBuscaFecha";
-            dtpBuscaFecha.Size = new Size(180, 30);
+            dtpBuscaFecha.Size = new Size(180, 34);
             dtpBuscaFecha.TabIndex = 23;
             // 
             // lblBuscaFecha
             // 
             lblBuscaFecha.AutoSize = true;
-            lblBuscaFecha.Font = new Font("Microsoft Sans Serif", 12F);
-            lblBuscaFecha.Location = new Point(1346, 181);
+            lblBuscaFecha.Font = new Font("Roboto Mono", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblBuscaFecha.Location = new Point(1346, 201);
             lblBuscaFecha.Name = "lblBuscaFecha";
-            lblBuscaFecha.Size = new Size(194, 25);
+            lblBuscaFecha.Size = new Size(240, 26);
             lblBuscaFecha.TabIndex = 24;
             lblBuscaFecha.Text = "Buscador por Fecha:";
             // 
             // picBuscaFecha
             // 
             picBuscaFecha.Image = Properties.Resources.lupa;
-            picBuscaFecha.Location = new Point(1533, 210);
+            picBuscaFecha.Location = new Point(1533, 233);
             picBuscaFecha.Name = "picBuscaFecha";
-            picBuscaFecha.Size = new Size(34, 34);
+            picBuscaFecha.Size = new Size(34, 38);
             picBuscaFecha.SizeMode = PictureBoxSizeMode.StretchImage;
             picBuscaFecha.TabIndex = 25;
             picBuscaFecha.TabStop = false;
@@ -172,25 +171,25 @@
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1818, 44);
+            barraSecundaria1.Size = new Size(1657, 49);
             barraSecundaria1.TabIndex = 26;
             // 
             // barraLateral1
             // 
             barraLateral1.BackColor = Color.FromArgb(205, 213, 221);
             barraLateral1.Dock = DockStyle.Left;
-            barraLateral1.Location = new Point(0, 84);
+            barraLateral1.Location = new Point(0, 89);
             barraLateral1.Name = "barraLateral1";
-            barraLateral1.Size = new Size(249, 832);
+            barraLateral1.Size = new Size(249, 929);
             barraLateral1.TabIndex = 27;
             // 
             // lblIngresos
             // 
             lblIngresos.AutoSize = true;
-            lblIngresos.Font = new Font("Microsoft Sans Serif", 12F);
-            lblIngresos.Location = new Point(322, 187);
+            lblIngresos.Font = new Font("Roboto Mono", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblIngresos.Location = new Point(322, 202);
             lblIngresos.Name = "lblIngresos";
-            lblIngresos.Size = new Size(93, 25);
+            lblIngresos.Size = new Size(120, 26);
             lblIngresos.TabIndex = 29;
             lblIngresos.Text = "Ingresos:";
             // 
@@ -200,30 +199,30 @@
             dgvGastos.AllowUserToDeleteRows = false;
             dgvGastos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvGastos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvGastos.Location = new Point(322, 574);
+            dgvGastos.Location = new Point(322, 638);
             dgvGastos.Name = "dgvGastos";
             dgvGastos.ReadOnly = true;
             dgvGastos.RowHeadersWidth = 51;
-            dgvGastos.Size = new Size(1018, 318);
+            dgvGastos.Size = new Size(1018, 353);
             dgvGastos.TabIndex = 30;
             // 
             // lblGastos
             // 
             lblGastos.AutoSize = true;
-            lblGastos.Font = new Font("Microsoft Sans Serif", 12F);
-            lblGastos.Location = new Point(322, 551);
+            lblGastos.Font = new Font("Roboto Mono", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblGastos.Location = new Point(322, 607);
             lblGastos.Name = "lblGastos";
-            lblGastos.Size = new Size(80, 25);
+            lblGastos.Size = new Size(96, 26);
             lblGastos.TabIndex = 31;
             lblGastos.Text = "Gastos:";
             // 
             // btnSalir
             // 
             btnSalir.BackColor = Color.FromArgb(170, 166, 202);
-            btnSalir.Font = new Font("Microsoft Sans Serif", 12F);
-            btnSalir.Location = new Point(1452, 852);
+            btnSalir.Font = new Font("Roboto Mono", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSalir.Location = new Point(1452, 947);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(124, 40);
+            btnSalir.Size = new Size(124, 44);
             btnSalir.TabIndex = 32;
             btnSalir.Text = "Salir";
             btnSalir.UseVisualStyleBackColor = false;
@@ -231,9 +230,9 @@
             // 
             // frmHistorial
             // 
-            AutoScaleDimensions = new SizeF(9F, 18F);
+            AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1818, 916);
+            ClientSize = new Size(1657, 1018);
             Controls.Add(btnSalir);
             Controls.Add(lblGastos);
             Controls.Add(dgvGastos);
@@ -251,7 +250,7 @@
             Controls.Add(lblFecha);
             Controls.Add(dgvIngresos);
             Controls.Add(lblHistorial);
-            Font = new Font("Microsoft Sans Serif", 9F);
+            Font = new Font("Roboto Mono", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmHistorial";
             StartPosition = FormStartPosition.CenterScreen;

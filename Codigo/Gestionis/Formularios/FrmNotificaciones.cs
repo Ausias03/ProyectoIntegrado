@@ -93,7 +93,7 @@ namespace Gestionis
             panel.BackColor = bgColor;
             panel.Padding = new Padding(10);
             panel.Margin = new Padding(10);
-            panel.Size = new Size(400, 100);
+            panel.Size = new Size(400, 110);
 
             Label lblTitulo = new Label();
             lblTitulo.Text = noti.Titulo;
@@ -110,13 +110,13 @@ namespace Gestionis
             Panel panelDescripcion = new Panel();
             panelDescripcion.BackColor = ColorTranslator.FromHtml("#D9FFD8");
             panelDescripcion.BorderStyle = BorderStyle.FixedSingle;
-            panelDescripcion.Size = new Size(120, 70);
+            panelDescripcion.Size = new Size(120, 90);
             panelDescripcion.Location = new Point(265, 10);
 
             Label lblDescripcion = new Label();
             lblDescripcion.Text = noti.Descripcion;
             lblDescripcion.AutoSize = false;
-            lblDescripcion.Size = new Size(100, 40);
+            lblDescripcion.Size = new Size(100, 60);
             lblDescripcion.Location = new Point(10, 15);
             lblDescripcion.TextAlign = ContentAlignment.MiddleCenter;
             lblDescripcion.Font = new Font(lblDescripcion.Font, FontStyle.Bold);

@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -67,6 +68,95 @@ namespace Gestionis.Clases
         {
             return categoria;
         }
+        #endregion
+
+        #region Métodos Ahorro dgv Datos
+
+        public static DataTable VisualizarDatosVariable()
+        {
+            //string queryString = "SELECT c.nombre AS categoria, SUM(g.cantidad) AS total_gasto " +
+            //   "FROM gasto g JOIN categoriagasto c ON g.categoria = c.idCategoria " +
+            //   "WHERE g.tipo = 'Variable' GROUP BY c.nombre";
+            return Utilidades.RellenarDatos("SELECT c.nombre AS categoria, SUM(g.cantidad) AS total_gasto " +
+               "FROM gasto g JOIN categoriagasto c ON g.categoria = c.idCategoria " +
+               "WHERE g.tipo = 'Variable' GROUP BY c.nombre");
+        }
+        public static DataTable VisualizarDatosFijo()
+        {
+            return Utilidades.RellenarDatos("SELECT c.nombre AS categoria, SUM(g.cantidad) AS total_gasto " +
+                           "FROM gasto g JOIN categoriagasto c ON g.categoria = c.idCategoria " +
+                           "WHERE g.tipo = 'fijo' GROUP BY c.nombre");
+        }
+
+        #endregion
+
+        #region Métodos de Ahorro Totales
+        public static int TotalFijos()
+        {
+            string queryString = "SELECT SUM(cantidad) FROM gasto WHERE tipo = 'fijo'";
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+
+            query.Parameters.AddWithValue("@tipo", "fijo");
+            ConexionDB.AbrirConexion();
+            int sumaTotal = Convert.ToInt32(query.ExecuteScalar());
+
+            ConexionDB.CerrarConexion();
+            return sumaTotal;
+        }
+        public static int TotalVariable()
+        {
+            string queryString = "SELECT SUM(cantidad) FROM gasto WHERE tipo = 'Variable'";
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+
+            query.Parameters.AddWithValue("@tipo", "Variable");
+            ConexionDB.AbrirConexion();
+            int sumaTotal = Convert.ToInt32(query.ExecuteScalar());
+
+            ConexionDB.CerrarConexion();
+            return sumaTotal;
+        }
+
+        public static int DineroRestante(int ingresosMensuales)
+        {
+            int total = 0;
+
+            total = Gasto.TotalFijos() + Gasto.TotalVariable();
+            return ingresosMensuales - total;
+        }
+
+        #endregion
+
+        #region método 50/30/20
+
+        #region Cálculo de dinero
+
+        public static double M503020Necesidades(double ingresosMensuales)
+        {
+            return ingresosMensuales * 0.50;
+        }
+        public static double M503020Presindibles(double ingresosMensuales)
+        {
+            return ingresosMensuales * 0.30;
+        }
+        public static double M503020Ahorro(double ingresosMensuales)
+        {
+            return ingresosMensuales * 0.20;
+        }
+        #endregion
+
+        public static (double, double, double) CalcularSobranteYPorcentaje(double ingresosMensuales, double gastosNecesidades, double gastosPrescindibles, double gastosAhorro)
+        {
+            double sobranteNecesidades = Math.Max(0, ingresosMensuales * 0.50 - gastosNecesidades);
+            double sobrantePrescindibles = Math.Max(0, ingresosMensuales * 0.30 - gastosPrescindibles);
+            double sobranteAhorro = Math.Max(0, ingresosMensuales * 0.20 - gastosAhorro);
+
+            double porcentajeSobranteNecesidades = (sobranteNecesidades / (ingresosMensuales * 0.50)) * 100;
+            double porcentajeSobrantePrescindibles = (sobrantePrescindibles / (ingresosMensuales * 0.30)) * 100;
+            double porcentajeSobranteAhorro = (sobranteAhorro / (ingresosMensuales * 0.20)) * 100;
+
+            return (porcentajeSobranteNecesidades, porcentajeSobrantePrescindibles, porcentajeSobranteAhorro);
+        }
+
         #endregion
 
         public void Add()

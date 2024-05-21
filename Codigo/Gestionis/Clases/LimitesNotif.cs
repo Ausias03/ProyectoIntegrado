@@ -10,7 +10,6 @@ namespace Gestionis.Clases
 {
     internal class LimitesNotif
     {
-        private int? id;
         private int numCuenta;
         private int idCategoria;
         private decimal limite;
@@ -18,15 +17,6 @@ namespace Gestionis.Clases
         #region Constructores
         public LimitesNotif(int numCuenta, int idCategoria, decimal limite)
         {
-            this.id = null;
-            this.numCuenta = numCuenta;
-            this.idCategoria = idCategoria;
-            this.limite = limite;
-        }
-
-        public LimitesNotif(int id, int numCuenta, int idCategoria, decimal limite)
-        {
-            this.id = id;
             this.numCuenta = numCuenta;
             this.idCategoria = idCategoria;
             this.limite = limite;
@@ -35,7 +25,7 @@ namespace Gestionis.Clases
 
         public static decimal? GetLimite(int numCuenta, int idCategoria)
         {
-            string queryString = "SELECT limite FROM limitesNotificaciones WHERE numCuenta = @numCuenta AND idCategoria = @idCategoria;";
+            string queryString = "SELECT limite FROM limite WHERE numCuenta = @numCuenta AND idCategoria = @idCategoria;";
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
             query.Parameters.AddWithValue("@numCuenta", numCuenta);
             query.Parameters.AddWithValue("@idCategoria", idCategoria);
@@ -57,13 +47,28 @@ namespace Gestionis.Clases
             return limite;
         }
 
-        public void Add()
+        public static void EditarLimite(int numCuenta, int idCategoria, decimal? limite)
         {
-            string queryString = "INSERT INTO limitesNotificaciones (idLimite, numCuenta, idCategoria, limite) " +
-                "VALUES (@idLimite, @numCuenta, @idCategoria, @limite);";
+            string queryString = "UPDATE limite SET limite = @limite WHERE numCuenta = @numCuenta AND idCategoria = @idCategoria;";
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
-            query.Parameters.AddWithValue("@idLimite", id);
+            query.Parameters.AddWithValue("@limite", limite);
+            query.Parameters.AddWithValue("@numCuenta", numCuenta);
+            query.Parameters.AddWithValue("@idCategoria", idCategoria);
+
+            ConexionDB.AbrirConexion();
+
+            query.ExecuteNonQuery();
+
+            ConexionDB.CerrarConexion();
+        }
+
+        public void Add()
+        {
+            string queryString = "INSERT INTO limite (numCuenta, idCategoria, limite) " +
+                "VALUES (@numCuenta, @idCategoria, @limite);";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
             query.Parameters.AddWithValue("@numCuenta", numCuenta);
             query.Parameters.AddWithValue("@idCategoria", idCategoria);
             query.Parameters.AddWithValue("@limite", limite);
