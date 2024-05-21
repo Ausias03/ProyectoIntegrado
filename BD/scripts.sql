@@ -20,7 +20,7 @@ nivel INT NOT NULL DEFAULT 1
 CREATE TABLE IF NOT EXISTS cuenta (
 numCuenta INT PRIMARY KEY AUTO_INCREMENT,
 apodoUsuario VARCHAR(45) NOT NULL,
-pasivos FLOAT NOT NULL,
+pasivos DECIMAL(10,2) NOT NULL,
 FOREIGN KEY (apodoUsuario) REFERENCES usuario(apodo) ON DELETE CASCADE
 );
 
@@ -40,13 +40,13 @@ idGasto INT PRIMARY KEY AUTO_INCREMENT,
 numCuenta INT NOT NULL,
 nombre VARCHAR(45) NOT NULL,
 cantidad FLOAT NOT NULL,
-categoria INT NOT NULL,
+idCategoria INT NOT NULL,
 tipo VARCHAR(45) NOT NULL,
 comentarios VARCHAR(300),
 fecha DATE NOT NULL,
 hora TIME NOT NULL,
 FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta) ON DELETE CASCADE,
-FOREIGN KEY (categoria) REFERENCES categoriaGasto(idCategoria) ON DELETE CASCADE
+FOREIGN KEY (idCategoria) REFERENCES categoriaGasto(idCategoria) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS ingreso (
@@ -117,12 +117,21 @@ CREATE TABLE IF NOT EXISTS notificacion (
 idNotificacion INT PRIMARY KEY AUTO_INCREMENT,
 numCuenta INT NOT NULL,
 titulo VARCHAR(45) NOT NULL,
-categoria INT NOT NULL,
-descripcion VARCHAR(45) NOT NULL,
-recomendacion VARCHAR(45) NOT NULL,
+idCategoria INT NOT NULL,
+descripcion VARCHAR(255) NOT NULL,
+recomendacion VARCHAR(255) NOT NULL,
 fecha DATE NOT NULL,
 FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta) ON DELETE CASCADE,
-FOREIGN KEY (categoria) REFERENCES categoriagasto(idCategoria) ON DELETE CASCADE
+FOREIGN KEY (idCategoria) REFERENCES categoriagasto(idCategoria) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS limitesNotificaciones (
+idLimite INT PRIMARY KEY AUTO_INCREMENT,
+numCuenta INT NOT NULL,
+idCategoria INT NOT NULL,
+limite DECIMAL(10,2) NOT NULL,
+FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta) ON DELETE CASCADE,
+FOREIGN KEY (idCategoria) REFERENCES categoriagasto(idCategoria) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS nivel (
