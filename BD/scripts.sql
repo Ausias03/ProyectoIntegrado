@@ -56,12 +56,12 @@ numCuenta INT NOT NULL,
 nombre VARCHAR(45) NOT NULL,
 cantidad FLOAT NOT NULL,
 tipo VARCHAR(45) NOT NULL,
-categoria INT NULL,
+idCategoria INT NULL,
 comentarios VARCHAR(300),
 fecha DATE NOT NULL,
 hora TIME NOT NULL,
 FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta) ON DELETE CASCADE,
-FOREIGN KEY (categoria) REFERENCES categoriaIngreso(idCategoria) ON DELETE CASCADE
+FOREIGN KEY (idCategoria) REFERENCES categoriaIngreso(idCategoria) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS activo (
