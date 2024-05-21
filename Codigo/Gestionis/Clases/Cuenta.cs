@@ -111,7 +111,7 @@ namespace Gestionis.Clases
         public List<Gasto> DevuelveGastos(string nombre, string tipo, decimal cantidad, string categoria)
         {
             string queryString = "SELECT * FROM gasto WHERE numCuenta = @numCuenta AND nombre = @nombre AND tipo = @tipo " +
-                "AND cantidad >= @cantidad AND categoria IN (SELECT idcategoria FROM categoriagasto WHERE nombre = @nombreCategoria);";
+                "AND cantidad >= @cantidad AND idCategoria IN (SELECT idcategoria FROM categoriagasto WHERE nombre = @nombreCategoria);";
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
             query.Parameters.AddWithValue("@numCuenta", numCuenta);
@@ -136,7 +136,7 @@ namespace Gestionis.Clases
         public List<Ingreso> DevuelveIngresos(string nombre, string tipo, decimal cantidad, string categoria)
         {
             string queryString = "SELECT * FROM ingreso WHERE numCuenta = @numCuenta AND nombre = @nombre AND tipo = @tipo " +
-                "AND cantidad >= @cantidad AND categoria ";
+                "AND cantidad >= @cantidad AND idCategoria ";
 
             if (categoria == string.Empty)
             {
