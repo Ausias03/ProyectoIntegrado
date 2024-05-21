@@ -126,6 +126,15 @@ FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta) ON DELETE CASCADE,
 FOREIGN KEY (idCategoria) REFERENCES categoriagasto(idCategoria) ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS limite (
+numCuenta INT NOT NULL,
+idCategoria INT NOT NULL,
+limite DECIMAL(10,2),
+PRIMARY KEY (numCuenta,idCategoria),
+FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta) ON DELETE CASCADE,
+FOREIGN KEY (idCategoria) REFERENCES categoriagasto(idCategoria) ON DELETE CASCADE
+);
+
 CREATE TABLE IF NOT EXISTS nivel (
 idNivel INT PRIMARY KEY AUTO_INCREMENT,
 nivel INT NOT NULL,
