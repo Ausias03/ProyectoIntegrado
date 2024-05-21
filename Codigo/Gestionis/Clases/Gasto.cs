@@ -11,7 +11,6 @@ namespace Gestionis.Clases
     public class Gasto
     {
         private static List<String> tiposGasto = new List<String>() { "Fijo", "Variable" };
-        private static List<double> limiteNotifs = new List<double> { 150, 50, 80, 300, 200 };
 
         private int? idGasto;
         private int numCuenta;

@@ -1,6 +1,6 @@
 ﻿namespace Gestionis.Formularios
 {
-    partial class ModifNotif
+    partial class FrmModifNotif
     {
         /// <summary>
         /// Required designer variable.

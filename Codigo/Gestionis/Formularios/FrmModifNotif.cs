@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Gestionis.Formularios
 {
-    public partial class ModifNotif : Form
+    public partial class FrmModifNotif : Form
     {
-        public ModifNotif()
+        public FrmModifNotif()
         {
             InitializeComponent();
         }
