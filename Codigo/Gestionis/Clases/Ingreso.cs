@@ -67,8 +67,8 @@ namespace Gestionis.Clases
         public void Add()
         {
             string queryString = "INSERT INTO ingreso (idIngreso, numCuenta, nombre, cantidad," +
-                "tipo, categoria, comentarios, fecha, hora) " +
-                "VALUES (@idIngreso, @numCuenta, @nombre, @cantidad, @tipo, @categoria, @comentarios," +
+                "tipo, idCategoria, comentarios, fecha, hora) " +
+                "VALUES (@idIngreso, @numCuenta, @nombre, @cantidad, @tipo, @idCategoria, @comentarios," +
                 "@fecha, @hora);";
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
@@ -77,7 +77,7 @@ namespace Gestionis.Clases
             query.Parameters.AddWithValue("@nombre", nombre);
             query.Parameters.AddWithValue("@cantidad", cantidad);
             query.Parameters.AddWithValue("@tipo", tipo);
-            query.Parameters.AddWithValue("@categoria", categoria);
+            query.Parameters.AddWithValue("@idCategoria", categoria);
             query.Parameters.AddWithValue("@comentarios", comentarios);
             query.Parameters.AddWithValue("@fecha", fecha);
             query.Parameters.AddWithValue("@hora", hora);

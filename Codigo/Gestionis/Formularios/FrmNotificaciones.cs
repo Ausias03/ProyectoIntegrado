@@ -86,7 +86,7 @@ namespace Gestionis
 
         private void AddPanel(Notificacion noti)
         {
-            Color bgColor = Color.FromArgb(-36238);
+            Color bgColor = Color.FromArgb(CategoriaGasto.GetColor(noti.Categoria));
 
             Panel panel = new Panel();
             panel.BorderStyle = BorderStyle.FixedSingle;

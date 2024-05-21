@@ -63,152 +63,18 @@ namespace Gestionis.Clases
         public TimeSpan Hora { get { return hora; } }
         #endregion
 
-        #region Método para comprobar si crear notificaciones
-        public static bool CrearNotificacion(int categoria, int indiceLimite)
+        #region Geters
+        public int GetNumericCategoria()
         {
-            string queryString = "SELECT SUM(cantidad) FROM gasto " +
-                "WHERE categoria IN (SELECT idCategoria FROM categoriagasto WHERE idCategoria = @idCategoria);";
-
-            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
-            query.Parameters.AddWithValue("@idCategoria", categoria);
-
-            ConexionDB.AbrirConexion();
-
-            bool aviso = false;
-
-            using (MySqlDataReader reader = query.ExecuteReader())
-            {
-                if (reader.HasRows)
-                {
-                    aviso = reader.GetDouble(0) >= limiteNotifs[indiceLimite];
-                }
-            }
-
-            ConexionDB.CerrarConexion();
-
-            return aviso;
-        }
-        public static bool NotifRestaurante()
-        {
-            string queryString = "SELECT SUM(cantidad) FROM gasto " +
-                "WHERE categoria IN (SELECT idCategoria FROM categoriagasto WHERE nombre = 'Restaurante');";
-
-            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
-
-            ConexionDB.AbrirConexion();
-
-            bool aviso = false;
-
-            using (MySqlDataReader reader = query.ExecuteReader())
-            {
-                if (reader.HasRows)
-                {
-                    aviso = reader.GetDouble(0) >= limiteNotifs[0];
-                }
-            }
-
-            ConexionDB.CerrarConexion();
-
-            return aviso;
-        }
-
-        public static bool NotifEntretenimiento()
-        {
-            string queryString = "SELECT SUM(cantidad) FROM gasto " +
-                "WHERE categoria IN (SELECT idcategoria FROM categoriagasto WHERE nombre = 'Entretenimiento');";
-
-            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
-
-            ConexionDB.AbrirConexion();
-
-            bool aviso = false;
-
-            using (MySqlDataReader reader = query.ExecuteReader())
-            {
-                if (reader.HasRows)
-                {
-                    aviso = reader.GetDouble(0) >= limiteNotifs[1];
-                }
-            }
-
-            ConexionDB.CerrarConexion();
-
-            return aviso;
-        }
-
-        public static bool NotifLuz()
-        {
-            string queryStringCantidadLuz = "SELECT SUM(cantidad) FROM gasto " +
-                "WHERE categoria IN (SELECT idcategoria FROM categoriagasto WHERE nombre = 'Luz');";
-
-            string queryStringCantidadTotal = "SELECT SUM(cantidad) FROM gasto;";
-
-            MySqlCommand queryCantidadLuz = new MySqlCommand(queryStringCantidadLuz, ConexionDB.Conexion);
-            MySqlCommand queryCantidadTotal = new MySqlCommand(queryStringCantidadTotal, ConexionDB.Conexion);
-
-            ConexionDB.AbrirConexion();
-
-            bool aviso = Convert.ToDouble(queryCantidadLuz.ExecuteScalar()) / Convert.ToDouble(queryCantidadTotal.ExecuteScalar()) * 100 >= limiteNotifs[2];
-
-            ConexionDB.CerrarConexion();
-
-            return aviso;
-        }
-
-        public static bool NotifSuper()
-        {
-            string queryString = "SELECT SUM(cantidad) FROM gasto " +
-                "WHERE categoria IN (SELECT idcategoria FROM categoriagasto WHERE nombre = 'Supermercado');";
-
-            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
-
-            ConexionDB.AbrirConexion();
-
-            bool aviso = false;
-
-            using (MySqlDataReader reader = query.ExecuteReader())
-            {
-                if (reader.HasRows)
-                {
-                    aviso = reader.GetDouble(0) >= limiteNotifs[3];
-                }
-            }
-
-            ConexionDB.CerrarConexion();
-
-            return aviso;
-        }
-
-        public static bool NotifGasolina()
-        {
-            string queryString = "SELECT SUM(cantidad) FROM gasto " +
-                "WHERE categoria IN (SELECT idcategoria FROM categoriagasto WHERE nombre = 'Gasolina');";
-
-            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
-
-            ConexionDB.AbrirConexion();
-
-            bool aviso = false;
-
-            using (MySqlDataReader reader = query.ExecuteReader())
-            {
-                if (reader.HasRows)
-                {
-                    aviso = reader.GetDouble(0) >= limiteNotifs[4];
-                }
-            }
-
-            ConexionDB.CerrarConexion();
-
-            return aviso;
+            return categoria;
         }
         #endregion
 
         public void Add()
         {
             string queryString = "INSERT INTO gasto (idGasto, numCuenta, nombre, cantidad," +
-                "categoria, tipo, comentarios, fecha, hora) " +
-                "VALUES (@idGasto, @numCuenta, @nombre, @cantidad, @categoria, @tipo, @comentarios," +
+                "idCategoria, tipo, comentarios, fecha, hora) " +
+                "VALUES (@idGasto, @numCuenta, @nombre, @cantidad, @idCategoria, @tipo, @comentarios," +
                 "@fecha, @hora);";
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
@@ -216,7 +82,7 @@ namespace Gestionis.Clases
             query.Parameters.AddWithValue("@numCuenta", Sesion.Instance.NumCuenta);
             query.Parameters.AddWithValue("@nombre", nombre);
             query.Parameters.AddWithValue("@cantidad", cantidad);
-            query.Parameters.AddWithValue("@categoria", categoria);
+            query.Parameters.AddWithValue("@idCategoria", categoria);
             query.Parameters.AddWithValue("@tipo", tipo);
             query.Parameters.AddWithValue("@comentarios", comentarios);
             query.Parameters.AddWithValue("@fecha", fecha);

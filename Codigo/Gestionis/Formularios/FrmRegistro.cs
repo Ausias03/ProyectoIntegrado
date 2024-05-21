@@ -99,6 +99,7 @@ namespace Gestionis
 
                 CreaUsuario();
                 CreaCuenta(txtApodo.Text);
+                CreaLimites();
                 
                 lklInicioSesion_LinkClicked(null, null);
             }
@@ -141,6 +142,20 @@ namespace Gestionis
                 apodo);
 
             cue1.Add();
+        }
+
+        private void CreaLimites()
+        {
+            int numCuenta = Cuenta.IDCuentaUsuario(txtApodo.Text);
+            for (int i = 1; i < 6; i++)
+            {
+                LimitesNotif lim = new LimitesNotif(
+                    numCuenta,
+                    i,
+                    150
+                );
+                lim.Add();
+            }
         }
         #endregion        
     }

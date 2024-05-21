@@ -70,7 +70,7 @@ namespace Gestionis.Clases
 
         public static bool ExisteNotif(int categoria)
         {
-            string queryString = "SELECT idNotificacion FROM notificacion WHERE categoria IN" +
+            string queryString = "SELECT idNotificacion FROM notificacion WHERE idCategoria IN" +
                 "(SELECT idCategoria FROM categoriaGasto WHERE idCategoria = @idCategoria);";
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
@@ -90,16 +90,35 @@ namespace Gestionis.Clases
             return existe;
         }
 
+        public static string GetRecomendacion(string nombreCategoria)
+        {
+            switch (nombreCategoria)
+            {
+                case "Restaurante":
+                    return "Considera cocinar en casa";
+                case "Supermercado":
+                    return "Considera comprar en supermercados con ofertas";
+                case "Gasolina":
+                    return "Considera utilizar el transporte público";
+                case "Entretenimiento":
+                    return "Considera cancelar suscripciones a servicios de series/películas";
+                case "Luz":
+                    return "Considera reducir el consumo eléctrico con bombillas LED";
+                default:
+                    return $"Considera gastar menos dinero en {nombreCategoria}";
+            }
+        }
+
         public void Add()
         {
-            string queryString = "INSERT INTO notificacion (idNotificacion, numCuenta, titulo, categoria, descripcion, recomendacion, fecha) " +
-                "VALUES (@idNotificacion, @numCuenta, @titulo, @categoria, @descripcion, @recomendacion, @fecha);";
+            string queryString = "INSERT INTO notificacion (idNotificacion, numCuenta, titulo, idCategoria, descripcion, recomendacion, fecha) " +
+                "VALUES (@idNotificacion, @numCuenta, @titulo, @idCategoria, @descripcion, @recomendacion, @fecha);";
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
             query.Parameters.AddWithValue("@idNotificacion", id);
             query.Parameters.AddWithValue("@numCuenta", numCuenta);
             query.Parameters.AddWithValue("@titulo", titulo);
-            query.Parameters.AddWithValue("@categoria", categoria);
+            query.Parameters.AddWithValue("@idCategoria", categoria);
             query.Parameters.AddWithValue("@descripcion", descripcion);
             query.Parameters.AddWithValue("@recomendacion", recomendacion);
             query.Parameters.AddWithValue("@fecha", fecha);
