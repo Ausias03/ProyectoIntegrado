@@ -16,7 +16,6 @@ namespace Gestionis.Clases
         private int? numCuenta;
         private string apodoUsuario;
         private float pasivos;
-        private List<Notificacion> notificaciones = new List<Notificacion>();
 
         public Cuenta(string apodoUsuario)
         {
@@ -32,7 +31,6 @@ namespace Gestionis.Clases
             this.pasivos = pasivos;
         }
 
-        public List<Notificacion> Notificaciones { get { return notificaciones; } }
         public int? NumCuenta { get { return numCuenta; } }
 
         public static int IDCuentaUsuario(string apodoUsuario)

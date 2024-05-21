@@ -49,16 +49,16 @@ namespace Gestionis.Herramientas
 
         private void CreateButtons()
         {
-            BtnInicio = CreateButton("Inicio", Properties.Resources.inicio, typeof(FrmMenuPrincipal));
-            BtnInversiones = CreateButton("Inversiones", Properties.Resources.inversiones, typeof(frmTablaClasificación));
-            BtnAhorros = CreateButton("Ahorros", Properties.Resources.ahorro, typeof(frmMetodosAhorro));
-            BtnDeudas = CreateButton("Deudas", Properties.Resources.deuda, typeof(FrmGestorDeudas));
-            BtnPatrimonio = CreateButton("Patrimonio", Properties.Resources.patrimonio, typeof(frmTablaClasificación));
-            BtnNotas = CreateButton("Notas", Properties.Resources.notas, typeof(frmNotas));
-            BtnClasificacion = CreateButton("Clasificación", Properties.Resources.calsificacion, typeof(frmTablaClasificación));
-            BtnHistorial = CreateButton("Historial", Properties.Resources.historial, typeof(frmHistorial));
-            BtnNotificaciones = CreateButton("Notif.", Properties.Resources.notificacion, typeof(FrmNotificaciones));
-            BtnPaginaWeb = CreateButton("Página Web", Properties.Resources.web, typeof(frmTablaClasificación));
+            CreateButton("Inicio", Properties.Resources.inicio, typeof(FrmMenuPrincipal));
+            CreateButton("Inversiones", Properties.Resources.inversiones, typeof(frmTablaClasificación));
+            CreateButton("Ahorros", Properties.Resources.ahorro, typeof(frmMetodosAhorro));
+            CreateButton("Deudas", Properties.Resources.deuda, typeof(FrmGestorDeudas));
+            CreateButton("Patrimonio", Properties.Resources.patrimonio, typeof(frmTablaClasificación));
+            CreateButton("Notas", Properties.Resources.notas, typeof(frmNotas));
+            CreateButton("Clasificación", Properties.Resources.calsificacion, typeof(frmTablaClasificación));
+            CreateButton("Historial", Properties.Resources.historial, typeof(frmHistorial));
+            CreateButton("Notif.", Properties.Resources.notificacion, typeof(FrmNotificaciones));
+            CreateButton("Página Web", Properties.Resources.web, typeof(frmTablaClasificación));
         }
 
         private Button CreateButton(string text, Image image, Type formType)
@@ -113,7 +113,7 @@ namespace Gestionis.Herramientas
         private void CerrarAbrirFrm(Type formType)
         {
             Form form = (Form)Activator.CreateInstance(formType);
-            if (form.GetType() == typeof(FrmNotificaciones))
+            if (form.GetType() == typeof(FrmModifNotif))
             {
                 form.ShowDialog();
             }

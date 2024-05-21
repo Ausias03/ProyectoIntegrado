@@ -78,7 +78,7 @@
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1818, 44);
+            barraSecundaria1.Size = new Size(1651, 44);
             barraSecundaria1.TabIndex = 3;
             // 
             // barraLateral1
@@ -87,14 +87,14 @@
             barraLateral1.Dock = DockStyle.Left;
             barraLateral1.Location = new Point(0, 84);
             barraLateral1.Name = "barraLateral1";
-            barraLateral1.Size = new Size(264, 818);
+            barraLateral1.Size = new Size(289, 768);
             barraLateral1.TabIndex = 4;
             // 
             // frmTablaClasificación
             // 
             AutoScaleDimensions = new SizeF(9F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1818, 902);
+            ClientSize = new Size(1651, 852);
             Controls.Add(barraLateral1);
             Controls.Add(barraSecundaria1);
             Controls.Add(btnSalir);
