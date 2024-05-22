@@ -163,7 +163,7 @@ namespace Gestionis.Herramientas
                 BtnClasificacion.Enabled = true;
             }
 
-            if (nivel < 5)
+            if (nivel < 6)
             {
                 BtnInversiones.Enabled = false;
                 BtnPatrimonio.Enabled = false;

@@ -64,11 +64,13 @@ namespace Gestionis
             lblApodo = new Label();
             lblNombre = new Label();
             pctFoto = new PictureBox();
+            pctMarco = new PictureBox();
             barraSecundaria1 = new BarraSecundaria();
-            barraLateral1 = new BarraLateral();
+            barraLateral2 = new BarraLateral();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             grpCuenta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pctFoto).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pctMarco).BeginInit();
             SuspendLayout();
             // 
             // lblTuCuenta
@@ -129,6 +131,7 @@ namespace Gestionis
             grpCuenta.Controls.Add(lblApodo);
             grpCuenta.Controls.Add(lblNombre);
             grpCuenta.Controls.Add(pctFoto);
+            grpCuenta.Controls.Add(pctMarco);
             grpCuenta.ForeColor = SystemColors.ControlText;
             grpCuenta.Location = new Point(383, 168);
             grpCuenta.Name = "grpCuenta";
@@ -444,6 +447,16 @@ namespace Gestionis
             pctFoto.TabIndex = 27;
             pctFoto.TabStop = false;
             // 
+            // pctMarco
+            // 
+            pctMarco.Image = Properties.Resources.Marco1;
+            pctMarco.Location = new Point(733, 48);
+            pctMarco.Name = "pctMarco";
+            pctMarco.Size = new Size(77, 69);
+            pctMarco.SizeMode = PictureBoxSizeMode.StretchImage;
+            pctMarco.TabIndex = 57;
+            pctMarco.TabStop = false;
+            // 
             // barraSecundaria1
             // 
             barraSecundaria1.BackColor = Color.FromArgb(211, 208, 242);
@@ -453,14 +466,14 @@ namespace Gestionis
             barraSecundaria1.Size = new Size(1446, 44);
             barraSecundaria1.TabIndex = 5;
             // 
-            // barraLateral1
+            // barraLateral2
             // 
-            barraLateral1.BackColor = Color.FromArgb(205, 213, 221);
-            barraLateral1.Dock = DockStyle.Left;
-            barraLateral1.Location = new Point(0, 84);
-            barraLateral1.Name = "barraLateral1";
-            barraLateral1.Size = new Size(289, 753);
-            barraLateral1.TabIndex = 6;
+            barraLateral2.BackColor = Color.FromArgb(205, 213, 221);
+            barraLateral2.Dock = DockStyle.Left;
+            barraLateral2.Location = new Point(0, 84);
+            barraLateral2.Name = "barraLateral2";
+            barraLateral2.Size = new Size(231, 753);
+            barraLateral2.TabIndex = 6;
             // 
             // frmUsuario
             // 
@@ -468,7 +481,7 @@ namespace Gestionis
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(233, 236, 239);
             ClientSize = new Size(1446, 837);
-            Controls.Add(barraLateral1);
+            Controls.Add(barraLateral2);
             Controls.Add(barraSecundaria1);
             Controls.Add(grpCuenta);
             Controls.Add(btnCerrarSesion);
@@ -482,11 +495,12 @@ namespace Gestionis
             Controls.SetChildIndex(btnCerrarSesion, 0);
             Controls.SetChildIndex(grpCuenta, 0);
             Controls.SetChildIndex(barraSecundaria1, 0);
-            Controls.SetChildIndex(barraLateral1, 0);
+            Controls.SetChildIndex(barraLateral2, 0);
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             grpCuenta.ResumeLayout(false);
             grpCuenta.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pctFoto).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pctMarco).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -528,5 +542,7 @@ namespace Gestionis
         private ProgressBar prbExperiencia;
         private Label lblExp;
         private Label lblNivel;
+        private PictureBox pctMarco;
+        private BarraLateral barraLateral2;
     }
 }

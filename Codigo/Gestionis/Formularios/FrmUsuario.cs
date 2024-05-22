@@ -42,7 +42,7 @@ namespace Gestionis
             txtTelefono.Text = usuario.Telefono;
             #endregion
             barraSecundaria1.Load();
-            barraLateral1.Load();
+            barraLateral2.Load();
             SetExpNivel();
             if (Sesion.Instance.Espanyol) Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
             else Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
@@ -57,7 +57,7 @@ namespace Gestionis
         private void BtnLanguage_Click(object sender, EventArgs e)
         {
             AplicarIdioma();
-            barraLateral1.AplicarIdiomas();
+            barraLateral2.AplicarIdiomas();
         }
 
         private void SetExpNivel()
@@ -72,8 +72,25 @@ namespace Gestionis
             prbExperiencia.Value = progress;
 
             lblNivel.Text = experienciaActual == 0 ? "0" : nivelActual.ToString();
+
+            ActualizaMarco(nivelActual);
         }
 
+        private void ActualizaMarco(int nivel)
+        {
+            if (nivel < 3)
+            {
+                pctMarco.Image = Properties.Resources.Marco1;
+            }
+            else if (nivel < 5)
+            {
+                pctMarco.Image = Properties.Resources.Marco2;
+            }
+            else
+            {
+                pctMarco.Image = Properties.Resources.Marco3;
+            }
+        }
 
         #region Validación de datos
 
@@ -200,6 +217,8 @@ namespace Gestionis
                 btnConfirmarNom.Hide();
                 btnCambiarNom.Show();
                 Usuario.CambiarCampo("nombre", txtNombre.Text);
+                SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario, 50);
+                SetExpNivel();
             }
         }
 
