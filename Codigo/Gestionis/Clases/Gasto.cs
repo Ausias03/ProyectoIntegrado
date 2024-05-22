@@ -102,6 +102,8 @@ namespace Gestionis.Clases
             return lista;
         }
 
+        #region Métodos de Ahorro Totales
+
         #region Métodos Ahorro dgv Datos
 
         public static DataTable VisualizarDatosVariable()
@@ -118,18 +120,15 @@ namespace Gestionis.Clases
 
         #endregion
 
-        #region Métodos de Ahorro Totales
+        #region Calculo Totales valores (gastos)
         public static int? TotalFijos()
         {
             string queryString = "SELECT SUM(cantidad) FROM gasto WHERE tipo = @tipo";
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
 
             query.Parameters.AddWithValue("@tipo", "fijo");
-
             ConexionDB.AbrirConexion();
-
             int? sumaTotal = null;
-
             using (MySqlDataReader reader = query.ExecuteReader())
             {
                 while (reader.Read())
@@ -139,21 +138,16 @@ namespace Gestionis.Clases
             }
 
             ConexionDB.CerrarConexion();
-
             return sumaTotal;
         }
-
         public static int? TotalVariable()
         {
             string queryString = "SELECT SUM(cantidad) FROM gasto WHERE tipo = @tipo";
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
 
-            query.Parameters.AddWithValue("@tipo", "fijo");
-
+            query.Parameters.AddWithValue("@tipo", "Variable");
             ConexionDB.AbrirConexion();
-
             int? sumaTotal = null;
-
             using (MySqlDataReader reader = query.ExecuteReader())
             {
                 while (reader.Read())
@@ -163,18 +157,58 @@ namespace Gestionis.Clases
             }
 
             ConexionDB.CerrarConexion();
-
             return sumaTotal;
         }
+        #endregion
 
-
-        public static int DineroRestante(int ingresosMensuales)
+        #region Calculo de los porcentajes totales
+        public static int PorcentajeTotalVariable()
         {
-            int totalFijos = Gasto.TotalFijos() == null ? 0 : TotalFijos().Value;
-            int totalVariables = Gasto.TotalVariable() == null ? 0 : TotalVariable().Value;
+            double porcentajeTotal = 0;
+            var datosVariable = Gasto.VisualizarDatosVariable();
 
-            int total = totalFijos + totalVariables;
+            for (int i = 0; i < datosVariable.Rows.Count; i++)
+            {
+                porcentajeTotal += Convert.ToDouble(datosVariable.Rows[i][2]);
+            }
+            return (int)porcentajeTotal;
+        }
+        public static int PorcentajeTotalFijo()
+        {
+            double porcentajeTotal = 0;
+            var datosVariable = Gasto.VisualizarDatosFijo();
+
+            for (int i = 0; i < datosVariable.Rows.Count; i++)
+            {
+                porcentajeTotal += Convert.ToDouble(datosVariable.Rows[i][2]);
+            }
+            return (int)porcentajeTotal;
+        }
+
+        #endregion
+
+        public static double? DineroRestante(double? ingresosMensuales)
+        {
+            if (!ingresosMensuales.HasValue)
+            {
+                return null;
+            }
+
+            double? total = Gasto.TotalFijos() + Gasto.TotalVariable();
             return ingresosMensuales - total;
+        }
+
+        public static double? PorcentajeRestante(double? ingresosMensuales)
+        {
+            double? dineroRestante = DineroRestante(ingresosMensuales);
+
+            if (!ingresosMensuales.HasValue || ingresosMensuales.Value == 0 || !dineroRestante.HasValue)
+            {
+                return 0;
+            }
+
+            double? porcentaje = (dineroRestante.Value / ingresosMensuales.Value) * 100;
+            return porcentaje;
         }
 
         #endregion
@@ -183,32 +217,19 @@ namespace Gestionis.Clases
 
         #region Cálculo de dinero
 
-        public static double M503020Necesidades(double ingresosMensuales)
+        public static double? M503020Necesidades(double? ingresosMensuales)
         {
             return ingresosMensuales * 0.50;
         }
-        public static double M503020Presindibles(double ingresosMensuales)
+        public static double? M503020Presindibles(double? ingresosMensuales)
         {
             return ingresosMensuales * 0.30;
         }
-        public static double M503020Ahorro(double ingresosMensuales)
+        public static double? M503020Ahorro(double? ingresosMensuales)
         {
             return ingresosMensuales * 0.20;
         }
         #endregion
-
-        public static (double, double, double) CalcularSobranteYPorcentaje(double ingresosMensuales, double gastosNecesidades, double gastosPrescindibles, double gastosAhorro)
-        {
-            double sobranteNecesidades = Math.Max(0, ingresosMensuales * 0.50 - gastosNecesidades);
-            double sobrantePrescindibles = Math.Max(0, ingresosMensuales * 0.30 - gastosPrescindibles);
-            double sobranteAhorro = Math.Max(0, ingresosMensuales * 0.20 - gastosAhorro);
-
-            double porcentajeSobranteNecesidades = (sobranteNecesidades / (ingresosMensuales * 0.50)) * 100;
-            double porcentajeSobrantePrescindibles = (sobrantePrescindibles / (ingresosMensuales * 0.30)) * 100;
-            double porcentajeSobranteAhorro = (sobranteAhorro / (ingresosMensuales * 0.20)) * 100;
-
-            return (porcentajeSobranteNecesidades, porcentajeSobrantePrescindibles, porcentajeSobranteAhorro);
-        }
 
         #endregion
     }

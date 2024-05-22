@@ -26,16 +26,16 @@ namespace Gestionis
 
         private void MetodosAhorro_Load(object sender, EventArgs e)
         {
-            #region Iconos flechas
+            #region Iconos flechas / puntos
 
-            pbArrow.Image = Properties.Resources.Arrow.ToBitmap();
-            pbArrow.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbDot.Image = Properties.Resources.check.ToBitmap();
+            pbDot.SizeMode = PictureBoxSizeMode.StretchImage;
 
             pbArrow2.Image = Properties.Resources.Arrow.ToBitmap();
             pbArrow2.SizeMode = PictureBoxSizeMode.StretchImage;
 
-            pbArrow3.Image = Properties.Resources.Arrow.ToBitmap();
-            pbArrow3.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbDot2.Image = Properties.Resources.check.ToBitmap();
+            pbDot2.SizeMode = PictureBoxSizeMode.StretchImage;
 
             pbArrow4.Image = Properties.Resources.Arrow.ToBitmap();
             pbArrow4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -61,9 +61,26 @@ namespace Gestionis
             pbArrow11.Image = Properties.Resources.Arrow.ToBitmap();
             pbArrow11.SizeMode = PictureBoxSizeMode.StretchImage;
 
+            pbArrow12.Image = Properties.Resources.Arrow.ToBitmap();
+            pbArrow12.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            pbArrow13.Image = Properties.Resources.Arrow.ToBitmap();
+            pbArrow13.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            pbArrow14.Image = Properties.Resources.Arrow.ToBitmap();
+            pbArrow14.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            pbArrow15.Image = Properties.Resources.Arrow.ToBitmap();
+            pbArrow15.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            pbArrow16.Image = Properties.Resources.Arrow.ToBitmap();
+            pbArrow16.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            pbArrow17.Image = Properties.Resources.Arrow.ToBitmap();
+            pbArrow17.SizeMode = PictureBoxSizeMode.StretchImage;
+
             #endregion
             M503020Porcentajes();
-
 
             lblIngresoMesCont.Text = cuentaUsuario.TotalIngresos() + " €";
             ConfigurarComboBox(cmbCategorias, CategoriaGasto.DevuelveNombresCategorias());
@@ -72,42 +89,23 @@ namespace Gestionis
             {
                 dgvGastosFijos.DataSource = Gasto.VisualizarDatosFijo();
                 dgvGastosVariables.DataSource = Gasto.VisualizarDatosVariable();
-                lblTotalValorFijo.Text = Gasto.TotalFijos() + " €";
+
                 lblTotalGastosVariables.Text = Gasto.TotalVariable() + " €";
+                lblTotalValorFijo.Text = Gasto.TotalFijos() + " €";
                 lblDineroRest.Text = Gasto.DineroRestante((int)cuentaUsuario.TotalIngresos()) + " €";
-                lblPorcentajeVariable.Text = PorcentajeTotalVariable().ToString("0.00") + " %";
-                lblPorcentajeFijo.Text = PorcentajeTotalFijo().ToString("0.00") + " %";
+
+
+                lblPorcentajeVariable.Text = Gasto.PorcentajeTotalVariable().ToString("0") + " %";
+                lblPorcentajeFijo.Text = Gasto.PorcentajeTotalFijo().ToString("0") + " %";
+                lblPorcentajeRest.Text = Gasto.PorcentajeRestante((int)cuentaUsuario.TotalIngresos()).Value.ToString("0") + " %";
 
             }
-            catch (Exception ex) { }
+            catch (Exception) { }
             finally
             {
                 ConexionDB.CerrarConexion();
             }
         }
-        #region Calculo de los porcentajes totales
-        private int PorcentajeTotalVariable()
-        {
-            double porcentajeTotal = 0;
-
-            for (int i = 0; i < dgvGastosVariables.Rows.Count; i++)
-            {
-                porcentajeTotal += (double)dgvGastosVariables.Rows[i].Cells[2].Value;
-            }
-            return (int)porcentajeTotal;
-        }
-        private int PorcentajeTotalFijo()
-        {
-            double porcentajeTotal = 0;
-
-            for (int i = 0; i < dgvGastosFijos.Rows.Count; i++)
-            {
-                porcentajeTotal += (double)dgvGastosFijos.Rows[i].Cells[2].Value;
-            }
-            return (int)porcentajeTotal;
-        }
-
-        #endregion
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
@@ -117,6 +115,15 @@ namespace Gestionis
         private void btn503020_Click(object sender, EventArgs e)
         {
             pnl503020.Visible = true;
+            pnlHarvEker.Visible = false;
+            pnlPersonalizado.Visible = false;
+            btnPAgregar.Visible = false;
+        }
+
+        private void btnHarvEker_Click(object sender, EventArgs e)
+        {
+            pnl503020.Visible = false;
+            pnlHarvEker.Visible = true;
             pnlPersonalizado.Visible = false;
             btnPAgregar.Visible = false;
         }
@@ -124,6 +131,7 @@ namespace Gestionis
         private void btnPersonalizado_Click(object sender, EventArgs e)
         {
             pnl503020.Visible = false;
+            pnlHarvEker.Visible = false;
             pnlPersonalizado.Visible = true;
             btnPAgregar.Visible = true;
         }
@@ -142,11 +150,19 @@ namespace Gestionis
 
         private void M503020Porcentajes()
         {
-            double ingresoMensual = Gasto.DineroRestante((int)cuentaUsuario.TotalIngresos());
-            lblNecBasicasValor.Text = Gasto.M503020Necesidades(ingresoMensual).ToString() + " €";
-            lblNecPresValor.Text = Gasto.M503020Presindibles(ingresoMensual).ToString() + " €";
+            double? ingresoMensual = (int?)cuentaUsuario.TotalIngresos();
+            lblNecBasicasValor.Text = Gasto.M503020Necesidades(ingresoMensual) + " €";
+            lblNecPresValor.Text = Gasto.M503020Presindibles(ingresoMensual) + " €";
             lblAhoValor.Text = Gasto.M503020Ahorro(ingresoMensual).ToString() + " €";
+
+            lblGMNecValor.Text = Gasto.TotalFijos() + " €";
+            lblGPresValor.Text = Gasto.TotalVariable() + " €";
+            lblAhorroDinValor.Text = Gasto.DineroRestante((double)ingresoMensual) + " €";
+
+            lblGMNecPorDin.Text = Gasto.PorcentajeTotalFijo().ToString("0") + " %";
+            lblGPPorDin.Text = Gasto.PorcentajeTotalVariable().ToString("0") + " %";
+
+            lblAhorroPorDin.Text = Gasto.PorcentajeRestante((double)ingresoMensual).Value.ToString("0") + " %";
         }
-        
     }
 }

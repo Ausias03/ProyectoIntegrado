@@ -1,4 +1,5 @@
 ﻿using Gestionis.Clases;
+using Google.Protobuf.WellKnownTypes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,11 +15,17 @@ namespace Gestionis
 {
     public partial class frmAddNota : Form
     {
+        private int? idDeuda;
+
+        public frmAddNota(int? idDeuda)
+        {
+            InitializeComponent();
+            this.idDeuda = idDeuda;
+        }
         public frmAddNota()
         {
             InitializeComponent();
         }
-
         #region Validaciones
         private bool ValidarDatos()
         {
@@ -44,7 +51,6 @@ namespace Gestionis
             return ok;
         }
         #endregion
-
 
         private void frmAddNota_Load(object sender, EventArgs e)
         {
@@ -72,7 +78,11 @@ namespace Gestionis
 
             try
             {
-                Notas nota1 = new Notas(txtAddTitulo.Text, txtAddAsunto.Text, dtpAddDia.Value, ckbAlarma.Checked, btnColor.BackColor.ToArgb());
+                Notas nota1;
+
+                if (idDeuda.HasValue) { nota1 = new Notas(idDeuda.Value, txtAddTitulo.Text, txtAddAsunto.Text, dtpAddDia.Value, ckbAlarma.Checked, btnColor.BackColor.ToArgb());}
+                else { nota1 = new Notas(txtAddTitulo.Text, txtAddAsunto.Text, dtpAddDia.Value, ckbAlarma.Checked, btnColor.BackColor.ToArgb());}
+
                 nota1.Add();
                 if (ckbAlarma.Checked)
                 {
