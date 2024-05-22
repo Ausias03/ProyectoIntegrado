@@ -136,12 +136,12 @@ namespace Gestionis.Clases
 
             return sumaTotal;
         }
+
         public static int? TotalVariable()
         {
             string queryString = "SELECT SUM(cantidad) FROM gasto WHERE tipo = @tipo";
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
 
-            query.Parameters.AddWithValue("@tipo", "Variable");
             ConexionDB.AbrirConexion();
 
             int? sumaTotal = null;
@@ -158,6 +158,7 @@ namespace Gestionis.Clases
 
             return sumaTotal;
         }
+
 
         public static int DineroRestante(int ingresosMensuales)
         {

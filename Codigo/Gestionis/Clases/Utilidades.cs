@@ -53,6 +53,7 @@ namespace Gestionis.Clases
                 ConexionDB.CerrarConexion();
             }
             catch (Exception) { }
+            finally { ConexionDB.CerrarConexion(); }
 
             return tablaDatos;
         }
