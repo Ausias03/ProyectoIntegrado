@@ -43,7 +43,7 @@ namespace Gestionis.Clases
             this.salt = Convert.ToHexString(salt);
             this.direccion = direccion;
             this.telefono = telefono;
-            Bitmap imagen = Properties.Resources.usuario;
+            Bitmap imagen = Properties.Resources.user;
             using (MemoryStream ms = new MemoryStream())
             {
                 imagen.Save(ms, ImageFormat.Jpeg);
