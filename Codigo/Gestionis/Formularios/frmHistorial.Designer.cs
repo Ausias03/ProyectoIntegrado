@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHistorial));
             lblHistorial = new Label();
             dgvIngresos = new DataGridView();
@@ -46,10 +47,12 @@
             dgvGastos = new DataGridView();
             lblGastos = new Label();
             btnSalir = new Button();
+            errorProvider1 = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)dgvIngresos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBuscar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)picBuscaFecha).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvGastos).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // lblHistorial
@@ -58,7 +61,7 @@
             lblHistorial.Font = new Font("Microsoft Sans Serif", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblHistorial.Location = new Point(310, 93);
             lblHistorial.Name = "lblHistorial";
-            lblHistorial.Size = new Size(133, 37);
+            lblHistorial.Size = new Size(165, 46);
             lblHistorial.TabIndex = 1;
             lblHistorial.Text = "Historial";
             // 
@@ -81,7 +84,7 @@
             lblFecha.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblFecha.Location = new Point(322, 160);
             lblFecha.Name = "lblFecha";
-            lblFecha.Size = new Size(47, 24);
+            lblFecha.Size = new Size(58, 29);
             lblFecha.TabIndex = 18;
             lblFecha.Text = "Hoy";
             lblFecha.Visible = false;
@@ -91,7 +94,7 @@
             txtBuscar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtBuscar.Location = new Point(1346, 307);
             txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new Size(181, 26);
+            txtBuscar.Size = new Size(181, 30);
             txtBuscar.TabIndex = 19;
             // 
             // picBuscar
@@ -111,7 +114,7 @@
             lblBuscar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblBuscar.Location = new Point(1346, 274);
             lblBuscar.Name = "lblBuscar";
-            lblBuscar.Size = new Size(81, 20);
+            lblBuscar.Size = new Size(101, 25);
             lblBuscar.TabIndex = 20;
             lblBuscar.Text = "Buscador:";
             // 
@@ -121,7 +124,7 @@
             lblMetodo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblMetodo.Location = new Point(1346, 348);
             lblMetodo.Name = "lblMetodo";
-            lblMetodo.Size = new Size(67, 20);
+            lblMetodo.Size = new Size(84, 25);
             lblMetodo.TabIndex = 21;
             lblMetodo.Text = "Metodo:";
             // 
@@ -132,7 +135,7 @@
             cmbMetodo.FormattingEnabled = true;
             cmbMetodo.Location = new Point(1346, 380);
             cmbMetodo.Name = "cmbMetodo";
-            cmbMetodo.Size = new Size(181, 28);
+            cmbMetodo.Size = new Size(181, 33);
             cmbMetodo.TabIndex = 22;
             // 
             // dtpBuscaFecha
@@ -141,7 +144,7 @@
             dtpBuscaFecha.Format = DateTimePickerFormat.Short;
             dtpBuscaFecha.Location = new Point(1346, 233);
             dtpBuscaFecha.Name = "dtpBuscaFecha";
-            dtpBuscaFecha.Size = new Size(180, 26);
+            dtpBuscaFecha.Size = new Size(180, 30);
             dtpBuscaFecha.TabIndex = 23;
             // 
             // lblBuscaFecha
@@ -150,7 +153,7 @@
             lblBuscaFecha.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblBuscaFecha.Location = new Point(1346, 201);
             lblBuscaFecha.Name = "lblBuscaFecha";
-            lblBuscaFecha.Size = new Size(157, 20);
+            lblBuscaFecha.Size = new Size(194, 25);
             lblBuscaFecha.TabIndex = 24;
             lblBuscaFecha.Text = "Buscador por Fecha:";
             // 
@@ -171,7 +174,7 @@
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1839, 49);
+            barraSecundaria1.Size = new Size(1727, 49);
             barraSecundaria1.TabIndex = 26;
             // 
             // barraLateral1
@@ -189,7 +192,7 @@
             lblIngresos.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblIngresos.Location = new Point(322, 202);
             lblIngresos.Name = "lblIngresos";
-            lblIngresos.Size = new Size(75, 20);
+            lblIngresos.Size = new Size(93, 25);
             lblIngresos.TabIndex = 29;
             lblIngresos.Text = "Ingresos:";
             // 
@@ -212,7 +215,7 @@
             lblGastos.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblGastos.Location = new Point(322, 607);
             lblGastos.Name = "lblGastos";
-            lblGastos.Size = new Size(65, 20);
+            lblGastos.Size = new Size(80, 25);
             lblGastos.TabIndex = 31;
             lblGastos.Text = "Gastos:";
             // 
@@ -228,11 +231,15 @@
             btnSalir.UseVisualStyleBackColor = false;
             btnSalir.Click += btnSalir_Click;
             // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
             // frmHistorial
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(9F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1839, 1018);
+            ClientSize = new Size(1727, 1018);
             Controls.Add(btnSalir);
             Controls.Add(lblGastos);
             Controls.Add(dgvGastos);
@@ -277,6 +284,7 @@
             ((System.ComponentModel.ISupportInitialize)picBuscar).EndInit();
             ((System.ComponentModel.ISupportInitialize)picBuscaFecha).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvGastos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -299,5 +307,6 @@
         private DataGridView dgvGastos;
         private Label lblGastos;
         private Button btnSalir;
+        private ErrorProvider errorProvider1;
     }
 }

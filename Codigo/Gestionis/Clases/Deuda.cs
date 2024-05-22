@@ -210,7 +210,9 @@ namespace Gestionis.Clases
 
         public static string[] Filtros()
         {
-            string[] filtro = { "Título", "Precio max.", "Precio min.", "Fecha deuda", "Fecha vencim" };
+            string[] filtro;
+            if (Sesion.Instance.Espanyol) filtro = new string[] { "Título", "Precio max.", "Precio min.", "Fecha deuda", "Fecha vencim" };
+            else filtro = new string[] { "Title", "Max price", "Min price", "Debt date", "Due date" };
             return filtro;
         }
 

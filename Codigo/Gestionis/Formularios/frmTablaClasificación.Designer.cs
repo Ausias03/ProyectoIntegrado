@@ -74,7 +74,7 @@
             lblTabla.Font = new Font("Microsoft Sans Serif", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTabla.Location = new Point(720, 115);
             lblTabla.Name = "lblTabla";
-            lblTabla.Size = new Size(364, 36);
+            lblTabla.Size = new Size(450, 42);
             lblTabla.TabIndex = 1;
             lblTabla.Text = "Top 10 usuarios del mes";
             // 
@@ -96,7 +96,7 @@
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1856, 44);
+            barraSecundaria1.Size = new Size(1727, 44);
             barraSecundaria1.TabIndex = 3;
             // 
             // barraLateral1
@@ -110,9 +110,9 @@
             // 
             // frmTablaClasificación
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(9F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1856, 852);
+            ClientSize = new Size(1727, 852);
             Controls.Add(barraLateral1);
             Controls.Add(barraSecundaria1);
             Controls.Add(btnSalir);

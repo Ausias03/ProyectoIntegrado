@@ -138,32 +138,16 @@ namespace Gestionis.Herramientas
 
         public void AplicarIdiomas()
         {
-            if (Sesion.Instance.Espanyol)
-            {
-                BtnInicio.Text = "Inicio";
-                BtnInversiones.Text = "Inversiones";
-                BtnAhorros.Text = "Ahorros";
-                BtnDeudas.Text = "Deudas";
-                BtnPatrimonio.Text = "Patrimonio";
-                BtnNotas.Text = "Notas";
-                BtnClasificacion.Text = "Clasificación";
-                BtnHistorial.Text = "Historial";
-                BtnNotificaciones.Text = "Notif.";
-                BtnPaginaWeb.Text = "Página Web";
-            }
-            else
-            {
-                BtnInicio.Text = "Home";
-                BtnInversiones.Text = "Investments";
-                BtnAhorros.Text = "Savings";
-                BtnDeudas.Text = "Debts";
-                BtnPatrimonio.Text = "Assets";
-                BtnNotas.Text = "Notes";
-                BtnClasificacion.Text = "Classification";
-                BtnHistorial.Text = "History";
-                BtnNotificaciones.Text = "Notif.";
-                BtnPaginaWeb.Text = "Website";
-            }
+            BtnInicio.Text = Resources.Idiomas.StringRecursosLateral.btnInicio;
+            BtnInversiones.Text = Resources.Idiomas.StringRecursosLateral.btnInversiones;
+            BtnAhorros.Text = Resources.Idiomas.StringRecursosLateral.btnAhorros;
+            BtnDeudas.Text = Resources.Idiomas.StringRecursosLateral.btnDeudas;
+            BtnPatrimonio.Text = Resources.Idiomas.StringRecursosLateral.btnPatriono;
+            BtnNotas.Text = Resources.Idiomas.StringRecursosLateral.btnNotas;
+            BtnClasificacion.Text = Resources.Idiomas.StringRecursosLateral.btnClasificacion;
+            BtnHistorial.Text = Resources.Idiomas.StringRecursosLateral.btnHistorial;
+            BtnNotificaciones.Text = Resources.Idiomas.StringRecursosLateral.btnNotif;
+            BtnPaginaWeb.Text = Resources.Idiomas.StringRecursosLateral.btnWeb;
         }
 
         private void CheckUserLevel()

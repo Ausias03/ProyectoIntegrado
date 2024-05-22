@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,9 @@ namespace Gestionis.Formularios
 
         private void FrmModifNotif_Load(object sender, EventArgs e)
         {
+            if (Sesion.Instance.Espanyol) Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
+            else Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+            AplicarIdioma();
             CargarCBOCategorias();
         }
 
@@ -28,7 +32,7 @@ namespace Gestionis.Formularios
             decimal? limite = LimitesNotif.GetLimite(Sesion.Instance.NumCuenta, CategoriaGasto.DevuelveIDCategoria(cboCategorias.Text));
 
             nudLimite.Value = limite == null ? 0 : limite.Value;
-            btnModificar.Text = limite == null ? "Agregar" : "Modificar";
+            btnModificar.Text = limite == null ? Resources.Idiomas.StringRecursosModNotif.btnAgregar : Resources.Idiomas.StringRecursosModNotif.btnModificar;
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -60,6 +64,14 @@ namespace Gestionis.Formularios
         private void CargarCBOCategorias()
         {
             cboCategorias.DataSource = CategoriaGasto.DevuelveNombresCategorias();
-        }        
+        }
+        
+        private void AplicarIdioma()
+        {
+            lblCategoria.Text = Resources.Idiomas.StringRecursosModNotif.lblCategoria;
+            lblLimiteCategoria.Text = Resources.Idiomas.StringRecursosModNotif.lblLimiteCategoria;
+            lblTitulo.Text = Resources.Idiomas.StringRecursosModNotif.lblTitulo;
+            btnVolver.Text = Resources.Idiomas.StringRecursosModNotif.btnVolver;
+        }
     }
 }

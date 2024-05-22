@@ -98,34 +98,28 @@
 	<resheader name="writer">
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
-	<data name="btnInicio" xml:space="preserve">
-    <value>Start</value>
+	<data name="btnNuevaNota" xml:space="preserve">
+    <value>Nueva Nota</value>
   </data>
-	<data name="btnInversiones" xml:space="preserve">
-    <value>Investments</value>
+	<data name="lblNotasTotales" xml:space="preserve">
+    <value>Notas:</value>
   </data>
-	<data name="btnAhorros" xml:space="preserve">
-    <value>Savings</value>
+	<data name="btnRestaurarFiltro" xml:space="preserve">
+    <value>Restaurar</value>
   </data>
-	<data name="btnDeudas" xml:space="preserve">
-    <value>Debts</value>
+	<data name="btnFiltrar" xml:space="preserve">
+    <value>Filtrar</value>
   </data>
-	<data name="btnPatriono" xml:space="preserve">
-    <value>Patrimony</value>
+	<data name="lblFiltrarPor" xml:space="preserve">
+    <value>Filtrar Por:</value>
   </data>
-	<data name="btnNotas" xml:space="preserve">
-    <value>Notes</value>
+	<data name="btnSalir" xml:space="preserve">
+    <value>Salir</value>
   </data>
-	<data name="btnClasificacion" xml:space="preserve">
-    <value>Classification</value>
+	<data name="lblNotasDia" xml:space="preserve">
+    <value>Notas del día</value>
   </data>
-	<data name="btnHistorial" xml:space="preserve">
-    <value>History</value>
-  </data>
-	<data name="btnNotif" xml:space="preserve">
-    <value>Notif.</value>
-  </data>
-	<data name="btnWeb" xml:space="preserve">
-    <value>Web Page</value>
+	<data name="lblNotasTotalesDia" xml:space="preserve">
+    <value>Notas:</value>
   </data>
 </root>

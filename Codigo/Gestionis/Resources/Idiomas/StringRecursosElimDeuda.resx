@@ -98,34 +98,37 @@
 	<resheader name="writer">
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
-	<data name="btnInicio" xml:space="preserve">
-    <value>Start</value>
+	<data name="btnEliminar" xml:space="preserve">
+    <value>Eliminar</value>
   </data>
-	<data name="btnInversiones" xml:space="preserve">
-    <value>Investments</value>
+	<data name="btnCancelar" xml:space="preserve">
+    <value>Cancelar</value>
   </data>
-	<data name="btnAhorros" xml:space="preserve">
-    <value>Savings</value>
+	<data name="lblFechVencimiento" xml:space="preserve">
+    <value>Fecha de vencimiento:</value>
   </data>
-	<data name="btnDeudas" xml:space="preserve">
-    <value>Debts</value>
+	<data name="lblFechDeuda" xml:space="preserve">
+    <value>Fecha de la deuda:</value>
   </data>
-	<data name="btnPatriono" xml:space="preserve">
-    <value>Patrimony</value>
+	<data name="lblEstado" xml:space="preserve">
+    <value>ESTADO DE LA DEUDA</value>
   </data>
-	<data name="btnNotas" xml:space="preserve">
-    <value>Notes</value>
+	<data name="lblDescrip" xml:space="preserve">
+    <value>Descripción:</value>
   </data>
-	<data name="btnClasificacion" xml:space="preserve">
-    <value>Classification</value>
+	<data name="lblCantAdeudada" xml:space="preserve">
+    <value>Cantidad adeudada:</value>
   </data>
-	<data name="btnHistorial" xml:space="preserve">
-    <value>History</value>
+	<data name="lblTitulo" xml:space="preserve">
+    <value>Título:</value>
   </data>
-	<data name="btnNotif" xml:space="preserve">
-    <value>Notif.</value>
+	<data name="btnBuscar" xml:space="preserve">
+    <value>Buscar</value>
   </data>
-	<data name="btnWeb" xml:space="preserve">
-    <value>Web Page</value>
+	<data name="lblTipo" xml:space="preserve">
+    <value>Tipo:</value>
+  </data>
+	<data name="btnRestablecer" xml:space="preserve">
+    <value>Restablecer</value>
   </data>
 </root>

@@ -28,6 +28,7 @@ namespace Gestionis.Clases
         public Notas(string tit, string desc, DateTime fRecord, bool alar, int col)
         {
             idNota = null;
+            idDeuda = null;
             apodoUsuario = Sesion.Instance.ApodoUsuario;
             titulo = tit;
             descripcion = desc;
@@ -50,21 +51,32 @@ namespace Gestionis.Clases
 
         public void Add()
         {
-            string queryString = "INSERT INTO nota (idNota, apodoUsuario, titulo, alarma, color, descripcion, fechaRecordatorio) " +
-                "VALUES (@idNota, @apodoUsuario, @titulo, @alarma, @color, @descripcion, @fechaRecordatorio)";
+            //string queryString = "INSERT INTO nota (idNota, idDeuda, apodoUsuario, titulo, alarma, color, descripcion, fechaRecordatorio) " +
+            //       "VALUES (@idNota, idDeuda, @apodoUsuario, @titulo, @alarma, @color, @descripcion, @fechaRecordatorio)";
+            string queryString = "INSERT INTO nota (idNota, apodoUsuario, titulo, alarma, color, descripcion, fechaRecordatorio"
+                            + (idDeuda.HasValue ? ", idDeuda" : "") + ") "
+                            + "VALUES (@idNota, @apodoUsuario, @titulo, @alarma, @color, @descripcion, @fechaRecordatorio"
+                            + (idDeuda.HasValue ? ", @idDeuda" : "") + ")";
 
-            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
-            query.Parameters.AddWithValue("@idNota", idNota);
-            query.Parameters.AddWithValue("@apodoUsuario", apodoUsuario);
-            query.Parameters.AddWithValue("@titulo", titulo);
-            query.Parameters.AddWithValue("@descripcion", descripcion);
-            query.Parameters.AddWithValue("@fechaRecordatorio", fechaRecordatorio);
-            query.Parameters.AddWithValue("@alarma", alarma);
-            query.Parameters.AddWithValue("@color", color);
+            using (MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion))
+            {
+                query.Parameters.AddWithValue("@idNota", idNota);
+                query.Parameters.AddWithValue("@apodoUsuario", apodoUsuario);
+                query.Parameters.AddWithValue("@titulo", titulo);
+                query.Parameters.AddWithValue("@descripcion", descripcion);
+                query.Parameters.AddWithValue("@fechaRecordatorio", fechaRecordatorio);
+                query.Parameters.AddWithValue("@alarma", alarma);
+                query.Parameters.AddWithValue("@color", color);
 
-            ConexionDB.AbrirConexion();
-            query.ExecuteNonQuery();
-            ConexionDB.CerrarConexion();
+                if (idDeuda.HasValue)
+                {
+                    query.Parameters.AddWithValue("@idDeuda", idDeuda.Value);
+                }
+
+                ConexionDB.AbrirConexion();
+                query.ExecuteNonQuery();
+                ConexionDB.CerrarConexion();
+            }
             SistemaNiveles.IncrementarExperiencia(apodoUsuario, 20);
 
         }
@@ -90,33 +102,38 @@ namespace Gestionis.Clases
 
         public static string[] CargaFiltros()
         {
-            string[] lista = new string[] { "Fecha", "Titulo", "Alarma", "Descripcion", "Color", "Deuda"};
+            string[] lista;
+            if (Sesion.Instance.Espanyol) lista = new string[] { "Fecha", "Titulo", "Alarma", "Descripcion", "Color", "Deuda" };
+            else lista = new string[] { "Date", "Title", "Alarm", "Description", "Color", "Debt" };
             return lista;
         }
 
-        public static DataTable BuscarPorFiltro(string filtro, string titulo, string descripcion, bool alarma, int color, string fecha)
+        public static DataTable BuscarPorFiltro(int filtro, string titulo, string descripcion, bool alarma, int color, string fecha, bool? deuda)
         {
             string nombreUsuario = Sesion.Instance.ApodoUsuario;
-            int valor = alarma ? 1 : 0;
+            int valorAlarma = alarma ? 1 : 0;
             string consulta = $"SELECT titulo, alarma, color, descripcion, fechaRecordatorio FROM nota WHERE apodoUsuario = '{nombreUsuario}'";
             switch (filtro)
             {
-                case "Titulo":
+                case 1:
                     consulta += $" AND titulo = '{titulo}';";
                     break;
-                case "Descripcion":
+                case 3:
                     consulta += $" AND descripcion LIKE '%{descripcion}%';";
                     break;
-                case "Fecha":
+                case 0:
                     consulta += $" AND fechaRecordatorio = '{fecha}';";
                     break;
-                case "Alarma":
-                    consulta += $" AND alarma = '{valor}';";
+                case 2:
+                    consulta += $" AND alarma = '{valorAlarma}';";
                     break;
-                case "Color":
+                case 4:
                     consulta += $" AND color = '{color}';";
                     break;
-
+                case 5:
+                    if (deuda == true) { consulta += $" AND idDeuda IS NOT NULL;"; }
+                    else { consulta += $" AND idDeuda IS NULL;"; }
+                    break;
                 default:
                     break;
             }

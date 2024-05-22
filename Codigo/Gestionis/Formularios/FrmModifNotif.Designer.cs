@@ -66,7 +66,7 @@
             // 
             lblCategoria.AutoSize = true;
             lblCategoria.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblCategoria.Location = new Point(32, 108);
+            lblCategoria.Location = new Point(21, 108);
             lblCategoria.Name = "lblCategoria";
             lblCategoria.Size = new Size(247, 31);
             lblCategoria.TabIndex = 2;
@@ -76,7 +76,7 @@
             // 
             lblLimiteCategoria.AutoSize = true;
             lblLimiteCategoria.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblLimiteCategoria.Location = new Point(122, 181);
+            lblLimiteCategoria.Location = new Point(101, 181);
             lblLimiteCategoria.Name = "lblLimiteCategoria";
             lblLimiteCategoria.Size = new Size(157, 31);
             lblLimiteCategoria.TabIndex = 3;

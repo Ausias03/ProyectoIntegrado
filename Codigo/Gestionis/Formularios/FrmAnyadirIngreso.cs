@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,9 @@ namespace Gestionis
 
         private void frmAnyadirIngreso_Load(object sender, EventArgs e)
         {
+            if (Sesion.Instance.Espanyol) Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
+            else Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+            AplicarIdioma();
             CargaCategoriasCBO();
         }
 
@@ -35,13 +39,15 @@ namespace Gestionis
             if (txtNombreIngreso.Text == String.Empty)
             {
                 ok = false;
-                errorProvider1.SetError(txtNombreIngreso, "Introduce un nombre para el gasto");
+                if (Sesion.Instance.Espanyol) errorProvider1.SetError(txtNombreIngreso, "Introduce un nombre para el gasto");
+                else errorProvider1.SetError(txtNombreIngreso, "Insert a name for the expense");
             }
 
             if (nudCantidad.Value < 0 || nudCantidad.Value > 100000000)
             {
                 ok = false;
-                errorProvider1.SetError(nudCantidad, "Introduce una cantidad válida");
+                if (Sesion.Instance.Espanyol) errorProvider1.SetError(nudCantidad, "Introduce una cantidad válida");
+                else errorProvider1.SetError(nudCantidad, "Insert a valid amount");
             }
 
             if (rdbExtra.Checked)
@@ -49,7 +55,8 @@ namespace Gestionis
                 if (cboCategoria.Text == "")
                 {
                     ok = false;
-                    errorProvider1.SetError(cboCategoria, "Elige una categoría");
+                    if (Sesion.Instance.Espanyol) errorProvider1.SetError(cboCategoria, "Elige una categoría");
+                    else errorProvider1.SetError(cboCategoria, "Choose a category");
                 }
             }
 
@@ -87,6 +94,19 @@ namespace Gestionis
             i1.Add();
 
             this.Close();
+        }
+
+        private void AplicarIdioma()
+        {
+            btnAddIngreso.Text = Resources.Idiomas.StringRecursosAddIngreso.btnAddIngreso;
+            btnVolver.Text = Resources.Idiomas.StringRecursosAddIngreso.btnVolver;
+            lblComentarios.Text = Resources.Idiomas.StringRecursosAddIngreso.lblComentarios;
+            lblTipo.Text = Resources.Idiomas.StringRecursosAddIngreso.lblTipo;
+            lblCategoria.Text = Resources.Idiomas.StringRecursosAddIngreso.lblCategoria;
+            lblCantidad.Text = Resources.Idiomas.StringRecursosAddIngreso.lblCantidad;
+            lblNombreIngreso.Text = Resources.Idiomas.StringRecursosAddIngreso.lblNombreIngreso;
+            rdbSalario.Text = Resources.Idiomas.StringRecursosAddIngreso.rdbSalario;
+            rdbExtra.Text = Resources.Idiomas.StringRecursosAddIngreso.rdbExtra;
         }
 
         #region Métodos de Implementaión

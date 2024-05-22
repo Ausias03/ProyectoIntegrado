@@ -98,34 +98,22 @@
 	<resheader name="writer">
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
-	<data name="btnInicio" xml:space="preserve">
-    <value>Start</value>
+	<data name="lblTitulo" xml:space="preserve">
+    <value>Modify Limits</value>
   </data>
-	<data name="btnInversiones" xml:space="preserve">
-    <value>Investments</value>
+	<data name="lblCategoria" xml:space="preserve">
+    <value>Notification Category:</value>
   </data>
-	<data name="btnAhorros" xml:space="preserve">
-    <value>Savings</value>
+	<data name="lblLimiteCategoria" xml:space="preserve">
+    <value>Spending Limit:</value>
   </data>
-	<data name="btnDeudas" xml:space="preserve">
-    <value>Debts</value>
+	<data name="btnModificar" xml:space="preserve">
+    <value>Modify</value>
   </data>
-	<data name="btnPatriono" xml:space="preserve">
-    <value>Patrimony</value>
+	<data name="btnVolver" xml:space="preserve">
+    <value>Back</value>
   </data>
-	<data name="btnNotas" xml:space="preserve">
-    <value>Notes</value>
-  </data>
-	<data name="btnClasificacion" xml:space="preserve">
-    <value>Classification</value>
-  </data>
-	<data name="btnHistorial" xml:space="preserve">
-    <value>History</value>
-  </data>
-	<data name="btnNotif" xml:space="preserve">
-    <value>Notif.</value>
-  </data>
-	<data name="btnWeb" xml:space="preserve">
-    <value>Web Page</value>
+	<data name="btnAgregar" xml:space="preserve">
+    <value>Add</value>
   </data>
 </root>

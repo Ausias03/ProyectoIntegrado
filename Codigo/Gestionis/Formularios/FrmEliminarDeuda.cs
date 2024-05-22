@@ -1,4 +1,5 @@
 ﻿using Gestionis.Clases;
+using System.Globalization;
 
 namespace Gestionis.Formularios
 {
@@ -11,6 +12,9 @@ namespace Gestionis.Formularios
 
         private void FrmEliminarDeuda_Load(object sender, EventArgs e)
         {
+            if (Sesion.Instance.Espanyol) Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
+            else Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+            AplicarIdioma();
             ResetearFrm();
         }
 
@@ -77,6 +81,21 @@ namespace Gestionis.Formularios
         private void btnRestablecer_Click(object sender, EventArgs e)
         {
             ResetearFrm();
+        }
+
+        private void AplicarIdioma()
+        {
+            btnEliminar.Text = Resources.Idiomas.StringRecursosElimDeuda.btnEliminar;
+            btnCancelar.Text = Resources.Idiomas.StringRecursosElimDeuda.btnCancelar;
+            lblFechVencimiento.Text = Resources.Idiomas.StringRecursosElimDeuda.lblFechVencimiento;
+            lblFechDeuda.Text = Resources.Idiomas.StringRecursosElimDeuda.lblFechDeuda;
+            lblEstado.Text = Resources.Idiomas.StringRecursosElimDeuda.lblEstado;
+            lblDescrip.Text = Resources.Idiomas.StringRecursosElimDeuda.lblDescrip;
+            lblCantAdeudada.Text = Resources.Idiomas.StringRecursosElimDeuda.lblCantAdeudada;
+            lblTitulo.Text = Resources.Idiomas.StringRecursosElimDeuda.lblTitulo;
+            btnBuscar.Text = Resources.Idiomas.StringRecursosElimDeuda.btnBuscar;
+            lblTipo.Text = Resources.Idiomas.StringRecursosElimDeuda.lblTipo;
+            btnRestablecer.Text = Resources.Idiomas.StringRecursosElimDeuda.btnRestablecer;
         }
     }
 }

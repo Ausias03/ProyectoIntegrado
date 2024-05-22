@@ -79,10 +79,10 @@ namespace Gestionis
             else
             {
                 consulta = $"SELECT g.hora AS Date,g.tipo AS Type,c.nombre AS Category,g.nombre AS Name,g.cantidad AS Amount," +
-                    $"g.comentarios AS Commentaries FROM gasto AS g LEFT JOIN categoriagasto AS c ON g.categoria = c.idCategoria " +
+                    $"g.comentarios AS Comments FROM gasto AS g LEFT JOIN categoriagasto AS c ON g.idCategoria = c.idCategoria " +
                     $"WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta};";
                 consulta2 = $"SELECT i.hora AS Date,i.tipo AS Type,c.nombre AS Category,i.nombre AS Name,i.cantidad AS Amount" +
-                    $",i.comentarios AS Commentaries FROM ingreso AS i LEFT JOIN categoriaingreso AS c ON i.categoria = c.idCategoria " +
+                    $",i.comentarios AS Comments FROM ingreso AS i LEFT JOIN categoriaingreso AS c ON i.idCategoria = c.idCategoria " +
                     $"WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta};";
             }
             dgvGastos.DataSource = Utilidades.RellenarDatos(consulta);
@@ -91,49 +91,52 @@ namespace Gestionis
 
         private void CargarFiltro(DateTime fecha, int numCuenta, int filtro, string param)
         {
-            string consulta;
-            string consulta2;
-            if (Sesion.Instance.Espanyol)
+            if (ValidarParametro(param))
             {
-                consulta = $"SELECT g.hora AS Hora,g.tipo AS Tipo,c.nombre AS Categoria,g.nombre AS Nombre,g.cantidad AS Cantidad," +
-                    $"g.comentarios AS Comentarios FROM gasto AS g LEFT JOIN categoriagasto AS c ON g.categoria = c.idCategoria " +
-                    $"WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta}";
-                consulta2 = $"SELECT i.hora AS Hora,i.tipo AS Tipo,c.nombre AS Categoria,i.nombre AS Nombre,i.cantidad AS Cantidad" +
-                    $",i.comentarios AS Comentarios FROM ingreso AS i LEFT JOIN categoriaingreso AS c ON i.categoria = c.idCategoria " +
-                    $"WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta}";
+                string consulta;
+                string consulta2;
+                if (Sesion.Instance.Espanyol)
+                {
+                    consulta = $"SELECT g.hora AS Hora,g.tipo AS Tipo,c.nombre AS Categoria,g.nombre AS Nombre,g.cantidad AS Cantidad," +
+                        $"g.comentarios AS Comentarios FROM gasto AS g LEFT JOIN categoriagasto AS c ON g.idCategoria = c.idCategoria " +
+                        $"WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta}";
+                    consulta2 = $"SELECT i.hora AS Hora,i.tipo AS Tipo,c.nombre AS Categoria,i.nombre AS Nombre,i.cantidad AS Cantidad" +
+                        $",i.comentarios AS Comentarios FROM ingreso AS i LEFT JOIN categoriaingreso AS c ON i.idCategoria = c.idCategoria " +
+                        $"WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta}";
+                }
+                else
+                {
+                    consulta = $"SELECT g.hora AS Date,g.tipo AS Type,c.nombre AS Category,g.nombre AS Name,g.cantidad AS Amount," +
+                        $"g.comentarios AS Comments FROM gasto AS g LEFT JOIN categoriagasto AS c ON g.idCategoria = c.idCategoria " +
+                        $"WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta}";
+                    consulta2 = $"SELECT i.hora AS Date,i.tipo AS Type,c.nombre AS Category,i.nombre AS Name,i.cantidad AS Amount" +
+                        $",i.comentarios AS Comments FROM ingreso AS i LEFT JOIN categoriaingreso AS c ON i.idCategoria = c.idCategoria " +
+                        $"WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta}";
+                }
+                switch (filtro)
+                {
+                    case 0:
+                        consulta += $" AND tipo = '{param}';";
+                        consulta2 += $" AND tipo = '{param}';";
+                        break;
+                    case 1:
+                        consulta += $" AND c.nombre = '{param}';";
+                        consulta2 += $" AND c.nombre = '{param}';";
+                        break;
+                    case 2:
+                        consulta += $" AND g.nombre = '{param}';";
+                        consulta2 += $" AND i.nombre = '{param}';";
+                        break;
+                    case 3:
+                        consulta += $" AND cantidad = '{param}';";
+                        consulta2 += $" AND cantidad = '{param}';";
+                        break;
+                    default:
+                        break;
+                }
+                dgvGastos.DataSource = Utilidades.RellenarDatos(consulta);
+                dgvIngresos.DataSource = Utilidades.RellenarDatos(consulta2);
             }
-            else
-            {
-                consulta = $"SELECT g.hora AS Date,g.tipo AS Type,c.nombre AS Category,g.nombre AS Name,g.cantidad AS Amount," +
-                    $"g.comentarios AS Commentaries FROM gasto AS g LEFT JOIN categoriagasto AS c ON g.categoria = c.idCategoria " +
-                    $"WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta}";
-                consulta2 = $"SELECT i.hora AS Date,i.tipo AS Type,c.nombre AS Category,i.nombre AS Name,i.cantidad AS Amount" +
-                    $",i.comentarios AS Commentaries FROM ingreso AS i LEFT JOIN categoriaingreso AS c ON i.categoria = c.idCategoria " +
-                    $"WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta}";
-            }
-            switch (filtro)
-            {
-                case 0:
-                    consulta += $" AND tipo = '{param}';";
-                    consulta2 += $" AND tipo = '{param}';";
-                    break;
-                case 1:
-                    consulta += $" AND c.nombre = '{param}';";
-                    consulta2 += $" AND c.nombre = '{param}';";
-                    break;
-                case 2:
-                    consulta += $" AND g.nombre = '{param}';";
-                    consulta2 += $" AND i.nombre = '{param}';";
-                    break;
-                case 3:
-                    consulta += $" AND cantidad = '{param}';";
-                    consulta2 += $" AND cantidad = '{param}';";
-                    break;
-                default:
-                    break;
-            }
-            dgvGastos.DataSource = Utilidades.RellenarDatos(consulta);
-            dgvIngresos.DataSource = Utilidades.RellenarDatos(consulta2);
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -169,6 +172,23 @@ namespace Gestionis
                 lista[3] = "Amount";
             }
             return lista;
+        }
+
+        private bool ValidarParametro(string param)
+        {
+            bool valido = true;
+            foreach (char c in param)
+            {
+                if (c.ToString() == "'")
+                {
+                    valido = false;
+                    if (Sesion.Instance.Espanyol) errorProvider1.SetError(picBuscar, "No se pueden introducir comillas simples.");
+                    else errorProvider1.SetError(picBuscar, "Simple quotes are not allowed");
+                    break;
+                }
+                else errorProvider1.Clear();
+            }
+            return valido;
         }
     }
 }

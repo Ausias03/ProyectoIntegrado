@@ -98,34 +98,34 @@
 	<resheader name="writer">
 		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
 	</resheader>
-	<data name="btnInicio" xml:space="preserve">
-    <value>Start</value>
+	<data name="btnAddIngreso" xml:space="preserve">
+    <value>Añadir Ingreso</value>
   </data>
-	<data name="btnInversiones" xml:space="preserve">
-    <value>Investments</value>
+	<data name="btnVolver" xml:space="preserve">
+    <value>Volver</value>
   </data>
-	<data name="btnAhorros" xml:space="preserve">
-    <value>Savings</value>
+	<data name="txtComentarios" xml:space="preserve">
+    <value>Comentarios</value>
   </data>
-	<data name="btnDeudas" xml:space="preserve">
-    <value>Debts</value>
+	<data name="lblComentarios" xml:space="preserve">
+    <value>Comentarios:</value>
   </data>
-	<data name="btnPatriono" xml:space="preserve">
-    <value>Patrimony</value>
+	<data name="lblTipo" xml:space="preserve">
+    <value>Tipo de Gasto:</value>
   </data>
-	<data name="btnNotas" xml:space="preserve">
-    <value>Notes</value>
+	<data name="lblCategoria" xml:space="preserve">
+    <value>Categoria:</value>
   </data>
-	<data name="btnClasificacion" xml:space="preserve">
-    <value>Classification</value>
+	<data name="lblCantidad" xml:space="preserve">
+    <value>Cantidad de Dinero:</value>
   </data>
-	<data name="btnHistorial" xml:space="preserve">
-    <value>History</value>
+	<data name="lblNombreIngreso" xml:space="preserve">
+    <value>Nombre de Ingreso:</value>
   </data>
-	<data name="btnNotif" xml:space="preserve">
-    <value>Notif.</value>
+	<data name="rdbSalario" xml:space="preserve">
+    <value>Salario</value>
   </data>
-	<data name="btnWeb" xml:space="preserve">
-    <value>Web Page</value>
+	<data name="rdbExtra" xml:space="preserve">
+    <value>Extra</value>
   </data>
 </root>
