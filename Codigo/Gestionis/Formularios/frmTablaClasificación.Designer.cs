@@ -46,7 +46,7 @@
             dgvTabla.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Roboto Mono", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -55,7 +55,7 @@
             dgvTabla.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Roboto Mono", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
@@ -71,17 +71,17 @@
             // lblTabla
             // 
             lblTabla.AutoSize = true;
-            lblTabla.Font = new Font("Roboto Mono", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTabla.Font = new Font("Microsoft Sans Serif", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTabla.Location = new Point(720, 115);
             lblTabla.Name = "lblTabla";
-            lblTabla.Size = new Size(528, 49);
+            lblTabla.Size = new Size(364, 36);
             lblTabla.TabIndex = 1;
             lblTabla.Text = "Top 10 usuarios del mes";
             // 
             // btnSalir
             // 
             btnSalir.BackColor = Color.FromArgb(170, 166, 202);
-            btnSalir.Font = new Font("Roboto Mono", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSalir.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnSalir.Location = new Point(1483, 753);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(124, 40);
@@ -96,7 +96,7 @@
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1671, 44);
+            barraSecundaria1.Size = new Size(1856, 44);
             barraSecundaria1.TabIndex = 3;
             // 
             // barraLateral1
@@ -110,9 +110,9 @@
             // 
             // frmTablaClasificación
             // 
-            AutoScaleDimensions = new SizeF(9F, 18F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1671, 852);
+            ClientSize = new Size(1856, 852);
             Controls.Add(barraLateral1);
             Controls.Add(barraSecundaria1);
             Controls.Add(btnSalir);

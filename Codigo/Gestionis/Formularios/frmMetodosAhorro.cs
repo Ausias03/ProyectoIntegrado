@@ -78,7 +78,6 @@ namespace Gestionis
                 lblPorcentajeVariable.Text = PorcentajeTotalVariable().ToString("0.00") + " %";
                 lblPorcentajeFijo.Text = PorcentajeTotalFijo().ToString("0.00") + " %";
 
-                lblPorcentajeRest.Text =  PorcentajeTotalVariable() - PorcentajeTotalFijo() + " %";
             }
             catch (Exception ex) { }
             finally

@@ -117,25 +117,27 @@ namespace Gestionis.Clases
             string queryString = "SELECT SUM(cantidad) FROM gasto WHERE tipo = 'fijo'";
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
 
-            query.Parameters.AddWithValue("@tipo", "fijo");
             ConexionDB.AbrirConexion();
-            int sumaTotal = Convert.ToInt32(query.ExecuteScalar());
+            object resultado = query.ExecuteScalar();
+            int sumaTotal = (resultado != DBNull.Value) ? Convert.ToInt32(resultado) : 0;
 
             ConexionDB.CerrarConexion();
             return sumaTotal;
         }
+
         public static int TotalVariable()
         {
             string queryString = "SELECT SUM(cantidad) FROM gasto WHERE tipo = 'Variable'";
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
 
-            query.Parameters.AddWithValue("@tipo", "Variable");
             ConexionDB.AbrirConexion();
-            int sumaTotal = Convert.ToInt32(query.ExecuteScalar());
+            object resultado = query.ExecuteScalar();
+            int sumaTotal = (resultado != DBNull.Value) ? Convert.ToInt32(resultado) : 0;
 
             ConexionDB.CerrarConexion();
             return sumaTotal;
         }
+
 
         public static int DineroRestante(int ingresosMensuales)
         {

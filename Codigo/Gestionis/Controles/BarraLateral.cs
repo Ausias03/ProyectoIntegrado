@@ -1,6 +1,5 @@
 ﻿using Gestionis.Clases;
 using Gestionis.Formularios;
-using System.Globalization;
 
 namespace Gestionis.Herramientas
 {
@@ -171,7 +170,7 @@ namespace Gestionis.Herramientas
         {
             int nivel = SistemaNiveles.GetNivel(Sesion.Instance.ApodoUsuario);
 
-            if(nivel < 3)
+            if (nivel < 3)
             {
                 BtnClasificacion.Enabled = false;
             }

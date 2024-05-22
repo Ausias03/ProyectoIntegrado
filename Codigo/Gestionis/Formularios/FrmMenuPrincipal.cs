@@ -1,17 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Resources;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Gestionis.Herramientas;
 using Gestionis.Clases;
+using Gestionis.Herramientas;
 
 namespace Gestionis
 {
@@ -19,12 +11,22 @@ namespace Gestionis
     {
         private readonly Usuario usuario;
         private readonly Cuenta cuentaUsuario;
+        private ToolTip toolTip;
+        private System.Windows.Forms.Timer tooltipTimer;
+        private Queue<KeyValuePair<Control, string>> tooltipQueue;
+        private int tooltipDuration = 2000;
 
         public FrmMenuPrincipal()
         {
             InitializeComponent();
             usuario = Usuario.BuscaUsuario(Sesion.Instance.ApodoUsuario);
             cuentaUsuario = usuario.GetCuenta();
+            toolTip = new ToolTip(); 
+            tooltipQueue = new Queue<KeyValuePair<Control, string>>();
+            tooltipTimer = new System.Windows.Forms.Timer();
+            tooltipTimer.Interval = tooltipDuration;
+            tooltipTimer.Tick += TooltipTimer_Tick;
+            ModificarBotones();
         }
 
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
@@ -41,9 +43,8 @@ namespace Gestionis
             btnSalir.FlatStyle = FlatStyle.Flat;
             btnSalir.FlatAppearance.BorderColor = Color.Black;
             btnSalir.FlatAppearance.BorderSize = 2;
-
             #endregion
-            
+
             barraSecundaria1.Load();
             barraLateral1.Load();
 
@@ -51,7 +52,7 @@ namespace Gestionis
             RecargaLabelTotales();
             lblMes.Text = DateTime.Now.ToString("MMMM");
             lblNotasValor.Text = "";
-            #endregion            
+            #endregion
         }
 
         private void FrmMenuPrincipal_Activated(object sender, EventArgs e)
@@ -89,11 +90,6 @@ namespace Gestionis
             fAI.ShowDialog();
         }
 
-        private void pbHamburger_Click(object sender, EventArgs e)
-        {
-            BarraLateral.ColapsarExpandir();
-        }
-
         private void btnFiltrarGastos_Click(object sender, EventArgs e)
         {
             RecargaDGVGastos(cuentaUsuario.DevuelveGastos(txtNombreGasto.Text, cmbTipoGasto.Text, nudDineroGasto.Value, cmbCategoriaGasto.Text));
@@ -127,10 +123,12 @@ namespace Gestionis
         {
             dgvGastos.DataSource = gastos;
         }
+
         private void RecargaDGVIngresos(List<Ingreso> ingresos)
         {
             dgvIngresos.DataSource = ingresos;
         }
+
         private void RestableceControlesGasto()
         {
             txtNombreGasto.Text = String.Empty;
@@ -138,6 +136,7 @@ namespace Gestionis
             nudDineroGasto.Value = 0;
             cmbCategoriaGasto.SelectedIndex = 0;
         }
+
         private void RestableceControlesIngreso()
         {
             txtNombreIngreso.Text = String.Empty;
@@ -151,6 +150,64 @@ namespace Gestionis
             lblIngresosValor.Text = cuentaUsuario.TotalIngresos().ToString() + " €";
             lblGastosValor.Text = cuentaUsuario.TotalGastos().ToString() + " €";
             lblTotalValor.Text = cuentaUsuario.DineroTotal().ToString() + " €";
+        }
+
+        private void ModificarBotones()
+        {
+            barraSecundaria1.BtnAyuda.Click += btnAyuda_Click;
+        }
+
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnGasto, "Añadir un nuevo gasto."));
+            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnIngreso, "Añadir un nuevo ingreso."));
+            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(txtNombreGasto, "Escribir el nombre del gasto."));
+            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(cmbTipoGasto, "Seleccionar el tipo de gasto."));
+            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(nudDineroGasto, "Indicar el monto del gasto."));
+            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(cmbCategoriaGasto, "Seleccionar la categoría del gasto."));
+            
+            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(txtNombreIngreso, "Escribir el nombre del ingreso."));
+            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(cmbTipoIngreso, "Seleccionar el tipo de ingreso."));
+            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(nudDineroIngreso, "Indicar el monto del ingreso."));
+            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(cmbCategoriaIngreso, "Seleccionar la categoría del ingreso."));            
+            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnFiltrarGastos, "Filtrar los gastos según los criterios seleccionados."));
+            
+            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnRestablecerGastos, "Restablecer la lista de gastos."));
+            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnFiltrarIngresos, "Filtrar los ingresos según los criterios seleccionados."));
+            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnRestablecerIngresos, "Restablecer la lista de ingresos."));
+            
+            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblIngresosValor, "Muestra el total de ingresos."));
+            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblGastosValor, "Muestra el total de gastos."));
+            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblTotalValor, "Muestra el total de dinero disponible."));
+            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnSalir, "Salir de la aplicación."));
+
+            ShowNextTooltip();
+        }
+
+        private void ShowNextTooltip()
+        {
+            if (tooltipQueue.Count > 0)
+            {
+                var tooltipItem = tooltipQueue.Dequeue();
+                ShowTooltip(tooltipItem.Key, tooltipItem.Value);
+                tooltipTimer.Start();
+            }
+            else
+            {
+                tooltipTimer.Stop();
+            }
+        }
+
+        private void TooltipTimer_Tick(object sender, EventArgs e)
+        {
+            toolTip.Hide(this);
+            ShowNextTooltip();
+        }
+
+        private void ShowTooltip(Control control, string message)
+        {
+            toolTip.SetToolTip(control, message);
+            toolTip.Show(message, control, control.Width / 2, control.Height / 2);
         }
     }
 }
