@@ -70,10 +70,10 @@ namespace Gestionis
             if (Sesion.Instance.Espanyol)
             {
                 consulta = $"SELECT g.hora AS Hora,g.tipo AS Tipo,c.nombre AS Categoria,g.nombre AS Nombre,g.cantidad AS Cantidad," +
-                    $"g.comentarios AS Comentarios FROM gasto AS g LEFT JOIN categoriagasto AS c ON g.categoria = c.idCategoria " +
+                    $"g.comentarios AS Comentarios FROM gasto AS g LEFT JOIN categoriagasto AS c ON g.idCategoria = c.idCategoria " +
                     $"WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta};";
                 consulta2 = $"SELECT i.hora AS Hora,i.tipo AS Tipo,c.nombre AS Categoria,i.nombre AS Nombre,i.cantidad AS Cantidad" +
-                    $",i.comentarios AS Comentarios FROM ingreso AS i LEFT JOIN categoriaingreso AS c ON i.categoria = c.idCategoria " +
+                    $",i.comentarios AS Comentarios FROM ingreso AS i LEFT JOIN categoriaingreso AS c ON i.idCategoria = c.idCategoria " +
                     $"WHERE fecha = '{fecha.ToString("yyyy/MM/dd")}' AND numCuenta = {numCuenta};";
             }
             else

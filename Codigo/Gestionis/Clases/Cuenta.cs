@@ -80,7 +80,7 @@ namespace Gestionis.Clases
                 return;
             }
 
-            if (TotalGastos() > Convert.ToDouble(limite))
+            if (TotalGastos(categoria) > Convert.ToDouble(limite))
             {
                 string nombreCategoria = CategoriaGasto.DevuelveNombreCategoria(categoria);
                 Notificacion noti = new Notificacion(
@@ -97,6 +97,31 @@ namespace Gestionis.Clases
             }
         }
 
+        public void EliminaNotificacion(int categoria)
+        {
+            if (!Notificacion.ExisteNotif(categoria))
+            {
+                return;
+            }
+
+            decimal limite = LimitesNotif.GetLimite(Sesion.Instance.NumCuenta, categoria) ?? 0m;
+
+            if (TotalGastos(categoria) < Convert.ToDouble(limite))
+            {
+                string queryString = "DELETE FROM notificacion WHERE idCategoria = @idCategoria AND numCuenta = @numCuenta;";
+
+                MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+                query.Parameters.AddWithValue("@idCategoria", categoria);
+                query.Parameters.AddWithValue("@numCuenta", Sesion.Instance.NumCuenta);
+
+                ConexionDB.AbrirConexion();
+
+                query.ExecuteNonQuery();
+
+                ConexionDB.CerrarConexion();
+            }
+        }
+
         #region Métodos para ver / recuperar gastos e ingresos
         public List<Gasto> DevuelveGastos()
         {
@@ -104,6 +129,17 @@ namespace Gestionis.Clases
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
             query.Parameters.AddWithValue("@numCuenta", numCuenta);
+
+            return EjecutarConsultaGastos(query);
+        }
+
+        public List<Gasto> DevuelveGastos(int categoria)
+        {
+            string queryString = "SELECT * FROM gasto WHERE numCuenta = @numCuenta AND idCategoria = @idCategoria;";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+            query.Parameters.AddWithValue("@numCuenta", numCuenta);
+            query.Parameters.AddWithValue("@idCategoria", categoria);
 
             return EjecutarConsultaGastos(query);
         }
@@ -165,6 +201,17 @@ namespace Gestionis.Clases
         public double TotalGastos()
         {
             List<Gasto> gastos = DevuelveGastos();
+            return CalculaTotalGastos(gastos);
+        }
+
+        public double TotalGastos(int categoria)
+        {
+            List<Gasto> gastos = DevuelveGastos(categoria);
+            return CalculaTotalGastos(gastos);
+        }
+
+        public double CalculaTotalGastos(List<Gasto> gastos)
+        {
             double totalGastos = 0;
             for (int i = 0; i < gastos.Count; i++)
             {
@@ -183,6 +230,7 @@ namespace Gestionis.Clases
             }
             return totalIngresos;
         }
+        
 
         private List<Gasto> EjecutarConsultaGastos(MySqlCommand query)
         {
@@ -241,6 +289,38 @@ namespace Gestionis.Clases
 
             return ingresos;
         }
+        #endregion
+
+        #region Métodos para eliminar gastos / ingresos
+
+        public void EliminaGasto(int idGasto)
+        {
+            string queryString = "DELETE FROM gasto WHERE idGasto = @idGasto;";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+            query.Parameters.AddWithValue("@idGasto", idGasto);
+
+            ConexionDB.AbrirConexion();
+
+            query.ExecuteNonQuery();
+
+            ConexionDB.CerrarConexion();
+        }
+
+        public void EliminaIngreso(int idIngreso)
+        {
+            string queryString = "DELETE FROM ingreso WHERE idIngreso = @idIngreso;";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+            query.Parameters.AddWithValue("@idIngreso", idIngreso);
+
+            ConexionDB.AbrirConexion();
+
+            query.ExecuteNonQuery();
+
+            ConexionDB.CerrarConexion();
+        }
+
         #endregion
     }
 }

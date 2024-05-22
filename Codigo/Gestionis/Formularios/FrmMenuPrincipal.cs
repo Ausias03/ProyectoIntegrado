@@ -43,7 +43,7 @@ namespace Gestionis
             btnSalir.FlatAppearance.BorderSize = 2;
 
             #endregion
-            
+
             barraSecundaria1.Load();
             barraLateral1.Load();
 
@@ -151,6 +151,65 @@ namespace Gestionis
             lblIngresosValor.Text = cuentaUsuario.TotalIngresos().ToString() + " €";
             lblGastosValor.Text = cuentaUsuario.TotalGastos().ToString() + " €";
             lblTotalValor.Text = cuentaUsuario.DineroTotal().ToString() + " €";
+        }
+
+        private void dgvGastos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (!(e.RowIndex == -1))
+            {
+                DialogResult eliminar = MessageBox.Show("Quieres eliminar el gasto seleccionado?", "Eliminar Gasto"
+                , MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (eliminar == DialogResult.Yes)
+                {
+                    try
+                    {
+                        int idGasto = (int)dgvGastos.Rows[e.RowIndex].Cells[0].Value;
+                        int idCategoria = CategoriaGasto.DevuelveIDCategoria(dgvGastos.Rows[e.RowIndex].Cells[3].Value?.ToString());
+                        cuentaUsuario.EliminaGasto(idGasto);
+                        cuentaUsuario.EliminaNotificacion(idCategoria);
+                        RecargaDGVGastos(cuentaUsuario.DevuelveGastos());
+                        RecargaLabelTotales();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        ConexionDB.CerrarConexion();
+                    }
+                }
+            }
+        }
+
+        private void dgvIngresos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (!(e.RowIndex == -1))
+            {
+                DialogResult eliminar = MessageBox.Show("Quieres eliminar el Ingreso seleccionado?", "Eliminar Ingreso"
+                , MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (eliminar == DialogResult.Yes)
+                {
+                    try
+                    {
+                        int idIngreso = (int)dgvIngresos.Rows[e.RowIndex].Cells[0].Value;
+                        cuentaUsuario.EliminaIngreso(idIngreso);
+                        RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos());
+                        RecargaLabelTotales();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        ConexionDB.CerrarConexion();
+                    }
+                }
+            }
         }
     }
 }

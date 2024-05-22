@@ -26,7 +26,14 @@ namespace Gestionis.Clases
                 }
                 ConexionDB.CerrarConexion();
             }
-            catch (Exception) { }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
 
             return tablaDatos;
         }
