@@ -34,7 +34,7 @@ namespace Gestionis.Clases
             return nombresCategorias;
         }
         
-        public static int DevuelveIDCategoria(string nombre)
+        public static int? DevuelveIDCategoria(string nombre)
         {
             string queryString = "SELECT idCategoria FROM categoriaIngreso WHERE nombre = @nombre";
 
@@ -43,11 +43,19 @@ namespace Gestionis.Clases
 
             ConexionDB.AbrirConexion();
 
-            int idCategoria = (int)query.ExecuteScalar();
+            int? limite = null;
+
+            using (MySqlDataReader reader = query.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    limite = reader.GetSafeInt32(0);
+                }
+            }
 
             ConexionDB.CerrarConexion();
 
-            return idCategoria;
+            return limite;
         }
 
         public static string DevuelveNombreCategoria(int? idCat)

@@ -46,6 +46,10 @@ namespace Gestionis
 
             barraSecundaria1.Load();
             barraLateral1.Load();
+            cmbFiltroGastos.Items.AddRange(Gasto.DevuelveFiltros());
+            cmbFiltroIngresos.Items.AddRange(Ingreso.DevuelveFiltros());
+            EscondeFiltrosGasto();
+            EscondeFiltrosIngreso();
 
             #region Labels
             RecargaLabelTotales();
@@ -96,7 +100,24 @@ namespace Gestionis
 
         private void btnFiltrarGastos_Click(object sender, EventArgs e)
         {
-            RecargaDGVGastos(cuentaUsuario.DevuelveGastos(txtNombreGasto.Text, cmbTipoGasto.Text, nudDineroGasto.Value, cmbCategoriaGasto.Text));
+            switch (cmbFiltroGastos.Text)
+            {
+                case "Nombre":
+                    RecargaDGVGastos(cuentaUsuario.DevuelveGastos(cmbFiltroGastos.Text, txtNombreGasto.Text));
+                    break;
+                case "Cantidad":
+                    RecargaDGVGastos(cuentaUsuario.DevuelveGastos(cmbFiltroGastos.Text, nudDineroGasto.Value));
+                    break;
+                case "Categoria":
+                    RecargaDGVGastos(cuentaUsuario.DevuelveGastos($"id{cmbFiltroGastos.Text}", CategoriaGasto.DevuelveIDCategoria(cmbCategoriaGasto.Text)));
+                    break;
+                case "Tipo":
+                    RecargaDGVGastos(cuentaUsuario.DevuelveGastos(cmbFiltroGastos.Text, cmbTipoGasto.Text));
+                    break;
+                default:
+                    RecargaDGVGastos(cuentaUsuario.DevuelveGastos());
+                    break;
+            }
         }
 
         private void btnRestablecerGastos_Click(object sender, EventArgs e)
@@ -107,7 +128,24 @@ namespace Gestionis
 
         private void btnFiltrarIngresos_Click(object sender, EventArgs e)
         {
-            RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos(txtNombreIngreso.Text, cmbTipoIngreso.Text, nudDineroIngreso.Value, cmbCategoriaIngreso.Text));
+            switch (cmbFiltroIngresos.Text)
+            {
+                case "Nombre":
+                    RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos(cmbFiltroIngresos.Text, txtNombreIngreso.Text));
+                    break;
+                case "Cantidad":
+                    RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos(cmbFiltroIngresos.Text, nudDineroIngreso.Value));
+                    break;
+                case "Categoria":
+                    RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos($"id{cmbFiltroIngresos.Text}", CategoriaIngreso.DevuelveIDCategoria(cmbCategoriaIngreso.Text)));
+                    break;
+                case "Tipo":
+                    RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos(cmbFiltroIngresos.Text, cmbTipoIngreso.Text));
+                    break;
+                default:
+                    RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos());
+                    break;
+            }
         }
 
         private void btnRestablecerIngresos_Click(object sender, EventArgs e)
@@ -211,5 +249,63 @@ namespace Gestionis
                 }
             }
         }
+
+        #region CMBs y controles Filtros
+        private void cmbFiltroGastos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            EscondeFiltrosGasto();
+            switch (cmbFiltroGastos.Text)
+            {
+                case "Nombre":
+                    txtNombreGasto.Visible = true;
+                    break;
+                case "Cantidad":
+                    nudDineroGasto.Visible = true;
+                    break;
+                case "Categoria":
+                    cmbCategoriaGasto.Visible = true;
+                    break;
+                case "Tipo":
+                    cmbTipoGasto.Visible = true;
+                    break;
+            }
+        }
+
+        private void cmbFiltroIngresos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            EscondeFiltrosIngreso();
+            switch (cmbFiltroIngresos.Text)
+            {
+                case "Nombre":
+                    txtNombreIngreso.Visible = true;
+                    break;
+                case "Cantidad":
+                    nudDineroIngreso.Visible = true;
+                    break;
+                case "Categoria":
+                    cmbCategoriaIngreso.Visible = true;
+                    break;
+                case "Tipo":
+                    cmbTipoIngreso.Visible = true;
+                    break;
+            }
+        }
+
+        private void EscondeFiltrosGasto()
+        {
+            txtNombreGasto.Visible = false;
+            nudDineroGasto.Visible = false;
+            cmbCategoriaGasto.Visible = false;
+            cmbTipoGasto.Visible = false;
+        }
+
+        private void EscondeFiltrosIngreso()
+        {
+            txtNombreIngreso.Visible = false;
+            nudDineroIngreso.Visible = false;
+            cmbCategoriaIngreso.Visible = false;
+            cmbTipoIngreso.Visible = false;
+        }
+        #endregion
     }
 }

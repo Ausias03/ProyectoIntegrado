@@ -1,26 +1,17 @@
 ﻿using Gestionis.Clases;
 using Gestionis.Formularios;
-using System.Collections.Generic;
-using System.Windows.Forms;
+using Gestionis.Herramientas;
+using System.Globalization;
 
 namespace Gestionis
 {
     public partial class FrmGestorDeudas : FrmBarraPrincipal
     {
-        private ToolTip toolTip;
-        private System.Windows.Forms.Timer tooltipTimer;
-        private Queue<KeyValuePair<Control, string>> tooltipQueue;
-        private int tooltipDuration = 2000;
 
         public FrmGestorDeudas()
         {
             InitializeComponent();
             ModificarBotones();
-            toolTip = new ToolTip();
-            tooltipQueue = new Queue<KeyValuePair<Control, string>>();
-            tooltipTimer = new System.Windows.Forms.Timer();
-            tooltipTimer.Interval = tooltipDuration;
-            tooltipTimer.Tick += TooltipTimer_Tick;
         }
 
         private void FrmGestorDeudas_Load(object sender, EventArgs e)
@@ -43,6 +34,10 @@ namespace Gestionis
             btnRestaurar.FlatAppearance.BorderSize = 2;
             #endregion
 
+            if (Sesion.Instance.Espanyol) Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
+            else Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+            AplicarIdioma();
+
             cmbCategoria.Items.AddRange(Deuda.Filtros());
             cmbCategoria.SelectedIndex = 0;
 
@@ -50,6 +45,7 @@ namespace Gestionis
             vpbDebo.ForeColor = Color.IndianRed;
             Titulo();
 
+            //lblSaldoValor.Text = 
             lblDeudasTotalesValor.Text = Deuda.DeudasTotales().ToString();
             ProximaDeuda();
 
@@ -61,52 +57,13 @@ namespace Gestionis
 
         private void ModificarBotones()
         {
-            barraSecundaria.BtnAyuda.Click += BtnAyuda_Click;
+            barraSecundaria.BtnLanguage.Click += BtnLanguage_Click;
         }
 
-        private void BtnAyuda_Click(object sender, EventArgs e)
+        private void BtnLanguage_Click(object sender, EventArgs e)
         {
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnAnyadirDeuda, "Añadir una nueva deuda."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnEliminarDeuda, "Eliminar una deuda existente."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnBuscar, "Buscar deudas según los filtros seleccionados."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnRestaurar, "Restaurar la tabla de deudas."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(cmbCategoria, "Seleccionar una categoría de deuda."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(txtTitulo, "Escribir el título de la deuda a buscar."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(chkDebo, "Marcar si se deben mostrar solo las deudas que debes."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblDeudasTotalesValor, "Muestra el total de deudas."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblProximaDeudaValor, "Muestra la próxima deuda."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblFechaLimiteValor, "Muestra la fecha límite de la próxima deuda."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblTipoValor, "Indica si debes o te deben."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(vpbDebo, "Progreso de las deudas que debes."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(vpbMeDeben, "Progreso de las deudas que te deben."));
-
-            SiguienteTooltip();
-        }
-
-        private void SiguienteTooltip()
-        {
-            if (tooltipQueue.Count > 0)
-            {
-                var tooltipItem = tooltipQueue.Dequeue();
-                ShowTooltip(tooltipItem.Key, tooltipItem.Value);
-                tooltipTimer.Start();
-            }
-            else
-            {
-                tooltipTimer.Stop();
-            }
-        }
-
-        private void TooltipTimer_Tick(object sender, EventArgs e)
-        {
-            toolTip.Hide(this);
-            SiguienteTooltip();
-        }
-
-        private void ShowTooltip(Control control, string message)
-        {
-            toolTip.SetToolTip(control, message);
-            toolTip.Show(message, control, control.Width / 2, control.Height / 2);
+            AplicarIdioma();
+            barraLateral1.AplicarIdiomas();
         }
 
         private void Titulo()
@@ -192,6 +149,25 @@ namespace Gestionis
 
             vpbDebo.Value = (int)debo;
             vpbMeDeben.Value = (int)meDeben;
+        }
+
+        private void AplicarIdioma()
+        {
+            lblDeboBarra.Text = Resources.Idiomas.StringRecursosGestor.lblDeboBarra;
+            lblDeudasTotales.Text = Resources.Idiomas.StringRecursosGestor.lblDeudasTotales;
+            lblProximaDeuda.Text = Resources.Idiomas.StringRecursosGestor.lblProximaDeuda;
+            lblFechaLimite.Text = Resources.Idiomas.StringRecursosGestor.lblFechaLimite;
+            lblMeDeben.Text = Resources.Idiomas.StringRecursosGestor.lblMeDeben;
+            lblProximaDeuda.Text = Resources.Idiomas.StringRecursosGestor.lblProximaDeuda;
+            lblResumen.Text = Resources.Idiomas.StringRecursosGestor.lblResumen;
+            lblSaldo.Text = Resources.Idiomas.StringRecursosGestor.lblSaldo;
+            lblTipo.Text = Resources.Idiomas.StringRecursosGestor.lblTipo;
+            lblTitulo.Text = Resources.Idiomas.StringRecursosGestor.lblTitulo;
+            btnAnyadirDeuda.Text = Resources.Idiomas.StringRecursosGestor.btnAnyadirDeuda;
+            btnBuscar.Text = Resources.Idiomas.StringRecursosGestor.btnBuscar;
+            btnEliminarDeuda.Text = Resources.Idiomas.StringRecursosGestor.btnEliminarDeuda;
+            btnRestaurar.Text = Resources.Idiomas.StringRecursosGestor.btnRestaurar;
+            chkDebo.Text = Resources.Idiomas.StringRecursosGestor.chkDebo;
         }
     }
 }

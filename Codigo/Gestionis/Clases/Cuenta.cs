@@ -133,28 +133,22 @@ namespace Gestionis.Clases
             return EjecutarConsultaGastos(query);
         }
 
-        public List<Gasto> DevuelveGastos(int categoria)
+        public List<Gasto> DevuelveGastos<T>(string campo, T valor)
         {
-            string queryString = "SELECT * FROM gasto WHERE numCuenta = @numCuenta AND idCategoria = @idCategoria;";
+            string queryString = $"SELECT * FROM gasto WHERE numCuenta = @numCuenta AND {campo} ";
+
+            if (campo == "Cantidad")
+            {
+                queryString += ">= @valor;";
+            }
+            else
+            {
+                queryString += "= @valor;";
+            }
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
             query.Parameters.AddWithValue("@numCuenta", numCuenta);
-            query.Parameters.AddWithValue("@idCategoria", categoria);
-
-            return EjecutarConsultaGastos(query);
-        }
-
-        public List<Gasto> DevuelveGastos(string nombre, string tipo, decimal cantidad, string categoria)
-        {
-            string queryString = "SELECT * FROM gasto WHERE numCuenta = @numCuenta AND nombre = @nombre AND tipo = @tipo " +
-                "AND cantidad >= @cantidad AND idCategoria IN (SELECT idcategoria FROM categoriagasto WHERE nombre = @nombreCategoria);";
-
-            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
-            query.Parameters.AddWithValue("@numCuenta", numCuenta);
-            query.Parameters.AddWithValue("@nombre", nombre);
-            query.Parameters.AddWithValue("@tipo", tipo);
-            query.Parameters.AddWithValue("@cantidad", cantidad);
-            query.Parameters.AddWithValue("@nombreCategoria", categoria);
+            query.Parameters.AddWithValue("@valor", valor);
 
             return EjecutarConsultaGastos(query);
         }
@@ -169,26 +163,26 @@ namespace Gestionis.Clases
             return EjecutarConsultaIngresos(query);
         }
 
-        public List<Ingreso> DevuelveIngresos(string nombre, string tipo, decimal cantidad, string categoria)
+        public List<Ingreso> DevuelveIngresos<T>(string campo, T? valor)
         {
-            string queryString = "SELECT * FROM ingreso WHERE numCuenta = @numCuenta AND nombre = @nombre AND tipo = @tipo " +
-                "AND cantidad >= @cantidad AND idCategoria ";
+            string queryString = $"SELECT * FROM ingreso WHERE numCuenta = @numCuenta AND {campo} ";
 
-            if (categoria == string.Empty)
+            if (valor == null)
             {
                 queryString += "IS NULL;";
             }
+            else if (campo == "Cantidad")
+            {
+                queryString += ">= @valor;";
+            }
             else
             {
-                queryString += "IN (SELECT idcategoria FROM categoriaIngreso WHERE nombre = @nombreCategoria);";
+                queryString += "= @valor;";
             }
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
             query.Parameters.AddWithValue("@numCuenta", numCuenta);
-            query.Parameters.AddWithValue("@nombre", nombre);
-            query.Parameters.AddWithValue("@tipo", tipo);
-            query.Parameters.AddWithValue("@cantidad", cantidad);
-            query.Parameters.AddWithValue("@nombreCategoria", categoria);
+            query.Parameters.AddWithValue("@valor", valor);
 
             return EjecutarConsultaIngresos(query);
         }
@@ -206,7 +200,7 @@ namespace Gestionis.Clases
 
         public double TotalGastos(int categoria)
         {
-            List<Gasto> gastos = DevuelveGastos(categoria);
+            List<Gasto> gastos = DevuelveGastos("idCategoria", categoria);
             return CalculaTotalGastos(gastos);
         }
 
@@ -230,7 +224,6 @@ namespace Gestionis.Clases
             }
             return totalIngresos;
         }
-        
 
         private List<Gasto> EjecutarConsultaGastos(MySqlCommand query)
         {

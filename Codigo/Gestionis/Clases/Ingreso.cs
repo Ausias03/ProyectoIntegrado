@@ -90,5 +90,11 @@ namespace Gestionis.Clases
             ConexionDB.CerrarConexion();
             SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario, 50);
         }
+
+        public static string[] DevuelveFiltros()
+        {
+            string[] lista = new string[] { "Nombre", "Cantidad", "Categoria", "Tipo" };
+            return lista;
+        }
     }
 }

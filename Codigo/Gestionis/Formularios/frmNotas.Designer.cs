@@ -238,7 +238,7 @@ namespace Gestionis
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1509, 44);
+            barraSecundaria1.Size = new Size(1818, 44);
             barraSecundaria1.TabIndex = 17;
             // 
             // barraLateral1
@@ -324,7 +324,7 @@ namespace Gestionis
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1509, 1102);
+            ClientSize = new Size(1818, 1102);
             Controls.Add(rgbNotasDia);
             Controls.Add(monthCalendar1);
             Controls.Add(barraLateral1);

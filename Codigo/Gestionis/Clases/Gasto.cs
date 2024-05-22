@@ -96,6 +96,12 @@ namespace Gestionis.Clases
             ConexionDB.CerrarConexion();
         }
 
+        public static string[] DevuelveFiltros()
+        {
+            string[] lista = new string[] { "Nombre", "Cantidad", "Categoria", "Tipo"};
+            return lista;
+        }
+
         #region Métodos Ahorro dgv Datos
 
         public static DataTable VisualizarDatosVariable()
@@ -141,6 +147,8 @@ namespace Gestionis.Clases
         {
             string queryString = "SELECT SUM(cantidad) FROM gasto WHERE tipo = @tipo";
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+
+            query.Parameters.AddWithValue("@tipo", "fijo");
 
             ConexionDB.AbrirConexion();
 
