@@ -183,6 +183,8 @@ namespace Gestionis
                     foto.Save(ms, ImageFormat.Jpeg);
                     byte[] fotoArrayBytes = ms.ToArray();
                     Usuario.CambiarCampo("foto", fotoArrayBytes);
+                    SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario, 15);
+                    SetExpNivel();
                 }                
             }
         }

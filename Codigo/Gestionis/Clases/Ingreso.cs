@@ -87,8 +87,7 @@ namespace Gestionis.Clases
 
             query.ExecuteNonQuery();
 
-            ConexionDB.CerrarConexion();
-            SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario, 50);
+            ConexionDB.CerrarConexion();            
         }
 
         public static string[] DevuelveFiltros()

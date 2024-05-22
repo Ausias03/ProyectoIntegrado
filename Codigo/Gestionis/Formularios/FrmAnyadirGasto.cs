@@ -85,6 +85,8 @@ namespace Gestionis
 
             g1.Add();
 
+            SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario, 15);
+
             Usuario.BuscaUsuario(Sesion.Instance.ApodoUsuario).GetCuenta().AddNotificacion(g1.GetNumericCategoria());
 
             this.Close();

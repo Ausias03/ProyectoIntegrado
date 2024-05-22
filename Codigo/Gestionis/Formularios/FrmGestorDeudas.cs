@@ -13,6 +13,8 @@ namespace Gestionis
         private System.Windows.Forms.Timer tooltipTimer;
         private Queue<KeyValuePair<Control, string>> tooltipQueue;
         private int tooltipDuration = 2000;
+        private readonly Usuario usuario;
+        private readonly Cuenta cuentaUsuario;
 
         public FrmGestorDeudas()
         {
@@ -23,6 +25,8 @@ namespace Gestionis
             tooltipTimer = new System.Windows.Forms.Timer();
             tooltipTimer.Interval = tooltipDuration;
             tooltipTimer.Tick += TooltipTimer_Tick;
+            usuario = Usuario.BuscaUsuario(Sesion.Instance.ApodoUsuario);
+            cuentaUsuario = usuario.GetCuenta();
         }
 
         private void FrmGestorDeudas_Load(object sender, EventArgs e)
@@ -48,6 +52,8 @@ namespace Gestionis
             if (Sesion.Instance.Espanyol) Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
             else Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
             AplicarIdioma();
+
+            lblSaldoValor.Text = cuentaUsuario.DineroTotal().ToString() + " €";
 
             cmbCategoria.DataSource = Deuda.Filtros();
             cmbCategoria.SelectedIndex = 0;

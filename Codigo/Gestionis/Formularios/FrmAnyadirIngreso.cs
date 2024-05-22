@@ -93,6 +93,8 @@ namespace Gestionis
 
             i1.Add();
 
+            SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario, 50);
+
             this.Close();
         }
 
