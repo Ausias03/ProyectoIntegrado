@@ -27,6 +27,11 @@ namespace Gestionis.Clases
             this.color = color;
         }
 
+        /// <summary>
+        /// Comprueba si hay una categoría de gastos con el color suministrado
+        /// </summary>
+        /// <param name="color">El color en formato ARGB a comprobar</param>
+        /// <returns>TRUE si existe, FALSE si no</returns>
         public static bool ExisteColor(int color)
         {
             string queryString = "SELECT idCategoria FROM categoriaGasto WHERE color = @color;";
@@ -48,6 +53,11 @@ namespace Gestionis.Clases
             return existe;
         }
 
+        /// <summary>
+        /// Comprueba si hay una categoría de gastos con el nombre suministrado
+        /// </summary>
+        /// <param name="nombre">El nombre de la categoria a comprobar</param>
+        /// <returns>TRUE si existe, FALSE si no</returns>
         public static bool ExisteNombre(string nombre)
         {
             string queryString = "SELECT idCategoria FROM categoriaGasto WHERE nombre = @nombre;";
@@ -69,6 +79,10 @@ namespace Gestionis.Clases
             return existe;
         }
 
+        /// <summary>
+        /// Devuelve los nombres de todas las categorías de gastos dadas de alta en la BD
+        /// </summary>
+        /// <returns>Una lista de strings con todos los nombres</returns>
         public static List<String> DevuelveNombresCategorias()
         {
             List<String> nombresCategorias = new List<string>();
@@ -94,6 +108,11 @@ namespace Gestionis.Clases
             return nombresCategorias;
         }
         
+        /// <summary>
+        /// Busca una categoría por su nombre y devuelve su ID
+        /// </summary>
+        /// <param name="nombre">El nombre de la categoría a buscar</param>
+        /// <returns>El ID de la categoría como int</returns>
         public static int DevuelveIDCategoria(string nombre)
         {
             string queryString = "SELECT idCategoria FROM categoriaGasto WHERE nombre = @nombre";
@@ -110,6 +129,11 @@ namespace Gestionis.Clases
             return idCategoria;
         }
 
+        /// <summary>
+        /// Busca una categoría por su ID y devuelve su nombre
+        /// </summary>
+        /// <param name="idCat">El ID de la categoría a buscar</param>
+        /// <returns>El nombre de la categoría como string</returns>
         public static string DevuelveNombreCategoria(int idCat)
         {
             string queryString = "SELECT nombre FROM categoriaGasto WHERE idCategoria = @idCategoria";
@@ -126,6 +150,11 @@ namespace Gestionis.Clases
             return nombreCategoria;
         }
 
+        /// <summary>
+        /// Busca una categoría por su ID y devuelve su color asignado
+        /// </summary>
+        /// <param name="idCategoria">El ID de la categoría a buscar</param>
+        /// <returns>El color de la categoría como int en formato ARGB</returns>
         public static int GetColor(int idCategoria)
         {
             string queryString = "SELECT color FROM categoriaGasto WHERE idCategoria = @idCategoria;";
@@ -142,6 +171,9 @@ namespace Gestionis.Clases
             return color;
         }
 
+        /// <summary>
+        /// Añade una categoría de gasto a la base de datos
+        /// </summary>
         public void Add()
         {
             string queryString = "INSERT INTO categoriaGasto (idCategoria, nombre, color) " +

@@ -37,6 +37,11 @@ namespace Gestionis.Clases
         public string Descripcion { get { return descripcion; } }
         public string Recomendacion { get { return recomendacion; } }
 
+        /// <summary>
+        /// Devuelve todas las notificaciones de una cuenta
+        /// </summary>
+        /// <param name="numCuenta">El número de la cuenta</param>
+        /// <returns>Una lista con todas las notificaciones encontradas</returns>
         public static List<Notificacion> GetAllNotificaciones(int numCuenta)
         {
             string queryString = "SELECT * FROM notificacion WHERE numCuenta = @numCuenta";
@@ -68,6 +73,11 @@ namespace Gestionis.Clases
             return notificaciones;
         }
 
+        /// <summary>
+        /// Busca si hay una notificación de una categoría a especificar
+        /// </summary>
+        /// <param name="categoria">La categoría a buscar</param>
+        /// <returns>TRUE si existe una notificación, FALSE si no</returns>
         public static bool ExisteNotif(int categoria)
         {
             string queryString = "SELECT idNotificacion FROM notificacion WHERE idCategoria IN" +
@@ -90,6 +100,11 @@ namespace Gestionis.Clases
             return existe;
         }
 
+        /// <summary>
+        /// Compendio de recomendaciones para las notificaciones de cada categoría
+        /// </summary>
+        /// <param name="nombreCategoria">El nombre de la categoría</param>
+        /// <returns>La recomendación de la notificación de la categoría suministrada por parámetros</returns>
         public static string GetRecomendacion(string nombreCategoria)
         {
             switch (nombreCategoria)
@@ -109,6 +124,9 @@ namespace Gestionis.Clases
             }
         }
 
+        /// <summary>
+        /// Añade una notificación a la base de datos
+        /// </summary>
         public void Add()
         {
             string queryString = "INSERT INTO notificacion (idNotificacion, numCuenta, titulo, idCategoria, descripcion, recomendacion, fecha) " +

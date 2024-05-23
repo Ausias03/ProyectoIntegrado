@@ -9,6 +9,10 @@ namespace Gestionis.Clases
 {
     internal class CategoriaIngreso
     {
+        /// <summary>
+        /// Devuelve los nombres de todas las categorías de ingresos dadas de alta en la BD
+        /// </summary>
+        /// <returns>Una lista de strings con todos los nombres</returns>
         public static List<String> DevuelveNombresCategorias()
         {
             List<String> nombresCategorias = new List<string>();
@@ -33,7 +37,12 @@ namespace Gestionis.Clases
 
             return nombresCategorias;
         }
-        
+
+        /// <summary>
+        /// Busca una categoría por su nombre y devuelve su ID
+        /// </summary>
+        /// <param name="nombre">El nombre de la categoría a buscar</param>
+        /// <returns>El ID de la categoría como int</returns>
         public static int? DevuelveIDCategoria(string nombre)
         {
             string queryString = "SELECT idCategoria FROM categoriaIngreso WHERE nombre = @nombre";
@@ -58,6 +67,11 @@ namespace Gestionis.Clases
             return limite;
         }
 
+        /// <summary>
+        /// Busca una categoría por su ID y devuelve su nombre
+        /// </summary>
+        /// <param name="idCat">El ID de la categoría a buscar</param>
+        /// <returns>El nombre de la categoría como string</returns>
         public static string DevuelveNombreCategoria(int? idCat)
         {
             if (idCat == null)

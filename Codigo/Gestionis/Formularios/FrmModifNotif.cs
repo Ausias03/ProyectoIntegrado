@@ -37,25 +37,36 @@ namespace Gestionis.Formularios
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            decimal? limite = LimitesNotif.GetLimite(Sesion.Instance.NumCuenta, CategoriaGasto.DevuelveIDCategoria(cboCategorias.Text));
-
-            if (limite == null)
+            try
             {
-                LimitesNotif lim = new LimitesNotif(
-                    Sesion.Instance.NumCuenta,
-                    CategoriaGasto.DevuelveIDCategoria(cboCategorias.Text),
-                    nudLimite.Value
-                );
-                lim.Add();
+                decimal? limite = LimitesNotif.GetLimite(Sesion.Instance.NumCuenta, CategoriaGasto.DevuelveIDCategoria(cboCategorias.Text));
+
+                if (limite == null)
+                {
+                    LimitesNotif lim = new LimitesNotif(
+                        Sesion.Instance.NumCuenta,
+                        CategoriaGasto.DevuelveIDCategoria(cboCategorias.Text),
+                        nudLimite.Value
+                    );
+                    lim.Add();
+                }
+                else
+                {
+                    LimitesNotif.EditarLimite(Sesion.Instance.NumCuenta, CategoriaGasto.DevuelveIDCategoria(cboCategorias.Text), limite);
+                }
+
+                SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario, 10);
+
+                this.Close();
             }
-            else
+            catch (Exception ex)
             {
-                LimitesNotif.EditarLimite(Sesion.Instance.NumCuenta, CategoriaGasto.DevuelveIDCategoria(cboCategorias.Text), limite);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario, 10);
-
-            this.Close();
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
