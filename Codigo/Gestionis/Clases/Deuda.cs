@@ -167,9 +167,18 @@ namespace Gestionis.Clases
             using (MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion))
             {
                 query.Parameters.AddWithValue("@numCuenta", Sesion.Instance.NumCuenta);
-
                 ConexionDB.AbrirConexion();
-                resultado = Convert.ToInt32(query.ExecuteScalar());
+                using (MySqlDataReader reader = query.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        resultado = reader.GetInt32(0);
+                    }
+                    else
+                    {
+                        resultado = 0;
+                    }
+                }
                 ConexionDB.CerrarConexion();
             }
 
@@ -253,9 +262,19 @@ namespace Gestionis.Clases
             using (MySqlCommand query = new MySqlCommand(consulta, ConexionDB.Conexion))
             {
                 ConexionDB.AbrirConexion();
-                resultado = Convert.ToDouble(query.ExecuteScalar());
+                using (MySqlDataReader reader = query.ExecuteReader())
+                {
+                    if(reader.Read())
+                    {
+                        resultado = reader.GetDouble(1);
+                    }
+                    else
+                    {
+                        resultado = 0;
+                    }
+                }
                 ConexionDB.CerrarConexion();
-            }
+            }            
 
             return resultado;
         }

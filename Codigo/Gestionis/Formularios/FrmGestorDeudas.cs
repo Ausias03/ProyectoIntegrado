@@ -72,7 +72,7 @@ namespace Gestionis
             }
 
             barraSecundaria.Load();
-            barraLateral1.Load();
+            barraLateral2.Load();
         }
 
         private void ModificarBotones()

@@ -1,4 +1,7 @@
-﻿using Gestionis.Clases;
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
+using Gestionis.Clases;
 using Gestionis.Formularios;
 
 namespace Gestionis.Herramientas
@@ -59,7 +62,11 @@ namespace Gestionis.Herramientas
             BtnClasificacion = CreateButton("Clasificación", Properties.Resources.calsificacion, typeof(frmTablaClasificación));
             BtnHistorial = CreateButton("Historial", Properties.Resources.historial, typeof(frmHistorial));
             BtnNotificaciones = CreateButton("Modif. Notif.", Properties.Resources.notificacion, typeof(FrmModifNotif));
-            BtnPaginaWeb = CreateButton("Página Web", Properties.Resources.web, typeof(frmTablaClasificación));
+            BtnPaginaWeb = CreateButton("Página Web", Properties.Resources.web, null);
+
+            // Add specific event handler for BtnPaginaWeb
+            BtnPaginaWeb.Click -= ButtonClickHandler;
+            BtnPaginaWeb.Click += (sender, e) => OpenWebPage("https://gestioniss.000webhostapp.com/IndexEN.html");
         }
 
         private Button CreateButton(string text, Image image, Type formType)
@@ -73,11 +80,32 @@ namespace Gestionis.Herramientas
                 Size = new Size(255, 69),
                 Padding = new Padding(5),
                 FlatStyle = FlatStyle.Flat,
-                FlatAppearance = { BorderSize = 0 }
+                FlatAppearance = { BorderSize = 0 },
+                Tag = formType // Store the formType in the Tag property
             };
-            button.Click += (sender, e) => CerrarAbrirFrm(formType);
+            button.Click += ButtonClickHandler;
             Controls.Add(button);
             return button;
+        }
+
+        private void ButtonClickHandler(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            Type formType = button.Tag as Type;
+
+            if (formType != null)
+            {
+                CerrarAbrirFrm(formType);
+            }
+        }
+
+        private void OpenWebPage(string url)
+        {
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = url,
+                UseShellExecute = true
+            });
         }
 
         private void AjustesTimer()
