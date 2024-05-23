@@ -262,28 +262,15 @@ namespace Gestionis.Clases
             using (MySqlCommand query = new MySqlCommand(consulta, ConexionDB.Conexion))
             {
                 ConexionDB.AbrirConexion();
-<<<<<<< HEAD
-                using (MySqlDataReader reader = query.ExecuteReader())
-                {
-                    if(reader.Read())
-                    {
-                        resultado = reader.GetDouble(1);
-                    }
-                    else
-                    {
-                        resultado = 0;
-=======
-
                 using (MySqlDataReader reader = query.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         resultado = reader.GetSafeFloat(0);
->>>>>>> 60fab9e7298f1186ba3864eb0b63341c53dbfb84
                     }
                 }
                 ConexionDB.CerrarConexion();
-            }            
+            }
 
             return resultado == null ? 0 : Convert.ToDouble(resultado);
         }
