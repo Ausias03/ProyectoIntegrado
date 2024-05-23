@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gestionis.Herramientas;
 using Gestionis.Clases;
+using System.Globalization;
 
 namespace Gestionis
 {
@@ -60,6 +61,9 @@ namespace Gestionis
 
             barraSecundaria1.Load();
             barraLateral1.Load();
+            if (Sesion.Instance.Espanyol) Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
+            else Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+            AplicarIdioma();
             cmbFiltroGastos.Items.AddRange(Gasto.DevuelveFiltros());
             cmbFiltroIngresos.Items.AddRange(Ingreso.DevuelveFiltros());
             EscondeFiltrosGasto();
@@ -75,6 +79,13 @@ namespace Gestionis
         private void ModificarBotones()
         {
             barraSecundaria1.BtnAyuda.Click += btnAyuda_Click;
+            barraSecundaria1.BtnLanguage.Click += BtnLanguage_Click;
+        }
+
+        private void BtnLanguage_Click(object sender, EventArgs e)
+        {
+            AplicarIdioma();
+            barraLateral1.AplicarIdiomas();
         }
 
         private void FrmMenuPrincipal_Activated(object sender, EventArgs e)
@@ -267,6 +278,26 @@ namespace Gestionis
                     }
                 }
             }
+        }
+
+        private void AplicarIdioma()
+        {
+            lblFiltrarPorIng.Text = Resources.Idiomas.StringRecursosMenu.lblFiltrarPor;
+            lblFiltrarPorGas.Text = Resources.Idiomas.StringRecursosMenu.lblFiltrarPor;
+            lblDCIng.Text = Resources.Idiomas.StringRecursosMenu.lblDCIngreso;
+            lblDCGas.Text = Resources.Idiomas.StringRecursosMenu.lblDCGasto;
+            btnRestablecerIngresos.Text = Resources.Idiomas.StringRecursosMenu.btnRestablecer;
+            btnRestablecerGastos.Text = Resources.Idiomas.StringRecursosMenu.btnRestablecer;
+            btnFiltrarIngresos.Text = Resources.Idiomas.StringRecursosMenu.btnFiltrar;
+            btnFiltrarGastos.Text = Resources.Idiomas.StringRecursosMenu.btnFiltrar;
+            lblTotal.Text = Resources.Idiomas.StringRecursosMenu.lblTotal;
+            lblGastos.Text = Resources.Idiomas.StringRecursosMenu.lblGastos;
+            lblIngresos.Text = Resources.Idiomas.StringRecursosMenu.lblIngresos;
+            btnGasto.Text = Resources.Idiomas.StringRecursosMenu.btnGasto;
+            btnIngreso.Text = Resources.Idiomas.StringRecursosMenu.btnIngreso;
+            lblNotas.Text = Resources.Idiomas.StringRecursosMenu.lblNotas;
+            btnSalir.Text = Resources.Idiomas.StringRecursosMenu.btnSalir;
+            lblMes.Text = Resources.Idiomas.StringRecursosMenu.lblMes;
         }
 
         #region CMBs y controles Filtros

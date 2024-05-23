@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,13 @@ namespace Gestionis
         public frmAddCategoria()
         {
             InitializeComponent();
+        }
+
+private void frmAddCategoria_Load(object sender, EventArgs e)
+        {
+            if (Sesion.Instance.Espanyol) Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
+            else Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+            AplicarIdioma();
         }
 
         #region Validaciones
@@ -75,6 +83,14 @@ namespace Gestionis
             cg1.Add();
 
             this.Close();
+        }
+
+        private void AplicarIdioma()
+        {
+            lblColorCat.Text = Resources.Idiomas.StringRecursosAddCat.lblColorCat;
+            lblNombreCat.Text = Resources.Idiomas.StringRecursosAddCat.lblNombreCat;
+            btnAddCategoria.Text = Resources.Idiomas.StringRecursosAddCat.btnAddCategoria;
+            btnVolver.Text = Resources.Idiomas.StringRecursosAddCat.btnVolver;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Gestionis.Clases;
+using System.Globalization;
 
 namespace Gestionis.Formularios
 {
@@ -14,6 +15,9 @@ namespace Gestionis.Formularios
             ResetearFrm();
             dtpDeuda.MinDate = DateTime.Now;
             dtpVencimiento.MinDate = DateTime.Now;
+            if (Sesion.Instance.Espanyol) Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
+            else Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+            AplicarIdioma();
         }
 
         #region Validaciones
@@ -31,7 +35,7 @@ namespace Gestionis.Formularios
             if (nudCantidadAdeudada.Value == 0)
             {
                 ok = false;
-                errorProvider1.SetError(nudCantidadAdeudada, "Introduce una contraseña");
+                errorProvider1.SetError(nudCantidadAdeudada, "Introduce un valor");
             }
 
             return ok;
@@ -86,6 +90,21 @@ namespace Gestionis.Formularios
             dtpDeuda.Value = DateTime.Now;
             dtpVencimiento.Value = DateTime.Now;
             rdbDebo.Checked = true;
+        }
+
+        private void AplicarIdioma()
+        {
+            lblCantAdeudada.Text = Resources.Idiomas.StringRecursosAddDeuda.lblCantAdeudada;
+            lblDeben.Text = Resources.Idiomas.StringRecursosAddDeuda.lblDeben;
+            lblDescrip.Text = Resources.Idiomas.StringRecursosAddDeuda.lblDescrip;
+            lblEstado.Text = Resources.Idiomas.StringRecursosAddDeuda.lblEstado;
+            lblFechDeuda.Text = Resources.Idiomas.StringRecursosAddDeuda.lblFechDeuda;
+            lblFechVencimiento.Text = Resources.Idiomas.StringRecursosAddDeuda.lblFechVencimiento;
+            lblTitulo.Text = Resources.Idiomas.StringRecursosAddDeuda.lblTitulo;
+            label1.Text = Resources.Idiomas.StringRecursosAddDeuda.label1;
+            label2.Text = Resources.Idiomas.StringRecursosAddDeuda.label2;
+            btnCancelar.Text = Resources.Idiomas.StringRecursosAddDeuda.btnCancelar;
+            btnCrear.Text = Resources.Idiomas.StringRecursosAddDeuda.btnCrear;
         }
     }
 }

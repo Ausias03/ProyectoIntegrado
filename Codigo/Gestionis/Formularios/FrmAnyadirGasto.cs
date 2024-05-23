@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,9 @@ namespace Gestionis
 
         private void frmAnyadirGasto_Load(object sender, EventArgs e)
         {
+            if (Sesion.Instance.Espanyol) Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
+            else Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+            AplicarIdioma();
             CargaCategoriasCBO();            
         }
 
@@ -95,6 +99,21 @@ namespace Gestionis
         private void frmAnyadirGasto_Activated(object sender, EventArgs e)
         {
             CargaCategoriasCBO();
+        }
+
+        private void AplicarIdioma()
+        {
+            lblNombreGasto.Text = Resources.Idiomas.StringRecursosAddGasto.lblNombreGasto;
+            lblCantidad.Text = Resources.Idiomas.StringRecursosAddGasto.lblCantidad;
+            lblCategoria.Text = Resources.Idiomas.StringRecursosAddGasto.lblCategoria;
+            lklAddCat.Text = Resources.Idiomas.StringRecursosAddGasto.lklAddCat;
+            lblTipo.Text = Resources.Idiomas.StringRecursosAddGasto.lblTipo;
+            rdbFijo.Text = Resources.Idiomas.StringRecursosAddGasto.rdbFijo;
+            rdbVariable.Text = Resources.Idiomas.StringRecursosAddGasto.rdbVariable;
+            lblComentarios.Text = Resources.Idiomas.StringRecursosAddGasto.lblComentarios;
+            btnVolver.Text = Resources.Idiomas.StringRecursosAddGasto.btnVolver;
+            btnAddGasto.Text = Resources.Idiomas.StringRecursosAddGasto.btnAddGasto;
+            this.Text = Resources.Idiomas.StringRecursosAddGasto.frmAnyadirGasto;
         }
 
         #region Métodos de Implementaión

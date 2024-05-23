@@ -43,10 +43,9 @@
             // txtNombreCat
             // 
             txtNombreCat.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNombreCat.Location = new Point(144, 12);
-            txtNombreCat.Margin = new Padding(3, 2, 3, 2);
+            txtNombreCat.Location = new Point(165, 16);
             txtNombreCat.Name = "txtNombreCat";
-            txtNombreCat.Size = new Size(223, 28);
+            txtNombreCat.Size = new Size(254, 34);
             txtNombreCat.TabIndex = 4;
             // 
             // lblNombreCat
@@ -54,10 +53,10 @@
             lblNombreCat.AutoSize = true;
             lblNombreCat.BackColor = SystemColors.Control;
             lblNombreCat.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblNombreCat.Location = new Point(10, 7);
+            lblNombreCat.Location = new Point(11, 9);
             lblNombreCat.Name = "lblNombreCat";
-            lblNombreCat.Padding = new Padding(4);
-            lblNombreCat.Size = new Size(104, 34);
+            lblNombreCat.Padding = new Padding(5, 5, 5, 5);
+            lblNombreCat.Size = new Size(132, 42);
             lblNombreCat.TabIndex = 5;
             lblNombreCat.Text = "Nombre:";
             lblNombreCat.TextAlign = ContentAlignment.MiddleCenter;
@@ -67,10 +66,10 @@
             lblColorCat.AutoSize = true;
             lblColorCat.BackColor = SystemColors.Control;
             lblColorCat.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblColorCat.Location = new Point(25, 42);
+            lblColorCat.Location = new Point(29, 56);
             lblColorCat.Name = "lblColorCat";
-            lblColorCat.Padding = new Padding(4);
-            lblColorCat.Size = new Size(78, 34);
+            lblColorCat.Padding = new Padding(5, 5, 5, 5);
+            lblColorCat.Size = new Size(100, 42);
             lblColorCat.TabIndex = 6;
             lblColorCat.Text = "Color:";
             lblColorCat.TextAlign = ContentAlignment.MiddleCenter;
@@ -78,10 +77,9 @@
             // btnColorCat
             // 
             btnColorCat.BackColor = Color.White;
-            btnColorCat.Location = new Point(144, 51);
-            btnColorCat.Margin = new Padding(3, 2, 3, 2);
+            btnColorCat.Location = new Point(165, 68);
             btnColorCat.Name = "btnColorCat";
-            btnColorCat.Size = new Size(94, 25);
+            btnColorCat.Size = new Size(107, 33);
             btnColorCat.TabIndex = 8;
             btnColorCat.UseVisualStyleBackColor = false;
             btnColorCat.Click += btnColorCat_Click;
@@ -90,10 +88,9 @@
             // 
             btnVolver.BackColor = Color.FromArgb(211, 208, 242);
             btnVolver.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnVolver.Location = new Point(151, 85);
-            btnVolver.Margin = new Padding(3, 2, 3, 2);
+            btnVolver.Location = new Point(173, 113);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(105, 36);
+            btnVolver.Size = new Size(120, 48);
             btnVolver.TabIndex = 9;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = false;
@@ -103,10 +100,9 @@
             // 
             btnAddCategoria.BackColor = Color.FromArgb(178, 242, 187);
             btnAddCategoria.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAddCategoria.Location = new Point(262, 85);
-            btnAddCategoria.Margin = new Padding(3, 2, 3, 2);
+            btnAddCategoria.Location = new Point(299, 113);
             btnAddCategoria.Name = "btnAddCategoria";
-            btnAddCategoria.Size = new Size(104, 36);
+            btnAddCategoria.Size = new Size(119, 48);
             btnAddCategoria.TabIndex = 10;
             btnAddCategoria.Text = "Añadir";
             btnAddCategoria.UseVisualStyleBackColor = false;
@@ -119,18 +115,18 @@
             // 
             // frmAddCategoria
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(401, 128);
+            ClientSize = new Size(458, 171);
             Controls.Add(btnAddCategoria);
             Controls.Add(btnVolver);
             Controls.Add(btnColorCat);
             Controls.Add(lblColorCat);
             Controls.Add(txtNombreCat);
             Controls.Add(lblNombreCat);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "frmAddCategoria";
             Text = "FrmAddCategoria";
+            Load += frmAddCategoria_Load;
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
