@@ -143,11 +143,11 @@ namespace Gestionis.Clases
 
             ConexionDB.AbrirConexion();
 
-            string nombreCategoria = query.ExecuteScalar().ToString();
+            string? nombreCategoria = query.ExecuteScalar().ToString();
 
             ConexionDB.CerrarConexion();
 
-            return nombreCategoria;
+            return nombreCategoria ?? String.Empty;
         }
 
         /// <summary>

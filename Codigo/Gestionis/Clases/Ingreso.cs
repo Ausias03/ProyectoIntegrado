@@ -65,6 +65,9 @@ namespace Gestionis.Clases
         public TimeSpan Hora { get { return hora; } }
         #endregion
 
+        /// <summary>
+        /// Añade un registro ingreso a la base de datos
+        /// </summary>
         public void Add()
         {
             string queryString = "INSERT INTO ingreso (idIngreso, numCuenta, nombre, cantidad," +
@@ -90,6 +93,10 @@ namespace Gestionis.Clases
             ConexionDB.CerrarConexion();            
         }
 
+        /// <summary>
+        /// Campos por los que se puede filtrar un ingreso
+        /// </summary>
+        /// <returns>Devuelve una lista de campos para poder filtrar los ingresos de la BD</returns>
         public static string[] DevuelveFiltros()
         {
             string[] lista = new string[] { "Nombre", "Cantidad", "Categoria", "Tipo" };

@@ -5,6 +5,11 @@ namespace Gestionis.Clases
 {
     class Utilidades
     {
+        /// <summary>
+        /// Comprueba si el apodo proporcionado tiene espacios
+        /// </summary>
+        /// <param name="apodo">El string que contiene el apodo a comprobar</param>
+        /// <returns>TRUE si tiene espacios, FALSE si no</returns>
         public static bool TieneEspacios(string apodo)
         {
             const char espacio = ' ';

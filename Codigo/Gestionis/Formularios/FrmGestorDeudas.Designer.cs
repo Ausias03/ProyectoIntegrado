@@ -424,7 +424,7 @@ namespace Gestionis
             // 
             barraSecundaria.BackColor = Color.FromArgb(211, 208, 242);
             barraSecundaria.Dock = DockStyle.Top;
-            barraSecundaria.Location = new Point(0, 32);
+            barraSecundaria.Location = new Point(0, 40);
             barraSecundaria.Name = "barraSecundaria";
             barraSecundaria.Size = new Size(1446, 35);
             barraSecundaria.TabIndex = 29;
@@ -433,9 +433,9 @@ namespace Gestionis
             // 
             barraLateral3.BackColor = Color.FromArgb(205, 213, 221);
             barraLateral3.Dock = DockStyle.Left;
-            barraLateral3.Location = new Point(0, 67);
+            barraLateral3.Location = new Point(0, 75);
             barraLateral3.Name = "barraLateral3";
-            barraLateral3.Size = new Size(231, 813);
+            barraLateral3.Size = new Size(231, 805);
             barraLateral3.TabIndex = 30;
             // 
             // FrmGestorDeudas

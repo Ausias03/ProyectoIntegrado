@@ -27,7 +27,18 @@ namespace Gestionis
             if (Sesion.Instance.Espanyol) Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
             else Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
             AplicarIdioma();
-            CargaCategoriasCBO();
+            try
+            {
+                CargaCategoriasCBO();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         #region Validaciones
@@ -82,20 +93,30 @@ namespace Gestionis
                 return;
             }
 
-            Ingreso i1 = new Ingreso(
-                numCuenta,
-                txtNombreIngreso.Text,
-                (float)nudCantidad.Value,
-                rdbSalario.Checked ? "Salario" : "Extra",
-                rdbSalario.Checked ? null : CategoriaIngreso.DevuelveIDCategoria(cboCategoria.Text),
-                txtComentarios.Text == String.Empty ? null : txtComentarios.Text
-            );
+            try
+            {
+                Ingreso i1 = new Ingreso(
+                    numCuenta,
+                    txtNombreIngreso.Text,
+                    (float)nudCantidad.Value,
+                    rdbSalario.Checked ? "Salario" : "Extra",
+                    rdbSalario.Checked ? null : CategoriaIngreso.DevuelveIDCategoria(cboCategoria.Text),
+                    txtComentarios.Text == String.Empty ? null : txtComentarios.Text
+                );
 
-            i1.Add();
+                i1.Add();
 
-            SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario, 50);
-
-            this.Close();
+                SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario, 50);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+                this.Close();
+            }            
         }
 
         private void AplicarIdioma()

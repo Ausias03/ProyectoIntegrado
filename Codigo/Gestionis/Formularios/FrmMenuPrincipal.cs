@@ -20,7 +20,8 @@ namespace Gestionis
     {
         private readonly Usuario usuario;
         private readonly Cuenta cuentaUsuario;
-        #region ayuda
+
+        #region Ayuda
         private ToolTip toolTip;
         private System.Windows.Forms.Timer tooltipTimer;
         private Queue<KeyValuePair<Control, string>> tooltipQueue;
@@ -44,13 +45,15 @@ namespace Gestionis
             {
                 ConexionDB.CerrarConexion();
             }
-            #region ayuda
+
+            #region Ayuda
             toolTip = new ToolTip();
             tooltipQueue = new Queue<KeyValuePair<Control, string>>();
             tooltipTimer = new System.Windows.Forms.Timer();
             tooltipTimer.Interval = tooltipDuration;
             tooltipTimer.Tick += TooltipTimer_Tick;
             #endregion
+            
             ModificarBotones();
         }
 
@@ -321,6 +324,7 @@ namespace Gestionis
             }
         }
 
+        #region Métodos de Implementación
         private void ConfigurarComboBox(ComboBox comboBox, List<String> dataSource)
         {
             BindingSource bs = new BindingSource();
@@ -332,10 +336,12 @@ namespace Gestionis
         {
             dgvGastos.DataSource = gastos;
         }
+
         private void RecargaDGVIngresos(List<Ingreso> ingresos)
         {
             dgvIngresos.DataSource = ingresos;
         }
+
         private void RestableceControlesGasto()
         {
             txtNombreGasto.Text = String.Empty;
@@ -343,6 +349,7 @@ namespace Gestionis
             nudDineroGasto.Value = 0;
             cmbCategoriaGasto.SelectedIndex = 0;
         }
+
         private void RestableceControlesIngreso()
         {
             txtNombreIngreso.Text = String.Empty;
@@ -357,7 +364,9 @@ namespace Gestionis
             lblGastosValor.Text = cuentaUsuario.TotalGastos().ToString("0.00") + " €";
             lblTotalValor.Text = cuentaUsuario.DineroTotal().ToString("0.00") + " €";
         }
+        #endregion
 
+        #region Idiomas
         private void AplicarIdioma()
         {
             lblFiltrarPorIng.Text = Resources.Idiomas.StringRecursosMenu.lblFiltrarPor;
@@ -377,6 +386,7 @@ namespace Gestionis
             btnSalir.Text = Resources.Idiomas.StringRecursosMenu.btnSalir;
             lblMes.Text = Resources.Idiomas.StringRecursosMenu.lblMes;
         }
+        #endregion
 
         #region CMBs y controles Filtros
         private void cmbFiltroGastos_SelectedIndexChanged(object sender, EventArgs e)
