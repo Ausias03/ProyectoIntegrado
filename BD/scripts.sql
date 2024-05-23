@@ -141,7 +141,7 @@ nivel INT NOT NULL,
 xpRequerido INT NOT NULL
 );
 
-INSERT INTO nivel (nivel, xpRequerido) VALUES (1, 100), (2, 200), (3, 400), (4, 800), (5, 1600);
+INSERT INTO nivel (nivel, xpRequerido) VALUES (1, 100), (2, 200), (3, 400), (4, 800), (5, 1600), (6, 999999);
 
 DELIMITER //
 
