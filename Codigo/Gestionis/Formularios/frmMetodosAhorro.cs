@@ -70,7 +70,7 @@ namespace Gestionis
 
             #endregion
 
-            lblIngresoMesCont.Text = cuentaUsuario.TotalIngresos() + " €";
+            lblIngresoMesCont.Text = cuentaUsuario.TotalIngresos().ToString("0.00") + " €";
 
             barraSecundaria1.Load();
             barraLateral2.Load();
@@ -88,9 +88,7 @@ namespace Gestionis
                 //lblTotalGastosVariables.Text = Gasto.TotalVariable() + " €";
                 //lblTotalValorFijo.Text = Gasto.TotalFijos() + " €";
 
-
-                lblDineroRest.Text = Gasto.DineroRestante(cuentaUsuario.TotalIngresos()).Value.ToString() + " €";
-
+                lblDineroRest.Text = Gasto.DineroRestante(cuentaUsuario.TotalIngresos()).Value.ToString("0.00") + " €";
 
                 lblPorcentajeVariable.Text = Gasto.PorcentajeTotalVariable().ToString("0") + " %";
 
@@ -120,16 +118,16 @@ namespace Gestionis
 
             // Dinero a gastar según el % del metodo 50/30/20
             double? basicaValor = Gasto.M503020Necesidades(ingresoMensual);
-            lblNecBasicasValor.Text =  basicaValor.HasValue ? basicaValor.Value.ToString("0") + " €" : "0" + " %";
+            lblNecBasicasValor.Text =  basicaValor.HasValue ? basicaValor.Value.ToString("0.00") + " €" : "0" + " %";
             //double? presValor = Gasto.M503020Presindibles(ingresoMensual);
             //lblNecPresValor.Text = presValor.HasValue ? presValor.Value.ToString("0.00") + " €" : "N/A";
-            lblNecPresValor.Text = Gasto.M503020Presindibles(ingresoMensual).Value.ToString("0") + " €";
-            lblAhoValor.Text = Gasto.M503020Ahorro(ingresoMensual).ToString() + " €";
+            lblNecPresValor.Text = Gasto.M503020Presindibles(ingresoMensual).Value.ToString("0.00") + " €";
+            lblAhoValor.Text = Gasto.M503020Ahorro(ingresoMensual).Value.ToString("0.00") + " €";
 
             // Totales
             lblGMNecValor.Text = Gasto.TotalNecesidades() + " €";
             lblGPresValor.Text = Gasto.TotalPrescindibles() + " €";
-            lblAhorroDinValor.Text = Gasto.DineroRestante(ingresoMensual) + " €";
+            lblAhorroDinValor.Text = Gasto.DineroRestante(ingresoMensual).Value.ToString("0.00") + " €";
 
             // Colores
             lblGMNecPorDin.ForeColor = Gasto.PorcentajeNec(ingresoMensual) > porcentajeNece? Color.Red : Color.Green;

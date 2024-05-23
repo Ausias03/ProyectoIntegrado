@@ -52,7 +52,7 @@ namespace Gestionis
 
             try
             {
-                lblSaldoValor.Text = cuentaUsuario.DineroTotal().ToString() + " €";
+                lblSaldoValor.Text = cuentaUsuario.DineroTotal().ToString("0.00") + " €";
 
                 cmbCategoria.DataSource = Deuda.Filtros();
                 cmbCategoria.SelectedIndex = 0;

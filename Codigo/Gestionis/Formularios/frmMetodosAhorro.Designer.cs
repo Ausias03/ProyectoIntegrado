@@ -330,7 +330,7 @@ namespace Gestionis
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Segoe UI", 14.25F);
-            label5.Location = new Point(371, 965);
+            label5.Location = new Point(371, 964);
             label5.Name = "label5";
             label5.Size = new Size(184, 32);
             label5.TabIndex = 43;
@@ -342,7 +342,7 @@ namespace Gestionis
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Segoe UI", 14.25F);
             label6.ForeColor = SystemColors.ActiveCaptionText;
-            label6.Location = new Point(368, 971);
+            label6.Location = new Point(368, 977);
             label6.Name = "label6";
             label6.Size = new Size(194, 32);
             label6.TabIndex = 42;
@@ -385,7 +385,7 @@ namespace Gestionis
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Segoe UI", 14.25F);
             label7.ForeColor = Color.FromArgb(0, 192, 0);
-            label7.Location = new Point(560, 972);
+            label7.Location = new Point(560, 977);
             label7.Name = "label7";
             label7.Size = new Size(254, 32);
             label7.TabIndex = 47;
@@ -519,7 +519,7 @@ namespace Gestionis
             lblLineaFijos.BackColor = Color.Transparent;
             lblLineaFijos.Font = new Font("Segoe UI", 14.25F);
             lblLineaFijos.ForeColor = Color.FromArgb(0, 192, 0);
-            lblLineaFijos.Location = new Point(279, 253);
+            lblLineaFijos.Location = new Point(279, 257);
             lblLineaFijos.Name = "lblLineaFijos";
             lblLineaFijos.Size = new Size(264, 32);
             lblLineaFijos.TabIndex = 88;
@@ -531,7 +531,7 @@ namespace Gestionis
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Segoe UI", 14.25F);
             label8.ForeColor = Color.FromArgb(0, 192, 0);
-            label8.Location = new Point(285, 251);
+            label8.Location = new Point(285, 256);
             label8.Name = "label8";
             label8.Size = new Size(274, 32);
             label8.TabIndex = 89;
@@ -637,7 +637,7 @@ namespace Gestionis
             // 
             lblAhorroPorDin.AutoSize = true;
             lblAhorroPorDin.Font = new Font("Segoe UI", 14.25F);
-            lblAhorroPorDin.Location = new Point(327, 432);
+            lblAhorroPorDin.Location = new Point(337, 432);
             lblAhorroPorDin.Name = "lblAhorroPorDin";
             lblAhorroPorDin.Size = new Size(54, 32);
             lblAhorroPorDin.TabIndex = 103;
@@ -748,7 +748,7 @@ namespace Gestionis
             // 
             lblAhorroDinValor.AutoSize = true;
             lblAhorroDinValor.Font = new Font("Segoe UI", 14.25F);
-            lblAhorroDinValor.Location = new Point(170, 431);
+            lblAhorroDinValor.Location = new Point(155, 431);
             lblAhorroDinValor.Name = "lblAhorroDinValor";
             lblAhorroDinValor.Size = new Size(47, 32);
             lblAhorroDinValor.TabIndex = 101;
