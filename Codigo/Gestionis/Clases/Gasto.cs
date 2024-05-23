@@ -109,26 +109,27 @@ namespace Gestionis.Clases
         public static DataTable VisualizarDatosVariable()
         {
 
-            return Utilidades.RellenarDatos("SELECT c.nombre AS categoria, SUM(g.cantidad) AS total_gasto,(SUM(g.cantidad) * 100 / (SELECT cantidad FROM ingreso)) AS porcentaje " +
-                "FROM gasto g JOIN categoriagasto c ON g.idCategoria = c.idCategoria WHERE g.tipo = 'Variable' GROUP BY c.nombre;");
+            return Utilidades.RellenarDatos("SELECT c.nombre AS categoria, SUM(g.cantidad) AS total_gasto, " +
+                "ROUND((SUM(g.cantidad) * 100 / (SELECT SUM(cantidad) FROM ingreso)) ) AS porcentaje FROM gasto g JOIN categoriagasto " +
+                "c ON g.idCategoria = c.idCategoria WHERE g.tipo = 'Variable' GROUP BY c.nombre; ");
         }
         public static DataTable VisualizarDatosFijo()
         {
-            return Utilidades.RellenarDatos("SELECT c.nombre AS categoria, SUM(g.cantidad) AS total_gasto,(SUM(g.cantidad) * 100 / (SELECT cantidad FROM ingreso)) AS porcentaje " +
+            return Utilidades.RellenarDatos("SELECT c.nombre AS categoria, SUM(g.cantidad) AS total_gasto, ROUND((SUM(g.cantidad) * 100 / (SELECT SUM(cantidad) FROM ingreso))) AS porcentaje " +
                 "FROM gasto g JOIN categoriagasto c ON g.idCategoria = c.idCategoria WHERE g.tipo = 'Fijo' GROUP BY c.nombre;");
         }
 
         #endregion
 
         #region Calculo Totales valores (gastos)
-        public static int? TotalFijos()
+        public static double? TotalFijos()
         {
             string queryString = "SELECT SUM(cantidad) FROM gasto WHERE tipo = @tipo";
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
 
             query.Parameters.AddWithValue("@tipo", "fijo");
             ConexionDB.AbrirConexion();
-            int? sumaTotal = null;
+            double? sumaTotal = null;
             using (MySqlDataReader reader = query.ExecuteReader())
             {
                 while (reader.Read())
@@ -138,16 +139,20 @@ namespace Gestionis.Clases
             }
 
             ConexionDB.CerrarConexion();
+            if (sumaTotal == null || sumaTotal == 0)
+            {
+                return 0;
+            }
             return sumaTotal;
         }
-        public static int? TotalVariable()
+        public static double? TotalVariable()
         {
             string queryString = "SELECT SUM(cantidad) FROM gasto WHERE tipo = @tipo";
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
 
             query.Parameters.AddWithValue("@tipo", "Variable");
             ConexionDB.AbrirConexion();
-            int? sumaTotal = null;
+            double? sumaTotal = null;
             using (MySqlDataReader reader = query.ExecuteReader())
             {
                 while (reader.Read())
@@ -157,12 +162,36 @@ namespace Gestionis.Clases
             }
 
             ConexionDB.CerrarConexion();
+            if (sumaTotal == null || sumaTotal == 0)
+            {
+                return 0;
+            }
+
             return sumaTotal;
         }
+        public static double? DineroRestante(double? ingresosMensuales)
+        {
+
+            if (ingresosMensuales.HasValue == null || ingresosMensuales.Value == 0)
+            {
+                return 0;
+            }
+
+            double? total = Gasto.TotalFijos() + Gasto.TotalVariable();
+
+            if (total.HasValue == null || total.Value == 0)
+            {
+                return 0;
+            }
+
+            return ingresosMensuales - total;
+        }
+
+
         #endregion
 
         #region Calculo de los porcentajes totales
-        public static int PorcentajeTotalVariable()
+        public static double PorcentajeTotalVariable()
         {
             double porcentajeTotal = 0;
             var datosVariable = Gasto.VisualizarDatosVariable();
@@ -171,33 +200,25 @@ namespace Gestionis.Clases
             {
                 porcentajeTotal += Convert.ToDouble(datosVariable.Rows[i][2]);
             }
-            return (int)porcentajeTotal;
+
+            if (porcentajeTotal == 0)
+            {
+                return 0;
+            }
+            return porcentajeTotal;
         }
-        public static int PorcentajeTotalFijo()
+        public static double PorcentajeTotalFijo()
         {
             double porcentajeTotal = 0;
-            var datosVariable = Gasto.VisualizarDatosFijo();
+            var datosFijo = Gasto.VisualizarDatosFijo();
 
-            for (int i = 0; i < datosVariable.Rows.Count; i++)
+            for (int i = 0; i < datosFijo.Rows.Count; i++)
             {
-                porcentajeTotal += Convert.ToDouble(datosVariable.Rows[i][2]);
+                porcentajeTotal += Convert.ToDouble(datosFijo.Rows[i][2]);
             }
-            return (int)porcentajeTotal;
+            if (porcentajeTotal == 0) { return 0; }
+            return porcentajeTotal;
         }
-
-        #endregion
-
-        public static double? DineroRestante(double? ingresosMensuales)
-        {
-            if (!ingresosMensuales.HasValue)
-            {
-                return null;
-            }
-
-            double? total = Gasto.TotalFijos() + Gasto.TotalVariable();
-            return ingresosMensuales - total;
-        }
-
         public static double? PorcentajeRestante(double? ingresosMensuales)
         {
             double? dineroRestante = DineroRestante(ingresosMensuales);
@@ -219,16 +240,106 @@ namespace Gestionis.Clases
 
         public static double? M503020Necesidades(double? ingresosMensuales)
         {
+            if (!ingresosMensuales.HasValue)
+            {
+                return null;
+            }
             return ingresosMensuales * 0.50;
         }
         public static double? M503020Presindibles(double? ingresosMensuales)
         {
+            if (!ingresosMensuales.HasValue)
+            {
+                return null;
+            }
             return ingresosMensuales * 0.30;
         }
         public static double? M503020Ahorro(double? ingresosMensuales)
         {
+            if (!ingresosMensuales.HasValue)
+            {
+                return null;
+            }
             return ingresosMensuales * 0.20;
         }
+        #endregion
+
+        #region Calculo de dinero por mes
+        public static double? TotalNecesidades()
+        {
+            string queryString = "SELECT SUM(g.cantidad) FROM gasto g JOIN categoriaGasto c ON g.idCategoria = c.idCategoria WHERE (c.nombre = 'luz' OR c.nombre = 'supermercado');";
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+
+            ConexionDB.AbrirConexion();
+            double? sumaTotal = null;
+            using (MySqlDataReader reader = query.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    sumaTotal = reader.GetSafeInt32(0);
+                }
+            }
+
+            ConexionDB.CerrarConexion();
+            return sumaTotal;
+        }
+        public static double? TotalPrescindibles()
+        {
+            string queryString = "SELECT SUM(g.cantidad) FROM gasto g JOIN categoriaGasto c ON g.idCategoria = c.idCategoria " +
+                         "WHERE (c.nombre = 'restaurante' OR c.nombre = 'gasolina' OR c.nombre = 'entretenimiento');";
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+
+            ConexionDB.AbrirConexion();
+            double? sumaTotal = null;
+            using (MySqlDataReader reader = query.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    sumaTotal = reader.GetSafeInt32(0);
+                }
+            }
+
+            ConexionDB.CerrarConexion();
+            return sumaTotal;
+        }
+
+        #endregion
+
+        #region Calculo de porcentajes en referencia al dinero gastado
+        public static double? PorcentajeNec(double? gastosMensuales)
+        {
+            if (!gastosMensuales.HasValue || gastosMensuales.Value == 0)
+            {
+                return null;
+            }
+
+            double? totalNecesidades = Gasto.TotalNecesidades();
+            if (!totalNecesidades.HasValue || totalNecesidades.Value == 0)
+            {
+                return null;
+            }
+
+            double porcentajeTotal = (totalNecesidades.Value / gastosMensuales.Value) * 100;
+            return porcentajeTotal;
+        }
+        public static double? PorcentajePrescin(double? gastosMensuales)
+        {
+            if (!gastosMensuales.HasValue || gastosMensuales.Value == 0)
+            {
+                return null;
+            }
+
+            double? totalPrescindibles = Gasto.TotalPrescindibles();
+            if (!totalPrescindibles.HasValue || totalPrescindibles.Value == 0)
+            {
+                return null;
+            }
+
+            double porcentajeTotal = (totalPrescindibles.Value / gastosMensuales.Value) * 100;
+            return porcentajeTotal;
+        }
+        #endregion
+
         #endregion
 
         #endregion
