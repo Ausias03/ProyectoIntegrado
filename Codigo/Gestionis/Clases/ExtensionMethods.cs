@@ -65,5 +65,15 @@ namespace Gestionis.Clases
                 return reader.GetDecimal(index);
             }
         }
+        public static float? GetSafeFloat(this MySqlDataReader reader, int index)
+        {
+            if(reader.IsDBNull(index))
+            {
+                return null;
+            }
+            {
+                return reader.GetFloat(index);
+            }
+        }
     }
 }

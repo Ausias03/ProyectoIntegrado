@@ -52,29 +52,24 @@ namespace Gestionis.Clases
                 "VALUES (@idDeuda, @numCuenta, @titulo, @descripcion, @debo, @cantidad," +
                 "@fechaCreacion, @fechaVencimiento, @anyadirRecordatorio);";
 
-            try
+            using (MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion))
             {
-                using (MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion))
-                {
-                    query.Parameters.AddWithValue("@idDeuda", idDeuda);
-                    query.Parameters.AddWithValue("@numCuenta", numCuenta);
-                    query.Parameters.AddWithValue("@titulo", titulo);
-                    query.Parameters.AddWithValue("@descripcion", descripcion);
-                    query.Parameters.AddWithValue("@debo", debo);
-                    query.Parameters.AddWithValue("@cantidad", cantidad);
-                    query.Parameters.AddWithValue("@fechaCreacion", fechaCreacion);
-                    query.Parameters.AddWithValue("@fechaVencimiento", fechaVencimiento);
-                    query.Parameters.AddWithValue("@anyadirRecordatorio", anyadirRecordatorio);
+                query.Parameters.AddWithValue("@idDeuda", idDeuda);
+                query.Parameters.AddWithValue("@numCuenta", numCuenta);
+                query.Parameters.AddWithValue("@titulo", titulo);
+                query.Parameters.AddWithValue("@descripcion", descripcion);
+                query.Parameters.AddWithValue("@debo", debo);
+                query.Parameters.AddWithValue("@cantidad", cantidad);
+                query.Parameters.AddWithValue("@fechaCreacion", fechaCreacion);
+                query.Parameters.AddWithValue("@fechaVencimiento", fechaVencimiento);
+                query.Parameters.AddWithValue("@anyadirRecordatorio", anyadirRecordatorio);
 
-                    ConexionDB.AbrirConexion();
+                ConexionDB.AbrirConexion();
 
-                    resultado = query.ExecuteNonQuery();
+                resultado = query.ExecuteNonQuery();
 
-                    ConexionDB.CerrarConexion();
-                }                
+                ConexionDB.CerrarConexion();
             }
-            catch (Exception) { }
-            finally { ConexionDB.CerrarConexion(); }
 
             return resultado;
         }
@@ -93,7 +88,7 @@ namespace Gestionis.Clases
                 {
                     if (reader.Read())
                     {
-                        resultado = reader.GetInt32(0);                        
+                        resultado = reader.GetInt32(0);
                     }
                 }
                 ConexionDB.CerrarConexion();
@@ -135,17 +130,17 @@ namespace Gestionis.Clases
                 {
                     if (reader.Read())
                     {
-                        deuda.descripcion = reader.GetString(0);
+                        deuda.descripcion = reader.GetSafeString(0);
                         deuda.debo = reader.GetBoolean(1);
                         deuda.cantidad = reader.GetDecimal(2);
                         deuda.fechaCreacion = Convert.ToDateTime(reader.GetDateTime(3).ToString("dd/MM/yyyy"));
                         deuda.fechaVencimiento = Convert.ToDateTime(reader.GetDateTime(4).ToString("dd/MM/yyyy"));
                     }
-                }                
+                }
                 ConexionDB.CerrarConexion();
             }
             return deuda;
-        }        
+        }
 
         public static int EliminarDeuda(string tit)
         {
@@ -169,19 +164,14 @@ namespace Gestionis.Clases
 
             string queryString = "SELECT COUNT(idDeuda) FROM deuda WHERE numCuenta = @numCuenta AND debo = TRUE;";
 
-            try
+            using (MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion))
             {
-                using (MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion))
-                {
-                    query.Parameters.AddWithValue("@numCuenta", Sesion.Instance.NumCuenta);
+                query.Parameters.AddWithValue("@numCuenta", Sesion.Instance.NumCuenta);
 
-                    ConexionDB.AbrirConexion();
-                    resultado = Convert.ToInt32(query.ExecuteScalar());
-                    ConexionDB.CerrarConexion();
-                }
+                ConexionDB.AbrirConexion();
+                resultado = Convert.ToInt32(query.ExecuteScalar());
+                ConexionDB.CerrarConexion();
             }
-            catch (Exception) { }
-            finally { ConexionDB.CerrarConexion(); }
 
             return resultado;
         }
@@ -199,13 +189,13 @@ namespace Gestionis.Clases
                 {
                     if (reader.Read())
                     {
-                        deuda.titulo = reader.IsDBNull(0) ? null : reader.GetString(0);
+                        deuda.titulo = reader.GetSafeString(0);
                         deuda.debo = !reader.IsDBNull(1) && reader.GetBoolean(1);
                         deuda.fechaVencimiento = reader.IsDBNull(2) ? DateTime.MinValue : Convert.ToDateTime(reader.GetDateTime(2).ToString("dd/MM/yyyy"));
-                    }                    
+                    }
                 }
                 ConexionDB.CerrarConexion();
-            }            
+            }
         }
 
         public static string[] Filtros()
@@ -260,17 +250,13 @@ namespace Gestionis.Clases
             double resultado = 0;
             string consulta = $"SELECT SUM(cantidad) FROM deuda WHERE numCuenta = {Sesion.Instance.NumCuenta} AND debo = {debo}";
 
-            try
+            using (MySqlCommand query = new MySqlCommand(consulta, ConexionDB.Conexion))
             {
-                using (MySqlCommand query = new MySqlCommand(consulta, ConexionDB.Conexion))
-                {
-                    ConexionDB.AbrirConexion();
-                    resultado = Convert.ToDouble(query.ExecuteScalar());
-                    ConexionDB.CerrarConexion();
-                }
+                ConexionDB.AbrirConexion();
+                resultado = Convert.ToDouble(query.ExecuteScalar());
+                ConexionDB.CerrarConexion();
             }
-            catch (Exception){ }
-            finally { ConexionDB.CerrarConexion(); }
+
             return resultado;
         }
     }

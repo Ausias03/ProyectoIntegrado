@@ -105,6 +105,8 @@ namespace Gestionis
             {
                 ConexionDB.CerrarConexion();
             }
+            barraLateral2.Load();
+            barraSecundaria1.Load();
         }
 
         private void btnVolver_Click(object sender, EventArgs e)

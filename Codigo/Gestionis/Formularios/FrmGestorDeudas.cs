@@ -1,9 +1,6 @@
 ﻿using Gestionis.Clases;
 using Gestionis.Formularios;
-using Gestionis.Herramientas;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Windows.Forms;
 
 namespace Gestionis
 {
@@ -53,19 +50,26 @@ namespace Gestionis
             else Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
             AplicarIdioma();
 
-            lblSaldoValor.Text = cuentaUsuario.DineroTotal().ToString() + " €";
+            try
+            {
+                lblSaldoValor.Text = cuentaUsuario.DineroTotal().ToString() + " €";
 
-            cmbCategoria.DataSource = Deuda.Filtros();
-            cmbCategoria.SelectedIndex = 0;
+                cmbCategoria.DataSource = Deuda.Filtros();
+                cmbCategoria.SelectedIndex = 0;
 
-            SetGrafico();
-            vpbDebo.ForeColor = Color.IndianRed;
-            Titulo();
+                SetGrafico();
+                vpbDebo.ForeColor = Color.IndianRed;
+                Titulo();
 
-            lblDeudasTotalesValor.Text = Deuda.DeudasTotales().ToString();
-            ProximaDeuda();
+                lblDeudasTotalesValor.Text = Deuda.DeudasTotales().ToString();
+                ProximaDeuda();
 
-            dgvGastosIngresos.DataSource = Deuda.RecargarTabla();
+                dgvGastosIngresos.DataSource = Deuda.RecargarTabla();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
             barraSecundaria.Load();
             barraLateral1.Load();
@@ -78,11 +82,19 @@ namespace Gestionis
         }
         private void BtnLanguage_Click(object sender, EventArgs e)
         {
-            AplicarIdioma();
-            barraLateral1.AplicarIdiomas();
-            cmbCategoria.DataSource = Deuda.Filtros();
+            try
+            {
+                AplicarIdioma();
+                barraLateral1.AplicarIdiomas();
+                cmbCategoria.DataSource = Deuda.Filtros();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
+        #region ToolTips
         private void BtnAyuda_Click(object sender, EventArgs e)
         {
             tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnAnyadirDeuda, "Añadir una nueva deuda."));
@@ -127,63 +139,99 @@ namespace Gestionis
             toolTip.SetToolTip(control, message);
             toolTip.Show(message, control, control.Width / 2, control.Height / 2);
         }
+        #endregion
 
         private void Titulo()
         {
             if (cmbCategoria.SelectedIndex == 0)
             {
-                lblTitulo.Enabled = true;
-                txtTitulo.Enabled = true;
+                lblTitulo.Visible = true;
+                txtTitulo.Visible = true;
             }
             else
             {
                 txtTitulo.Clear();
-                lblTitulo.Enabled = false;
-                txtTitulo.Enabled = false;
+                lblTitulo.Visible = false;
+                txtTitulo.Visible = false;
             }
         }
         private void ProximaDeuda()
         {
-            Deuda deuda = new Deuda();
-            deuda.GetProximaDeuda(deuda);
+            try
+            {
+                Deuda deuda = new Deuda();
+                deuda.GetProximaDeuda(deuda);
 
-            if (deuda.Titulo != null)
-            {
-                lblProximaDeudaValor.Text = deuda.Titulo.ToString();
-                lblFechaLimiteValor.Text = deuda.FechaVencimiento.ToShortDateString();
-                if (deuda.Debo) lblTipoValor.Text = "Debo"; else lblTipoValor.Text = "Me deben";
+                if (deuda.Titulo != null)
+                {
+                    lblProximaDeudaValor.Text = deuda.Titulo.ToString();
+                    lblFechaLimiteValor.Text = deuda.FechaVencimiento.ToShortDateString();
+                    if (deuda.Debo) lblTipoValor.Text = "Debo"; else lblTipoValor.Text = "Me deben";
+                }
+                else
+                {
+                    lblProximaDeudaValor.Text = string.Empty;
+                    lblFechaLimiteValor.Text = string.Empty;
+                    lblTipoValor.Text = string.Empty;
+                }
+                SetGrafico();
             }
-            else
+            catch (Exception ex)
             {
-                lblProximaDeudaValor.Text = string.Empty;
-                lblFechaLimiteValor.Text = string.Empty;
-                lblTipoValor.Text = string.Empty;
+                MessageBox.Show(ex.Message);
             }
-            SetGrafico();
         }
 
         private void btnAnyadirDeuda_Click(object sender, EventArgs e)
         {
-            FrmAnyadirDeuda frmAnyadirDeuda = new FrmAnyadirDeuda();
-            frmAnyadirDeuda.ShowDialog();
-            lblDeudasTotalesValor.Text = Deuda.DeudasTotales().ToString();
-            ProximaDeuda();
-            dgvGastosIngresos.DataSource = Deuda.RecargarTabla(chkDebo.Checked);
+            try
+            {
+                FrmAnyadirDeuda frmAnyadirDeuda = new FrmAnyadirDeuda();
+                frmAnyadirDeuda.ShowDialog();
+                lblDeudasTotalesValor.Text = Deuda.DeudasTotales().ToString();
+                ProximaDeuda();
+                dgvGastosIngresos.DataSource = Deuda.RecargarTabla(chkDebo.Checked);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnEliminarDeuda_Click(object sender, EventArgs e)
         {
-            FrmEliminarDeuda frmEliminarDeuda = new FrmEliminarDeuda();
-            frmEliminarDeuda.ShowDialog();
-            lblDeudasTotalesValor.Text = Deuda.DeudasTotales().ToString();
-            ProximaDeuda();
-            dgvGastosIngresos.DataSource = Deuda.RecargarTabla(chkDebo.Checked);
+            try
+            {
+                FrmEliminarDeuda frmEliminarDeuda = new FrmEliminarDeuda();
+                frmEliminarDeuda.ShowDialog();
+                lblDeudasTotalesValor.Text = Deuda.DeudasTotales().ToString();
+                ProximaDeuda();
+                dgvGastosIngresos.DataSource = Deuda.RecargarTabla(chkDebo.Checked);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            dgvGastosIngresos.DataSource = Deuda.CargarFiltro(cmbCategoria.Text, chkDebo.Checked, txtTitulo.Text);
-            Titulo();
+            try
+            {
+                if (cmbCategoria.SelectedIndex == 0 && txtTitulo.Text == "")
+                {
+                    MessageBox.Show("Introduce el título de la deuda!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    dgvGastosIngresos.DataSource = Deuda.CargarFiltro(cmbCategoria.Text, chkDebo.Checked, txtTitulo.Text);
+                    Titulo();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
@@ -193,24 +241,48 @@ namespace Gestionis
 
         private void btnRestaurar_Click(object sender, EventArgs e)
         {
-            dgvGastosIngresos.DataSource = Deuda.RecargarTabla();
+            try
+            {
+                dgvGastosIngresos.DataSource = Deuda.RecargarTabla();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void chkDebo_CheckedChanged(object sender, EventArgs e)
         {
-            dgvGastosIngresos.DataSource = Deuda.RecargarTabla(chkDebo.Checked);
+            try
+            {
+                dgvGastosIngresos.DataSource = Deuda.RecargarTabla(chkDebo.Checked);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void SetGrafico()
         {
-            double debo = Deuda.CalcularTotalDeuda(true), meDeben = Deuda.CalcularTotalDeuda(false);
+            try
+            {
+                double debo = Deuda.CalcularTotalDeuda(true), meDeben = Deuda.CalcularTotalDeuda(false);
 
-            int valorMax = Utilidades.ProgramarGrafico(debo, meDeben);
-            vpbDebo.Maximum = valorMax;
-            vpbMeDeben.Maximum = valorMax;
+                int valorMax = Utilidades.ProgramarGrafico(debo, meDeben);
+                vpbDebo.Maximum = valorMax;
+                vpbMeDeben.Maximum = valorMax;
 
-            vpbDebo.Value = (int)debo;
-            vpbMeDeben.Value = (int)meDeben;
+                vpbDebo.Value = (int)debo;
+                vpbMeDeben.Value = (int)meDeben;
+
+                lblDeboTotal.Text = debo.ToString() + "€";
+                lblMeDebenTotal.Text = meDeben.ToString() + "€";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void AplicarIdioma()

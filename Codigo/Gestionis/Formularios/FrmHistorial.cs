@@ -35,6 +35,7 @@ namespace Gestionis
             CargarFecha(DateTime.Today, cuenta);
             barraSecundaria1.Load();
             cmbMetodo.DataSource = ListaMetodo();
+            barraLateral1.Load();
         }
         private void ModificarBotones()
         {

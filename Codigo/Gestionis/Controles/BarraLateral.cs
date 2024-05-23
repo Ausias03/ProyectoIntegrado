@@ -24,7 +24,7 @@ namespace Gestionis.Herramientas
             CreateButtons();
             AjustesTimer();
             Load();
-            CheckUserLevel();
+            NivelesBtn();
         }
 
         public void Load()
@@ -150,29 +150,13 @@ namespace Gestionis.Herramientas
             BtnPaginaWeb.Text = Resources.Idiomas.StringRecursosLateral.btnWeb;
         }
 
-        private void CheckUserLevel()
+        private void NivelesBtn()
         {
             int nivel = SistemaNiveles.GetNivel(Sesion.Instance.ApodoUsuario);
 
-            if (nivel < 3)
-            {
-                BtnClasificacion.Enabled = false;
-            }
-            else
-            {
-                BtnClasificacion.Enabled = true;
-            }
-
-            if (nivel < 6)
-            {
-                BtnInversiones.Enabled = false;
-                BtnPatrimonio.Enabled = false;
-            }
-            else
-            {
-                BtnInversiones.Enabled = true;
-                BtnPatrimonio.Enabled = true;
-            }
+            BtnClasificacion.Enabled = nivel >= 3;
+            BtnInversiones.Enabled = nivel >= 6;
+            BtnPatrimonio.Enabled = nivel >= 6;
         }
     }
 }

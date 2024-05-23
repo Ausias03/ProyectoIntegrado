@@ -50,6 +50,8 @@ namespace Gestionis
             btnEliminarDeuda = new Button();
             btnAnyadirDeuda = new Button();
             rgbResumen = new RoundGroupBox();
+            lblMeDebenTotal = new Label();
+            lblDeboTotal = new Label();
             vpbMeDeben = new Controles.VerticalProgressBar();
             lblMeDeben = new Label();
             lblDeboBarra = new Label();
@@ -110,7 +112,6 @@ namespace Gestionis
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.BackColor = Color.Transparent;
-            lblTitulo.Enabled = false;
             lblTitulo.Location = new Point(43, 156);
             lblTitulo.Name = "lblTitulo";
             lblTitulo.Size = new Size(166, 25);
@@ -119,7 +120,6 @@ namespace Gestionis
             // 
             // txtTitulo
             // 
-            txtTitulo.Enabled = false;
             txtTitulo.Location = new Point(210, 154);
             txtTitulo.Margin = new Padding(2);
             txtTitulo.Name = "txtTitulo";
@@ -130,11 +130,11 @@ namespace Gestionis
             // 
             lblDeudasTotalesValor.AutoSize = true;
             lblDeudasTotalesValor.BackColor = Color.Transparent;
-            lblDeudasTotalesValor.Location = new Point(184, 466);
+            lblDeudasTotalesValor.Location = new Point(189, 466);
             lblDeudasTotalesValor.Name = "lblDeudasTotalesValor";
-            lblDeudasTotalesValor.Size = new Size(140, 25);
+            lblDeudasTotalesValor.Size = new Size(32, 25);
             lblDeudasTotalesValor.TabIndex = 11;
-            lblDeudasTotalesValor.Text = "Deudas totales:";
+            lblDeudasTotalesValor.Text = "99";
             // 
             // lblDeudasTotales
             // 
@@ -292,6 +292,8 @@ namespace Gestionis
             // 
             // rgbResumen
             // 
+            rgbResumen.Controls.Add(lblMeDebenTotal);
+            rgbResumen.Controls.Add(lblDeboTotal);
             rgbResumen.Controls.Add(vpbMeDeben);
             rgbResumen.Controls.Add(lblMeDeben);
             rgbResumen.Controls.Add(lblDeboBarra);
@@ -311,9 +313,29 @@ namespace Gestionis
             rgbResumen.TabStop = false;
             rgbResumen.Text = "roundGroupBox2";
             // 
+            // lblMeDebenTotal
+            // 
+            lblMeDebenTotal.AutoSize = true;
+            lblMeDebenTotal.BackColor = Color.Transparent;
+            lblMeDebenTotal.Location = new Point(178, 218);
+            lblMeDebenTotal.Name = "lblMeDebenTotal";
+            lblMeDebenTotal.Size = new Size(57, 25);
+            lblMeDebenTotal.TabIndex = 34;
+            lblMeDebenTotal.Text = "Debo";
+            // 
+            // lblDeboTotal
+            // 
+            lblDeboTotal.AutoSize = true;
+            lblDeboTotal.BackColor = Color.Transparent;
+            lblDeboTotal.Location = new Point(55, 218);
+            lblDeboTotal.Name = "lblDeboTotal";
+            lblDeboTotal.Size = new Size(57, 25);
+            lblDeboTotal.TabIndex = 33;
+            lblDeboTotal.Text = "Debo";
+            // 
             // vpbMeDeben
             // 
-            vpbMeDeben.Location = new Point(166, 75);
+            vpbMeDeben.Location = new Point(166, 70);
             vpbMeDeben.Name = "vpbMeDeben";
             vpbMeDeben.Size = new Size(81, 147);
             vpbMeDeben.TabIndex = 32;
@@ -322,7 +344,7 @@ namespace Gestionis
             // 
             lblMeDeben.AutoSize = true;
             lblMeDeben.BackColor = Color.Transparent;
-            lblMeDeben.Location = new Point(157, 232);
+            lblMeDeben.Location = new Point(156, 242);
             lblMeDeben.Name = "lblMeDeben";
             lblMeDeben.Size = new Size(97, 25);
             lblMeDeben.TabIndex = 16;
@@ -332,7 +354,7 @@ namespace Gestionis
             // 
             lblDeboBarra.AutoSize = true;
             lblDeboBarra.BackColor = Color.Transparent;
-            lblDeboBarra.Location = new Point(54, 232);
+            lblDeboBarra.Location = new Point(55, 242);
             lblDeboBarra.Name = "lblDeboBarra";
             lblDeboBarra.Size = new Size(57, 25);
             lblDeboBarra.TabIndex = 15;
@@ -340,7 +362,7 @@ namespace Gestionis
             // 
             // vpbDebo
             // 
-            vpbDebo.Location = new Point(44, 75);
+            vpbDebo.Location = new Point(44, 70);
             vpbDebo.Name = "vpbDebo";
             vpbDebo.Size = new Size(81, 147);
             vpbDebo.TabIndex = 31;
@@ -350,7 +372,7 @@ namespace Gestionis
             lblResumen.AutoSize = true;
             lblResumen.BackColor = Color.Transparent;
             lblResumen.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblResumen.Location = new Point(64, 20);
+            lblResumen.Location = new Point(64, 13);
             lblResumen.Name = "lblResumen";
             lblResumen.Size = new Size(154, 25);
             lblResumen.TabIndex = 12;
@@ -361,17 +383,17 @@ namespace Gestionis
             lblSaldoValor.AutoSize = true;
             lblSaldoValor.BackColor = Color.Transparent;
             lblSaldoValor.Font = new Font("Segoe UI", 14.25F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblSaldoValor.Location = new Point(119, 278);
+            lblSaldoValor.Location = new Point(141, 281);
             lblSaldoValor.Name = "lblSaldoValor";
-            lblSaldoValor.Size = new Size(101, 25);
+            lblSaldoValor.Size = new Size(52, 25);
             lblSaldoValor.TabIndex = 20;
-            lblSaldoValor.Text = "Me deben:";
+            lblSaldoValor.Text = "9999";
             // 
             // lblSaldo
             // 
             lblSaldo.AutoSize = true;
             lblSaldo.BackColor = Color.Transparent;
-            lblSaldo.Location = new Point(64, 278);
+            lblSaldo.Location = new Point(84, 281);
             lblSaldo.Name = "lblSaldo";
             lblSaldo.Size = new Size(63, 25);
             lblSaldo.TabIndex = 19;
@@ -381,7 +403,7 @@ namespace Gestionis
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
-            label2.Location = new Point(8, 32);
+            label2.Location = new Point(8, 25);
             label2.Name = "label2";
             label2.Size = new Size(268, 25);
             label2.TabIndex = 18;
@@ -391,7 +413,7 @@ namespace Gestionis
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
-            label1.Location = new Point(8, 241);
+            label1.Location = new Point(8, 253);
             label1.Name = "label1";
             label1.Size = new Size(268, 25);
             label1.TabIndex = 17;
@@ -412,7 +434,7 @@ namespace Gestionis
             barraLateral1.Dock = DockStyle.Left;
             barraLateral1.Location = new Point(0, 75);
             barraLateral1.Name = "barraLateral1";
-            barraLateral1.Size = new Size(211, 805);
+            barraLateral1.Size = new Size(231, 805);
             barraLateral1.TabIndex = 30;
             // 
             // FrmGestorDeudas
@@ -479,5 +501,7 @@ namespace Gestionis
         private BarraLateral barraLateral1;
         private Controles.VerticalProgressBar vpbMeDeben;
         private Controles.VerticalProgressBar vpbDebo;
+        private Label lblMeDebenTotal;
+        private Label lblDeboTotal;
     }
 }
