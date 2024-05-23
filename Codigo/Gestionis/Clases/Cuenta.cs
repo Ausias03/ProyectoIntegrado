@@ -33,6 +33,11 @@ namespace Gestionis.Clases
 
         public int? NumCuenta { get { return numCuenta; } }
 
+        /// <summary>
+        /// Devuelve el número de cuenta de la cuenta asignada a un usuario
+        /// </summary>
+        /// <param name="apodoUsuario">El apodo del usuario</param>
+        /// <returns>Un int con el número de la cuenta</returns>
         public static int IDCuentaUsuario(string apodoUsuario)
         {
             int numCuenta;
@@ -50,6 +55,9 @@ namespace Gestionis.Clases
             return numCuenta;
         }
 
+        /// <summary>
+        /// Añade una cuenta a la base de datos
+        /// </summary>
         public void Add()
         {
             string queryString = "INSERT INTO cuenta (numCuenta, apodoUsuario, pasivos) " +
@@ -67,6 +75,10 @@ namespace Gestionis.Clases
             ConexionDB.CerrarConexion();
         }
 
+        /// <summary>
+        /// Serie de comprobaciones para añadir o no una Notificación asignada a la cuenta
+        /// </summary>
+        /// <param name="categoria">Categoría de la notificación a crear</param>
         public void AddNotificacion(int categoria)
         {
             if (Notificacion.ExisteNotif(categoria))
@@ -97,6 +109,10 @@ namespace Gestionis.Clases
             }
         }
 
+        /// <summary>
+        /// Serie de comprobaciones para eliminar o no una Notificación asignada a la cuenta
+        /// </summary>
+        /// <param name="categoria">Categoría de la notificación a eliminar</param>
         public void EliminaNotificacion(int categoria)
         {
             if (!Notificacion.ExisteNotif(categoria))
@@ -123,6 +139,10 @@ namespace Gestionis.Clases
         }
 
         #region Métodos para ver / recuperar gastos e ingresos
+        /// <summary>
+        /// Busca todos los gastos asignados a una cuenta
+        /// </summary>
+        /// <returns>Una lista de objetos gasto con los datos recuperados de la BD</returns>
         public List<Gasto> DevuelveGastos()
         {
             string queryString = "SELECT * FROM gasto WHERE numCuenta = @numCuenta";
@@ -133,6 +153,13 @@ namespace Gestionis.Clases
             return EjecutarConsultaGastos(query);
         }
 
+        /// <summary>
+        /// Busca los gastos asignados a una cuenta que coincidan con una búsqueda
+        /// </summary>
+        /// <typeparam name="T">Especifica que el tipo del valor puede ser cualquiera</typeparam>
+        /// <param name="campo">El campo a buscar en la tabla de la BD</param>
+        /// <param name="valor">El valor a comprobar para devolver o no un gasto</param>
+        /// <returns></returns>
         public List<Gasto> DevuelveGastos<T>(string campo, T valor)
         {
             string queryString = $"SELECT * FROM gasto WHERE numCuenta = @numCuenta AND {campo} ";
@@ -153,6 +180,10 @@ namespace Gestionis.Clases
             return EjecutarConsultaGastos(query);
         }
 
+        /// <summary>
+        /// Busca todos los ingresos asignados a una cuenta
+        /// </summary>
+        /// <returns>Una lista de objetos ingreso con los datos recuperados de la BD</returns>
         public List<Ingreso> DevuelveIngresos()
         {
             string queryString = "SELECT * FROM ingreso WHERE numCuenta = @numCuenta";
@@ -163,6 +194,13 @@ namespace Gestionis.Clases
             return EjecutarConsultaIngresos(query);
         }
 
+        /// <summary>
+        /// Busca los ingresos asignados a una cuenta que coincidan con una búsqueda
+        /// </summary>
+        /// <typeparam name="T">Especifica que el tipo del valor puede ser cualquiera</typeparam>
+        /// <param name="campo">El campo a buscar en la tabla de la BD</param>
+        /// <param name="valor">El valor a comprobar para devolver o no un ingreso</param>
+        /// <returns></returns>
         public List<Ingreso> DevuelveIngresos<T>(string campo, T? valor)
         {
             string queryString = $"SELECT * FROM ingreso WHERE numCuenta = @numCuenta AND {campo} ";
@@ -187,23 +225,41 @@ namespace Gestionis.Clases
             return EjecutarConsultaIngresos(query);
         }
 
+        /// <summary>
+        /// Devuelve el saldo total de una cuenta
+        /// </summary>
+        /// <returns>El saldo como double</returns>
         public double DineroTotal()
         {
             return TotalIngresos() - TotalGastos();
         }
 
+        /// <summary>
+        /// Devuelve el dinero total de los gastos de una cuenta
+        /// </summary>
+        /// <returns>El coste de los gastos como double</returns>
         public double TotalGastos()
         {
             List<Gasto> gastos = DevuelveGastos();
             return CalculaTotalGastos(gastos);
         }
 
+        /// <summary>
+        /// Devuelve el dinero total de los gastos de una categoría de una cuenta
+        /// </summary>
+        /// <param name="categoria"></param>
+        /// <returns>El coste de los gastos como double</returns>
         public double TotalGastos(int categoria)
         {
             List<Gasto> gastos = DevuelveGastos("idCategoria", categoria);
             return CalculaTotalGastos(gastos);
         }
 
+        /// <summary>
+        /// Calcula el coste total de los gastos
+        /// </summary>
+        /// <param name="gastos">Una lista con todos los gastos de los que se va a calcular su coste</param>
+        /// <returns>El total de los gastos como double</returns>
         public double CalculaTotalGastos(List<Gasto> gastos)
         {
             double totalGastos = 0;
@@ -214,6 +270,10 @@ namespace Gestionis.Clases
             return totalGastos;
         }
 
+        /// <summary>
+        /// Devuelve el dinero total de los ingresos de una cuenta
+        /// </summary>
+        /// <returns>El coste de los ingresos como double</returns>
         public double TotalIngresos()
         {
             List<Ingreso> ingresos = DevuelveIngresos();
@@ -225,6 +285,11 @@ namespace Gestionis.Clases
             return totalIngresos;
         }
 
+        /// <summary>
+        /// Método gastado para ejecutar una consulta que busque una serie de gastos de la tabla gastos de la BD
+        /// </summary>
+        /// <param name="query">La consulta a ejecutar</param>
+        /// <returns>La lista de gastos cuyos datos coincidan con la consulta suministrada por parámetros</returns>
         private List<Gasto> EjecutarConsultaGastos(MySqlCommand query)
         {
             List<Gasto> gastos = new List<Gasto>();
@@ -254,6 +319,11 @@ namespace Gestionis.Clases
             return gastos;
         }
 
+        /// <summary>
+        /// Método gastado para ejecutar una consulta que busque una serie de ingresos de la tabla ingresos de la BD
+        /// </summary>
+        /// <param name="query">La consulta a ejecutar</param>
+        /// <returns>La lista de ingresos cuyos datos coincidan con la consulta suministrada por parámetros</returns>
         private List<Ingreso> EjecutarConsultaIngresos(MySqlCommand query)
         {
             List<Ingreso> ingresos = new List<Ingreso>();
@@ -286,6 +356,10 @@ namespace Gestionis.Clases
 
         #region Métodos para eliminar gastos / ingresos
 
+        /// <summary>
+        /// Elimina un gasto de la BD
+        /// </summary>
+        /// <param name="idGasto">El identificador del gasto a eliminar</param>
         public void EliminaGasto(int idGasto)
         {
             string queryString = "DELETE FROM gasto WHERE idGasto = @idGasto;";
@@ -300,6 +374,10 @@ namespace Gestionis.Clases
             ConexionDB.CerrarConexion();
         }
 
+        /// <summary>
+        /// Elimina un ingreso de la BD
+        /// </summary>
+        /// <param name="idIngreso">El identificador del ingreso a eliminar</param>
         public void EliminaIngreso(int idIngreso)
         {
             string queryString = "DELETE FROM ingreso WHERE idIngreso = @idIngreso;";

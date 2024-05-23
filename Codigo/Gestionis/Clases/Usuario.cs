@@ -108,6 +108,11 @@ namespace Gestionis.Clases
         }
         #endregion
         
+        /// <summary>
+        /// Comprueba si ya hay dado de alta un usuario en la BD
+        /// </summary>
+        /// <param name="apodo">El apodo (PK) del usuario</param>
+        /// <returns>TRUE si existe, FALSE si no</returns>
         public static bool Existe(string apodo)
         {
             string queryString = "SELECT apodo FROM usuario WHERE apodo = @apodo;";
@@ -129,6 +134,11 @@ namespace Gestionis.Clases
             return existe;
         }
 
+        /// <summary>
+        /// Comprueba si ya hay dado de alta un correo en la BD
+        /// </summary>
+        /// <param name="correo">El correo (Campo Unique) a buscar</param>
+        /// <returns>TRUE si existe, FALSE si no</returns>
         public static bool CorreoExiste(string correo)
         {
             string queryString = "SELECT correo FROM usuario WHERE correo = @correo;";
@@ -150,6 +160,11 @@ namespace Gestionis.Clases
             return existe;
         }
 
+        /// <summary>
+        /// Busca y retorna un usuario en la BD
+        /// </summary>
+        /// <param name="apodo">El apodo del usuario a buscar</param>
+        /// <returns>Un objeto usuario con los datos recuperados de la BD</returns>
         public static Usuario BuscaUsuario(string apodo)
         {
             Usuario? usuario = null;
@@ -188,6 +203,9 @@ namespace Gestionis.Clases
             return usuario;
         }
 
+        /// <summary>
+        /// Añade un usuario a la base de datos
+        /// </summary>
         public void Add()
         {
             string queryString = "INSERT INTO usuario (apodo, correo, nombre, apellidos," +
@@ -213,6 +231,10 @@ namespace Gestionis.Clases
             ConexionDB.CerrarConexion();
         }
 
+        /// <summary>
+        /// Recupera la cuenta del usuario de la base de datos
+        /// </summary>
+        /// <returns>Un objeto cuenta con los datos recuperados de la base de datos</returns>
         public Cuenta GetCuenta()
         {
             Cuenta cuenta = null;
@@ -243,6 +265,11 @@ namespace Gestionis.Clases
             return cuenta;
         }
 
+        /// <summary>
+        /// Comprueba las credenciales introducidas por el usuario con las de la BD
+        /// </summary>
+        /// <param name="contrasenya">La contraseña a comparar</param>
+        /// <returns>TRUE si coinciden, FALSE si no</returns>
         public bool CompruebaCredenciales(string contrasenya)
         {
             var saltBytes = Convert.FromHexString(salt);
@@ -258,6 +285,12 @@ namespace Gestionis.Clases
             return stringAComparar == this.contrasenya;
         }
 
+        /// <summary>
+        /// Crea un hash de la contraseña proporcionada por el usuario
+        /// </summary>
+        /// <param name="contrasenya">El string de la contraseña sin procesar</param>
+        /// <param name="salt">Devuelve el salt gastado para cifrar la pwd para guardarlo en la BD</param>
+        /// <returns>La contraseña cifrada en un string hexadecimal</returns>
         private string HashContrasenya(string contrasenya, out byte[] salt)
         {
             salt = RandomNumberGenerator.GetBytes(keySize);

@@ -23,6 +23,12 @@ namespace Gestionis.Clases
         }
         #endregion
 
+        /// <summary>
+        /// Busca el limite de una categoría para una cuenta
+        /// </summary>
+        /// <param name="numCuenta">Número de la cuenta</param>
+        /// <param name="idCategoria">ID de la categoría cuyo limite se quiere recuperar</param>
+        /// <returns>El limite de la categoría si existe, si no NULL</returns>
         public static decimal? GetLimite(int numCuenta, int idCategoria)
         {
             string queryString = "SELECT limite FROM limite WHERE numCuenta = @numCuenta AND idCategoria = @idCategoria;";
@@ -47,6 +53,12 @@ namespace Gestionis.Clases
             return limite;
         }
 
+        /// <summary>
+        /// Edita el limite de una categoría para una cuenta
+        /// </summary>
+        /// <param name="numCuenta">Número de la cuenta</param>
+        /// <param name="idCategoria">ID de la categoría cuyo limite se quiere editar</param>
+        /// <param name="limite">Valor del limite a cambiar</param>
         public static void EditarLimite(int numCuenta, int idCategoria, decimal? limite)
         {
             string queryString = "UPDATE limite SET limite = @limite WHERE numCuenta = @numCuenta AND idCategoria = @idCategoria;";
@@ -63,6 +75,9 @@ namespace Gestionis.Clases
             ConexionDB.CerrarConexion();
         }
 
+        /// <summary>
+        /// Añade un nuevo limite a la base de datos
+        /// </summary>
         public void Add()
         {
             string queryString = "INSERT INTO limite (numCuenta, idCategoria, limite) " +

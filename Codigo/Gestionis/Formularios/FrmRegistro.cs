@@ -103,9 +103,13 @@ namespace Gestionis
                 
                 lklInicioSesion_LinkClicked(null, null);
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("No se ha podido conectar con la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally 
+            {
+                ConexionDB.CerrarConexion();
             }
         }
 
