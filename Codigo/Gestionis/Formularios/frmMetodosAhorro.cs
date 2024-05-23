@@ -8,7 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gestionis.Clases;
+using Gestionis;
 using MySqlX.XDevAPI;
+using Gestionis.Herramientas;
+using System.Windows.Forms.VisualStyles;
 
 namespace Gestionis
 {
@@ -16,6 +19,10 @@ namespace Gestionis
     {
         private readonly Usuario usuario;
         private readonly Cuenta cuentaUsuario;
+
+        const double porcentajeNece = 50;
+        const double porcentajePrescin = 30;
+        const double porcentajeAhorro = 20;
 
         public frmMetodosAhorro()
         {
@@ -61,43 +68,36 @@ namespace Gestionis
             pbArrow11.Image = Properties.Resources.Arrow.ToBitmap();
             pbArrow11.SizeMode = PictureBoxSizeMode.StretchImage;
 
-            pbArrow12.Image = Properties.Resources.Arrow.ToBitmap();
-            pbArrow12.SizeMode = PictureBoxSizeMode.StretchImage;
-
-            pbArrow13.Image = Properties.Resources.Arrow.ToBitmap();
-            pbArrow13.SizeMode = PictureBoxSizeMode.StretchImage;
-
-            pbArrow14.Image = Properties.Resources.Arrow.ToBitmap();
-            pbArrow14.SizeMode = PictureBoxSizeMode.StretchImage;
-
-            pbArrow15.Image = Properties.Resources.Arrow.ToBitmap();
-            pbArrow15.SizeMode = PictureBoxSizeMode.StretchImage;
-
-            pbArrow16.Image = Properties.Resources.Arrow.ToBitmap();
-            pbArrow16.SizeMode = PictureBoxSizeMode.StretchImage;
-
-            pbArrow17.Image = Properties.Resources.Arrow.ToBitmap();
-            pbArrow17.SizeMode = PictureBoxSizeMode.StretchImage;
-
             #endregion
-            M503020Porcentajes();
 
-            lblIngresoMesCont.Text = cuentaUsuario.TotalIngresos() + " €";
-            ConfigurarComboBox(cmbCategorias, CategoriaGasto.DevuelveNombresCategorias());
+            lblIngresoMesCont.Text = cuentaUsuario.TotalIngresos().ToString("0.00") + " €";
+
+            barraSecundaria1.Load();
+            barraLateral2.Load();
 
             try
             {
                 dgvGastosFijos.DataSource = Gasto.VisualizarDatosFijo();
                 dgvGastosVariables.DataSource = Gasto.VisualizarDatosVariable();
 
-                lblTotalGastosVariables.Text = Gasto.TotalVariable() + " €";
-                lblTotalValorFijo.Text = Gasto.TotalFijos() + " €";
-                lblDineroRest.Text = Gasto.DineroRestante((int)cuentaUsuario.TotalIngresos()) + " €";
+                double? gastoFij = Gasto.TotalFijos();
+                lblTotalValorFijo.Text = gastoFij.HasValue ? gastoFij.Value.ToString("0.00") + " €" : "0" + " €";
 
+                double? gastoVari = Gasto.TotalVariable();
+                lblTotalValorVariables.Text = gastoVari.HasValue ? gastoVari.Value.ToString("0.00") + " €" : "0" + " €";
+                //lblTotalGastosVariables.Text = Gasto.TotalVariable() + " €";
+                //lblTotalValorFijo.Text = Gasto.TotalFijos() + " €";
+
+                lblDineroRest.Text = Gasto.DineroRestante(cuentaUsuario.TotalIngresos()).Value.ToString("0.00") + " €";
 
                 lblPorcentajeVariable.Text = Gasto.PorcentajeTotalVariable().ToString("0") + " %";
+
                 lblPorcentajeFijo.Text = Gasto.PorcentajeTotalFijo().ToString("0") + " %";
-                lblPorcentajeRest.Text = Gasto.PorcentajeRestante((int)cuentaUsuario.TotalIngresos()).Value.ToString("0") + " %";
+
+                double? porcenRest = Gasto.PorcentajeRestante(cuentaUsuario.TotalIngresos());
+                lblPorcentajeRest.Text = porcenRest.HasValue ? porcenRest.Value.ToString("0") + " %" : "0" + " %";
+                M503020Porcentajes();
+
 
             }
             catch (Exception) { }
@@ -105,8 +105,6 @@ namespace Gestionis
             {
                 ConexionDB.CerrarConexion();
             }
-            barraLateral2.Load();
-            barraSecundaria1.Load();
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -114,57 +112,37 @@ namespace Gestionis
             Application.Exit();
         }
 
-        private void btn503020_Click(object sender, EventArgs e)
-        {
-            pnl503020.Visible = true;
-            pnlHarvEker.Visible = false;
-            pnlPersonalizado.Visible = false;
-            btnPAgregar.Visible = false;
-        }
-
-        private void btnHarvEker_Click(object sender, EventArgs e)
-        {
-            pnl503020.Visible = false;
-            pnlHarvEker.Visible = true;
-            pnlPersonalizado.Visible = false;
-            btnPAgregar.Visible = false;
-        }
-
-        private void btnPersonalizado_Click(object sender, EventArgs e)
-        {
-            pnl503020.Visible = false;
-            pnlHarvEker.Visible = false;
-            pnlPersonalizado.Visible = true;
-            btnPAgregar.Visible = true;
-        }
-
-        private void ConfigurarComboBox(ComboBox comboBox, List<String> dataSource)
-        {
-            BindingSource bs = new BindingSource();
-            bs.DataSource = dataSource;
-            comboBox.DataSource = bs;
-        }
-
-        private void btnPAgregar_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void M503020Porcentajes()
         {
-            double? ingresoMensual = (int?)cuentaUsuario.TotalIngresos();
-            lblNecBasicasValor.Text = Gasto.M503020Necesidades(ingresoMensual) + " €";
-            lblNecPresValor.Text = Gasto.M503020Presindibles(ingresoMensual) + " €";
-            lblAhoValor.Text = Gasto.M503020Ahorro(ingresoMensual).ToString() + " €";
+            double? ingresoMensual = cuentaUsuario.TotalIngresos();
 
-            lblGMNecValor.Text = Gasto.TotalFijos() + " €";
-            lblGPresValor.Text = Gasto.TotalVariable() + " €";
-            lblAhorroDinValor.Text = Gasto.DineroRestante((double)ingresoMensual) + " €";
+            // Dinero a gastar según el % del metodo 50/30/20
+            double? basicaValor = Gasto.M503020Necesidades(ingresoMensual);
+            lblNecBasicasValor.Text =  basicaValor.HasValue ? basicaValor.Value.ToString("0.00") + " €" : "0" + " %";
+            //double? presValor = Gasto.M503020Presindibles(ingresoMensual);
+            //lblNecPresValor.Text = presValor.HasValue ? presValor.Value.ToString("0.00") + " €" : "N/A";
+            lblNecPresValor.Text = Gasto.M503020Presindibles(ingresoMensual).Value.ToString("0.00") + " €";
+            lblAhoValor.Text = Gasto.M503020Ahorro(ingresoMensual).Value.ToString("0.00") + " €";
 
-            lblGMNecPorDin.Text = Gasto.PorcentajeTotalFijo().ToString("0") + " %";
-            lblGPPorDin.Text = Gasto.PorcentajeTotalVariable().ToString("0") + " %";
+            // Totales
+            lblGMNecValor.Text = Gasto.TotalNecesidades() + " €";
+            lblGPresValor.Text = Gasto.TotalPrescindibles() + " €";
+            lblAhorroDinValor.Text = Gasto.DineroRestante(ingresoMensual).Value.ToString("0.00") + " €";
 
-            lblAhorroPorDin.Text = Gasto.PorcentajeRestante((double)ingresoMensual).Value.ToString("0") + " %";
+            // Colores
+            lblGMNecPorDin.ForeColor = Gasto.PorcentajeNec(ingresoMensual) > porcentajeNece? Color.Red : Color.Green;
+            lblGPPorDin.ForeColor = Gasto.PorcentajePrescin(ingresoMensual) > porcentajePrescin ? Color.Red : Color.Green;
+            lblAhorroPorDin.ForeColor = Gasto.PorcentajeRestante(ingresoMensual) > porcentajeAhorro ? Color.Green : Color.Red;
+
+            // Porcentajes
+            double? porcentajeNec = Gasto.PorcentajeNec(ingresoMensual);
+            lblGMNecPorDin.Text = porcentajeNec.HasValue ? porcentajeNec.Value.ToString("0") + " %" : "0" + " %";
+
+            double? porcentajePres = Gasto.PorcentajePrescin(ingresoMensual);
+            lblGPPorDin.Text = porcentajePres.HasValue ? porcentajePres.Value.ToString("0") + " %" : "0" + " %";
+            
+            lblAhorroPorDin.Text = (Gasto.PorcentajeRestante(ingresoMensual) ?? 0).ToString("0") + " %";
+
         }
     }
 }

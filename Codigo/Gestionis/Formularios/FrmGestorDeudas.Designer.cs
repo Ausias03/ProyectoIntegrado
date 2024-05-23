@@ -245,6 +245,7 @@ namespace Gestionis
             // 
             // cmbCategoria
             // 
+            cmbCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbCategoria.FormattingEnabled = true;
             cmbCategoria.Location = new Point(248, 248);
             cmbCategoria.Margin = new Padding(4);
@@ -457,12 +458,22 @@ namespace Gestionis
             // 
             // barraLateral2
             // 
+<<<<<<< HEAD
             barraLateral2.BackColor = Color.FromArgb(205, 213, 221);
             barraLateral2.Dock = DockStyle.Left;
             barraLateral2.Location = new Point(0, 84);
             barraLateral2.Name = "barraLateral2";
             barraLateral2.Size = new Size(289, 1016);
             barraLateral2.TabIndex = 30;
+=======
+            barraLateral1.BackColor = Color.FromArgb(205, 213, 221);
+            barraLateral1.Dock = DockStyle.Left;
+            barraLateral1.Location = new Point(0, 84);
+            barraLateral1.Margin = new Padding(4);
+            barraLateral1.Name = "barraLateral1";
+            barraLateral1.Size = new Size(289, 1016);
+            barraLateral1.TabIndex = 30;
+>>>>>>> 60fab9e7298f1186ba3864eb0b63341c53dbfb84
             // 
             // FrmGestorDeudas
             // 
@@ -471,7 +482,11 @@ namespace Gestionis
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.FromArgb(233, 236, 239);
             ClientSize = new Size(1818, 1100);
+<<<<<<< HEAD
             Controls.Add(barraLateral2);
+=======
+            Controls.Add(barraLateral1);
+>>>>>>> 60fab9e7298f1186ba3864eb0b63341c53dbfb84
             Controls.Add(barraSecundaria);
             Controls.Add(rgbResumen);
             Controls.Add(roundGroupBox1);

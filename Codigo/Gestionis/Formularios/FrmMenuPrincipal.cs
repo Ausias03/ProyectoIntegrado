@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Gestionis.Herramientas;
 using Gestionis.Clases;
+using System.Globalization;
 
 namespace Gestionis
 {
@@ -29,8 +30,20 @@ namespace Gestionis
         public FrmMenuPrincipal()
         {
             InitializeComponent();
-            usuario = Usuario.BuscaUsuario(Sesion.Instance.ApodoUsuario);
-            cuentaUsuario = usuario.GetCuenta();
+            try
+            {
+                usuario = Usuario.BuscaUsuario(Sesion.Instance.ApodoUsuario);
+                cuentaUsuario = usuario.GetCuenta();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
             #region ayuda
             toolTip = new ToolTip();
             tooltipQueue = new Queue<KeyValuePair<Control, string>>();
@@ -39,7 +52,7 @@ namespace Gestionis
             tooltipTimer.Tick += TooltipTimer_Tick;
             #endregion
             ModificarBotones();
-        }        
+        }
 
         private void FrmMenuPrincipal_Load(object sender, EventArgs e)
         {
@@ -58,41 +71,73 @@ namespace Gestionis
 
             #endregion
 
-            barraSecundaria1.Load();
-            barraLateral1.Load();
-            cmbFiltroGastos.Items.AddRange(Gasto.DevuelveFiltros());
-            cmbFiltroIngresos.Items.AddRange(Ingreso.DevuelveFiltros());
-            EscondeFiltrosGasto();
-            EscondeFiltrosIngreso();
+            try
+            {
+                barraSecundaria1.Load();
+                barraLateral1.Load();
+                if (Sesion.Instance.Espanyol) Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
+                else Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+                AplicarIdioma();
+                cmbFiltroGastos.Items.AddRange(Gasto.DevuelveFiltros());
+                cmbFiltroIngresos.Items.AddRange(Ingreso.DevuelveFiltros());
+                EscondeFiltrosGasto();
+                EscondeFiltrosIngreso();
 
-            #region Labels
-            RecargaLabelTotales();
-            lblMes.Text = DateTime.Now.ToString("MMMM");
-            lblNotasValor.Text = "";
-            #endregion            
+                #region Labels
+                RecargaLabelTotales();
+                lblMes.Text = DateTime.Now.ToString("MMMM");
+                lblNotasValor.Text = "";
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         private void ModificarBotones()
         {
             barraSecundaria1.BtnAyuda.Click += btnAyuda_Click;
+            barraSecundaria1.BtnLanguage.Click += BtnLanguage_Click;
+        }
+
+        private void BtnLanguage_Click(object sender, EventArgs e)
+        {
+            AplicarIdioma();
+            barraLateral1.AplicarIdiomas();
         }
 
         private void FrmMenuPrincipal_Activated(object sender, EventArgs e)
         {
-            RecargaDGVGastos(cuentaUsuario.DevuelveGastos());
-            RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos());
-            RecargaLabelTotales();
+            try
+            {
+                RecargaDGVGastos(cuentaUsuario.DevuelveGastos());
+                RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos());
+                RecargaLabelTotales();
 
-            #region Configurar ComboBoxes
-            ConfigurarComboBox(cmbTipoGasto, Gasto.TiposGasto);
-            ConfigurarComboBox(cmbCategoriaGasto, CategoriaGasto.DevuelveNombresCategorias());
-            ConfigurarComboBox(cmbTipoIngreso, Ingreso.TiposIngreso);
+                #region Configurar ComboBoxes
+                ConfigurarComboBox(cmbTipoGasto, Gasto.TiposGasto);
+                ConfigurarComboBox(cmbCategoriaGasto, CategoriaGasto.DevuelveNombresCategorias());
+                ConfigurarComboBox(cmbTipoIngreso, Ingreso.TiposIngreso);
 
-            List<String> nombresCategorias = CategoriaIngreso.DevuelveNombresCategorias();
-            // Añado un elemento a la lista, ya que puede haber gastos sin categoría asignada
-            nombresCategorias.Add(String.Empty);
-            ConfigurarComboBox(cmbCategoriaIngreso, nombresCategorias);
-            #endregion
+                List<String> nombresCategorias = CategoriaIngreso.DevuelveNombresCategorias();
+                // Añado un elemento a la lista, ya que puede haber gastos sin categoría asignada
+                nombresCategorias.Add(String.Empty);
+                ConfigurarComboBox(cmbCategoriaIngreso, nombresCategorias);
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -119,96 +164,103 @@ namespace Gestionis
 
         private void btnFiltrarGastos_Click(object sender, EventArgs e)
         {
-            switch (cmbFiltroGastos.Text)
+            try
             {
-                case "Nombre":
-                    RecargaDGVGastos(cuentaUsuario.DevuelveGastos(cmbFiltroGastos.Text, txtNombreGasto.Text));
-                    break;
-                case "Cantidad":
-                    RecargaDGVGastos(cuentaUsuario.DevuelveGastos(cmbFiltroGastos.Text, nudDineroGasto.Value));
-                    break;
-                case "Categoria":
-                    RecargaDGVGastos(cuentaUsuario.DevuelveGastos($"id{cmbFiltroGastos.Text}", CategoriaGasto.DevuelveIDCategoria(cmbCategoriaGasto.Text)));
-                    break;
-                case "Tipo":
-                    RecargaDGVGastos(cuentaUsuario.DevuelveGastos(cmbFiltroGastos.Text, cmbTipoGasto.Text));
-                    break;
-                default:
-                    RecargaDGVGastos(cuentaUsuario.DevuelveGastos());
-                    break;
+                switch (cmbFiltroGastos.Text)
+                {
+                    case "Nombre":
+                        RecargaDGVGastos(cuentaUsuario.DevuelveGastos(cmbFiltroGastos.Text, txtNombreGasto.Text));
+                        break;
+                    case "Cantidad":
+                        RecargaDGVGastos(cuentaUsuario.DevuelveGastos(cmbFiltroGastos.Text, nudDineroGasto.Value));
+                        break;
+                    case "Categoria":
+                        RecargaDGVGastos(cuentaUsuario.DevuelveGastos($"id{cmbFiltroGastos.Text}", CategoriaGasto.DevuelveIDCategoria(cmbCategoriaGasto.Text)));
+                        break;
+                    case "Tipo":
+                        RecargaDGVGastos(cuentaUsuario.DevuelveGastos(cmbFiltroGastos.Text, cmbTipoGasto.Text));
+                        break;
+                    default:
+                        RecargaDGVGastos(cuentaUsuario.DevuelveGastos());
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
             }
         }
 
         private void btnRestablecerGastos_Click(object sender, EventArgs e)
         {
-            RecargaDGVGastos(cuentaUsuario.DevuelveGastos());
-            RestableceControlesGasto();
+            try
+            {
+                RecargaDGVGastos(cuentaUsuario.DevuelveGastos());
+                RestableceControlesGasto();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         private void btnFiltrarIngresos_Click(object sender, EventArgs e)
         {
-            switch (cmbFiltroIngresos.Text)
+            try
             {
-                case "Nombre":
-                    RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos(cmbFiltroIngresos.Text, txtNombreIngreso.Text));
-                    break;
-                case "Cantidad":
-                    RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos(cmbFiltroIngresos.Text, nudDineroIngreso.Value));
-                    break;
-                case "Categoria":
-                    RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos($"id{cmbFiltroIngresos.Text}", CategoriaIngreso.DevuelveIDCategoria(cmbCategoriaIngreso.Text)));
-                    break;
-                case "Tipo":
-                    RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos(cmbFiltroIngresos.Text, cmbTipoIngreso.Text));
-                    break;
-                default:
-                    RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos());
-                    break;
+                switch (cmbFiltroIngresos.Text)
+                {
+                    case "Nombre":
+                        RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos(cmbFiltroIngresos.Text, txtNombreIngreso.Text));
+                        break;
+                    case "Cantidad":
+                        RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos(cmbFiltroIngresos.Text, nudDineroIngreso.Value));
+                        break;
+                    case "Categoria":
+                        RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos($"id{cmbFiltroIngresos.Text}", CategoriaIngreso.DevuelveIDCategoria(cmbCategoriaIngreso.Text)));
+                        break;
+                    case "Tipo":
+                        RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos(cmbFiltroIngresos.Text, cmbTipoIngreso.Text));
+                        break;
+                    default:
+                        RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos());
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
             }
         }
 
         private void btnRestablecerIngresos_Click(object sender, EventArgs e)
         {
-            RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos());
-            RestableceControlesIngreso();
-        }
-
-        private void ConfigurarComboBox(ComboBox comboBox, List<String> dataSource)
-        {
-            BindingSource bs = new BindingSource();
-            bs.DataSource = dataSource;
-            comboBox.DataSource = bs;
-        }
-
-        private void RecargaDGVGastos(List<Gasto> gastos)
-        {
-            dgvGastos.DataSource = gastos;
-        }
-        private void RecargaDGVIngresos(List<Ingreso> ingresos)
-        {
-            dgvIngresos.DataSource = ingresos;
-        }
-        private void RestableceControlesGasto()
-        {
-            txtNombreGasto.Text = String.Empty;
-            cmbTipoGasto.SelectedIndex = 0;
-            nudDineroGasto.Value = 0;
-            cmbCategoriaGasto.SelectedIndex = 0;
-        }
-        private void RestableceControlesIngreso()
-        {
-            txtNombreIngreso.Text = String.Empty;
-            cmbTipoIngreso.SelectedIndex = 0;
-            nudDineroIngreso.Value = 0;
-            cmbCategoriaIngreso.SelectedIndex = 0;
-        }
-
-        private void RecargaLabelTotales()
-        {
-            lblIngresosValor.Text = cuentaUsuario.TotalIngresos().ToString() + " €";
-            lblGastosValor.Text = cuentaUsuario.TotalGastos().ToString() + " €";
-            lblTotalValor.Text = cuentaUsuario.DineroTotal().ToString() + " €";
-        }
+            try
+            {
+                RecargaDGVIngresos(cuentaUsuario.DevuelveIngresos());
+                RestableceControlesIngreso();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
+        }        
 
         private void dgvGastos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -267,6 +319,63 @@ namespace Gestionis
                     }
                 }
             }
+        }
+
+        private void ConfigurarComboBox(ComboBox comboBox, List<String> dataSource)
+        {
+            BindingSource bs = new BindingSource();
+            bs.DataSource = dataSource;
+            comboBox.DataSource = bs;
+        }
+
+        private void RecargaDGVGastos(List<Gasto> gastos)
+        {
+            dgvGastos.DataSource = gastos;
+        }
+        private void RecargaDGVIngresos(List<Ingreso> ingresos)
+        {
+            dgvIngresos.DataSource = ingresos;
+        }
+        private void RestableceControlesGasto()
+        {
+            txtNombreGasto.Text = String.Empty;
+            cmbTipoGasto.SelectedIndex = 0;
+            nudDineroGasto.Value = 0;
+            cmbCategoriaGasto.SelectedIndex = 0;
+        }
+        private void RestableceControlesIngreso()
+        {
+            txtNombreIngreso.Text = String.Empty;
+            cmbTipoIngreso.SelectedIndex = 0;
+            nudDineroIngreso.Value = 0;
+            cmbCategoriaIngreso.SelectedIndex = 0;
+        }
+
+        private void RecargaLabelTotales()
+        {
+            lblIngresosValor.Text = cuentaUsuario.TotalIngresos().ToString("0.00") + " €";
+            lblGastosValor.Text = cuentaUsuario.TotalGastos().ToString("0.00") + " €";
+            lblTotalValor.Text = cuentaUsuario.DineroTotal().ToString("0.00") + " €";
+        }
+
+        private void AplicarIdioma()
+        {
+            lblFiltrarPorIng.Text = Resources.Idiomas.StringRecursosMenu.lblFiltrarPor;
+            lblFiltrarPorGas.Text = Resources.Idiomas.StringRecursosMenu.lblFiltrarPor;
+            lblDCIng.Text = Resources.Idiomas.StringRecursosMenu.lblDCIngreso;
+            lblDCGas.Text = Resources.Idiomas.StringRecursosMenu.lblDCGasto;
+            btnRestablecerIngresos.Text = Resources.Idiomas.StringRecursosMenu.btnRestablecer;
+            btnRestablecerGastos.Text = Resources.Idiomas.StringRecursosMenu.btnRestablecer;
+            btnFiltrarIngresos.Text = Resources.Idiomas.StringRecursosMenu.btnFiltrar;
+            btnFiltrarGastos.Text = Resources.Idiomas.StringRecursosMenu.btnFiltrar;
+            lblTotal.Text = Resources.Idiomas.StringRecursosMenu.lblTotal;
+            lblGastos.Text = Resources.Idiomas.StringRecursosMenu.lblGastos;
+            lblIngresos.Text = Resources.Idiomas.StringRecursosMenu.lblIngresos;
+            btnGasto.Text = Resources.Idiomas.StringRecursosMenu.btnGasto;
+            btnIngreso.Text = Resources.Idiomas.StringRecursosMenu.btnIngreso;
+            lblNotas.Text = Resources.Idiomas.StringRecursosMenu.lblNotas;
+            btnSalir.Text = Resources.Idiomas.StringRecursosMenu.btnSalir;
+            lblMes.Text = Resources.Idiomas.StringRecursosMenu.lblMes;
         }
 
         #region CMBs y controles Filtros

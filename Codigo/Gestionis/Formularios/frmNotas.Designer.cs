@@ -75,11 +75,9 @@ namespace Gestionis
             roundGroupBox2.Controls.Add(cmbFiltrarPor);
             roundGroupBox2.Controls.Add(lblFiltrarPor);
             roundGroupBox2.Controls.Add(btnNuevaNota);
-            roundGroupBox2.Location = new Point(333, 136);
-            roundGroupBox2.Margin = new Padding(3, 2, 3, 2);
+            roundGroupBox2.Location = new Point(381, 181);
             roundGroupBox2.Name = "roundGroupBox2";
-            roundGroupBox2.Padding = new Padding(3, 2, 3, 2);
-            roundGroupBox2.Size = new Size(799, 480);
+            roundGroupBox2.Size = new Size(913, 640);
             roundGroupBox2.TabIndex = 7;
             roundGroupBox2.TabStop = false;
             roundGroupBox2.Text = "roundGroupBox2";
@@ -87,9 +85,10 @@ namespace Gestionis
             // ckbDeudaFiltro
             // 
             ckbDeudaFiltro.AutoSize = true;
-            ckbDeudaFiltro.Location = new Point(362, 146);
+            ckbDeudaFiltro.Location = new Point(414, 195);
+            ckbDeudaFiltro.Margin = new Padding(3, 4, 3, 4);
             ckbDeudaFiltro.Name = "ckbDeudaFiltro";
-            ckbDeudaFiltro.Size = new Size(15, 14);
+            ckbDeudaFiltro.Size = new Size(18, 17);
             ckbDeudaFiltro.TabIndex = 21;
             ckbDeudaFiltro.UseVisualStyleBackColor = true;
             ckbDeudaFiltro.Visible = false;
@@ -99,9 +98,9 @@ namespace Gestionis
             lblNotasTotalesCount.AutoSize = true;
             lblNotasTotalesCount.BackColor = Color.Transparent;
             lblNotasTotalesCount.Font = new Font("Segoe UI", 14.05F);
-            lblNotasTotalesCount.Location = new Point(130, 421);
+            lblNotasTotalesCount.Location = new Point(149, 561);
             lblNotasTotalesCount.Name = "lblNotasTotalesCount";
-            lblNotasTotalesCount.Size = new Size(84, 25);
+            lblNotasTotalesCount.Size = new Size(105, 32);
             lblNotasTotalesCount.TabIndex = 20;
             lblNotasTotalesCount.Text = "TOTALES";
             // 
@@ -110,9 +109,9 @@ namespace Gestionis
             lblNotasTotales.AutoSize = true;
             lblNotasTotales.BackColor = Color.Transparent;
             lblNotasTotales.Font = new Font("Segoe UI", 14.05F);
-            lblNotasTotales.Location = new Point(54, 421);
+            lblNotasTotales.Location = new Point(62, 561);
             lblNotasTotales.Name = "lblNotasTotales";
-            lblNotasTotales.Size = new Size(70, 25);
+            lblNotasTotales.Size = new Size(88, 32);
             lblNotasTotales.TabIndex = 11;
             lblNotasTotales.Text = "Notas: ";
             // 
@@ -121,9 +120,10 @@ namespace Gestionis
             btnRestaurarFiltro.BackColor = Color.FromArgb(178, 242, 187);
             btnRestaurarFiltro.FlatStyle = FlatStyle.Flat;
             btnRestaurarFiltro.Font = new Font("Segoe UI", 13.08F);
-            btnRestaurarFiltro.Location = new Point(582, 135);
+            btnRestaurarFiltro.Location = new Point(665, 180);
+            btnRestaurarFiltro.Margin = new Padding(3, 4, 3, 4);
             btnRestaurarFiltro.Name = "btnRestaurarFiltro";
-            btnRestaurarFiltro.Size = new Size(129, 35);
+            btnRestaurarFiltro.Size = new Size(147, 47);
             btnRestaurarFiltro.TabIndex = 10;
             btnRestaurarFiltro.Text = "Restaurar";
             btnRestaurarFiltro.UseVisualStyleBackColor = false;
@@ -132,9 +132,10 @@ namespace Gestionis
             // ckbAlarmaFiltro
             // 
             ckbAlarmaFiltro.AutoSize = true;
-            ckbAlarmaFiltro.Location = new Point(362, 146);
+            ckbAlarmaFiltro.Location = new Point(414, 195);
+            ckbAlarmaFiltro.Margin = new Padding(3, 4, 3, 4);
             ckbAlarmaFiltro.Name = "ckbAlarmaFiltro";
-            ckbAlarmaFiltro.Size = new Size(15, 14);
+            ckbAlarmaFiltro.Size = new Size(18, 17);
             ckbAlarmaFiltro.TabIndex = 9;
             ckbAlarmaFiltro.UseVisualStyleBackColor = true;
             ckbAlarmaFiltro.Visible = false;
@@ -142,19 +143,17 @@ namespace Gestionis
             // dtpFiltrarFecha
             // 
             dtpFiltrarFecha.Format = DateTimePickerFormat.Short;
-            dtpFiltrarFecha.Location = new Point(318, 142);
-            dtpFiltrarFecha.Margin = new Padding(3, 2, 3, 2);
+            dtpFiltrarFecha.Location = new Point(363, 189);
             dtpFiltrarFecha.Name = "dtpFiltrarFecha";
-            dtpFiltrarFecha.Size = new Size(110, 23);
+            dtpFiltrarFecha.Size = new Size(125, 27);
             dtpFiltrarFecha.TabIndex = 8;
             dtpFiltrarFecha.Visible = false;
             // 
             // btnFiltroColor
             // 
-            btnFiltroColor.Location = new Point(338, 143);
-            btnFiltroColor.Margin = new Padding(3, 2, 3, 2);
+            btnFiltroColor.Location = new Point(386, 191);
             btnFiltroColor.Name = "btnFiltroColor";
-            btnFiltroColor.Size = new Size(72, 22);
+            btnFiltroColor.Size = new Size(82, 29);
             btnFiltroColor.TabIndex = 7;
             btnFiltroColor.UseVisualStyleBackColor = true;
             btnFiltroColor.Visible = false;
@@ -165,9 +164,10 @@ namespace Gestionis
             btnFiltrar.BackColor = Color.FromArgb(178, 242, 187);
             btnFiltrar.FlatStyle = FlatStyle.Flat;
             btnFiltrar.Font = new Font("Segoe UI", 13.08F);
-            btnFiltrar.Location = new Point(443, 136);
+            btnFiltrar.Location = new Point(506, 181);
+            btnFiltrar.Margin = new Padding(3, 4, 3, 4);
             btnFiltrar.Name = "btnFiltrar";
-            btnFiltrar.Size = new Size(133, 34);
+            btnFiltrar.Size = new Size(152, 45);
             btnFiltrar.TabIndex = 6;
             btnFiltrar.Text = "Filtrar";
             btnFiltrar.UseVisualStyleBackColor = false;
@@ -175,10 +175,9 @@ namespace Gestionis
             // 
             // txtFiltro
             // 
-            txtFiltro.Location = new Point(318, 142);
-            txtFiltro.Margin = new Padding(3, 2, 3, 2);
+            txtFiltro.Location = new Point(363, 189);
             txtFiltro.Name = "txtFiltro";
-            txtFiltro.Size = new Size(110, 23);
+            txtFiltro.Size = new Size(125, 27);
             txtFiltro.TabIndex = 5;
             txtFiltro.Visible = false;
             // 
@@ -189,12 +188,11 @@ namespace Gestionis
             dgvNotas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvNotas.BackgroundColor = SystemColors.Control;
             dgvNotas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvNotas.Location = new Point(54, 212);
-            dgvNotas.Margin = new Padding(3, 2, 3, 2);
+            dgvNotas.Location = new Point(62, 283);
             dgvNotas.Name = "dgvNotas";
             dgvNotas.ReadOnly = true;
             dgvNotas.RowHeadersWidth = 51;
-            dgvNotas.Size = new Size(657, 188);
+            dgvNotas.Size = new Size(751, 251);
             dgvNotas.TabIndex = 4;
             dgvNotas.CellContentClick += dgvNotas_CellContentClick;
             dgvNotas.CellFormatting += dgvNotas_CellFormatting;
@@ -202,10 +200,9 @@ namespace Gestionis
             // cmbFiltrarPor
             // 
             cmbFiltrarPor.FormattingEnabled = true;
-            cmbFiltrarPor.Location = new Point(158, 142);
-            cmbFiltrarPor.Margin = new Padding(3, 2, 3, 2);
+            cmbFiltrarPor.Location = new Point(181, 189);
             cmbFiltrarPor.Name = "cmbFiltrarPor";
-            cmbFiltrarPor.Size = new Size(139, 23);
+            cmbFiltrarPor.Size = new Size(158, 28);
             cmbFiltrarPor.TabIndex = 3;
             cmbFiltrarPor.SelectedIndexChanged += cmbFiltrarPor_SelectedIndexChanged;
             // 
@@ -214,9 +211,9 @@ namespace Gestionis
             lblFiltrarPor.AutoSize = true;
             lblFiltrarPor.BackColor = Color.Transparent;
             lblFiltrarPor.Font = new Font("Segoe UI", 14.25F);
-            lblFiltrarPor.Location = new Point(54, 140);
+            lblFiltrarPor.Location = new Point(62, 187);
             lblFiltrarPor.Name = "lblFiltrarPor";
-            lblFiltrarPor.Size = new Size(98, 25);
+            lblFiltrarPor.Size = new Size(120, 32);
             lblFiltrarPor.TabIndex = 2;
             lblFiltrarPor.Text = "Filtrar Por:";
             // 
@@ -225,9 +222,10 @@ namespace Gestionis
             btnNuevaNota.BackColor = Color.FromArgb(178, 242, 187);
             btnNuevaNota.FlatStyle = FlatStyle.Flat;
             btnNuevaNota.Font = new Font("Segoe UI", 14.25F);
-            btnNuevaNota.Location = new Point(54, 41);
+            btnNuevaNota.Location = new Point(62, 55);
+            btnNuevaNota.Margin = new Padding(3, 4, 3, 4);
             btnNuevaNota.Name = "btnNuevaNota";
-            btnNuevaNota.Size = new Size(160, 45);
+            btnNuevaNota.Size = new Size(183, 60);
             btnNuevaNota.TabIndex = 1;
             btnNuevaNota.Text = "Nueva Nota";
             btnNuevaNota.UseVisualStyleBackColor = false;
@@ -238,9 +236,10 @@ namespace Gestionis
             btnSalir.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnSalir.BackColor = Color.FromArgb(178, 242, 187);
             btnSalir.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSalir.Location = new Point(32767, 1040);
+            btnSalir.Location = new Point(32758, 1387);
+            btnSalir.Margin = new Padding(3, 4, 3, 4);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(152, 45);
+            btnSalir.Size = new Size(174, 60);
             btnSalir.TabIndex = 16;
             btnSalir.Text = "Salir";
             btnSalir.UseVisualStyleBackColor = false;
@@ -251,24 +250,23 @@ namespace Gestionis
             barraSecundaria1.BackColor = Color.FromArgb(211, 208, 242);
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
-            barraSecundaria1.Margin = new Padding(3, 2, 3, 2);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1485, 33);
+            barraSecundaria1.Size = new Size(1818, 44);
             barraSecundaria1.TabIndex = 17;
             // 
             // barraLateral1
             // 
             barraLateral1.BackColor = Color.FromArgb(205, 213, 221);
             barraLateral1.Dock = DockStyle.Left;
-            barraLateral1.Location = new Point(0, 73);
-            barraLateral1.Margin = new Padding(3, 2, 3, 2);
+            barraLateral1.Location = new Point(0, 84);
             barraLateral1.Name = "barraLateral1";
-            barraLateral1.Size = new Size(253, 753);
+            barraLateral1.Size = new Size(289, 1017);
             barraLateral1.TabIndex = 18;
             // 
             // monthCalendar1
             // 
-            monthCalendar1.Location = new Point(1356, 143);
+            monthCalendar1.Location = new Point(1550, 191);
+            monthCalendar1.Margin = new Padding(10, 12, 10, 12);
             monthCalendar1.Name = "monthCalendar1";
             monthCalendar1.TabIndex = 6;
             // 
@@ -279,11 +277,12 @@ namespace Gestionis
             dgvNotasDia.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvNotasDia.BackgroundColor = SystemColors.InactiveCaption;
             dgvNotasDia.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvNotasDia.Location = new Point(6, 82);
+            dgvNotasDia.Location = new Point(19, 109);
+            dgvNotasDia.Margin = new Padding(3, 4, 3, 4);
             dgvNotasDia.Name = "dgvNotasDia";
             dgvNotasDia.ReadOnly = true;
             dgvNotasDia.RowHeadersWidth = 51;
-            dgvNotasDia.Size = new Size(322, 186);
+            dgvNotasDia.Size = new Size(356, 248);
             dgvNotasDia.TabIndex = 0;
             // 
             // rgbNotasDia
@@ -293,9 +292,11 @@ namespace Gestionis
             rgbNotasDia.Controls.Add(lblNotasDia);
             rgbNotasDia.Controls.Add(dgvNotasDia);
             rgbNotasDia.Font = new Font("Segoe UI", 9F);
-            rgbNotasDia.Location = new Point(1296, 352);
+            rgbNotasDia.Location = new Point(1473, 469);
+            rgbNotasDia.Margin = new Padding(3, 4, 3, 4);
             rgbNotasDia.Name = "rgbNotasDia";
-            rgbNotasDia.Size = new Size(334, 323);
+            rgbNotasDia.Padding = new Padding(3, 4, 3, 4);
+            rgbNotasDia.Size = new Size(390, 431);
             rgbNotasDia.TabIndex = 19;
             rgbNotasDia.TabStop = false;
             // 
@@ -304,9 +305,9 @@ namespace Gestionis
             lblNDTotales.AutoSize = true;
             lblNDTotales.BackColor = Color.Transparent;
             lblNDTotales.Font = new Font("Segoe UI", 14.05F);
-            lblNDTotales.Location = new Point(83, 283);
+            lblNDTotales.Location = new Point(95, 377);
             lblNDTotales.Name = "lblNDTotales";
-            lblNDTotales.Size = new Size(84, 25);
+            lblNDTotales.Size = new Size(105, 32);
             lblNDTotales.TabIndex = 21;
             lblNDTotales.Text = "TOTALES";
             // 
@@ -315,9 +316,9 @@ namespace Gestionis
             lblNotasTotalesDia.AutoSize = true;
             lblNotasTotalesDia.BackColor = Color.Transparent;
             lblNotasTotalesDia.Font = new Font("Segoe UI", 14.05F);
-            lblNotasTotalesDia.Location = new Point(17, 283);
+            lblNotasTotalesDia.Location = new Point(19, 377);
             lblNotasTotalesDia.Name = "lblNotasTotalesDia";
-            lblNotasTotalesDia.Size = new Size(70, 25);
+            lblNotasTotalesDia.Size = new Size(88, 32);
             lblNotasTotalesDia.TabIndex = 20;
             lblNotasTotalesDia.Text = "Notas: ";
             // 
@@ -326,24 +327,23 @@ namespace Gestionis
             lblNotasDia.AutoSize = true;
             lblNotasDia.BackColor = Color.Transparent;
             lblNotasDia.Font = new Font("Segoe UI", 14.05F, FontStyle.Underline);
-            lblNotasDia.Location = new Point(6, 19);
+            lblNotasDia.Location = new Point(7, 25);
             lblNotasDia.Name = "lblNotasDia";
-            lblNotasDia.Size = new Size(123, 25);
+            lblNotasDia.Size = new Size(155, 32);
             lblNotasDia.TabIndex = 1;
             lblNotasDia.Text = "Notas del día";
             // 
             // frmNotas
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1485, 826);
+            ClientSize = new Size(1818, 1101);
             Controls.Add(rgbNotasDia);
             Controls.Add(monthCalendar1);
             Controls.Add(barraLateral1);
             Controls.Add(barraSecundaria1);
             Controls.Add(btnSalir);
             Controls.Add(roundGroupBox2);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "frmNotas";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Notas";

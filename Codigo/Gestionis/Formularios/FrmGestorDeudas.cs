@@ -52,7 +52,7 @@ namespace Gestionis
 
             try
             {
-                lblSaldoValor.Text = cuentaUsuario.DineroTotal().ToString() + " €";
+                lblSaldoValor.Text = cuentaUsuario.DineroTotal().ToString("0.00") + " €";
 
                 cmbCategoria.DataSource = Deuda.Filtros();
                 cmbCategoria.SelectedIndex = 0;
@@ -276,8 +276,8 @@ namespace Gestionis
                 vpbDebo.Value = (int)debo;
                 vpbMeDeben.Value = (int)meDeben;
 
-                lblDeboTotal.Text = debo.ToString() + "€";
-                lblMeDebenTotal.Text = meDeben.ToString() + "€";
+                lblDeboTotal.Text = debo.ToString("0.00") + " €";
+                lblMeDebenTotal.Text = meDeben.ToString("0.00") + " €";
             }
             catch (Exception ex)
             {

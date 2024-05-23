@@ -217,8 +217,6 @@ namespace Gestionis
                 btnConfirmarNom.Hide();
                 btnCambiarNom.Show();
                 Usuario.CambiarCampo("nombre", txtNombre.Text);
-                SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario, 50);
-                SetExpNivel();
             }
         }
 

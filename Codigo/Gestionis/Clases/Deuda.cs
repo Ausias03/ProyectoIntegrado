@@ -256,12 +256,13 @@ namespace Gestionis.Clases
 
         public static double CalcularTotalDeuda(bool debo)
         {
-            double resultado = 0;
+            float? resultado = null;
             string consulta = $"SELECT SUM(cantidad) FROM deuda WHERE numCuenta = {Sesion.Instance.NumCuenta} AND debo = {debo}";
 
             using (MySqlCommand query = new MySqlCommand(consulta, ConexionDB.Conexion))
             {
                 ConexionDB.AbrirConexion();
+<<<<<<< HEAD
                 using (MySqlDataReader reader = query.ExecuteReader())
                 {
                     if(reader.Read())
@@ -271,12 +272,20 @@ namespace Gestionis.Clases
                     else
                     {
                         resultado = 0;
+=======
+
+                using (MySqlDataReader reader = query.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        resultado = reader.GetSafeFloat(0);
+>>>>>>> 60fab9e7298f1186ba3864eb0b63341c53dbfb84
                     }
                 }
                 ConexionDB.CerrarConexion();
             }            
 
-            return resultado;
+            return resultado == null ? 0 : Convert.ToDouble(resultado);
         }
     }
 }
