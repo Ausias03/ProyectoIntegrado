@@ -85,7 +85,7 @@ namespace Gestionis
             try
             {
                 AplicarIdioma();
-                barraLateral1.AplicarIdiomas();
+                barraLateral3.AplicarIdiomas();
                 cmbCategoria.DataSource = Deuda.Filtros();
             }
             catch (Exception ex)

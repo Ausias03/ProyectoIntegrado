@@ -79,7 +79,7 @@ namespace Gestionis
             lblTuCuenta.Font = new Font("Microsoft Sans Serif", 24F);
             lblTuCuenta.Location = new Point(309, 102);
             lblTuCuenta.Name = "lblTuCuenta";
-            lblTuCuenta.Size = new Size(160, 37);
+            lblTuCuenta.Size = new Size(197, 46);
             lblTuCuenta.TabIndex = 0;
             lblTuCuenta.Text = "Tu cuenta";
             // 
@@ -146,7 +146,7 @@ namespace Gestionis
             lblNivel.Font = new Font("Microsoft Sans Serif", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblNivel.Location = new Point(753, 61);
             lblNivel.Name = "lblNivel";
-            lblNivel.Size = new Size(39, 42);
+            lblNivel.Size = new Size(49, 54);
             lblNivel.TabIndex = 34;
             lblNivel.Text = "5";
             // 
@@ -156,7 +156,7 @@ namespace Gestionis
             lblExp.Font = new Font("Microsoft Sans Serif", 12F);
             lblExp.Location = new Point(622, 123);
             lblExp.Name = "lblExp";
-            lblExp.Size = new Size(40, 20);
+            lblExp.Size = new Size(52, 25);
             lblExp.TabIndex = 56;
             lblExp.Text = "Exp:";
             // 
@@ -185,7 +185,7 @@ namespace Gestionis
             txtApellidos.Location = new Point(193, 283);
             txtApellidos.Name = "txtApellidos";
             txtApellidos.ReadOnly = true;
-            txtApellidos.Size = new Size(533, 21);
+            txtApellidos.Size = new Size(533, 24);
             txtApellidos.TabIndex = 52;
             // 
             // btnCambiarApellidos
@@ -206,7 +206,7 @@ namespace Gestionis
             lblApellidos.Font = new Font("Microsoft Sans Serif", 12F);
             lblApellidos.Location = new Point(55, 281);
             lblApellidos.Name = "lblApellidos";
-            lblApellidos.Size = new Size(77, 20);
+            lblApellidos.Size = new Size(98, 25);
             lblApellidos.TabIndex = 50;
             lblApellidos.Text = "Apellidos:";
             // 
@@ -280,7 +280,7 @@ namespace Gestionis
             txtTelefono.Location = new Point(181, 509);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.ReadOnly = true;
-            txtTelefono.Size = new Size(545, 21);
+            txtTelefono.Size = new Size(545, 24);
             txtTelefono.TabIndex = 44;
             // 
             // txtDireccion
@@ -288,7 +288,7 @@ namespace Gestionis
             txtDireccion.Location = new Point(193, 454);
             txtDireccion.Name = "txtDireccion";
             txtDireccion.ReadOnly = true;
-            txtDireccion.Size = new Size(533, 21);
+            txtDireccion.Size = new Size(533, 24);
             txtDireccion.TabIndex = 43;
             // 
             // txtCorreo
@@ -296,7 +296,7 @@ namespace Gestionis
             txtCorreo.Location = new Point(297, 396);
             txtCorreo.Name = "txtCorreo";
             txtCorreo.ReadOnly = true;
-            txtCorreo.Size = new Size(429, 21);
+            txtCorreo.Size = new Size(429, 24);
             txtCorreo.TabIndex = 42;
             // 
             // txtApodo
@@ -304,7 +304,7 @@ namespace Gestionis
             txtApodo.Location = new Point(181, 341);
             txtApodo.Name = "txtApodo";
             txtApodo.ReadOnly = true;
-            txtApodo.Size = new Size(545, 21);
+            txtApodo.Size = new Size(545, 24);
             txtApodo.TabIndex = 41;
             // 
             // txtNombre
@@ -312,7 +312,7 @@ namespace Gestionis
             txtNombre.Location = new Point(157, 225);
             txtNombre.Name = "txtNombre";
             txtNombre.ReadOnly = true;
-            txtNombre.Size = new Size(569, 21);
+            txtNombre.Size = new Size(569, 24);
             txtNombre.TabIndex = 40;
             // 
             // btnCambiarFoto
@@ -393,7 +393,7 @@ namespace Gestionis
             lblTelefono.Font = new Font("Microsoft Sans Serif", 12F);
             lblTelefono.Location = new Point(55, 510);
             lblTelefono.Name = "lblTelefono";
-            lblTelefono.Size = new Size(75, 20);
+            lblTelefono.Size = new Size(95, 25);
             lblTelefono.TabIndex = 33;
             lblTelefono.Text = "Teléfono:";
             // 
@@ -403,7 +403,7 @@ namespace Gestionis
             lblDireccion.Font = new Font("Microsoft Sans Serif", 12F);
             lblDireccion.Location = new Point(55, 452);
             lblDireccion.Name = "lblDireccion";
-            lblDireccion.Size = new Size(79, 20);
+            lblDireccion.Size = new Size(99, 25);
             lblDireccion.TabIndex = 31;
             lblDireccion.Text = "Dirección:";
             // 
@@ -413,7 +413,7 @@ namespace Gestionis
             lblCorreo.Font = new Font("Microsoft Sans Serif", 12F);
             lblCorreo.Location = new Point(55, 394);
             lblCorreo.Name = "lblCorreo";
-            lblCorreo.Size = new Size(144, 20);
+            lblCorreo.Size = new Size(179, 25);
             lblCorreo.TabIndex = 30;
             lblCorreo.Text = "Correo Electrónico:";
             // 
@@ -423,7 +423,7 @@ namespace Gestionis
             lblApodo.Font = new Font("Microsoft Sans Serif", 12F);
             lblApodo.Location = new Point(55, 339);
             lblApodo.Name = "lblApodo";
-            lblApodo.Size = new Size(60, 20);
+            lblApodo.Size = new Size(76, 25);
             lblApodo.TabIndex = 29;
             lblApodo.Text = "Apodo:";
             // 
@@ -433,7 +433,7 @@ namespace Gestionis
             lblNombre.Font = new Font("Microsoft Sans Serif", 12F);
             lblNombre.Location = new Point(55, 223);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(69, 20);
+            lblNombre.Size = new Size(87, 25);
             lblNombre.TabIndex = 28;
             lblNombre.Text = "Nombre:";
             // 
@@ -463,7 +463,7 @@ namespace Gestionis
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1446, 44);
+            barraSecundaria1.Size = new Size(1525, 44);
             barraSecundaria1.TabIndex = 5;
             // 
             // barraLateral2
@@ -477,10 +477,10 @@ namespace Gestionis
             // 
             // frmUsuario
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(9F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(233, 236, 239);
-            ClientSize = new Size(1446, 837);
+            ClientSize = new Size(1525, 837);
             Controls.Add(barraLateral2);
             Controls.Add(barraSecundaria1);
             Controls.Add(grpCuenta);
