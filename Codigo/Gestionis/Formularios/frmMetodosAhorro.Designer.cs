@@ -97,7 +97,7 @@ namespace Gestionis
             label32 = new Label();
             lblInfo = new Label();
             lblInfo2 = new Label();
-            barraLateral2 = new BarraLateral();
+            barraLateral3 = new BarraLateral();
             ((System.ComponentModel.ISupportInitialize)dgvGastosFijos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvGastosVariables).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbDot).BeginInit();
@@ -869,14 +869,14 @@ namespace Gestionis
             lblInfo2.TabIndex = 96;
             lblInfo2.Text = "Las demás categorías son consideradas como gastos prescindibles";
             // 
-            // barraLateral2
+            // barraLateral3
             // 
-            barraLateral2.BackColor = Color.FromArgb(205, 213, 221);
-            barraLateral2.Dock = DockStyle.Left;
-            barraLateral2.Location = new Point(0, 84);
-            barraLateral2.Name = "barraLateral2";
-            barraLateral2.Size = new Size(289, 1017);
-            barraLateral2.TabIndex = 97;
+            barraLateral3.BackColor = Color.FromArgb(205, 213, 221);
+            barraLateral3.Dock = DockStyle.Left;
+            barraLateral3.Location = new Point(0, 84);
+            barraLateral3.Name = "barraLateral3";
+            barraLateral3.Size = new Size(289, 1017);
+            barraLateral3.TabIndex = 97;
             // 
             // frmMetodosAhorro
             // 
@@ -884,7 +884,7 @@ namespace Gestionis
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(233, 236, 239);
             ClientSize = new Size(1818, 1101);
-            Controls.Add(barraLateral2);
+            Controls.Add(barraLateral3);
             Controls.Add(pbArrow5);
             Controls.Add(lblInfo2);
             Controls.Add(lblPorcentajeRest);
@@ -938,7 +938,7 @@ namespace Gestionis
             Controls.SetChildIndex(lblPorcentajeRest, 0);
             Controls.SetChildIndex(lblInfo2, 0);
             Controls.SetChildIndex(pbArrow5, 0);
-            Controls.SetChildIndex(barraLateral2, 0);
+            Controls.SetChildIndex(barraLateral3, 0);
             ((System.ComponentModel.ISupportInitialize)dgvGastosFijos).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvGastosVariables).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbDot).EndInit();
@@ -1033,5 +1033,6 @@ namespace Gestionis
         private Label lblInfo;
         private Label lblInfo2;
         private BarraLateral barraLateral2;
+        private BarraLateral barraLateral3;
     }
 }

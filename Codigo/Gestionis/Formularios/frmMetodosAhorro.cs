@@ -73,7 +73,7 @@ namespace Gestionis
             lblIngresoMesCont.Text = cuentaUsuario.TotalIngresos().ToString("0.00") + " €";
 
             barraSecundaria1.Load();
-            barraLateral2.Load();
+            barraLateral3.Load();
 
             try
             {
