@@ -1,9 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gestionis.Clases
 {
@@ -75,7 +70,7 @@ namespace Gestionis.Clases
         /// <returns>.NET null si la celda tiene un valor nulo, el valor original si NO</returns>
         public static float? GetSafeFloat(this MySqlDataReader reader, int index)
         {
-            if(reader.IsDBNull(index))
+            if (reader.IsDBNull(index))
             {
                 return null;
             }

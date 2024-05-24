@@ -1,9 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gestionis.Clases
 {
@@ -107,7 +102,7 @@ namespace Gestionis.Clases
 
             return nombresCategorias;
         }
-        
+
         /// <summary>
         /// Busca una categoría por su nombre y devuelve su ID
         /// </summary>
@@ -143,11 +138,11 @@ namespace Gestionis.Clases
 
             ConexionDB.AbrirConexion();
 
-            string nombreCategoria = query.ExecuteScalar().ToString();
+            string? nombreCategoria = query.ExecuteScalar().ToString();
 
             ConexionDB.CerrarConexion();
 
-            return nombreCategoria;
+            return nombreCategoria ?? String.Empty;
         }
 
         /// <summary>

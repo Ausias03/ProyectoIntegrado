@@ -1,11 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Mysqlx.Crud.Order.Types;
 
 namespace Gestionis.Clases
 {
@@ -71,6 +65,9 @@ namespace Gestionis.Clases
         }
         #endregion
 
+        /// <summary>
+        /// Añade un registro gasto a la base de datos
+        /// </summary>
         public void Add()
         {
             string queryString = "INSERT INTO gasto (idGasto, numCuenta, nombre, cantidad," +
@@ -96,9 +93,13 @@ namespace Gestionis.Clases
             ConexionDB.CerrarConexion();
         }
 
+        /// <summary>
+        /// Campos por los que se puede filtrar un gasto
+        /// </summary>
+        /// <returns>Devuelve una lista de campos para poder filtrar los gastos de la BD</returns>
         public static string[] DevuelveFiltros()
         {
-            string[] lista = new string[] { "Nombre", "Cantidad", "Categoria", "Tipo"};
+            string[] lista = new string[] { "Nombre", "Cantidad", "Categoria", "Tipo" };
             return lista;
         }
 

@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MySql.Data.MySqlClient;
 using System.Drawing.Imaging;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Security.Policy;
 using System.Text;
-using System.Threading.Tasks;
-using Gestionis.Properties;
-using MySql.Data.MySqlClient;
-using MySqlX.XDevAPI.Common;
 
 namespace Gestionis.Clases
 {
@@ -77,6 +70,11 @@ namespace Gestionis.Clases
         #endregion
 
         #region Cambiar Atributos
+        /// <summary>
+        /// Modifica un valor de la BD del campo especificado
+        /// </summary>
+        /// <param name="campo">Campo especificado que se quiere cambiar</param>
+        /// <param name="valor">String del valor a actualizar</param>
         public static void CambiarCampo(string campo, string valor)
         {
             string queryString = $"UPDATE usuario SET {campo} = @valor WHERE apodo = @apodo;";
@@ -92,6 +90,11 @@ namespace Gestionis.Clases
             ConexionDB.CerrarConexion();
         }
 
+        /// <summary>
+        /// Modifica un valor de la BD del campo especificado
+        /// </summary>
+        /// <param name="campo">Campo especificado que se quiere cambiar</param>
+        /// <param name="valor">Array de bytes del valor a actualizar</param>
         public static void CambiarCampo(string campo, byte[] valor)
         {
             string queryString = $"UPDATE usuario SET {campo} = @valor WHERE apodo = @apodo;";
@@ -107,7 +110,7 @@ namespace Gestionis.Clases
             ConexionDB.CerrarConexion();
         }
         #endregion
-        
+
         /// <summary>
         /// Comprueba si ya hay dado de alta un usuario en la BD
         /// </summary>
@@ -259,7 +262,7 @@ namespace Gestionis.Clases
                     );
                 }
             }
-            
+
             ConexionDB.CerrarConexion();
 
             return cuenta;
@@ -302,6 +305,6 @@ namespace Gestionis.Clases
                 hashAlgorithm,
                 keySize);
             return Convert.ToHexString(hash);
-        }        
+        }
     }
 }

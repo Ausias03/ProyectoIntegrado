@@ -1,14 +1,5 @@
 ﻿using Gestionis.Clases;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Gestionis.Formularios
 {
@@ -24,15 +15,36 @@ namespace Gestionis.Formularios
             if (Sesion.Instance.Espanyol) Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
             else Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
             AplicarIdioma();
-            CargarCBOCategorias();
+            try
+            {
+                CargarCBOCategorias();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         private void cboCategorias_TextChanged(object sender, EventArgs e)
         {
-            decimal? limite = LimitesNotif.GetLimite(Sesion.Instance.NumCuenta, CategoriaGasto.DevuelveIDCategoria(cboCategorias.Text));
-
-            nudLimite.Value = limite == null ? 0 : limite.Value;
-            btnModificar.Text = limite == null ? Resources.Idiomas.StringRecursosModNotif.btnAgregar : Resources.Idiomas.StringRecursosModNotif.btnModificar;
+            try
+            {
+                decimal? limite = LimitesNotif.GetLimite(Sesion.Instance.NumCuenta, CategoriaGasto.DevuelveIDCategoria(cboCategorias.Text));
+                nudLimite.Value = limite == null ? 0 : limite.Value;
+                btnModificar.Text = limite == null ? Resources.Idiomas.StringRecursosModNotif.btnAgregar : Resources.Idiomas.StringRecursosModNotif.btnModificar;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -74,11 +86,14 @@ namespace Gestionis.Formularios
             this.Close();
         }
 
+        #region Métodos de Implementación
         private void CargarCBOCategorias()
         {
             cboCategorias.DataSource = CategoriaGasto.DevuelveNombresCategorias();
         }
-        
+        #endregion
+
+        #region Idiomas
         private void AplicarIdioma()
         {
             lblCategoria.Text = Resources.Idiomas.StringRecursosModNotif.lblCategoria;
@@ -86,5 +101,6 @@ namespace Gestionis.Formularios
             lblTitulo.Text = Resources.Idiomas.StringRecursosModNotif.lblTitulo;
             btnVolver.Text = Resources.Idiomas.StringRecursosModNotif.btnVolver;
         }
+        #endregion
     }
 }

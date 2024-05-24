@@ -1,15 +1,5 @@
 ﻿using Gestionis.Clases;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Gestionis
 {
@@ -28,7 +18,18 @@ namespace Gestionis
             if (Sesion.Instance.Espanyol) Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
             else Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
             AplicarIdioma();
-            CargaCategoriasCBO();            
+            try
+            {
+                CargaCategoriasCBO();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         #region Validaciones
@@ -78,27 +79,48 @@ namespace Gestionis
                 return;
             }
 
-            Gasto g1 = new Gasto(
-                this.numCuenta,
-                txtNombreGasto.Text,
-                (float)nudCantidad.Value,
-                CategoriaGasto.DevuelveIDCategoria(cboCategoria.Text),
-                rdbFijo.Checked ? "Fijo" : "Variable",
-                txtComentarios.Text == String.Empty ? null : txtComentarios.Text
-            );
+            try
+            {
+                Gasto g1 = new Gasto(
+                    this.numCuenta,
+                    txtNombreGasto.Text,
+                    (float)nudCantidad.Value,
+                    CategoriaGasto.DevuelveIDCategoria(cboCategoria.Text),
+                    rdbFijo.Checked ? "Fijo" : "Variable",
+                    txtComentarios.Text == String.Empty ? null : txtComentarios.Text
+                );
 
-            g1.Add();
+                g1.Add();
 
-            SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario, 15);
+                SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario, 15);
 
-            Usuario.BuscaUsuario(Sesion.Instance.ApodoUsuario).GetCuenta().AddNotificacion(g1.GetNumericCategoria());
-
-            this.Close();
+                Usuario.BuscaUsuario(Sesion.Instance.ApodoUsuario).GetCuenta().AddNotificacion(g1.GetNumericCategoria());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+                this.Close();
+            }
         }
 
         private void frmAnyadirGasto_Activated(object sender, EventArgs e)
         {
-            CargaCategoriasCBO();
+            try
+            {
+                CargaCategoriasCBO();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         private void AplicarIdioma()

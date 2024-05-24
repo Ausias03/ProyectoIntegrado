@@ -31,35 +31,40 @@ namespace Gestionis.Formularios
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            if (txtTitulo.Text != string.Empty)
+            try
             {
-                if (Deuda.ExisteDeuda(txtTitulo.Text))
+                if (txtTitulo.Text != string.Empty)
                 {
-                    Deuda deuda = new Deuda();
-                    Deuda.GetDeuda(txtTitulo.Text, deuda);
-                    txtTitulo.ReadOnly = true;
+                    if (Deuda.ExisteDeuda(txtTitulo.Text))
+                    {
+                        Deuda deuda = new Deuda();
+                        Deuda.GetDeuda(txtTitulo.Text, deuda);
+                        txtTitulo.ReadOnly = true;
 
-                    lblCantidadAdeudadaValor.Text = deuda.Cantidad.ToString() + "€";
-                    rtbDescrip.Text = deuda.Descripcion;
-                    if (deuda.Debo) lblTipoValor.Text = "Debo";
-                    else lblTipoValor.Text = "Me deben";
-                    lblFechaDeudaValor.Text = deuda.FechaCreacion.ToShortDateString();
-                    lblFechaVencimientoValor.Text = deuda.FechaVencimiento.ToShortDateString();
+                        lblCantidadAdeudadaValor.Text = deuda.Cantidad.ToString() + "€";
+                        rtbDescrip.Text = deuda.Descripcion;
+                        if (deuda.Debo) lblTipoValor.Text = "Debo";
+                        else lblTipoValor.Text = "Me deben";
+                        lblFechaDeudaValor.Text = deuda.FechaCreacion.ToShortDateString();
+                        lblFechaVencimientoValor.Text = deuda.FechaVencimiento.ToShortDateString();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"No existe una deuda llamada: {txtTitulo.Text}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        ResetearFrm();
+                    }
                 }
                 else
                 {
-                    MessageBox.Show($"No existe una deuda llamada: {txtTitulo.Text}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    ResetearFrm();
+                    MessageBox.Show("Introduce el título de la deuda primero!", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
-            else
-            {
-                MessageBox.Show("Introduce el título de la deuda primero!", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+            catch (Exception ex) { MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error); }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            try { 
             int res = Deuda.EliminarDeuda(txtTitulo.Text);
 
             if (res > 0)
@@ -71,6 +76,8 @@ namespace Gestionis.Formularios
             {
                 MessageBox.Show("Error al eliminar la deuda", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
