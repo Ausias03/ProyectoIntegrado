@@ -36,10 +36,10 @@ namespace Gestionis
             dgvGastosFijos = new DataGridView();
             label1 = new Label();
             lblGastosFijos = new Label();
-            label2 = new Label();
+            lblGastosVariables = new Label();
             label3 = new Label();
             dgvGastosVariables = new DataGridView();
-            label4 = new Label();
+            lblTotalFijos = new Label();
             lblTotalValorFijo = new Label();
             lblPorcentajeFijo = new Label();
             pbDot = new PictureBox();
@@ -49,7 +49,7 @@ namespace Gestionis
             lblPorcentajeVariable = new Label();
             lblTotalValorVariables = new Label();
             lblTotalGastosVariable = new Label();
-            label5 = new Label();
+            lblDineroRestante = new Label();
             label6 = new Label();
             lblDineroRest = new Label();
             pbArrow5 = new PictureBox();
@@ -71,25 +71,25 @@ namespace Gestionis
             pnlGastoFijo = new RoundGroupBox();
             pnlGastoVariable = new RoundGroupBox();
             pnl503020 = new RoundGroupBox();
-            label10 = new Label();
-            label11 = new Label();
+            lbl20PorCiento = new Label();
+            lbl50PorCiento = new Label();
             lblAhorroPorDin = new Label();
-            label18 = new Label();
+            lbl30PorCiento = new Label();
             lblGPPorDin = new Label();
             pbArrow9 = new PictureBox();
             pbArrow8 = new PictureBox();
             pbArrow10 = new PictureBox();
             pbArrow7 = new PictureBox();
-            label20 = new Label();
+            lblGastadoMes = new Label();
             pbArrow11 = new PictureBox();
-            label21 = new Label();
+            lblGastadoMes2 = new Label();
             lblGPresValor = new Label();
             lblNecBasicasValor = new Label();
             lblAhorroDinValor = new Label();
             lblNecPresValor = new Label();
             lblGMNecPorDin = new Label();
             lblGMNecValor = new Label();
-            label28 = new Label();
+            lblDineroAhorrar = new Label();
             lblAhoValor = new Label();
             pbArrow6 = new PictureBox();
             label30 = new Label();
@@ -186,16 +186,16 @@ namespace Gestionis
             lblGastosFijos.TabIndex = 26;
             lblGastosFijos.Text = "Gastos fijos:";
             // 
-            // label2
+            // lblGastosVariables
             // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Segoe UI", 14.25F);
-            label2.Location = new Point(21, 1);
-            label2.Name = "label2";
-            label2.Size = new Size(189, 32);
-            label2.TabIndex = 28;
-            label2.Text = "Gastos variables:";
+            lblGastosVariables.AutoSize = true;
+            lblGastosVariables.BackColor = Color.Transparent;
+            lblGastosVariables.Font = new Font("Segoe UI", 14.25F);
+            lblGastosVariables.Location = new Point(21, 1);
+            lblGastosVariables.Name = "lblGastosVariables";
+            lblGastosVariables.Size = new Size(189, 32);
+            lblGastosVariables.TabIndex = 28;
+            lblGastosVariables.Text = "Gastos variables:";
             // 
             // label3
             // 
@@ -223,16 +223,16 @@ namespace Gestionis
             dgvGastosVariables.Size = new Size(538, 188);
             dgvGastosVariables.TabIndex = 29;
             // 
-            // label4
+            // lblTotalFijos
             // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.Transparent;
-            label4.Font = new Font("Segoe UI", 14.25F);
-            label4.Location = new Point(150, 248);
-            label4.Name = "label4";
-            label4.Size = new Size(65, 32);
-            label4.TabIndex = 30;
-            label4.Text = "Total";
+            lblTotalFijos.AutoSize = true;
+            lblTotalFijos.BackColor = Color.Transparent;
+            lblTotalFijos.Font = new Font("Segoe UI", 14.25F);
+            lblTotalFijos.Location = new Point(150, 248);
+            lblTotalFijos.Name = "lblTotalFijos";
+            lblTotalFijos.Size = new Size(65, 32);
+            lblTotalFijos.TabIndex = 30;
+            lblTotalFijos.Text = "Total";
             // 
             // lblTotalValorFijo
             // 
@@ -325,16 +325,16 @@ namespace Gestionis
             lblTotalGastosVariable.TabIndex = 35;
             lblTotalGastosVariable.Text = "Total";
             // 
-            // label5
+            // lblDineroRestante
             // 
-            label5.AutoSize = true;
-            label5.BackColor = Color.Transparent;
-            label5.Font = new Font("Segoe UI", 14.25F);
-            label5.Location = new Point(371, 964);
-            label5.Name = "label5";
-            label5.Size = new Size(184, 32);
-            label5.TabIndex = 43;
-            label5.Text = "Dinero restante:";
+            lblDineroRestante.AutoSize = true;
+            lblDineroRestante.BackColor = Color.Transparent;
+            lblDineroRestante.Font = new Font("Segoe UI", 14.25F);
+            lblDineroRestante.Location = new Point(371, 964);
+            lblDineroRestante.Name = "lblDineroRestante";
+            lblDineroRestante.Size = new Size(184, 32);
+            lblDineroRestante.TabIndex = 43;
+            lblDineroRestante.Text = "Dinero restante:";
             // 
             // label6
             // 
@@ -510,7 +510,7 @@ namespace Gestionis
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1818, 44);
+            barraSecundaria1.Size = new Size(1481, 44);
             barraSecundaria1.TabIndex = 86;
             // 
             // lblLineaFijos
@@ -545,7 +545,7 @@ namespace Gestionis
             pnlGastoFijo.Controls.Add(lblGastosFijos);
             pnlGastoFijo.Controls.Add(label1);
             pnlGastoFijo.Controls.Add(pbDot);
-            pnlGastoFijo.Controls.Add(label4);
+            pnlGastoFijo.Controls.Add(lblTotalFijos);
             pnlGastoFijo.Controls.Add(lblLineaFijos);
             pnlGastoFijo.Location = new Point(339, 259);
             pnlGastoFijo.Margin = new Padding(3, 4, 3, 4);
@@ -558,7 +558,7 @@ namespace Gestionis
             // 
             // pnlGastoVariable
             // 
-            pnlGastoVariable.Controls.Add(label2);
+            pnlGastoVariable.Controls.Add(lblGastosVariables);
             pnlGastoVariable.Controls.Add(label3);
             pnlGastoVariable.Controls.Add(pbDot2);
             pnlGastoVariable.Controls.Add(lblTotalGastosVariable);
@@ -578,25 +578,25 @@ namespace Gestionis
             // pnl503020
             // 
             pnl503020.BackColor = Color.FromArgb(205, 213, 221);
-            pnl503020.Controls.Add(label10);
-            pnl503020.Controls.Add(label11);
+            pnl503020.Controls.Add(lbl20PorCiento);
+            pnl503020.Controls.Add(lbl50PorCiento);
             pnl503020.Controls.Add(lblAhorroPorDin);
-            pnl503020.Controls.Add(label18);
+            pnl503020.Controls.Add(lbl30PorCiento);
             pnl503020.Controls.Add(lblGPPorDin);
             pnl503020.Controls.Add(pbArrow9);
             pnl503020.Controls.Add(pbArrow8);
             pnl503020.Controls.Add(pbArrow10);
             pnl503020.Controls.Add(pbArrow7);
-            pnl503020.Controls.Add(label20);
+            pnl503020.Controls.Add(lblGastadoMes);
             pnl503020.Controls.Add(pbArrow11);
-            pnl503020.Controls.Add(label21);
+            pnl503020.Controls.Add(lblGastadoMes2);
             pnl503020.Controls.Add(lblGPresValor);
             pnl503020.Controls.Add(lblNecBasicasValor);
             pnl503020.Controls.Add(lblAhorroDinValor);
             pnl503020.Controls.Add(lblNecPresValor);
             pnl503020.Controls.Add(lblGMNecPorDin);
             pnl503020.Controls.Add(lblGMNecValor);
-            pnl503020.Controls.Add(label28);
+            pnl503020.Controls.Add(lblDineroAhorrar);
             pnl503020.Controls.Add(lblAhoValor);
             pnl503020.Controls.Add(pbArrow6);
             pnl503020.Controls.Add(label30);
@@ -611,27 +611,27 @@ namespace Gestionis
             pnl503020.TabStop = false;
             pnl503020.Text = "roundGroupBox3";
             // 
-            // label10
+            // lbl20PorCiento
             // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 14.25F);
-            label10.ForeColor = Color.Purple;
-            label10.Location = new Point(26, 348);
-            label10.Name = "label10";
-            label10.Size = new Size(221, 32);
-            label10.TabIndex = 82;
-            label10.Text = "20% para el ahorro:";
+            lbl20PorCiento.AutoSize = true;
+            lbl20PorCiento.Font = new Font("Segoe UI", 14.25F);
+            lbl20PorCiento.ForeColor = Color.Purple;
+            lbl20PorCiento.Location = new Point(26, 348);
+            lbl20PorCiento.Name = "lbl20PorCiento";
+            lbl20PorCiento.Size = new Size(221, 32);
+            lbl20PorCiento.TabIndex = 82;
+            lbl20PorCiento.Text = "20% para el ahorro:";
             // 
-            // label11
+            // lbl50PorCiento
             // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 14.25F);
-            label11.ForeColor = Color.Purple;
-            label11.Location = new Point(26, 37);
-            label11.Name = "label11";
-            label11.Size = new Size(344, 32);
-            label11.TabIndex = 80;
-            label11.Text = "50% para necesidades básicas: ";
+            lbl50PorCiento.AutoSize = true;
+            lbl50PorCiento.Font = new Font("Segoe UI", 14.25F);
+            lbl50PorCiento.ForeColor = Color.Purple;
+            lbl50PorCiento.Location = new Point(26, 37);
+            lbl50PorCiento.Name = "lbl50PorCiento";
+            lbl50PorCiento.Size = new Size(344, 32);
+            lbl50PorCiento.TabIndex = 80;
+            lbl50PorCiento.Text = "50% para necesidades básicas: ";
             // 
             // lblAhorroPorDin
             // 
@@ -643,16 +643,16 @@ namespace Gestionis
             lblAhorroPorDin.TabIndex = 103;
             lblAhorroPorDin.Text = "0 %";
             // 
-            // label18
+            // lbl30PorCiento
             // 
-            label18.AutoSize = true;
-            label18.Font = new Font("Segoe UI", 14.25F);
-            label18.ForeColor = Color.Purple;
-            label18.Location = new Point(31, 196);
-            label18.Name = "label18";
-            label18.Size = new Size(339, 32);
-            label18.TabIndex = 81;
-            label18.Text = "30% para gastos prescindibles:";
+            lbl30PorCiento.AutoSize = true;
+            lbl30PorCiento.Font = new Font("Segoe UI", 14.25F);
+            lbl30PorCiento.ForeColor = Color.Purple;
+            lbl30PorCiento.Location = new Point(31, 196);
+            lbl30PorCiento.Name = "lbl30PorCiento";
+            lbl30PorCiento.Size = new Size(339, 32);
+            lbl30PorCiento.TabIndex = 81;
+            lbl30PorCiento.Text = "30% para gastos prescindibles:";
             // 
             // lblGPPorDin
             // 
@@ -696,15 +696,15 @@ namespace Gestionis
             pbArrow7.TabIndex = 99;
             pbArrow7.TabStop = false;
             // 
-            // label20
+            // lblGastadoMes
             // 
-            label20.AutoSize = true;
-            label20.Font = new Font("Segoe UI", 14.25F);
-            label20.Location = new Point(90, 75);
-            label20.Name = "label20";
-            label20.Size = new Size(207, 32);
-            label20.TabIndex = 86;
-            label20.Text = "Gastado este mes:";
+            lblGastadoMes.AutoSize = true;
+            lblGastadoMes.Font = new Font("Segoe UI", 14.25F);
+            lblGastadoMes.Location = new Point(90, 75);
+            lblGastadoMes.Name = "lblGastadoMes";
+            lblGastadoMes.Size = new Size(207, 32);
+            lblGastadoMes.TabIndex = 86;
+            lblGastadoMes.Text = "Gastado este mes:";
             // 
             // pbArrow11
             // 
@@ -714,15 +714,15 @@ namespace Gestionis
             pbArrow11.TabIndex = 85;
             pbArrow11.TabStop = false;
             // 
-            // label21
+            // lblGastadoMes2
             // 
-            label21.AutoSize = true;
-            label21.Font = new Font("Segoe UI", 14.25F);
-            label21.Location = new Point(95, 235);
-            label21.Name = "label21";
-            label21.Size = new Size(207, 32);
-            label21.TabIndex = 87;
-            label21.Text = "Gastado este mes:";
+            lblGastadoMes2.AutoSize = true;
+            lblGastadoMes2.Font = new Font("Segoe UI", 14.25F);
+            lblGastadoMes2.Location = new Point(95, 235);
+            lblGastadoMes2.Name = "lblGastadoMes2";
+            lblGastadoMes2.Size = new Size(207, 32);
+            lblGastadoMes2.TabIndex = 87;
+            lblGastadoMes2.Text = "Gastado este mes:";
             // 
             // lblGPresValor
             // 
@@ -784,15 +784,15 @@ namespace Gestionis
             lblGMNecValor.TabIndex = 95;
             lblGMNecValor.Text = "0 €";
             // 
-            // label28
+            // lblDineroAhorrar
             // 
-            label28.AutoSize = true;
-            label28.Font = new Font("Segoe UI", 14.25F);
-            label28.Location = new Point(90, 388);
-            label28.Name = "label28";
-            label28.Size = new Size(447, 32);
-            label28.TabIndex = 88;
-            label28.Text = "Dinero disponible para ahorrar este mes:";
+            lblDineroAhorrar.AutoSize = true;
+            lblDineroAhorrar.Font = new Font("Segoe UI", 14.25F);
+            lblDineroAhorrar.Location = new Point(90, 388);
+            lblDineroAhorrar.Name = "lblDineroAhorrar";
+            lblDineroAhorrar.Size = new Size(447, 32);
+            lblDineroAhorrar.TabIndex = 88;
+            lblDineroAhorrar.Text = "Dinero disponible para ahorrar este mes:";
             // 
             // lblAhoValor
             // 
@@ -883,8 +883,8 @@ namespace Gestionis
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(233, 236, 239);
-            ClientSize = new Size(1818, 1101);
-            Controls.Add(barraLateral3);
+            ClientSize = new Size(1481, 1101);
+            Controls.Add(barraLateral2);
             Controls.Add(pbArrow5);
             Controls.Add(lblInfo2);
             Controls.Add(lblPorcentajeRest);
@@ -894,7 +894,7 @@ namespace Gestionis
             Controls.Add(barraSecundaria1);
             Controls.Add(lblPorcentajes);
             Controls.Add(label16);
-            Controls.Add(label5);
+            Controls.Add(lblDineroRestante);
             Controls.Add(lblKakebo);
             Controls.Add(btnSalir);
             Controls.Add(pnlContenedorOpc);
@@ -928,7 +928,7 @@ namespace Gestionis
             Controls.SetChildIndex(pnlContenedorOpc, 0);
             Controls.SetChildIndex(btnSalir, 0);
             Controls.SetChildIndex(lblKakebo, 0);
-            Controls.SetChildIndex(label5, 0);
+            Controls.SetChildIndex(lblDineroRestante, 0);
             Controls.SetChildIndex(label16, 0);
             Controls.SetChildIndex(lblPorcentajes, 0);
             Controls.SetChildIndex(barraSecundaria1, 0);
@@ -970,10 +970,10 @@ namespace Gestionis
         private DataGridView dgvGastosFijos;
         private Label label1;
         private Label lblGastosFijos;
-        private Label label2;
+        private Label lblGastosVariables;
         private Label label3;
         private DataGridView dgvGastosVariables;
-        private Label label4;
+        private Label lblTotalFijos;
         private Label lblTotalValorFijo;
         private Label lblPorcentajeFijo;
         private PictureBox pbDot;
@@ -983,7 +983,7 @@ namespace Gestionis
         private Label lblPorcentajeVariable;
         private Label lblTotalValorVariables;
         private Label lblTotalGastosVariable;
-        private Label label5;
+        private Label lblDineroRestante;
         private Label label6;
         private Label lblDineroRest;
         private PictureBox pbArrow5;
@@ -1006,25 +1006,25 @@ namespace Gestionis
         private RoundGroupBox pnlGastoFijo;
         private RoundGroupBox pnlGastoVariable;
         private RoundGroupBox pnl503020;
-        private Label label10;
-        private Label label11;
+        private Label lbl20PorCiento;
+        private Label lbl50PorCiento;
         private Label lblAhorroPorDin;
-        private Label label18;
+        private Label lbl30PorCiento;
         private Label lblGPPorDin;
         private PictureBox pbArrow9;
         private PictureBox pbArrow8;
         private PictureBox pbArrow10;
         private PictureBox pbArrow7;
-        private Label label20;
+        private Label lblGastadoMes;
         private PictureBox pbArrow11;
-        private Label label21;
+        private Label lblGastadoMes2;
         private Label lblGPresValor;
         private Label lblNecBasicasValor;
         private Label lblAhorroDinValor;
         private Label lblNecPresValor;
         private Label lblGMNecPorDin;
         private Label lblGMNecValor;
-        private Label label28;
+        private Label lblDineroAhorrar;
         private Label lblAhoValor;
         private PictureBox pbArrow6;
         private Label label30;

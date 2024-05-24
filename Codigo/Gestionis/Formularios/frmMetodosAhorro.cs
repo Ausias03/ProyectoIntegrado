@@ -12,6 +12,7 @@ using Gestionis;
 using MySqlX.XDevAPI;
 using Gestionis.Herramientas;
 using System.Windows.Forms.VisualStyles;
+using System.Globalization;
 
 namespace Gestionis
 {
@@ -27,6 +28,7 @@ namespace Gestionis
         public frmMetodosAhorro()
         {
             InitializeComponent();
+            ModificarBotones();
             usuario = Usuario.BuscaUsuario(Sesion.Instance.ApodoUsuario);
             cuentaUsuario = usuario.GetCuenta();
         }
@@ -72,6 +74,10 @@ namespace Gestionis
 
             lblIngresoMesCont.Text = cuentaUsuario.TotalIngresos().ToString("0.00") + " €";
 
+            if (Sesion.Instance.Espanyol) Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
+            else Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+            AplicarIdioma();
+
             barraSecundaria1.Load();
             barraLateral3.Load();
 
@@ -105,6 +111,17 @@ namespace Gestionis
             {
                 ConexionDB.CerrarConexion();
             }
+        }
+
+        private void ModificarBotones()
+        {
+            barraSecundaria1.BtnLanguage.Click += BtnLanguage_Click;
+        }
+
+        private void BtnLanguage_Click(object sender, EventArgs e)
+        {
+            AplicarIdioma();
+            barraLateral2.AplicarIdiomas();
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -143,6 +160,25 @@ namespace Gestionis
             
             lblAhorroPorDin.Text = (Gasto.PorcentajeRestante(ingresoMensual) ?? 0).ToString("0") + " %";
 
+        }
+
+        private void AplicarIdioma()
+        {
+            lblIngresosMes.Text = Resources.Idiomas.StringRecursosAhorros.lblIngresosMes;
+            lblGastosFijos.Text = Resources.Idiomas.StringRecursosAhorros.lblGastosFijos;
+            lblGastosVariables.Text = Resources.Idiomas.StringRecursosAhorros.lblGastosVariables;
+            lblDineroRestante.Text = Resources.Idiomas.StringRecursosAhorros.lblDineroRestante;
+            btnPersonalizado.Text = Resources.Idiomas.StringRecursosAhorros.btnPersonalizado;
+            btnSalir.Text = Resources.Idiomas.StringRecursosAhorros.btnSalir;
+            lblPorcentajes.Text = Resources.Idiomas.StringRecursosAhorros.lblPorcentajes;
+            lbl20PorCiento.Text = Resources.Idiomas.StringRecursosAhorros.lbl20PorCiento;
+            lbl50PorCiento.Text = Resources.Idiomas.StringRecursosAhorros.lbl50PorCiento;
+            lbl30PorCiento.Text = Resources.Idiomas.StringRecursosAhorros.lbl30PorCiento;
+            lblGastadoMes.Text = Resources.Idiomas.StringRecursosAhorros.lblGastadoMes;
+            lblGastadoMes2.Text = Resources.Idiomas.StringRecursosAhorros.lblGastadoMes2;
+            lblDineroAhorrar.Text = Resources.Idiomas.StringRecursosAhorros.lblDineroAhorrar;
+            lblInfo.Text = Resources.Idiomas.StringRecursosAhorros.lblInfo;
+            lblInfo2.Text = Resources.Idiomas.StringRecursosAhorros.lblInfo2;
         }
     }
 }

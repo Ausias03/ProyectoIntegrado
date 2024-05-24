@@ -55,7 +55,7 @@ namespace Gestionis
             Process process = new Process();
             process.StartInfo.UseShellExecute = true;
             process.StartInfo.FileName = "firefox";
-            process.StartInfo.Arguments = "www.wikipedia.org";
+            process.StartInfo.Arguments = "https://gestioniss.000webhostapp.com/Preguntas.html";
             process.Start();
         }
 

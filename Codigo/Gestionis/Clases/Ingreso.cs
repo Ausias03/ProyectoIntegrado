@@ -93,7 +93,7 @@ namespace Gestionis.Clases
         /// <returns>Devuelve una lista de campos para poder filtrar los ingresos de la BD</returns>
         public static string[] DevuelveFiltros()
         {
-            string[] lista = new string[] { "Nombre", "Cantidad", "Categoria", "Tipo" };
+            string[] lista = ["Nombre", "Cantidad", "Categoria", "Tipo"];
             return lista;
         }
     }

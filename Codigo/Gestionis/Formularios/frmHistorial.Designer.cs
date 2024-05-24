@@ -174,7 +174,7 @@
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1818, 49);
+            barraSecundaria1.Size = new Size(1759, 49);
             barraSecundaria1.TabIndex = 26;
             // 
             // barraLateral1
@@ -239,7 +239,7 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1818, 1018);
+            ClientSize = new Size(1759, 1018);
             Controls.Add(btnSalir);
             Controls.Add(lblGastos);
             Controls.Add(dgvGastos);

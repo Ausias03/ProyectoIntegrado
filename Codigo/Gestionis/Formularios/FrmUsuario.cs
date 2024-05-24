@@ -6,6 +6,10 @@ namespace Gestionis
 {
     public partial class frmUsuario : FrmBarraPrincipal
     {
+        private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.Timer tooltipTimer;
+        private Queue<KeyValuePair<Control, string>> tooltipQueue;
+        private int tooltipDuration = 2000;
         private Usuario usuario;
         string apodo = Sesion.Instance.ApodoUsuario;
         public frmUsuario()
@@ -14,15 +18,17 @@ namespace Gestionis
             {
                 InitializeComponent();
                 ModificarBotones();
+
+                toolTip = new System.Windows.Forms.ToolTip();
+                tooltipQueue = new Queue<KeyValuePair<Control, string>>();
+                tooltipTimer = new System.Windows.Forms.Timer();
+                tooltipTimer.Interval = tooltipDuration;
+                tooltipTimer.Tick += TooltipTimer_Tick;
                 usuario = Usuario.BuscaUsuario(Sesion.Instance.ApodoUsuario);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                ConexionDB.CerrarConexion();
             }
         }
 
@@ -53,21 +59,108 @@ namespace Gestionis
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally
-            {
-                ConexionDB.CerrarConexion();
-            }
         }
 
         private void ModificarBotones()
         {
             barraSecundaria1.BtnLanguage.Click += BtnLanguage_Click;
+            barraSecundaria1.BtnAyuda.Click += BtnAyuda_Click;
         }
 
         private void BtnLanguage_Click(object sender, EventArgs e)
         {
             AplicarIdioma();
             barraLateral2.AplicarIdiomas();
+        }
+
+        #region ToolTips
+        private void BtnAyuda_Click(object sender, EventArgs e)
+        {
+            if (Sesion.Instance.Espanyol)
+            {
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnCambiarFoto, "Haz clic aquí para cambiar tu foto de perfil."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(prbExperiencia, "Aquí se muestra tu progreso de experiencia."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnCambiarNom, "Haz clic aquí para cambiar tu nombre."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnCambiarApellidos, "Haz clic aquí para cambiar tus apellidos."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnCambiarApodo, "Haz clic aquí para cambiar tu apodo."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnCambiarCorreo, "Haz clic aquí para cambiar tu correo electrónico."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnCambiarDir, "Haz clic aquí para cambiar tu dirección."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnCambiarTel, "Haz clic aquí para cambiar tu número de teléfono."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnCerrarSesion, "Haz clic aquí para cerrar sesión."));
+            }
+            else
+            {
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnCambiarFoto, "Click here to change your profile picture."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(prbExperiencia, "Your experience progress is displayed here."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnCambiarNom, "Click here to change your name."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnCambiarApellidos, "Click here to change your last name."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnCambiarApodo, "Click here to change your nickname."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnCambiarCorreo, "Click here to change your email."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnCambiarDir, "Click here to change your address."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnCambiarTel, "Click here to change your phone number."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnCerrarSesion, "Click here to log out."));
+            }
+
+            SiguienteTooltip();
+        }
+
+        private void SiguienteTooltip()
+        {
+            if (tooltipQueue.Count > 0)
+            {
+                var tooltipItem = tooltipQueue.Dequeue();
+                ShowTooltip(tooltipItem.Key, tooltipItem.Value);
+                tooltipTimer.Start();
+            }
+            else
+            {
+                tooltipTimer.Stop();
+            }
+        }
+
+        private void TooltipTimer_Tick(object sender, EventArgs e)
+        {
+            toolTip.Hide(this);
+            SiguienteTooltip();
+        }
+
+        private void ShowTooltip(Control control, string message)
+        {
+            toolTip.SetToolTip(control, message);
+            toolTip.Show(message, control, control.Width / 2, control.Height / 2);
+        }
+        #endregion
+
+        private void SetExpNivel()
+        {
+            string apodo = Sesion.Instance.ApodoUsuario;
+            var (experienciaActual, nivelActual, xpParaSiguienteNivel, xpParaNivelActual) = SistemaNiveles.GetNivelInfo(apodo);
+
+            int progress = SistemaNiveles.GetExpProgress(apodo);
+
+            prbExperiencia.Maximum = xpParaSiguienteNivel - xpParaNivelActual;
+
+            prbExperiencia.Value = progress;
+
+            lblNivel.Text = experienciaActual == 0 ? "0" : nivelActual.ToString();
+
+            ActualizaMarco(nivelActual);
+        }
+
+        private void ActualizaMarco(int nivel)
+        {
+            if (nivel < 3)
+            {
+                pctMarco.Image = Properties.Resources.Marco1;
+            }
+            else if (nivel < 5)
+            {
+                pctMarco.Image = Properties.Resources.Marco2;
+            }
+            else
+            {
+                pctMarco.Image = Properties.Resources.Marco3;
+            }
         }
 
         #region Validación de datos
@@ -164,34 +257,23 @@ namespace Gestionis
 
         private void btnCambiarFoto_Click(object sender, EventArgs e)
         {
-            try
-            {
-                OpenFileDialog ofdSeleccionar = new OpenFileDialog();
-                ofdSeleccionar.Filter = "Imagenes|*.jpg; *.png";
-                ofdSeleccionar.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-                ofdSeleccionar.Title = "Seleccionar imagen";
+            OpenFileDialog ofdSeleccionar = new OpenFileDialog();
+            ofdSeleccionar.Filter = "Imagenes|*.jpg; *.png";
+            ofdSeleccionar.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            ofdSeleccionar.Title = "Seleccionar imagen";
 
-                if (ofdSeleccionar.ShowDialog() == DialogResult.OK)
+            if (ofdSeleccionar.ShowDialog() == DialogResult.OK)
+            {
+                Image foto = Image.FromFile(ofdSeleccionar.FileName);
+                pctFoto.Image = foto;
+                using (MemoryStream ms = new MemoryStream())
                 {
-                    Image foto = Image.FromFile(ofdSeleccionar.FileName);
-                    pctFoto.Image = foto;
-                    using (MemoryStream ms = new MemoryStream())
-                    {
-                        foto.Save(ms, ImageFormat.Jpeg);
-                        byte[] fotoArrayBytes = ms.ToArray();
-                        Usuario.CambiarCampo("foto", fotoArrayBytes);
-                        SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario, 15);
-                        SetExpNivel();
-                    }
+                    foto.Save(ms, ImageFormat.Jpeg);
+                    byte[] fotoArrayBytes = ms.ToArray();
+                    Usuario.CambiarCampo("foto", fotoArrayBytes);
+                    SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario, 15);
+                    SetExpNivel();
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                ConexionDB.CerrarConexion();
             }
         }
         #endregion
@@ -201,73 +283,40 @@ namespace Gestionis
         {
             if (ValidarNombre())
             {
-                try
-                {
-                    usuario.Nombre = txtNombre.Text;
-                    txtNombre.ReadOnly = true;
-                    btnConfirmarNom.Hide();
-                    btnCambiarNom.Show();
-                    Usuario.CambiarCampo("nombre", txtNombre.Text);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    ConexionDB.CerrarConexion();
-                }
+                usuario.Nombre = txtNombre.Text;
+                txtNombre.ReadOnly = true;
+                btnConfirmarNom.Hide();
+                btnCambiarNom.Show();
+                Usuario.CambiarCampo("nombre", txtNombre.Text);
             }
         }
 
         private void btnConfirmarApellidos_Click(object sender, EventArgs e)
         {
-            try
-            {
-                usuario.Apellidos = txtApellidos.Text;
-                txtApellidos.ReadOnly = true;
-                btnConfirmarApellidos.Hide();
-                btnCambiarApellidos.Show();
-                Usuario.CambiarCampo("apellidos", txtApellidos.Text);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                ConexionDB.CerrarConexion();
-            }
+            usuario.Apellidos = txtApellidos.Text;
+            txtApellidos.ReadOnly = true;
+            btnConfirmarApellidos.Hide();
+            btnCambiarApellidos.Show();
+            Usuario.CambiarCampo("apellidos", txtApellidos.Text);
         }
 
         private void btnConfirmarApodo_Click(object sender, EventArgs e)
         {
             if (ValidarApodo())
             {
-                try
+                if (Usuario.Existe(txtApodo.Text))
                 {
-                    if (Usuario.Existe(txtApodo.Text))
-                    {
-                        errorProvider1.SetError(txtApodo, "El apodo introducido ya esta en uso.");
-                    }
-                    else
-                    {
-                        errorProvider1.Clear();
-                        usuario.Apodo = txtApodo.Text;
-                        txtApodo.ReadOnly = true;
-                        btnConfirmarApodo.Hide();
-                        btnCambiarApodo.Show();
-                        Usuario.CambiarCampo("apodo", txtApodo.Text);
-                        Sesion.Instance.ApodoUsuario = txtApodo.Text;
-                    }
+                    errorProvider1.SetError(txtApodo, "El apodo introducido ya esta en uso.");
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    ConexionDB.CerrarConexion();
+                    errorProvider1.Clear();
+                    usuario.Apodo = txtApodo.Text;
+                    txtApodo.ReadOnly = true;
+                    btnConfirmarApodo.Hide();
+                    btnCambiarApodo.Show();
+                    Usuario.CambiarCampo("apodo", txtApodo.Text);
+                    Sesion.Instance.ApodoUsuario = txtApodo.Text;
                 }
             }
         }
@@ -276,66 +325,37 @@ namespace Gestionis
         {
             if (ValidarCorreo())
             {
-                try
+                if (Usuario.CorreoExiste(txtCorreo.Text))
                 {
-                    if (Usuario.CorreoExiste(txtCorreo.Text))
-                    {
-                        errorProvider1.SetError(txtCorreo, "El correo introducido ya esta en uso.");
-                    }
-                    else
-                    {
-                        usuario.Correo = txtCorreo.Text;
-                        txtCorreo.ReadOnly = true;
-                        btnConfirmarCorreo.Hide();
-                        btnCambiarCorreo.Show();
-                        Usuario.CambiarCampo("correo", txtCorreo.Text);
-                    }
+                    errorProvider1.SetError(txtCorreo, "El correo introducido ya esta en uso.");
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    usuario.Correo = txtCorreo.Text;
+                    txtCorreo.ReadOnly = true;
+                    btnConfirmarCorreo.Hide();
+                    btnCambiarCorreo.Show();
+                    Usuario.CambiarCampo("correo", txtCorreo.Text);
                 }
             }
         }
 
         private void btnConfirmarDir_Click(object sender, EventArgs e)
         {
-            try
-            {
-                usuario.Direccion = txtDireccion.Text;
-                txtDireccion.ReadOnly = true;
-                btnConfirmarDir.Hide();
-                btnCambiarDir.Show();
-                Usuario.CambiarCampo("direccion", txtDireccion.Text);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                ConexionDB.CerrarConexion();
-            }
+            usuario.Direccion = txtDireccion.Text;
+            txtDireccion.ReadOnly = true;
+            btnConfirmarDir.Hide();
+            btnCambiarDir.Show();
+            Usuario.CambiarCampo("direccion", txtDireccion.Text);
         }
 
         private void btnConfirmarTel_Click(object sender, EventArgs e)
         {
-            try
-            {
-                usuario.Telefono = txtTelefono.Text;
-                txtTelefono.ReadOnly = true;
-                btnConfirmarTel.Hide();
-                btnCambiarTel.Show();
-                Usuario.CambiarCampo("telefono", txtTelefono.Text);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                ConexionDB.CerrarConexion();
-            }
+            usuario.Telefono = txtTelefono.Text;
+            txtTelefono.ReadOnly = true;
+            btnConfirmarTel.Hide();
+            btnCambiarTel.Show();
+            Usuario.CambiarCampo("telefono", txtTelefono.Text);
         }
         #endregion
 
@@ -347,40 +367,6 @@ namespace Gestionis
             frmInicio.Closed += (s, args) => this.Close();
             frmInicio.Show();
         }
-
-        #region Métodos de implementación
-        private void SetExpNivel()
-        {
-            string apodo = Sesion.Instance.ApodoUsuario;
-            var (experienciaActual, nivelActual, xpParaSiguienteNivel, xpParaNivelActual) = SistemaNiveles.GetNivelInfo(apodo);
-
-            int progress = SistemaNiveles.GetExpProgress(apodo);
-
-            prbExperiencia.Maximum = xpParaSiguienteNivel - xpParaNivelActual;
-
-            prbExperiencia.Value = progress;
-
-            lblNivel.Text = experienciaActual == 0 ? "0" : nivelActual.ToString();
-
-            ActualizaMarco(nivelActual);
-        }
-
-        private void ActualizaMarco(int nivel)
-        {
-            if (nivel < 3)
-            {
-                pctMarco.Image = Properties.Resources.Marco1;
-            }
-            else if (nivel < 5)
-            {
-                pctMarco.Image = Properties.Resources.Marco2;
-            }
-            else
-            {
-                pctMarco.Image = Properties.Resources.Marco3;
-            }
-        }
-        #endregion
 
         private void AplicarIdioma()
         {
@@ -406,7 +392,5 @@ namespace Gestionis
             lblApodo.Text = Resources.Idiomas.StringRecursosUsuario.lblApodo;
             lblNombre.Text = Resources.Idiomas.StringRecursosUsuario.lblNombre;
         }
-
-
     }
 }

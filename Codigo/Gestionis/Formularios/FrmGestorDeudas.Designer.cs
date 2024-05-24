@@ -458,11 +458,9 @@ namespace Gestionis
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.FromArgb(233, 236, 239);
             ClientSize = new Size(1818, 1100);
-<<<<<<< HEAD
-            Controls.Add(barraLateral2);
-=======
+
             Controls.Add(barraLateral1);
->>>>>>> 60fab9e7298f1186ba3864eb0b63341c53dbfb84
+
             Controls.Add(barraSecundaria);
             Controls.Add(rgbResumen);
             Controls.Add(roundGroupBox1);

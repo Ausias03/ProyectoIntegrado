@@ -24,6 +24,7 @@ namespace Gestionis
         private void ModificarBotones()
         {
             barraSecundaria1.BtnLanguage.Click += BtnLanguage_Click;
+            barraSecundaria1.BtnAyuda.Click += BtnAyuda_Click;
         }
 
         private void BtnLanguage_Click(object sender, EventArgs e)
@@ -33,6 +34,20 @@ namespace Gestionis
             barraLateral1.AplicarIdiomas();
         }
 
+        private void BtnAyuda_Click(object sender, EventArgs e)
+        {
+            if (Sesion.Instance.Espanyol)
+            {
+                MessageBox.Show("Aqui se muestran los 10 usuarios que más puntos han conseguido este mes.", "Ayuda",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Here are the top 10 users who have earned the most points this month.", "Help",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -40,24 +55,35 @@ namespace Gestionis
 
         private void CargarClasificacion()
         {
-            string consulta = "";
-            if (Sesion.Instance.Espanyol)
+            try
             {
-                consulta = "SELECT u.apodo AS Apodo, COALESCE(SUM(i.total_ingresos), 0) AS Total_Ingresos, COALESCE(SUM(d.total_deudas), 0) AS Total_Deudas, " +
-                "COALESCE(SUM(i.total_ingresos), 0) + COALESCE(SUM(d.total_deudas), 0) AS Total_Puntos FROM usuario u LEFT JOIN (SELECT c.apodoUsuario, " +
-                "SUM(i.cantidad) AS Total_Ingresos FROM cuenta c LEFT JOIN ingreso i ON c.numCuenta = i.numCuenta GROUP BY c.apodoUsuario) i ON u.apodo = i.apodoUsuario " +
-                "LEFT JOIN (SELECT c.apodoUsuario, SUM(d.cantidad) AS Total_Deudas FROM cuenta c LEFT JOIN deuda d ON c.numCuenta = d.numCuenta AND d.debo = FALSE " +
-                "GROUP BY  c.apodoUsuario) d ON u.apodo = d.apodoUsuario GROUP BY u.apodo ORDER BY Total_Puntos DESC LIMIT 10;";
+                string consulta = "";
+                if (Sesion.Instance.Espanyol)
+                {
+                    consulta = "SELECT u.apodo AS Apodo, ROUND(COALESCE(SUM(i.total_ingresos), 0), 2) AS Total_Ingresos, " +
+                        "ROUND(COALESCE(SUM(d.total_deudas), 0), 2) AS Total_Deudas, ROUND(COALESCE(SUM(i.total_ingresos), 0) + " +
+                        "COALESCE(SUM(d.total_deudas), 0), 2) AS Total_Puntos FROM usuario u LEFT JOIN (SELECT c.apodoUsuario, " +
+                        "SUM(i.cantidad) AS Total_Ingresos FROM cuenta c LEFT JOIN ingreso i ON c.numCuenta = i.numCuenta " +
+                        "GROUP BY c.apodoUsuario) i ON u.apodo = i.apodoUsuario LEFT JOIN (SELECT c.apodoUsuario, SUM(d.cantidad) " +
+                        "AS Total_Deudas FROM cuenta c LEFT JOIN deuda d ON c.numCuenta = d.numCuenta AND d.debo = FALSE GROUP " +
+                        "BY c.apodoUsuario) d ON u.apodo = d.apodoUsuario GROUP BY u.apodo ORDER BY Total_Puntos DESC LIMIT 10;";
+                }
+                else
+                {
+                    consulta = "SELECT u.apodo AS Username, ROUND(COALESCE(SUM(i.total_ingresos), 0), 2) AS Total_Income, " +
+                        "ROUND(COALESCE(SUM(d.total_deudas), 0), 2) AS Total_Debt, ROUND(COALESCE(SUM(i.total_ingresos), 0) + " +
+                        "COALESCE(SUM(d.total_deudas), 0), 2) AS Total_Points FROM usuario u LEFT JOIN (SELECT c.apodoUsuario, " +
+                        "SUM(i.cantidad) AS Total_Ingresos FROM cuenta c LEFT JOIN ingreso i ON c.numCuenta = i.numCuenta " +
+                        "GROUP BY c.apodoUsuario) i ON u.apodo = i.apodoUsuario LEFT JOIN (SELECT c.apodoUsuario, SUM(d.cantidad) " +
+                        "AS Total_Deudas FROM cuenta c LEFT JOIN deuda d ON c.numCuenta = d.numCuenta AND d.debo = FALSE GROUP " +
+                        "BY c.apodoUsuario) d ON u.apodo = d.apodoUsuario GROUP BY u.apodo ORDER BY Total_Points DESC LIMIT 10;";
+                }
+                dgvTabla.DataSource = Utilidades.RellenarDatos(consulta);
             }
-            else
+            catch (Exception ex)
             {
-                consulta = "SELECT u.apodo AS Username, COALESCE(SUM(i.total_ingresos), 0) AS Total_Income, COALESCE(SUM(d.total_deudas), 0) AS Total_Debt, " +
-                "COALESCE(SUM(i.total_ingresos), 0) + COALESCE(SUM(d.total_deudas), 0) AS Total_Points FROM usuario u LEFT JOIN (SELECT c.apodoUsuario, " +
-                "SUM(i.cantidad) AS total_ingresos FROM cuenta c LEFT JOIN ingreso i ON c.numCuenta = i.numCuenta GROUP BY c.apodoUsuario) i ON u.apodo = i.apodoUsuario " +
-                "LEFT JOIN (SELECT c.apodoUsuario, SUM(d.cantidad) AS total_deudas FROM cuenta c LEFT JOIN deuda d ON c.numCuenta = d.numCuenta AND d.debo = FALSE " +
-                "GROUP BY  c.apodoUsuario) d ON u.apodo = d.apodoUsuario GROUP BY u.apodo ORDER BY Total_Points DESC LIMIT 10;";
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            dgvTabla.DataSource = Utilidades.RellenarDatos(consulta);
         }
 
         private void AplicarIdioma()
