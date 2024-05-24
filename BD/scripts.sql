@@ -97,7 +97,7 @@ debo BOOL,
 cantidad FLOAT NOT NULL,
 fechaCreacion DATE NOT NULL,
 fechaVencimiento DATE NOT NULL,
-anyadirRecordatorio BOOL NOT NULL,
+anyadirRecordatorio BOOL,
 FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta) ON DELETE CASCADE
 );
 
@@ -153,8 +153,6 @@ DECLARE new_level INT;
 SET new_level = (SELECT idNivel FROM nivel WHERE NEW.experiencia >= xpRequerido ORDER BY xpRequerido DESC LIMIT 1);
 SET NEW.nivel = new_level;
 END; //
-
-DELIMITER ;
 
 INSERT INTO categoriaIngreso (idCategoria, nombre)
 VALUES (NULL, "Inversión");
