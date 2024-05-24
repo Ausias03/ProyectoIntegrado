@@ -59,25 +59,40 @@ namespace Gestionis.Formularios
                     MessageBox.Show("Introduce el título de la deuda primero!", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error); }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            try { 
-            int res = Deuda.EliminarDeuda(txtTitulo.Text);
+            try
+            {
+                int res = Deuda.EliminarDeuda(txtTitulo.Text);
 
-            if (res > 0)
+                if (res > 0)
+                {
+                    MessageBox.Show("Deuda eliminada", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    ResetearFrm();
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar la deuda", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("Deuda eliminada", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ResetearFrm();
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
+            finally
             {
-                MessageBox.Show("Error al eliminar la deuda", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ConexionDB.CerrarConexion();
             }
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

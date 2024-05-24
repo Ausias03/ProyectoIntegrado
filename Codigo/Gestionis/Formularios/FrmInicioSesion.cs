@@ -25,7 +25,7 @@ namespace Gestionis
             if (txtContrasenya.Text == String.Empty)
             {
                 ok = false;
-                errorProvider1.SetError(txtContrasenya, "Introduce una contraseña");
+                errorProvider1.SetError(pctVerContrasenya, "Introduce una contraseña");
             }
 
             return ok;
@@ -65,14 +65,15 @@ namespace Gestionis
 
             try
             {
-                if (!Usuario.Existe(txtNombreUsuario.Text))
+                string apodoUsuario = txtNombreUsuario.Text.ToLower();
+                if (!Usuario.Existe(apodoUsuario))
                 {
                     MessageBox.Show("No existe un usuario con ese apodo / nombre", "Aviso",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                Usuario usuario = Usuario.BuscaUsuario(txtNombreUsuario.Text);
+                Usuario usuario = Usuario.BuscaUsuario(apodoUsuario);
 
                 if (!usuario.CompruebaCredenciales(txtContrasenya.Text))
                 {
@@ -81,10 +82,9 @@ namespace Gestionis
                     return;
                 }
 
-                Sesion.Instance.ApodoUsuario = txtNombreUsuario.Text;
+                Sesion.Instance.ApodoUsuario = apodoUsuario;
 
                 this.Hide();
-
                 FrmMenuPrincipal fMP = new FrmMenuPrincipal();
                 fMP.Closed += (s, args) => this.Close();
                 fMP.Show();
@@ -92,6 +92,10 @@ namespace Gestionis
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
             }
         }
 

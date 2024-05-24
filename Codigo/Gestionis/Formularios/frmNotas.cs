@@ -18,9 +18,25 @@ namespace Gestionis
 {
     public partial class frmNotas : FrmBarraPrincipal
     {
+        #region Ayuda
+        private ToolTip toolTip;
+        private System.Windows.Forms.Timer tooltipTimer;
+        private Queue<KeyValuePair<Control, string>> tooltipQueue;
+        private int tooltipDuration = 2000;
+        #endregion
+
         public frmNotas()
         {
             InitializeComponent();
+
+            #region Ayuda
+            toolTip = new ToolTip();
+            tooltipQueue = new Queue<KeyValuePair<Control, string>>();
+            tooltipTimer = new System.Windows.Forms.Timer();
+            tooltipTimer.Interval = tooltipDuration;
+            tooltipTimer.Tick += TooltipTimer_Tick;
+            #endregion
+
             ModificarBotones();
         }
 
@@ -34,19 +50,31 @@ namespace Gestionis
 
             barraSecundaria1.Load();
             barraLateral1.Load();
-            #region Carga de datos en los dgv y lbl 
+            try
+            {
+                #region Carga de datos en los dgv y lbl 
 
-            dgvNotas.DataSource = Notas.RecargarTabla();
-            dgvNotasDia.DataSource = Notas.NotasDia();
-            lblNotasTotalesCount.Text = Notas.NotasTotales().ToString();
-            lblNDTotales.Text = Notas.NotasTotalesDia().ToString();
+                dgvNotas.DataSource = Notas.RecargarTabla();
+                dgvNotasDia.DataSource = Notas.NotasDia();
+                lblNotasTotalesCount.Text = Notas.NotasTotales().ToString();
+                lblNDTotales.Text = Notas.NotasTotalesDia().ToString();
 
-            #endregion
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         private void ModificarBotones()
         {
             barraSecundaria1.BtnLanguage.Click += BtnLanguage_Click;
+            barraSecundaria1.BtnAyuda.Click += btnAyuda_Click;
         }
 
         private void BtnLanguage_Click(object sender, EventArgs e)
@@ -58,9 +86,23 @@ namespace Gestionis
 
         private void btnNuevaNota_Click(object sender, EventArgs e)
         {
-            frmAddNota addNota = new frmAddNota();
-            addNota.ShowDialog();
-            Notas.RecargarTabla();
+            try
+            {
+                frmAddNota addNota = new frmAddNota();
+                addNota.ShowDialog();
+                Notas.RecargarTabla();
+                dgvNotasDia.DataSource = Notas.NotasDia();
+                lblNotasTotalesCount.Text = Notas.NotasTotales().ToString();
+                lblNDTotales.Text = Notas.NotasTotalesDia().ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -70,13 +112,35 @@ namespace Gestionis
 
         private void btnRestaurarFiltro_Click(object sender, EventArgs e)
         {
-            dgvNotas.DataSource = Notas.RecargarTabla();
-            txtFiltro.Text = "";
+            try
+            {
+                dgvNotas.DataSource = Notas.RecargarTabla();
+                txtFiltro.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         private void frmNotas_Activated(object sender, EventArgs e)
         {
-            dgvNotas.DataSource = Notas.RecargarTabla();
+            try
+            {
+                dgvNotas.DataSource = Notas.RecargarTabla();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         private void cmbFiltrarPor_SelectedIndexChanged(object sender, EventArgs e)
@@ -92,8 +156,19 @@ namespace Gestionis
         {
             bool? deuda = ckbDeudaFiltro.Checked;
 
-            dgvNotas.DataSource = Notas.BuscarPorFiltro(cmbFiltrarPor.SelectedIndex, txtFiltro.Text, txtFiltro.Text, ckbAlarmaFiltro.Checked,
-                btnFiltroColor.BackColor.ToArgb(), dtpFiltrarFecha.Value.ToString("yyyy-MM-dd"), deuda);
+            try
+            {
+                dgvNotas.DataSource = Notas.BuscarPorFiltro(cmbFiltrarPor.SelectedIndex, txtFiltro.Text, txtFiltro.Text, ckbAlarmaFiltro.Checked,
+                    btnFiltroColor.BackColor.ToArgb(), dtpFiltrarFecha.Value.ToString("yyyy-MM-dd"), deuda);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         #region Colores aplicados en el dgv en la columna "Calendario"
@@ -124,17 +199,77 @@ namespace Gestionis
         {
             if (e.RowIndex >= 0 && dgvNotas.Rows.Count > 0)
             {
-                string tituloeNota = dgvNotas.Rows[e.RowIndex].Cells["Titulo"].Value.ToString();
-                DialogResult resultado = MessageBox.Show("¿Desea eliminar esta fila?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (resultado == DialogResult.Yes)
+                try
                 {
-                    Notas.BorrarNota(tituloeNota);
-                    dgvNotas.Rows.RemoveAt(e.RowIndex);
-                    Notas.EliminarNotaCalendario(tituloeNota);
+                    string tituloeNota = dgvNotas.Rows[e.RowIndex].Cells["Titulo"].Value.ToString();
+                    DialogResult resultado = MessageBox.Show("¿Desea eliminar esta fila?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (resultado == DialogResult.Yes)
+                    {
+                        Notas.BorrarNota(tituloeNota);
+                        dgvNotas.Rows.RemoveAt(e.RowIndex);
+                        Notas.EliminarNotaCalendario(tituloeNota);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    ConexionDB.CerrarConexion();
                 }
             }
         }
 
+        #region ToolTips
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+            if (Sesion.Instance.Espanyol)
+            {
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnNuevaNota, "Permite añadir una nota."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(cmbFiltrarPor, "Permite seleccionar como filtrar las notas."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnRestaurarFiltro, "Restaura los filtros."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblNotasTotalesCount, "Muestra las notas totales existentes."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblNDTotales, "Muestra las notas totales del día de hoy."));
+            }
+            else
+            {
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnNuevaNota, "Add a note."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(cmbFiltrarPor, "Select how to filter notes."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnRestaurarFiltro, "Restore filters."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblNotasTotalesCount, "Show count of every existing note."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblNDTotales, "Show count of today's notes."));
+            }
+
+            ShowNextTooltip();
+        }
+
+        private void ShowNextTooltip()
+        {
+            if (tooltipQueue.Count > 0)
+            {
+                var tooltipItem = tooltipQueue.Dequeue();
+                ShowTooltip(tooltipItem.Key, tooltipItem.Value);
+                tooltipTimer.Start();
+            }
+            else
+            {
+                tooltipTimer.Stop();
+            }
+        }
+
+        private void TooltipTimer_Tick(object sender, EventArgs e)
+        {
+            toolTip.Hide(this);
+            ShowNextTooltip();
+        }
+
+        private void ShowTooltip(Control control, string message)
+        {
+            toolTip.SetToolTip(control, message);
+            toolTip.Show(message, control, control.Width / 2, control.Height / 2);
+        }
+        #endregion
         private void AplicarIdioma()
         {
             lblFiltrarPor.Text = Resources.Idiomas.StringRecursosNotas.lblFiltrarPor;

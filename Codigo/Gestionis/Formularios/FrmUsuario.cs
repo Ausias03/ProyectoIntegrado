@@ -11,7 +11,7 @@ namespace Gestionis
         private Queue<KeyValuePair<Control, string>> tooltipQueue;
         private int tooltipDuration = 2000;
         private Usuario usuario;
-        string apodo = Sesion.Instance.ApodoUsuario;
+        private readonly Cuenta cuentaUsuario;
         public frmUsuario()
         {
             try
@@ -25,10 +25,15 @@ namespace Gestionis
                 tooltipTimer.Interval = tooltipDuration;
                 tooltipTimer.Tick += TooltipTimer_Tick;
                 usuario = Usuario.BuscaUsuario(Sesion.Instance.ApodoUsuario);
+                cuentaUsuario = usuario.GetCuenta();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
             }
         }
 
@@ -58,6 +63,10 @@ namespace Gestionis
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
             }
         }
 
@@ -133,18 +142,29 @@ namespace Gestionis
 
         private void SetExpNivel()
         {
-            string apodo = Sesion.Instance.ApodoUsuario;
-            var (experienciaActual, nivelActual, xpParaSiguienteNivel, xpParaNivelActual) = SistemaNiveles.GetNivelInfo(apodo);
+            try
+            {
+                string apodo = Sesion.Instance.ApodoUsuario;
+                var (experienciaActual, nivelActual, xpParaSiguienteNivel, xpParaNivelActual) = SistemaNiveles.GetNivelInfo(apodo);
 
-            int progress = SistemaNiveles.GetExpProgress(apodo);
+                int progress = SistemaNiveles.GetExpProgress(apodo);
 
-            prbExperiencia.Maximum = xpParaSiguienteNivel - xpParaNivelActual;
+                prbExperiencia.Maximum = xpParaSiguienteNivel - xpParaNivelActual;
 
-            prbExperiencia.Value = progress;
+                prbExperiencia.Value = progress;
 
-            lblNivel.Text = experienciaActual == 0 ? "0" : nivelActual.ToString();
+                lblNivel.Text = experienciaActual == 0 ? "0" : nivelActual.ToString();
 
-            ActualizaMarco(nivelActual);
+                ActualizaMarco(nivelActual);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         private void ActualizaMarco(int nivel)
@@ -257,23 +277,34 @@ namespace Gestionis
 
         private void btnCambiarFoto_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofdSeleccionar = new OpenFileDialog();
-            ofdSeleccionar.Filter = "Imagenes|*.jpg; *.png";
-            ofdSeleccionar.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-            ofdSeleccionar.Title = "Seleccionar imagen";
-
-            if (ofdSeleccionar.ShowDialog() == DialogResult.OK)
+            try
             {
-                Image foto = Image.FromFile(ofdSeleccionar.FileName);
-                pctFoto.Image = foto;
-                using (MemoryStream ms = new MemoryStream())
+                OpenFileDialog ofdSeleccionar = new OpenFileDialog();
+                ofdSeleccionar.Filter = "Imagenes|*.jpg; *.png";
+                ofdSeleccionar.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+                ofdSeleccionar.Title = "Seleccionar imagen";
+
+                if (ofdSeleccionar.ShowDialog() == DialogResult.OK)
                 {
-                    foto.Save(ms, ImageFormat.Jpeg);
-                    byte[] fotoArrayBytes = ms.ToArray();
-                    Usuario.CambiarCampo("foto", fotoArrayBytes);
-                    SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario, 15);
-                    SetExpNivel();
+                    Image foto = Image.FromFile(ofdSeleccionar.FileName);
+                    pctFoto.Image = foto;
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        foto.Save(ms, ImageFormat.Jpeg);
+                        byte[] fotoArrayBytes = ms.ToArray();
+                        Usuario.CambiarCampo("foto", fotoArrayBytes);
+                        SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario, 15);
+                        SetExpNivel();
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
             }
         }
         #endregion
@@ -283,40 +314,73 @@ namespace Gestionis
         {
             if (ValidarNombre())
             {
-                usuario.Nombre = txtNombre.Text;
-                txtNombre.ReadOnly = true;
-                btnConfirmarNom.Hide();
-                btnCambiarNom.Show();
-                Usuario.CambiarCampo("nombre", txtNombre.Text);
+                try
+                {
+                    usuario.Nombre = txtNombre.Text;
+                    txtNombre.ReadOnly = true;
+                    btnConfirmarNom.Hide();
+                    btnCambiarNom.Show();
+                    Usuario.CambiarCampo("nombre", txtNombre.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    ConexionDB.CerrarConexion();
+                }
             }
         }
 
         private void btnConfirmarApellidos_Click(object sender, EventArgs e)
         {
-            usuario.Apellidos = txtApellidos.Text;
-            txtApellidos.ReadOnly = true;
-            btnConfirmarApellidos.Hide();
-            btnCambiarApellidos.Show();
-            Usuario.CambiarCampo("apellidos", txtApellidos.Text);
+            try
+            {
+                usuario.Apellidos = txtApellidos.Text;
+                txtApellidos.ReadOnly = true;
+                btnConfirmarApellidos.Hide();
+                btnCambiarApellidos.Show();
+                Usuario.CambiarCampo("apellidos", txtApellidos.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         private void btnConfirmarApodo_Click(object sender, EventArgs e)
         {
             if (ValidarApodo())
             {
-                if (Usuario.Existe(txtApodo.Text))
+                try
                 {
-                    errorProvider1.SetError(txtApodo, "El apodo introducido ya esta en uso.");
+                    if (Usuario.Existe(txtApodo.Text))
+                    {
+                        errorProvider1.SetError(txtApodo, "El apodo introducido ya esta en uso.");
+                    }
+                    else
+                    {
+                        errorProvider1.Clear();
+                        usuario.Apodo = txtApodo.Text;
+                        txtApodo.ReadOnly = true;
+                        btnConfirmarApodo.Hide();
+                        btnCambiarApodo.Show();
+                        Usuario.CambiarCampo("apodo", txtApodo.Text);
+                        Sesion.Instance.ApodoUsuario = txtApodo.Text;
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    errorProvider1.Clear();
-                    usuario.Apodo = txtApodo.Text;
-                    txtApodo.ReadOnly = true;
-                    btnConfirmarApodo.Hide();
-                    btnCambiarApodo.Show();
-                    Usuario.CambiarCampo("apodo", txtApodo.Text);
-                    Sesion.Instance.ApodoUsuario = txtApodo.Text;
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    ConexionDB.CerrarConexion();
                 }
             }
         }
@@ -325,37 +389,70 @@ namespace Gestionis
         {
             if (ValidarCorreo())
             {
-                if (Usuario.CorreoExiste(txtCorreo.Text))
+                try
                 {
-                    errorProvider1.SetError(txtCorreo, "El correo introducido ya esta en uso.");
+                    if (Usuario.CorreoExiste(txtCorreo.Text))
+                    {
+                        errorProvider1.SetError(txtCorreo, "El correo introducido ya esta en uso.");
+                    }
+                    else
+                    {
+                        usuario.Correo = txtCorreo.Text;
+                        txtCorreo.ReadOnly = true;
+                        btnConfirmarCorreo.Hide();
+                        btnCambiarCorreo.Show();
+                        Usuario.CambiarCampo("correo", txtCorreo.Text);
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    usuario.Correo = txtCorreo.Text;
-                    txtCorreo.ReadOnly = true;
-                    btnConfirmarCorreo.Hide();
-                    btnCambiarCorreo.Show();
-                    Usuario.CambiarCampo("correo", txtCorreo.Text);
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    ConexionDB.CerrarConexion();
                 }
             }
         }
 
         private void btnConfirmarDir_Click(object sender, EventArgs e)
         {
-            usuario.Direccion = txtDireccion.Text;
-            txtDireccion.ReadOnly = true;
-            btnConfirmarDir.Hide();
-            btnCambiarDir.Show();
-            Usuario.CambiarCampo("direccion", txtDireccion.Text);
+            try
+            {
+                usuario.Direccion = txtDireccion.Text;
+                txtDireccion.ReadOnly = true;
+                btnConfirmarDir.Hide();
+                btnCambiarDir.Show();
+                Usuario.CambiarCampo("direccion", txtDireccion.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         private void btnConfirmarTel_Click(object sender, EventArgs e)
         {
-            usuario.Telefono = txtTelefono.Text;
-            txtTelefono.ReadOnly = true;
-            btnConfirmarTel.Hide();
-            btnCambiarTel.Show();
-            Usuario.CambiarCampo("telefono", txtTelefono.Text);
+            try
+            {
+                usuario.Telefono = txtTelefono.Text;
+                txtTelefono.ReadOnly = true;
+                btnConfirmarTel.Hide();
+                btnCambiarTel.Show();
+                Usuario.CambiarCampo("telefono", txtTelefono.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
         #endregion
 
@@ -366,6 +463,26 @@ namespace Gestionis
             frmInicioSesion frmInicio = new frmInicioSesion();
             frmInicio.Closed += (s, args) => this.Close();
             frmInicio.Show();
+        }
+
+        private void btnGenerarPDF_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                double? ingresoMensual = cuentaUsuario.TotalIngresos();
+                double? gastoMensual = cuentaUsuario.TotalGastos();
+                List<Gasto> infoGastos = cuentaUsuario.DevuelveGastos();
+                List<Ingreso> infoIngresos = cuentaUsuario.DevuelveIngresos();
+                double? debo = Deuda.CalcularTotalDeuda(true);
+                double? meDeben = Deuda.CalcularTotalDeuda(false);
+                double? deudasTotales = Deuda.DeudasTotales();
+
+                Cuenta.GenerarPDF(usuario.Nombre, usuario.Apellidos, usuario.Apodo, usuario.Correo, usuario.Telefono, usuario.Direccion,
+                    ingresoMensual, gastoMensual, infoGastos, infoIngresos, debo, meDeben, deudasTotales);
+                MessageBox.Show("El pdf se ha creado correctamente", "Generación del PDF", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex) { }
+            finally { ConexionDB.CerrarConexion(); }
         }
 
         private void AplicarIdioma()
@@ -391,6 +508,6 @@ namespace Gestionis
             lblCorreo.Text = Resources.Idiomas.StringRecursosUsuario.lblCorreo;
             lblApodo.Text = Resources.Idiomas.StringRecursosUsuario.lblApodo;
             lblNombre.Text = Resources.Idiomas.StringRecursosUsuario.lblNombre;
-        }
+        }        
     }
 }

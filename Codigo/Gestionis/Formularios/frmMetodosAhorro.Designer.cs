@@ -97,7 +97,7 @@ namespace Gestionis
             label32 = new Label();
             lblInfo = new Label();
             lblInfo2 = new Label();
-            barraLateral3 = new BarraLateral();
+            barraLateral4 = new BarraLateral();
             ((System.ComponentModel.ISupportInitialize)dgvGastosFijos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvGastosVariables).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbDot).BeginInit();
@@ -510,7 +510,7 @@ namespace Gestionis
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1481, 44);
+            barraSecundaria1.Size = new Size(1818, 44);
             barraSecundaria1.TabIndex = 86;
             // 
             // lblLineaFijos
@@ -806,7 +806,7 @@ namespace Gestionis
             // 
             // pbArrow6
             // 
-            pbArrow6.BackColor = Color.FromArgb(205, 213, 221);
+            pbArrow6.BackColor = Color.Transparent;
             pbArrow6.Location = new Point(389, 75);
             pbArrow6.Name = "pbArrow6";
             pbArrow6.Size = new Size(59, 33);
@@ -869,22 +869,22 @@ namespace Gestionis
             lblInfo2.TabIndex = 96;
             lblInfo2.Text = "Las demás categorías son consideradas como gastos prescindibles";
             // 
-            // barraLateral3
+            // barraLateral4
             // 
-            barraLateral3.BackColor = Color.FromArgb(205, 213, 221);
-            barraLateral3.Dock = DockStyle.Left;
-            barraLateral3.Location = new Point(0, 84);
-            barraLateral3.Name = "barraLateral3";
-            barraLateral3.Size = new Size(289, 1017);
-            barraLateral3.TabIndex = 97;
+            barraLateral4.BackColor = Color.FromArgb(205, 213, 221);
+            barraLateral4.Dock = DockStyle.Left;
+            barraLateral4.Location = new Point(0, 84);
+            barraLateral4.Name = "barraLateral4";
+            barraLateral4.Size = new Size(289, 1017);
+            barraLateral4.TabIndex = 97;
             // 
             // frmMetodosAhorro
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(233, 236, 239);
-            ClientSize = new Size(1481, 1101);
-            Controls.Add(barraLateral2);
+            ClientSize = new Size(1818, 1101);
+            Controls.Add(barraLateral4);
             Controls.Add(pbArrow5);
             Controls.Add(lblInfo2);
             Controls.Add(lblPorcentajeRest);
@@ -938,7 +938,7 @@ namespace Gestionis
             Controls.SetChildIndex(lblPorcentajeRest, 0);
             Controls.SetChildIndex(lblInfo2, 0);
             Controls.SetChildIndex(pbArrow5, 0);
-            Controls.SetChildIndex(barraLateral3, 0);
+            Controls.SetChildIndex(barraLateral4, 0);
             ((System.ComponentModel.ISupportInitialize)dgvGastosFijos).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvGastosVariables).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbDot).EndInit();
@@ -1032,7 +1032,6 @@ namespace Gestionis
         private Label label32;
         private Label lblInfo;
         private Label lblInfo2;
-        private BarraLateral barraLateral2;
-        private BarraLateral barraLateral3;
+        private BarraLateral barraLateral4;
     }
 }

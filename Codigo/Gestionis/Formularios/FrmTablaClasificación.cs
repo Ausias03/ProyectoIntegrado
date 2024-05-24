@@ -84,6 +84,10 @@ namespace Gestionis
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         private void AplicarIdioma()

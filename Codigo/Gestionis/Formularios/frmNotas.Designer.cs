@@ -54,6 +54,7 @@ namespace Gestionis
             lblNDTotales = new Label();
             lblNotasTotalesDia = new Label();
             lblNotasDia = new Label();
+            lblENL = new Label();
             roundGroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvNotas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvNotasDia).BeginInit();
@@ -62,6 +63,7 @@ namespace Gestionis
             // 
             // roundGroupBox2
             // 
+            roundGroupBox2.Controls.Add(lblENL);
             roundGroupBox2.Controls.Add(ckbDeudaFiltro);
             roundGroupBox2.Controls.Add(lblNotasTotalesCount);
             roundGroupBox2.Controls.Add(lblNotasTotales);
@@ -98,7 +100,7 @@ namespace Gestionis
             lblNotasTotalesCount.AutoSize = true;
             lblNotasTotalesCount.BackColor = Color.Transparent;
             lblNotasTotalesCount.Font = new Font("Segoe UI", 14.05F);
-            lblNotasTotalesCount.Location = new Point(149, 561);
+            lblNotasTotalesCount.Location = new Point(149, 576);
             lblNotasTotalesCount.Name = "lblNotasTotalesCount";
             lblNotasTotalesCount.Size = new Size(105, 32);
             lblNotasTotalesCount.TabIndex = 20;
@@ -109,7 +111,7 @@ namespace Gestionis
             lblNotasTotales.AutoSize = true;
             lblNotasTotales.BackColor = Color.Transparent;
             lblNotasTotales.Font = new Font("Segoe UI", 14.05F);
-            lblNotasTotales.Location = new Point(62, 561);
+            lblNotasTotales.Location = new Point(62, 576);
             lblNotasTotales.Name = "lblNotasTotales";
             lblNotasTotales.Size = new Size(88, 32);
             lblNotasTotales.TabIndex = 11;
@@ -233,10 +235,9 @@ namespace Gestionis
             // 
             // btnSalir
             // 
-            btnSalir.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnSalir.BackColor = Color.FromArgb(178, 242, 187);
+            btnSalir.BackColor = Color.FromArgb(211, 208, 242);
             btnSalir.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSalir.Location = new Point(32758, 1387);
+            btnSalir.Location = new Point(1596, 922);
             btnSalir.Margin = new Padding(3, 4, 3, 4);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(174, 60);
@@ -333,6 +334,17 @@ namespace Gestionis
             lblNotasDia.TabIndex = 1;
             lblNotasDia.Text = "Notas del día";
             // 
+            // lblENL
+            // 
+            lblENL.AutoSize = true;
+            lblENL.BackColor = Color.Transparent;
+            lblENL.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblENL.Location = new Point(62, 539);
+            lblENL.Name = "lblENL";
+            lblENL.Size = new Size(216, 19);
+            lblENL.TabIndex = 28;
+            lblENL.Text = "Doble click para eliminar una nota";
+            // 
             // frmNotas
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -390,5 +402,6 @@ namespace Gestionis
         private Label lblNotasTotalesCount;
         private Label lblNDTotales;
         private CheckBox ckbDeudaFiltro;
+        private Label lblENL;
     }
 }

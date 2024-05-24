@@ -1,4 +1,14 @@
 ﻿using MySql.Data.MySqlClient;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
+using System.Data;
+using System.Drawing.Printing;
+using System.Reflection.Metadata;
+using System.Xml.Linq;
+
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using Document = iTextSharp.text.Document;
+using Chunk = iTextSharp.text.Chunk;
 
 namespace Gestionis.Clases
 {
@@ -383,6 +393,273 @@ namespace Gestionis.Clases
             ConexionDB.CerrarConexion();
         }
 
+        #endregion
+
+        #region Generación de un PDF
+        public static void GenerarPDF(string usuario, string apellidos, string apodoUsuario, string correo, string tel, string direccion, double? ingresoMensual, double? gastoMensual,
+            List<Gasto> listaGastos, List<Ingreso> listaIngresos, double? debo, double? meDeben, double? deudasTotales)
+        {
+            string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "ResumenMensual.pdf");
+            FileStream fs = new FileStream(path, FileMode.Create);
+
+            Document doc = new Document(PageSize.LETTER, 60, 60, 45, 45);
+            PdfWriter.GetInstance(doc, fs);
+
+            doc.Open();
+            doc.AddAuthor("Gestioi$");
+            doc.AddTitle("Resumen mensual");
+
+            // Fuente utilizada para el pdf
+            iTextSharp.text.Font fuenteTitulo = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 22, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+            iTextSharp.text.Font fuenteSubtitulo = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 16, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+            iTextSharp.text.Font fuenteSubtituloSmall = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 14, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+            iTextSharp.text.Font standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+            iTextSharp.text.Font standardFontBold = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+
+            // Encabezado
+            Paragraph titulo = new Paragraph("Resumen Mensual", fuenteTitulo);
+            titulo.Alignment = Element.ALIGN_CENTER;
+            doc.Add(titulo);
+            doc.Add(Chunk.NEWLINE);
+
+            #region Datos Personales
+
+            // Subtitulo 1 (Datos personales del usuario)
+            Phrase datosPersonales = new Phrase("Datos Personales ", fuenteSubtitulo);
+            doc.Add(datosPersonales);
+
+            PdfPTable table = new PdfPTable(2);
+            table.WidthPercentage = 100;
+
+            // Añadir celdas con bordes
+            PdfPCell cell;
+
+            cell = new PdfPCell(new Phrase($"Nombre: {usuario}", standardFont));
+            cell.BorderWidth = 0;
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase($"Correo: {correo}", standardFont));
+            cell.BorderWidth = 0;
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase($"Apellidos: {apellidos}", standardFont));
+            cell.BorderWidth = 0;
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase($"Dirección: {direccion}", standardFont));
+            cell.BorderWidth = 0;
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase($"Apodo: {apodoUsuario}", standardFont));
+            cell.BorderWidth = 0;
+            table.AddCell(cell);
+
+            cell = new PdfPCell(new Phrase($"Teléfono: {tel}", standardFont));
+            cell.BorderWidth = 0;
+            table.AddCell(cell);
+
+
+
+            doc.Add(table);
+            doc.Add(Chunk.NEWLINE);
+
+            #endregion
+
+            #region Movimientos
+
+            Phrase movimientos = new Phrase("Movimientos ", fuenteSubtitulo);
+            doc.Add(movimientos);
+            doc.Add(Chunk.NEWLINE);
+
+            doc.Add(new Phrase($"Ingresos: {ingresoMensual.Value.ToString("0.00") + " €"}", standardFont));
+            doc.Add(Chunk.NEWLINE);
+
+            doc.Add(new Phrase($"Gastos: {gastoMensual.Value.ToString("0.00") + " €"}", standardFont));
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(Chunk.NEWLINE);
+
+            Phrase infoGastos = new Phrase("Gastos: ", fuenteSubtituloSmall);
+            doc.Add(infoGastos);
+
+            // Tabla de los gastos totales
+            PdfPTable tablaGastos = new PdfPTable(5);
+            tablaGastos.WidthPercentage = 100;
+
+            tablaGastos.AddCell(new PdfPCell(new Phrase("Nombre", standardFontBold)));
+            tablaGastos.AddCell(new PdfPCell(new Phrase("Cantidad", standardFontBold)));
+            tablaGastos.AddCell(new PdfPCell(new Phrase("Categoría", standardFontBold)));
+            tablaGastos.AddCell(new PdfPCell(new Phrase("Tipo", standardFontBold)));
+            tablaGastos.AddCell(new PdfPCell(new Phrase("Fecha", standardFontBold)));
+
+            foreach (var gasto in listaGastos)
+            {
+                tablaGastos.AddCell(new PdfPCell(new Phrase(gasto.Nombre, standardFont)));
+                tablaGastos.AddCell(new PdfPCell(new Phrase(gasto.Cantidad.ToString("C"), standardFont)));
+                tablaGastos.AddCell(new PdfPCell(new Phrase(gasto.Categoria, standardFont)));
+                tablaGastos.AddCell(new PdfPCell(new Phrase(gasto.Tipo, standardFont)));
+                tablaGastos.AddCell(new PdfPCell(new Phrase(gasto.Fecha.ToShortDateString(), standardFont)));
+            }
+            doc.Add(tablaGastos);
+            doc.Add(Chunk.NEWLINE);
+
+            Phrase infoIngresos = new Phrase("Ingresos: ", fuenteSubtituloSmall);
+            doc.Add(infoIngresos);
+
+            // Tabla de los Ingresos totales
+            PdfPTable tablaIngresos = new PdfPTable(5);
+            tablaIngresos.WidthPercentage = 100;
+
+            tablaIngresos.AddCell(new PdfPCell(new Phrase("Nombre", standardFontBold)));
+            tablaIngresos.AddCell(new PdfPCell(new Phrase("Cantidad", standardFontBold)));
+            tablaIngresos.AddCell(new PdfPCell(new Phrase("Categoría", standardFontBold)));
+            tablaIngresos.AddCell(new PdfPCell(new Phrase("Tipo", standardFontBold)));
+            tablaIngresos.AddCell(new PdfPCell(new Phrase("Fecha", standardFontBold)));
+
+            foreach (var ingreso in listaIngresos)
+            {
+                tablaIngresos.AddCell(new PdfPCell(new Phrase(ingreso.Nombre, standardFont)));
+                tablaIngresos.AddCell(new PdfPCell(new Phrase(ingreso.Cantidad.ToString("C"), standardFont)));
+                tablaIngresos.AddCell(new PdfPCell(new Phrase(ingreso.Categoria, standardFont)));
+                tablaIngresos.AddCell(new PdfPCell(new Phrase(ingreso.Tipo, standardFont)));
+                tablaIngresos.AddCell(new PdfPCell(new Phrase(ingreso.Fecha.ToShortDateString(), standardFont)));
+            }
+            doc.Add(tablaIngresos);
+
+            #endregion
+
+            doc.NewPage();
+
+            #region Deudas
+
+            Paragraph deudas = new Paragraph("Deudas", fuenteSubtitulo);
+            doc.Add(deudas);
+
+            doc.Add(new Phrase($"Debo: {debo.Value.ToString("0.00") + " €"}", standardFont));
+            doc.Add(Chunk.NEWLINE);
+
+            doc.Add(new Phrase($"Me deben: {meDeben.Value.ToString("0.00") + " €"}", standardFont));
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(Chunk.NEWLINE);
+
+            doc.Add(new Phrase($"Debo: ", fuenteSubtituloSmall));
+            doc.Add(Chunk.NEWLINE);
+
+            DataTable dt = Deuda.RecargarTabla(false);
+
+            PdfPTable tablaDeudas = new PdfPTable(4);
+            tablaDeudas.WidthPercentage = 100;
+
+            // Añadir encabezados de columna
+            tablaDeudas.AddCell(new PdfPCell(new Phrase("Nombre", standardFontBold)));
+            tablaDeudas.AddCell(new PdfPCell(new Phrase("Cantidad", standardFontBold)));
+            tablaDeudas.AddCell(new PdfPCell(new Phrase("Fecha creación", standardFontBold)));
+            tablaDeudas.AddCell(new PdfPCell(new Phrase("Fecha vencimiento", standardFontBold)));
+
+            foreach (DataRow row in dt.Rows)
+            {
+                tablaDeudas.AddCell(new PdfPCell(new Phrase(row["titulo"].ToString(), standardFont)));
+                tablaDeudas.AddCell(new PdfPCell(new Phrase(Convert.ToDecimal(row["Cantidad"]).ToString("C"), standardFont)));
+                tablaDeudas.AddCell(new PdfPCell(new Phrase(Convert.ToDateTime(row["FechaCreacion"]).ToShortDateString(), standardFont)));
+                tablaDeudas.AddCell(new PdfPCell(new Phrase(Convert.ToDateTime(row["FechaVencimiento"]).ToShortDateString(), standardFont)));
+            }
+
+            doc.Add(tablaDeudas);
+
+            doc.Add(new Phrase($"Deudas totales: {deudasTotales}", standardFont));
+            doc.Add(Chunk.NEWLINE);
+            doc.Add(Chunk.NEWLINE);
+
+            doc.Add(new Phrase($"Me deben: ", fuenteSubtituloSmall));
+            doc.Add(Chunk.NEWLINE);
+
+            DataTable dt1 = Deuda.RecargarTabla(true);
+
+            PdfPTable tablaDeudasDeben = new PdfPTable(4);
+            tablaDeudasDeben.WidthPercentage = 100;
+
+            // Añadir encabezados de columna
+            tablaDeudasDeben.AddCell(new PdfPCell(new Phrase("Nombre", standardFontBold)));
+            tablaDeudasDeben.AddCell(new PdfPCell(new Phrase("Cantidad", standardFontBold)));
+            tablaDeudasDeben.AddCell(new PdfPCell(new Phrase("Fecha creación", standardFontBold)));
+            tablaDeudasDeben.AddCell(new PdfPCell(new Phrase("Fecha vencimiento", standardFontBold)));
+
+            foreach (DataRow row in dt1.Rows)
+            {
+                tablaDeudasDeben.AddCell(new PdfPCell(new Phrase(row["titulo"].ToString(), standardFont)));
+                tablaDeudasDeben.AddCell(new PdfPCell(new Phrase(Convert.ToDecimal(row["Cantidad"]).ToString("C"), standardFont)));
+                tablaDeudasDeben.AddCell(new PdfPCell(new Phrase(Convert.ToDateTime(row["FechaCreacion"]).ToShortDateString(), standardFont)));
+                tablaDeudasDeben.AddCell(new PdfPCell(new Phrase(Convert.ToDateTime(row["FechaVencimiento"]).ToShortDateString(), standardFont)));
+            }
+
+            doc.Add(tablaDeudasDeben);
+            doc.Add(Chunk.NEWLINE);
+
+            #endregion
+
+            #region Notas
+
+            Paragraph notas = new Paragraph("Notas", fuenteSubtitulo);
+            doc.Add(notas);
+            doc.Add(Chunk.NEWLINE);
+
+            Phrase infoNotas = new Phrase("Notas de este mes: ", fuenteSubtituloSmall);
+            doc.Add(infoNotas);
+            doc.Add(Chunk.NEWLINE);
+
+            // Tabla de los Ingresos totales
+            DataTable dt3 = Notas.notasMesActual();
+
+            PdfPTable tablaNotas = new PdfPTable(4);
+            tablaNotas.WidthPercentage = 100;
+
+            // Añadir encabezados de columna
+            tablaNotas.AddCell(new PdfPCell(new Phrase("Titulo", standardFontBold)));
+            tablaNotas.AddCell(new PdfPCell(new Phrase("Descripcion", standardFontBold)));
+            tablaNotas.AddCell(new PdfPCell(new Phrase("Fecha Recordatorio", standardFontBold)));
+            tablaNotas.AddCell(new PdfPCell(new Phrase("Alarma", standardFontBold)));
+
+            foreach (DataRow row in dt3.Rows)
+            {
+                tablaNotas.AddCell(new PdfPCell(new Phrase(row["titulo"].ToString(), standardFont)));
+                tablaNotas.AddCell(new PdfPCell(new Phrase((row["descripcion"]).ToString(), standardFont)));
+                tablaNotas.AddCell(new PdfPCell(new Phrase(Convert.ToDateTime(row["fechaRecordatorio"]).ToShortDateString(), standardFont)));
+                tablaNotas.AddCell(new PdfPCell(new Phrase(Convert.ToString((row["alarma"]).ToString()), standardFont)));
+
+            }
+
+            doc.Add(tablaNotas);
+
+            Phrase infoNotasProxMes = new Phrase("Notas del próximo mes: ", fuenteSubtituloSmall);
+            doc.Add(infoNotasProxMes);
+            doc.Add(Chunk.NEWLINE);
+
+
+            DataTable dt4 = Notas.notasMesProx();
+
+            PdfPTable tablaNotasdia = new PdfPTable(4);
+            tablaNotasdia.WidthPercentage = 100;
+
+            // Añadir encabezados de columna
+            tablaNotasdia.AddCell(new PdfPCell(new Phrase("Titulo", standardFontBold)));
+            tablaNotasdia.AddCell(new PdfPCell(new Phrase("Descripcion", standardFontBold)));
+            tablaNotasdia.AddCell(new PdfPCell(new Phrase("Fecha Recordatorio", standardFontBold)));
+            tablaNotasdia.AddCell(new PdfPCell(new Phrase("Alarma", standardFontBold)));
+
+            foreach (DataRow row in dt4.Rows)
+            {
+                tablaNotasdia.AddCell(new PdfPCell(new Phrase(row["titulo"].ToString(), standardFont)));
+                tablaNotasdia.AddCell(new PdfPCell(new Phrase((row["descripcion"]).ToString(), standardFont)));
+                tablaNotasdia.AddCell(new PdfPCell(new Phrase(Convert.ToDateTime(row["fechaRecordatorio"]).ToShortDateString(), standardFont)));
+                tablaNotasdia.AddCell(new PdfPCell(new Phrase(Convert.ToString((row["alarma"]).ToString()), standardFont)));
+
+            }
+
+            doc.Add(tablaNotasdia);
+            doc.Add(Chunk.NEWLINE);
+
+            #endregion
+            doc.Close();
+        }
         #endregion
     }
 }

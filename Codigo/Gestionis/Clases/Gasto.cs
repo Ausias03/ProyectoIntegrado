@@ -103,17 +103,25 @@ namespace Gestionis.Clases
             return lista;
         }
 
-        #region Métodos de Ahorro Totales
+        #region Métodos de Formulario Métodos Ahorrativos
 
         #region Métodos Ahorro dgv Datos
 
+        /// <summary>
+        /// Datos DGV variable
+        /// </summary>
+        /// <returns>Dgv gastos variables</returns>
         public static DataTable VisualizarDatosVariable()
         {
-
             return Utilidades.RellenarDatos("SELECT c.nombre AS categoria, ROUND(SUM(g.cantidad), 2) AS total_gasto, " +
-                "ROUND((SUM(g.cantidad) * 100 / (SELECT SUM(cantidad) FROM ingreso))) AS porcentaje FROM gasto g JOIN categoriaGasto " +
+                "ROUND((SUM(g.cantidad) * 100 / (SELECT SUM(cantidad) FROM ingreso)) ) AS porcentaje FROM gasto g JOIN categoriaGasto " +
                 "c ON g.idCategoria = c.idCategoria WHERE g.tipo = 'Variable' GROUP BY c.nombre; ");
         }
+
+        /// <summary>
+        /// Datos DGV fijos
+        /// </summary>
+        /// <returns>Dgv gastos fijos</returns>
         public static DataTable VisualizarDatosFijo()
         {
             return Utilidades.RellenarDatos("SELECT c.nombre AS categoria, ROUND(SUM(g.cantidad), 2) AS total_gasto, ROUND((SUM(g.cantidad) * 100 / (SELECT SUM(cantidad) FROM ingreso))) AS porcentaje " +
@@ -123,6 +131,11 @@ namespace Gestionis.Clases
         #endregion
 
         #region Calculo Totales valores (gastos)
+
+        /// <summary>
+        /// Suma total de gastos fijos
+        /// </summary>
+        /// <returns>Total gastos fijos</returns>
         public static double? TotalFijos()
         {
             string queryString = "SELECT SUM(cantidad) FROM gasto WHERE tipo = @tipo";
@@ -146,6 +159,11 @@ namespace Gestionis.Clases
             }
             return sumaTotal;
         }
+
+        /// <summary>
+        /// Suma total de gastos variables
+        /// </summary>
+        /// <returns>Total gastos variables</returns>
         public static double? TotalVariable()
         {
             string queryString = "SELECT SUM(cantidad) FROM gasto WHERE tipo = @tipo";
@@ -170,6 +188,12 @@ namespace Gestionis.Clases
 
             return sumaTotal;
         }
+
+        /// <summary>
+        /// Cálculo dinero restante
+        /// </summary>
+        /// <param name="ingresosMensuales"></param>
+        /// <returns>Dinero restante</returns>
         public static double? DineroRestante(double? ingresosMensuales)
         {
 
@@ -188,10 +212,14 @@ namespace Gestionis.Clases
             return ingresosMensuales - total;
         }
 
-
         #endregion
 
-        #region Calculo de los porcentajes totales
+        #region Calculo de los porcentajes totales (Variable/Fijo)
+
+        /// <summary>
+        /// Total porcentaje variable
+        /// </summary>
+        /// <returns>Porcentaje variable</returns>
         public static double PorcentajeTotalVariable()
         {
             double porcentajeTotal = 0;
@@ -208,6 +236,11 @@ namespace Gestionis.Clases
             }
             return porcentajeTotal;
         }
+
+        /// <summary>
+        /// Total porcentaje fijo
+        /// </summary>
+        /// <returns>Porcentaje fijo</returns>
         public static double PorcentajeTotalFijo()
         {
             double porcentajeTotal = 0;
@@ -220,6 +253,12 @@ namespace Gestionis.Clases
             if (porcentajeTotal == 0) { return 0; }
             return porcentajeTotal;
         }
+
+        /// <summary>
+        /// Cálculo porcentaje restante
+        /// </summary>
+        /// <param name="ingresosMensuales"></param>
+        /// <returns>Porcentaje restante</returns>
         public static double? PorcentajeRestante(double? ingresosMensuales)
         {
             double? dineroRestante = DineroRestante(ingresosMensuales);
@@ -237,8 +276,13 @@ namespace Gestionis.Clases
 
         #region método 50/30/20
 
-        #region Cálculo de dinero
+        #region Cálculo de dinero (en referencia a 50%, 30%, 20%)
 
+        /// <summary>
+        /// Calcula el 50% de los ingresos mensuales (necesidades)
+        /// </summary>
+        /// <param name="ingresosMensuales"></param>
+        /// <returns>50% saldo mensual</returns>
         public static double? M503020Necesidades(double? ingresosMensuales)
         {
             if (!ingresosMensuales.HasValue)
@@ -247,6 +291,12 @@ namespace Gestionis.Clases
             }
             return ingresosMensuales * 0.50;
         }
+
+        /// <summary>
+        /// Calcula el 30% de los ingresos mensuales (prescindibles)
+        /// </summary>
+        /// <param name="ingresosMensuales"></param>
+        /// <returns>30% saldo mensual</returns>
         public static double? M503020Presindibles(double? ingresosMensuales)
         {
             if (!ingresosMensuales.HasValue)
@@ -255,6 +305,12 @@ namespace Gestionis.Clases
             }
             return ingresosMensuales * 0.30;
         }
+
+        /// <summary>
+        /// Calcula el 20% de los ingresos mensuales (ahorro)
+        /// </summary>
+        /// <param name="ingresosMensuales"></param>
+        /// <returns>20% saldo mensual</returns>
         public static double? M503020Ahorro(double? ingresosMensuales)
         {
             if (!ingresosMensuales.HasValue)
@@ -266,6 +322,11 @@ namespace Gestionis.Clases
         #endregion
 
         #region Calculo de dinero por mes
+
+        /// <summary>
+        /// Calcula el gasto total de necesidades
+        /// </summary>
+        /// <returns>Total gasto necesidades</returns>
         public static double? TotalNecesidades()
         {
             string queryString = "SELECT SUM(g.cantidad) FROM gasto g JOIN categoriaGasto c ON g.idCategoria = c.idCategoria WHERE (c.nombre = 'luz' OR c.nombre = 'supermercado');";
@@ -284,6 +345,11 @@ namespace Gestionis.Clases
             ConexionDB.CerrarConexion();
             return sumaTotal;
         }
+
+        /// <summary>
+        /// Calculo total de gastos prescindibles
+        /// </summary>
+        /// <returns>TOtal gasto prescindible</returns>
         public static double? TotalPrescindibles()
         {
             string queryString = "SELECT SUM(g.cantidad) FROM gasto g JOIN categoriaGasto c ON g.idCategoria = c.idCategoria " +
@@ -307,6 +373,12 @@ namespace Gestionis.Clases
         #endregion
 
         #region Calculo de porcentajes en referencia al dinero gastado
+
+        /// <summary>
+        /// Calcula el porcentaje de gastos necesarios
+        /// </summary>
+        /// <param name="gastosMensuales"></param>
+        /// <returns>Porcentaje gastos necesarios</returns>
         public static double? PorcentajeNec(double? gastosMensuales)
         {
             if (!gastosMensuales.HasValue || gastosMensuales.Value == 0)
@@ -323,6 +395,12 @@ namespace Gestionis.Clases
             double porcentajeTotal = (totalNecesidades.Value / gastosMensuales.Value) * 100;
             return porcentajeTotal;
         }
+
+        /// <summary>
+        /// Calcula el porcentaje de gastos prescindibles
+        /// </summary>
+        /// <param name="gastosMensuales"></param>
+        /// <returns>Porcentaje gastos prescindibles</returns>
         public static double? PorcentajePrescin(double? gastosMensuales)
         {
             if (!gastosMensuales.HasValue || gastosMensuales.Value == 0)

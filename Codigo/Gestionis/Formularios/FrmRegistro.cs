@@ -40,10 +40,19 @@ namespace Gestionis
                 errorProvider1.SetError(txtNombre, "Introduce un nombre");
             }
 
-            if (txtContrasenya.Text == String.Empty)
+            if (txtContrasenya.Text.Length < 8)
             {
                 ok = false;
-                errorProvider1.SetError(txtContrasenya, "Introduce una contraseña");
+                errorProvider1.SetError(pctVerContrasenya, "La contraseña tiene que tener como mínimo 8 carácteres");
+            }
+
+            if (txtTelefono.Text != String.Empty)
+            {
+                if (!int.TryParse(txtTelefono.Text, out int tlfNumerico))
+                {
+                    ok = false;
+                    errorProvider1.SetError(txtTelefono, "Solo se admiten números en el teléfono");
+                }
             }
 
             return ok;

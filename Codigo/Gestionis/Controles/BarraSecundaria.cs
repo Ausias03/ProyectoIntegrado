@@ -177,7 +177,7 @@ namespace Gestionis.Herramientas
         {
             foreach (Control control in controls)
             {
-                if (control is BarraLateral)
+                if (control is BarraLateral || control is RoundGroupBox)
                 {
                     control.BackColor = color;
                 }

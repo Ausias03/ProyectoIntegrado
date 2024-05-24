@@ -49,10 +49,11 @@ namespace Gestionis.Clases
         }
         #endregion
 
+        /// <summary>
+        /// Añade una nota a la BD
+        /// </summary>
         public void Add()
         {
-            //string queryString = "INSERT INTO nota (idNota, idDeuda, apodoUsuario, titulo, alarma, color, descripcion, fechaRecordatorio) " +
-            //       "VALUES (@idNota, idDeuda, @apodoUsuario, @titulo, @alarma, @color, @descripcion, @fechaRecordatorio)";
             string queryString = "INSERT INTO nota (idNota, apodoUsuario, titulo, alarma, color, descripcion, fechaRecordatorio"
                             + (idDeuda.HasValue ? ", idDeuda" : "") + ") "
                             + "VALUES (@idNota, @apodoUsuario, @titulo, @alarma, @color, @descripcion, @fechaRecordatorio"
@@ -81,6 +82,10 @@ namespace Gestionis.Clases
 
         }
 
+        /// <summary>
+        /// Borra una nota de la BD
+        /// </summary>
+        /// <param name="tituloNota"></param>
         public static void BorrarNota(string tituloNota)
         {
             string queryString = $"DELETE FROM nota WHERE titulo = '{tituloNota}';";
@@ -94,12 +99,21 @@ namespace Gestionis.Clases
                 ConexionDB.CerrarConexion();
             }
         }
+
+        /// <summary>
+        /// Recarga DGV
+        /// </summary>
+        /// <returns>Info DGV</returns>
         public static DataTable RecargarTabla()
         {
             return Utilidades.RellenarDatos($"SELECT titulo, alarma, color, descripcion, fechaRecordatorio " +
                 $"FROM nota WHERE apodoUsuario = '{Sesion.Instance.ApodoUsuario}';");
         }
 
+        /// <summary>
+        /// Carga filtros en CMB
+        /// </summary>
+        /// <returns>Lista cargada</returns>
         public static string[] CargaFiltros()
         {
             string[] lista;
@@ -108,6 +122,17 @@ namespace Gestionis.Clases
             return lista;
         }
 
+        /// <summary>
+        /// Filtro
+        /// </summary>
+        /// <param name="filtro"></param>
+        /// <param name="titulo"></param>
+        /// <param name="descripcion"></param>
+        /// <param name="alarma"></param>
+        /// <param name="color"></param>
+        /// <param name="fecha"></param>
+        /// <param name="deuda"></param>
+        /// <returns>Devuelve info DGV</returns>
         public static DataTable BuscarPorFiltro(int filtro, string titulo, string descripcion, bool alarma, int color, string fecha, bool? deuda)
         {
             string nombreUsuario = Sesion.Instance.ApodoUsuario;
@@ -141,6 +166,10 @@ namespace Gestionis.Clases
             return Utilidades.RellenarDatos(consulta);
         }
 
+        /// <summary>
+        /// DGV Notas del día
+        /// </summary>
+        /// <returns>Info DGV</returns>
         public static DataTable NotasDia()
         {
             string fechaActual = DateTime.Today.ToString("yyyy-MM-dd");
@@ -149,7 +178,50 @@ namespace Gestionis.Clases
                 $"'{Sesion.Instance.ApodoUsuario}' AND fechaRecordatorio = '{fechaActual}';");
         }
 
+        public static DataTable notasMesActual()
+        {
+            // Obtener la fecha actual
+            DateTime fechaActual = DateTime.Today;
+
+            // Calcular el primer y último día del mes actual
+            DateTime primerDiaMesActual = new DateTime(fechaActual.Year, fechaActual.Month, 1);
+            DateTime ultimoDiaMesActual = primerDiaMesActual.AddMonths(1).AddDays(-1);
+
+            // Convertir fechas a formato de cadena
+            string primerDiaMesActualStr = primerDiaMesActual.ToString("yyyy-MM-dd");
+            string ultimoDiaMesActualStr = ultimoDiaMesActual.ToString("yyyy-MM-dd");
+
+            // Construir y ejecutar la consulta SQL
+            return Utilidades.RellenarDatos($"SELECT titulo, alarma, color, descripcion, fechaRecordatorio FROM nota" +
+                $" WHERE apodoUsuario = '{Sesion.Instance.ApodoUsuario}'  AND fechaRecordatorio >= '{primerDiaMesActualStr}' AND fechaRecordatorio <= '{ultimoDiaMesActualStr}';");
+        }
+
+
+        public static DataTable notasMesProx()
+        {
+
+            DateTime fechaActual = DateTime.Today;
+
+            // Calcular el primer y último día del próximo mes
+            DateTime primerDiaMesProx = new DateTime(fechaActual.Year, fechaActual.Month, 1).AddMonths(1);
+            DateTime ultimoDiaMesProx = primerDiaMesProx.AddMonths(1).AddDays(-1);
+
+            // Convertir fechas a formato de cadena
+            string primerDiaMesProxStr = primerDiaMesProx.ToString("yyyy-MM-dd");
+            string ultimoDiaMesProxStr = ultimoDiaMesProx.ToString("yyyy-MM-dd");
+
+            // Construir y ejecutar la consulta SQL
+            return Utilidades.RellenarDatos($"SELECT titulo, alarma, descripcion, fechaRecordatorio FROM nota " +
+                $"WHERE apodoUsuario = '{Sesion.Instance.ApodoUsuario}' AND fechaRecordatorio >= '{primerDiaMesProxStr}' AND fechaRecordatorio <= '{ultimoDiaMesProxStr}';");
+
+        }
+
         #region Calculo Días Totales
+
+        /// <summary>
+        /// Cuenta las notas existentes en la BD
+        /// </summary>
+        /// <returns>Total notas existentes</returns>
         public static int NotasTotales()
         {
             string queryString = $"SELECT COUNT(*) FROM nota WHERE apodoUsuario = '{Sesion.Instance.ApodoUsuario}';";
@@ -164,6 +236,11 @@ namespace Gestionis.Clases
 
             return total;
         }
+
+        /// <summary>
+        /// Cuenta las notas existentes en la BD (Diarias)
+        /// </summary>
+        /// <returns>Total notas existentes diarias</returns>
         public static int NotasTotalesDia()
         {
             string fechaActual = DateTime.Today.ToString("yyyy-MM-dd");
@@ -184,8 +261,12 @@ namespace Gestionis.Clases
 
         #region Agregación/Eliminación de nota en calendario
 
-        public void AgregarNotaAlCalendario(DateTime fechaInicio) 
-        { 
+        /// <summary>
+        /// Agrega nota al calendario (outlook)
+        /// </summary>
+        /// <param name="fechaInicio"></param>
+        public void AgregarNotaAlCalendario(DateTime fechaInicio)
+        {
             try
             {
                 Outlook.Application outlookApp = new Outlook.Application();
@@ -207,6 +288,11 @@ namespace Gestionis.Clases
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
+        /// <summary>
+        /// Elimina notas del día
+        /// </summary>
+        /// <param name="titulo"></param>
         public static void EliminarNotaCalendario(string titulo)
         {
             Outlook.Application outlookApp = null;

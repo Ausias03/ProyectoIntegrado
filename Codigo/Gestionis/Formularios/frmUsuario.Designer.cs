@@ -67,6 +67,7 @@ namespace Gestionis
             pctMarco = new PictureBox();
             barraSecundaria1 = new BarraSecundaria();
             barraLateral2 = new BarraLateral();
+            btnGenerarPDF = new Button();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             grpCuenta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pctFoto).BeginInit();
@@ -144,7 +145,7 @@ namespace Gestionis
             // 
             lblNivel.AutoSize = true;
             lblNivel.Font = new Font("Microsoft Sans Serif", 27.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblNivel.Location = new Point(753, 61);
+            lblNivel.Location = new Point(746, 53);
             lblNivel.Name = "lblNivel";
             lblNivel.Size = new Size(49, 54);
             lblNivel.TabIndex = 34;
@@ -450,9 +451,9 @@ namespace Gestionis
             // pctMarco
             // 
             pctMarco.Image = Properties.Resources.Marco1;
-            pctMarco.Location = new Point(733, 48);
+            pctMarco.Location = new Point(728, 44);
             pctMarco.Name = "pctMarco";
-            pctMarco.Size = new Size(77, 69);
+            pctMarco.Size = new Size(82, 73);
             pctMarco.SizeMode = PictureBoxSizeMode.StretchImage;
             pctMarco.TabIndex = 57;
             pctMarco.TabStop = false;
@@ -463,7 +464,7 @@ namespace Gestionis
             barraSecundaria1.Dock = DockStyle.Top;
             barraSecundaria1.Location = new Point(0, 40);
             barraSecundaria1.Name = "barraSecundaria1";
-            barraSecundaria1.Size = new Size(1525, 44);
+            barraSecundaria1.Size = new Size(1818, 44);
             barraSecundaria1.TabIndex = 5;
             // 
             // barraLateral2
@@ -475,12 +476,25 @@ namespace Gestionis
             barraLateral2.Size = new Size(231, 753);
             barraLateral2.TabIndex = 6;
             // 
+            // btnGenerarPDF
+            // 
+            btnGenerarPDF.BackColor = Color.FromArgb(178, 242, 187);
+            btnGenerarPDF.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            btnGenerarPDF.Location = new Point(1111, 773);
+            btnGenerarPDF.Name = "btnGenerarPDF";
+            btnGenerarPDF.Size = new Size(198, 52);
+            btnGenerarPDF.TabIndex = 7;
+            btnGenerarPDF.Text = "Generar PDF";
+            btnGenerarPDF.UseVisualStyleBackColor = false;
+            btnGenerarPDF.Click += btnGenerarPDF_Click;
+            // 
             // frmUsuario
             // 
             AutoScaleDimensions = new SizeF(9F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(233, 236, 239);
-            ClientSize = new Size(1525, 837);
+            ClientSize = new Size(1818, 837);
+            Controls.Add(btnGenerarPDF);
             Controls.Add(barraLateral2);
             Controls.Add(barraSecundaria1);
             Controls.Add(grpCuenta);
@@ -496,6 +510,7 @@ namespace Gestionis
             Controls.SetChildIndex(grpCuenta, 0);
             Controls.SetChildIndex(barraSecundaria1, 0);
             Controls.SetChildIndex(barraLateral2, 0);
+            Controls.SetChildIndex(btnGenerarPDF, 0);
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             grpCuenta.ResumeLayout(false);
             grpCuenta.PerformLayout();
@@ -544,5 +559,6 @@ namespace Gestionis
         private Label lblNivel;
         private PictureBox pctMarco;
         private BarraLateral barraLateral2;
+        private Button btnGenerarPDF;
     }
 }

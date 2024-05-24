@@ -67,12 +67,17 @@ namespace Gestionis
                 dgvGastosIngresos.DataSource = Deuda.RecargarTabla();
 
                 barraSecundaria.Load();
-                barraLateral3.Load();
+                barraLateral2.Load();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }            
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
+
         }
 
         private void ModificarBotones()
@@ -85,31 +90,54 @@ namespace Gestionis
             try
             {
                 AplicarIdioma();
-                barraLateral3.AplicarIdiomas();
+                barraLateral2.AplicarIdiomas();
                 cmbCategoria.DataSource = Deuda.Filtros();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         #region ToolTips
         private void BtnAyuda_Click(object sender, EventArgs e)
         {
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnAnyadirDeuda, "Añadir una nueva deuda."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnEliminarDeuda, "Eliminar una deuda existente."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnBuscar, "Buscar deudas según los filtros seleccionados."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnRestaurar, "Restaurar la tabla de deudas."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(cmbCategoria, "Seleccionar una categoría de deuda."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(txtTitulo, "Escribir el título de la deuda a buscar."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(chkDebo, "Marcar si se deben mostrar solo las deudas que debes."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblDeudasTotalesValor, "Muestra el total de deudas."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblProximaDeudaValor, "Muestra la próxima deuda."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblFechaLimiteValor, "Muestra la fecha límite de la próxima deuda."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblTipoValor, "Indica si debes o te deben."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(vpbDebo, "Progreso de las deudas que debes."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(vpbMeDeben, "Progreso de las deudas que te deben."));
+            if (Sesion.Instance.Espanyol)
+            {
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnAnyadirDeuda, "Añadir una nueva deuda."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnEliminarDeuda, "Eliminar una deuda existente."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnBuscar, "Buscar deudas según los filtros seleccionados."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnRestaurar, "Restaurar la tabla de deudas."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(cmbCategoria, "Seleccionar una categoría de deuda."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(txtTitulo, "Escribir el título de la deuda a buscar."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(chkDebo, "Marcar si se deben mostrar solo las deudas que debes."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblDeudasTotalesValor, "Muestra el total de deudas."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblProximaDeudaValor, "Muestra la próxima deuda."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblFechaLimiteValor, "Muestra la fecha límite de la próxima deuda."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblTipoValor, "Indica si debes o te deben."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(vpbDebo, "Progreso de las deudas que debes."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(vpbMeDeben, "Progreso de las deudas que te deben."));
+            }
+            else
+            {
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnAnyadirDeuda, "Add new debt."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnEliminarDeuda, "Delete an existent debt."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnBuscar, "Search debts by the selected filters."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnRestaurar, "Restablish debts' table."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(cmbCategoria, "Select debt's category."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(txtTitulo, "Write wanted debt's title."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(chkDebo, "Check if only the debts you owe should be shown."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblDeudasTotalesValor, "Show total debt."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblProximaDeudaValor, "Show closest debt."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblFechaLimiteValor, "Show closest debt's due date."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblTipoValor, "Indicate if they owe you or you owe."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(vpbDebo, "Progress of the debts you owe."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(vpbMeDeben, "Progress of the debts they owe you."));
+            }
 
             SiguienteTooltip();
         }
@@ -180,6 +208,10 @@ namespace Gestionis
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         private void btnAnyadirDeuda_Click(object sender, EventArgs e)
@@ -196,6 +228,10 @@ namespace Gestionis
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         private void btnEliminarDeuda_Click(object sender, EventArgs e)
@@ -211,6 +247,10 @@ namespace Gestionis
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                ConexionDB.CerrarConexion();
             }
         }
 
@@ -232,6 +272,10 @@ namespace Gestionis
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
@@ -249,6 +293,10 @@ namespace Gestionis
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         private void chkDebo_CheckedChanged(object sender, EventArgs e)
@@ -261,6 +309,15 @@ namespace Gestionis
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         private void SetGrafico()
@@ -283,6 +340,10 @@ namespace Gestionis
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         private void AplicarIdioma()
@@ -301,11 +362,6 @@ namespace Gestionis
             btnEliminarDeuda.Text = Resources.Idiomas.StringRecursosGestor.btnEliminarDeuda;
             btnRestaurar.Text = Resources.Idiomas.StringRecursosGestor.btnRestaurar;
             chkDebo.Text = Resources.Idiomas.StringRecursosGestor.chkDebo;
-        }
-
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+        }        
     }
 }

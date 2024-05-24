@@ -45,9 +45,9 @@
             lblTitulo.BackColor = Color.FromArgb(211, 208, 242);
             lblTitulo.BorderStyle = BorderStyle.FixedSingle;
             lblTitulo.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTitulo.Location = new Point(143, 19);
+            lblTitulo.Location = new Point(163, 25);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(199, 34);
+            lblTitulo.Size = new Size(246, 43);
             lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Modificar Limites";
             // 
@@ -56,10 +56,9 @@
             cboCategorias.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCategorias.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cboCategorias.FormattingEnabled = true;
-            cboCategorias.Location = new Point(249, 79);
-            cboCategorias.Margin = new Padding(3, 2, 3, 2);
+            cboCategorias.Location = new Point(285, 105);
             cboCategorias.Name = "cboCategorias";
-            cboCategorias.Size = new Size(192, 33);
+            cboCategorias.Size = new Size(219, 39);
             cboCategorias.TabIndex = 1;
             cboCategorias.TextChanged += cboCategorias_TextChanged;
             // 
@@ -67,9 +66,9 @@
             // 
             lblCategoria.AutoSize = true;
             lblCategoria.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblCategoria.Location = new Point(18, 81);
+            lblCategoria.Location = new Point(21, 108);
             lblCategoria.Name = "lblCategoria";
-            lblCategoria.Size = new Size(205, 25);
+            lblCategoria.Size = new Size(247, 31);
             lblCategoria.TabIndex = 2;
             lblCategoria.Text = "Categoria Notificacion:";
             // 
@@ -77,9 +76,9 @@
             // 
             lblLimiteCategoria.AutoSize = true;
             lblLimiteCategoria.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblLimiteCategoria.Location = new Point(88, 136);
+            lblLimiteCategoria.Location = new Point(101, 181);
             lblLimiteCategoria.Name = "lblLimiteCategoria";
-            lblLimiteCategoria.Size = new Size(128, 25);
+            lblLimiteCategoria.Size = new Size(157, 31);
             lblLimiteCategoria.TabIndex = 3;
             lblLimiteCategoria.Text = "Limite Gastos:";
             // 
@@ -87,21 +86,19 @@
             // 
             nudLimite.DecimalPlaces = 2;
             nudLimite.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            nudLimite.Location = new Point(248, 134);
-            nudLimite.Margin = new Padding(3, 2, 3, 2);
+            nudLimite.Location = new Point(283, 179);
             nudLimite.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
             nudLimite.Name = "nudLimite";
-            nudLimite.Size = new Size(192, 32);
+            nudLimite.Size = new Size(219, 38);
             nudLimite.TabIndex = 4;
             // 
             // btnModificar
             // 
             btnModificar.BackColor = Color.FromArgb(178, 242, 187);
             btnModificar.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnModificar.Location = new Point(264, 183);
-            btnModificar.Margin = new Padding(3, 2, 3, 2);
+            btnModificar.Location = new Point(302, 244);
             btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(123, 40);
+            btnModificar.Size = new Size(141, 53);
             btnModificar.TabIndex = 5;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = false;
@@ -111,10 +108,9 @@
             // 
             btnVolver.BackColor = Color.FromArgb(211, 208, 242);
             btnVolver.Font = new Font("Microsoft Sans Serif", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnVolver.Location = new Point(107, 183);
-            btnVolver.Margin = new Padding(3, 2, 3, 2);
+            btnVolver.Location = new Point(122, 244);
             btnVolver.Name = "btnVolver";
-            btnVolver.Size = new Size(111, 40);
+            btnVolver.Size = new Size(127, 53);
             btnVolver.TabIndex = 6;
             btnVolver.Text = "Volver";
             btnVolver.UseVisualStyleBackColor = false;
@@ -122,9 +118,9 @@
             // 
             // FrmModifNotif
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(486, 246);
+            ClientSize = new Size(555, 328);
             Controls.Add(btnModificar);
             Controls.Add(btnVolver);
             Controls.Add(nudLimite);
@@ -132,10 +128,13 @@
             Controls.Add(lblCategoria);
             Controls.Add(cboCategorias);
             Controls.Add(lblTitulo);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 4, 3, 4);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FrmModifNotif";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Modificar Límite Gastos";
             Load += FrmModifNotif_Load;
             ((System.ComponentModel.ISupportInitialize)nudLimite).EndInit();

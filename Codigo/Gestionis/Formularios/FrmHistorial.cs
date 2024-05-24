@@ -29,6 +29,10 @@ namespace Gestionis
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         private void frmHistorial_Load(object sender, EventArgs e)
@@ -151,6 +155,10 @@ namespace Gestionis
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
         }
 
         private void CargarFiltro(DateTime fecha, int numCuenta, int filtro, string param)
@@ -206,6 +214,10 @@ namespace Gestionis
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    ConexionDB.CerrarConexion();
                 }
             }
         }

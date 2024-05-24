@@ -62,7 +62,7 @@ namespace Gestionis
             label2 = new Label();
             label1 = new Label();
             barraSecundaria = new BarraSecundaria();
-            barraLateral3 = new BarraLateral();
+            barraLateral2 = new BarraLateral();
             btnSalir = new Button();
             roundGroupBox1.SuspendLayout();
             pnlInfoDeuda.SuspendLayout();
@@ -85,11 +85,11 @@ namespace Gestionis
             roundGroupBox1.Controls.Add(btnEliminarDeuda);
             roundGroupBox1.Controls.Add(btnAnyadirDeuda);
             roundGroupBox1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            roundGroupBox1.Location = new Point(246, 104);
-            roundGroupBox1.Margin = new Padding(3, 2, 3, 2);
+            roundGroupBox1.Location = new Point(308, 130);
+            roundGroupBox1.Margin = new Padding(4, 2, 4, 2);
             roundGroupBox1.Name = "roundGroupBox1";
-            roundGroupBox1.Padding = new Padding(3, 2, 3, 2);
-            roundGroupBox1.Size = new Size(782, 524);
+            roundGroupBox1.Padding = new Padding(4, 2, 4, 2);
+            roundGroupBox1.Size = new Size(978, 655);
             roundGroupBox1.TabIndex = 0;
             roundGroupBox1.TabStop = false;
             roundGroupBox1.Text = "rgpDeudas";
@@ -100,10 +100,10 @@ namespace Gestionis
             chkDebo.BackColor = Color.Transparent;
             chkDebo.Checked = true;
             chkDebo.CheckState = CheckState.Checked;
-            chkDebo.Location = new Point(446, 200);
+            chkDebo.Location = new Point(558, 250);
             chkDebo.Margin = new Padding(2);
             chkDebo.Name = "chkDebo";
-            chkDebo.Size = new Size(76, 29);
+            chkDebo.Size = new Size(91, 35);
             chkDebo.TabIndex = 19;
             chkDebo.Text = "Debo";
             chkDebo.UseVisualStyleBackColor = false;
@@ -113,27 +113,29 @@ namespace Gestionis
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.BackColor = Color.Transparent;
-            lblTitulo.Location = new Point(43, 156);
+            lblTitulo.Location = new Point(54, 195);
+            lblTitulo.Margin = new Padding(4, 0, 4, 0);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(166, 25);
+            lblTitulo.Size = new Size(201, 31);
             lblTitulo.TabIndex = 18;
             lblTitulo.Text = "Introduce el título:";
             // 
             // txtTitulo
             // 
-            txtTitulo.Location = new Point(210, 154);
+            txtTitulo.Location = new Point(262, 192);
             txtTitulo.Margin = new Padding(2);
             txtTitulo.Name = "txtTitulo";
-            txtTitulo.Size = new Size(172, 32);
+            txtTitulo.Size = new Size(214, 38);
             txtTitulo.TabIndex = 12;
             // 
             // lblDeudasTotalesValor
             // 
             lblDeudasTotalesValor.AutoSize = true;
             lblDeudasTotalesValor.BackColor = Color.Transparent;
-            lblDeudasTotalesValor.Location = new Point(189, 466);
+            lblDeudasTotalesValor.Location = new Point(236, 582);
+            lblDeudasTotalesValor.Margin = new Padding(4, 0, 4, 0);
             lblDeudasTotalesValor.Name = "lblDeudasTotalesValor";
-            lblDeudasTotalesValor.Size = new Size(32, 25);
+            lblDeudasTotalesValor.Size = new Size(38, 31);
             lblDeudasTotalesValor.TabIndex = 11;
             lblDeudasTotalesValor.Text = "99";
             // 
@@ -141,18 +143,20 @@ namespace Gestionis
             // 
             lblDeudasTotales.AutoSize = true;
             lblDeudasTotales.BackColor = Color.Transparent;
-            lblDeudasTotales.Location = new Point(50, 466);
+            lblDeudasTotales.Location = new Point(62, 582);
+            lblDeudasTotales.Margin = new Padding(4, 0, 4, 0);
             lblDeudasTotales.Name = "lblDeudasTotales";
-            lblDeudasTotales.Size = new Size(140, 25);
+            lblDeudasTotales.Size = new Size(171, 31);
             lblDeudasTotales.TabIndex = 10;
             lblDeudasTotales.Text = "Deudas totales:";
             // 
             // btnBuscar
             // 
             btnBuscar.BackColor = Color.FromArgb(178, 242, 187);
-            btnBuscar.Location = new Point(43, 195);
+            btnBuscar.Location = new Point(54, 244);
+            btnBuscar.Margin = new Padding(4);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(136, 42);
+            btnBuscar.Size = new Size(170, 52);
             btnBuscar.TabIndex = 3;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = false;
@@ -168,19 +172,20 @@ namespace Gestionis
             pnlInfoDeuda.Controls.Add(lblTipo);
             pnlInfoDeuda.Controls.Add(lblFechaLimite);
             pnlInfoDeuda.Controls.Add(lblProximaDeuda);
-            pnlInfoDeuda.Location = new Point(446, 31);
-            pnlInfoDeuda.Margin = new Padding(3, 2, 3, 2);
+            pnlInfoDeuda.Location = new Point(558, 39);
+            pnlInfoDeuda.Margin = new Padding(4, 2, 4, 2);
             pnlInfoDeuda.Name = "pnlInfoDeuda";
-            pnlInfoDeuda.Size = new Size(292, 113);
+            pnlInfoDeuda.Size = new Size(364, 141);
             pnlInfoDeuda.TabIndex = 9;
             // 
             // lblTipoValor
             // 
             lblTipoValor.AutoSize = true;
             lblTipoValor.BackColor = Color.Transparent;
-            lblTipoValor.Location = new Point(144, 74);
+            lblTipoValor.Location = new Point(180, 92);
+            lblTipoValor.Margin = new Padding(4, 0, 4, 0);
             lblTipoValor.Name = "lblTipoValor";
-            lblTipoValor.Size = new Size(53, 25);
+            lblTipoValor.Size = new Size(64, 31);
             lblTipoValor.TabIndex = 17;
             lblTipoValor.Text = "Tipo:";
             // 
@@ -188,9 +193,10 @@ namespace Gestionis
             // 
             lblFechaLimiteValor.AutoSize = true;
             lblFechaLimiteValor.BackColor = Color.Transparent;
-            lblFechaLimiteValor.Location = new Point(144, 38);
+            lblFechaLimiteValor.Location = new Point(180, 48);
+            lblFechaLimiteValor.Margin = new Padding(4, 0, 4, 0);
             lblFechaLimiteValor.Name = "lblFechaLimiteValor";
-            lblFechaLimiteValor.Size = new Size(53, 25);
+            lblFechaLimiteValor.Size = new Size(64, 31);
             lblFechaLimiteValor.TabIndex = 16;
             lblFechaLimiteValor.Text = "Tipo:";
             // 
@@ -198,9 +204,10 @@ namespace Gestionis
             // 
             lblProximaDeudaValor.AutoSize = true;
             lblProximaDeudaValor.BackColor = Color.Transparent;
-            lblProximaDeudaValor.Location = new Point(144, 5);
+            lblProximaDeudaValor.Location = new Point(180, 6);
+            lblProximaDeudaValor.Margin = new Padding(4, 0, 4, 0);
             lblProximaDeudaValor.Name = "lblProximaDeudaValor";
-            lblProximaDeudaValor.Size = new Size(53, 25);
+            lblProximaDeudaValor.Size = new Size(64, 31);
             lblProximaDeudaValor.TabIndex = 15;
             lblProximaDeudaValor.Text = "Tipo:";
             // 
@@ -208,9 +215,10 @@ namespace Gestionis
             // 
             lblTipo.AutoSize = true;
             lblTipo.BackColor = Color.Transparent;
-            lblTipo.Location = new Point(86, 72);
+            lblTipo.Location = new Point(108, 90);
+            lblTipo.Margin = new Padding(4, 0, 4, 0);
             lblTipo.Name = "lblTipo";
-            lblTipo.Size = new Size(53, 25);
+            lblTipo.Size = new Size(64, 31);
             lblTipo.TabIndex = 14;
             lblTipo.Text = "Tipo:";
             // 
@@ -218,9 +226,10 @@ namespace Gestionis
             // 
             lblFechaLimite.AutoSize = true;
             lblFechaLimite.BackColor = Color.Transparent;
-            lblFechaLimite.Location = new Point(24, 38);
+            lblFechaLimite.Location = new Point(30, 48);
+            lblFechaLimite.Margin = new Padding(4, 0, 4, 0);
             lblFechaLimite.Name = "lblFechaLimite";
-            lblFechaLimite.Size = new Size(117, 25);
+            lblFechaLimite.Size = new Size(142, 31);
             lblFechaLimite.TabIndex = 13;
             lblFechaLimite.Text = "Fecha límite:";
             // 
@@ -228,9 +237,10 @@ namespace Gestionis
             // 
             lblProximaDeuda.AutoSize = true;
             lblProximaDeuda.BackColor = Color.Transparent;
-            lblProximaDeuda.Location = new Point(-1, 5);
+            lblProximaDeuda.Location = new Point(-1, 6);
+            lblProximaDeuda.Margin = new Padding(4, 0, 4, 0);
             lblProximaDeuda.Name = "lblProximaDeuda";
-            lblProximaDeuda.Size = new Size(143, 25);
+            lblProximaDeuda.Size = new Size(173, 31);
             lblProximaDeuda.TabIndex = 12;
             lblProximaDeuda.Text = "Próxima deuda:";
             // 
@@ -238,9 +248,10 @@ namespace Gestionis
             // 
             cmbCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbCategoria.FormattingEnabled = true;
-            cmbCategoria.Location = new Point(198, 198);
+            cmbCategoria.Location = new Point(248, 248);
+            cmbCategoria.Margin = new Padding(4);
             cmbCategoria.Name = "cmbCategoria";
-            cmbCategoria.Size = new Size(214, 33);
+            cmbCategoria.Size = new Size(266, 39);
             cmbCategoria.TabIndex = 8;
             cmbCategoria.SelectedIndexChanged += cmbCategoria_SelectedIndexChanged;
             // 
@@ -252,19 +263,21 @@ namespace Gestionis
             dgvGastosIngresos.BackgroundColor = Color.White;
             dgvGastosIngresos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvGastosIngresos.GridColor = SystemColors.InfoText;
-            dgvGastosIngresos.Location = new Point(25, 246);
+            dgvGastosIngresos.Location = new Point(31, 308);
+            dgvGastosIngresos.Margin = new Padding(4);
             dgvGastosIngresos.Name = "dgvGastosIngresos";
             dgvGastosIngresos.ReadOnly = true;
             dgvGastosIngresos.RowHeadersWidth = 51;
-            dgvGastosIngresos.Size = new Size(735, 209);
+            dgvGastosIngresos.Size = new Size(919, 261);
             dgvGastosIngresos.TabIndex = 7;
             // 
             // btnRestaurar
             // 
             btnRestaurar.BackColor = Color.FromArgb(178, 242, 187);
-            btnRestaurar.Location = new Point(578, 195);
+            btnRestaurar.Location = new Point(722, 244);
+            btnRestaurar.Margin = new Padding(4);
             btnRestaurar.Name = "btnRestaurar";
-            btnRestaurar.Size = new Size(160, 42);
+            btnRestaurar.Size = new Size(200, 52);
             btnRestaurar.TabIndex = 4;
             btnRestaurar.Text = "Mostrar Todo";
             btnRestaurar.UseVisualStyleBackColor = false;
@@ -273,9 +286,10 @@ namespace Gestionis
             // btnEliminarDeuda
             // 
             btnEliminarDeuda.BackColor = Color.FromArgb(178, 242, 187);
-            btnEliminarDeuda.Location = new Point(61, 80);
+            btnEliminarDeuda.Location = new Point(76, 100);
+            btnEliminarDeuda.Margin = new Padding(4);
             btnEliminarDeuda.Name = "btnEliminarDeuda";
-            btnEliminarDeuda.Size = new Size(160, 35);
+            btnEliminarDeuda.Size = new Size(200, 44);
             btnEliminarDeuda.TabIndex = 2;
             btnEliminarDeuda.Text = "Eliminar Deuda";
             btnEliminarDeuda.UseVisualStyleBackColor = false;
@@ -284,9 +298,10 @@ namespace Gestionis
             // btnAnyadirDeuda
             // 
             btnAnyadirDeuda.BackColor = Color.FromArgb(178, 242, 187);
-            btnAnyadirDeuda.Location = new Point(61, 31);
+            btnAnyadirDeuda.Location = new Point(76, 39);
+            btnAnyadirDeuda.Margin = new Padding(4);
             btnAnyadirDeuda.Name = "btnAnyadirDeuda";
-            btnAnyadirDeuda.Size = new Size(160, 35);
+            btnAnyadirDeuda.Size = new Size(200, 44);
             btnAnyadirDeuda.TabIndex = 1;
             btnAnyadirDeuda.Text = "Añadir deuda";
             btnAnyadirDeuda.UseVisualStyleBackColor = false;
@@ -306,11 +321,11 @@ namespace Gestionis
             rgbResumen.Controls.Add(label2);
             rgbResumen.Controls.Add(label1);
             rgbResumen.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            rgbResumen.Location = new Point(1068, 135);
-            rgbResumen.Margin = new Padding(3, 2, 3, 2);
+            rgbResumen.Location = new Point(1335, 169);
+            rgbResumen.Margin = new Padding(4, 2, 4, 2);
             rgbResumen.Name = "rgbResumen";
-            rgbResumen.Padding = new Padding(3, 2, 3, 2);
-            rgbResumen.Size = new Size(290, 322);
+            rgbResumen.Padding = new Padding(4, 2, 4, 2);
+            rgbResumen.Size = new Size(362, 402);
             rgbResumen.TabIndex = 28;
             rgbResumen.TabStop = false;
             rgbResumen.Text = "roundGroupBox2";
@@ -319,9 +334,10 @@ namespace Gestionis
             // 
             lblMeDebenTotal.AutoSize = true;
             lblMeDebenTotal.BackColor = Color.Transparent;
-            lblMeDebenTotal.Location = new Point(178, 218);
+            lblMeDebenTotal.Location = new Point(222, 272);
+            lblMeDebenTotal.Margin = new Padding(4, 0, 4, 0);
             lblMeDebenTotal.Name = "lblMeDebenTotal";
-            lblMeDebenTotal.Size = new Size(57, 25);
+            lblMeDebenTotal.Size = new Size(69, 31);
             lblMeDebenTotal.TabIndex = 34;
             lblMeDebenTotal.Text = "Debo";
             // 
@@ -329,26 +345,29 @@ namespace Gestionis
             // 
             lblDeboTotal.AutoSize = true;
             lblDeboTotal.BackColor = Color.Transparent;
-            lblDeboTotal.Location = new Point(55, 218);
+            lblDeboTotal.Location = new Point(69, 272);
+            lblDeboTotal.Margin = new Padding(4, 0, 4, 0);
             lblDeboTotal.Name = "lblDeboTotal";
-            lblDeboTotal.Size = new Size(57, 25);
+            lblDeboTotal.Size = new Size(69, 31);
             lblDeboTotal.TabIndex = 33;
             lblDeboTotal.Text = "Debo";
             // 
             // vpbMeDeben
             // 
-            vpbMeDeben.Location = new Point(166, 70);
+            vpbMeDeben.Location = new Point(208, 88);
+            vpbMeDeben.Margin = new Padding(4);
             vpbMeDeben.Name = "vpbMeDeben";
-            vpbMeDeben.Size = new Size(81, 147);
+            vpbMeDeben.Size = new Size(101, 184);
             vpbMeDeben.TabIndex = 32;
             // 
             // lblMeDeben
             // 
             lblMeDeben.AutoSize = true;
             lblMeDeben.BackColor = Color.Transparent;
-            lblMeDeben.Location = new Point(156, 242);
+            lblMeDeben.Location = new Point(195, 302);
+            lblMeDeben.Margin = new Padding(4, 0, 4, 0);
             lblMeDeben.Name = "lblMeDeben";
-            lblMeDeben.Size = new Size(97, 25);
+            lblMeDeben.Size = new Size(118, 31);
             lblMeDeben.TabIndex = 16;
             lblMeDeben.Text = "Me deben";
             // 
@@ -356,17 +375,19 @@ namespace Gestionis
             // 
             lblDeboBarra.AutoSize = true;
             lblDeboBarra.BackColor = Color.Transparent;
-            lblDeboBarra.Location = new Point(55, 242);
+            lblDeboBarra.Location = new Point(69, 302);
+            lblDeboBarra.Margin = new Padding(4, 0, 4, 0);
             lblDeboBarra.Name = "lblDeboBarra";
-            lblDeboBarra.Size = new Size(57, 25);
+            lblDeboBarra.Size = new Size(69, 31);
             lblDeboBarra.TabIndex = 15;
             lblDeboBarra.Text = "Debo";
             // 
             // vpbDebo
             // 
-            vpbDebo.Location = new Point(44, 70);
+            vpbDebo.Location = new Point(55, 88);
+            vpbDebo.Margin = new Padding(4);
             vpbDebo.Name = "vpbDebo";
-            vpbDebo.Size = new Size(81, 147);
+            vpbDebo.Size = new Size(101, 184);
             vpbDebo.TabIndex = 31;
             // 
             // lblResumen
@@ -374,9 +395,10 @@ namespace Gestionis
             lblResumen.AutoSize = true;
             lblResumen.BackColor = Color.Transparent;
             lblResumen.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblResumen.Location = new Point(64, 13);
+            lblResumen.Location = new Point(80, 16);
+            lblResumen.Margin = new Padding(4, 0, 4, 0);
             lblResumen.Name = "lblResumen";
-            lblResumen.Size = new Size(154, 25);
+            lblResumen.Size = new Size(194, 32);
             lblResumen.TabIndex = 12;
             lblResumen.Text = "RESUMEN TOTAL";
             // 
@@ -385,9 +407,10 @@ namespace Gestionis
             lblSaldoValor.AutoSize = true;
             lblSaldoValor.BackColor = Color.Transparent;
             lblSaldoValor.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblSaldoValor.Location = new Point(138, 281);
+            lblSaldoValor.Location = new Point(197, 351);
+            lblSaldoValor.Margin = new Padding(4, 0, 4, 0);
             lblSaldoValor.Name = "lblSaldoValor";
-            lblSaldoValor.Size = new Size(52, 25);
+            lblSaldoValor.Size = new Size(66, 32);
             lblSaldoValor.TabIndex = 20;
             lblSaldoValor.Text = "9999";
             // 
@@ -395,9 +418,10 @@ namespace Gestionis
             // 
             lblSaldo.AutoSize = true;
             lblSaldo.BackColor = Color.Transparent;
-            lblSaldo.Location = new Point(81, 281);
+            lblSaldo.Location = new Point(101, 351);
+            lblSaldo.Margin = new Padding(4, 0, 4, 0);
             lblSaldo.Name = "lblSaldo";
-            lblSaldo.Size = new Size(63, 25);
+            lblSaldo.Size = new Size(76, 31);
             lblSaldo.TabIndex = 19;
             lblSaldo.Text = "Saldo:";
             // 
@@ -405,9 +429,10 @@ namespace Gestionis
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
-            label2.Location = new Point(8, 25);
+            label2.Location = new Point(10, 31);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(268, 25);
+            label2.Size = new Size(334, 31);
             label2.TabIndex = 18;
             label2.Text = "________________________________";
             // 
@@ -415,9 +440,10 @@ namespace Gestionis
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
-            label1.Location = new Point(8, 253);
+            label1.Location = new Point(10, 316);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(268, 25);
+            label1.Size = new Size(334, 31);
             label1.TabIndex = 17;
             label1.Text = "________________________________";
             // 
@@ -426,45 +452,46 @@ namespace Gestionis
             barraSecundaria.BackColor = Color.FromArgb(211, 208, 242);
             barraSecundaria.Dock = DockStyle.Top;
             barraSecundaria.Location = new Point(0, 40);
+            barraSecundaria.Margin = new Padding(4);
             barraSecundaria.Name = "barraSecundaria";
-            barraSecundaria.Size = new Size(1839, 35);
+            barraSecundaria.Size = new Size(1818, 44);
             barraSecundaria.TabIndex = 29;
             // 
-            // barraLateral3
+            // barraLateral2
             // 
-            barraLateral3.BackColor = Color.FromArgb(205, 213, 221);
-            barraLateral3.Dock = DockStyle.Left;
-            barraLateral3.Location = new Point(0, 75);
-            barraLateral3.Name = "barraLateral3";
-            barraLateral3.Size = new Size(231, 805);
-            barraLateral3.TabIndex = 30;
+            barraLateral2.BackColor = Color.FromArgb(205, 213, 221);
+            barraLateral2.Dock = DockStyle.Left;
+            barraLateral2.Location = new Point(0, 84);
+            barraLateral2.Name = "barraLateral2";
+            barraLateral2.Size = new Size(289, 1018);
+            barraLateral2.TabIndex = 30;
             // 
             // btnSalir
             // 
-            btnSalir.BackColor = Color.FromArgb(178, 242, 187);
+            btnSalir.BackColor = Color.FromArgb(211, 208, 242);
             btnSalir.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSalir.Location = new Point(1293, 706);
+            btnSalir.Location = new Point(1523, 725);
+            btnSalir.Margin = new Padding(3, 4, 3, 4);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(160, 42);
-            btnSalir.TabIndex = 20;
+            btnSalir.Size = new Size(174, 60);
+            btnSalir.TabIndex = 31;
             btnSalir.Text = "Salir";
             btnSalir.UseVisualStyleBackColor = false;
             btnSalir.Click += btnSalir_Click;
             // 
             // FrmGestorDeudas
             // 
-            AutoScaleDimensions = new SizeF(96F, 96F);
+            AutoScaleDimensions = new SizeF(120F, 120F);
             AutoScaleMode = AutoScaleMode.Dpi;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.FromArgb(233, 236, 239);
-            ClientSize = new Size(1818, 1100);
-
-            Controls.Add(barraLateral1);
-
+            ClientSize = new Size(1818, 1102);
+            Controls.Add(btnSalir);
+            Controls.Add(barraLateral2);
             Controls.Add(barraSecundaria);
             Controls.Add(rgbResumen);
             Controls.Add(roundGroupBox1);
-            Margin = new Padding(3, 2, 3, 2);
+            Margin = new Padding(4, 2, 4, 2);
             Name = "FrmGestorDeudas";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmGestorDeudas";
@@ -473,7 +500,7 @@ namespace Gestionis
             Controls.SetChildIndex(roundGroupBox1, 0);
             Controls.SetChildIndex(rgbResumen, 0);
             Controls.SetChildIndex(barraSecundaria, 0);
-            Controls.SetChildIndex(barraLateral3, 0);
+            Controls.SetChildIndex(barraLateral2, 0);
             Controls.SetChildIndex(btnSalir, 0);
             roundGroupBox1.ResumeLayout(false);
             roundGroupBox1.PerformLayout();
@@ -515,12 +542,11 @@ namespace Gestionis
         private Label label1;
         private Label lblMeDeben;
         private BarraSecundaria barraSecundaria;
-        private BarraLateral barraLateral1;
         private Controles.VerticalProgressBar vpbMeDeben;
         private Controles.VerticalProgressBar vpbDebo;
         private Label lblMeDebenTotal;
         private Label lblDeboTotal;
-        private BarraLateral barraLateral3;
+        private BarraLateral barraLateral2;
         private Button btnSalir;
     }
 }

@@ -437,27 +437,40 @@ namespace Gestionis
         #region ToolTips
         private void btnAyuda_Click(object sender, EventArgs e)
         {
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnGasto, "Añadir un nuevo gasto."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnIngreso, "Añadir un nuevo ingreso."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(txtNombreGasto, "Escribir el nombre del gasto."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(cmbTipoGasto, "Seleccionar el tipo de gasto."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(nudDineroGasto, "Indicar el monto del gasto."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(cmbCategoriaGasto, "Seleccionar la categoría del gasto."));
+            if (Sesion.Instance.Espanyol)
+            {
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnGasto, "Añadir un nuevo gasto."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnIngreso, "Añadir un nuevo ingreso."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(cmbFiltroGastos, "Filtra gastos por nombre, tipo, monto o categoría."));
 
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(txtNombreIngreso, "Escribir el nombre del ingreso."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(cmbTipoIngreso, "Seleccionar el tipo de ingreso."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(nudDineroIngreso, "Indicar el monto del ingreso."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(cmbCategoriaIngreso, "Seleccionar la categoría del ingreso."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnFiltrarGastos, "Filtrar los gastos según los criterios seleccionados."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(cmbFiltroIngresos, "Filtra ingresos por nombre, tipo, monto o categoría."));
 
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnRestablecerGastos, "Restablecer la lista de gastos."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnFiltrarIngresos, "Filtrar los ingresos según los criterios seleccionados."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnRestablecerIngresos, "Restablecer la lista de ingresos."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnRestablecerGastos, "Restablecer la lista de gastos."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnFiltrarIngresos, "Filtrar los ingresos según los criterios seleccionados."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnRestablecerIngresos, "Restablecer la lista de ingresos."));
 
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblIngresosValor, "Muestra el total de ingresos."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblGastosValor, "Muestra el total de gastos."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblTotalValor, "Muestra el total de dinero disponible."));
-            tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnSalir, "Salir de la aplicación."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblIngresosValor, "Muestra el total de ingresos."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblGastosValor, "Muestra el total de gastos."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblTotalValor, "Muestra el total de dinero disponible."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnSalir, "Salir de la aplicación."));
+            }
+            else
+            {
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnGasto, "Add new expense."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnIngreso, "Add new income."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(cmbFiltroGastos, "Filter expenses by name, type, amount or category."));
+
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(cmbFiltroIngresos, "Filter incomes by name, type, amount or category."));
+
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnRestablecerGastos, "Restablish expenses' list."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnFiltrarIngresos, "Filter incomes by the chosen criteria."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnRestablecerIngresos, "Restablish incomes' list."));
+
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblIngresosValor, "Show total income."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblGastosValor, "Show total expenses."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(lblTotalValor, "Show avaliable money."));
+                tooltipQueue.Enqueue(new KeyValuePair<Control, string>(btnSalir, "Exit the app."));
+            }
 
             ShowNextTooltip();
         }

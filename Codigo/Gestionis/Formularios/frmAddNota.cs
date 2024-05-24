@@ -102,6 +102,10 @@ namespace Gestionis
             {
                 MessageBox.Show("No se ha podido conectar con la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                ConexionDB.CerrarConexion();
+            }
 
         }
 

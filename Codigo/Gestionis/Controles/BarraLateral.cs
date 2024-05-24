@@ -61,10 +61,9 @@ namespace Gestionis.Herramientas
             BtnNotas = CreateButton("Notas", Properties.Resources.notas, typeof(frmNotas));
             BtnClasificacion = CreateButton("Clasificación", Properties.Resources.calsificacion, typeof(frmTablaClasificación));
             BtnHistorial = CreateButton("Historial", Properties.Resources.historial, typeof(frmHistorial));
-            BtnNotificaciones = CreateButton("Modif. Notif.", Properties.Resources.notificacion, typeof(FrmModifNotif));
+            BtnNotificaciones = CreateButton("Modif Notif", Properties.Resources.notificacion, typeof(FrmModifNotif));
             BtnPaginaWeb = CreateButton("Página Web", Properties.Resources.web, null);
 
-            // Add specific event handler for BtnPaginaWeb
             BtnPaginaWeb.Click -= ButtonClickHandler;
             BtnPaginaWeb.Click += (sender, e) => OpenWebPage("https://gestioniss.000webhostapp.com/IndexEN.html");
         }
@@ -81,7 +80,7 @@ namespace Gestionis.Herramientas
                 Padding = new Padding(5),
                 FlatStyle = FlatStyle.Flat,
                 FlatAppearance = { BorderSize = 0 },
-                Tag = formType // Store the formType in the Tag property
+                Tag = formType
             };
             button.Click += ButtonClickHandler;
             Controls.Add(button);
