@@ -49,31 +49,43 @@ namespace Gestionis.Formularios
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-            if (ValidaDatos())
+            try
             {
-                if (!Deuda.ExisteDeuda(txtTitulo.Text))
+                if (ValidaDatos())
                 {
-                    Deuda deuda = new Deuda(txtTitulo.Text, rtbDescrip.Text, rdbDebo.Checked, nudCantidadAdeudada.Value, dtpDeuda.Value, dtpVencimiento.Value, chkRecordatorio.Checked);
-                    if (deuda.Add() > 0)
+                    if (!Deuda.ExisteDeuda(txtTitulo.Text))
                     {
-                        if (chkRecordatorio.Checked)
+                        Deuda deuda = new Deuda(txtTitulo.Text, rtbDescrip.Text, rdbDebo.Checked, nudCantidadAdeudada.Value, dtpDeuda.Value, dtpVencimiento.Value, chkRecordatorio.Checked);
+                        if (deuda.Add() > 0)
                         {
-                            frmAddNota frmAddNota = new frmAddNota(deuda.GetIdDeuda(deuda));
-                            frmAddNota.ShowDialog();
+                            if (rdbDeben.Checked)
+                            {
+                                SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario, 40);
+                            }
+                            else
+                            {
+                                SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario, 15);
+                            }
+                            if (chkRecordatorio.Checked)
+                            {
+                                frmAddNota frmAddNota = new frmAddNota(deuda.GetIdDeuda(deuda));
+                                frmAddNota.ShowDialog();
+                            }
+                            MessageBox.Show("Deuda agregada exitosamente", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
-                        MessageBox.Show("Deuda agregada exitosamente", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                        {
+                            MessageBox.Show("Error al agregar la deuda", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Error al agregar la deuda", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Ya existe una deuda con ese título", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    ResetearFrm();
                 }
-                else
-                {
-                    MessageBox.Show("Ya existe una deuda con ese título", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                ResetearFrm();
             }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         private void ResetearFrm()

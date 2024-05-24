@@ -65,14 +65,14 @@ namespace Gestionis
                 ProximaDeuda();
 
                 dgvGastosIngresos.DataSource = Deuda.RecargarTabla();
+
+                barraSecundaria.Load();
+                barraLateral3.Load();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-            }
-
-            barraSecundaria.Load();
-            barraLateral3.Load();
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }            
         }
 
         private void ModificarBotones()
@@ -90,7 +90,7 @@ namespace Gestionis
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -178,7 +178,7 @@ namespace Gestionis
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -194,7 +194,7 @@ namespace Gestionis
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -210,7 +210,7 @@ namespace Gestionis
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -230,7 +230,7 @@ namespace Gestionis
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -247,7 +247,7 @@ namespace Gestionis
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -259,7 +259,7 @@ namespace Gestionis
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -281,7 +281,7 @@ namespace Gestionis
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -301,6 +301,11 @@ namespace Gestionis
             btnEliminarDeuda.Text = Resources.Idiomas.StringRecursosGestor.btnEliminarDeuda;
             btnRestaurar.Text = Resources.Idiomas.StringRecursosGestor.btnRestaurar;
             chkDebo.Text = Resources.Idiomas.StringRecursosGestor.chkDebo;
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

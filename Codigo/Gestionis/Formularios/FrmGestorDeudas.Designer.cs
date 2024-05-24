@@ -63,6 +63,7 @@ namespace Gestionis
             label1 = new Label();
             barraSecundaria = new BarraSecundaria();
             barraLateral3 = new BarraLateral();
+            btnSalir = new Button();
             roundGroupBox1.SuspendLayout();
             pnlInfoDeuda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvGastosIngresos).BeginInit();
@@ -383,8 +384,8 @@ namespace Gestionis
             // 
             lblSaldoValor.AutoSize = true;
             lblSaldoValor.BackColor = Color.Transparent;
-            lblSaldoValor.Font = new Font("Segoe UI", 14.25F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblSaldoValor.Location = new Point(141, 281);
+            lblSaldoValor.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblSaldoValor.Location = new Point(138, 281);
             lblSaldoValor.Name = "lblSaldoValor";
             lblSaldoValor.Size = new Size(52, 25);
             lblSaldoValor.TabIndex = 20;
@@ -394,7 +395,7 @@ namespace Gestionis
             // 
             lblSaldo.AutoSize = true;
             lblSaldo.BackColor = Color.Transparent;
-            lblSaldo.Location = new Point(84, 281);
+            lblSaldo.Location = new Point(81, 281);
             lblSaldo.Name = "lblSaldo";
             lblSaldo.Size = new Size(63, 25);
             lblSaldo.TabIndex = 19;
@@ -426,7 +427,7 @@ namespace Gestionis
             barraSecundaria.Dock = DockStyle.Top;
             barraSecundaria.Location = new Point(0, 40);
             barraSecundaria.Name = "barraSecundaria";
-            barraSecundaria.Size = new Size(1446, 35);
+            barraSecundaria.Size = new Size(1839, 35);
             barraSecundaria.TabIndex = 29;
             // 
             // barraLateral3
@@ -438,13 +439,26 @@ namespace Gestionis
             barraLateral3.Size = new Size(231, 805);
             barraLateral3.TabIndex = 30;
             // 
+            // btnSalir
+            // 
+            btnSalir.BackColor = Color.FromArgb(178, 242, 187);
+            btnSalir.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSalir.Location = new Point(1293, 706);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(160, 42);
+            btnSalir.TabIndex = 20;
+            btnSalir.Text = "Salir";
+            btnSalir.UseVisualStyleBackColor = false;
+            btnSalir.Click += btnSalir_Click;
+            // 
             // FrmGestorDeudas
             // 
             AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.Dpi;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.FromArgb(233, 236, 239);
-            ClientSize = new Size(1446, 880);
+            ClientSize = new Size(1839, 880);
+            Controls.Add(btnSalir);
             Controls.Add(barraLateral3);
             Controls.Add(barraSecundaria);
             Controls.Add(rgbResumen);
@@ -459,6 +473,7 @@ namespace Gestionis
             Controls.SetChildIndex(rgbResumen, 0);
             Controls.SetChildIndex(barraSecundaria, 0);
             Controls.SetChildIndex(barraLateral3, 0);
+            Controls.SetChildIndex(btnSalir, 0);
             roundGroupBox1.ResumeLayout(false);
             roundGroupBox1.PerformLayout();
             pnlInfoDeuda.ResumeLayout(false);
@@ -505,5 +520,6 @@ namespace Gestionis
         private Label lblMeDebenTotal;
         private Label lblDeboTotal;
         private BarraLateral barraLateral3;
+        private Button btnSalir;
     }
 }

@@ -41,6 +41,9 @@ namespace Gestionis.Clases
         }
         #endregion
 
+        /// <summary>
+        /// Agrega una nueva deuda a la base de datos.
+        /// </summary>
         public int Add()
         {
             int resultado = 0;
@@ -74,6 +77,11 @@ namespace Gestionis.Clases
             return resultado;
         }
 
+        /// <summary>
+        /// Obtiene el ID de la deuda basado en su título.
+        /// </summary>
+        /// <param name="deuda">Instancia de la deuda.</param>
+        /// <returns>El ID de la deuda.</returns>
         public int GetIdDeuda(Deuda deuda)
         {
             int resultado = 0;
@@ -96,6 +104,11 @@ namespace Gestionis.Clases
             return resultado;
         }
 
+        /// <summary>
+        /// Verifica si una deuda existe en la base de datos.
+        /// </summary>
+        /// <param name="tit">Título de la deuda.</param>
+        /// <returns>Verdadero si la deuda existe; de lo contrario, falso.</returns>
         public static bool ExisteDeuda(string tit)
         {
             string queryString = $"SELECT titulo FROM deuda WHERE titulo = @titulo AND numCuenta = {Sesion.Instance.NumCuenta};";
@@ -117,6 +130,12 @@ namespace Gestionis.Clases
             return existe;
         }
 
+        /// <summary>
+        /// Obtiene información detallada de una deuda.
+        /// </summary>
+        /// <param name="tit">Título de la deuda.</param>
+        /// <param name="deuda">Instancia de la deuda.</param>
+        /// <returns>Instancia de la deuda con información actualizada.</returns>
         public static Deuda GetDeuda(string tit, Deuda deuda)
         {
             string queryString = $"SELECT descripcion, debo, cantidad, fechaCreacion, fechaVencimiento FROM deuda WHERE titulo = @titulo AND numCuenta = {Sesion.Instance.NumCuenta};";
@@ -142,6 +161,11 @@ namespace Gestionis.Clases
             return deuda;
         }
 
+        /// <summary>
+        /// Elimina una deuda de la base de datos.
+        /// </summary>
+        /// <param name="tit">Título de la deuda a eliminar.</param>
+        /// <returns>El número de filas afectadas.</returns>
         public static int EliminarDeuda(string tit)
         {
             int resultado = 0;
@@ -158,6 +182,10 @@ namespace Gestionis.Clases
             return resultado;
         }
 
+        /// <summary>
+        /// Obtiene la cantidad total de deudas.
+        /// </summary>
+        /// <returns>El número total de deudas.</returns>
         public static int DeudasTotales()
         {
             int resultado = 0;
@@ -185,6 +213,10 @@ namespace Gestionis.Clases
             return resultado;
         }
 
+        /// <summary>
+        /// Obtiene información sobre la próxima deuda basada en la fecha de vencimiento más próxima.
+        /// </summary>
+        /// <param name="deuda">Instancia de la deuda.</param>
         public void GetProximaDeuda(Deuda deuda)
         {
             string queryString = "SELECT titulo, debo, MIN(fechaVencimiento) FROM deuda WHERE numCuenta = @numCuenta;";
@@ -207,6 +239,10 @@ namespace Gestionis.Clases
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>Filtros para el combobox</returns>
         public static string[] Filtros()
         {
             string[] filtro;
@@ -215,16 +251,32 @@ namespace Gestionis.Clases
             return filtro;
         }
 
+        /// <summary>
+        /// Recarga la tabla de deudas.
+        /// </summary>
+        /// <returns>Un DataTable con los datos de las deudas.</returns>
         public static DataTable RecargarTabla()
         {
             return Utilidades.RellenarDatos($"SELECT titulo, descripcion, cantidad, fechaCreacion, fechaVencimiento FROM deuda WHERE numCuenta = {Sesion.Instance.NumCuenta}");
         }
 
+        /// <summary>
+        /// Recarga la tabla de deudas con filtro de si debes o te deben.
+        /// </summary>
+        /// <param name="debo">true si debes, fales si te deben</param>
+        /// <returns>Un DataTable con los datos de las deudas, que debes o te deben</returns>
         public static DataTable RecargarTabla(bool debo)
         {
             return Utilidades.RellenarDatos($"SELECT titulo, descripcion, cantidad, fechaCreacion, fechaVencimiento FROM deuda WHERE numCuenta = {Sesion.Instance.NumCuenta} AND debo = {debo}");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filtro"></param>
+        /// <param name="debo"></param>
+        /// <param name="titulo"></param>
+        /// <returns></returns>
         public static DataTable CargarFiltro(string filtro, bool debo, string titulo)
         {
             int numCuenta = Sesion.Instance.NumCuenta;
@@ -254,6 +306,11 @@ namespace Gestionis.Clases
             return Utilidades.RellenarDatos(consulta);
         }
 
+        /// <summary>
+        /// Calcula el total de las deudas.
+        /// </summary>
+        /// <param name="debo">True: deudas que tebes, false: deudas que te deben</param>
+        /// <returns>Retorna el total de las deudas</returns>
         public static double CalcularTotalDeuda(bool debo)
         {
             float? resultado = null;
