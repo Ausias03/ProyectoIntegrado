@@ -1,10 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Mysqlx.Crud.Order.Types;
 
 namespace Gestionis.Clases
 {
@@ -90,7 +84,7 @@ namespace Gestionis.Clases
 
             query.ExecuteNonQuery();
 
-            ConexionDB.CerrarConexion();            
+            ConexionDB.CerrarConexion();
         }
 
         /// <summary>

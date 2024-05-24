@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Configuration;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Resources;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Gestionis.Clases;
 using Gestionis.Herramientas;
-using Gestionis.Clases;
 using System.Globalization;
 
 namespace Gestionis
@@ -53,7 +41,7 @@ namespace Gestionis
             tooltipTimer.Interval = tooltipDuration;
             tooltipTimer.Tick += TooltipTimer_Tick;
             #endregion
-            
+
             ModificarBotones();
         }
 
@@ -263,7 +251,7 @@ namespace Gestionis
             {
                 ConexionDB.CerrarConexion();
             }
-        }        
+        }
 
         private void dgvGastos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {

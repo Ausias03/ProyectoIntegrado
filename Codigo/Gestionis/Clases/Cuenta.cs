@@ -1,13 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Mysqlx.Crud.Order.Types;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using Gestionis.Formularios;
 
 namespace Gestionis.Clases
 {
