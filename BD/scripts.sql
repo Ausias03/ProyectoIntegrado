@@ -14,7 +14,7 @@ direccion VARCHAR(60),
 telefono VARCHAR(9),
 experiencia INT NOT NULL,
 foto BLOB NOT NULL,
-nivel INT NOT NULL DEFAULT 1
+nivel INT NOT NULL DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS cuenta (
@@ -69,7 +69,7 @@ idActivo INT PRIMARY KEY AUTO_INCREMENT,
 numCuenta INT NULL,
 nombre VARCHAR(45) NOT NULL,
 valorAdquisicion FLOAT NOT NULL,
-FOREIGN KEY (numCuenta) REFERENCES Cuenta(numCuenta) ON DELETE CASCADE
+FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS coche (
@@ -77,7 +77,7 @@ idActivo INT PRIMARY KEY AUTO_INCREMENT,
 marca VARCHAR(45) NOT NULL,
 modelo VARCHAR(45) NOT NULL,
 anyo DATE NOT NULL,
-FOREIGN KEY (idActivo) REFERENCES Activo(idActivo) ON DELETE CASCADE
+FOREIGN KEY (idActivo) REFERENCES activo(idActivo) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS bienRaiz (
@@ -85,7 +85,7 @@ idActivo INT PRIMARY KEY AUTO_INCREMENT,
 tipo VARCHAR(45) NOT NULL,
 ubicacion VARCHAR(45) NOT NULL,
 construcNueva TINYINT NOT NULL,
-FOREIGN KEY (idActivo) REFERENCES Activo(idActivo) ON DELETE CASCADE
+FOREIGN KEY (idActivo) REFERENCES activo(idActivo) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS deuda (
@@ -123,7 +123,7 @@ descripcion VARCHAR(255) NOT NULL,
 recomendacion VARCHAR(255) NOT NULL,
 fecha DATE NOT NULL,
 FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta) ON DELETE CASCADE,
-FOREIGN KEY (idCategoria) REFERENCES categoriagasto(idCategoria) ON DELETE CASCADE
+FOREIGN KEY (idCategoria) REFERENCES categoriaGasto(idCategoria) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS limite (
@@ -132,7 +132,7 @@ idCategoria INT NOT NULL,
 limite DECIMAL(10,2),
 PRIMARY KEY (numCuenta,idCategoria),
 FOREIGN KEY (numCuenta) REFERENCES cuenta(numCuenta) ON DELETE CASCADE,
-FOREIGN KEY (idCategoria) REFERENCES categoriagasto(idCategoria) ON DELETE CASCADE
+FOREIGN KEY (idCategoria) REFERENCES categoriaGasto(idCategoria) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS nivel (
@@ -162,17 +162,17 @@ VALUES (NULL, "Inversión");
 INSERT INTO categoriaIngreso (idCategoria, nombre)
 VALUES (NULL, "Venta");
 
-INSERT INTO categoriagasto (idCategoria, nombre, color, limite)
+INSERT INTO categoriaGasto (idCategoria, nombre, color, limite)
 VALUES (1, "Restaurante", -53714, 150);
 
-INSERT INTO categoriagasto (idCategoria, nombre, color, limite)
+INSERT INTO categoriaGasto (idCategoria, nombre, color, limite)
 VALUES (2, "Supermercado", -13729281, 150);
 
-INSERT INTO categoriagasto (idCategoria, nombre, color, limite)
+INSERT INTO categoriaGasto (idCategoria, nombre, color, limite)
 VALUES (3, "Gasolina", -2494, 150);
 
-INSERT INTO categoriagasto (idCategoria, nombre, color, limite)
+INSERT INTO categoriaGasto (idCategoria, nombre, color, limite)
 VALUES (4, "Entretenimiento", -12386472, 150);
 
-INSERT INTO categoriagasto (idCategoria, nombre, color, limite)
+INSERT INTO categoriaGasto (idCategoria, nombre, color, limite)
 VALUES (5, "Luz", -5670662, 150);
