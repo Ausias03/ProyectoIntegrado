@@ -113,6 +113,18 @@ namespace Gestionis
             }
         }
 
+        private void pctVerContrasenya_Click(object sender, EventArgs e)
+        {
+            if (txtContrasenya.PasswordChar == '*')
+            {
+                txtContrasenya.PasswordChar = '\0';
+            }
+            else
+            {
+                txtContrasenya.PasswordChar = '*';
+            }
+        }
+
         #region Metodos de implementacion
         private void RestablecerControlesVisuales()
         {

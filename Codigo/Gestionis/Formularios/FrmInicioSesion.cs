@@ -95,12 +95,24 @@ namespace Gestionis
             }
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if (txtContrasenya.PasswordChar == '*')
+            {
+                txtContrasenya.PasswordChar = '\0';
+            }
+            else
+            {
+                txtContrasenya.PasswordChar = '*';
+            }
+        }
+
         #region Metodos de implementacion
         private void RestablecerControlesVisuales()
         {
             txtNombreUsuario.Text = String.Empty;
             txtContrasenya.Text = String.Empty;
         }
-        #endregion
+        #endregion        
     }
 }
