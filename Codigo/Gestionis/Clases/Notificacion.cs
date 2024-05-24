@@ -1,12 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Gestionis.Clases
 {
@@ -20,7 +12,7 @@ namespace Gestionis.Clases
         private string recomendacion;
         private DateTime fecha;
 
-        public Notificacion(int? id, int numCuenta, string titulo, int categoria, 
+        public Notificacion(int? id, int numCuenta, string titulo, int categoria,
             string descripcion, string recomendacion, DateTime fecha)
         {
             this.id = id;
@@ -33,7 +25,7 @@ namespace Gestionis.Clases
         }
 
         public string Titulo { get { return titulo; } }
-        public int Categoria { get { return categoria; } }        
+        public int Categoria { get { return categoria; } }
         public string Descripcion { get { return descripcion; } }
         public string Recomendacion { get { return recomendacion; } }
 

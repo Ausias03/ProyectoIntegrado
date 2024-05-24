@@ -1,5 +1,5 @@
-﻿using System.Diagnostics;
-using Gestionis.Clases;
+﻿using Gestionis.Clases;
+using System.Diagnostics;
 
 namespace Gestionis
 {
@@ -100,14 +100,14 @@ namespace Gestionis
                 CreaUsuario();
                 CreaCuenta(txtApodo.Text);
                 CreaLimites();
-                
+
                 lklInicioSesion_LinkClicked(null, null);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally 
+            finally
             {
                 ConexionDB.CerrarConexion();
             }

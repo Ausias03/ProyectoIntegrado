@@ -1,19 +1,6 @@
 using Gestionis.Clases;
-using Gestionis;
-using System.Globalization;
-using System.Threading;
-using System.Windows.Forms;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Gestionis.Formularios;
-using Gestionis.Properties;
-using Gestionis.Herramientas;
 using System.Drawing.Imaging;
+using System.Globalization;
 
 namespace Gestionis
 {
@@ -81,7 +68,7 @@ namespace Gestionis
         {
             AplicarIdioma();
             barraLateral2.AplicarIdiomas();
-        }        
+        }
 
         #region Validación de datos
 
