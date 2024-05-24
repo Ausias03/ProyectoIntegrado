@@ -457,9 +457,10 @@ namespace Gestionis
             AutoScaleMode = AutoScaleMode.Dpi;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.FromArgb(233, 236, 239);
-            ClientSize = new Size(1839, 880);
-            Controls.Add(btnSalir);
-            Controls.Add(barraLateral3);
+            ClientSize = new Size(1818, 1100);
+
+            Controls.Add(barraLateral1);
+
             Controls.Add(barraSecundaria);
             Controls.Add(rgbResumen);
             Controls.Add(roundGroupBox1);

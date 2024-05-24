@@ -79,7 +79,7 @@ namespace Gestionis
             AplicarIdioma();
 
             barraSecundaria1.Load();
-            barraLateral2.Load();
+            barraLateral3.Load();
 
             try
             {

@@ -111,13 +111,13 @@ namespace Gestionis.Clases
         {
 
             return Utilidades.RellenarDatos("SELECT c.nombre AS categoria, ROUND(SUM(g.cantidad), 2) AS total_gasto, " +
-                "ROUND((SUM(g.cantidad) * 100 / (SELECT SUM(cantidad) FROM ingreso))) AS porcentaje FROM gasto g JOIN categoriagasto " +
+                "ROUND((SUM(g.cantidad) * 100 / (SELECT SUM(cantidad) FROM ingreso))) AS porcentaje FROM gasto g JOIN categoriaGasto " +
                 "c ON g.idCategoria = c.idCategoria WHERE g.tipo = 'Variable' GROUP BY c.nombre; ");
         }
         public static DataTable VisualizarDatosFijo()
         {
             return Utilidades.RellenarDatos("SELECT c.nombre AS categoria, ROUND(SUM(g.cantidad), 2) AS total_gasto, ROUND((SUM(g.cantidad) * 100 / (SELECT SUM(cantidad) FROM ingreso))) AS porcentaje " +
-                "FROM gasto g JOIN categoriagasto c ON g.idCategoria = c.idCategoria WHERE g.tipo = 'Fijo' GROUP BY c.nombre;");
+                "FROM gasto g JOIN categoriaGasto c ON g.idCategoria = c.idCategoria WHERE g.tipo = 'Fijo' GROUP BY c.nombre;");
         }
 
         #endregion
