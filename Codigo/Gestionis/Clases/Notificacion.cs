@@ -70,13 +70,14 @@ namespace Gestionis.Clases
         /// </summary>
         /// <param name="categoria">La categoría a buscar</param>
         /// <returns>TRUE si existe una notificación, FALSE si no</returns>
-        public static bool ExisteNotif(int categoria)
+        public static bool ExisteNotif(int categoria, int numCuenta)
         {
-            string queryString = "SELECT idNotificacion FROM notificacion WHERE idCategoria IN" +
+            string queryString = "SELECT idNotificacion FROM notificacion WHERE numCuenta = @numCuenta AND idCategoria IN" +
                 "(SELECT idCategoria FROM categoriaGasto WHERE idCategoria = @idCategoria);";
 
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
             query.Parameters.AddWithValue("@idCategoria", categoria);
+            query.Parameters.AddWithValue("@numCuenta", numCuenta);
 
             ConexionDB.AbrirConexion();
 
