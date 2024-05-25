@@ -82,7 +82,7 @@ namespace Gestionis.Clases
         /// <param name="categoria">Categoría de la notificación a crear</param>
         public void AddNotificacion(int categoria)
         {
-            if (Notificacion.ExisteNotif(categoria))
+            if (Notificacion.ExisteNotif(categoria, numCuenta.Value))
             {
                 return;
             }
@@ -116,7 +116,7 @@ namespace Gestionis.Clases
         /// <param name="categoria">Categoría de la notificación a eliminar</param>
         public void EliminaNotificacion(int categoria)
         {
-            if (!Notificacion.ExisteNotif(categoria))
+            if (!Notificacion.ExisteNotif(categoria, numCuenta.Value))
             {
                 return;
             }
