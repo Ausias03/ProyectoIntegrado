@@ -45,6 +45,7 @@ namespace Gestionis
             lblFecha.Text = DateTime.Today.ToString("d");
             CargarFecha(DateTime.Today, cuenta);
             barraSecundaria1.Load();
+            barraLateral1.Load();
             cmbMetodo.DataSource = ListaMetodo();
         }
         private void ModificarBotones()

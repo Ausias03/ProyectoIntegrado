@@ -113,9 +113,19 @@ namespace Gestionis.Clases
         /// <returns>Dgv gastos variables</returns>
         public static DataTable VisualizarDatosVariable()
         {
-            return Utilidades.RellenarDatos("SELECT c.nombre AS categoria, ROUND(SUM(g.cantidad), 2) AS total_gasto, " +
-                "ROUND((SUM(g.cantidad) * 100 / (SELECT SUM(cantidad) FROM ingreso)) ) AS porcentaje FROM gasto g JOIN categoriaGasto " +
-                "c ON g.idCategoria = c.idCategoria WHERE g.tipo = 'Variable' GROUP BY c.nombre; ");
+            string queryString = "SELECT c.nombre AS categoria, COALESCE(ROUND(SUM(g.cantidad), 2), 0) AS total_gasto, COALESCE(ROUND((SUM(g.cantidad) * 100 / (SELECT SUM(cantidad) FROM ingreso))), 0) AS porcentaje FROM gasto g JOIN " +
+                            "categoriaGasto c ON g.idCategoria = c.idCategoria JOIN cuenta u ON g.numCuenta = u.numCuenta WHERE u.numCuenta = @NumCuenta AND g.tipo = 'Variable' GROUP BY  c.nombre;";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+            query.Parameters.AddWithValue("@NumCuenta", Sesion.Instance.NumCuenta);
+
+            DataTable dataTable = new DataTable();
+            using (MySqlDataAdapter adapter = new MySqlDataAdapter(query))
+            {
+                adapter.Fill(dataTable);
+            }
+
+            return dataTable;
         }
 
         /// <summary>
@@ -124,8 +134,19 @@ namespace Gestionis.Clases
         /// <returns>Dgv gastos fijos</returns>
         public static DataTable VisualizarDatosFijo()
         {
-            return Utilidades.RellenarDatos("SELECT c.nombre AS categoria, ROUND(SUM(g.cantidad), 2) AS total_gasto, ROUND((SUM(g.cantidad) * 100 / (SELECT SUM(cantidad) FROM ingreso))) AS porcentaje " +
-                "FROM gasto g JOIN categoriaGasto c ON g.idCategoria = c.idCategoria WHERE g.tipo = 'Fijo' GROUP BY c.nombre;");
+            string queryString = "SELECT c.nombre AS categoria, COALESCE(ROUND(SUM(g.cantidad), 2), 0) AS total_gasto, COALESCE(ROUND((SUM(g.cantidad) * 100 / (SELECT SUM(cantidad) FROM ingreso))), 0) AS porcentaje " +
+                "FROM gasto g JOIN categoriaGasto c ON g.idCategoria = c.idCategoria JOIN cuenta u ON g.numCuenta = u.numCuenta WHERE u.numCuenta = @NumCuenta AND g.tipo = 'Fijo' GROUP BY c.nombre;";
+
+            MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+            query.Parameters.AddWithValue("@NumCuenta", Sesion.Instance.NumCuenta);
+
+            DataTable dataTable = new DataTable();
+            using (MySqlDataAdapter adapter = new MySqlDataAdapter(query))
+            {
+                adapter.Fill(dataTable);
+            }
+
+            return dataTable;
         }
 
         #endregion
@@ -138,25 +159,23 @@ namespace Gestionis.Clases
         /// <returns>Total gastos fijos</returns>
         public static double? TotalFijos()
         {
-            string queryString = "SELECT SUM(cantidad) FROM gasto WHERE tipo = @tipo";
+            string queryString = "SELECT SUM(cantidad) FROM gasto WHERE tipo = @Tipo AND numCuenta = @NumCuenta";
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
 
-            query.Parameters.AddWithValue("@tipo", "fijo");
+            query.Parameters.AddWithValue("@Tipo", "fijo");
+            query.Parameters.AddWithValue("@NumCuenta", Sesion.Instance.NumCuenta);
+
             ConexionDB.AbrirConexion();
             double? sumaTotal = null;
             using (MySqlDataReader reader = query.ExecuteReader())
             {
-                while (reader.Read())
+                if (reader.Read() && !reader.IsDBNull(0))
                 {
-                    sumaTotal = reader.GetSafeInt32(0);
+                    sumaTotal = reader.GetDouble(0);
                 }
             }
-
             ConexionDB.CerrarConexion();
-            if (sumaTotal == null || sumaTotal == 0)
-            {
-                return 0;
-            }
+
             return sumaTotal;
         }
 
@@ -166,21 +185,23 @@ namespace Gestionis.Clases
         /// <returns>Total gastos variables</returns>
         public static double? TotalVariable()
         {
-            string queryString = "SELECT SUM(cantidad) FROM gasto WHERE tipo = @tipo";
+            string queryString = "SELECT SUM(cantidad) FROM gasto WHERE tipo = @Tipo AND numCuenta = @NumCuenta";
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
 
-            query.Parameters.AddWithValue("@tipo", "Variable");
+            query.Parameters.AddWithValue("@Tipo", "Variable");
+            query.Parameters.AddWithValue("@NumCuenta", Sesion.Instance.NumCuenta);
+
             ConexionDB.AbrirConexion();
             double? sumaTotal = null;
             using (MySqlDataReader reader = query.ExecuteReader())
             {
-                while (reader.Read())
+                if (reader.Read() && !reader.IsDBNull(0))
                 {
-                    sumaTotal = reader.GetSafeInt32(0);
+                    sumaTotal = reader.GetDouble(0);
                 }
             }
-
             ConexionDB.CerrarConexion();
+
             if (sumaTotal == null || sumaTotal == 0)
             {
                 return 0;
@@ -329,20 +350,22 @@ namespace Gestionis.Clases
         /// <returns>Total gasto necesidades</returns>
         public static double? TotalNecesidades()
         {
-            string queryString = "SELECT SUM(g.cantidad) FROM gasto g JOIN categoriaGasto c ON g.idCategoria = c.idCategoria WHERE (c.nombre = 'luz' OR c.nombre = 'supermercado');";
+            string queryString = "SELECT SUM(g.cantidad) FROM gasto g JOIN categoriaGasto c ON g.idCategoria = c.idCategoria WHERE (c.nombre = 'luz' OR c.nombre = 'supermercado') AND numCuenta = @NumCuenta";
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+
+            query.Parameters.AddWithValue("@NumCuenta", Sesion.Instance.NumCuenta);
 
             ConexionDB.AbrirConexion();
             double? sumaTotal = null;
             using (MySqlDataReader reader = query.ExecuteReader())
             {
-                while (reader.Read())
+                if (reader.Read() && !reader.IsDBNull(0))
                 {
-                    sumaTotal = reader.GetSafeInt32(0);
+                    sumaTotal = reader.GetDouble(0);
                 }
             }
-
             ConexionDB.CerrarConexion();
+
             return sumaTotal;
         }
 
@@ -352,21 +375,23 @@ namespace Gestionis.Clases
         /// <returns>TOtal gasto prescindible</returns>
         public static double? TotalPrescindibles()
         {
-            string queryString = "SELECT SUM(g.cantidad) FROM gasto g JOIN categoriaGasto c ON g.idCategoria = c.idCategoria " +
-                         "WHERE (c.nombre = 'restaurante' OR c.nombre = 'gasolina' OR c.nombre = 'entretenimiento');";
+            string queryString = "SELECT SUM(g.cantidad) FROM gasto g JOIN categoriaGasto c ON g.idCategoria = c.idCategoria JOIN cuenta u ON g.numCuenta = u.numCuenta " +
+                                 "WHERE u.numCuenta = @numCuenta AND (c.nombre = 'restaurante' OR c.nombre = 'gasolina' OR c.nombre = 'entretenimiento');";
+
             MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion);
+            query.Parameters.AddWithValue("@numCuenta", Sesion.Instance.NumCuenta);
 
             ConexionDB.AbrirConexion();
             double? sumaTotal = null;
             using (MySqlDataReader reader = query.ExecuteReader())
             {
-                while (reader.Read())
+                if (reader.Read() && !reader.IsDBNull(0))
                 {
-                    sumaTotal = reader.GetSafeInt32(0);
+                    sumaTotal = reader.GetDouble(0);
                 }
             }
-
             ConexionDB.CerrarConexion();
+
             return sumaTotal;
         }
 
