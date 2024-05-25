@@ -64,7 +64,7 @@ namespace Gestionis.Formularios
                 }
                 else
                 {
-                    LimitesNotif.EditarLimite(Sesion.Instance.NumCuenta, CategoriaGasto.DevuelveIDCategoria(cboCategorias.Text), limite);
+                    LimitesNotif.EditarLimite(Sesion.Instance.NumCuenta, CategoriaGasto.DevuelveIDCategoria(cboCategorias.Text), nudLimite.Value);
                 }
 
                 SistemaNiveles.IncrementarExperiencia(Sesion.Instance.ApodoUsuario, 10);

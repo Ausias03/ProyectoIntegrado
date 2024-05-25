@@ -34,11 +34,14 @@ namespace Gestionis
 
         private void lklFaq_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process process = new Process();
-            process.StartInfo.UseShellExecute = true;
-            process.StartInfo.FileName = "firefox";
-            process.StartInfo.Arguments = "https://gestioniss.000webhostapp.com/Preguntas.html";
-            process.Start();
+            try
+            {
+                Process.Start(new ProcessStartInfo("https://gestioniss.000webhostapp.com/Preguntas.html") { UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo abrir el enlace. Error: " + ex.Message);
+            }
         }
 
         private void lklRegistro_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
