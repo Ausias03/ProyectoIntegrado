@@ -244,7 +244,7 @@ namespace Gestionis.Clases
         public static int NotasTotalesDia()
         {
             string fechaActual = DateTime.Today.ToString("yyyy-MM-dd");
-            string queryString = $"SELECT COUNT(*) FROM nota WHERE fechaRecordatorio = '{fechaActual}';";
+            string queryString = $"SELECT COUNT(*) FROM nota WHERE fechaRecordatorio = '{fechaActual}' AND apodoUsuario = '{Sesion.Instance.ApodoUsuario}';";
             int total = 0;
 
             using (MySqlCommand query = new MySqlCommand(queryString, ConexionDB.Conexion))
