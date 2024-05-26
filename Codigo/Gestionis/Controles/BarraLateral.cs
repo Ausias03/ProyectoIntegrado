@@ -65,7 +65,7 @@ namespace Gestionis.Herramientas
             BtnPaginaWeb = CreateButton("Página Web", Properties.Resources.web, null);
 
             BtnPaginaWeb.Click -= ButtonClickHandler;
-            BtnPaginaWeb.Click += (sender, e) => OpenWebPage("https://gestioniss.000webhostapp.com/IndexEN.html");
+            BtnPaginaWeb.Click += (sender, e) => OpenWebPage("https://borokalashnika.github.io/GestionisWeb/");
         }
 
         private Button CreateButton(string text, Image image, Type formType)

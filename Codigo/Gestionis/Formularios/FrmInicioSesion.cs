@@ -36,7 +36,7 @@ namespace Gestionis
         {
             try
             {
-                Process.Start(new ProcessStartInfo("https://gestioniss.000webhostapp.com/Preguntas.html") { UseShellExecute = true });
+                Process.Start(new ProcessStartInfo("https://borokalashnika.github.io/GestionisWeb/Preguntas.html") { UseShellExecute = true });
             }
             catch (Exception ex)
             {
