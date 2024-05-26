@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gestionis</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/x-icon" href="Imagenes/logo.png">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link href="EstilosP.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div id="navimg"></div>
+            <div id="navimg2"></div>
+            <ul>
+                <li><a href="Descargas.html">Downloads</a></li>
+                <li><a href="IndexEN.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="header2">
+        <nav2>
+            <ul>
+                <li><a href="#inicio">Login</a></li>
+                <li><a href="#general">General</a></li>
+                <li><a href="#contacto">Contact us</a></li>
+            </ul>
+            <select id="idiomas" onchange="window.location.href = this.value;">
+                <option value="PreguntasEN.html">English</option>
+                <option value="Preguntas.html">Español</option>
+            </select>
+        </nav2>
+    </div>
+    <div id="fondo">
+        <div id="cuerpo">
+            <h1>LOGIN QUESTIONS</h1>
+            <div id="inicio">
+                <div id="iniciotext">
+                    <div id="iniciotextT">
+                        <h2>What do I do if I don't have an account?</h2>
+                    </div>
+                    <div id="iniciotextP">
+                        <div id="iniciotext1">
+                            <h3>Register</h3>
+                            <p>In the login form, you can click where it asks if you don't have an account, sending you to the registration form.</p>
+                        </div>
+                    </div>
+                    <div id="iniciotextT">
+                        <h2>What do I need to do to register?</h2>
+                    </div>
+                    <div id="iniciotextP">
+                        <div id="iniciotext1">
+                            <h3>Enter your details</h3>
+                            <p>Open the registration form and fill in at least the fields for Username, name, email, and password.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1>FREQUENTLY ASKED QUESTIONS</h1>
+            <div id="general">
+                <div id="generaltext">
+                    <div id="generaltextT">
+                        <h2>Is Gestionis safe?</h2>
+                    </div>
+                    <div id="generaltextP">
+                        <div id="generaltext1">
+                            <h3>Yes, it is</h3>
+                            <p>Any data you enter in our application will never leave it, making it safe to input your earnings and expenses without worry.</p>
+                        </div>
+                    </div>
+                    <div id="generaltextT">
+                        <h2>How do I level up?</h2>
+                    </div>
+                    <div id="generaltextP">
+                        <div id="generaltext1">
+                            <h3>Save</h3>
+                            <p>Each time you manage to save money using our app, you will gain experience to enjoy the advanced features of the app.</p>
+                        </div>
+                    </div>
+                    <div id="generaltextT">
+                        <h2>How do I unlock investments?</h2>
+                    </div>
+                    <div id="generaltextP">
+                        <div id="generaltext1">
+                            <h3>Level up</h3>
+                            <p>To unlock features like the ranking or the investment manager, you need to reach a certain user level by saving money daily.</p>
+                        </div>
+                    </div>
+                    <div id="generaltextT">
+                        <h2>How do I change my profile?</h2>
+                    </div>
+                    <div id="generaltextP">
+                        <div id="generaltext1">
+                            <h3>Your account</h3>
+                            <p>In the top right corner of the main form, there will be an option with your profile picture. Clicking it will open your profile form, where you can change anything you want.</p>
+                        </div>
+                    </div>
+                    <div id="generaltextT">
+                        <h2>How do I record an expense?</h2>
+                    </div>
+                    <div id="generaltextP">
+                        <div id="generaltext1">
+                            <h3>Record expense</h3>
+                            <p>In the main form, you can see two buttons to record an expense or an income; simply fill in the required information and you can add it.</p>
+                        </div>
+                    </div>
+                    <div id="fondo2">
+                        <div id="contacto">
+                            <h1>Tienes dudas otra pregunta? Contactanos</h1>
+                            <form action="/submit" method="post">
+                                <p>
+                                    Name <input type="text" name="nombre">
+                                </p>
+                                <p>
+                                    Mail <input type="text" name="correo">
+                                </p>
+                                <p>
+                                    Your question <textarea name="pregunta" rows="4" cols="50"></textarea>
+                                </p>
+                                <p>
+                                    <input type="submit" value="Enviar">
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="PreguntasEN.html" class="top-arrow"><i class="arrow up"></i></a>
+<a id="top"></a>
+</div>
+</body>
+
+</html>
+
+                

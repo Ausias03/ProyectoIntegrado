@@ -1,0 +1,277 @@
+body {
+    width: 100%-8px;
+    overflow-x: hidden;
+    user-select: none;
+}
+
+header {
+    background-color: #007394;
+    color: #fff;
+    padding: 2em;
+    text-align: center;
+    width: 100%;
+}
+
+#navimg {
+    width: 15%;
+    height: 20px;
+    background-size: 30%;
+    position: relative;
+    margin-top: 40px;
+    margin-left: 4%;
+}
+
+#navimg2 {
+    background-image: url(Imagenes/logo.png);
+    width: 15%;
+    height: 100px;
+    background-size: 5em;
+    position: absolute;
+    background-position: center;
+    margin-top: -5em;
+    background-repeat: no-repeat;
+}
+
+#header2 {
+    width: 100%;
+    background-color: #008A97;
+    color: #fff;
+    padding: 1.5em;
+}
+
+#idiomas {
+    position: absolute;
+    top: 9em ;
+    right: 20px; 
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    #idiomas {
+        position: relative;
+        margin-top: 10px;
+        margin-bottom: 10px; 
+        right: auto;
+    }
+}
+
+#idiomas::after {
+    content: '\25BC';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 12px;
+    color: #333;
+}
+
+.select-container {
+    position: relative;
+    display: inline-block;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: -2.5em;
+    margin-left: 13em;
+}
+
+nav2 ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20em;
+}
+
+nav2 li {
+    display: inline;
+    margin-right: 10%;
+}
+
+nav a {
+    text-decoration: underline;
+    color: #fff;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+nav2 a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 17px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+#fondo {
+    background-color: #b8f0cc;
+    position: absolute;
+    width: 100%;
+    height: 195em;
+}
+
+div#cuerpo {
+    width: 100%;
+    height: 500px;
+    background-color: #b8f0cc;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 40px;
+}
+
+div#inicio {
+    width: 75em;
+    height: 50em;
+    position: relative;
+    left: 50%;
+    translate: -50%;
+    background-color: #008A97;
+    background-repeat: no-repeat;
+    background-size: 15em;
+    background-position: center;
+    margin-top: 0px;
+}
+
+div#iniciotext {
+    text-align: center;
+    position: absolute;
+    margin-top: 5em;
+    margin-left: 13em;
+    width: 50em;
+    height: 70em;
+}
+
+div#iniciotextT {
+    color: white;
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+div#infotextP {
+
+    margin-top: 3em;
+}
+
+div#iniciotext1 {
+    background-color: #b8f0cc;
+    padding: 1em;
+    font-weight: bold;
+    border-style: inset;
+}
+
+div#general {
+    width: 75em;
+    height: 100em;
+    position: relative;
+    left: 50%;
+    translate: -50%;
+    background-color: #008A97;
+    background-repeat: no-repeat;
+    background-size: 15em;
+    background-position: center;
+    margin-top: 2em;
+}
+
+div#generaltext {
+    text-align: center;
+    position: absolute;
+    margin-top: 5em;
+    margin-left: 13em;
+    width: 50em;
+    height: 70em;
+}
+
+div#generaltextT {
+    color: white;
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+div#generaltextP {
+    margin-top: 3em;
+}
+
+div#generaltext1 {
+    background-color: #b8f0cc;
+    padding: 1em;
+    font-weight: bold;
+    border-style: inset;
+}
+
+#fondo2{
+    width: 75em;
+    height: 27em;
+    position: relative;
+    left: 50%;
+    translate: -50%;
+    background-color: #008A97;
+    margin-top: 10em;
+}
+#contacto {
+    width: 50em;
+    left: 50%;
+    translate: -50%;
+    position: relative;
+}
+
+#contacto h1 {
+    color: #fff;
+    text-decoration: underline;
+}
+
+#contacto form p {
+    margin-bottom: 15px;
+    color: #fff;
+    font-size: 20px;
+}
+
+#contacto form input[type="text"],
+#contacto form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#contacto form input[type="submit"] {
+    background-color: #00B99D;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#contacto form input[type="submit"]:hover {
+    background-color: #b8f0cc;
+}
+
+.top-arrow {
+    position: fixed; 
+    bottom: 0.5em;
+    right: 0.75em;
+    z-index: 9999; 
+    font-size: 3.5em;
+    color: #fff;
+    background-image: url(Imagenes/up.png);
+    background-size: 100%;
+    padding: 0.5em;
+    border-radius: 10px;
+    text-align: center;
+  }

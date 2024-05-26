@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gestionis</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/x-icon" href="Imagenes/logo.png">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link href="EstilosP.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div id="navimg"></div>
+            <div id="navimg2"></div>
+            <ul>
+                <li><a href="Descargas.html">Descargas</a></li>
+                <li><a href="index.html">Principal</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="header2">
+        <nav2>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#general">General</a></li>
+                <li><a href="#contacto">Contactanos</a></li>
+            </ul>
+            <select id="idiomas" onchange="window.location.href = this.value;">
+                <option value="Preguntas.html">Español</option>
+                <option value="PreguntasEN.html">English</option>
+            </select>
+        </nav2>
+    </div>
+    <div id="fondo">
+        <div id="cuerpo">
+            <h1>PREGUNTAS DE INICIO DE SESIÓN</h1>
+            <div id="inicio">
+                <div id="iniciotext">
+                    <div id="iniciotextT">
+                        <H2>Que hago si no tengo una cuenta?</H2>
+                    </div>
+                    <div id="iniciotextP">
+                        <div id="iniciotext1">
+                            <h3>Registrate</h3>
+                            <p>En el formulario de inicio puedes pulsar donde pregunta si no tienes cuenta,
+                                enviandote al formulario de registro.
+                            </p>
+                        </div>
+                    </div>
+                    <div id="iniciotextT">
+                        <H2>Que debo hacer para registrarme?</H2>
+                    </div>
+                    <div id="iniciotextP">
+                        <div id="iniciotext1">
+                            <h3>Poner tus datos</h3>
+                            <p>Abre el formulario de registro y rellena como minimo los campos de Usuario, nombre,
+                                correo y contraseña</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1>
+                PREGUNTAS FRECUENTES
+            </h1>
+            <div id="general">
+                <div id="generaltext">
+                    <div id="generaltextT">
+                        <H2>Es gestionis seguro?</H2>
+
+                    </div>
+                    <div id="generaltextP">
+                        <div id="generaltext1">
+                            <h3>Si que lo és</h3>
+                            <p>Cualquier dato que introduzcas en nuestra aplicación no llegará a salir jamás de esta,
+                                haciendo que sea seguro
+                                el introducir tus ganancias y gastos sin preocupación
+                            </p>
+                        </div>
+                    </div>
+                    <div id="generaltextT">
+                        <H2>Como subo de nivel?</H2>
+
+                    </div>
+                    <div id="generaltextP">
+                        <div id="generaltext1">
+                            <h3>Ahorra</h3>
+                            <p>Por cada vez que logres ahorrar dinero utilizando nuestra aplicación lograrás ganar
+                                experiecia para disfrutar
+                                de las partes avenzadas de la aplicación
+                            </p>
+                        </div>
+                    </div>
+                    <div id="generaltextT">
+                        <H2>Como desbloqueo las inversiones?</H2>
+                    </div>
+                    <div id="generaltextP">
+                        <div id="generaltext1">
+                            <h3>Sube de nivel</h3>
+                            <p>Para desbloquear funciones como el ranking o el gestor de inversiones necesitas alcanzar
+                                cierto nivel como
+                                usuario a base de conseguir ahorrar dinero en el dia a dia
+                            </p>
+                        </div>
+                        <div id="generaltextT">
+                            <H2>Como cambio mi perfil?</H2>
+                        </div>
+                        <div id="generaltextP">
+                            <div id="generaltext1">
+                                <h3>Tu cuenta</h3>
+                                <p>En la esquina superior derecha del formulario principal habrá una opción con tu foto
+                                    de perfil. Al clicarla
+                                    se abrirá el formulario de tu perfil, donde podrás cambiar lo que quieras
+                                </p>
+                            </div>
+                            <div id="generaltextT">
+                                <H2>Como registro un gasto?</H2>
+                            </div>
+                            <div id="generaltextP">
+                                <div id="generaltext1">
+                                    <h3>Registrar gasto</h3>
+                                    <p>En el formulario principal se pueden ver dos botones con los que registrar un
+                                        gasto o un ingreso, simplemente
+                                        rellena la información que te pidan y podrás agregarlo
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="fondo2">
+                            <div id="contacto">
+                                <h1>Tienes dudas otra pregunta? Contactanos</h1>
+                                <form action="/submit" method="post">
+                                    <p>
+                                        Nombre <input type="text" name="nombre">
+                                    </p>
+                                    <p>
+                                        Correo <input type="text" name="correo">
+                                    </p>
+                                    <p>
+                                        Tu pregunta <textarea name="pregunta" rows="4" cols="50"></textarea>
+                                    </p>
+                                    <p>
+                                        <input type="submit" value="Enviar">
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="Preguntas.html" class="top-arrow"><i class="arrow up"></i></a>
+    <a id="top"></a>
+    </div>
+</body>
+
+</html>
