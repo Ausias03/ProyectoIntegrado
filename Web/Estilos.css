@@ -1,0 +1,491 @@
+body{
+    width: 100%-8px;
+    overflow-x: hidden;
+    user-select: none;
+}
+
+header {
+    background-color: #007394;
+    color: #fff;
+    padding: 2em;
+    text-align: center;
+}
+#navimg{
+    width: 15%;
+    height: 20px;
+    background-size: 30%;
+    position: relative;
+    margin-top: 40px;
+    margin-left: 4%;
+}
+#navimg2{
+    background-image: url(Imagenes/logo.png);
+    width: 15%;
+    height: 100px;
+    background-size: 5em;
+    position: absolute;
+    background-position: center;
+    margin-top: -5em;
+    background-repeat: no-repeat;
+}
+#header2 {
+    background-color: #008A97;
+    color: #fff;
+    padding: 1.5em;
+}
+#idiomas {
+    position: absolute;
+    top: 9em ;
+    right: 20px; 
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    #idiomas {
+        position: relative;
+        margin-top: 10px; 
+        margin-bottom: 10px; 
+        right: auto;
+    }
+}
+
+#idiomas::after {
+    content: '\25BC';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 12px;
+    color: #333;
+}
+
+.select-container {
+    position: relative;
+    display: inline-block;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: -2.5em;
+    margin-left: 13em;
+}
+
+nav2 ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20em; 
+}
+
+nav2 li {
+    display: inline;
+    margin-right: 10%;
+}
+
+nav a {
+    text-decoration:underline;
+    color: #fff;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+nav2 a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 17px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+#fondo{
+    background-color: #b8f0cc;
+}
+#cuerpo{
+    width:100%;
+    height:500px;
+    background-color: #b8f0cc;
+}
+#bodyimg{
+    background-image: url(Imagenes/logo.png);
+    width: 75em;
+    height: 35em;
+    background-size: 25em;
+    position: absolute;
+    margin-top: 5em;
+    margin-left: 23%;
+    background-repeat: no-repeat;
+}
+#textbody{
+    position: absolute;
+    top: 20em;
+    margin-left: 50em;
+    width: 25em;
+    font-size: large;
+}
+#info{
+    width: 75em;
+    height: 75em;
+    margin-left: 3em;
+    background-color: #008A97;
+    background-repeat: no-repeat;
+    background-size: 15em;
+    background-position: center;
+    position: relative;
+    margin-top: 0px;
+}
+#infoimg{
+    background-image: url(Imagenes/money.png);
+    width: 50em;
+    height: 100em;
+    background-size: 25em;
+    position: absolute;
+    margin-top: 40em;
+    margin-left: 45em;
+    background-repeat: no-repeat;
+}
+#infotext{
+    position: absolute;
+    margin-top: 5em;
+    margin-left: 5em;
+    width: 35em; 
+    height: 70em;
+}
+#infotextT{
+    color: white;
+    font-weight: bolder;
+    font-size: 30px;
+}
+#infotextR{
+    color: white;
+    font-weight: bolder;
+    font-size:medium;
+}
+#infotextP{
+    margin-left: 15%;
+    margin-top: 3em;
+}
+
+#infotext1{
+    background-color:#b8f0cc;
+    padding: 1em;
+    font-weight: bold;
+    border-style:inset;
+}
+#infotext2{
+    background-color:#b8f0cc;
+    padding: 1em;
+    font-weight: bold;
+    border-style:inset;
+    margin-top: 1em;
+}
+#infotext3{
+    background-color:#b8f0cc;
+    padding: 1em;
+    font-weight: bold;
+    border-style:inset;
+    margin-top: 1em;
+}
+#infotext4{
+    background-color:#b8f0cc;
+    padding: 1em;
+    font-weight: bold;
+    border-style:inset;
+    margin-top: 1em;
+}
+#infotext5{
+    background-color:#b8f0cc;
+    padding: 1em;
+    font-weight: bold;
+    border-style:inset;
+    margin-top: 1em;
+}
+#infotext6{
+    color: white;
+    font-weight: bolder;
+    font-size:medium;
+}
+#grupo{
+    width: 75em;
+    height: 90em;
+    margin-left: 17em;
+    background-color: #008A97;
+    background-repeat: no-repeat;
+    background-size: 15em;
+    background-position: center;
+    position: relative;
+    margin-top: 5em;
+}
+#espacio{
+    height: 0.5em;
+}
+#grupoT{
+    text-align: center;
+    margin-top: 3em;
+    color: white;
+    font-weight: bolder;
+    font-size: 30px;
+}
+#grupoimg{
+    background-image: url(Imagenes/group.jpg);
+    width: 50em;
+    height: 20em;
+    background-size: 50%;
+    position: relative;
+    margin-top: 1em;
+    margin-left: 21em;
+    background-repeat: no-repeat;
+}
+#grupotxt{
+    position: absolute;
+    margin-top: 6em;
+    width: 100%; 
+    height: 50em;
+}
+#grupotxt1{
+    background-color:#b8f0cc;
+    padding: 2em;
+    font-weight: bold;
+    border-style:inset;
+    width: 30%;
+    margin-left: 7.5em;
+    position: absolute;
+}
+#grupotxt2{
+    background-color:#b8f0cc;
+    padding: 2em;
+    font-weight: bold;
+    border-style:inset;
+    width: 30%;
+    margin-left: 40em;
+    position: absolute;
+}
+#grupotxt3{
+    background-color:#b8f0cc;
+    padding: 2em;
+    font-weight: bold;
+    border-style:inset;
+    margin-top: 15em;
+    width: 30%;
+    margin-left: 7.5em;
+    position: absolute;
+}
+#grupotxt4{
+    background-color:#b8f0cc;
+    padding: 2em;
+    font-weight: bold;
+    border-style:inset;
+    margin-top: 15em;
+    width: 30%;
+    margin-left: 40em;
+    position: absolute;
+}
+#grupotxt5{
+    background-color:#b8f0cc;
+    padding: 2em;
+    font-weight: bold;
+    border-style:inset;
+    width: 30%;
+    margin-left: 33%;
+    margin-top: 30em;
+    position: absolute;
+}
+#grupotxt1img{
+    background-image: url(Imagenes/javier.jpg);
+    width: 55%;
+    height: 35em;
+    background-size: 50%;
+    position: absolute;
+    margin-top: -1em;
+    margin-left: 16em;
+    background-repeat: no-repeat;
+}
+#grupotxt2img{
+    background-image: url(Imagenes/didac.jpg);
+    width: 70%;
+    height: 35em;
+    background-size: 40%;
+    position: absolute;
+    margin-top: -1em;
+    margin-left: 16em;
+    background-repeat: no-repeat;
+}
+#grupotxt3img{
+    background-image: url(Imagenes/ausias.jpg);
+    width: 65%;
+    height: 35em;
+    background-size: 45%;
+    position: absolute;
+    margin-top: -1em;
+    margin-left: 16em;
+    background-repeat: no-repeat;
+}
+#grupotxt4img{
+    background-image: url(Imagenes/boromir.jpg);
+    width: 60%;
+    height: 35em;
+    background-size: 50%;
+    position: absolute;
+    margin-top: -1em;
+    margin-left: 16em;
+    background-repeat: no-repeat;
+}
+#grupotxt5img{
+    background-image: url(Imagenes/nico.jpg);
+    width: 65%;
+    height: 35em;
+    background-size: 43%;
+    position: absolute;
+    margin-top: -1em;
+    margin-left: 16em;
+    background-repeat: no-repeat;
+}
+#bajo{
+    width:100%;
+    height:75em;
+    margin-top: 3%;
+    background-color: #00B99D;
+}
+
+#video{
+    position: absolute;
+    margin-top: 2.5em;
+    left: 50%;
+    translate: -50%;
+}
+#videoT{
+    text-align: center;
+    color: white;
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+#videoB{
+    text-align: center;
+    color: white;
+    font-weight: bolder;
+    font-size: 30px;
+}
+
+#contacto{
+    width:100%;
+    height:400px;
+    background-color: #007394;
+}
+#texto1{
+    color: white;
+    position: absolute;
+    margin-left: 12em;
+    margin-top: 3em;
+}
+#texto2{
+    color: white;
+    position: absolute;
+    margin-left: 25em;
+    margin-top: 3em;
+}
+#texto3{
+    color: white;
+    position: absolute;
+    margin-left: 45em;
+    margin-top: 3em;
+}
+#texto4{
+    color: white;
+    position: absolute;
+    margin-left: 65em;
+    margin-top: 3em;
+}
+#texto5{
+    color: white;
+    position: absolute;
+    margin-left: 12em;
+    margin-top: 18em;
+}
+#bajoimg{
+    background-image: url(Imagenes/logo.png);
+    width: 15em;
+    height: 20em;
+    background-size: 100%;
+    position: absolute;
+    margin-top: 4em;
+    margin-left: 75em;
+    background-repeat: no-repeat;
+}
+#subida{
+    position: absolute;
+    right: 5em;
+    margin-top: 20em;
+}
+
+@media (max-width: 768px) {
+    #idiomas {
+        position: static;
+        margin: 1em auto;
+        display: block;
+    }
+
+    nav ul, nav2 ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav li, nav2 li {
+        margin: 0.5em 0;
+    }
+
+    #infotextP > div, #grupotxt > div {
+        flex: 1 1 calc(90% - 2em);
+    }
+
+    #contactotexto > div {
+        flex: 1 1 calc(45% - 2em);
+    }
+}
+
+@media (max-width: 480px) {
+    header, #header2, #fondo, #info, #grupo, #bajo, #contacto {
+        padding: 1em;
+    }
+
+    #textbody, #infotext, #grupoT, #videoT {
+        font-size: medium;
+    }
+
+    #bodyimg, #infoimg, #grupoimg {
+        height: 15em;
+    }
+
+    #infotextP > div, #grupotxt > div {
+        flex: 1 1 100%;
+    }
+
+    #contactotexto > div {
+        flex: 1 1 100%;
+    }
+}
+.top-arrow {
+    position: fixed; 
+    bottom: 0.5em;
+    right: 0.75em;
+    z-index: 9999; 
+    font-size: 3.5em;
+    color: #fff;
+    background-image: url(Imagenes/up.png);
+    background-size: 100%;
+    padding: 0.5em;
+    border-radius: 10px;
+    text-align: center;
+  }
